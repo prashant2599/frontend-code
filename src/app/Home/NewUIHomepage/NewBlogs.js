@@ -5,6 +5,10 @@ const NewBlogs = async () => {
   const data = await getALLBlogs();
   const blogs = data.data.blogs;
   const blog1 = blogs?.slice(0, 3) ?? [];
+
+  // Create options for formatting the date
+  const options = { year: "numeric", month: "long", day: "numeric" };
+
   return (
     <>
       <section id="home-latest-resources">
@@ -12,40 +16,51 @@ const NewBlogs = async () => {
           <h2>Our Latest Resources</h2>
 
           <div class="blogs-box">
-            {blog1.map((e) => (
-              <div class="blog-item" key={e.id}>
-                <img
-                  src={`https://dev.medflick.com/blog/${e.icon}`}
-                  alt={e.name}
-                />
-                <Link href={`/blog/${e.slug}`}>
-                  <h3>{e.name}</h3>
-                </Link>
-                {/* <p>
-                  Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                  qui officia deserunt mollit...
-                </p> */}
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: e.short_description,
-                  }}
-                />
-                <div class="blog-text">
-                  <div class="category-blog">
-                    <span>
-                      <img src="/new-images/2023/01/11/do.png" />
-                    </span>
-                    12th March 2023
-                  </div>
-                  <div class="time-blog">
-                    <span>
-                      <img src="/new-images/2023/01/11/do.png" />
-                    </span>{" "}
-                    2 Min Read
+            {blog1.map((e) => {
+              const createdAtDate = new Date(e.created_at);
+              const formattedDate = createdAtDate.toLocaleDateString(
+                undefined,
+                options
+              );
+
+              return (
+                <div class="blog-item" key={e.id}>
+                  <img
+                    src={`https://dev.medflick.com/blog/${e.icon}`}
+                    alt={e.name}
+                  />
+                  <Link href={`/blog/${e.slug}`}>
+                    <h3>{e.name}</h3>
+                  </Link>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: e.short_description,
+                    }}
+                  />
+                  <div class="blog-text">
+                    <div class="category-blog">
+                      <span>
+                        <img
+                          src="/new-images/2023/01/11/do.png"
+                          alt="category icon"
+                        />
+                      </span>
+                      {formattedDate}{" "}
+                      {/* Display the formatted creation date here */}
+                    </div>
+                    <div class="time-blog">
+                      <span>
+                        <img
+                          src="/new-images/2023/01/11/do.png"
+                          alt="time icon"
+                        />
+                      </span>{" "}
+                      2 Min Read
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           <Link href="/blogs">

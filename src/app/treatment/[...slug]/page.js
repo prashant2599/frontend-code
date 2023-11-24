@@ -10,6 +10,7 @@ import Community from "@/app/Home/community/Community";
 import TreatmentFaq from "./TreatmentFaq";
 import TreatmentBlog from "./TreatmentBlog";
 import Image from "next/image";
+import "@/app/Home/NewUIHomepage/newsection.css"
 
 const page = async ({ params }) => {
   const combinedSlug = params.slug.join("/");

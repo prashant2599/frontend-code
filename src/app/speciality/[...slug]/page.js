@@ -12,6 +12,10 @@ import SpecialityBlog from "./SpecialityBlog";
 import SpecialityFilteration from "./SpecialityFilteration";
 import TreatmentList from "./TreatmentList";
 import { notFound } from "next/navigation";
+import NewQuestionAns from "@/app/Home/NewUIHomepage/NewQuestionAns";
+import NewTestomonials from "@/app/Home/NewUIHomepage/NewTestomonials";
+import "../../Home/NewUIHomepage/newsection.css"
+import NewBlogs from "@/app/Home/NewUIHomepage/NewBlogs";
 
 const page = async ({ params }) => {
   try {
@@ -134,24 +138,27 @@ const page = async ({ params }) => {
 
         {/* doctors */}
 
-        <Doctors doctor={doctor} />
+        <Doctors doctor={doctor} category={info.slug} />
         {/* end */}
 
         {/* Hospitals */}
-        <Hospitralspe hospital={hospital} />
+        <Hospitralspe hospital={hospital} category={info.slug} />
 
         {/* end */}
 
         {/* query */}
 
+        <NewQuestionAns />
         {/* <HealthQuerys /> */}
 
+        <NewTestomonials />
         {/* <Testimonials /> */}
 
         {/* community */}
         <Community />
 
-        <SpecialityBlog blog={blog} />
+        <SpecialityBlog blog={blog} category={info.slug} />
+  
       </>
     );
   } catch (error) {

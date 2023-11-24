@@ -190,6 +190,8 @@
 
 .item-home-expert img {
   border-radius: 16px 16px 0px 0px;
+  width: 344px;
+  height: 260px;
 }
 
 .home-expert-text {
@@ -277,10 +279,6 @@
   padding: 0px;
   position: relative;
   z-index: 1;
-}
-
-.item-home-expert img {
-  border-radius: 16px 16px 0px 0px;
 }
 
 #hometop-process-treatment {
@@ -1251,9 +1249,7 @@ button.active .city-icon-h {
   position: relative;
   z-index: 1;
 }
-.item-home-expert img {
-  border-radius: 16px 16px 0px 0px;
-}
+
 .home-expert-video-right .video-iconbox {
   position: absolute;
   top: 42%;
@@ -1975,7 +1971,10 @@ button.active .city-icon-h {
   .footer-news-button {
     width: 50%;
   }
- 
+  .item-home-expert img {
+    width: 201px;
+    height: 165px;
+  }
 }
 
 footer {

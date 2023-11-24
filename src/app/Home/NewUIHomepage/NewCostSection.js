@@ -124,12 +124,14 @@ const NewCostSection = () => {
             {countries.map((tab) => (
               <button
                 key={tab.id}
-                className={`tablinks ${activeTab === tab.country ? "active" : ""}`}
+                className={`tablinks ${
+                  activeTab === tab.country ? "active" : ""
+                }`}
                 onClick={(evt) => openCity(evt, tab.country)}
               >
                 {/* <img className="city-icon" src={tab.icon} alt="" />
                 <img className="city-icon-h" src={tab.hoverIcon} alt="" /> */}
-                {tab.country}
+                {tab.country.charAt(0).toUpperCase() + tab.country.slice(1)}
               </button>
             ))}
           </div>

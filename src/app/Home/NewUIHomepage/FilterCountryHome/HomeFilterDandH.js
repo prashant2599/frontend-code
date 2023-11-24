@@ -6,7 +6,6 @@ import getAllSpeciality from "@/app/lib/getAllSpeciality";
 import { useDoctorData } from "@/app/contex/DoctorDataContext";
 import { HospitalData } from "@/app/contex/HospitalDataContext";
 
-
 const HomeFilterDandH = () => {
   const [countries, setCountries] = useState([]);
   const [specialities, setSpecialities] = useState([]);
@@ -37,8 +36,7 @@ const HomeFilterDandH = () => {
       );
       const data = await res.json();
       // Set the fetched data in the state
-      setDoctorsData(data.doctors_list.doctors_list);
-      console.log(data.doctors_list.doctors_list);
+      setDoctorsData(data.doctors_list);
     };
 
     // Fetch data when selectedCountry or selectedSpeciality changes
@@ -67,8 +65,6 @@ const HomeFilterDandH = () => {
     setSelectedSpeciality(e.target.value);
   };
 
-
-
   return (
     <div className="hometop-find-treatments">
       <div className="ding">
@@ -79,7 +75,7 @@ const HomeFilterDandH = () => {
         >
           {countries.map((e) => (
             <option value={e.slug} key={e.id}>
-              {e.country}
+              {e.country.charAt(0).toUpperCase() + e.country.slice(1)}
             </option>
           ))}
         </select>

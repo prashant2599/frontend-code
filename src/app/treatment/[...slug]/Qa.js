@@ -5,89 +5,42 @@ const Qa = ({ qa }) => {
   return (
     <>
       {shouldRenderSection && (
-        <section id="health-queries">
-          <div className="midbox-inner  wiki-mk">
-            <div className="queries-head">
-              <div className="querieshead-left">
-                <h2>Get answers to Health Queries</h2>
-                <p>
-                  Timely Information for Informed Choices. Ask health questions,
-                  receive expert answers. Empowering you with the insights to
-                  make informed health decisions.
-                </p>
-              </div>
-              <div className="querieshead-right">
-                <Link href="/question-answer" className="queries-ask">
-                  Ask FREE Question{" "}
-                  <img src="/images/2023/01/arrow-w.png" alt="icon" />
-                </Link>
-              </div>
-            </div>
+        <section id="home-health-queries">
+          <div class="midbox-inner wiki-mk">
+            <h2>
+              Get answers to your <span>health queries</span>
+            </h2>
+            <h6>
+              Meet the compassionate souls behind our services. Our dedicated
+              team of professionals is here to ensure you receive the best care,
+              always
+            </h6>
 
-            <div className="healthcare-professionals">
-              {Array.isArray(qa) ? (
-                qa.map((e) => (
-                  <div className="professionals" key={e.id}>
-                    <div className="professionals-box">
-                      <img src="/images/2023/01/icon-m.png" alt={e.name} />
-                      <div className="question-box">{e.short_description}</div>
-                      <div
-                        className="question-ans"
-                        dangerouslySetInnerHTML={{ __html: e.long_description }}
-                      />
-                    </div>
-                  </div>
-                ))
-              ) : (
-                <p>qa is not an array</p>
-              )}
-
-              <div className="professionals treatmen-query">
-                <div className="homeform-left">
-                  <div className="home-form">
-                    <div className="homequery">
-                      <label>Your Query</label>
-                      <textarea
-                        className="magbox"
-                        type="textarea"
-                        name="query"
-                        placeholder=""
-                        rows="2"
-                      ></textarea>
-                    </div>
-                  </div>
-
-                  <div className="home-form">
-                    <div className="inputbox1">
-                      <label>Age</label>
-                      <input
-                        type="text"
-                        placeholder=""
-                        name="name"
-                        required=""
-                      />
-                    </div>
-                    <div className="inputbox1">
-                      <label>Gender</label>
-                      <input
-                        type="text"
-                        placeholder=""
-                        name="name"
-                        required=""
-                      />
-                    </div>
-                  </div>
-
-                  <div className="home-form">
-                    <button type="submit" name="en" className="home-button">
-                      {" "}
-                      Submit Now{" "}
-                      <img src="/images/2023/01/arrow-c.png" alt="" />
-                    </button>
+            <div class="healthcare-professionals">
+              {qa.map((e) => (
+                <div
+                  class="professionals animation-element slide-up in-view"
+                  key={e.id}
+                >
+                  <div class="professionals-box">
+                    <img
+                      src="/new-images/2023/01/icon-m.png"
+                      alt="medflick-questions"
+                    />
+                    <div class="question-box">{e.short_description}</div>
+                    <div
+                      className="question-ans"
+                      dangerouslySetInnerHTML={{ __html: e.long_description }}
+                    />
                   </div>
                 </div>
-              </div>
+              ))}
             </div>
+
+            <Link href="/question-answer">
+              View All Questions
+              <img src="/new-images/2023/01/arrow-c.png" alt="" />
+            </Link>
           </div>
         </section>
       )}

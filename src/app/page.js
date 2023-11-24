@@ -32,7 +32,7 @@ import NewBlogPage from "./blogs/NewBlogPage";
 
 export default function Home() {
   return (
-    <main style={{marginTop:"-.78rem"}}>
+    <main>
       <NewSection1 />
       <NewHospital />
       <NewSearchTreatment />

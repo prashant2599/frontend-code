@@ -4,12 +4,20 @@ import React from "react";
 import HomeFilterDandH from "./FilterCountryHome/HomeFilterDandH";
 import { useDoctorData } from "@/app/contex/DoctorDataContext";
 import { HospitalData } from "@/app/contex/HospitalDataContext";
+import Link from "next/link";
 
 const NewSearchTreatment = () => {
   const { doctorsData } = useDoctorData();
+  const doctorsNew = doctorsData.doctors_list
   const {hospitalsData} = HospitalData()
-  const Doctors = doctorsData?.slice(0, 4) ?? [];
+  const Doctors = doctorsNew?.slice(0, 4) ?? [];
   const Hospitals = hospitalsData?.slice(0, 4) ?? [];
+
+  const speciality = doctorsData.specility_name
+
+  const category = speciality?.slug;
+
+
 
   return (
     <>
@@ -27,9 +35,9 @@ const NewSearchTreatment = () => {
               <h3>Lorem Ipsum Doctors in India</h3>
             </div>
             <div class="new-beginnings-right">
-              <a class="view-all" href="#">
+              <Link class="view-all" href={`/doctors/${category}`}>
                 View All <img src="/new-images/2023/01/treatments-arrow.png" />
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -43,12 +51,12 @@ const NewSearchTreatment = () => {
                   <h3>
                     {e.prefix} {e.first_name} {e.last_name}
                   </h3>
-                  <p>Senior Neurosurgeon</p>
+                  <p>{e.designation}</p>
                 </div>
                 <div class="expert-button">
-                  <a class="view-profile" href="#">
+                  <Link class="view-profile" href={`/doctor/${e.slug}`}>
                     View Profile
-                  </a>
+                  </Link>
                   <a class="book-appointment" href="#">
                     Book Appointment
                   </a>
@@ -116,9 +124,9 @@ const NewSearchTreatment = () => {
               <h3>Lorem Ipsum Hospitals in India</h3>
             </div>
             <div class="new-beginnings-right">
-              <a class="view-all" href="#">
+              <Link class="view-all" href={`/hospitals/${category}`}>
                 View All <img src="/new-images/2023/01/treatments-arrow.png" />
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -133,9 +141,9 @@ const NewSearchTreatment = () => {
                 <p>Hospitals in India</p>
               </div>
               <div class="expert-button">
-                <a class="view-profile" href="#">
+                <Link class="view-profile" href={`/hospital/${e.slug}`}>
                   View Profile
-                </a>
+                </Link>
                 <a class="book-appointment" href="#">
                   Book Appointment
                 </a>
