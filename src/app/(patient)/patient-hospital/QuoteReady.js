@@ -1,0 +1,458 @@
+"use client";
+import { useState, useEffect, useRef } from "react";
+
+import Link from "next/link";
+import axios from "axios";
+import { useRouter } from "next/navigation";
+
+const QuoteReady = () => {
+  const [hospital, setHospital] = useState([]);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!localStorage.getItem("userId")) {
+      router.push("/");
+    }
+  });
+  // const specialityId = location.state.specialityId;
+  //   const specialityId = localStorage.getItem("specilaity");
+  // const specialityName = location.state.specialityName;
+
+  const [specialityId, setSpecialityId] = useState("");
+
+  useEffect(() => {
+    const storedUserName = localStorage.getItem("speciality");
+    if (storedUserName) {
+      setSpecialityId(storedUserName);
+    }
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://dev.medflick.com/api/hospital/speciality/id/${specialityId}`
+      )
+      .then((response) => {
+        setHospital(response.data.hospital_list.sp_hospital_list);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, [specialityId]);
+
+  const [activeQuestion, setActiveQuestion] = useState(null);
+
+  const handleContentClick = (contentNumber) => {
+    setActiveQuestion(activeQuestion === contentNumber ? null : contentNumber); // Toggle content visibility
+  };
+
+  const pdfLinkRef = useRef(null);
+
+  const handleDownloadClick = (pdfUrl) => {
+    // Set the href attribute of the hidden anchor element
+    pdfLinkRef.current.href = pdfUrl;
+
+    // Simulate a click event on the anchor element to trigger the download
+    pdfLinkRef.current.click();
+  };
+
+  return (
+    <>
+      <section id="request-quote-section">
+        <div class="midbox-inner wiki-mk">
+          <div class="top-back">
+            <Link href="/patient-report">
+              <img src="/images/2023/01/back-icon.png" alt="icon" /> Back
+            </Link>
+            <div class="barbox">
+              {" "}
+              <img src="/images/2023/01/bar-img2.png" alt="icon" />{" "}
+            </div>
+          </div>
+
+          <div class="search-find-box">
+            <h1>Your Quote is Ready</h1>
+
+            <div class="hospitals-list">
+              <div class="hospitals-list-left">
+                <div class="hospitals-tab">
+                  {hospital &&
+                    hospital.map((e, index) => (
+                      <button
+                        className={`conditions ${
+                          activeQuestion === e.id ? "active" : ""
+                        }`}
+                        onClick={() => handleContentClick(e.id)}
+                        id="defaultOpen"
+                        key={e.id}
+                      >
+                        <div className="hospital-item">
+                          <div className="hospital-item-img">
+                            <img
+                              src={`https://dev.medflick.com/hospital/${e.image}`}
+                              alt={e.slug}
+                            />
+                          </div>
+                          <div className="hospital-item-doc">
+                            <h3>{e.name}</h3>
+                            {/* <div className="department-sub">
+                                Oncologist, Medical Oncologist
+                              </div> */}
+                            <div className="rating-star">
+                              <i className="fa fa-star"></i> 5 (523)
+                            </div>
+
+                            <div className="ho-docimg">
+                              {e.nabl && (
+                                <img
+                                  src={`https://dev.medflick.com/hospital/${e.nabl}`}
+                                  alt={e.name}
+                                />
+                              )}
+                              {e.nabh && (
+                                <img
+                                  src={`https://dev.medflick.com/hospital/${e.nabh}`}
+                                  alt={e.name}
+                                />
+                              )}
+                              {e.jci && (
+                                <img
+                                  src={`https://dev.medflick.com/hospital/${e.jci}`}
+                                  alt={e.name}
+                                />
+                              )}
+                            </div>
+                          </div>
+                          <div className="hospital-item-button">
+                            <div className="hos-no">
+                              <strong>Doctors:</strong> {e.doc}
+                            </div>
+                            <div className="hos-no">
+                              <strong>Beds:</strong> {e.bed}
+                            </div>
+                            <div className="hos-no">
+                              <strong>Ambulances:</strong> {e.ambulance}
+                            </div>
+                          </div>
+                        </div>
+                      </button>
+                    ))}
+                </div>
+              </div>
+
+              <div class="hospitals-tab1">
+                {hospital &&
+                  hospital.map((e, index) => (
+                    <button
+                      className={`conditions ${
+                        activeQuestion === e.id ? "active" : ""
+                      }`}
+                      onClick={() => handleContentClick(e.id)}
+                      id="defaultOpen"
+                      key={e.id}
+                    >
+                      <div className="hospital-item">
+                        <div className="hospital-item-img">
+                          <img
+                            src={`https://dev.medflick.com/hospital/${e.image}`}
+                            alt={e.slug}
+                          />
+                        </div>
+                        <div className="hospital-item-doc">
+                          <h3>{e.name}</h3>
+                          {/* <div className="department-sub">
+                                Oncologist, Medical Oncologist
+                              </div> */}
+                          <div className="rating-star">
+                            <i className="fa fa-star"></i> 5 (523)
+                          </div>
+
+                          <div className="ho-docimg">
+                            {e.nabl && (
+                              <img
+                                src={`https://dev.medflick.com/hospital/${e.nabl}`}
+                                alt={e.name}
+                              />
+                            )}
+                            {e.nabh && (
+                              <img
+                                src={`https://dev.medflick.com/hospital/${e.nabh}`}
+                                alt={e.name}
+                              />
+                            )}
+                            {e.jci && (
+                              <img
+                                src={`https://dev.medflick.com/hospital/${e.jci}`}
+                                alt={e.name}
+                              />
+                            )}
+                          </div>
+                        </div>
+                        <div className="hospital-item-button">
+                          <div className="hos-no">
+                            <strong>Doctors:</strong> {e.doc}
+                          </div>
+                          <div className="hos-no">
+                            <strong>Beds:</strong> {e.bed}
+                          </div>
+                          <div className="hos-no">
+                            <strong>Ambulances:</strong> {e.ambulance}
+                          </div>
+                        </div>
+                      </div>
+                    </button>
+                  ))}
+              </div>
+              <div class="hospitals-quote-ready" style={{ height: "650px" }}>
+                {hospital &&
+                  hospital.map((e) => (
+                    <div
+                      id="packages1"
+                      className={`conditionsbox ${
+                        activeQuestion === e.id ? "active" : ""
+                      }`}
+                      key={e.id}
+                    >
+                      <iframe
+                        title="PDF Viewer"
+                        src={`https://dev.medflick.com/hospital/${e.hospital_quote}`}
+                        width="627px"
+                        height="100%"
+                        id="packages1"
+                      ></iframe>
+                      <div class="free-quote1">
+                        <a href="#/" class="request-free-quote">
+                          {" "}
+                          Connect with Us
+                        </a>
+                        <span
+                          class="download-quote"
+                          onClick={() =>
+                            handleDownloadClick(
+                              `https://dev.medflick.com/hospital/${e.hospital_quote}`
+                            )
+                          }
+                        >
+                          {" "}
+                          Download Quote
+                        </span>
+                        <a
+                          ref={pdfLinkRef}
+                          style={{ display: "none" }}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          download
+                        >
+                          Download PDF
+                        </a>
+                      </div>
+                      {/* <div className="free-quote-box">
+                          <a href="#/" className="request-free-quote">
+                            {" "}
+                            Request a Free Quote
+                          </a>
+                          <a
+                            href="/#"
+                            className="request-free-quote"
+                            onClick={() =>
+                              handleDownloadClick(
+                                `${process.env.REACT_APP_BASE_URL}/hospital/${e.hospital_quote}`
+                              )
+                            }
+                          >
+                            {" "}
+                            Download pdf
+                          </a>
+                        </div> */}
+                    </div>
+                  ))}
+
+                {/* <div id="packages1" class="conditionsbox">
+                  <div class="quote-pdf">
+                    {" "}
+                    <h5>Quote-Apollo.pdf</h5>{" "}
+                  </div>
+                  <img src="images/2023/01/pdf.jpg" />
+                  <div class="free-quote1">
+                    <a href="#" class="request-free-quote">
+                      {" "}
+                      Connect with Us
+                    </a>
+                    <a href="#" class="download-quote">
+                      {" "}
+                      Download Quote
+                    </a>
+                  </div>
+                </div> */}
+
+                {/* <div id="packages2" class="conditionsbox">
+                  <div class="quote-pdf">
+                    {" "}
+                    <h5>Quote-Apollo.pdf</h5>{" "}
+                  </div>
+                  <img src="images/2023/01/pdf.jpg" />
+                  <div class="free-quote1">
+                    <a href="#" class="request-free-quote">
+                      {" "}
+                      Connect with Us
+                    </a>
+                    <a href="#" class="download-quote">
+                      {" "}
+                      Download Quote
+                    </a>
+                  </div>
+                </div> */}
+
+                {/* <div class="hospitals-tab1">
+                  <button
+                    class="conditions"
+                    onclick="openWiki(event, 'packages3')"
+                  >
+                    <div class="hospital-item">
+                      <div class="hospital-item-img">
+                        <img src="images/2023/01/1.jpg" />
+                      </div>
+                      <div class="hospital-item-doc">
+                        <h3>Hospital Name</h3>
+                        <div class="department-sub">
+                          Oncologist, Medical Oncologist
+                        </div>
+                        <div class="rating-star">
+                          <i class="fa fa-star"></i> 5 (523)
+                        </div>
+
+                        <div class="ho-docimg">
+                          <img src="images/2023/01/04/1.jpg" />
+                          <img src="images/2023/01/04/2.jpg" />
+                          <img src="images/2023/01/04/3.jpg" />
+                        </div>
+                      </div>
+                      <div class="hospital-item-button">
+                        <div class="hos-no">
+                          <strong>Doctors:</strong> 300
+                        </div>
+                        <div class="hos-no">
+                          <strong>Beds:</strong> 560
+                        </div>
+                        <div class="hos-no">
+                          <strong>Ambulances:</strong> 560{" "}
+                        </div>
+                      </div>
+                    </div>
+                  </button>
+                </div>
+                <div id="packages3" class="conditionsbox">
+                  <div class="quote-pdf">
+                    {" "}
+                    <h5>Quote-Apollo.pdf</h5>{" "}
+                  </div>
+                  <img src="images/2023/01/pdf.jpg" />
+                  <div class="free-quote1">
+                    <a href="#" class="request-free-quote">
+                      {" "}
+                      Connect with Us
+                    </a>
+                    <a href="#" class="download-quote">
+                      {" "}
+                      Download Quote
+                    </a>
+                  </div>
+                </div>
+
+                <div class="hospitals-tab1">
+                  <button
+                    class="conditions"
+                    onclick="openWiki(event, 'packages4')"
+                  >
+                    <div class="hospital-item">
+                      <div class="hospital-item-img">
+                        <img src="images/2023/01/1.jpg" />
+                      </div>
+                      <div class="hospital-item-doc">
+                        <h3>Hospital Name</h3>
+                        <div class="department-sub">
+                          Oncologist, Medical Oncologist
+                        </div>
+                        <div class="rating-star">
+                          <i class="fa fa-star"></i> 5 (523)
+                        </div>
+
+                        <div class="ho-docimg">
+                          <img src="images/2023/01/04/1.jpg" />
+                          <img src="images/2023/01/04/2.jpg" />
+                          <img src="images/2023/01/04/3.jpg" />
+                        </div>
+                      </div>
+                      <div class="hospital-item-button">
+                        <div class="hos-no">
+                          <strong>Doctors:</strong> 300
+                        </div>
+                        <div class="hos-no">
+                          <strong>Beds:</strong> 560
+                        </div>
+                        <div class="hos-no">
+                          <strong>Ambulances:</strong> 560{" "}
+                        </div>
+                      </div>
+                    </div>
+                  </button>
+                </div>
+                <div id="packages4" class="conditionsbox">
+                  <div class="quote-pdf">
+                    {" "}
+                    <h5>Quote-Apollo.pdf</h5>{" "}
+                  </div>
+                  <img src="images/2023/01/pdf.jpg" />
+                  <div class="free-quote1">
+                    <a href="#" class="request-free-quote">
+                      {" "}
+                      Connect with Us
+                    </a>
+                    <a href="#" class="download-quote">
+                      {" "}
+                      Download Quote
+                    </a>
+                  </div>
+                </div> */}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="section-assistance">
+        <div class="midbox-inner wiki-mk">
+          <ul>
+            <li>
+              <h3>Need Assistance?</h3>
+              <p>Can’t find what you’re looking for? Let up help</p>
+              <a href="#/" class="get-help">
+                {" "}
+                Get Help
+              </a>
+            </li>
+            <li>
+              <h3>Need Assistance?</h3>
+              <p>Can’t find what you’re looking for? Let up help</p>
+              <a href="#/" class="get-help">
+                {" "}
+                Get Help
+              </a>
+            </li>
+            <li>
+              <h3>Need Assistance?</h3>
+              <p>Can’t find what you’re looking for? Let up help</p>
+              <a href="#/" class="get-help">
+                {" "}
+                Get Help
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </>
+  );
+};
+
+export default QuoteReady;
