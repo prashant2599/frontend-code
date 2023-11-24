@@ -14,20 +14,22 @@ const NewMakeUsBetter = () => {
                 <img src="/new-images/2023/01/12/01/1.png" alt="" />
               </div>
               <h3>
-                Ut enim ad minima veniam, quis nostrum exercitatio ullam
-                corporis suscipit laboriosam
+                Medflick stands out by offering your accurate medical
+                information and direct access to hospital prices without hidden
+                fees, ensuring transparency in healthcare costs.
               </h3>
-              <a href="#">Lorem Ipsum dolor</a>
+              <a style={{ color: "#ff6800" }}>Comprehensive Transparency</a>
             </li>
             <li>
               <div class="better-icon">
                 <img src="/new-images/2023/01/12/01/2.png" alt="" />
               </div>
               <h3>
-                Ut enim ad minima veniam, quis nostrum exercitatio ullam
-                corporis suscipit laboriosam
+                Unlike its competitors, Medflick prioritizes user confidence by
+                providing real reviews from patients who have firsthand
+                experience with partner hospitals and doctors.
               </h3>
-              <a href="#">Lorem Ipsum dolor</a>
+              <a style={{ color: "#ff6800" }}>Authentic Patient Experiences</a>
             </li>
 
             <li>
@@ -35,10 +37,14 @@ const NewMakeUsBetter = () => {
                 <img src="/new-images/2023/01/12/01/3.png" alt="" />
               </div>
               <h3>
-                Ut enim ad minima veniam, quis nostrum exercitatio ullam
-                corporis suscipit laboriosam
+                Medflick collaborates with a trusted network of over 4,000
+                doctors and partners with India's premier hospitals, renowned
+                for their excellence in healthcare, world-class facilities, and
+                advanced technology.
               </h3>
-              <a href="#">Lorem Ipsum dolor</a>
+              <a style={{ color: "#ff6800" }}>
+                Extensive Network and Expertise
+              </a>
             </li>
 
             <li>
@@ -46,10 +52,11 @@ const NewMakeUsBetter = () => {
                 <img src="/new-images/2023/01/12/01/4.png" alt="" />
               </div>
               <h3>
-                Ut enim ad minima veniam, quis nostrum exercitatio ullam
-                corporis suscipit laboriosam
+                Medflick distinguishes itself by offering round-the-clock
+                availability, providing guidance and support whether users are
+                at home or halfway across the world.
               </h3>
-              <a href="#">Lorem Ipsum dolor</a>
+              <a style={{ color: "#ff6800" }}>24/7 Global Support</a>
             </li>
           </ul>
         </div>
@@ -66,31 +73,39 @@ const NewMakeUsBetter = () => {
             <li>
               <h3>High Patient Satisfaction</h3>
               <p>
-                RealSelf Verified doctors earn and maintain a minimum patient
-                satisfaction rating of 4 out of 5 stars.
+                Medflick's commitment to authentic patient experiences sets it
+                apart, fostering high satisfaction among users. We ensure that
+                individuals receive not only optimal care but also a trusted and
+                satisfactory healthcare journey.
               </p>
             </li>
             <li>
               <h3>Commitment to Transparency</h3>
               <p>
-                RealSelf Verified doctors promptly answer consumer questions,
-                show unedited before and after photos of their most well-known
-                procedures, and list their active board certifications so you
-                can easily find what your doctor is certified in.
+                By offering direct access to hospital prices without hidden
+                fees, Medflick ensures a clear and honest understanding of
+                healthcare costs. Transparency isn't just a feature; it's a
+                cornerstone of Medflick's mission to provide open and
+                trustworthy healthcare services.
               </p>
             </li>
             <li>
               <h3>Good Medical Standing</h3>
               <p>
-                We verify the medical license of each RealSelf Verified doctor
-                every 3 months.
+                Collaborating with over 4,000 trusted doctors and partnering
+                with India's premier hospitals, Medflick’s strong medical
+                standing guarantees users access to a network of highly
+                qualified professionals and institutions, providing a standard
+                of care that surpasses expectations.
               </p>
             </li>
             <li>
               <h3>Prompt Responses & Expert Answers</h3>
               <p>
-                RealSelf Verified doctors commit to responding to member
-                consultation requests within 2 business days.
+                With 24/7 availability, Medflick ensures timely assistance,
+                whether users are at home or abroad. Users can trust the
+                platform's dedication to offering timely and expert responses,
+                making their experience seamless and reassuring.
               </p>
             </li>
           </ul>
@@ -109,30 +124,33 @@ const NewMakeUsBetter = () => {
             <li>
               <h3>Pre-treatment Travel Support</h3>
               <p>
-                Offers convenient appointments and transparency about language
-                proficiency within their practice.
+                Medflick goes beyond healthcare by offering unparalleled
+                pre-treatment travel support. From handling visas to curating
+                personalized itineraries, the platform ensures a seamless
+                journey for individuals seeking medical treatment in India.
               </p>
             </li>
             <li>
               <h3>Follow-Up Care and Accommodations</h3>
               <p>
-                RealSelf Verified doctors promptly answer consumer questions,
-                show unedited before and after photos of their most well-known
-                procedures, and list their active board certifications so you
-                can easily find what your doctor is certified in.
+                Medflick's commitment extends beyond treatment, offering
+                dedicated follow-up care and accommodations. Ensuring continuous
+                support post-treatment, the platform goes the extra mile to
+                guarantee a seamless recovery.
               </p>
             </li>
             <li>
               <h3>High-Quality Profile</h3>
               <p>
-                Has a thorough profile that demonstrates their ability to
-                deliver patient satisfaction and empowers patients to make
-                confident decisions.
+                Medflick boasts a high-quality profile by collaborating with
+                over 4,000 trusted doctors and partnering with premier hospitals
+                in India. The platform's emphasis on quality sets it apart,
+                ensuring individuals receive top-tier care.
               </p>
             </li>
             <li>
               <h3>Join us as Partner</h3>
-              <a href="#">Learn how to participate</a>
+              {/* <a href="#">Learn how to participate</a> */}
             </li>
           </ul>
         </div>

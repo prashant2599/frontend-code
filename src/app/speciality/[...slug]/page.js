@@ -16,6 +16,7 @@ import NewQuestionAns from "@/app/Home/NewUIHomepage/NewQuestionAns";
 import NewTestomonials from "@/app/Home/NewUIHomepage/NewTestomonials";
 import "../../Home/NewUIHomepage/newsection.css"
 import NewBlogs from "@/app/Home/NewUIHomepage/NewBlogs";
+import NewVideoSection from "@/app/Home/NewUIHomepage/NewVideoSection";
 
 const page = async ({ params }) => {
   try {
@@ -121,7 +122,8 @@ const page = async ({ params }) => {
         </section>
         {/* doctor experts videos */}
 
-        <DoctorExpert />
+        {/* <DoctorExpert /> */}
+        <NewVideoSection />
 
         {/* end */}
 

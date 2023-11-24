@@ -114,10 +114,10 @@ const NewCostSection = () => {
         <div className="midbox-inner wiki-mk">
           <h2>Compare Treatment Costs</h2>
           <p>
-            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
-            fugit, sed quia consequuntur ma Excepteur sint occaecat cupidatat
-            non proident, sunt in culpa qui officia deserunt mollit anim id es
-            Lorem ipsum dolor sit amet
+            Medflick provides a straightforward avenue to view hospital prices,
+            ensuring openness in healthcare expenses, free from concealed
+            charges enables you to make a well-informed choice by comparing
+            treatment costs based on your specific needs.
           </p>
 
           <div className="tab-treatment">

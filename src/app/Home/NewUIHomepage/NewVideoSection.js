@@ -2,7 +2,6 @@
 import getAllSpeciality from "@/app/lib/getAllSpeciality";
 import { useRef, useEffect, useState } from "react";
 
-
 const NewVideoSection = () => {
   // const data = await getAllSpeciality();
   // const video = data.data.doctor_videos;
@@ -22,20 +21,15 @@ const NewVideoSection = () => {
   }, []);
   const video1 = video?.slice(0, 2) ?? [];
 
-  // const videoRef = useRef(null);
-  // const [showModal, setShowModal] = useState(false);
+  const [playingVideos, setPlayingVideos] = useState({});
 
-  // const playVideo = (e) => {
-  //   const video = videoRef.current;
-  //   setShowModal(true);
-  //   video.play();
-  // };
+  const handleIconClick = (videoId) => {
+    setPlayingVideos((prevPlayingVideos) => ({
+      ...prevPlayingVideos,
+      [videoId]: !prevPlayingVideos[videoId], // toggle the play state
+    }));
+  };
 
-  // const closeVideo = () => {
-  //   const video = videoRef.current;
-  //   setShowModal(false);
-  //   video.pause();
-  // };
   return (
     <>
       <section id="home-expert-video">
@@ -44,7 +38,7 @@ const NewVideoSection = () => {
             <div class="home-expert-video-left">
               <h2>
                 <span>MedTalk</span>
-                Sed ut perspiciatis unde omnis iste natus sit
+                Get Expert Insights and Cutting-Edge Wisdom
               </h2>
               <p>
                 Watch authentic medical information with up-to-the-minute
@@ -62,24 +56,37 @@ const NewVideoSection = () => {
               {video1.map((e) => (
                 <div className="expert-video-item" key={e.id}>
                   <div className="item-home-expert">
-                    <img src="/new-images/2023/01/09/1.jpg" />
-                    <div className="video-iconbox">
+                    {/* <img src="/new-images/2023/01/09/1.jpg" /> */}
+                    <video
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      onClick={() => handleIconClick(e.id)}
+                      // poster="https://wgrowth.partners/wwpl/ibshospital_site/images/slider1.jpg"
+                    >
+                      <source src={e.teaser} type="video/mp4" />
+                    </video>
+                    <div
+                      className="video-iconbox"
+                      onClick={() => handleIconClick(e.id)}
+                    >
                       <a>
                         <img src="/new-images/2023/01/09/icon.png" />
                       </a>
                     </div>
                   </div>
-                  <div className="home-expert-text">
+                  {/* <div className="home-expert-text">
                     <h3>Lorem Ipsum dolor sit</h3>
                     <p>
                       Excepteur sint occaecat cupidatat non proident, sunt in
                       culpa qui officia deseru...
                     </p>
-                  </div>
+                  </div> */}
                 </div>
               ))}
-              {/* {showModal && (
-                <div className="video-modal">
+
+              {/* <div className="video-modal">
                   <div className="video-content">
                     <video
                       key={video1[0].id} // Assuming video1 is an array with at least one element
@@ -94,8 +101,7 @@ const NewVideoSection = () => {
                     </video>
                     <button onClick={closeVideo}>Close Video</button>
                   </div>
-                </div>
-              )} */}
+                </div> */}
 
               {/* <div class="expert-video-item">
                 <div class="item-home-expert">

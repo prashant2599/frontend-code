@@ -31,8 +31,6 @@ const page = async ({ params }) => {
   // Use toLocaleDateString() to format the date
   const formattedDate = createdAtDate.toLocaleDateString(undefined, options);
 
- 
-
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -302,6 +300,9 @@ export async function generateMetadata({ params }) {
     return {
       title: "Not Found",
       description: "Not Found",
+      alternates: {
+        canonical: `https://medflick.com/blog/${combinedSlug}`,
+      },
     };
 
   return {

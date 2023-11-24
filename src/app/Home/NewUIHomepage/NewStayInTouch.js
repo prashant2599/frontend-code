@@ -7,15 +7,12 @@ const NewStayInTouch = () => {
         <div class="midbox-inner wiki-mk">
           <div class="home-latest-updates">
             <div class="home-latest-updatesleft">
-              <h2>
-                Lorem ipsum dolor sit, consectetur adipiscing elit, sed do
-                eiusmod
-              </h2>
+              <h2>MedBlog: Your Source for Health Knowledge</h2>
             </div>
 
             <div class="home-latest-updatesright">
-              <h3>Stay in Touch</h3>
-              <p>Get updates, beauty news, and special offers</p>
+              <h3>Sign up to get Latest updates</h3>
+              {/* <p>Get updates, beauty news, and special offers</p> */}
 
               <div class="footer-latest-news">
                 <input

@@ -1,8 +1,6 @@
 import React from "react";
 
-
 const NewAboutSection = async () => {
- 
   return (
     <>
       <section id="home-medflick-about">
@@ -17,14 +15,14 @@ const NewAboutSection = async () => {
                 <span>About Medflick</span>
               </h2>
               <p>
-                Ut enim ad minima veniam, quis nostrum exercitationem ullam
-                corporis suscipit laboriosam, nisi ut al Sed ut perspiciatis
-                unde omnis iste natus error sit voluptatem accusantium
-                doloremque laudantium, to Ut enim ad minim veniam, quis nostrud
-                exercitation ullamco laboris nisi ut aliquip ex ea commodo con
-                Lorem ipsum dolor sit amet. to Ut enim ad minim veniam, quis
-                nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                commodo con Lorem ipsum dolor sit amet
+                Medflick offers a seamless connection to World&apos;s top doctors and
+                specialists, providing assurance that you are receiving optimal
+                care. Whether you're seeking to expand your knowledge about a
+                medical condition, explore details about a medication or
+                treatment procedure, find the best doctors and hospitals,
+                connect with experts, or seek medical advice, you've reached the
+                right destination. Your health solutions are in easy reach now,
+                just a click away.
               </p>
 
               <ul>

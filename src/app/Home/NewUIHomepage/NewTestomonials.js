@@ -32,13 +32,13 @@ const NewTestomonials = async () => {
                 </div>
                 <div class="our-patients-text">
                   <div class="beginnings-head">
-                    <h3> “Lorem ipsum dolor sit”</h3>
+                    {/* <h3> “Lorem ipsum dolor sit”</h3> */}
                   </div>
-                  <p>
+                  {/* <p>
                     orem ipsum dolor sit amet, consectetur adipiscing elit, sed
                     do eiusmod tempor incididunt ut labore Ut enim ad minim
                     veniam, quis nostrud exercitation ullamco laboris nisi
-                  </p>
+                  </p> */}
                   <h4>- {e.name}</h4>
                 </div>
               </div>

@@ -7,12 +7,14 @@ const NewVisaTravelSection = () => {
         <div class="midbox-inner wiki-mk">
           <h2>Visa & Travel Support</h2>
           <p>
-            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
-            fugit, sed quia consequuntur ma Excepteur sint
+            We assist you in curating your Journey to India for your medical
+            treatment, where your comfort is our priority. Entrust us with
+            your travel plannings visa arrangements & personalized Travel Plan.
           </p>
 
           <a href="#">
-            Get Visa Assistance <img src="/new-images/2023/01/pack-arrow.png" alt="" />
+            Get Visa Assistance{" "}
+            <img src="/new-images/2023/01/pack-arrow.png" alt="" />
           </a>
         </div>
       </section>

@@ -8,7 +8,7 @@ const NewHospital = async () => {
   return (
     <>
       <section id="hospital-section">
-        <h3>Trusted by lorem ipsum dolor sit</h3>
+        {/* <h3>Trusted by lorem ipsum dolor sit</h3> */}
         <div class="marquee-wrapper">
           <div class="marquee" style={{ animationDuration: "11s" }}>
             {hospital.map((e) => (

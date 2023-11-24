@@ -45,10 +45,10 @@ export default function RootLayout({ children }) {
             <DoctorDataProvider>
               <HospitalDataProvider>
                 {children}
-                {/* <Footer /> */}
+                <Footer />
               </HospitalDataProvider>
             </DoctorDataProvider>
-            <NewFooter />
+            {/* <NewFooter /> */}
           </UserProvider>
         </body>
       </html>
