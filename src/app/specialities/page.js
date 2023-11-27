@@ -33,7 +33,7 @@ const page = async () => {
               );
               return (
                 <div className="medical-treatments-box" key={e.id}>
-                  <Link href={`/speciality/${e.slug}/${e.country}`}>
+                  <Link href={`/speciality/${e.slug}`}>
                     <h2>{e.name}</h2>
                   </Link>
                   <ul>
