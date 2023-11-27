@@ -1,4 +1,4 @@
-import React from "react";
+import Link from "next/link";
 
 const NewProgcess = () => {
   return (
@@ -43,11 +43,11 @@ const NewProgcess = () => {
             </li>
           </ul>
 
-          <a href="#">
+          <Link href="/query">
             {" "}
             Request a free Quote{" "}
             <img src="/new-images/2023/01/arrow-c.png" alt="" />
-          </a>
+          </Link>
         </div>
       </section>
     </>

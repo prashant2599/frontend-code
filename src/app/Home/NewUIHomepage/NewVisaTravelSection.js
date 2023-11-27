@@ -1,4 +1,4 @@
-import React from "react";
+import Link from "next/link";
 
 const NewVisaTravelSection = () => {
   return (
@@ -12,10 +12,10 @@ const NewVisaTravelSection = () => {
             your travel plannings visa arrangements & personalized Travel Plan.
           </p>
 
-          <a href="#">
+          <Link href="/query">
             Get Visa Assistance{" "}
             <img src="/new-images/2023/01/pack-arrow.png" alt="" />
-          </a>
+          </Link>
         </div>
       </section>
     </>

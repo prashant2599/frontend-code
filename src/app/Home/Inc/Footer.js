@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import axios from "axios";
+import getAllSpeciality from "@/app/lib/getAllSpeciality";
 import { CgFacebook } from "react-icons/cg";
 import { GoChevronDown } from "react-icons/go";
 import {
@@ -15,16 +15,18 @@ import {
 import Link from "next/link";
 const Footer = () => {
   const [speciality, setSpeciality] = useState([]);
+
   useEffect(() => {
-    // Fetch the details data based on the activePackage ID
-    axios
-      .get(`https://dev.medflick.com/api`)
-      .then((response) => {
-        setSpeciality(response.data.data.Speciality);
-      })
-      .catch((error) => {
-        console.error("Error fetching details data:", error);
-      });
+    async function fetchData() {
+      try {
+        const result = await getAllSpeciality();
+        setSpeciality(result.data.Speciality);
+      } catch (err) {
+        console.log(err.message); // Set the error message in state
+      }
+    }
+
+    fetchData();
   }, []);
   const [isAboutVisible, setIsAboutVisible] = useState(false);
 
@@ -89,7 +91,6 @@ const Footer = () => {
               <h4
                 className={`but ${activeButton === "button1" ? "active" : ""}`}
                 onClick={handleButtonClick}
-             
               >
                 Medflick
                 <i className="fotter-icon">
@@ -126,7 +127,7 @@ const Footer = () => {
               </ul>
             </div>
             <div className="footer-navbox">
-            <h4 className="new-fotter-navbox">Treatments</h4>
+              <h4 className="new-fotter-navbox">Treatments</h4>
               <h4
                 className={`but ${activeButton === "button2" ? "active" : ""}`}
                 onClick={handleButtonClick}
@@ -139,17 +140,14 @@ const Footer = () => {
               <ul className="footerbox">
                 {speciality &&
                   speciality.map((e) => (
-                    <Link
-                      href={`/speciality/${e.slug}`}
-                      key={e.id}
-                    >
+                    <Link href={`/speciality/${e.slug}`} key={e.id}>
                       <li>{e.name}</li>
                     </Link>
                   ))}
               </ul>
             </div>
             <div className="footer-navbox">
-            <h4 className="new-fotter-navbox">Quick Links</h4>
+              <h4 className="new-fotter-navbox">Quick Links</h4>
               <h4
                 className={`but ${activeButton === "button3" ? "active" : ""}`}
                 onClick={handleButtonClick}
@@ -193,7 +191,7 @@ const Footer = () => {
               </ul>
             </div>
             <div className="footer-navbox">
-            <h4 className="new-fotter-navbox">Watch</h4>
+              <h4 className="new-fotter-navbox">Watch</h4>
               <h4
                 className={`but ${activeButton === "button4" ? "active" : ""}`}
                 onClick={handleButtonClick}
@@ -222,7 +220,7 @@ const Footer = () => {
               </ul>
             </div>
             <div className="footer-navbox">
-            <h4 className="new-fotter-navbox">Support</h4>
+              <h4 className="new-fotter-navbox">Support</h4>
               <h4
                 className={`but ${activeButton === "button5" ? "active" : ""}`}
                 onClick={handleButtonClick}

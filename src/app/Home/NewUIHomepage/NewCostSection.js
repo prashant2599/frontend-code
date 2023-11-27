@@ -135,8 +135,34 @@ const NewCostSection = () => {
               </button>
             ))}
           </div>
-
           {countries.map((tab) => (
+            <div
+              key={tab.id}
+              id={tab.country}
+              className="tabcontent"
+              style={{ display: activeTab === tab.country ? "block" : "none" }}
+            >
+              <ul>
+                {speciality
+                  .filter((item) => item.country.includes(tab.country))
+                  .map((filteredItem, index) => (
+                    <li key={index}>
+                      <Link
+                        href={`/speciality/${filteredItem.slug}/${activeTab}`}
+                      >
+                        <img
+                          src={`https://dev.medflick.com/speciality/${filteredItem.icon}`}
+                          alt={filteredItem.name}
+                        />
+                        <h3>{filteredItem.name}</h3>
+                      </Link>
+                    </li>
+                  ))}
+              </ul>
+            </div>
+          ))}
+
+          {/* {countries.map((tab) => (
             <div
               key={tab.id}
               id={tab.country}
@@ -157,7 +183,7 @@ const NewCostSection = () => {
                 ))}
               </ul>
             </div>
-          ))}
+          ))} */}
         </div>
       </section>
     </>
