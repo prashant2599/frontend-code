@@ -16,8 +16,6 @@ const NewBlogPage = async ({ blog }) => {
 
   const Tblog = treanding.data.trendingdBlog;
 
-
-
   //  recent blogs
 
   const recent = await getALLBlogList();
@@ -36,7 +34,7 @@ const NewBlogPage = async ({ blog }) => {
 
           <h2>Popular Post</h2>
 
-       <TreadingBlogs />
+          <TreadingBlogs />
         </div>
       </section>
 
@@ -47,10 +45,12 @@ const NewBlogPage = async ({ blog }) => {
               <ul>
                 {blog.map((e) => (
                   <li key={e.id}>
-                    <img
-                      src={`${process.env.NEXT_PUBLIC_BASE_URL}/blog/${e.icon}`}
-                      alt={e.name}
-                    />
+                    {e.icon ? (
+                      <img
+                        src={`${process.env.NEXT_PUBLIC_BASE_URL}/blog/${e.icon}`}
+                        alt={e.name}
+                      />
+                    ) : null}
                     <Link href={`/blog/${e.slug}`}>
                       <h3>{e.name}</h3>
                     </Link>
