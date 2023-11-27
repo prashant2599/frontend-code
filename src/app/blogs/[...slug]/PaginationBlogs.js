@@ -43,6 +43,13 @@ const PaginationBlogs = async ({ blogs, number, category }) => {
 
   const uniqueLocations = [...new Set(Rblog.map((e) => e.speciality_id))];
 
+  const itemsPerPage = 10; // You can adjust this based on your preference
+  const totalBlogs = Rblog.length;
+  const totalPages = Math.ceil(totalBlogs / itemsPerPage);
+
+  // Generate an array of page numbers
+  const pages = Array.from({ length: totalPages }, (_, index) => index + 1);
+
   return (
     <div>
       <section id="blog-list-medflick">
@@ -71,89 +78,6 @@ const PaginationBlogs = async ({ blogs, number, category }) => {
                 </Link>
               </li>
             ))}
-
-            {/* <li>
-              <img src="images/2023/10/01/2.jpg" />
-              <h3>
-                Lorem ipsum dolor sit amet quia asperna odit sed consequntr
-              </h3>
-            </li>
-            <li>
-              <img src="images/2023/10/01/3.jpg" />
-              <h3>
-                Lorem ipsum dolor sit amet quia asperna odit sed consequntr
-              </h3>
-            </li>
-            <li>
-              <img src="images/2023/10/01/4.jpg" />
-              <h3>
-                Lorem ipsum dolor sit amet quia asperna odit sed consequntr
-              </h3>
-            </li>
-            <li>
-              <img src="images/2023/10/01/5.jpg" />
-              <h3>Lorem ipsum dolor sit amet </h3>
-            </li>
-            <li>
-              <img src="images/2023/10/01/6.jpg" />
-              <h3>
-                Lorem ipsum dolor sit amet quia asperna odit sed consequntr
-              </h3>
-            </li>
-            <li>
-              <img src="images/2023/10/01/7.jpg" />
-              <h3>
-                Lorem ipsum dolor sit amet quia asperna odit sed consequntr
-              </h3>
-            </li>
-            <li>
-              <img src="images/2023/10/01/8.jpg" />
-              <h3>
-                Lorem ipsum dolor sit amet quia asperna odit sed consequntr
-              </h3>
-            </li>
-            <li>
-              <img src="images/2023/10/01/9.jpg" />
-              <h3>
-                Lorem ipsum dolor sit amet quia asperna odit sed consequntr
-              </h3>
-            </li>
-            <li>
-              <img src="images/2023/10/01/10.jpg" />
-              <h3>
-                Lorem ipsum dolor sit amet quia asperna odit sed consequntr
-              </h3>
-            </li>
-            <li>
-              <img src="images/2023/10/01/11.jpg" />
-              <h3>
-                Lorem ipsum dolor sit amet quia asperna odit sed consequntr
-              </h3>
-            </li>
-            <li>
-              <img src="images/2023/10/01/12.jpg" />
-              <h3>
-                Lorem ipsum dolor sit amet quia asperna odit sed consequntr
-              </h3>
-            </li>
-            <li>
-              <img src="images/2023/10/01/13.jpg" />
-              <h3>
-                Lorem ipsum dolor sit amet quia asperna odit sed consequntr
-              </h3>
-            </li>
-            <li>
-              <img src="images/2023/10/01/14.jpg" />
-              <h3>
-                Lorem ipsum dolor sit amet quia asperna odit sed consequntr
-              </h3>
-            </li>
-            <li>
-              <img src="images/2023/10/01/1.jpg" />
-              <h3>
-                Lorem ipsum dolor sit amet quia asperna odit sed consequntr
-              </h3>
-            </li> */}
           </ul>
         </div>
       </section>
@@ -184,35 +108,16 @@ const PaginationBlogs = async ({ blogs, number, category }) => {
               {number !== undefined && (
                 <div class="list-item-no">
                   <ul>
-                    <li>
-                      <Link href="/blogs">1</Link>
-                    </li>
-                    <ul>
-                      <li>
+                    {pages.map((page) => (
+                      <li key={page}>
                         <Link
-                          href={`/blogs/page/${2}`}
-                          className={number == 2 ? "active" : ""}
+                          href={page == 1 ? `/blogs` : `/blogs/page/${page}`}
+                          className={number == page ? "active" : ""}
                         >
-                          2
+                          {page}
                         </Link>
                       </li>
-                      <li>
-                        <Link
-                          href={`/blogs/page/${3}`}
-                          className={number == 3 ? "active" : ""}
-                        >
-                          3
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href={`/blogs/page/${4}`}
-                          className={number == 4 ? "active" : ""}
-                        >
-                          4
-                        </Link>
-                      </li>
-                    </ul>
+                    ))}
                   </ul>
                 </div>
               )}
@@ -253,45 +158,6 @@ const PaginationBlogs = async ({ blogs, number, category }) => {
                   ));
                 })}
               </ul>
-
-              {/* <h4>Trending Posts</h4>
-              <ul>
-                <li>
-                  <a href="#" target="_self">
-                    Lorem Ipsum dolor sit amet aliqua id fugiat irure duis ex
-                  </a>
-                </li>
-                <li>
-                  <a href="#" target="_self">
-                    Lorem Ipsum dolor sit amet aliqua
-                  </a>
-                </li>
-                <li>
-                  <a href="#" target="_self">
-                    Lorem Ipsum dolor sit amet aliqua id fugiat irure duis ex
-                  </a>
-                </li>
-                <li>
-                  <a href="#" target="_self">
-                    Lorem Ipsum dolor sit
-                  </a>
-                </li>
-                <li>
-                  <a href="#" target="_self">
-                    Lorem Ipsum dolor sit amet{" "}
-                  </a>
-                </li>
-                <li>
-                  <a href="#" target="_self">
-                    Lorem Ipsum dolor sit amet aliqua id fugiat irure duis ex
-                  </a>
-                </li>
-                <li>
-                  <a href="#" target="_self">
-                    Lorem Ipsum dolor sit amet{" "}
-                  </a>
-                </li>
-              </ul> */}
             </div>
           </div>
         </div>
