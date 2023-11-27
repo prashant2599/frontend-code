@@ -25,10 +25,12 @@ const NewBlogs = async () => {
 
               return (
                 <div className="blog-item" key={e.id}>
-                  <img
-                    src={`https://dev.medflick.com/blog/${e.icon}`}
-                    alt={e.name}
-                  />
+                  {e.icon ? (
+                    <img
+                      src={`https://dev.medflick.com/blog/${e.icon}`}
+                      alt={e.name}
+                    />
+                  ) : null}
                   <Link href={`/blog/${e.slug}`}>
                     <h3>{e.name}</h3>
                   </Link>
