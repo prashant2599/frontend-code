@@ -132,7 +132,10 @@ const NewSearchTreatment = () => {
               </h3>
             </div>
             <div className="new-beginnings-right">
-              <Link className="view-all" href={`/doctors/${category}/${selectedCountry}`}>
+              <Link
+                className="view-all"
+                href={`/doctors/${category}/${selectedCountry}`}
+              >
                 View All <img src="/new-images/2023/01/treatments-arrow.png" />
               </Link>
             </div>
@@ -160,7 +163,6 @@ const NewSearchTreatment = () => {
                 </div>
               </div>
             ))}
-
           </div>
 
           <div className="new-beginnings">
@@ -177,7 +179,10 @@ const NewSearchTreatment = () => {
               </h3>
             </div>
             <div className="new-beginnings-right">
-              <Link className="view-all" href={`/hospitals/${category}/${selectedCountry}`}>
+              <Link
+                className="view-all"
+                href={`/hospitals/${category}/${selectedCountry}`}
+              >
                 View All <img src="/new-images/2023/01/treatments-arrow.png" />
               </Link>
             </div>
