@@ -1,4 +1,5 @@
 import "./newsection.css";
+import Image from "next/image";
 
 const NewSection1 = () => {
   return (
@@ -15,9 +16,12 @@ const NewSection1 = () => {
                 Information When you Need it Most.
               </h2>
 
-              <img
+              <Image
                 className="dr-img"
                 src="/new-images/2023/01/home-slider.png"
+                width="1380"
+                height="580"
+                alt="inspiring-better-health"
               />
             </div>
           </div>

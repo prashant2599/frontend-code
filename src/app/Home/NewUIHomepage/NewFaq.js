@@ -66,12 +66,12 @@ const NewFaq = () => {
   return (
     <>
       <section id="home-faqs">
-        <div class="midbox-inner wiki-mk">
-          <div class="faqs-section">
-            <div class="faqs-left">
+        <div className="midbox-inner wiki-mk">
+          <div className="faqs-section">
+            <div className="faqs-left">
               <h2>Frequently Asked Questions</h2>
             </div>
-            <div class="faqs-right">
+            <div className="faqs-right">
               {faqData &&
                 faqData.map((e, index) => (
                   <div
@@ -644,13 +644,13 @@ const NewFaq = () => {
                 </div>
               )} */}
 
-              {/* <div class="question">
+              {/* <div className="question">
                 <h5>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore ?
                 </h5>
-                <div class="arrow"></div>
-                <div class="answer">
+                <div className="arrow"></div>
+                <div className="answer">
                   <p>
                     Excepteur sint occaecat cupidatat non proident, sunt in
                     culpa qui officia deserunt mollit anim id es Ut enim ad
@@ -661,13 +661,13 @@ const NewFaq = () => {
                 </div>
               </div>
 
-              <div class="question">
+              <div className="question">
                 <h5>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore ?
                 </h5>
-                <div class="arrow"></div>
-                <div class="answer">
+                <div className="arrow"></div>
+                <div className="answer">
                   <p>
                     Excepteur sint occaecat cupidatat non proident, sunt in
                     culpa qui officia deserunt mollit anim id es Ut enim ad

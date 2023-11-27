@@ -33,9 +33,9 @@ const NewVideoSection = () => {
   return (
     <>
       <section id="home-expert-video">
-        <div class="midbox-inner wiki-mk">
-          <div class="home-expert-video">
-            <div class="home-expert-video-left">
+        <div className="midbox-inner wiki-mk">
+          <div className="home-expert-video">
+            <div className="home-expert-video-left">
               <h2>
                 <span>MedTalk</span>
                 Get Expert Insights and Cutting-Edge Wisdom
@@ -46,13 +46,13 @@ const NewVideoSection = () => {
                 directly from top rated doctors/ surgeons/ experts and take
                 control of your health decision-making.
               </p>
-              <a href="#">
+              {/* <a href="#">
                 {" "}
                 View All <img src="/new-images/2023/01/arrow-c.png" alt="" />
-              </a>
+              </a> */}
             </div>
 
-            <div class="home-expert-video-right">
+            <div className="home-expert-video-right">
               {video1.map((e) => (
                 <div className="expert-video-item" key={e.id}>
                   <div className="item-home-expert">
@@ -103,17 +103,17 @@ const NewVideoSection = () => {
                   </div>
                 </div> */}
 
-              {/* <div class="expert-video-item">
-                <div class="item-home-expert">
+              {/* <div className="expert-video-item">
+                <div className="item-home-expert">
                   <img src="/new-images/2023/01/09/1.jpg" />
-                  <div class="video-iconbox">
+                  <div className="video-iconbox">
                     <a href="#">
                       {" "}
                       <img src="/new-images/2023/01/09/icon.png" />
                     </a>
                   </div>
                 </div>
-                <div class="home-expert-text">
+                <div className="home-expert-text">
                   <h3>Lorem Ipsum dolor sit</h3>
                   <p>
                     Excepteur sint occaecat cupidatat non proident, sunt in

@@ -4,13 +4,13 @@ const NewMakeUsBetter = () => {
   return (
     <>
       <section id="home-medflick-difference">
-        <div class="midbox-inner wiki-mk">
+        <div className="midbox-inner wiki-mk">
           <h2>
             <span>Medflick</span> What makes us better?
           </h2>
           <ul>
             <li>
-              <div class="better-icon">
+              <div className="better-icon">
                 <img src="/new-images/2023/01/12/01/1.png" alt="" />
               </div>
               <h3>
@@ -21,7 +21,7 @@ const NewMakeUsBetter = () => {
               <a style={{ color: "#ff6800" }}>Comprehensive Transparency</a>
             </li>
             <li>
-              <div class="better-icon">
+              <div className="better-icon">
                 <img src="/new-images/2023/01/12/01/2.png" alt="" />
               </div>
               <h3>
@@ -33,7 +33,7 @@ const NewMakeUsBetter = () => {
             </li>
 
             <li>
-              <div class="better-icon">
+              <div className="better-icon">
                 <img src="/new-images/2023/01/12/01/3.png" alt="" />
               </div>
               <h3>
@@ -48,7 +48,7 @@ const NewMakeUsBetter = () => {
             </li>
 
             <li>
-              <div class="better-icon">
+              <div className="better-icon">
                 <img src="/new-images/2023/01/12/01/4.png" alt="" />
               </div>
               <h3>
@@ -63,7 +63,7 @@ const NewMakeUsBetter = () => {
       </section>
 
       <section id="medflick-verified-doctor">
-        <div class="midbox-inner wiki-mk">
+        <div className="midbox-inner wiki-mk">
           <h2>
             <span>Choose a Medflick Verified Doctor.</span> Don't trust your
             health to just anyone
@@ -113,7 +113,7 @@ const NewMakeUsBetter = () => {
       </section>
 
       <section id="qualifications-standards">
-        <div class="midbox-inner wiki-mk">
+        <div className="midbox-inner wiki-mk">
           <h2>
             <span>Traveling for your treatment?</span>
             Find a provider who meets our qualifications and standards to

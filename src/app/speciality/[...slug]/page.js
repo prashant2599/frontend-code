@@ -14,7 +14,7 @@ import TreatmentList from "./TreatmentList";
 import { notFound } from "next/navigation";
 import NewQuestionAns from "@/app/Home/NewUIHomepage/NewQuestionAns";
 import NewTestomonials from "@/app/Home/NewUIHomepage/NewTestomonials";
-import "../../Home/NewUIHomepage/newsection.css"
+import "../../Home/NewUIHomepage/newsection.css";
 import NewBlogs from "@/app/Home/NewUIHomepage/NewBlogs";
 import NewVideoSection from "@/app/Home/NewUIHomepage/NewVideoSection";
 
@@ -33,8 +33,10 @@ const page = async ({ params }) => {
     const hospital = datas.data.hospitals;
     const blog = datas.data.blogs;
 
-    // const countryData = info.country;
-    // const countries = countryData.split(",");
+    // country slugs
+
+    const parts = combinedSlug.split("/");
+    const countrySlug = parts[1];
 
     return (
       <>
@@ -78,7 +80,13 @@ const page = async ({ params }) => {
 
         <section id="category-mid">
           <div className="midbox-inner  wiki-mk">
-            <h2 style={{ marginBottom: "5rem" }}>{info && info.name}</h2>
+            {countrySlug === undefined ? (
+              <h2 style={{ marginBottom: "5rem" }}>{info && info.name}</h2>
+            ) : (
+              <h2 style={{ marginBottom: "5rem" }}>
+                {info && info.name} in <span style={{color:"#ff6800"}}>{countrySlug.charAt(0).toUpperCase() + countrySlug.slice(1)}</span>
+              </h2>
+            )}
             {/* <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore Ut enim ad minim veniam, quis
@@ -140,11 +148,21 @@ const page = async ({ params }) => {
 
         {/* doctors */}
 
-        <Doctors doctor={doctor} category={info.slug} />
+        <Doctors
+          doctor={doctor}
+          category={info.slug}
+          categoryName={info.name}
+          slugs={combinedSlug}
+        />
         {/* end */}
 
         {/* Hospitals */}
-        <Hospitralspe hospital={hospital} category={info.slug} />
+        <Hospitralspe
+          hospital={hospital}
+          category={info.slug}
+          categoryName={info.name}
+          slugs={combinedSlug}
+        />
 
         {/* end */}
 
@@ -160,7 +178,6 @@ const page = async ({ params }) => {
         <Community />
 
         <SpecialityBlog blog={blog} category={info.slug} />
-  
       </>
     );
   } catch (error) {

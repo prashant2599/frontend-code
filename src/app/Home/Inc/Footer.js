@@ -85,11 +85,13 @@ const Footer = () => {
 
           <div className="footer-links">
             <div className="footer-navbox">
+              <h4 className="new-fotter-navbox">Medflick</h4>
               <h4
                 className={`but ${activeButton === "button1" ? "active" : ""}`}
                 onClick={handleButtonClick}
+             
               >
-                Medflick{" "}
+                Medflick
                 <i className="fotter-icon">
                   <AiOutlinePlus style={{ fontSize: "22px" }} />
                 </i>
@@ -124,6 +126,7 @@ const Footer = () => {
               </ul>
             </div>
             <div className="footer-navbox">
+            <h4 className="new-fotter-navbox">Treatments</h4>
               <h4
                 className={`but ${activeButton === "button2" ? "active" : ""}`}
                 onClick={handleButtonClick}
@@ -146,11 +149,12 @@ const Footer = () => {
               </ul>
             </div>
             <div className="footer-navbox">
+            <h4 className="new-fotter-navbox">Quick Links</h4>
               <h4
                 className={`but ${activeButton === "button3" ? "active" : ""}`}
                 onClick={handleButtonClick}
               >
-                Quick Links{" "}
+                Quick Links
                 <i className="fotter-icon">
                   <AiOutlinePlus style={{ fontSize: "22px" }} />
                 </i>
@@ -189,6 +193,7 @@ const Footer = () => {
               </ul>
             </div>
             <div className="footer-navbox">
+            <h4 className="new-fotter-navbox">Watch</h4>
               <h4
                 className={`but ${activeButton === "button4" ? "active" : ""}`}
                 onClick={handleButtonClick}
@@ -217,6 +222,7 @@ const Footer = () => {
               </ul>
             </div>
             <div className="footer-navbox">
+            <h4 className="new-fotter-navbox">Support</h4>
               <h4
                 className={`but ${activeButton === "button5" ? "active" : ""}`}
                 onClick={handleButtonClick}

@@ -9,13 +9,13 @@ const NewHospital = async () => {
     <>
       <section id="hospital-section">
         {/* <h3>Trusted by lorem ipsum dolor sit</h3> */}
-        <div class="marquee-wrapper">
-          <div class="marquee" style={{ animationDuration: "11s" }}>
+        <div className="marquee-wrapper">
+          <div className="marquee" style={{ animationDuration: "11s" }}>
             {hospital.map((e) => (
-              <div class="Marquee-tag" key={e.id}>
+              <div className="Marquee-tag" key={e.id}>
                 <Link href={`/hospital/${e.slug}`}>
                 <img
-                  class="dr-img"
+                  className="dr-img"
                   src={`https://dev.medflick.com/hospital/${e.icon}`}
                   alt={e.name}
                 />

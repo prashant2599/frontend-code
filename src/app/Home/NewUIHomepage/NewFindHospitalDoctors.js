@@ -7,9 +7,9 @@ const NewFindHospitalDoctors = async () => {
   return (
     <>
       <section id="home-doc-hos">
-        <div class="midbox-inner wiki-mk">
+        <div className="midbox-inner wiki-mk">
           <h2>Find Best Doctors</h2>
-          <div class="home-symptoms-nav">
+          <div className="home-symptoms-nav">
             {speciality.map((e) => (
               <Link href={`/doctors/${e.slug}`} key={e.id}>
                 {e.name} Doctors
@@ -18,7 +18,7 @@ const NewFindHospitalDoctors = async () => {
           </div>
 
           <h2>Find Best Hospitals</h2>
-          <div class="home-symptoms-nav">
+          <div className="home-symptoms-nav">
             {speciality.map((e) => (
               <Link href={`/hospitals/${e.slug}`} key={e.id}>
                 {e.name} Hospitals

@@ -83,7 +83,7 @@ const NewSearchTreatment = () => {
   return (
     <>
       <section id="hometop-find-treatments">
-        <div class="midbox-inner wiki-mk">
+        <div className="midbox-inner wiki-mk">
           <h2>
             Find Best Hospitals, Doctors and Treatments{" "}
             <span>Around the World</span>
@@ -118,131 +118,143 @@ const NewSearchTreatment = () => {
               </select>
             </div>
           </div>
-          <div class="new-beginnings">
-            <div class="new-beginnings-left">
+          <div className="new-beginnings">
+            <div className="new-beginnings-left">
               <h3>
                 Best{" "}
                 {category &&
                   category.charAt(0).toUpperCase() + category.slice(1)}{" "}
-                Doctors in {selectedCountry}
+                Doctors in{" "}
+                <span style={{ color: "#ff6800" }}>
+                  {selectedCountry.charAt(0).toUpperCase() +
+                    selectedCountry.slice(1)}
+                </span>
               </h3>
             </div>
-            <div class="new-beginnings-right">
-              <Link class="view-all" href={`/doctors/${category}`}>
+            <div className="new-beginnings-right">
+              <Link className="view-all" href={`/doctors/${category}`}>
                 View All <img src="/new-images/2023/01/treatments-arrow.png" />
               </Link>
             </div>
           </div>
 
-          <div class="home-doctors">
+          <div className="home-doctors">
             {Doctors.map((e) => (
-              <div class="item" key={e.id}>
-                <div class="item-home-expert">
+              <div className="item" key={e.id}>
+                <div className="item-home-expert">
                   <img src={`https://dev.medflick.com/doctor/${e.image}`} />
                 </div>
-                <div class="home-expert-text">
+                <div className="home-expert-text">
                   <h3>
                     {e.prefix} {e.first_name} {e.last_name}
                   </h3>
                   <p>{e.designation}</p>
                 </div>
-                <div class="expert-button">
-                  <Link class="view-profile" href={`/doctor/${e.slug}`}>
+                <div className="expert-button">
+                  <Link className="view-profile" href={`/doctor/${e.slug}`}>
                     View Profile
                   </Link>
-                  <a class="book-appointment" href="#">
+                  <a className="book-appointment" href="#">
                     Book Appointment
                   </a>
                 </div>
               </div>
             ))}
 
-            {/* <div class="item">
-              <div class="item-home-expert">
+            {/* <div className="item">
+              <div className="item-home-expert">
                 <img src="/new-images/2023/01/02/2.jpg" />
               </div>
-              <div class="home-expert-text">
+              <div className="home-expert-text">
                 <h3>Dr. Sachin Shah</h3>
                 <p>Senior Neurosurgeon</p>
               </div>
-              <div class="expert-button">
-                <a class="view-profile" href="#">
+              <div className="expert-button">
+                <a className="view-profile" href="#">
                   View Profile
                 </a>
-                <a class="book-appointment" href="#">
+                <a className="book-appointment" href="#">
                   Book Appointment
                 </a>
               </div>
             </div>
 
-            <div class="item">
-              <div class="item-home-expert">
+            <div className="item">
+              <div className="item-home-expert">
                 <img src="/new-images/2023/01/02/3.jpg" />
               </div>
-              <div class="home-expert-text">
+              <div className="home-expert-text">
                 <h3>Dr. Santosh Joshi</h3>
                 <p>Senior Neurosurgeon</p>
               </div>
-              <div class="expert-button">
-                <a class="view-profile" href="#">
+              <div className="expert-button">
+                <a className="view-profile" href="#">
                   View Profile
                 </a>
-                <a class="book-appointment" href="#">
+                <a className="book-appointment" href="#">
                   Book Appointment
                 </a>
               </div>
             </div>
 
-            <div class="item">
-              <div class="item-home-expert">
+            <div className="item">
+              <div className="item-home-expert">
                 <img src="/new-images/2023/01/02/4.jpg" />
               </div>
-              <div class="home-expert-text">
+              <div className="home-expert-text">
                 <h3>Dr. Shreya Dasgupta</h3>
                 <p>Senior Neurosurgeon</p>
               </div>
-              <div class="expert-button">
-                <a class="view-profile" href="#">
+              <div className="expert-button">
+                <a className="view-profile" href="#">
                   View Profile
                 </a>
-                <a class="book-appointment" href="#">
+                <a className="book-appointment" href="#">
                   Book Appointment
                 </a>
               </div>
             </div> */}
           </div>
 
-          <div class="new-beginnings">
-            <div class="new-beginnings-left">
+          <div className="new-beginnings">
+            <div className="new-beginnings-left">
               <h3>
                 Best{" "}
                 {category &&
                   category.charAt(0).toUpperCase() + category.slice(1)}{" "}
-                Hospitals in {selectedCountry}
+                Hospitals in{" "}
+                <span style={{ color: "#ff6800" }}>
+                  {selectedCountry.charAt(0).toUpperCase() +
+                    selectedCountry.slice(1)}
+                </span>
               </h3>
             </div>
-            <div class="new-beginnings-right">
-              <Link class="view-all" href={`/hospitals/${category}`}>
+            <div className="new-beginnings-right">
+              <Link className="view-all" href={`/hospitals/${category}`}>
                 View All <img src="/new-images/2023/01/treatments-arrow.png" />
               </Link>
             </div>
           </div>
 
-          <div class="home-hospitals">
+          <div className="home-hospitals">
             {Hospitals.map((e) => (
-              <div class="item" key={e.id}>
-                <div class="item-home-expert">
+              <div className="item" key={e.id}>
+                <div className="item-home-expert">
                   <img src={`https://dev.medflick.com/hospital/${e.image}`} />
                 </div>
-                <div class="home-expert-text">
+                <div className="home-expert-text">
                   <h3>{e.name}</h3>
-                  <p>Hospitals in India</p>
+                  <p>
+                    Hospitals in{" "}
+                    {selectedCountry.charAt(0).toUpperCase() +
+                      selectedCountry.slice(1)}
+                  </p>
                 </div>
-                <div class="expert-button">
-                  <Link class="view-profile" href={`/hospital/${e.slug}`}>
+                <div className="expert-button">
+                  <Link className="view-profile" href={`/hospital/${e.slug}`}>
                     View Profile
                   </Link>
-                  <a class="book-appointment" href="#">
+                  <a className="book-appointment" href="#">
                     Book Appointment
                   </a>
                 </div>

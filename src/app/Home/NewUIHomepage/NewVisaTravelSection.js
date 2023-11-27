@@ -4,7 +4,7 @@ const NewVisaTravelSection = () => {
   return (
     <>
       <section id="home-travel-support">
-        <div class="midbox-inner wiki-mk">
+        <div className="midbox-inner wiki-mk">
           <h2>Visa & Travel Support</h2>
           <p>
             We assist you in curating your Journey to India for your medical

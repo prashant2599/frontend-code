@@ -4,7 +4,7 @@ const NewProgcess = () => {
   return (
     <>
       <section id="hometop-process-treatment">
-        <div class="midbox-inner wiki-mk">
+        <div className="midbox-inner wiki-mk">
           <h2>The Simplest Process in Finding Treatment</h2>
 
           <ul>

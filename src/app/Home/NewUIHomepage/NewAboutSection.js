@@ -1,15 +1,15 @@
-import React from "react";
+import Image from "next/image";
 
 const NewAboutSection = async () => {
   return (
     <>
       <section id="home-medflick-about">
-        <div class="midbox-inner wiki-mk">
-          <div class="home-medflick-about">
-            <div class="home-medflick-about-left">
-              <img src="/new-images/2023/01/about-us.jpg" alt="" />
+        <div className="midbox-inner wiki-mk">
+          <div className="home-medflick-about">
+            <div className="home-medflick-about-left">
+              <Image width="548" height="585" src="/new-images/2023/01/about-us.jpg" alt="medflick-about-us" />
             </div>
-            <div class="home-medflick-about-right">
+            <div className="home-medflick-about-right">
               <h2>
                 We push the limits of what&apos;s possible{" "}
                 <span>About Medflick</span>

@@ -6,7 +6,7 @@ const NewTestomonials = async () => {
   return (
     <>
       <section id="home-real-stories">
-        <div class="midbox-inner wiki-mk">
+        <div className="midbox-inner wiki-mk">
           <h2>
             Real Stories, Real Impact <span>Voices of Trust</span>
           </h2>
@@ -15,10 +15,10 @@ const NewTestomonials = async () => {
             of professionals is here to ensure you receive the best care, always
           </p>
 
-          <div class="home-our-patients">
+          <div className="home-our-patients">
             {testominial.map((e) => (
-              <div class="our-patients-item" key={e.id}>
-                <div class="our-patients-img">
+              <div className="our-patients-item" key={e.id}>
+                <div className="our-patients-img">
                   <video
                     autoPlay
                     loop
@@ -30,8 +30,8 @@ const NewTestomonials = async () => {
                   </video>
                   {/* <img src="/new-images/2023/01/10/1.jpg" /> */}
                 </div>
-                <div class="our-patients-text">
-                  <div class="beginnings-head">
+                <div className="our-patients-text">
+                  <div className="beginnings-head">
                     {/* <h3> “Lorem ipsum dolor sit”</h3> */}
                   </div>
                   {/* <p>
@@ -44,10 +44,10 @@ const NewTestomonials = async () => {
               </div>
             ))}
           </div>
-
+{/* 
           <a href="#">
             View All <img src="/new-images/2023/01/arrow-c.png" alt="" />
-          </a>
+          </a> */}
         </div>
       </section>
     </>

@@ -12,10 +12,10 @@ const NewBlogs = async () => {
   return (
     <>
       <section id="home-latest-resources">
-        <div class="midbox-inner wiki-mk">
+        <div className="midbox-inner wiki-mk">
           <h2>Our Latest Resources</h2>
 
-          <div class="blogs-box">
+          <div className="blogs-box">
             {blog1.map((e) => {
               const createdAtDate = new Date(e.created_at);
               const formattedDate = createdAtDate.toLocaleDateString(
@@ -24,7 +24,7 @@ const NewBlogs = async () => {
               );
 
               return (
-                <div class="blog-item" key={e.id}>
+                <div className="blog-item" key={e.id}>
                   <img
                     src={`https://dev.medflick.com/blog/${e.icon}`}
                     alt={e.name}
@@ -37,8 +37,8 @@ const NewBlogs = async () => {
                       __html: e.short_description,
                     }}
                   />
-                  <div class="blog-text">
-                    <div class="category-blog">
+                  <div className="blog-text">
+                    <div className="category-blog">
                       <span>
                         <img
                           src="/new-images/2023/01/11/do.png"
@@ -48,7 +48,7 @@ const NewBlogs = async () => {
                       {formattedDate}{" "}
                       {/* Display the formatted creation date here */}
                     </div>
-                    <div class="time-blog">
+                    <div className="time-blog">
                       <span>
                         <img
                           src="/new-images/2023/01/11/do.png"

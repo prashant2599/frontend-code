@@ -1,14 +1,23 @@
 import Link from "next/link";
 
-const Hospitralspe = ({ hospital, category }) => {
+const Hospitralspe = ({ hospital, category, categoryName, slugs }) => {
   const Hospitals = hospital?.slice(0, 4) ?? [];
+
+  const parts = slugs.split("/");
+  const countrySlug = parts[1];
   return (
     <>
       <section id="hometop-find-treatments">
         <div className="midbox-inner wiki-mk">
           <div className="new-beginnings">
             <div className="new-beginnings-left">
-              <h3>Lorem Ipsum Doctors in India</h3>
+              {countrySlug === undefined ? (
+                <h3>Best {categoryName} Hospitals </h3>
+              ) : (
+                <h3>
+                  Best {categoryName} Hospitals in <span style={{color:"#ff6800"}}>{countrySlug.charAt(0).toUpperCase() + countrySlug.slice(1)}</span>
+                </h3>
+              )}
             </div>
             <div className="new-beginnings-right">
               <Link className="view-all" href={`/hospitals/${category}`}>
