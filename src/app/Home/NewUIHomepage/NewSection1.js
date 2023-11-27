@@ -22,6 +22,7 @@ const NewSection1 = () => {
                 width="1380"
                 height="580"
                 alt="inspiring-better-health"
+                loading="lazy"
               />
             </div>
           </div>

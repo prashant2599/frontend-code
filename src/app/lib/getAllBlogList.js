@@ -1,5 +1,5 @@
 export default async function getALLBlogList() {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blog_list`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}  `, {
       cache: "no-cache",
     });
   

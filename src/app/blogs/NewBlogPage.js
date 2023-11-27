@@ -2,9 +2,9 @@ import Link from "next/link";
 import getAllSpeciality from "../lib/getAllSpeciality";
 import NumberPage from "./NumberPage";
 import getALLTreadingBlogs from "../lib/getAllTreadingBlogs";
-import getALLFeaturedBlogs from "../lib/getAllFeaturedBlogs";
-import getALLBlogList from "../lib/getAllBlogList";
 
+import getALLBlogList from "../lib/getAllBlogList";
+import TreadingBlogs from "./TreadingBlogs";
 
 const NewBlogPage = async ({ blog }) => {
   const data = await getAllSpeciality();
@@ -16,11 +16,7 @@ const NewBlogPage = async ({ blog }) => {
 
   const Tblog = treanding.data.trendingdBlog;
 
-  // featured Blogs
 
-  const featured = await getALLFeaturedBlogs();
-
-  const Fblog = featured.data.featured;
 
   //  recent blogs
 
@@ -40,104 +36,7 @@ const NewBlogPage = async ({ blog }) => {
 
           <h2>Popular Post</h2>
 
-          <ul>
-            {Fblog.map((e) => (
-              <li key={e.id}>
-                <img
-                  src={`${process.env.NEXT_PUBLIC_BASE_URL}/blog/${e.icon}`}
-                  alt={e.name}
-                  className="popular-blog-img"
-                />
-
-                <Link href={`/blog/${e.slug}`}>
-                  <h3>{e.name}</h3>
-                </Link>
-              </li>
-            ))}
-
-            {/* <li>
-              <img src="images/2023/10/01/2.jpg" />
-              <h3>
-                Lorem ipsum dolor sit amet quia asperna odit sed consequntr
-              </h3>
-            </li>
-            <li>
-              <img src="images/2023/10/01/3.jpg" />
-              <h3>
-                Lorem ipsum dolor sit amet quia asperna odit sed consequntr
-              </h3>
-            </li>
-            <li>
-              <img src="images/2023/10/01/4.jpg" />
-              <h3>
-                Lorem ipsum dolor sit amet quia asperna odit sed consequntr
-              </h3>
-            </li>
-            <li>
-              <img src="images/2023/10/01/5.jpg" />
-              <h3>Lorem ipsum dolor sit amet </h3>
-            </li>
-            <li>
-              <img src="images/2023/10/01/6.jpg" />
-              <h3>
-                Lorem ipsum dolor sit amet quia asperna odit sed consequntr
-              </h3>
-            </li>
-            <li>
-              <img src="images/2023/10/01/7.jpg" />
-              <h3>
-                Lorem ipsum dolor sit amet quia asperna odit sed consequntr
-              </h3>
-            </li>
-            <li>
-              <img src="images/2023/10/01/8.jpg" />
-              <h3>
-                Lorem ipsum dolor sit amet quia asperna odit sed consequntr
-              </h3>
-            </li>
-            <li>
-              <img src="images/2023/10/01/9.jpg" />
-              <h3>
-                Lorem ipsum dolor sit amet quia asperna odit sed consequntr
-              </h3>
-            </li>
-            <li>
-              <img src="images/2023/10/01/10.jpg" />
-              <h3>
-                Lorem ipsum dolor sit amet quia asperna odit sed consequntr
-              </h3>
-            </li>
-            <li>
-              <img src="images/2023/10/01/11.jpg" />
-              <h3>
-                Lorem ipsum dolor sit amet quia asperna odit sed consequntr
-              </h3>
-            </li>
-            <li>
-              <img src="images/2023/10/01/12.jpg" />
-              <h3>
-                Lorem ipsum dolor sit amet quia asperna odit sed consequntr
-              </h3>
-            </li>
-            <li>
-              <img src="images/2023/10/01/13.jpg" />
-              <h3>
-                Lorem ipsum dolor sit amet quia asperna odit sed consequntr
-              </h3>
-            </li>
-            <li>
-              <img src="images/2023/10/01/14.jpg" />
-              <h3>
-                Lorem ipsum dolor sit amet quia asperna odit sed consequntr
-              </h3>
-            </li>
-            <li>
-              <img src="images/2023/10/01/1.jpg" />
-              <h3>
-                Lorem ipsum dolor sit amet quia asperna odit sed consequntr
-              </h3>
-            </li> */}
-          </ul>
+       <TreadingBlogs />
         </div>
       </section>
 
@@ -164,7 +63,7 @@ const NewBlogPage = async ({ blog }) => {
                 ))}
               </ul>
 
-              <NumberPage />
+              <NumberPage blogs={Rblog} />
             </div>
 
             <div class="blog-right-medflick">
@@ -200,45 +99,6 @@ const NewBlogPage = async ({ blog }) => {
                   ));
                 })}
               </ul>
-
-              {/* <h4>Trending Posts</h4>
-              <ul>
-                <li>
-                  <a href="#" target="_self">
-                    Lorem Ipsum dolor sit amet aliqua id fugiat irure duis ex
-                  </a>
-                </li>
-                <li>
-                  <a href="#" target="_self">
-                    Lorem Ipsum dolor sit amet aliqua
-                  </a>
-                </li>
-                <li>
-                  <a href="#" target="_self">
-                    Lorem Ipsum dolor sit amet aliqua id fugiat irure duis ex
-                  </a>
-                </li>
-                <li>
-                  <a href="#" target="_self">
-                    Lorem Ipsum dolor sit
-                  </a>
-                </li>
-                <li>
-                  <a href="#" target="_self">
-                    Lorem Ipsum dolor sit amet{" "}
-                  </a>
-                </li>
-                <li>
-                  <a href="#" target="_self">
-                    Lorem Ipsum dolor sit amet aliqua id fugiat irure duis ex
-                  </a>
-                </li>
-                <li>
-                  <a href="#" target="_self">
-                    Lorem Ipsum dolor sit amet{" "}
-                  </a>
-                </li>
-              </ul> */}
             </div>
           </div>
         </div>

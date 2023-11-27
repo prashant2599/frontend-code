@@ -161,59 +161,6 @@ const NewSearchTreatment = () => {
               </div>
             ))}
 
-            {/* <div className="item">
-              <div className="item-home-expert">
-                <img src="/new-images/2023/01/02/2.jpg" />
-              </div>
-              <div className="home-expert-text">
-                <h3>Dr. Sachin Shah</h3>
-                <p>Senior Neurosurgeon</p>
-              </div>
-              <div className="expert-button">
-                <a className="view-profile" href="#">
-                  View Profile
-                </a>
-                <a className="book-appointment" href="#">
-                  Book Appointment
-                </a>
-              </div>
-            </div>
-
-            <div className="item">
-              <div className="item-home-expert">
-                <img src="/new-images/2023/01/02/3.jpg" />
-              </div>
-              <div className="home-expert-text">
-                <h3>Dr. Santosh Joshi</h3>
-                <p>Senior Neurosurgeon</p>
-              </div>
-              <div className="expert-button">
-                <a className="view-profile" href="#">
-                  View Profile
-                </a>
-                <a className="book-appointment" href="#">
-                  Book Appointment
-                </a>
-              </div>
-            </div>
-
-            <div className="item">
-              <div className="item-home-expert">
-                <img src="/new-images/2023/01/02/4.jpg" />
-              </div>
-              <div className="home-expert-text">
-                <h3>Dr. Shreya Dasgupta</h3>
-                <p>Senior Neurosurgeon</p>
-              </div>
-              <div className="expert-button">
-                <a className="view-profile" href="#">
-                  View Profile
-                </a>
-                <a className="book-appointment" href="#">
-                  Book Appointment
-                </a>
-              </div>
-            </div> */}
           </div>
 
           <div className="new-beginnings">
