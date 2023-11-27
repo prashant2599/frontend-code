@@ -6,72 +6,27 @@ import getALLCountry from "@/app/lib/getAllCountry";
 import Link from "next/link";
 
 const NewCostSection = () => {
-  const tabs = [
-    {
-      id: "treatment-1",
-      label: "India",
-      icon: "/new-images/2023/01/06/1.png",
-      hoverIcon: "/new-images/2023/01/06/hover-1.png",
-      content: [
-        "Transplants",
-        "Neurosurgery",
-        "Cancer Care",
-        "Cardiac Surgery",
-        "IVF",
-        "Cosmetic & Plastic Surgery",
-      ],
-    },
-    {
-      id: "treatment-2",
-      label: "Turkey",
-      icon: "/new-images/2023/01/06/2.png",
-      hoverIcon: "/new-images/2023/01/06/hover-2.png",
-      content: [
-        "Treatment 2 Content 1",
-        "Treatment 2 Content 2",
-        "Treatment 2 Content 3",
-      ],
-    },
-    {
-      id: "treatment-3",
-      label: "UAE",
-      icon: "/new-images/2023/01/06/3.png",
-      hoverIcon: "/new-images/2023/01/06/hover-3.png",
-      content: [
-        "Treatment 3 Content 1",
-        "Treatment 3 Content 2",
-        "Treatment 3 Content 3",
-      ],
-    },
-    {
-      id: "treatment-4",
-      label: "Thailand",
-      icon: "/new-images/2023/01/06/4.png",
-      hoverIcon: "/new-images/2023/01/06/hover-4.png",
-      content: [
-        "Treatment 4 Content 1",
-        "Treatment 4 Content 2",
-        "Treatment 4 Content 3",
-      ],
-    },
-  ];
-
   const [countries, setCountries] = useState([]);
+  const [activeTab, setActiveTab] = useState("");
   useEffect(() => {
     const fetchData = async () => {
       // Fetch countries
       const countryData = await getALLCountry();
       setCountries(countryData.country_name);
+      setActiveTab(countryData.country_name[0]?.country || "");
     };
 
     fetchData();
   }, []);
 
-  const [activeTab, setActiveTab] = useState("india");
-
-  useEffect(() => {
-    openCity(document.getElementById("defaultOpen"), activeTab);
-  }, [activeTab]);
+  // useEffect(() => {
+  //   const defaultOpenElement = document.getElementById("defaultOpen");
+  //   if (defaultOpenElement) {
+  //     openCity({ currentTarget: defaultOpenElement }, activeTab);
+  //   } else {
+  //     console.error("Default open element not found");
+  //   }
+  // }, [activeTab]);
 
   const openCity = (evt, cityName) => {
     if (!evt || !evt.currentTarget) {

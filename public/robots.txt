@@ -2,3 +2,4 @@ User-agent: *
 Allow:
 
 Sitemap: https://medflick.com/sitemap.xml
+Sitemap: https://medflick.com/blog/sitemap.xml
