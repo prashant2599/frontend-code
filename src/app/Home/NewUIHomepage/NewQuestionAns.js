@@ -25,7 +25,7 @@ const NewQuestionAns = async () => {
               >
                 <div className="professionals-box">
                   <img
-                    src="/new-images/2023/01/icon-m.png"
+                    src="/images/new-images/2023/01/icon-m.png"
                     alt="medflick-questions"
                   />
                   <div className="question-box">{e.short_description}</div>
@@ -40,7 +40,7 @@ const NewQuestionAns = async () => {
 
           <Link href="/question-answer">
             View All Questions
-            <img src="/new-images/2023/01/arrow-c.png" alt="" />
+            <img src="/images/new-images/2023/01/arrow-c.png" alt="" />
           </Link>
         </div>
       </section>

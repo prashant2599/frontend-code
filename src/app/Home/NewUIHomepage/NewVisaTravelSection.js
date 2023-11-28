@@ -14,7 +14,7 @@ const NewVisaTravelSection = () => {
 
           <Link href="/query">
             Get Visa Assistance{" "}
-            <img src="/new-images/2023/01/pack-arrow.png" alt="" />
+            <img src="/images/new-images/2023/01/pack-arrow.png" alt="" />
           </Link>
         </div>
       </section>

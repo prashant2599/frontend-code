@@ -43,7 +43,7 @@ const NewBlogs = async () => {
                     <div className="category-blog">
                       <span>
                         <img
-                          src="/new-images/2023/01/11/do.png"
+                          src="/images/new-images/2023/01/11/do.png"
                           alt="category icon"
                         />
                       </span>
@@ -53,7 +53,7 @@ const NewBlogs = async () => {
                     <div className="time-blog">
                       <span>
                         <img
-                          src="/new-images/2023/01/11/do.png"
+                          src="/images/new-images/2023/01/11/do.png"
                           alt="time icon"
                         />
                       </span>{" "}
@@ -68,7 +68,7 @@ const NewBlogs = async () => {
           <Link href="/blogs">
             <span className="new-blogs">
               {" "}
-              View All <img src="/new-images/2023/01/arrow-c.png" alt="" />
+              View All <img src="/images/new-images/2023/01/arrow-c.png" alt="" />
             </span>
           </Link>
         </div>

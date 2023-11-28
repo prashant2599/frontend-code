@@ -7,7 +7,7 @@ const NewAboutSection = async () => {
         <div className="midbox-inner wiki-mk">
           <div className="home-medflick-about">
             <div className="home-medflick-about-left">
-              <Image width="548" height="585" src="/new-images/2023/01/about-us.jpg" alt="medflick-about-us" />
+              <Image width="548" height="585" src="/images/new-images/2023/01/about-us.jpg" alt="medflick-about-us" />
             </div>
             <div className="home-medflick-about-right">
               <h2>
@@ -27,22 +27,22 @@ const NewAboutSection = async () => {
 
               <ul>
                 <li>
-                  <img src="/new-images/2023/01/12/1.png" alt="" />
+                  <img src="/images/12/1.png" alt="" />
                   <h3>Clinical Excellence</h3>
                 </li>
 
                 <li>
-                  <img src="/new-images/2023/01/12/2.png" alt="" />
+                  <img src="/images/12/2.png" alt="" />
                   <h3>Personalized Care</h3>
                 </li>
 
                 <li>
-                  <img src="/new-images/2023/01/12/3.png" alt="" />
+                  <img src="/images/12/3.png" alt="" />
                   <h3>Quality Standard</h3>
                 </li>
 
                 <li>
-                  <img src="/new-images/2023/01/12/4.png" alt="" />
+                  <img src="/images/12/4.png" alt="" />
                   <h3>Best Patient Experience</h3>
                 </li>
               </ul>
