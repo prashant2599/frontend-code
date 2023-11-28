@@ -18,7 +18,7 @@ const NewSection1 = () => {
 
               <Image
                 className="dr-img"
-                src="/new-images/2023/01/home-slider.png"
+                src="/images/home-slider.png"
                 width="1380"
                 height="580"
                 alt="inspiring-better-health"

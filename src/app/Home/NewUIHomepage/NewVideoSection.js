@@ -72,7 +72,7 @@ const NewVideoSection = () => {
                       onClick={() => handleIconClick(e.id)}
                     >
                       <a>
-                        <img src="/new-images/2023/01/09/icon.png" />
+                        <img src="/images/new-images/2023/01/09/icon.png" />
                       </a>
                     </div>
                   </div>

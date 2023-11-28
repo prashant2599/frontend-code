@@ -11,7 +11,7 @@ const NewMakeUsBetter = () => {
           <ul>
             <li>
               <div className="better-icon">
-                <img src="/new-images/2023/01/12/01/1.png" alt="" />
+                <img src="/images/new-images/2023/01/12/01/1.png" alt="" />
               </div>
               <h3>
                 Medflick stands out by offering your accurate medical
@@ -22,7 +22,7 @@ const NewMakeUsBetter = () => {
             </li>
             <li>
               <div className="better-icon">
-                <img src="/new-images/2023/01/12/01/2.png" alt="" />
+                <img src="/images/new-images/2023/01/12/01/2.png" alt="" />
               </div>
               <h3>
                 Unlike its competitors, Medflick prioritizes user confidence by
@@ -34,7 +34,7 @@ const NewMakeUsBetter = () => {
 
             <li>
               <div className="better-icon">
-                <img src="/new-images/2023/01/12/01/3.png" alt="" />
+                <img src="/images/new-images/2023/01/12/01/3.png" alt="" />
               </div>
               <h3>
                 Medflick collaborates with a trusted network of over 4,000
@@ -49,7 +49,7 @@ const NewMakeUsBetter = () => {
 
             <li>
               <div className="better-icon">
-                <img src="/new-images/2023/01/12/01/4.png" alt="" />
+                <img src="/images/new-images/2023/01/12/01/4.png" alt="" />
               </div>
               <h3>
                 Medflick distinguishes itself by offering round-the-clock
