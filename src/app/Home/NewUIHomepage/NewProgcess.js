@@ -9,14 +9,14 @@ const NewProgcess = () => {
 
           <ul>
             <li>
-              <img src="/images/2023/01/01/compass.png" alt="compass" />
+              <img src="/new-images/2023/01/05/1.png" alt="compass" />
               <h3>Explore</h3>
               <p>
                 Top rated hospitals, best doctors & advanced treatments in India
               </p>
             </li>
             <li>
-              <img src="/images/2023/01/01/positive-review.png" alt="Watch" />
+              <img src="/new-images/2023/01/05/2.png" alt="Watch" />
               <h3>Watch</h3>
               <p>
                 Informative expert videos on medical advancements, treatments &
@@ -24,7 +24,7 @@ const NewProgcess = () => {
               </p>
             </li>
             <li>
-              <img src="/images/2023/01/01/to-do-list.png" alt="Match" />
+              <img src="/new-images/2023/01/05/3.png" alt="Match" />
               <h3>Match</h3>
               <p>
                 Your criteria and we recommend the best hospitals/ top rated
@@ -32,12 +32,12 @@ const NewProgcess = () => {
               </p>
             </li>
             <li>
-              <img src="/images/2023/01/01/medical.png" alt="Treat" />
+              <img src="/new-images/2023/01/05/4.png" alt="Treat" />
               <h3>Treat</h3>
               <p>Finalize your treatment with your chosen hospital/doctor</p>
             </li>
             <li>
-              <img src="/images/quote.png" alt="Quote" />
+              <img src="/new-images/2023/01/05/5.png" alt="Quote" />
               <h3>Quote</h3>
               <p>Get a free quote directly through our website</p>
             </li>

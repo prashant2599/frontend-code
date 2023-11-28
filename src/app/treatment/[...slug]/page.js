@@ -375,7 +375,7 @@ const page = async ({ params }) => {
                     }}
                   />
 
-                  <div className="consultation-box2">
+                  <div className="consultation-box">
                     <p>
                       The journey doesn&apos;t end here. We&apos;ll stay
                       connected throughout your recovery.
