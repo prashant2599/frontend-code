@@ -56,12 +56,33 @@ const page = async ({ params }) => {
     // datePublished: "",
   };
 
+  const BreadcrumbList = {
+    "@context": "https://schema.org/",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://medflick.com/",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Blog",
+        item: "https://medflick.com/blogs",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: blogDetails.name,
+        item: `https://medflick.com/blog/${combinedSlug}`,
+      },
+    ],
+  };
+
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
       <Breadcrumb heading={blogDetails.name} slug={blogDetails.slug} />
       <section id="blog-slider">
         {blogDetails.image ? (
@@ -284,6 +305,14 @@ const page = async ({ params }) => {
           </div>
         </div>
       </section>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+       <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(BreadcrumbList) }}
+      />
     </>
   );
 };
