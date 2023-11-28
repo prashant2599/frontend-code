@@ -38,7 +38,7 @@ const NewQuestionAns = async () => {
             ))}
           </div>
 
-          <Link href="/question-answer">
+          <Link  href="/question-answer">
             View All Questions
             <img src="/images/new-images/2023/01/arrow-c.png" alt="" />
           </Link>
