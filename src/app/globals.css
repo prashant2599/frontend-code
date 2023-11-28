@@ -14289,6 +14289,12 @@ pre code {
   .carousel-item h4 {
     margin-bottom: 20px;
   }
+  .footer-navbox .but {
+    display: block !important;
+  }
+  .footer-navbox .new-fotter-navbox {
+    display: none !important;
+  }
 }
 
 .treatment-form .iti {
@@ -14962,4 +14968,8 @@ pre code {
   height: auto;
   bottom: 0px;
   position: relative;
+}
+
+.footer-navbox .but {
+  display: none;
 }
