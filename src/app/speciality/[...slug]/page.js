@@ -1,9 +1,7 @@
-import DoctorExpert from "@/app/Home/DoctorExpert";
+
 import HelpYou from "@/app/Home/helpyou/HelpYou";
 import DontPay from "@/app/Home/dontPay/DontPay";
-import HealthQuerys from "@/app/Home/HealthQuerys";
 import Community from "@/app/Home/community/Community";
-import Testimonials from "@/app/Home/Testimonials";
 import Doctors from "./Doctors";
 import Hospitralspe from "./Hospitralspe";
 import Image from "next/image";
@@ -15,7 +13,6 @@ import { notFound } from "next/navigation";
 import NewQuestionAns from "@/app/Home/NewUIHomepage/NewQuestionAns";
 import NewTestomonials from "@/app/Home/NewUIHomepage/NewTestomonials";
 import "../../Home/NewUIHomepage/newsection.css";
-import NewBlogs from "@/app/Home/NewUIHomepage/NewBlogs";
 import NewVideoSection from "@/app/Home/NewUIHomepage/NewVideoSection";
 
 const page = async ({ params }) => {
@@ -45,7 +42,7 @@ const page = async ({ params }) => {
             src={`https://dev.medflick.com/speciality/${info && info.image}`}
             alt={info.name}
             width="1372"
-            height="672"
+            height="672" 
           />
           <div className="category-slidertext">
             <h1>{info && info.name}</h1>

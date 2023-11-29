@@ -142,27 +142,31 @@ const NewSearchTreatment = () => {
           </div>
 
           <div className="home-doctors">
-            {Doctors.map((e) => (
-              <div className="item" key={e.id}>
-                <div className="item-home-expert">
-                  <img src={`https://dev.medflick.com/doctor/${e.image}`} />
+            {Doctors.length > 0 ? (
+              Doctors.map((e) => (
+                <div className="item" key={e.id}>
+                  <div className="item-home-expert">
+                    <img src={`https://dev.medflick.com/doctor/${e.image}`} />
+                  </div>
+                  <div className="home-expert-text">
+                    <h3>
+                      {e.prefix} {e.first_name} {e.last_name}
+                    </h3>
+                    <p>{e.designation}</p>
+                  </div>
+                  <div className="expert-button">
+                    <Link className="view-profile" href={`/doctor/${e.slug}`}>
+                      View Profile
+                    </Link>
+                    <a className="book-appointment" href="#">
+                      Book Appointment
+                    </a>
+                  </div>
                 </div>
-                <div className="home-expert-text">
-                  <h3>
-                    {e.prefix} {e.first_name} {e.last_name}
-                  </h3>
-                  <p>{e.designation}</p>
-                </div>
-                <div className="expert-button">
-                  <Link className="view-profile" href={`/doctor/${e.slug}`}>
-                    View Profile
-                  </Link>
-                  <a className="book-appointment" href="#">
-                    Book Appointment
-                  </a>
-                </div>
-              </div>
-            ))}
+              ))
+            ) : (
+              <p>Oops, no doctors found.</p>
+            )}
           </div>
 
           <div className="new-beginnings">
@@ -189,29 +193,33 @@ const NewSearchTreatment = () => {
           </div>
 
           <div className="home-hospitals">
-            {Hospitals.map((e) => (
-              <div className="item" key={e.id}>
-                <div className="item-home-expert">
-                  <img src={`https://dev.medflick.com/hospital/${e.image}`} />
+            {Hospitals.length > 0 ? (
+              Hospitals.map((e) => (
+                <div className="item" key={e.id}>
+                  <div className="item-home-expert">
+                    <img src={`https://dev.medflick.com/hospital/${e.image}`} />
+                  </div>
+                  <div className="home-expert-text">
+                    <h3>{e.name}</h3>
+                    <p>
+                      Hospitals in{" "}
+                      {selectedCountry.charAt(0).toUpperCase() +
+                        selectedCountry.slice(1)}
+                    </p>
+                  </div>
+                  <div className="expert-button">
+                    <Link className="view-profile" href={`/hospital/${e.slug}`}>
+                      View Profile
+                    </Link>
+                    <a className="book-appointment" href="#">
+                      Book Appointment
+                    </a>
+                  </div>
                 </div>
-                <div className="home-expert-text">
-                  <h3>{e.name}</h3>
-                  <p>
-                    Hospitals in{" "}
-                    {selectedCountry.charAt(0).toUpperCase() +
-                      selectedCountry.slice(1)}
-                  </p>
-                </div>
-                <div className="expert-button">
-                  <Link className="view-profile" href={`/hospital/${e.slug}`}>
-                    View Profile
-                  </Link>
-                  <a className="book-appointment" href="#">
-                    Book Appointment
-                  </a>
-                </div>
-              </div>
-            ))}
+              ))
+            ) : (
+              <p>Oops, no hospitals found.</p>
+            )}
           </div>
         </div>
       </section>

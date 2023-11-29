@@ -20,14 +20,12 @@ function formatText(text) {
 }
 
 const page = async ({ params }) => {
-
+  try {
     const combinedSlug = params.slug.join("/");
     const apires = await fetch(
       `${process.env.NEXT_PUBLIC_BASE_URL}/api/hospitals/${combinedSlug}`,
       { cache: "no-store" }
     );
-
-   
 
     const datas = await apires.json();
     const hospital = datas.hospital_list.hospital_list;
@@ -315,6 +313,11 @@ const page = async ({ params }) => {
         </section>
       </>
     );
+  } catch (error) {
+    if (error) {
+      notFound();
+    }
+  }
 };
 
 export default page;
@@ -337,7 +340,7 @@ export async function generateMetadata({ params }) {
 
   const currentDate = new Date();
   const currentMonthIndex = currentDate.getMonth();
-  const currentMonthName = monthNames[currentMonthIndex]; // Add 1 because getMonth() returns 0-based index (0 for January)
+  const currentMonthName = monthNames[currentMonthIndex];
   const currentYear = currentDate.getFullYear();
 
   const combinedSlug = params.slug.join("/");

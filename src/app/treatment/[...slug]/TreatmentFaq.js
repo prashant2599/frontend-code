@@ -1,20 +1,19 @@
-"use client"
-import {useState} from 'react'
+"use client";
+import { useState } from "react";
 
-const TreatmentFaq = ({faq}) => {
+const TreatmentFaq = ({ faq }) => {
+  const [activeQuestion, setActiveQuestion] = useState(null);
 
-    const [activeQuestion, setActiveQuestion] = useState(null);
-
-    const handleQuestionClick = (id) => {
-      if (activeQuestion === id) {
-        setActiveQuestion(null);
-      } else {
-        setActiveQuestion(id);
-      }
-    };
+  const handleQuestionClick = (id) => {
+    if (activeQuestion === id) {
+      setActiveQuestion(null);
+    } else {
+      setActiveQuestion(id);
+    }
+  };
   return (
     <>
-     <section id="faqs-home">
+      <section id="faqs-home">
         <div className="midbox-inner  wiki-mk">
           <h2>
             Frequently asked <span>questions</span>
@@ -504,7 +503,7 @@ const TreatmentFaq = ({faq}) => {
         </div>
       </section>
     </>
-  )
-}
+  );
+};
 
-export default TreatmentFaq
+export default TreatmentFaq;

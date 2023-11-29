@@ -3,8 +3,10 @@ import Link from "next/link";
 import Image from "next/image";
 import Breadcrumb from "./Breadcrumb";
 import CategoryWiseBlogDetais from "./CategoryWiseBlogDetais";
+import { notFound } from "next/navigation";
 
 const page = async ({ params }) => {
+  try{
   const combinedSlug = params.slug.join("/");
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/blog/${combinedSlug}`,
@@ -315,6 +317,11 @@ const page = async ({ params }) => {
       />
     </>
   );
+} catch (error) {
+  if (error) {
+    notFound();
+  }
+}
 };
 
 export default page;

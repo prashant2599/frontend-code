@@ -40,7 +40,7 @@ const SpecialityBlog = ({ blog, category }) => {
                       <div class="category-blog">
                         <span>
                           <img
-                            src="/new-images/2023/01/11/do.png"
+                            src="/images/new-images/2023/01/11/do.png"
                             alt="category icon"
                           />
                         </span>
@@ -50,7 +50,7 @@ const SpecialityBlog = ({ blog, category }) => {
                       <div class="time-blog">
                         <span>
                           <img
-                            src="/new-images/2023/01/11/do.png"
+                            src="/images/new-images/2023/01/11/do.png"
                             alt="time icon"
                           />
                         </span>{" "}
@@ -64,7 +64,7 @@ const SpecialityBlog = ({ blog, category }) => {
 
             <Link href={`/blogs/${category}`}>
               <span className="new-blogs">
-                View All <img src="/new-images/2023/01/arrow-c.png" alt="" />
+                View All <img src="/images/new-images/2023/01/arrow-c.png" alt="" />
               </span>
             </Link>
           </div>

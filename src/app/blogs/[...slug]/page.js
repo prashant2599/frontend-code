@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import PaginationBlogs from "./PaginationBlogs";
+import { notFound } from "next/navigation";
 
 function formatText(text) {
   if (typeof text === "string") {
@@ -15,92 +16,93 @@ function formatText(text) {
 }
 
 const page = async ({ params }) => {
-  const combinedSlug = params.slug.join("/");
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/blogs/${combinedSlug}`,
-    {
-      cache: "no-store",
-    }
-  );
-  const datas = await res.json();
-  const blogs = datas.data.blogs;
+  try {
+    const combinedSlug = params.slug.join("/");
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/blogs/${combinedSlug}`,
+      {
+        cache: "no-store",
+      }
+    );
+    const datas = await res.json();
+    const blogs = datas.data.blogs;
 
-  const parts = combinedSlug.split("/");
+    const parts = combinedSlug.split("/");
 
-  const number = parts[1];
+    const number = parts[1];
 
-  const category = parts[0];
+    const category = parts[0];
 
-  // const blog1 = blogs?.slice(0, 1) ?? [];
-  // const blog2 = blogs?.slice(1, 2) ?? [];
-  // const blog3 = blogs?.slice(2, 3) ?? [];
-  // const blog4 = blogs?.slice(3, 4) ?? [];
-  // const blog5 = blogs?.slice(4, 5) ?? [];
+    // const blog1 = blogs?.slice(0, 1) ?? [];
+    // const blog2 = blogs?.slice(1, 2) ?? [];
+    // const blog3 = blogs?.slice(2, 3) ?? [];
+    // const blog4 = blogs?.slice(3, 4) ?? [];
+    // const blog5 = blogs?.slice(4, 5) ?? [];
 
-  // const speciality = formatText(combinedSlug);
+    // const speciality = formatText(combinedSlug);
 
-  // const options = { year: "numeric", month: "long", day: "numeric" };
+    // const options = { year: "numeric", month: "long", day: "numeric" };
 
-  // // time 1
+    // // time 1
 
-  // const createdAt1 = blog1[0].created_at;
+    // const createdAt1 = blog1[0].created_at;
 
-  // const createdAtDate1 = new Date(createdAt1);
+    // const createdAtDate1 = new Date(createdAt1);
 
-  // // Create options for formatting the date
+    // // Create options for formatting the date
 
-  // // Use toLocaleDateString() to format the date
-  // const formattedDate1 = createdAtDate1.toLocaleDateString(undefined, options);
+    // // Use toLocaleDateString() to format the date
+    // const formattedDate1 = createdAtDate1.toLocaleDateString(undefined, options);
 
-  // // time 2
+    // // time 2
 
-  // const createdAt2 = blog2 && blog2.length > 0 ? blog2[0].created_at : null;
+    // const createdAt2 = blog2 && blog2.length > 0 ? blog2[0].created_at : null;
 
-  // const createdAtDate2 = new Date(createdAt2);
+    // const createdAtDate2 = new Date(createdAt2);
 
-  // // Create options for formatting the date
+    // // Create options for formatting the date
 
-  // // Use toLocaleDateString() to format the date
-  // const formattedDate2 = createdAtDate2.toLocaleDateString(undefined, options);
+    // // Use toLocaleDateString() to format the date
+    // const formattedDate2 = createdAtDate2.toLocaleDateString(undefined, options);
 
-  // // time 3
+    // // time 3
 
-  // const createdAt3 = blog3 && blog3.length > 0 ? blog3[0].created_at : null;
+    // const createdAt3 = blog3 && blog3.length > 0 ? blog3[0].created_at : null;
 
-  // const createdAtDate3 = new Date(createdAt3);
+    // const createdAtDate3 = new Date(createdAt3);
 
-  // // Create options for formatting the date
+    // // Create options for formatting the date
 
-  // // Use toLocaleDateString() to format the date
-  // const formattedDate3 = createdAtDate3.toLocaleDateString(undefined, options);
+    // // Use toLocaleDateString() to format the date
+    // const formattedDate3 = createdAtDate3.toLocaleDateString(undefined, options);
 
-  // // time 4
+    // // time 4
 
-  // const createdAt4 = blog4 && blog4.length > 0 ? blog4[0].created_at : null;
+    // const createdAt4 = blog4 && blog4.length > 0 ? blog4[0].created_at : null;
 
-  // const createdAtDate4 = new Date(createdAt4);
+    // const createdAtDate4 = new Date(createdAt4);
 
-  // // Create options for formatting the date
+    // // Create options for formatting the date
 
-  // // Use toLocaleDateString() to format the date
-  // const formattedDate4 = createdAtDate4.toLocaleDateString(undefined, options);
+    // // Use toLocaleDateString() to format the date
+    // const formattedDate4 = createdAtDate4.toLocaleDateString(undefined, options);
 
-  // // time 5
+    // // time 5
 
-  // const createdAt5 = blog5 && blog5.length > 0 ? blog5[0].created_at : null;
+    // const createdAt5 = blog5 && blog5.length > 0 ? blog5[0].created_at : null;
 
-  // const createdAtDate5 = new Date(createdAt5);
+    // const createdAtDate5 = new Date(createdAt5);
 
-  // // Create options for formatting the date
+    // // Create options for formatting the date
 
-  // // Use toLocaleDateString() to format the date
-  // const formattedDate5 = createdAtDate5.toLocaleDateString(undefined, options);
+    // // Use toLocaleDateString() to format the date
+    // const formattedDate5 = createdAtDate5.toLocaleDateString(undefined, options);
 
-  return (
-    <>
-      <PaginationBlogs blogs={blogs} number={number} category={category} />
+    return (
+      <>
+        <PaginationBlogs blogs={blogs} number={number} category={category} />
 
-      {/* <section className="bloglist-section">
+        {/* <section className="bloglist-section">
         <div className="midbox-inner  wiki-mk">
           <div className="bloglist-itembox">
             <div className="bloglist-itemleft">
@@ -209,8 +211,13 @@ const page = async ({ params }) => {
           </div>
         </div>
       </section> */}
-    </>
-  );
+      </>
+    );
+  } catch (error) {
+    if (error) {
+      notFound();
+    }
+  }
 };
 
 export default page;
