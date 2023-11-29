@@ -21,7 +21,7 @@ const Doctors = ({ doctor, category, categoryName, slugs }) => {
             </div>
             <div className="new-beginnings-right">
               <Link className="view-all" href={`/doctors/${category}`}>
-                View All <img src="/new-images/2023/01/treatments-arrow.png" />
+                View All <img src="/images/new-images/2023/01/treatments-arrow.png" />
               </Link>
             </div>
           </div>

@@ -2,7 +2,7 @@ import { Inria_Serif } from "next/font/google";
 import Sdoctors from "./Sdoctors";
 import { Suspense } from "react";
 import { useRouter } from "next/navigation";
-
+import { notFound } from "next/navigation";
 function formatText(text) {
   if (typeof text === "string") {
     return text
@@ -14,55 +14,61 @@ function formatText(text) {
   }
 }
 
-const page = async ({ params }) => {
-  const combinedSlug = params.slug.join("/");
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/doctors/${combinedSlug}`,
-    { cache: "no-store" }
-  );
+const page = async ({ params, res }) => {
+  try {
+    const combinedSlug = params.slug.join("/");
+    const apiResponse = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/doctors/${combinedSlug}`,
+      { cache: "no-store" }
+    );
 
-  if (res.status !== 200) {
+    console.log(apiResponse.status);
+
+    if (!apiResponse.ok) {
+      throw new Error(`Failed to fetch data: ${apiResponse.status}`);
+    }
+
+    const apiData = await apiResponse.json();
+
+    // Check for error conditions in the response data
+    if (apiData.error) {
+      throw new Error(`API error: ${apiData.error}`);
+    }
+
+    const doctor = apiData.doctors_list.doctors_list;
+    const hospitalIcon = apiData.doctors_list.hospital_image;
+    const treatment = apiData.doctors_list.treatment;
+    const info = apiData.doctors_list.specility_name;
+
     return (
       <>
-        <div>
-          <h1>Error</h1>
-        </div>
+        <Sdoctors
+          doctor={doctor}
+          hospitalIcon={hospitalIcon}
+          treatment={treatment}
+          combinedSlug={combinedSlug}
+          info={info}
+          status={apiResponse.status}
+        />
       </>
     );
+  } catch (error) {
+    console.error(error);
+
+    // Handle 404 error explicitly
+    if (error.message.includes("Failed to fetch data: 404") || error.message.includes("API error: 404")) {
+      notFound();
+    } else {
+      // Handle other errors
+      res.statusCode = 500; // Set a 500 status code for other errors
+      return { props: {} }; // Return an empty props object
+    }
   }
-
-  console.log("status", res.status);
-
-  const datas = await res.json();
-  const doctor = datas.doctors_list.doctors_list;
-
-  const hospitalIcon = datas.doctors_list.hospital_image;
-  const treatment = datas.doctors_list.treatment;
-  const info = datas.doctors_list.specility_name;
-
-
-
-  return (
-    <>
-      {/* <Suspense fallback={<SkeltonLoading />}> */}
-      <Sdoctors
-        doctor={doctor}
-        hospitalIcon={hospitalIcon}
-        treatment={treatment}
-        combinedSlug={combinedSlug}
-        info={info}
-        status={res.status}
-      />
-      {/* </Suspense> */}
-    </>
-  );
 };
 
 export default page;
 
 export async function generateMetadata({ params }) {
- 
-
   const monthNames = [
     "January",
     "February",
@@ -110,10 +116,7 @@ export async function generateMetadata({ params }) {
     updatedTreatment = formattedTreatment;
   }
 
-
-
   const formattedSpeciality = formatText(treatment);
- 
 
   const matchedTreatment = treatmentApi.find(
     (treatment) => treatment.slug === position1
