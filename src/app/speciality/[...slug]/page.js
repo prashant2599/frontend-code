@@ -42,7 +42,7 @@ const page = async ({ params }) => {
             src={`https://dev.medflick.com/speciality/${info && info.image}`}
             alt={info.name}
             width="1372"
-            height="672"
+            height="672" 
           />
           <div className="category-slidertext">
             <h1>{info && info.name}</h1>

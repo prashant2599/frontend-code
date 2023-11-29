@@ -40,7 +40,7 @@ const page = async () => {
                     {galleryImages &&
                       galleryImages.map((p) => (
                         <Link
-                          href={`/treatment/${p.slug}/${p.country}`}
+                          href={`/treatment/${p.slug}`}
                           key={p.id}
                         >
                           <li>{p.name}</li>
