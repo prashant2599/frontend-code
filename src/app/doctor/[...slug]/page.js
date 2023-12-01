@@ -7,6 +7,8 @@ import DoctorTotalReview from "./DoctorTotalReview";
 import { BsStarFill } from "react-icons/bs";
 import { BsStarHalf } from "react-icons/bs";
 import { notFound } from "next/navigation";
+import RelatedDoctor from "./RelatedDoctor";
+import "@/app/Home/NewUIHomepage/newsection.css"
 
 const page = async ({ params }) => {
   try {
@@ -20,6 +22,7 @@ const page = async ({ params }) => {
     const treament = datas.data.treatments;
     const hospitals = datas.data.hospital;
     const rating = datas.data.rating;
+    const speciality = datas.data.speciality
 
     const totalRating = rating.reduce(
       (total, rating) => total + parseInt(rating.rating),
@@ -380,6 +383,8 @@ const page = async ({ params }) => {
             <DoctorTotalReview doctorId={docotorDetails.id} />
           </div>
         </section>
+        <RelatedDoctor category={speciality[0].slug} doctorId={docotorDetails.id} />
+      
       </>
     );
   } catch (error) {
@@ -450,5 +455,3 @@ export async function generateMetadata({ params }) {
     },
   };
 }
-
-

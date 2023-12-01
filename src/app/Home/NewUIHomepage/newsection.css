@@ -263,7 +263,7 @@
   padding: 30px 0 60px;
   width: 100%;
   gap: 20px;
-  justify-content: start
+  justify-content: start;
 }
 
 .home-hospitals .item {
@@ -2052,4 +2052,27 @@ button.active .city-icon-h {
   width: 100%;
 }
 
+#home-doc-hos .related-doctors {
+  background: #ff6800;
+  font-family: Helvetica Neue Medium;
+  color: #fff;
+  border: 2px solid #ff6800;
+  margin: 20px auto;
+  font-size: 19px;
+  border-radius: 8px;
+  padding: 5px 71px 12px 14px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 9%;
+}
 
+#home-doc-hos .related-doctors img {
+  width: 38px;
+  position: absolute;
+  background: #fff;
+  right: 10px;
+  top: 8px;
+  padding: 10px;
+  border-radius: 6px;
+}

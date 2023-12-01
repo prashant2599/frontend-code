@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import HomeFilterDandH from "./FilterCountryHome/HomeFilterDandH";
 import { useDoctorData } from "@/app/contex/DoctorDataContext";
 import { HospitalData } from "@/app/contex/HospitalDataContext";
 import Link from "next/link";
@@ -14,12 +13,6 @@ const NewSearchTreatment = () => {
   const { hospitalsData } = HospitalData();
   const Doctors = doctorsNew?.slice(0, 4) ?? [];
   const Hospitals = hospitalsData?.slice(0, 4) ?? [];
-
-  const speciality = doctorsData.specility_name;
-
-  const category = speciality?.slug;
-
-  const country = speciality?.country;
 
   //  filteration
   const [countries, setCountries] = useState([]);
@@ -122,8 +115,9 @@ const NewSearchTreatment = () => {
             <div className="new-beginnings-left">
               <h3>
                 Best{" "}
-                {category &&
-                  category.charAt(0).toUpperCase() + category.slice(1)}{" "}
+                {selectedSpeciality &&
+                  selectedSpeciality.charAt(0).toUpperCase() +
+                    selectedSpeciality.slice(1)}{" "}
                 Doctors in{" "}
                 <span style={{ color: "#ff6800" }}>
                   {selectedCountry.charAt(0).toUpperCase() +
@@ -134,7 +128,7 @@ const NewSearchTreatment = () => {
             <div className="new-beginnings-right">
               <Link
                 className="view-all"
-                href={`/doctors/${category}/${selectedCountry}`}
+                href={`/doctors/${selectedSpeciality}/${selectedCountry}`}
               >
                 View All <img src="/images/treatments-arrow.png" />
               </Link>
@@ -173,8 +167,9 @@ const NewSearchTreatment = () => {
             <div className="new-beginnings-left">
               <h3>
                 Best{" "}
-                {category &&
-                  category.charAt(0).toUpperCase() + category.slice(1)}{" "}
+                {selectedSpeciality &&
+                  selectedSpeciality.charAt(0).toUpperCase() +
+                    selectedSpeciality.slice(1)}{" "}
                 Hospitals in{" "}
                 <span style={{ color: "#ff6800" }}>
                   {selectedCountry.charAt(0).toUpperCase() +
@@ -185,7 +180,7 @@ const NewSearchTreatment = () => {
             <div className="new-beginnings-right">
               <Link
                 className="view-all"
-                href={`/hospitals/${category}/${selectedCountry}`}
+                href={`/hospitals/${selectedSpeciality}/${selectedCountry}`}
               >
                 View All <img src="/images/treatments-arrow.png" />
               </Link>
