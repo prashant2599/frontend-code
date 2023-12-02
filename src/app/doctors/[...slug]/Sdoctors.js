@@ -25,18 +25,7 @@ const Sdoctors = ({ treatment, doctor, hospitalIcon, combinedSlug, info }) => {
 
 
 
-  // const matchedTreatment = treatment.find(
-  //   (treatment) => treatment.slug === position1
-  // );
-
-  // const formattedposition1 = formatText(position1);
-  // const formattedcity = formatText(position1);
-  // const formattedcountry =
-  //   doctor && doctor.length > 0 ? formatText(doctor[0].country) : null;
-
-  // const matchingCity = doctor && doctor.length > 0 ? doctor[0].location : null;
-  // const matchingCountry =
-  //   doctor && doctor.length > 0 ? doctor[0].country : null;
+ 
 
   return (
     <>

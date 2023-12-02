@@ -7,7 +7,6 @@ import "./index.css";
 import { UserProvider } from "./UserContext";
 import { Inter } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";
-import NewFooter from "./Home/NewUIHomepage/Inc/NewFooter";
 import { DoctorDataProvider } from "./contex/DoctorDataContext";
 import { HospitalDataProvider } from "./contex/HospitalDataContext";
 
@@ -48,7 +47,6 @@ export default function RootLayout({ children }) {
                 <Footer />
               </HospitalDataProvider>
             </DoctorDataProvider>
-            {/* <NewFooter /> */}
           </UserProvider>
         </body>
       </html>

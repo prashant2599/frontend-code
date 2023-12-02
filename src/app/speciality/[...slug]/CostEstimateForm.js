@@ -3,29 +3,9 @@
 import { useState, useEffect } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import { ThreeDots } from "react-loader-spinner";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
 import axios from "axios";
 
-const responsive = {
-  superLargeDesktop: {
-    // the naming can be any, depends on you.
-    breakpoint: { max: 4000, min: 3000 },
-    items: 1,
-  },
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 1,
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 1,
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1,
-  },
-};
+
 
 const CostEstimateForm = ({ specialityId }) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -228,71 +208,15 @@ const CostEstimateForm = ({ specialityId }) => {
                 <div className="cost-estimate-form-left">
                   <div className="owl-slider">
                     <div id="cost-estimate" className="owl-carousel">
-                      <Carousel
-                        responsive={responsive}
-                        arrows={false}
-                      
-                      >
-                        <div className="item">
-                          <img src="/images/2023/07/man.jpg" />
-                          <div className="cost-estimate-box">
-                            <div className="cost-estimate-items">
-                              <p>Navigate towards wellness</p>
-                              {/* <h3>Ellen Richardson</h3> */}
-                            </div>
+                      <div className="item">
+                        <img src="/images/2023/07/man.jpg" />
+                        <div className="cost-estimate-box">
+                          <div className="cost-estimate-items">
+                            <p>Navigate towards wellness</p>
+                            {/* <h3>Ellen Richardson</h3> */}
                           </div>
                         </div>
-{/* 
-                        <div className="item">
-                          <img src="/images/2023/07/man.jpg" />
-                          <div className="cost-estimate-box">
-                            <div className="cost-estimate-items">
-                              <p>
-                                “Lorem ipsum dolor sit amet, consectetur
-                                adipiscin elit, sed do eiusmod tempor incididunt
-                                ut labore consectetur ipsum dolor sit amet,
-                                consectetur elit, sed do eiusmod tempor incidid
-                                Lorem ipsum dolor sit amet adipiscin elit”
-                              </p>
-                              <h3>Ellen Richardson</h3>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="item">
-                          <img src="/images/2023/07/man.jpg" />
-                          <div className="cost-estimate-box">
-                            <div className="cost-estimate-items">
-                              <p>
-                                {" "}
-                                “Lorem ipsum dolor sit amet, consectetur
-                                adipiscin elit, sed do eiusmod tempor incididunt
-                                ut labore consectetur ipsum dolor sit amet,
-                                consectetur elit, sed do eiusmod tempor incidid
-                                Lorem ipsum dolor sit amet adipiscin elit”{" "}
-                              </p>
-                              <h3>Ellen Richardson</h3>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="item">
-                          <img src="/images/2023/07/man.jpg" />
-                          <div className="cost-estimate-box">
-                            <div className="cost-estimate-items">
-                              <p>
-                                {" "}
-                                “Lorem ipsum dolor sit amet, consectetur
-                                adipiscin elit, sed do eiusmod tempor incididunt
-                                ut labore consectetur ipsum dolor sit amet,
-                                consectetur elit, sed do eiusmod tempor incidid
-                                Lorem ipsum dolor sit amet adipiscin elit”{" "}
-                              </p>
-                              <h3>Ellen Richardson</h3>
-                            </div>
-                          </div>
-                        </div> */}
-                      </Carousel>
+                      </div>
                     </div>
                   </div>
                 </div>

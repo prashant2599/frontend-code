@@ -18,8 +18,7 @@ function formatText(text) {
 const PaginationBlogs = async ({ blogs, number, category }) => {
   const data = await getAllSpeciality();
   const speciality = data.data.Speciality;
-  // const blog1 = blogs?.slice(0, 8) ?? [];
-  // const blog2 = blogs?.slice(8, 10) ?? [];
+ 
 
   // Treading Blogs
 
