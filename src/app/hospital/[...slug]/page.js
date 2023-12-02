@@ -283,27 +283,7 @@ const page = async ({ params }) => {
                 />
               </div>
 
-              {/* <div className="amenities-name">Speciality</div>
-              <div className="medical-box">
-                <a href="#" target="_self">
-                  Document legalisation
-                </a>
-                <a href="#" target="_self">
-                  Medical records transfer
-                </a>
-                <a href="#" target="_self">
-                  Online doctor consultation{" "}
-                </a>
-                <a href="#" target="_self">
-                  Pharmacy{" "}
-                </a>
-                <a href="#" target="_self">
-                  Post operative followup{" "}
-                </a>
-                <a href="#" target="_self">
-                  Rehabilitation
-                </a>
-              </div> */}
+            
 
               <div className="amenities-name">Food</div>
               <div className="medical-box">

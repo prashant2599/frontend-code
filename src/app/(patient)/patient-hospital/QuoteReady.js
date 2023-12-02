@@ -15,9 +15,6 @@ const QuoteReady = () => {
       router.push("/");
     }
   });
-  // const specialityId = location.state.specialityId;
-  //   const specialityId = localStorage.getItem("specilaity");
-  // const specialityName = location.state.specialityName;
 
   const [specialityId, setSpecialityId] = useState("");
 
@@ -247,174 +244,11 @@ const QuoteReady = () => {
                           Download PDF
                         </a>
                       </div>
-                      {/* <div className="free-quote-box">
-                          <a href="#/" className="request-free-quote">
-                            {" "}
-                            Request a Free Quote
-                          </a>
-                          <a
-                            href="/#"
-                            className="request-free-quote"
-                            onClick={() =>
-                              handleDownloadClick(
-                                `${process.env.REACT_APP_BASE_URL}/hospital/${e.hospital_quote}`
-                              )
-                            }
-                          >
-                            {" "}
-                            Download pdf
-                          </a>
-                        </div> */}
+                    
                     </div>
                   ))}
 
-                {/* <div id="packages1" class="conditionsbox">
-                  <div class="quote-pdf">
-                    {" "}
-                    <h5>Quote-Apollo.pdf</h5>{" "}
-                  </div>
-                  <img src="images/2023/01/pdf.jpg" />
-                  <div class="free-quote1">
-                    <a href="#" class="request-free-quote">
-                      {" "}
-                      Connect with Us
-                    </a>
-                    <a href="#" class="download-quote">
-                      {" "}
-                      Download Quote
-                    </a>
-                  </div>
-                </div> */}
-
-                {/* <div id="packages2" class="conditionsbox">
-                  <div class="quote-pdf">
-                    {" "}
-                    <h5>Quote-Apollo.pdf</h5>{" "}
-                  </div>
-                  <img src="images/2023/01/pdf.jpg" />
-                  <div class="free-quote1">
-                    <a href="#" class="request-free-quote">
-                      {" "}
-                      Connect with Us
-                    </a>
-                    <a href="#" class="download-quote">
-                      {" "}
-                      Download Quote
-                    </a>
-                  </div>
-                </div> */}
-
-                {/* <div class="hospitals-tab1">
-                  <button
-                    class="conditions"
-                    onclick="openWiki(event, 'packages3')"
-                  >
-                    <div class="hospital-item">
-                      <div class="hospital-item-img">
-                        <img src="images/2023/01/1.jpg" />
-                      </div>
-                      <div class="hospital-item-doc">
-                        <h3>Hospital Name</h3>
-                        <div class="department-sub">
-                          Oncologist, Medical Oncologist
-                        </div>
-                        <div class="rating-star">
-                          <i class="fa fa-star"></i> 5 (523)
-                        </div>
-
-                        <div class="ho-docimg">
-                          <img src="images/2023/01/04/1.jpg" />
-                          <img src="images/2023/01/04/2.jpg" />
-                          <img src="images/2023/01/04/3.jpg" />
-                        </div>
-                      </div>
-                      <div class="hospital-item-button">
-                        <div class="hos-no">
-                          <strong>Doctors:</strong> 300
-                        </div>
-                        <div class="hos-no">
-                          <strong>Beds:</strong> 560
-                        </div>
-                        <div class="hos-no">
-                          <strong>Ambulances:</strong> 560{" "}
-                        </div>
-                      </div>
-                    </div>
-                  </button>
-                </div>
-                <div id="packages3" class="conditionsbox">
-                  <div class="quote-pdf">
-                    {" "}
-                    <h5>Quote-Apollo.pdf</h5>{" "}
-                  </div>
-                  <img src="images/2023/01/pdf.jpg" />
-                  <div class="free-quote1">
-                    <a href="#" class="request-free-quote">
-                      {" "}
-                      Connect with Us
-                    </a>
-                    <a href="#" class="download-quote">
-                      {" "}
-                      Download Quote
-                    </a>
-                  </div>
-                </div>
-
-                <div class="hospitals-tab1">
-                  <button
-                    class="conditions"
-                    onclick="openWiki(event, 'packages4')"
-                  >
-                    <div class="hospital-item">
-                      <div class="hospital-item-img">
-                        <img src="images/2023/01/1.jpg" />
-                      </div>
-                      <div class="hospital-item-doc">
-                        <h3>Hospital Name</h3>
-                        <div class="department-sub">
-                          Oncologist, Medical Oncologist
-                        </div>
-                        <div class="rating-star">
-                          <i class="fa fa-star"></i> 5 (523)
-                        </div>
-
-                        <div class="ho-docimg">
-                          <img src="images/2023/01/04/1.jpg" />
-                          <img src="images/2023/01/04/2.jpg" />
-                          <img src="images/2023/01/04/3.jpg" />
-                        </div>
-                      </div>
-                      <div class="hospital-item-button">
-                        <div class="hos-no">
-                          <strong>Doctors:</strong> 300
-                        </div>
-                        <div class="hos-no">
-                          <strong>Beds:</strong> 560
-                        </div>
-                        <div class="hos-no">
-                          <strong>Ambulances:</strong> 560{" "}
-                        </div>
-                      </div>
-                    </div>
-                  </button>
-                </div>
-                <div id="packages4" class="conditionsbox">
-                  <div class="quote-pdf">
-                    {" "}
-                    <h5>Quote-Apollo.pdf</h5>{" "}
-                  </div>
-                  <img src="images/2023/01/pdf.jpg" />
-                  <div class="free-quote1">
-                    <a href="#" class="request-free-quote">
-                      {" "}
-                      Connect with Us
-                    </a>
-                    <a href="#" class="download-quote">
-                      {" "}
-                      Download Quote
-                    </a>
-                  </div>
-                </div> */}
+            
               </div>
             </div>
           </div>
