@@ -182,6 +182,22 @@ const NavForm1 = ({ treatmentId, specialityId }) => {
     setPhone1(formattedPhoneNumber); // Update the phone number state
   };
 
+
+  const Formstyles = {
+    errorInput: {
+      border: "2px solid red",
+    },
+    errorMessage: {
+      color: "red",
+      fontSize: "0.85rem",
+      marginTop: "0.25rem",
+    },
+    loadingMessage: {
+      fontSize: "1.2rem",
+      color: "#333",
+      marginTop: "1rem",
+    },
+  };
   return (
     <>
       <div className="treatment-mid-form">

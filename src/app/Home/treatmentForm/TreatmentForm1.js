@@ -72,7 +72,7 @@ const TreatmentForm1 = ({ treatmentId, specialityId }) => {
   // Email validations
 
   const [emailValid, setEmailValid] = useState(true);
-  const [emailTouched, setEmailTouched] = useState(false); // Track if the email field has been touched
+  const [emailTouched, setEmailTouched] = useState(false);
   const [validationMessage, setValidationMessage] = useState("");
 
   const handleEmailChange = (e) => {
