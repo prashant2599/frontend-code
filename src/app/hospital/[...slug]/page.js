@@ -244,7 +244,7 @@ const page = async ({ params }) => {
 
             {/* Doctor section */}
 
-            <HospitalDoctorsFilter doctor={doctor} />
+            {/* <HospitalDoctorsFilter doctor={doctor} /> */}
 
             <div id="specialists" className="profile-data-section">
               <h2>Specialists</h2>
@@ -291,7 +291,7 @@ const page = async ({ params }) => {
                   hospitalDetails.food
                     .split(",")
                     .map((amenity, index) => (
-                      <Link key={index}>{amenity.trim()}</Link>
+                      <a key={index}>{amenity.trim()}</a>
                     ))}
               </div>
 
@@ -301,7 +301,7 @@ const page = async ({ params }) => {
                   hospitalDetails.language_spoken
                     .split(",")
                     .map((amenity, index) => (
-                      <Link key={index}>{amenity.trim()}</Link>
+                      <a key={index}>{amenity.trim()}</a>
                     ))}
               </div>
             </div>
