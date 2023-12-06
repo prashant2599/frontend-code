@@ -12,7 +12,7 @@ function formatText(text) {
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
       .join(" ");
   } else {
-    return "Invalid input"; 
+    return "Invalid input";
   }
 }
 
@@ -22,10 +22,6 @@ const Sdoctors = ({ treatment, doctor, hospitalIcon, combinedSlug, info }) => {
   // const treatment = parts[0];
   const city = parts[2];
   const position1 = parts[1];
-
-
-
- 
 
   return (
     <>
@@ -99,7 +95,7 @@ const Sdoctors = ({ treatment, doctor, hospitalIcon, combinedSlug, info }) => {
           <SpecialitySelect
             doctor={doctor}
             treatment={treatment}
-            slug={combinedSlug}           
+            slug={combinedSlug}
           />
 
           <div className="doctor-midbox">
@@ -124,7 +120,7 @@ const Sdoctors = ({ treatment, doctor, hospitalIcon, combinedSlug, info }) => {
                         <h3>
                           {e.prefix} {e.first_name} {e.last_name}
                         </h3>
-                        <div className="department-sub">{e.designation}</div>
+                        <div className="department-sub" style={{color:"#ff6800"}}>{e.designation}</div>
                         {/* <div className="rating-star">
                           5{" "}
                           <i>
@@ -132,14 +128,18 @@ const Sdoctors = ({ treatment, doctor, hospitalIcon, combinedSlug, info }) => {
                           </i>{" "}
                           (523){" "}
                         </div> */}
-
+                        <div className="department-sub-shotdesc">
+                          {e.short_description}
+                        </div>
                         <div className="doc-experience">
                           <div className="years-exper">
                             {e.experience_year}+ Years of Experience{" "}
                           </div>
-                          <div className="successful-plus">
-                            {e.surgery_treatment}+ Successful Surgeries{" "}
-                          </div>
+                          {e.surgery_treatment !== null && (
+                            <div className="successful-plus">
+                              {e.surgery_treatment}+ Successful Surgeries
+                            </div>
+                          )}
                         </div>
                       </div>
                       <div className="doctor-item-button">

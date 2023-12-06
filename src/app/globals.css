@@ -14802,6 +14802,9 @@ pre code {
   .header .headerSecondry .get-started-m {
     background: #fff;
   }
+  #home-doc-hos .related-doctors{
+    width: 50% !important;
+  }
 }
 
 .header .qsk-question {
@@ -14879,4 +14882,12 @@ pre code {
 
 .footer-navbox .but {
   display: none;
+}
+
+
+.doctor-item-list .department-sub-shotdesc {
+  height: 87px;
+  overflow-y: auto;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
 }
