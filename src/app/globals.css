@@ -4395,6 +4395,7 @@ table strong {
   width: 6px;
   background: #7c7c7c;
   border-radius: 100%;
+  display: none;
 }
 
 .doctor-education {
@@ -14811,7 +14812,12 @@ pre code {
   background: #fff;
   color: #ff6800 !important;
 }
-
+.react-multi-carousel-item{
+  width: auto !important;
+}
+.react-multi-carousel-item img{
+  width: auto;
+}
 #get-free-consultation {
   width: 100%;
   height: auto;

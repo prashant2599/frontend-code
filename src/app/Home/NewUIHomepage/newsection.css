@@ -190,8 +190,6 @@
 
 .item-home-expert img {
   border-radius: 16px 16px 0px 0px;
-  width: 344px;
-  height: 260px;
 }
 
 .home-expert-text {
@@ -1973,9 +1971,6 @@ button.active .city-icon-h {
   }
   .footer-news-button {
     width: 50%;
-  }
-  .item-home-expert img {
-    height: 186px;
   }
   .footer-navbox .but {
     display: block !important;

@@ -7,9 +7,7 @@ const NewAboutSection = async () => {
         <div className="midbox-inner wiki-mk">
           <div className="home-medflick-about">
             <div className="home-medflick-about-left">
-              <Image
-                width="548"
-                height="585"
+              <img
                 src="/images/new-images/2023/01/about-us.jpg"
                 alt="medflick-about-us"
               />

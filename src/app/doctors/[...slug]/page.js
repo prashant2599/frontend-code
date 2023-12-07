@@ -56,7 +56,10 @@ const page = async ({ params, res }) => {
     console.error(error);
 
     // Handle 404 error explicitly
-    if (error.message.includes("Failed to fetch data: 404") || error.message.includes("API error: 404")) {
+    if (
+      error.message.includes("Failed to fetch data: 404") ||
+      error.message.includes("API error: 404")
+    ) {
       notFound();
     } else {
       // Handle other errors

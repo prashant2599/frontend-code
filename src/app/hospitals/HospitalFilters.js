@@ -133,9 +133,9 @@ const HospitalFilters = ({ hospital, slug, treatment }) => {
 
   const handleClearSelection = () => {
     if (specialitySlug === "speciality") {
-      router.push(`/doctors/${countrySlug}`);
+      router.push(`/hospitals/${countrySlug}`);
     } else {
-      router.push(`/doctors/${specialitySlug}`);
+      router.push(`/hospitals/${specialitySlug}`);
     }
   };
 

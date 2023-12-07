@@ -260,15 +260,23 @@ const page = async ({ params }) => {
                               />
                             )}
                           </div>
-
-                          <div className="hos-no">
-                            <strong>Doctors:</strong> {hospital.doc}
-                          </div>
-                          <div className="hos-no">
-                            <strong>Beds:</strong> {hospital.bed}
-                          </div>
-                          <div className="hos-no">
-                            <strong>Ambulances:</strong> {hospital.ambulance}
+                          {hospital.doc !== null && (
+                            <div className="hos-no">
+                              <strong>Doctors:</strong> {hospital.doc}
+                            </div>
+                          )}
+                          {hospital.bed !== null && (
+                            <div className="hos-no">
+                              <strong>Beds:</strong> {hospital.bed}
+                            </div>
+                          )}
+                          {hospital.ambulance !== null && (
+                            <div className="hos-no">
+                              <strong>Ambulances:</strong> {hospital.ambulance}
+                            </div>
+                          )}
+                          <div className="department-sub-shotdesc">
+                            {hospital.short_description}
                           </div>
                         </div>
                         <div className="hospital-item-button">
