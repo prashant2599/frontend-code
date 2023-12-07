@@ -78,14 +78,18 @@ const AllDoctors = async () => {
                           </i>{" "}
                           (523){" "}
                         </div> */}
-
+                        <div className="department-sub-shotdesc">
+                          {e.short_description}
+                        </div>
                         <div className="doc-experience">
                           <div className="years-exper">
                             {e.experience_year}+ Years of Experience{" "}
                           </div>
-                          <div className="successful-plus">
-                            {e.surgery_treatment}+ Successful Surgeries{" "}
-                          </div>
+                          {e.surgery_treatment !== null && (
+                            <div className="successful-plus">
+                              {e.surgery_treatment}+ Successful Surgeries
+                            </div>
+                          )}
                         </div>
                       </div>
                       <div className="doctor-item-button">

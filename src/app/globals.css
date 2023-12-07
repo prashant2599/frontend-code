@@ -4395,6 +4395,7 @@ table strong {
   width: 6px;
   background: #7c7c7c;
   border-radius: 100%;
+  display: none;
 }
 
 .doctor-education {
@@ -14802,13 +14803,21 @@ pre code {
   .header .headerSecondry .get-started-m {
     background: #fff;
   }
+  #home-doc-hos .related-doctors{
+    width: 50% !important;
+  }
 }
 
 .header .qsk-question {
   background: #fff;
   color: #ff6800 !important;
 }
-
+.react-multi-carousel-item{
+  width: auto !important;
+}
+.react-multi-carousel-item img{
+  width: auto;
+}
 #get-free-consultation {
   width: 100%;
   height: auto;
@@ -14879,4 +14888,12 @@ pre code {
 
 .footer-navbox .but {
   display: none;
+}
+
+
+.doctor-item-list .department-sub-shotdesc {
+  height: 87px;
+  overflow-y: auto;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
 }

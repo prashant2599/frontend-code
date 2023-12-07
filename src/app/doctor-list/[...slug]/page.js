@@ -115,7 +115,7 @@ const page = async ({ params }) => {
                           <h3>
                             {e.prefix} {e.first_name} {e.last_name}
                           </h3>
-                          <div className="department-sub">{e.designation}</div>
+                          <div className="department-sub" style={{color:"#ff6800"}}>{e.designation}</div>
                           {/* <div className="rating-star">
                           5{" "}
                           <i>
@@ -123,14 +123,18 @@ const page = async ({ params }) => {
                           </i>{" "}
                           (523){" "}
                         </div> */}
-
+                          <div className="department-sub-shotdesc">
+                            {e.short_description}
+                          </div>
                           <div className="doc-experience">
                             <div className="years-exper">
                               {e.experience_year}+ Years of Experience{" "}
                             </div>
-                            <div className="successful-plus">
-                              {e.surgery_treatment}+ Successful Surgeries{" "}
-                            </div>
+                            {e.surgery_treatment !== null && (
+                              <div className="successful-plus">
+                                {e.surgery_treatment}+ Successful Surgeries
+                              </div>
+                            )}
                           </div>
                         </div>
                         <div className="doctor-item-button">

@@ -237,10 +237,10 @@ const page = async ({ params }) => {
               />
             </div>
 
-            <div id="gallery" className="profile-data-section">
-              <h2>Gallery</h2>
-              <HospitalGallery gallery={gallery} />
-            </div>
+            <HospitalGallery
+              gallery={gallery}
+              image={hospitalDetails.home_image}
+            />
 
             {/* Doctor section */}
 
@@ -269,23 +269,21 @@ const page = async ({ params }) => {
               <h2>Amenities</h2>
               {/* <div className="amenities-name">Treatment</div> */}
               <div className="medical-box">
-                {/* {hospitalDetails.amenities &&
-                hospitalDetails.amenities
-                  .split(",")
-                  .map((amenity, index) => (
-                    <Link key={index}>{amenity.trim()}</Link>
-                  ))} */}
+                {hospitalDetails.amenities &&
+                  hospitalDetails.amenities
+                    .split(",")
+                    .map((amenity, index) => (
+                      <a key={index}>{amenity.trim()}</a>
+                    ))}
 
-                <div
+                {/* <div
                   dangerouslySetInnerHTML={{
                     __html: hospitalDetails.amenities,
                   }}
-                />
+                /> */}
               </div>
 
-            
-
-              <div className="amenities-name">Food</div>
+              {/* <div className="amenities-name">Food</div>
               <div className="medical-box">
                 {hospitalDetails.food &&
                   hospitalDetails.food
@@ -293,17 +291,21 @@ const page = async ({ params }) => {
                     .map((amenity, index) => (
                       <a key={index}>{amenity.trim()}</a>
                     ))}
-              </div>
+              </div> */}
 
-              <div className="amenities-name">Language</div>
-              <div className="medical-box">
-                {hospitalDetails.language_spoken &&
-                  hospitalDetails.language_spoken
-                    .split(",")
-                    .map((amenity, index) => (
-                      <a key={index}>{amenity.trim()}</a>
-                    ))}
-              </div>
+              {hospitalDetails.language_spoken &&
+              hospitalDetails.language_spoken.trim() !== "" ? (
+                <div>
+                  <div className="amenities-name">Language</div>
+                  <div className="medical-box">
+                    {hospitalDetails.language_spoken
+                      .split(",")
+                      .map((amenity, index) => (
+                        <a key={index}>{amenity.trim()}</a>
+                      ))}
+                  </div>
+                </div>
+              ) : null}
             </div>
             <HospitalTotalReview hospitalId={hospitalDetails.id} />
           </div>
