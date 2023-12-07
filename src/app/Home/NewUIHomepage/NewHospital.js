@@ -13,7 +13,7 @@ const NewHospital = async () => {
           <div className="marquee" style={{ animationDuration: "11s" }}>
             {hospital.map((e) => (
               <div className="Marquee-tag" key={e.id}>
-                <Link href={`/hospital/${e.slug}`}>
+                <Link href={`/hospital/${e.slug}/${e.country}`}>
                 <img
                   className="dr-img"
                   src={`https://dev.medflick.com/hospital/${e.icon}`}
