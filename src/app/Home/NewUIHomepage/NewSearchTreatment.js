@@ -203,7 +203,7 @@ const NewSearchTreatment = () => {
                     </p>
                   </div>
                   <div className="expert-button">
-                    <Link className="view-profile" href={`/hospital/${e.slug}`}>
+                    <Link className="view-profile" href={`/hospital/${e.slug}/${e.country}`}>
                       View Profile
                     </Link>
                     <a className="book-appointment" href="#">
