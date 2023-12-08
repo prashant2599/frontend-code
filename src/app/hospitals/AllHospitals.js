@@ -154,11 +154,15 @@ const AllHospitals = async () => {
                       <div className="tabs_wrapper">
                         <div className="tabs_container">
                           <div data-hash="one" key={hospital.id}>
-                            <img
-                              src={`https://dev.medflick.com/hospital/${hospital.image}`}
-                              alt={hospital.name}
-                              width="100%"
-                            />
+                            <Link
+                              href={`/hospital/${hospital.slug}/${hospital.country}`}
+                            >
+                              <img
+                                src={`https://dev.medflick.com/hospital/${hospital.image}`}
+                                alt={hospital.name}
+                                width="100%"
+                              />
+                            </Link>
                           </div>
 
                           {/* <div className="activeImage" data-hash="two">
@@ -181,7 +185,11 @@ const AllHospitals = async () => {
                       </div>
                     </div>
                     <div className="hospital-item-doc">
-                      <h3>{hospital.name}</h3>
+                      <Link
+                        href={`/hospital/${hospital.slug}/${hospital.country}`}
+                      >
+                        <h3>{hospital.name}</h3>
+                      </Link>
                       {/* <div className="department-sub">
                           Oncologist, Medical Oncologist
                         </div> */}

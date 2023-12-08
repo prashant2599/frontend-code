@@ -63,6 +63,24 @@ const NewCostSection = () => {
     fetchData();
   }, []);
 
+  const countryIcon = [
+    {
+      name: "India",
+      "city-icon": "/images/icons/india.png",
+      "city-icon-h": "/images/icons/indiaOne.png",
+    },
+    {
+      name: "Oman",
+      "city-icon": "/images/icons/oman.png",
+      "city-icon-h": "/images/icons/omanOne.png",
+    },
+    {
+      name: "Turkey",
+      "city-icon": "/images/icons/turkey.png",
+      "city-icon-h": "/images/icons/turkeyOne.png",
+    },
+  ];
+
   return (
     <>
       <section id="home-treatment-costs">
@@ -76,20 +94,41 @@ const NewCostSection = () => {
           </p>
 
           <div className="tab-treatment">
-            {countries.map((tab) => (
-              <button
-                key={tab.id}
-                className={`tablinks ${
-                  activeTab === tab.country ? "active" : ""
-                }`}
-                onClick={(evt) => openCity(evt, tab.country)}
-              >
-                {/* <img className="city-icon" src={tab.icon} alt="" />
-                <img className="city-icon-h" src={tab.hoverIcon} alt="" /> */}
-                {tab.country.charAt(0).toUpperCase() + tab.country.slice(1)}
-              </button>
-            ))}
+            {countries.map((tab) => {
+              const icon = countryIcon.find(
+                (icon) => icon.name.toLowerCase() === tab.country.toLowerCase()
+              );
+
+              console.log(icon);
+
+              return (
+                <button
+                  key={tab.id}
+                  className={`tablinks ${
+                    activeTab === tab.country ? "active" : ""
+                  }`}
+                  onClick={(evt) => openCity(evt, tab.country)}
+                >
+                  {icon && (
+                    <>
+                      <img
+                        className="city-icon"
+                        src={icon["city-icon"]}
+                        alt=""
+                      />
+                      <img
+                        className="city-icon-h"
+                        src={icon["city-icon-h"]}
+                        alt=""
+                      />
+                    </>
+                  )}
+                  {tab.country.charAt(0).toUpperCase() + tab.country.slice(1)}
+                </button>
+              );
+            })}
           </div>
+
           {countries.map((tab) => (
             <div
               key={tab.id}

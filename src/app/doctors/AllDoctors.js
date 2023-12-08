@@ -61,15 +61,19 @@ const AllDoctors = async () => {
                   return (
                     <div className="doctor-item-list" key={e.id}>
                       <div className="doctor-item-img">
-                        <img
-                          src={`https://dev.medflick.com/doctor/${e.image}`}
-                          alt={e.slug}
-                        />
+                        <Link href={`/doctor/${e.slug}`}>
+                          <img
+                            src={`https://dev.medflick.com/doctor/${e.image}`}
+                            alt={e.slug}
+                          />
+                        </Link>
                       </div>
                       <div className="doctor-item-doc">
-                        <h3>
-                          {e.prefix} {e.first_name} {e.last_name}
-                        </h3>
+                        <Link href={`/doctor/${e.slug}`}>
+                          <h3>
+                            {e.prefix} {e.first_name} {e.last_name}
+                          </h3>
+                        </Link>
                         <div className="department-sub">{e.designation}</div>
                         {/* <div className="rating-star">
                           5{" "}

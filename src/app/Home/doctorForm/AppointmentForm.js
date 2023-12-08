@@ -5,7 +5,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 import { ThreeDots } from "react-loader-spinner";
 import axios from "axios";
 
-const AppointmentForm = ({ doctorId }) => {
+const AppointmentForm = ({ doctorId, first, middle, last }) => {
   // form popup post method
 
   const [userName, setUserName] = useState("");
@@ -202,7 +202,14 @@ const AppointmentForm = ({ doctorId }) => {
                   <span aria-hidden="true">×</span>
                 </button>
               </div>
-              <h2> Book Appointment</h2>
+              <h2>
+                {" "}
+                Book Appointment With <br />
+                <span style={{ color: "#ff6800" }}>
+                  {first} {middle} {last}
+                </span>{" "}
+                now!
+              </h2>
               <form onSubmit={handleFormSubmit}>
                 <div
                   className="treatment-form"

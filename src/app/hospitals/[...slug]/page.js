@@ -166,12 +166,16 @@ const page = async ({ params }) => {
                           <div className="tabs_wrapper">
                             <div className="tabs_container">
                               <div data-hash="one" key={hospital.id}>
-                                <Image
-                                  src={`https://dev.medflick.com/hospital/${hospital.image}`}
-                                  alt={hospital.name}
-                                  width="181"
-                                  height="187"
-                                />
+                                <Link
+                                  href={`/hospital/${hospital.slug}/${hospital.country}`}
+                                >
+                                  <Image
+                                    src={`https://dev.medflick.com/hospital/${hospital.image}`}
+                                    alt={hospital.name}
+                                    width="181"
+                                    height="187"
+                                  />
+                                </Link>
                               </div>
                               <ul class="tabs tab-h">
                                 {galleryImages.map((e) => (
@@ -228,7 +232,11 @@ const page = async ({ params }) => {
                           </div>
                         </div>
                         <div className="hospital-item-doc">
-                          <h3>{hospital.name}</h3>
+                          <Link
+                            href={`/hospital/${hospital.slug}/${hospital.country}`}
+                          >
+                            <h3>{hospital.name}</h3>
+                          </Link>
                           {/* <div className="department-sub">
                           Oncologist, Medical Oncologist
                         </div> */}
