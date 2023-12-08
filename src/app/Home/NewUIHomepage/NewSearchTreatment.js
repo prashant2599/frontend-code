@@ -140,12 +140,16 @@ const NewSearchTreatment = () => {
               Doctors.map((e) => (
                 <div className="item" key={e.id}>
                   <div className="item-home-expert">
-                    <img src={`https://dev.medflick.com/doctor/${e.image}`} />
+                    <Link href={`/doctor/${e.slug}`}>
+                      <img src={`https://dev.medflick.com/doctor/${e.image}`} />
+                    </Link>
                   </div>
                   <div className="home-expert-text">
-                    <h3>
-                      {e.prefix} {e.first_name} {e.last_name}
-                    </h3>
+                    <Link href={`/doctor/${e.slug}`}>
+                      <h3>
+                        {e.prefix} {e.first_name} {e.last_name}
+                      </h3>
+                    </Link>
                     <p>{e.designation}</p>
                   </div>
                   <div className="expert-button">
@@ -192,10 +196,17 @@ const NewSearchTreatment = () => {
               Hospitals.map((e) => (
                 <div className="item" key={e.id}>
                   <div className="item-home-expert">
-                    <img src={`https://dev.medflick.com/hospital/${e.image}`} alt={e.name} />
+                    <Link href={`/hospital/${e.slug}/${e.country}`}>
+                      <img
+                        src={`https://dev.medflick.com/hospital/${e.image}`}
+                        alt={e.name}
+                      />
+                    </Link>
                   </div>
                   <div className="home-expert-text">
-                    <h3>{e.name}</h3>
+                    <Link href={`/hospital/${e.slug}/${e.country}`}>
+                      <h3>{e.name}</h3>
+                    </Link>
                     <p>
                       Hospitals in{" "}
                       {selectedCountry.charAt(0).toUpperCase() +
@@ -203,7 +214,10 @@ const NewSearchTreatment = () => {
                     </p>
                   </div>
                   <div className="expert-button">
-                    <Link className="view-profile" href={`/hospital/${e.slug}/${e.country}`}>
+                    <Link
+                      className="view-profile"
+                      href={`/hospital/${e.slug}/${e.country}`}
+                    >
                       View Profile
                     </Link>
                     <a className="book-appointment" href="#">

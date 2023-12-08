@@ -88,7 +88,7 @@ const page = async ({ params }) => {
                 <div className="doctor-book-an">
                   <HospitalShareProfile hospitalDetails={hospitalDetails} />
 
-                  <AppointmentForm hospitalId={hospitalDetails.id} />
+                  <AppointmentForm hospitalId={hospitalDetails.id} HospitalName={hospitalDetails.name} />
                 </div>
               </div>
             </div>
@@ -307,7 +307,7 @@ const page = async ({ params }) => {
                 </div>
               ) : null}
             </div>
-            <HospitalTotalReview hospitalId={hospitalDetails.id} />
+            <HospitalTotalReview hospitalId={hospitalDetails.id}  />
           </div>
         </section>
       </>

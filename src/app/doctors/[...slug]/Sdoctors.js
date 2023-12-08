@@ -108,6 +108,7 @@ const Sdoctors = ({ treatment, doctor, hospitalIcon, combinedSlug, info }) => {
                   return (
                     <div className="doctor-item-list" key={e.id}>
                       <div className="doctor-item-img">
+                        <Link href={`/doctor/${e.slug}`}>
                         <Image
                           src={`https://dev.medflick.com/doctor/${e.image}`}
                           alt={e.slug}
@@ -115,12 +116,20 @@ const Sdoctors = ({ treatment, doctor, hospitalIcon, combinedSlug, info }) => {
                           height="221"
                           className="doctor-speciality-img"
                         />
+                        </Link>
                       </div>
                       <div className="doctor-item-doc">
-                        <h3>
-                          {e.prefix} {e.first_name} {e.last_name}
-                        </h3>
-                        <div className="department-sub" style={{color:"#ff6800"}}>{e.designation}</div>
+                        <Link href={`/doctor/${e.slug}`}>
+                          <h3>
+                            {e.prefix} {e.first_name} {e.last_name}
+                          </h3>
+                        </Link>
+                        <div
+                          className="department-sub"
+                          style={{ color: "#ff6800" }}
+                        >
+                          {e.designation}
+                        </div>
                         {/* <div className="rating-star">
                           5{" "}
                           <i>

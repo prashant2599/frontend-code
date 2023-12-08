@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { ThreeDots } from "react-loader-spinner";
 import ReCAPTCHA from "react-google-recaptcha";
 import axios from "axios";
-import "intl-tel-input/build/css/intlTelInput.css"; // Import CSS
+import "intl-tel-input/build/css/intlTelInput.css"; 
 import intlTelInput from "intl-tel-input";
 
 const DoctorForm = ({ info }) => {
