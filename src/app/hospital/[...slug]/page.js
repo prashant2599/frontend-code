@@ -244,7 +244,7 @@ const page = async ({ params }) => {
 
             {/* Doctor section */}
 
-            {/* <HospitalDoctorsFilter doctor={doctor} /> */}
+            <HospitalDoctorsFilter doctor={doctor} />
 
             <div id="specialists" className="profile-data-section">
               <h2>Specialists</h2>
