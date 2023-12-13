@@ -40,13 +40,7 @@ const page = async ({ params }) => {
             <div className="doctorprofile">
               <div className="doctorprofile-left">
                 <div className="doctorprofile-img">
-                  <Image
-                    src={`https://dev.medflick.com/doctor/${docotorDetails.image}`}
-                    alt={docotorDetails.slug}
-                    width="150"
-                    height="183"
-                    className="doctorprofile-img-next"
-                  />
+                  <img  src={`https://dev.medflick.com/doctor/${docotorDetails.image}`} alt="e.name" />                
                 </div>
                 <div className="doctorprofile-head">
                   <h1>
