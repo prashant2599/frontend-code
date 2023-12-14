@@ -211,7 +211,6 @@ const HospitalForm = ({ info }) => {
           <form onSubmit={handleFormSubmit}>
             <div
               className="treatment-form"
-              style={nameError ? Formstyles.errorInput : {}}
             >
               <div className="inputbox">
                 <label>Name</label>
