@@ -99,8 +99,6 @@ const NewCostSection = () => {
                 (icon) => icon.name.toLowerCase() === tab.country.toLowerCase()
               );
 
-              console.log(icon);
-
               return (
                 <button
                   key={tab.id}
@@ -114,12 +112,12 @@ const NewCostSection = () => {
                       <img
                         className="city-icon"
                         src={icon["city-icon"]}
-                        alt=""
+                        alt={tab.country}
                       />
                       <img
                         className="city-icon-h"
                         src={icon["city-icon-h"]}
-                        alt=""
+                        alt={tab.country}
                       />
                     </>
                   )}

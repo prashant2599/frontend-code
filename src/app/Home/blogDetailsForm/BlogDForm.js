@@ -11,16 +11,20 @@ const BlogDForm = () => {
   // Assistance form post
 
   const [name1, setName1] = useState("");
-  const [pcode1, setPcode1] = useState("");
+  const [pcode1, setPcode1] = useState("+91");
   const [phone1, setPhone1] = useState("");
   const [email1, setEmail1] = useState("");
   const [query1, setQuery1] = useState("");
 
   const [isLoading1, setIsLoading1] = useState(false);
 
-  const [nameError1, setNameError1] = useState("");
-  const [phoneError1, setPhoneError1] = useState("");
-  const [emailError1, setEmailError1] = useState("");
+  const [formErrors, setFormErrors] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    query: "",
+    captcha: "",
+  });
   const [captchaValue1, setCaptchaValue1] = useState(null);
 
   const handleCaptchaChange1 = (value) => {
@@ -34,28 +38,105 @@ const BlogDForm = () => {
     setQuery1("");
   };
 
+  const inputRef = useRef(null);
+
+  const debounce = (func, delay) => {
+    let timeoutId;
+    return function (...args) {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => func.apply(this, args), delay);
+    };
+  };
+
+  const debouncedHandlePhoneNumberChange = useRef(
+    debounce((e) => handlePhoneNumberChange(e), 300)
+  ).current;
+
+  useEffect(() => {
+    const inputElement = inputRef.current;
+
+    const iti = intlTelInput(inputElement, {
+      initialCountry: "in",
+      separateDialCode: true,
+    });
+
+    inputElement.addEventListener("input", debouncedHandlePhoneNumberChange);
+
+    inputElement.addEventListener("countrychange", () => {
+      const selectedCountryData = iti.getSelectedCountryData();
+      setPcode1(selectedCountryData.dialCode);
+    });
+
+    return () => {
+      inputElement.removeEventListener(
+        "input",
+        debouncedHandlePhoneNumberChange
+      );
+      iti.destroy();
+    };
+  }, [debouncedHandlePhoneNumberChange]);
+
+  const handlePhoneNumberChange = (e) => {
+    const formattedPhoneNumber = e.target.value.replace(/\D/g, "");
+    setPhone1(formattedPhoneNumber);
+  };
+
   const handleFormSubmit1 = (event) => {
     event.preventDefault();
-    setNameError1("");
-    setPhoneError1("");
-    setEmailError1("");
-
+    setFormErrors({
+      name: "",
+      phone: "",
+      email: "",
+      query: "",
+      captcha: "",
+    });
     // Validation logic
     let isValid = true;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^\d{10,}$/;
 
     if (!name1) {
-      setNameError1("Name is required");
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        name: "Please enter your name",
+      }));
       isValid = false;
     }
-    if (!captchaValue1) {
-      alert("Please complete the CAPTCHA.");
+
+    if (!phone1 || !phone1.match(phoneRegex)) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        phone: "Please enter a valid Phone number",
+      }));
+      isValid = false;
+    }
+
+    if (!email1 || !email1.match(emailRegex)) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        email: "Please enter a valid email address",
+      }));
+      isValid = false;
+    }
+
+    if (!query1) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        query: "Please enter your query",
+      }));
+      isValid = false;
+    }
+
+    if (!isValid) {
       return;
     }
 
-    const phoneRegex = /^\d{10,}$/; // Matches 10 or more digits
-    if (!phone1 || !phone1.match(phoneRegex)) {
-      setPhoneError1("Phone must have at least 10 digits");
-      isValid = false;
+    if (!captchaValue1) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        captcha: "Please Fill the captcha",
+      }));
+      return;
     }
 
     if (isValid) {
@@ -109,34 +190,8 @@ const BlogDForm = () => {
     },
   };
 
-  const inputRef = useRef(null);
-
-  useEffect(() => {
-    const inputElement = inputRef.current;
-
-    // Initialize intlTelInput with your options
-    const iti = intlTelInput(inputElement, {
-      initialCountry: "in",
-      separateDialCode: true,
-      // utilsScript: 'https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.4/js/utils.js',
-    });
-
-    // Add an event listener to handle changes
-    inputElement.addEventListener("countrychange", () => {
-      const selectedCountryData = iti.getSelectedCountryData();
-      setPcode1(selectedCountryData.dialCode);
-    });
-
-    // Clean up the plugin when the component unmounts
-    return () => {
-      iti.destroy();
-    };
-  }, []);
-
-  const handlePhoneNumberChange = (e) => {
-    const formattedPhoneNumber = e.target.value.replace(/\D/g, ""); // Remove non-numeric characters
-    setPhone1(formattedPhoneNumber); // Update the phone number state
-  };
+  const renderError = (error) =>
+    error && <div className="error-message">{error}</div>;
   return (
     <>
       <div className="blog-rightbox">
@@ -151,12 +206,12 @@ const BlogDForm = () => {
                   type="text"
                   placeholder=""
                   name="name"
-                  required
                   value={name1}
                   onChange={(e) => setName1(e.target.value)}
                   autoComplete="off"
-                  style={nameError1 ? Formstyles.errorInput : {}}
+                  style={formErrors.name ? Formstyles.errorInput : {}}
                 />
+                {renderError(formErrors.name)}
               </div>
             </div>
 
@@ -170,7 +225,9 @@ const BlogDForm = () => {
                   placeholder=""
                   value={phone1}
                   onChange={handlePhoneNumberChange}
+                  style={formErrors.phone ? Formstyles.errorInput : {}}
                 />
+                {renderError(formErrors.phone)}
               </div>
             </div>
 
@@ -181,11 +238,12 @@ const BlogDForm = () => {
                   type="email"
                   placeholder=""
                   name="name"
-                  required
                   value={email1}
                   onChange={(e) => setEmail1(e.target.value)}
                   autoComplete="off"
+                  style={formErrors.email ? Formstyles.errorInput : {}}
                 />
+                {renderError(formErrors.email)}
               </div>
             </div>
 
@@ -201,13 +259,16 @@ const BlogDForm = () => {
                   value={query1}
                   onChange={(e) => setQuery1(e.target.value)}
                   autoComplete="off"
+                  style={formErrors.query ? Formstyles.errorInput : {}}
                 ></textarea>
+                {renderError(formErrors.query)}
               </div>
             </div>
             <ReCAPTCHA
               sitekey="6LcX6-YnAAAAAAjHasYD8EWemgKlDUxZ4ceSo8Eo" // Replace with your reCAPTCHA site key
               onChange={handleCaptchaChange1}
             />
+            {renderError(formErrors.captcha)}
 
             <button
               type="submit"

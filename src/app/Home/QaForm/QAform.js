@@ -42,7 +42,7 @@ const QAform = () => {
   // State variables for error messages
   const [nameError1, setNameError1] = useState("");
   const [phoneError1, setPhoneError1] = useState("");
-  // const [captchaValue1, setCaptchaValue1] = useState(null);
+  const [captchaValue1, setCaptchaValue1] = useState(null);
 
   const [emailValid, setEmailValid] = useState(true);
   const [emailTouched, setEmailTouched] = useState(false);
@@ -94,7 +94,7 @@ const QAform = () => {
 
     if (!userName) {
       if (!name1) {
-        setNameError1("Name is required");
+        setNameError1("Please enter your name");
         isValid = false;
       }
     }
@@ -104,15 +104,20 @@ const QAform = () => {
         return;
       }
     }
-    // if (!captchaValue1) {
-    //   alert("Please complete the CAPTCHA.");
-    //   return;
-    // }
 
     const phoneRegex = /^\d{10,}$/; // Matches 10 or more digits
     if (!phone1 || !phone1.match(phoneRegex)) {
-      setPhoneError1("Phone must have at least 10 digits");
+      setPhoneError1("Please enter a valid Phone number");
       isValid = false;
+    }
+
+    if (!isValid) {
+      return;
+    }
+
+    if (!captchaValue1) {
+      alert("Please complete the CAPTCHA.");
+      return;
     }
     if (isValid) {
       // Create the data object to be sent in the API request
@@ -198,7 +203,6 @@ const QAform = () => {
     },
   };
 
- 
   return (
     <>
       <div className="questions-ans-right">
@@ -218,6 +222,9 @@ const QAform = () => {
                   autoComplete="off"
                   style={nameError1 ? Formstyles.errorInput : {}}
                 />
+                {nameError1 && (
+                  <div className="error-message">{nameError1}</div>
+                )}
               </div>
             </div>
 
@@ -231,7 +238,11 @@ const QAform = () => {
                   placeholder=""
                   value={phone1}
                   onChange={handlePhoneNumberChange}
+                  style={phoneError1 ? Formstyles.errorInput : {}}
                 />
+                {phoneError1 && (
+                  <div className="error-message">{phoneError1}</div>
+                )}
               </div>
             </div>
 

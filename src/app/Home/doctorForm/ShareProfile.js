@@ -29,6 +29,7 @@ const ShareProfile = ({slug}) => {
     };
 
     const inputRef = useRef(null);
+    const [copyMessage, setCopyMessage] = useState('');
 
     const copyToClipboard = () => {
       // Select the text inside the input field
@@ -40,6 +41,7 @@ const ShareProfile = ({slug}) => {
   
       // Deselect the text
       inputRef.current.setSelectionRange(0, 0);
+      setCopyMessage('Link copied!');
     };
   return (
     <>
@@ -108,6 +110,7 @@ const ShareProfile = ({slug}) => {
                 >
                   Copy Link
                 </button>
+                {/* {copyMessage && <p>{copyMessage}</p>} */}
               </div>
             </div>
           </div>

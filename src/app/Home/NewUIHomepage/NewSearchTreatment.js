@@ -156,9 +156,9 @@ const NewSearchTreatment = () => {
                     <Link className="view-profile" href={`/doctor/${e.slug}`}>
                       View Profile
                     </Link>
-                    <a className="book-appointment" href="#">
+                    <Link className="book-appointment" href="/query">
                       Book Appointment
-                    </a>
+                    </Link>
                   </div>
                 </div>
               ))
@@ -220,9 +220,9 @@ const NewSearchTreatment = () => {
                     >
                       View Profile
                     </Link>
-                    <a className="book-appointment" href="#">
+                    <Link className="book-appointment" href="/query">
                       Book Appointment
-                    </a>
+                    </Link>
                   </div>
                 </div>
               ))
