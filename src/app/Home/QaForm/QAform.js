@@ -139,9 +139,6 @@ const QAform = () => {
       axios
         .post(apiEndpoint, data)
         .then((response) => {
-          // Handle the API response here if needed
-          console.log(response);
-          // alert("questions is susscefull submitted");
           toast.success("questions is susscefull submitted", {
             position: toast.POSITION.TOP_RIGHT,
           });

@@ -6,6 +6,8 @@ import { useState, useEffect, useRef } from "react";
 import "intl-tel-input/build/css/intlTelInput.css"; // Import CSS
 import intlTelInput from "intl-tel-input";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const BlogDForm = () => {
   // Assistance form post
@@ -158,9 +160,9 @@ const BlogDForm = () => {
       axios
         .post(apiEndpoint, data)
         .then((response) => {
-          // Handle the API response here if needed
-          console.log(response);
-          alert("questions is susscefull submitted");
+          toast.success("questions is susscefull submitted", {
+            position: toast.POSITION.TOP_RIGHT,
+          });
           clearFormFields1();
         })
         .catch((error) => {
@@ -296,6 +298,7 @@ const BlogDForm = () => {
           </form>
         </div>
       </div>
+      <ToastContainer />
     </>
   );
 };
