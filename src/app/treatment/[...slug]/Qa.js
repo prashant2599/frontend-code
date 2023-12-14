@@ -24,7 +24,7 @@ const Qa = ({ qa }) => {
                 >
                   <div class="professionals-box">
                     <img
-                      src="/new-images/2023/01/icon-m.png"
+                      src="/images/new-images/2023/01/icon-m.png"
                       alt="medflick-questions"
                     />
                     <div class="question-box">{e.short_description}</div>
@@ -39,7 +39,7 @@ const Qa = ({ qa }) => {
 
             <Link href="/question-answer">
               View All Questions
-              <img src="/new-images/2023/01/arrow-c.png" alt="" />
+              <img src="/images/new-images/2023/01/arrow-c.png" alt="" />
             </Link>
           </div>
         </section>

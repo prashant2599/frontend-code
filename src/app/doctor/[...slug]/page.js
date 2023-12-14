@@ -9,6 +9,7 @@ import { BsStarHalf } from "react-icons/bs";
 import { notFound } from "next/navigation";
 import RelatedDoctor from "./RelatedDoctor";
 import "@/app/Home/NewUIHomepage/newsection.css";
+import DoctorForm from "@/app/Home/doctorForm/DoctorForm";
 
 const page = async ({ params }) => {
   try {
@@ -40,7 +41,10 @@ const page = async ({ params }) => {
             <div className="doctorprofile">
               <div className="doctorprofile-left">
                 <div className="doctorprofile-img">
-                  <img  src={`https://dev.medflick.com/doctor/${docotorDetails.image}`} alt="e.name" />                
+                  <img
+                    src={`https://dev.medflick.com/doctor/${docotorDetails.image}`}
+                    alt="e.name"
+                  />
                 </div>
                 <div className="doctorprofile-head">
                   <h1>

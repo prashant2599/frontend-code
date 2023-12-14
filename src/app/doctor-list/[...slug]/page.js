@@ -133,7 +133,10 @@ const page = async ({ params }) => {
                           (523){" "}
                         </div> */}
                           <div className="department-sub-shotdesc">
-                            {e.short_description}
+                            {e.short_description &&
+                            e.short_description.length > 200
+                              ? `${e.short_description.slice(0, 200)}...`
+                              : e.short_description}
                           </div>
                           <div className="doc-experience">
                             <div className="years-exper">

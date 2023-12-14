@@ -28,6 +28,8 @@ const page = async ({ params }) => {
     const qa = datas.treateDetailsbyCountry.qa;
     const faq = datas.treateDetailsbyCountry.faqs;
     const blog = datas.treateDetailsbyCountry.blogs;
+
+    console.log(doctor)
     return (
       <>
         <section id="treatment-section">
@@ -43,25 +45,16 @@ const page = async ({ params }) => {
         </section>
         <section id="treatment-banner">
           <div className="treatment-bannerimg">
-            <Image
+            <img
               src={`https://dev.medflick.com/treatments/${info.image}`}
-              width="738"
-              height="554"
               alt={info.slug}
+              style={{width:"50%"}}
             />
-            <Image
+            <img
               src={`https://dev.medflick.com/treatments/${info.image}`}
-              width="738"
-              height="554"
               alt={info.slug}
-              className="treatments-mobile-page-img"
+              style={{width:"50%"}}
             />
-            {/* <img
-            src={`${process.env.BASE_URL}/treatments/${info.image}`}
-            width="50%"
-            style={{ width: "50%" }}
-            alt={info.slug}
-          /> */}
           </div>
           <div className="midbox-inner  wiki-mk">
             <div className="treatment-headbox">

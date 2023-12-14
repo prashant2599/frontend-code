@@ -109,13 +109,13 @@ const Sdoctors = ({ treatment, doctor, hospitalIcon, combinedSlug, info }) => {
                     <div className="doctor-item-list" key={e.id}>
                       <div className="doctor-item-img">
                         <Link href={`/doctor/${e.slug}`}>
-                        <Image
-                          src={`https://dev.medflick.com/doctor/${e.image}`}
-                          alt={e.slug}
-                          width="181"
-                          height="221"
-                          className="doctor-speciality-img"
-                        />
+                          <Image
+                            src={`https://dev.medflick.com/doctor/${e.image}`}
+                            alt={e.slug}
+                            width="181"
+                            height="221"
+                            className="doctor-speciality-img"
+                          />
                         </Link>
                       </div>
                       <div className="doctor-item-doc">
@@ -138,8 +138,12 @@ const Sdoctors = ({ treatment, doctor, hospitalIcon, combinedSlug, info }) => {
                           (523){" "}
                         </div> */}
                         <div className="department-sub-shotdesc">
-                          {e.short_description}
+                          {e.short_description &&
+                          e.short_description.length > 200
+                            ? `${e.short_description.slice(0, 200)}...`
+                            : e.short_description}
                         </div>
+
                         <div className="doc-experience">
                           <div className="years-exper">
                             {e.experience_year}+ Years of Experience{" "}
