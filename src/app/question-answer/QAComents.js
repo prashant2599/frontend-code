@@ -4,6 +4,8 @@ import { FaComments } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { ThreeDots } from "react-loader-spinner";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const QAComents = ({ Id, specialityId, subspecialityId, treatments }) => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -29,10 +31,10 @@ const QAComents = ({ Id, specialityId, subspecialityId, treatments }) => {
 
   const handleClickComments = () => {
     if (!loggedIn) {
-      alert("Please login first.");
-      // toast.error("Please login first.", {
-      //   position: toast.POSITION.TOP_RIGHT,
-      // });
+      // alert("Please login first.");
+      toast.error("Please login first.", {
+        position: toast.POSITION.BOTTOM_LEFT,
+      });
     } else {
       setShowCommentInput(true);
     }
@@ -129,6 +131,7 @@ const QAComents = ({ Id, specialityId, subspecialityId, treatments }) => {
           </form>
         </div>
       )}
+      <ToastContainer />
     </>
   );
 };
