@@ -96,7 +96,9 @@ const HeaderSearch = ({ togglePopup }) => {
                     href={`/speciality/${doctor.slug}`}
                     onClick={() => {
                       setSearchQuery("");
-                      togglePopup();
+                      if (typeof togglePopup === "function") {
+                        togglePopup();
+                      }
                       router.push(`/speciality/${doctor.slug}`); // Navigate to the link
                     }}
                   >
@@ -123,7 +125,9 @@ const HeaderSearch = ({ togglePopup }) => {
                     href={`/treatment/${doctor.slug}`}
                     onClick={() => {
                       setSearchQuery("");
-                      togglePopup();
+                      if (typeof togglePopup === "function") {
+                        togglePopup();
+                      }
                       router.push(`/treatment/${doctor.slug}`); // Navigate to the link
                     }}
                   >
@@ -151,7 +155,9 @@ const HeaderSearch = ({ togglePopup }) => {
                     href={`/doctor/${doctor.slug}`}
                     onClick={() => {
                       setSearchQuery("");
-                      togglePopup();
+                      if (typeof togglePopup === "function") {
+                        togglePopup();
+                      }
                       router.push(`/doctor/${doctor.slug}`); // Navigate to the link
                     }}
                   >
@@ -179,7 +185,9 @@ const HeaderSearch = ({ togglePopup }) => {
                     href={`/hospital/${doctor.slug}/${doctor.country}`}
                     onClick={() => {
                       setSearchQuery("");
-                      togglePopup();
+                      if (typeof togglePopup === "function") {
+                        togglePopup();
+                      }
                       router.push(`/hospital/${doctor.slug}/${doctor.country}`); // Navigate to the link
                     }}
                   >
@@ -207,7 +215,9 @@ const HeaderSearch = ({ togglePopup }) => {
                     href={`/blog/${doctor.slug}`}
                     onClick={() => {
                       setSearchQuery("");
-                      togglePopup();
+                      if (typeof togglePopup === "function") {
+                        togglePopup();
+                      }
                       router.push(`/blog/${doctor.slug}`); // Navigate to the link
                     }}
                   >
