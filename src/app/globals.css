@@ -1813,6 +1813,7 @@ textarea {
   width: 100%;
   position: relative;
   overflow: hidden;
+  top: 1.9rem;
 }
 
 #category-slider img {
