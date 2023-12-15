@@ -1,63 +1,34 @@
 "use client";
-
-import React, { useState, useEffect, useRef } from "react";
-import ReCAPTCHA from "react-google-recaptcha";
+import React, { useState, useRef, useEffect } from "react";
+import Link from "next/link";
 import { ThreeDots } from "react-loader-spinner";
+import ReCAPTCHA from "react-google-recaptcha";
 import axios from "axios";
 import "intl-tel-input/build/css/intlTelInput.css";
 import intlTelInput from "intl-tel-input";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const AppointmentForm = ({ hospitalId, HospitalName }) => {
-  // form popup post method
+const HomeDoctorForm = ({ slug, first, middle, last }) => {
+  const [isPopupOpen2, setIsPopupOpen2] = useState(false);
+  const [name2, setName2] = useState("");
+  const [pcode2, setPcode2] = useState("");
+  const [phone2, setPhone2] = useState("");
+  const [email2, setEmail2] = useState("");
+  const [query2, setQuery2] = useState("");
 
-  const [userName, setUserName] = useState("");
-  const [userEmail, setUserEmail] = useState("");
-  const [userPhone, setUserPhone] = useState("");
-
-  const [name, setName] = useState("");
-  const [pcode, setPcode] = useState("+91");
-  const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
-  const [query, setQuery] = useState("");
-
-  const [isLoading, setIsLoading] = useState(false);
-
-  // form popup
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
-
-  const togglePopup = () => {
-    setIsPopupOpen((prev) => !prev);
+  const togglePopup2 = () => {
+    setIsPopupOpen2((prev) => !prev);
   };
 
-  const popupStyle = {
-    display: isPopupOpen ? "block" : "none",
+  const popupStyle2 = {
+    display: isPopupOpen2 ? "block" : "none",
   };
-
-  // Check if 'userName' exists in localStorage on component mount
-  useEffect(() => {
-    const storedUserName = localStorage.getItem("userName");
-    const storedUserEmail = localStorage.getItem("userEmail");
-    const storedUserPhone = localStorage.getItem("userPhone");
-
-    if (storedUserName) {
-      setUserName(storedUserName);
-    }
-
-    if (storedUserPhone) {
-      setUserPhone(storedUserPhone);
-    }
-
-    if (storedUserEmail) {
-      setUserEmail(storedUserEmail);
-    }
-  }, []);
 
   const inputRef = useRef(null);
 
   useEffect(() => {
-    if (isPopupOpen) {
+    if (isPopupOpen2) {
       const inputElement = inputRef.current;
 
       if (!inputElement) {
@@ -74,19 +45,21 @@ const AppointmentForm = ({ hospitalId, HospitalName }) => {
 
       inputElement.addEventListener("countrychange", () => {
         const selectedCountryData = iti.getSelectedCountryData();
-        setPcode(selectedCountryData.dialCode);
+        setPcode2(selectedCountryData.dialCode);
       });
 
       return () => {
         iti.destroy();
       };
     }
-  }, [isPopupOpen]);
+  }, [isPopupOpen2]);
 
   const handlePhoneNumberChange = (e) => {
-    const formattedPhoneNumber = e.target.value.replace(/\D/g, ""); 
-    setPhone(formattedPhoneNumber); 
+    const formattedPhoneNumber = e.target.value.replace(/\D/g, "");
+    setPhone2(formattedPhoneNumber);
   };
+
+  const [isLoading2, setIsLoading2] = useState(false);
 
   const [formErrors, setFormErrors] = useState({
     name: "",
@@ -95,14 +68,14 @@ const AppointmentForm = ({ hospitalId, HospitalName }) => {
     query: "",
     captcha: "",
   });
-
-  const [captchaValue, setCaptchaValue] = useState(null);
-  const handleCaptchaChange = (value) => {
-    setCaptchaValue(value);
+  const [captchaValue2, setCaptchaValue2] = useState(null);
+  const handleCaptchaChange2 = (value) => {
+    setCaptchaValue2(value);
   };
 
-  const handleFormSubmit = (event) => {
+  const handleFormSubmit2 = (event) => {
     event.preventDefault();
+
     setFormErrors({
       name: "",
       phone: "",
@@ -111,24 +84,19 @@ const AppointmentForm = ({ hospitalId, HospitalName }) => {
       captcha: "",
     });
 
-    const patientId = localStorage.getItem("userId");
-
     // Validation logic
     let isValid = true;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const phoneRegex = /^\d{10,}$/;
 
-    if (!userName) {
-      if (!name) {
-        setFormErrors((prevErrors) => ({
-          ...prevErrors,
-          name: "Please enter your name",
-        }));
-        isValid = false;
-      }
+    if (!name2) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        name: "Please enter your name",
+      }));
+      isValid = false;
     }
-
-    if (!phone || !phone.match(phoneRegex)) {
+    if (!phone2 || !phone2.match(phoneRegex)) {
       setFormErrors((prevErrors) => ({
         ...prevErrors,
         phone: "Please enter a valid Phone number",
@@ -136,7 +104,7 @@ const AppointmentForm = ({ hospitalId, HospitalName }) => {
       isValid = false;
     }
 
-    if (!email || !email.match(emailRegex)) {
+    if (!email2 || !email2.match(emailRegex)) {
       setFormErrors((prevErrors) => ({
         ...prevErrors,
         email: "Please enter a valid email address",
@@ -144,7 +112,7 @@ const AppointmentForm = ({ hospitalId, HospitalName }) => {
       isValid = false;
     }
 
-    if (!query) {
+    if (!query2) {
       setFormErrors((prevErrors) => ({
         ...prevErrors,
         query: "Please enter your query",
@@ -156,7 +124,7 @@ const AppointmentForm = ({ hospitalId, HospitalName }) => {
       return;
     }
 
-    if (!captchaValue) {
+    if (!captchaValue2) {
       setFormErrors((prevErrors) => ({
         ...prevErrors,
         captcha: "Please Fill the captcha",
@@ -167,19 +135,17 @@ const AppointmentForm = ({ hospitalId, HospitalName }) => {
     if (isValid) {
       // Create the data object to be sent in the API request
       const data = {
-        name: userName ? userName : name,
-        phone_code: pcode,
-        phone: phone,
-        email: userEmail ? userEmail : email,
-        messages: query,
-        patient_id: patientId,
-        hospital_id: hospitalId,
+        name: name2,
+        phone_code: pcode2,
+        phone: phone2,
+        email: email2,
+        messages: query2,
       };
 
       // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
-      const apiEndpoint = `https://dev.medflick.com/api/hospital_query`;
+      const apiEndpoint = `https://dev.medflick.com/api/doctor_query`;
 
-      setIsLoading(true);
+      setIsLoading2(true);
 
       // Make the API call
       axios
@@ -188,8 +154,8 @@ const AppointmentForm = ({ hospitalId, HospitalName }) => {
           toast.success("questions is susscefull submitted", {
             position: toast.POSITION.TOP_RIGHT,
           });
-          clearFormFields();
-          setIsPopupOpen(false);
+          clearFormFields2();
+          setIsPopupOpen2(false);
         })
         .catch((error) => {
           console.error("Error:", error);
@@ -201,20 +167,19 @@ const AppointmentForm = ({ hospitalId, HospitalName }) => {
           );
         })
         .finally(() => {
-          // Set loading back to false after the API call is complete
-          setIsLoading(false);
+          setIsLoading2(false);
         });
     }
   };
 
-  const clearFormFields = () => {
-    setName("");
-    setPhone("");
-    setEmail("");
-    setQuery("");
+  const clearFormFields2 = () => {
+    setName2("");
+    setPhone2("");
+    setEmail2("");
+    setQuery2("");
   };
 
-  const Formstyles = {
+  const Formstyles2 = {
     errorInput: {
       border: "2px solid red",
     },
@@ -233,7 +198,7 @@ const AppointmentForm = ({ hospitalId, HospitalName }) => {
   const phoneRegex = /^\d{10,}$/;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const handlePhoneBlur = () => {
-    if (!phone || !phone.match(phoneRegex)) {
+    if (!phone2 || !phone2.match(phoneRegex)) {
       setFormErrors((prevErrors) => ({
         ...prevErrors,
         phone: "Please enter a valid Phone number",
@@ -242,7 +207,7 @@ const AppointmentForm = ({ hospitalId, HospitalName }) => {
   };
 
   const handleEmailBlur = () => {
-    if (!email || !email.match(emailRegex)) {
+    if (!email2 || !email2.match(emailRegex)) {
       setFormErrors((prevErrors) => ({
         ...prevErrors,
         email: "Please enter a valid email address",
@@ -252,18 +217,22 @@ const AppointmentForm = ({ hospitalId, HospitalName }) => {
 
   const renderError = (error) =>
     error && <div className="error-message">{error}</div>;
-
   return (
     <>
-      <span
-        className="book-appointment"
-        onClick={togglePopup}
-        style={{ cursor: "pointer" }}
-      >
-        Enquire Now <img src="/images/2023/05/book.png" alt="icon" />
-      </span>
-      {isPopupOpen && (
-        <div className="popup" data-popup="popup-1" style={popupStyle}>
+      <div className="expert-button">
+        <Link className="view-profile" href={`/doctor/${slug}`}>
+          View Profile
+        </Link>
+        <a
+          className="book-appointment"
+          onClick={togglePopup2}
+          style={{ cursor: "pointer" }}
+        >
+          Book Appointment
+        </a>
+      </div>
+      {isPopupOpen2 && (
+        <div className="popup" data-popup="popup-1" style={popupStyle2}>
           <div className="popup-inner2">
             <div className="modal-content">
               <div className="modal-header">
@@ -272,28 +241,30 @@ const AppointmentForm = ({ hospitalId, HospitalName }) => {
                   className="popup-close"
                   data-popup-close="popup-1"
                   data-dismiss="modal"
-                  onClick={togglePopup}
+                  onClick={togglePopup2}
                 >
                   <span aria-hidden="true">×</span>
                 </button>
               </div>
-              <h2>
-                {" "}
-                Book Appointment at <br />
-                <span style={{ color: "#ff6800" }}>{HospitalName}</span> now!
+              <h2 style={{ padding: "0px" }}>
+                Book Appointment With
+                <span style={{ color: "#ff6800" }}>
+                  {first} {middle} {last}
+                </span>
+                now!
               </h2>
-              <form onSubmit={handleFormSubmit}>
+              <form onSubmit={handleFormSubmit2}>
                 <div className="treatment-form">
                   <div className="inputbox">
                     <label>Name</label>
                     <input
                       type="text"
-                      placeholder={userName}
+                      placeholder=""
                       name="name"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
+                      value={name2}
+                      onChange={(e) => setName2(e.target.value)}
                       autoComplete="off"
-                      style={formErrors.name ? Formstyles.errorInput : {}}
+                      style={formErrors.name ? Formstyles2.errorInput : {}}
                     />
                     {renderError(formErrors.name)}
                   </div>
@@ -307,33 +278,32 @@ const AppointmentForm = ({ hospitalId, HospitalName }) => {
                       type="tel"
                       id="mobileode"
                       placeholder=""
-                      value={phone}
+                      value={phone2}
                       onChange={handlePhoneNumberChange}
                       onBlur={handlePhoneBlur}
-                      style={formErrors.phone ? Formstyles.errorInput : {}}
+                      style={formErrors.phone ? Formstyles2.errorInput : {}}
                     />
                     {renderError(formErrors.phone)}
                   </div>
                 </div>
 
-                {userEmail ? null : (
-                  <div className="treatment-form">
-                    <div className="inputbox">
-                      <label>Email</label>
-                      <input
-                        type="email"
-                        placeholder=""
-                        name="name"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        onBlur={handleEmailBlur}
-                        autoComplete="off"
-                        style={formErrors.email ? Formstyles.errorInput : {}}
-                      />
-                      {renderError(formErrors.email)}
-                    </div>
+                <div className="treatment-form">
+                  <div className="inputbox">
+                    <label>Email</label>
+                    <input
+                      type="email"
+                      placeholder=""
+                      name="name"
+                      value={email2}
+                      onChange={(e) => setEmail2(e.target.value)}
+                      autoComplete="off"
+                      onBlur={handleEmailBlur}
+                      style={formErrors.email ? Formstyles2.errorInput : {}}
+                    />
+                    {renderError(formErrors.email)}
                   </div>
-                )}
+                </div>
+
                 <div className="treatment-form">
                   <div className="inputbox">
                     <label>Your Query</label>
@@ -343,27 +313,27 @@ const AppointmentForm = ({ hospitalId, HospitalName }) => {
                       name="query"
                       placeholder=""
                       rows="2"
-                      value={query}
-                      onChange={(e) => setQuery(e.target.value)}
+                      value={query2}
+                      onChange={(e) => setQuery2(e.target.value)}
                       autoComplete="off"
-                      style={formErrors.query ? Formstyles.errorInput : {}}
+                      style={formErrors.query ? Formstyles2.errorInput : {}}
                     ></textarea>
                     {renderError(formErrors.query)}
                   </div>
                 </div>
                 <ReCAPTCHA
                   sitekey="6LcX6-YnAAAAAAjHasYD8EWemgKlDUxZ4ceSo8Eo" // Replace with your reCAPTCHA site key
-                  onChange={handleCaptchaChange}
+                  onChange={handleCaptchaChange2}
                 />
                 {renderError(formErrors.captcha)}
                 <button
                   type="submit"
                   name="en"
                   className="home-button"
-                  disabled={isLoading}
+                  disabled={isLoading2}
                 >
                   {" "}
-                  {isLoading ? (
+                  {isLoading2 ? (
                     <ThreeDots
                       height="27"
                       width="80"
@@ -389,4 +359,4 @@ const AppointmentForm = ({ hospitalId, HospitalName }) => {
   );
 };
 
-export default AppointmentForm;
+export default HomeDoctorForm;

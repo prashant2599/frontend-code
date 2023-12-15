@@ -6,6 +6,8 @@ import { HospitalData } from "@/app/contex/HospitalDataContext";
 import Link from "next/link";
 import getALLCountry from "@/app/lib/getAllCountry";
 import getAllSpeciality from "@/app/lib/getAllSpeciality";
+import HomeDoctorForm from "../doctorForm/HomeDoctorForm";
+import HomeHospitalForm from "../hospitalForm/HomeHospitalForm";
 
 const NewSearchTreatment = () => {
   const { doctorsData } = useDoctorData();
@@ -152,14 +154,12 @@ const NewSearchTreatment = () => {
                     </Link>
                     <p>{e.designation}</p>
                   </div>
-                  <div className="expert-button">
-                    <Link className="view-profile" href={`/doctor/${e.slug}`}>
-                      View Profile
-                    </Link>
-                    <Link className="book-appointment" href="/query">
-                      Book Appointment
-                    </Link>
-                  </div>
+                  <HomeDoctorForm
+                    slug={e.slug}
+                    first={e.prefix}
+                    middle={e.first_name}
+                    last={e.last_name}
+                  />
                 </div>
               ))
             ) : (
@@ -213,17 +213,7 @@ const NewSearchTreatment = () => {
                         selectedCountry.slice(1)}
                     </p>
                   </div>
-                  <div className="expert-button">
-                    <Link
-                      className="view-profile"
-                      href={`/hospital/${e.slug}/${e.country}`}
-                    >
-                      View Profile
-                    </Link>
-                    <Link className="book-appointment" href="/query">
-                      Book Appointment
-                    </Link>
-                  </div>
+                  <HomeHospitalForm slug={e.slug} country={e.country} name={e.name} />
                 </div>
               ))
             ) : (

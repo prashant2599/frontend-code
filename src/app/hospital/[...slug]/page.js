@@ -207,20 +207,6 @@ const page = async ({ params }) => {
                       </div>
                     </div> */}
                   </div>
-
-                  {/* <div className="reviews-top-box">
-                    <p className="more">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore Ut enim ad
-                      minim veniam, quis nostrud exercitati.
-                    </p>
-                    <div className="name-month-box">
-                      Name
-                      <div className="month-box">
-                        <span></span>1 Month Ago
-                      </div>
-                    </div>
-                  </div> */}
                   <a href="#reviews" className="read-mor-reviews">
                     Read More Reviews
                   </a>

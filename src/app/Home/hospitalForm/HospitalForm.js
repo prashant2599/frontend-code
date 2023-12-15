@@ -6,6 +6,8 @@ import ReCAPTCHA from "react-google-recaptcha";
 import "intl-tel-input/build/css/intlTelInput.css"; // Import CSS
 import intlTelInput from "intl-tel-input";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const HospitalForm = ({ info }) => {
   // form submitting and validation of form
@@ -41,78 +43,83 @@ const HospitalForm = ({ info }) => {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  // State variables for error messages
-  const [nameError, setNameError] = useState("");
-  const [phoneError, setPhoneError] = useState("");
+  const [formErrors, setFormErrors] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    query: "",
+    captcha: "",
+  });
 
   const [captchaValue, setCaptchaValue] = useState(null);
 
   const handleCaptchaChange = (value) => {
     setCaptchaValue(value);
   };
-  // Email validations
-
-  const [emailValid, setEmailValid] = useState(true);
-  const [emailTouched, setEmailTouched] = useState(false); // Track if the email field has been touched
-  const [validationMessage, setValidationMessage] = useState("");
-
-  const handleEmailChange = (e) => {
-    const inputEmail = e.target.value;
-    setEmail(inputEmail);
-
-    if (emailTouched) {
-      validateEmail(inputEmail); // Validate email when touched
-    }
-  };
-
-  const validateEmail = (inputEmail) => {
-    const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
-    const isValid = emailPattern.test(inputEmail);
-
-    setEmailValid(isValid);
-    setValidationMessage(isValid ? "" : "Please enter a valid email address.");
-  };
-
-  const handleEmailBlur = () => {
-    setEmailTouched(true); // Mark email field as touched when it loses focus
-    validateEmail(email); // Validate email on blur
-  };
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    // Reset error messages
-    setNameError("");
-    setPhoneError("");
+    setFormErrors({
+      name: "",
+      phone: "",
+      email: "",
+      query: "",
+      captcha: "",
+    });
 
     const patientId = localStorage.getItem("userId");
 
     // Validation logic
     let isValid = true;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^\d{10,}$/;
 
     if (!userName) {
       if (!name) {
-        setNameError("Name is required");
+        setFormErrors((prevErrors) => ({
+          ...prevErrors,
+          name: "Please enter your name",
+        }));
         isValid = false;
       }
     }
-    
-    if (!userEmail) {
-      if (!emailValid) {
-        setValidationMessage("Please enter a valid email address.");
-        return;
-      }
+
+    if (!phone || !phone.match(phoneRegex)) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        phone: "Please enter a valid Phone number",
+      }));
+      isValid = false;
     }
 
-    if (!captchaValue) {
-      alert("Please complete the CAPTCHA.");
+    if (!email || !email.match(emailRegex)) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        email: "Please enter a valid email address",
+      }));
+      isValid = false;
+    }
+
+    if (!query) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        query: "Please enter your query",
+      }));
+      isValid = false;
+    }
+
+    if (!isValid) {
       return;
     }
 
-    const phoneRegex = /^\d{10,}$/; // Matches 10 or more digits
-    if (!phone || !phone.match(phoneRegex)) {
-      setPhoneError("Phone must have at least 10 digits");
-      isValid = false;
+    if (!captchaValue) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        captcha: "Please Fill the captcha",
+      }));
+      return;
     }
+
     if (isValid) {
       // Create the data object to be sent in the API request
       const data = {
@@ -133,16 +140,22 @@ const HospitalForm = ({ info }) => {
       // Make the API call
       axios
         .post(apiEndpoint, data)
-        .then((response) => {
-          // Handle the API response here if needed
-          console.log(response);
-          alert("questions is susscefull submitted");
+        .then((response) => {        
+          toast.success("questions is susscefull submitted", {
+            position: toast.POSITION.TOP_RIGHT,
+          });
 
           clearFormFields();
         })
         .catch((error) => {
           // Handle any errors that occurred during the API call
           console.error("Error:", error);
+          toast.error(
+            "There was an error submitting your questions. Please try again.",
+            {
+              position: toast.POSITION.TOP_RIGHT,
+            }
+          );
         })
         .finally(() => {
           // Set loading back to false after the API call is complete
@@ -203,15 +216,36 @@ const HospitalForm = ({ info }) => {
     setPhone(formattedPhoneNumber); // Update the phone number state
   };
 
+  const phoneRegex = /^\d{10,}$/;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const handlePhoneBlur = () => {
+    if (!phone || !phone.match(phoneRegex)) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        phone: "Please enter a valid Phone number",
+      }));
+    }
+  };
+
+  const handleEmailBlur = () => {
+    if (!email || !email.match(emailRegex)) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        email: "Please enter a valid email address",
+      }));
+    }
+  };
+
+  const renderError = (error) =>
+    error && <div className="error-message">{error}</div>;
+
   return (
     <>
       <div className="hospital-midbox-right">
         <div className="treatment-right">
           <h2>Need Assistance?</h2>
           <form onSubmit={handleFormSubmit}>
-            <div
-              className="treatment-form"
-            >
+            <div className="treatment-form">
               <div className="inputbox">
                 <label>Name</label>
                 <input
@@ -221,11 +255,9 @@ const HospitalForm = ({ info }) => {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   autoComplete="off"
-                  style={nameError ? Formstyles.errorInput : {}}
+                  style={formErrors.name ? Formstyles.errorInput : {}}
                 />
-                {nameError && (
-                  <span style={Formstyles.errorMessage}>{nameError}</span>
-                )}
+                {renderError(formErrors.name)}
               </div>
             </div>
 
@@ -239,7 +271,10 @@ const HospitalForm = ({ info }) => {
                   placeholder=""
                   value={phone}
                   onChange={handlePhoneNumberChange}
+                  onBlur={handlePhoneBlur}
+                  style={formErrors.phone ? Formstyles.errorInput : {}}
                 />
+                {renderError(formErrors.phone)}
               </div>
             </div>
 
@@ -252,16 +287,13 @@ const HospitalForm = ({ info }) => {
                     placeholder=""
                     name="name"
                     value={email}
-                    onChange={handleEmailChange}
+                    onChange={(e) => setEmail(e.target.value)}
                     onBlur={handleEmailBlur}
                     autoComplete="off"
+                    style={formErrors.email ? Formstyles.errorInput : {}}
                   />
+                  {renderError(formErrors.email)}
                 </div>
-              </div>
-            )}
-            {!emailValid && (
-              <div className="error-message" style={{ color: "red" }}>
-                {validationMessage}
               </div>
             )}
 
@@ -277,13 +309,16 @@ const HospitalForm = ({ info }) => {
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   autoComplete="off"
+                  style={formErrors.query ? Formstyles.errorInput : {}}
                 ></textarea>
+                {renderError(formErrors.query)}
               </div>
             </div>
             <ReCAPTCHA
               sitekey="6LcX6-YnAAAAAAjHasYD8EWemgKlDUxZ4ceSo8Eo" // Replace with your reCAPTCHA site key
               onChange={handleCaptchaChange}
             />
+            {renderError(formErrors.captcha)}
             <button
               type="submit"
               name="en"
@@ -310,6 +345,7 @@ const HospitalForm = ({ info }) => {
           </form>
         </div>
       </div>
+      <ToastContainer />
     </>
   );
 };

@@ -6,6 +6,8 @@ import { ThreeDots } from "react-loader-spinner";
 import ReCAPTCHA from "react-google-recaptcha";
 import "intl-tel-input/build/css/intlTelInput.css"; // Import CSS
 import intlTelInput from "intl-tel-input";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const QueryForm = () => {
   // form query post api
@@ -16,10 +18,13 @@ const QueryForm = () => {
   const [query, setQuery] = useState("");
 
   const [isLoading, setIsLoading] = useState(false);
-
-  const [nameError, setNameError] = useState("");
-  const [phoneError, setPhoneError] = useState("");
-  const [emailError, setEmailError] = useState("");
+  const [formErrors, setFormErrors] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    query: "",
+    captcha: "",
+  });
 
   const [captchaValue, setCaptchaValue] = useState(null);
 
@@ -53,26 +58,60 @@ const QueryForm = () => {
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
-    setNameError("");
-    setPhoneError("");
-    setEmailError("");
+    setFormErrors({
+      name: "",
+      phone: "",
+      email: "",
+      query: "",
+      captcha: "",
+    });
 
     // Validation logic
     let isValid = true;
+    const phoneRegex = /^\d{10,}$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!name) {
-      setNameError("Name is required");
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        name: "Please enter your name",
+      }));
       isValid = false;
     }
-    if (!captchaValue) {
-      alert("Please complete the CAPTCHA.");
+    if (!phone || !phone.match(phoneRegex)) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        phone: "Please enter a valid Phone number",
+      }));
+      isValid = false;
+    }
+
+    if (!email || !email.match(emailRegex)) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        email: "Please enter a valid email address",
+      }));
+      isValid = false;
+    }
+
+    if (!query) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        query: "Please enter your query",
+      }));
+      isValid = false;
+    }
+
+    if (!isValid) {
       return;
     }
 
-    const phoneRegex = /^\d{10,}$/; // Matches 10 or more digits
-    if (!phone || !phone.match(phoneRegex)) {
-      setPhoneError("Phone must have at least 10 digits");
-      isValid = false;
+    if (!captchaValue) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        captcha: "Please Fill the captcha",
+      }));
+      return;
     }
 
     if (isValid) {
@@ -94,14 +133,19 @@ const QueryForm = () => {
       axios
         .post(apiEndpoint, data)
         .then((response) => {
-          // Handle the API response here if needed
-          console.log(response);
-          alert("questions is susscefull submitted");
+          toast.success("questions is susscefull submitted", {
+            position: toast.POSITION.TOP_RIGHT,
+          });
           clearFormFields();
         })
         .catch((error) => {
-          // Handle any errors that occurred during the API call
           console.error("Error:", error);
+          toast.error(
+            "There was an error submitting your questions. Please try again.",
+            {
+              position: toast.POSITION.TOP_RIGHT,
+            }
+          );
         })
         .finally(() => {
           // Set loading back to false after the API call is complete
@@ -138,39 +182,56 @@ const QueryForm = () => {
     const formattedPhoneNumber = e.target.value.replace(/\D/g, ""); // Remove non-numeric characters
     setPhone(formattedPhoneNumber); // Update the phone number state
   };
+
+  const phoneRegex = /^\d{10,}$/;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const handlePhoneBlur = () => {
+    if (!phone || !phone.match(phoneRegex)) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        phone: "Please enter a valid Phone number",
+      }));
+    }
+  };
+
+  const handleEmailBlur = () => {
+    if (!email || !email.match(emailRegex)) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        email: "Please enter a valid email address",
+      }));
+    }
+  };
+
+  const renderError = (error) =>
+    error && <div className="error-message">{error}</div>;
   return (
     <>
-      <section id="query-form">
+      <section id="query-form-page">
         <div className="midbox-inner  wiki-mk">
           <img
             src="images/2023/02/logo.png"
             className="logo-med"
             alt="Brand Logo"
           />
-          <div className="query-form">
+          <div className="query-form-page">
             <h1>Query Form</h1>
 
             <div className="treatment-right">
               <form onSubmit={handleFormSubmit}>
-                <div
-                  className="treatment-form"
-                  style={nameError ? Formstyles.errorInput : {}}
-                >
+                <div className="treatment-form">
                   <div className="inputbox">
                     <label>Name</label>
                     <input
                       type="text"
                       placeholder=""
                       name="name"
-                      required
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       autoComplete="off"
-                      style={nameError ? Formstyles.errorInput : {}}
+                      style={formErrors.name ? Formstyles.errorInput : {}}
                     />
-                    {nameError && (
-                      <span style={Formstyles.errorMessage}>{nameError}</span>
-                    )}
+                    {renderError(formErrors.name)}
                   </div>
                 </div>
 
@@ -184,7 +245,10 @@ const QueryForm = () => {
                       placeholder=""
                       value={phone}
                       onChange={handlePhoneNumberChange}
+                      onBlur={handlePhoneBlur}
+                      style={formErrors.phone ? Formstyles.errorInput : {}}
                     />
+                    {renderError(formErrors.phone)}
                   </div>
                 </div>
 
@@ -197,8 +261,11 @@ const QueryForm = () => {
                       name="name"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
+                      onBlur={handleEmailBlur}
                       autoComplete="off"
+                      style={formErrors.email ? Formstyles.errorInput : {}}
                     />
+                    {renderError(formErrors.email)}
                   </div>
                 </div>
 
@@ -214,13 +281,16 @@ const QueryForm = () => {
                       value={query}
                       onChange={(e) => setQuery(e.target.value)}
                       autoComplete="off"
+                      style={formErrors.query ? Formstyles.errorInput : {}}
                     ></textarea>
+                    {renderError(formErrors.query)}
                   </div>
                 </div>
                 <ReCAPTCHA
                   sitekey="6LcX6-YnAAAAAAjHasYD8EWemgKlDUxZ4ceSo8Eo" // Replace with your reCAPTCHA site key
                   onChange={handleCaptchaChange}
                 />
+                {renderError(formErrors.captcha)}
                 <p>
                   I agree to the <a href="#">Terms of use Privacy policy</a> and
                   receive marketing letters that may be of interest.

@@ -5506,7 +5506,7 @@ ul.tabs li.active {
   font-size: 13px;
   text-align: right;
   color: #7c7c7c;
-  font-weight: 400;
+  font-weight: 600;
   justify-content: space-between;
 }
 
@@ -7629,7 +7629,7 @@ footer {
 /*------footer-----*/
 
 /*------Query Form-----*/
-#query-form {
+#query-form-page {
   width: 100%;
   height: auto;
   padding: 20px 0 40x;
@@ -7640,21 +7640,21 @@ footer {
   border-top: 1px solid #d3d3d3;
 }
 
-.query-form {
+.query-form-page {
   width: 500px;
   margin: 20px auto;
   padding: 20px;
   position: relative;
 }
 
-#query-form .logo-med {
+#query-form-page .logo-med {
   width: 160px;
   margin: 0px auto;
   padding-top: 50px;
   display: flex;
 }
 
-#query-form h1 {
+#query-form-page h1 {
   font-family: Helvetica Neue Medium;
   color: #000000;
   font-size: 32px;
@@ -7664,19 +7664,19 @@ footer {
   margin-bottom: 30px;
 }
 
-#query-form p {
+#query-form-page p {
   font-size: 18px;
   margin: 10px 0px;
   padding-bottom: 20px;
   color: #7c7c7c;
 }
 
-#query-form label {
+#query-form-page label {
   font-size: 16px;
   margin-bottom: 10px !important;
 }
 
-#query-form .treatment-right {
+#query-form-page .treatment-right {
   position: relative;
   width: 100%;
   height: auto;
@@ -7685,17 +7685,18 @@ footer {
   border-radius: 10px;
   padding: 20px 30px;
   margin-bottom: 20px;
+  right: 0px;
 }
 
-#query-form .treatment-form {
+#query-form-page .treatment-form {
   padding-bottom: 20px;
 }
 
-#query-form .treatment-form input {
+#query-form-page .treatment-form input {
   height: 42px !important;
 }
 
-#query-form .treatment-form .querybox {
+#query-form-page .treatment-form .querybox {
   height: 180px !important;
 }
 
@@ -9652,16 +9653,16 @@ footer {
   /*------footer-----*/
 
   /*------Query Form-----*/
-  .query-form {
+  .query-form-page {
     width: 100%;
     padding: 0px;
   }
 
-  #query-form .treatment-right {
+  #query-form-page .treatment-right {
     display: block;
   }
 
-  #query-form h1 {
+  #query-form-page h1 {
     font-size: 25px;
     line-height: 25px;
     margin-top: 15px;
@@ -10996,7 +10997,7 @@ nav li:last-child {
 }
 
 .popup-inner2 h2 {
-  text-align: center;
+  text-align: center !important;
   margin: 0px 0 20px;
 }
 
@@ -11319,6 +11320,7 @@ nav li:last-child {
   bottom: 0px;
   border: 0px;
   padding: 0px;
+  right: 0px;
 }
 
 .popup-inner5 label {
