@@ -32,22 +32,7 @@ export default function Home() {
       <NewBlogs />
       <NewFindHospitalDoctors />
       <NewStayInTouch />
-      {/* <Section1 />
-      
-        <Section2 />
-        <Section3 />
-        <HospitalSection />
-        <DoctorExpert />
-        <ExplorHealth />
-        <InternationalPlatform />
-        <DoctorSection />
-        <HealthPackage />
-        <HealthQuerys />
-        <Testimonials />
-        <About />
-        <WorldMap />
-        <Faq />
-        <Blog /> */}
+     
     </main>
   );
 }
