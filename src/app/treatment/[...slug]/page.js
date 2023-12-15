@@ -28,8 +28,6 @@ const page = async ({ params }) => {
     const qa = datas.treateDetailsbyCountry.qa;
     const faq = datas.treateDetailsbyCountry.faqs;
     const blog = datas.treateDetailsbyCountry.blogs;
-
-    console.log(doctor)
     return (
       <>
         <section id="treatment-section">
