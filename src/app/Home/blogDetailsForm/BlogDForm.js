@@ -27,6 +27,7 @@ const BlogDForm = () => {
     query: "",
     captcha: "",
   });
+
   const [captchaValue1, setCaptchaValue1] = useState(null);
 
   const handleCaptchaChange1 = (value) => {
@@ -168,6 +169,12 @@ const BlogDForm = () => {
         .catch((error) => {
           // Handle any errors that occurred during the API call
           console.error("Error:", error);
+          toast.error(
+            "There was an error submitting your questions. Please try again.",
+            {
+              position: toast.POSITION.TOP_RIGHT,
+            }
+          );
         })
         .finally(() => {
           // Set loading back to false after the API call is complete
@@ -190,6 +197,27 @@ const BlogDForm = () => {
       color: "#333",
       marginTop: "1rem",
     },
+  };
+
+  const phoneRegex = /^\d{10,}$/;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  const handlePhoneBlur = () => {
+    if (!phone1 || !phone1.match(phoneRegex)) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        phone: "Please enter a valid Phone number",
+      }));
+    }
+  };
+
+  const handleEmailBlur = () => {
+    if (!email1 || !email1.match(emailRegex)) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        email: "Please enter a valid email address",
+      }));
+    }
   };
 
   const renderError = (error) =>
@@ -227,6 +255,7 @@ const BlogDForm = () => {
                   placeholder=""
                   value={phone1}
                   onChange={handlePhoneNumberChange}
+                  onBlur={handlePhoneBlur}
                   style={formErrors.phone ? Formstyles.errorInput : {}}
                 />
                 {renderError(formErrors.phone)}
@@ -243,6 +272,7 @@ const BlogDForm = () => {
                   value={email1}
                   onChange={(e) => setEmail1(e.target.value)}
                   autoComplete="off"
+                  onBlur={handleEmailBlur}
                   style={formErrors.email ? Formstyles.errorInput : {}}
                 />
                 {renderError(formErrors.email)}

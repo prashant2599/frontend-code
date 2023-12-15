@@ -78,40 +78,6 @@ const page = async ({ params }) => {
         </section>
         <section id="find-hospital-list">
           <div className="midbox-inner  wiki-mk">
-            {/* {info.hos_title && position1 === matchingCity && (
-            <>
-              <h1>
-                Best {info.name} Hospitals in {formattedcity},{" "}
-                {formattedcountry} <span>({hospital.length} Results)</span>
-              </h1>
-            </>
-          )}
-          {info.hos_title &&
-            position1 !== "city" &&
-            matchedTreatment &&
-            position1 === matchedTreatment.slug && (
-              <>
-                <h1>
-                  Best {formattedposition1} Hospitals in {formattedcountry}{" "}
-                  <span>({hospital.length} Results)</span>
-                </h1>
-              </>
-            )}
-          {info.hos_title &&
-            position1 === matchingCountry &&
-            !matchedTreatment && (
-              <>
-                <h1>
-                  Best {info.name} Hospitals in {formattedcountry}{" "}
-                  <span>({hospital.length} Results)</span>
-                </h1>
-              </>
-            )} */}
-            {/* <h1>
-            Medflick Assured Hospitals In India{" "}
-            <span>({hospital.length} Results)</span>
-          </h1> */}
-
             <HospitalFilters
               hospital={hospital}
               slug={combinedSlug}
@@ -166,35 +132,7 @@ const page = async ({ params }) => {
                                       ))}
                                   </React.Fragment>
                                 ))}
-
-                                {/* {galleryImages.map((e) => (
-                                <li class="active" id="tab1" key={e.id}>
-                                  <img src={`${process.env.BASE_URL}/hospital/${hospital.image}`} />{" "}
-                                </li>
-                              ))}
-                               {galleryImages.map((e) => (
-                                <li class="active" id="tab1" key={e.id}>
-                                  <img src={`${process.env.BASE_URL}/hospital/${hospital.image}`} />{" "}
-                                </li>
-                              ))} */}
                               </ul>
-
-                              {/* <div className="activeImage" data-hash="two">
-                              {galleryImages.map(
-                                (e, outerIndex) =>
-                                  e.icon &&
-                                  e.icon.split(",").map((icon, innerIndex) => (
-                                    <img
-                                      key={`${outerIndex}-${innerIndex}`} // Provide a unique key for each image
-                                      src={`${
-                                        process.env.BASE_URL
-                                      }/hospital/${icon.trim()}`}
-                                      alt={icon.trim()} // Use the image filename as the alt text
-                                      width="50%"
-                                    />
-                                  ))
-                              )}
-                            </div> */}
                             </div>
                           </div>
                         </div>
@@ -252,7 +190,10 @@ const page = async ({ params }) => {
                             </div>
                           )}
                           <div className="department-sub-shotdesc">
-                            {hospital.short_description}
+                            {hospital.short_description &&
+                            hospital.short_description.length > 200
+                              ? `${hospital.short_description.slice(0, 200)}...`
+                              : hospital.short_description}
                           </div>
                         </div>
 

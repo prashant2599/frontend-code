@@ -228,12 +228,7 @@ const Allpopudp = () => {
           src="/images/2023/07/query-img.png"
           alt="query-img"
         />
-        <Image
-          className="footer-but-m"
-          src="/images/2023/free.png"
-          width="200"
-          height="46"
-        />
+        <img className="footer-but-m" src="/images/2023/free.png" />
       </button>
       <div className="form-popup" id="myForm" style={popupStyle}>
         <div className="form-container">

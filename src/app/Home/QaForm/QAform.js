@@ -33,42 +33,20 @@ const QAform = () => {
   }, []);
 
   const [name1, setName1] = useState("");
-  const [pcode1, setPcode1] = useState("91");
+  const [pcode1, setPcode1] = useState("+91");
   const [phone1, setPhone1] = useState("");
   const [email1, setEmail1] = useState("");
   const [query1, setQuery1] = useState("");
 
   const [isLoading1, setIsLoading1] = useState(false);
-  // State variables for error messages
-  const [nameError1, setNameError1] = useState("");
-  const [phoneError1, setPhoneError1] = useState("");
+  const [formErrors, setFormErrors] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    query: "",
+    captcha: "",
+  });
   const [captchaValue1, setCaptchaValue1] = useState(null);
-
-  const [emailValid, setEmailValid] = useState(true);
-  const [emailTouched, setEmailTouched] = useState(false);
-  const [validationMessage, setValidationMessage] = useState("");
-
-  const handleEmailChange = (e) => {
-    const inputEmail = e.target.value;
-    setEmail1(inputEmail);
-
-    if (emailTouched) {
-      validateEmail(inputEmail); // Validate email when touched
-    }
-  };
-
-  const validateEmail = (inputEmail) => {
-    const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
-    const isValid = emailPattern.test(inputEmail);
-
-    setEmailValid(isValid);
-    setValidationMessage(isValid ? "" : "Please enter a valid email address.");
-  };
-
-  const handleEmailBlur = () => {
-    setEmailTouched(true); // Mark email field as touched when it loses focus
-    validateEmail(email1); // Validate email on blur
-  };
 
   const handleCaptchaChange1 = (value) => {
     setCaptchaValue1(value);
@@ -84,30 +62,52 @@ const QAform = () => {
   const handleFormSubmit1 = (event) => {
     event.preventDefault();
 
-    setNameError1("");
-    setPhoneError1("");
+    setFormErrors({
+      name: "",
+      phone: "",
+      email: "",
+      query: "",
+      captcha: "",
+    });
 
     const patientId = localStorage.getItem("userId");
 
     // Validation logic
     let isValid = true;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^\d{10,}$/;
 
     if (!userName) {
       if (!name1) {
-        setNameError1("Please enter your name");
+        setFormErrors((prevErrors) => ({
+          ...prevErrors,
+          name: "Please enter your name",
+        }));
         isValid = false;
       }
     }
-    if (!userEmail) {
-      if (!emailValid) {
-        setValidationMessage("Please enter a valid email address.");
-        return;
-      }
+
+    if (!phone1 || !phone1.match(phoneRegex)) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        phone: "Please enter a valid Phone number",
+      }));
+      isValid = false;
     }
 
-    const phoneRegex = /^\d{10,}$/; // Matches 10 or more digits
-    if (!phone1 || !phone1.match(phoneRegex)) {
-      setPhoneError1("Please enter a valid Phone number");
+    if (!email1 || !email1.match(emailRegex)) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        email: "Please enter a valid email address",
+      }));
+      isValid = false;
+    }
+
+    if (!query1) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        query: "Please enter your query",
+      }));
       isValid = false;
     }
 
@@ -116,7 +116,10 @@ const QAform = () => {
     }
 
     if (!captchaValue1) {
-      alert("Please complete the CAPTCHA.");
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        captcha: "Please Fill the captcha",
+      }));
       return;
     }
     if (isValid) {
@@ -200,6 +203,28 @@ const QAform = () => {
     },
   };
 
+  const phoneRegex = /^\d{10,}$/;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  const handlePhoneBlur = () => {
+    if (!phone1 || !phone1.match(phoneRegex)) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        phone: "Please enter a valid Phone number",
+      }));
+    }
+  };
+
+  const handleEmailBlur = () => {
+    if (!email1 || !email1.match(emailRegex)) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        email: "Please enter a valid email address",
+      }));
+    }
+  };
+  const renderError = (error) =>
+    error && <div className="error-message">{error}</div>;
   return (
     <>
       <div className="questions-ans-right">
@@ -217,11 +242,9 @@ const QAform = () => {
                   value={name1}
                   onChange={(e) => setName1(e.target.value)}
                   autoComplete="off"
-                  style={nameError1 ? Formstyles.errorInput : {}}
+                  style={formErrors.name ? Formstyles.errorInput : {}}
                 />
-                {nameError1 && (
-                  <div className="error-message">{nameError1}</div>
-                )}
+                {renderError(formErrors.name)}
               </div>
             </div>
 
@@ -235,11 +258,10 @@ const QAform = () => {
                   placeholder=""
                   value={phone1}
                   onChange={handlePhoneNumberChange}
-                  style={phoneError1 ? Formstyles.errorInput : {}}
+                  onBlur={handlePhoneBlur}
+                  style={formErrors.phone ? Formstyles.errorInput : {}}
                 />
-                {phoneError1 && (
-                  <div className="error-message">{phoneError1}</div>
-                )}
+                {renderError(formErrors.phone)}
               </div>
             </div>
 
@@ -252,18 +274,15 @@ const QAform = () => {
                     placeholder=""
                     name="name"
                     value={email1}
-                    onChange={handleEmailChange}
+                    onChange={(e) => setEmail1(e.target.value)}
                     onBlur={handleEmailBlur}
+                    style={formErrors.email ? Formstyles.errorInput : {}}
                     autoComplete="off"
                   />
                 </div>
               </div>
             )}
-            {!emailValid && (
-              <div className="error-message" style={{ color: "red" }}>
-                {validationMessage}
-              </div>
-            )}
+            {renderError(formErrors.email)}
 
             <div className="treatment-form">
               <div className="inputbox">
@@ -277,14 +296,16 @@ const QAform = () => {
                   value={query1}
                   onChange={(e) => setQuery1(e.target.value)}
                   autoComplete="off"
+                  style={formErrors.query ? Formstyles.errorInput : {}}
                 ></textarea>
+                {renderError(formErrors.query)}
               </div>
             </div>
             <ReCAPTCHA
               sitekey="6LcX6-YnAAAAAAjHasYD8EWemgKlDUxZ4ceSo8Eo" // Replace with your reCAPTCHA site key
               onChange={handleCaptchaChange1}
             />
-
+            {renderError(formErrors.captcha)}
             <button
               type="submit"
               name="en"

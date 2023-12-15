@@ -5,7 +5,6 @@ import Link from "next/link";
 import HeaderSearch from "./HeaderSearch";
 import { useUser } from "@/app/UserContext";
 import { useRouter } from "next/navigation";
-import Script from "next/script";
 import { VscAccount } from "react-icons/vsc";
 
 const LoginButton = () => {
