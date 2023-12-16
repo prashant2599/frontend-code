@@ -14806,6 +14806,10 @@ pre code {
   display: block !important;
   padding: 0px !important;
 }
+
+.popup-inner2-list-page {
+  text-align: center;
+}
 }
 
 .header .qsk-question {
@@ -14865,4 +14869,18 @@ pre code {
 
 .error-message {
   color: red !important;
+}
+
+
+.popup-inner2-list-page {
+  max-width: 400px;
+  width: 90%;
+  padding: 20px;
+  position: absolute;
+  top: 50%;
+  left: 38%;
+  transform: translate(-50%, -50%);
+  border-radius: 16px;
+  border-top: 8px solid #ff6800;
+  background: #fff;
 }

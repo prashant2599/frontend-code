@@ -231,7 +231,7 @@ const DoctorListPopForm = ({ first, middle, last, doctorId }) => {
       </a>
       {isPopupOpen2 && (
         <div className="popup" data-popup="popup-1" style={popupStyle2}>
-          <div className="popup-inner2">
+          <div className="popup-inner2-list-page">
             <div className="modal-content">
               <div className="modal-header">
                 <button
