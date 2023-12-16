@@ -46,12 +46,12 @@ const page = async ({ params }) => {
             <img
               src={`https://dev.medflick.com/treatments/${info.image}`}
               alt={info.slug}
-              style={{width:"50%"}}
+              style={{ width: "50%" }}
             />
             <img
               src={`https://dev.medflick.com/treatments/${info.image}`}
               alt={info.slug}
-              style={{width:"50%"}}
+              style={{ width: "50%" }}
             />
           </div>
           <div className="midbox-inner  wiki-mk">
@@ -117,107 +117,107 @@ const page = async ({ params }) => {
                       Overview
                     </a>
                   </li>
-                  <li>
-                    {info.head_brief && (
+                  {info.head_brief && (
+                    <li>
                       <a href="#transplant-nav2">{info.head_brief}</a>
-                    )}
-                  </li>
-                  <li>
-                    {info.head_needed && (
+                    </li>
+                  )}
+                  {info.head_needed && (
+                    <li>
                       <a href="#transplant-nav3">{info.head_needed}</a>
-                    )}
-                  </li>
-                  <li>
-                    {info.head_types && (
+                    </li>
+                  )}
+                  {info.head_types && (
+                    <li>
                       <a href="#transplant-nav4" target="_self">
                         {info.head_types}
                       </a>
-                    )}
-                  </li>
-                  <li>
-                    {info.head_complications && (
+                    </li>
+                  )}
+                  {info.head_complications && (
+                    <li>
                       <a href="#transplant-nav7" target="_self">
                         {info.head_complications}
                       </a>
-                    )}
-                  </li>
-                  <li>
-                    {info.head_post_procedure && (
+                    </li>
+                  )}
+                  {info.head_post_procedure && (
+                    <li>
                       <a href="#transplant-nav8" target="_self">
                         {info.head_post_procedure}
                       </a>
-                    )}
-                  </li>
-                  <li>
-                    {info.head_life_after && (
+                    </li>
+                  )}
+                  {info.head_life_after && (
+                    <li>
                       <a href="#transplant-nav9" target="_self">
                         {info.head_life_after}
                       </a>
-                    )}
-                  </li>
-                  <li>
-                    {info.head_success_ate && (
+                    </li>
+                  )}
+                  {info.head_success_ate && (
+                    <li>
                       <a href="#transplant-nav10" target="_self">
                         {info.head_success_ate}
                       </a>
-                    )}
-                  </li>
-                  <li>
-                    {info.head_analysis_and_comparision && (
+                    </li>
+                  )}
+                  {info.head_analysis_and_comparision && (
+                    <li>
                       <a href="#transplant-nav11" target="_self">
                         {info.head_analysis_and_comparision}
                       </a>
-                    )}
-                  </li>
-                  <li>
-                    {info.head_domestic && (
+                    </li>
+                  )}
+                  {info.head_domestic && (
+                    <li>
                       <a href="#transplant-nav12" target="_self">
                         {info.head_domestic}
                       </a>
-                    )}
-                  </li>
-                  <li>
-                    {info.head_pre_evalution && (
+                    </li>
+                  )}
+                  {info.head_pre_evalution && (
+                    <li>
                       <a href="#transplant-nav21" target="_self">
                         {info.head_pre_evalution}
                       </a>
-                    )}
-                  </li>
-                  <li>
-                    {info.head_international && (
+                    </li>
+                  )}
+                  {info.head_international && (
+                    <li>
                       <a href="#transplant-nav13" target="_self">
                         {info.head_international}
                       </a>
-                    )}
-                  </li>
-                  <li>
-                    {info.head_how_treatment && (
+                    </li>
+                  )}
+                  {info.head_how_treatment && (
+                    <li>
                       <a href="#transplant-nav31" target="_self">
                         {info.head_how_treatment}
                       </a>
-                    )}
-                  </li>
-                  <li>
-                    {info.head_cost_influencing && (
+                    </li>
+                  )}
+                  {info.head_cost_influencing && (
+                    <li>
                       <a href="#transplant-nav14" target="_self">
                         {info.head_cost_influencing}
                       </a>
-                    )}
-                  </li>
-                  <li>
-                    {info.head_cost_of_diagnostics && (
+                    </li>
+                  )}
+                  {info.head_cost_of_diagnostics && (
+                    <li>
                       <a href="#transplant-nav44" target="_self">
                         {info.head_cost_of_diagnostics}
                       </a>
-                    )}
-                  </li>
-                  <li>
-                    {info.head_our_service && (
+                    </li>
+                  )}
+                  {info.head_our_service && (
+                    <li>
                       <a href="#transplant-nav15" target="_self">
                         {info.head_our_service}
                       </a>
-                    )}
-                  </li>
+                    </li>
+                  )}
                   <li>
                     <a href="#transplant-nav16" target="_self">
                       Doctors

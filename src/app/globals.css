@@ -1429,12 +1429,6 @@ section {
   position: relative;
 }
 
-.homeform-left {
-  width: 50%;
-  padding: 20px;
-  position: relative;
-  display: block;
-}
 
 .home-form ::placeholder {
   color: #666666;
@@ -2976,7 +2970,7 @@ textarea {
   font-weight: Bold;
   font-size: 18px;
   border-radius: 8px;
-  padding: 12px 162px 12px 10px;
+  padding: 12px 145px 12px 10px;
   position: relative;
 }
 
@@ -8607,7 +8601,7 @@ footer {
   }
 
   .treatment-leftbox li {
-    flex: 0 0 220px;
+    flex: 0 0 165px;
     border: 0px solid #e2e4ea;
   }
 
@@ -9258,19 +9252,9 @@ footer {
   /*------END Blog-----*/
 
   /*------Contact-----*/
-  .contact-box {
-    padding: 25px 10px;
-  }
+ 
 
-  .contact-box h1 {
-    font-size: 30px;
-    width: 100%;
-  }
-
-  .contact-box p {
-    font-size: 16px;
-    width: 100%;
-  }
+ 
 
   .support-medflick {
     margin: 20px 0 20px;
@@ -9333,6 +9317,7 @@ footer {
 
   #get-free-consultation .homeform-left {
     padding: 20px 5px;
+    width: 100%;
   }
 
   #get-free-consultation .questions-form {
@@ -14499,10 +14484,6 @@ pre code {
     overflow-x: scroll;
   }
 
-  .treatment-leftbox li {
-    flex: 0 0 220px;
-    border: 0px solid #e2e4ea;
-  }
 
   #blog-list-medflick h1 {
     font-size: 30px;
@@ -14810,6 +14791,21 @@ pre code {
   #home-doc-hos .related-doctors{
     width: 50% !important;
   }
+  .contact-box {
+    padding: 25px 10px !important;
+}
+.contact-box h1 {
+  font-size: 30px !important;
+  width: 100% !important;
+}
+.contact-box p {
+  font-size: 16px !important;
+  width: 100% !important;
+}
+#get-free-consultation .treatment-right {
+  display: block !important;
+  padding: 0px !important;
+}
 }
 
 .header .qsk-question {
@@ -14829,34 +14825,7 @@ pre code {
 #get-free-consultation .contact-box {
   padding: 50px;
 }
-.contact-box {
-  background: linear-gradient(90deg, #fe7d5e 0%, #fe7d5e 35%, #ffa774 100%);
-  border-radius: 20px;
-  padding: 60px 0;
-  display: flex;
-  align-items: center;
-  position: relative;
-  flex-direction: column;
-  overflow: hidden;
-  z-index: 1;
-}
-.contact-box h1 {
-  font-size: 65px;
-  color: #ffffff;
-  font-weight: 400;
-  width: 60%;
-  margin: 0px auto;
-  font-family: Helvetica Neue Medium;
-  text-align: center;
-}
-.contact-box p {
-  font-size: 18px;
-  color: #ffffff;
-  width: 60%;
-  margin: 0px auto;
-  padding: 10px 0;
-  text-align: center;
-}
+
 #get-free-consultation .questions-form {
   box-shadow: none;
   margin-top: 60px;

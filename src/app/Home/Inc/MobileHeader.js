@@ -193,7 +193,14 @@ const MobileHeader = ({ speciality }) => {
                     <Link href="/">Testimonials</Link>
                   </li> */}
                 <li className="menu-item has-collapsible">
-                  <Link href="/">Book an Appointment</Link>
+                  <a
+                    onClick={() => {
+                      toggleOffcanvas();
+                      router.push("/query");
+                    }}
+                  >
+                    Book an Appointment
+                  </a>
                 </li>
                 <li className="menu-item" style={{ background: "#ff6800" }}>
                   {/* <Link className="menu-link" style={{ color: "#fff" }}>
@@ -211,28 +218,27 @@ const MobileHeader = ({ speciality }) => {
                     </Link>
                   </li> */}
                 <li className="menu-item">
-                  <Link
-                    href="/blogs"
+                  <a
                     onClick={() => {
-                      toggleOffcanvas(); // Close the offcanvas
-                      router.push("/blogs"); // Navigate to the link
+                      toggleOffcanvas();
+                      router.push("/blogs");
                     }}
                     className="submenu-link"
                   >
                     Blog
-                  </Link>
+                  </a>
                 </li>
                 <li className="menu-item">
-                  <Link
+                  <a
                     href="/contact-us"
                     onClick={() => {
-                      toggleOffcanvas(); // Close the offcanvas
-                      router.push("/contact-us"); // Navigate to the link
+                      toggleOffcanvas();
+                      router.push("/contact-us");
                     }}
                     className="submenu-link"
                   >
                     Contact Us
-                  </Link>
+                  </a>
                 </li>
               </ul>
             </div>

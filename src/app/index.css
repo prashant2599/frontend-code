@@ -2423,15 +2423,6 @@ td {
   padding: 40px 50px;
 }
 
-#contact-head {
-  width: 100%;
-  height: auto;
-  padding: 14px 0;
-  margin: 14px 0;
-  display: flex;
-  position: relative;
-  background: #ffffff;
-}
 
 .join-us-box {
   background: linear-gradient(90deg, #fe7d5e 0%, #fe7d5e 35%, #ffa774 100%);

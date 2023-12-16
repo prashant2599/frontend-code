@@ -63,10 +63,10 @@ const FreeConsultation = () => {
       setNameError("Name is required");
       isValid = false;
     }
-    if (!captchaValue) {
-      alert("Please complete the CAPTCHA.");
-      return;
-    }
+    // if (!captchaValue) {
+    //   alert("Please complete the CAPTCHA.");
+    //   return;
+    // }
 
     const phoneRegex = /^\d{10,}$/; // Matches 10 or more digits
     if (!phone || !phone.match(phoneRegex)) {

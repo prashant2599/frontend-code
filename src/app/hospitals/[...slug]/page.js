@@ -291,7 +291,7 @@ const page = async ({ params }) => {
                               : hospital.short_description}
                           </div>
                         </div>
-                        <div className="hospital-item-button">
+                        <div className="doctor-item-button">
                          <HospitalListPopUpForm name={hospital.name} hospitalId={hospital.id} />
                           <Link
                             href={`/hospital/${hospital.slug}/${hospital.country}`}
