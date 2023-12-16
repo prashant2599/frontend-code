@@ -9,7 +9,7 @@ import intlTelInput from "intl-tel-input";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const HomeHospitalForm = ({ country, slug, name, hospitalId }) => {
+const DoctorListPopForm = ({ first, middle, last, doctorId }) => {
   const [isPopupOpen2, setIsPopupOpen2] = useState(false);
   const [name2, setName2] = useState("");
   const [pcode2, setPcode2] = useState("+91");
@@ -85,6 +85,7 @@ const HomeHospitalForm = ({ country, slug, name, hospitalId }) => {
     });
 
     // Validation logic
+    const patientId = localStorage.getItem("userId");
     let isValid = true;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const phoneRegex = /^\d{10,}$/;
@@ -131,7 +132,6 @@ const HomeHospitalForm = ({ country, slug, name, hospitalId }) => {
       }));
       return;
     }
-    const patientId = localStorage.getItem("userId");
 
     if (isValid) {
       // Create the data object to be sent in the API request
@@ -141,12 +141,12 @@ const HomeHospitalForm = ({ country, slug, name, hospitalId }) => {
         phone: phone2,
         email: email2,
         messages: query2,
-        hospital_id: hospitalId,
         patient_id: patientId,
+        doctor_id: doctorId,
       };
 
       // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
-      const apiEndpoint = `https://dev.medflick.com/api/hospital_query`;
+      const apiEndpoint = `https://dev.medflick.com/api/doctor_query`;
 
       setIsLoading2(true);
 
@@ -220,21 +220,15 @@ const HomeHospitalForm = ({ country, slug, name, hospitalId }) => {
 
   const renderError = (error) =>
     error && <div className="error-message">{error}</div>;
-
   return (
     <>
-      <div className="expert-button">
-        <Link className="view-profile" href={`/hospital/${slug}/${country}`}>
-          View Profile
-        </Link>
-        <a
-          className="book-appointment"
-          onClick={togglePopup2}
-          style={{ cursor: "pointer" }}
-        >
-          Book Appointment
-        </a>
-      </div>
+      <a
+        onClick={togglePopup2}
+        className="book-app"
+        style={{ cursor: "pointer" }}
+      >
+        Book Appointment <img src="/images/2023/05/book.png" alt="icon" />
+      </a>
       {isPopupOpen2 && (
         <div className="popup" data-popup="popup-1" style={popupStyle2}>
           <div className="popup-inner2">
@@ -250,10 +244,13 @@ const HomeHospitalForm = ({ country, slug, name, hospitalId }) => {
                   <span aria-hidden="true">×</span>
                 </button>
               </div>
-              <h2 style={{ padding: "0px" }}>
-                {" "}
-                Book Appointment at <br />
-                <span style={{ color: "#ff6800" }}>{name}</span> now!
+              <h2>
+                Book Appointment With
+                <br />
+                <span style={{ color: "#ff6800" }}>
+                  {first} {middle} {last}
+                </span>{" "}
+                now!
               </h2>
               <form onSubmit={handleFormSubmit2}>
                 <div className="treatment-form">
@@ -361,4 +358,4 @@ const HomeHospitalForm = ({ country, slug, name, hospitalId }) => {
   );
 };
 
-export default HomeHospitalForm;
+export default DoctorListPopForm;

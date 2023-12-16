@@ -1674,7 +1674,7 @@ button.active .city-icon-h {
 }
 .blogs-box {
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
   flex-wrap: wrap;
   margin: 0px;
   padding: 30px 0;

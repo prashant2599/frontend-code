@@ -3,6 +3,7 @@ import HospitalShare from "../Home/hospitalForm/HospitalShare";
 import HospitalForm from "../Home/hospitalForm/HospitalForm";
 import Link from "next/link";
 import { AiTwotoneStar } from "react-icons/ai";
+import HospitalListPopUpForm from "../Home/hospitalForm/HospitalListPopUpForm";
 
 const AllHospitals = async () => {
   const data = await getAllHospitals();
@@ -164,23 +165,6 @@ const AllHospitals = async () => {
                               />
                             </Link>
                           </div>
-
-                          {/* <div className="activeImage" data-hash="two">
-                            {galleryImages.map(
-                              (e, outerIndex) =>
-                                e.icon &&
-                                e.icon.split(",").map((icon, innerIndex) => (
-                                  <img
-                                    key={`${outerIndex}-${innerIndex}`} // Provide a unique key for each image
-                                    src={`${
-                                      process.env.BASE_URL
-                                    }/hospital/${icon.trim()}`}
-                                    alt={icon.trim()} // Use the image filename as the alt text
-                                    width="50%"
-                                  />
-                                ))
-                            )}
-                          </div> */}
                         </div>
                       </div>
                     </div>
@@ -245,10 +229,11 @@ const AllHospitals = async () => {
                       </div>
                     </div>
                     <div className="hospital-item-button">
-                      <Link href="/query" className="book-app">
-                        Book Appointment{" "}
-                        <img src="/images/2023/05/book.png" alt="icon" />
-                      </Link>
+                      <HospitalListPopUpForm
+                        name={hospital.name}
+                        hospitalId={hospital.id}
+                      />
+
                       <Link
                         href={`/hospital/${hospital.slug}/${hospital.country}`}
                         className="view-profile"

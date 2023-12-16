@@ -2536,7 +2536,7 @@ div.active {
   background-size: 100%;
   position: absolute;
   right: -139px;
-  bottom: -76px;
+  bottom: -58px;
 }
 
 .treatment-right h2 {
@@ -6344,6 +6344,7 @@ ul.tabs li.active {
   height: auto;
   bottom: 0px;
   position: relative;
+  right: 0px;
 }
 
 #get-free-consultation .most-reviews {

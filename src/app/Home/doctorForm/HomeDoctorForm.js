@@ -9,10 +9,10 @@ import intlTelInput from "intl-tel-input";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const HomeDoctorForm = ({ slug, first, middle, last }) => {
+const HomeDoctorForm = ({ slug, first, middle, last, doctorId }) => {
   const [isPopupOpen2, setIsPopupOpen2] = useState(false);
   const [name2, setName2] = useState("");
-  const [pcode2, setPcode2] = useState("");
+  const [pcode2, setPcode2] = useState("+91");
   const [phone2, setPhone2] = useState("");
   const [email2, setEmail2] = useState("");
   const [query2, setQuery2] = useState("");
@@ -85,6 +85,7 @@ const HomeDoctorForm = ({ slug, first, middle, last }) => {
     });
 
     // Validation logic
+    const patientId = localStorage.getItem("userId");
     let isValid = true;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const phoneRegex = /^\d{10,}$/;
@@ -140,6 +141,8 @@ const HomeDoctorForm = ({ slug, first, middle, last }) => {
         phone: phone2,
         email: email2,
         messages: query2,
+        patient_id: patientId,
+        doctor_id: doctorId,
       };
 
       // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint

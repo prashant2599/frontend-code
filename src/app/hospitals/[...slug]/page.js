@@ -6,6 +6,7 @@ import HospitalFilters from "../HospitalFilters";
 import Image from "next/image";
 import React from "react";
 import { notFound } from "next/navigation";
+import HospitalListPopUpForm from "@/app/Home/hospitalForm/HospitalListPopUpForm";
 
 function formatText(text) {
   if (typeof text === "string") {
@@ -291,10 +292,7 @@ const page = async ({ params }) => {
                           </div>
                         </div>
                         <div className="hospital-item-button">
-                          <Link href="/query" className="book-app">
-                            Book Appointment{" "}
-                            <img src="/images/2023/05/book.png" alt="icon" />
-                          </Link>
+                         <HospitalListPopUpForm name={hospital.name} hospitalId={hospital.id} />
                           <Link
                             href={`/hospital/${hospital.slug}/${hospital.country}`}
                             className="view-profile"

@@ -6,6 +6,7 @@ import HospitalForm from "@/app/Home/hospitalForm/HospitalForm";
 import Image from "next/image";
 import { AiTwotoneStar } from "react-icons/ai";
 import { notFound } from "next/navigation";
+import HospitalListPopUpForm from "@/app/Home/hospitalForm/HospitalListPopUpForm";
 
 const page = async ({ params }) => {
   try {
@@ -33,32 +34,7 @@ const page = async ({ params }) => {
                     type="text"
                     placeholder="Search Hospital"
                     name="name"
-                    //   value={searchQuery}
-                    //   onChange={(e) => setSearchQuery(e.target.value)}
                   />
-                  {/* {filteredHospital.length > 0 ? (
-                    <ul className="search-box">
-                      {searchQuery &&
-                        filteredHospital.map((doctor) => (
-                          <Link
-                            href={`/hospital/${doctor.slug}/${doctor.country}`}
-                            key={doctor.id}
-                          >
-                            <li>
-                              <h6
-                                style={{ color: "black" }}
-                              >{`${doctor.name}`}</h6>
-                            </li>
-                          </Link>
-                        ))}
-                    </ul>
-                  ) : (
-                    showNotFoundMessage && (
-                      <>
-                        <h6> OOPS! No doctors found </h6>
-                      </>
-                    )
-                  )} */}
                 </div>
 
                 <div className="location-box">
@@ -142,9 +118,7 @@ const page = async ({ params }) => {
                           >
                             <h3>{hospital.name}</h3>
                           </Link>
-                          {/* <div className="department-sub">
-                          Oncologist, Medical Oncologist
-                        </div> */}
+
                           <div className="rating-star">
                             5{" "}
                             <i>
@@ -198,10 +172,10 @@ const page = async ({ params }) => {
                         </div>
 
                         <div className="hospital-item-button">
-                          <Link href="/query" className="book-app">
-                            Book Appointment{" "}
-                            <img src="/images/2023/05/book.png" alt="icon" />
-                          </Link>
+                          <HospitalListPopUpForm
+                            name={hospital.name}
+                            hospitalId={hospital.id}
+                          />
                           <Link
                             href={`/hospital/${hospital.slug}/${hospital.country}`}
                             className="view-profile"

@@ -1,6 +1,5 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
-import Link from "next/link";
 import { ThreeDots } from "react-loader-spinner";
 import ReCAPTCHA from "react-google-recaptcha";
 import axios from "axios";
@@ -9,7 +8,7 @@ import intlTelInput from "intl-tel-input";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const HomeHospitalForm = ({ country, slug, name, hospitalId }) => {
+const HospitalListPopUpForm = ({hospitalId,name}) => {
   const [isPopupOpen2, setIsPopupOpen2] = useState(false);
   const [name2, setName2] = useState("");
   const [pcode2, setPcode2] = useState("+91");
@@ -220,21 +219,15 @@ const HomeHospitalForm = ({ country, slug, name, hospitalId }) => {
 
   const renderError = (error) =>
     error && <div className="error-message">{error}</div>;
-
   return (
     <>
-      <div className="expert-button">
-        <Link className="view-profile" href={`/hospital/${slug}/${country}`}>
-          View Profile
-        </Link>
-        <a
-          className="book-appointment"
-          onClick={togglePopup2}
-          style={{ cursor: "pointer" }}
-        >
-          Book Appointment
-        </a>
-      </div>
+      <a
+        onClick={togglePopup2}
+        style={{ cursor: "pointer" }}
+        className="book-app"
+      >
+        Book Appointment <img src="/images/2023/05/book.png" alt="icon" />
+      </a>
       {isPopupOpen2 && (
         <div className="popup" data-popup="popup-1" style={popupStyle2}>
           <div className="popup-inner2">
@@ -250,7 +243,7 @@ const HomeHospitalForm = ({ country, slug, name, hospitalId }) => {
                   <span aria-hidden="true">×</span>
                 </button>
               </div>
-              <h2 style={{ padding: "0px" }}>
+              <h2>
                 {" "}
                 Book Appointment at <br />
                 <span style={{ color: "#ff6800" }}>{name}</span> now!
@@ -361,4 +354,4 @@ const HomeHospitalForm = ({ country, slug, name, hospitalId }) => {
   );
 };
 
-export default HomeHospitalForm;
+export default HospitalListPopUpForm;

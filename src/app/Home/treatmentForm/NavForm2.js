@@ -207,7 +207,7 @@ const NavForm2 = ({ treatmentId, specialityId }) => {
             </div>
 
             {userEmail ? null : (
-              <div className="treatment-form">
+              <div className="treatment-form" style={{marginBottom:"20px"}}>
                 <div className="inputbox">
                   <label>Email</label>
                   <input

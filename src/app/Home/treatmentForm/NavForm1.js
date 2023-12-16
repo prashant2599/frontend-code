@@ -211,8 +211,8 @@ const NavForm1 = ({ treatmentId, specialityId }) => {
               <div className="input-box1">
                 <label>Name</label>
                 <input
-                  type="email"
-                  placeholder="ggdgd"
+                  type="text"
+                  placeholder=""
                   name="name"
                   value={name1}
                   onChange={(e) => setName1(e.target.value)}
@@ -229,7 +229,7 @@ const NavForm1 = ({ treatmentId, specialityId }) => {
                   ref={inputRef}
                   type="tel"
                   id="mobile_code"
-                  placeholder="sasasa"
+                  placeholder=""
                   value={phone1}
                   onChange={handlePhoneNumberChange}
                 />
@@ -237,7 +237,7 @@ const NavForm1 = ({ treatmentId, specialityId }) => {
             </div>
 
             {userEmail ? null : (
-              <div className="treatment-form">
+              <div className="treatment-form" style={{marginBottom:"20px"}}>
                 <div className="inputbox">
                   <label>Email</label>
                   <input
@@ -249,15 +249,16 @@ const NavForm1 = ({ treatmentId, specialityId }) => {
                     onBlur={handleEmailBlur}
                     autoComplete="off"
                   />
-                </div>
-              </div>
-            )}
-
-            {!emailValid && (
+                    {!emailValid && (
               <div className="error-message" style={{ color: "red" }}>
                 {validationMessage}
               </div>
             )}
+                </div>
+              </div>
+            )}
+
+          
             <ReCAPTCHA
               sitekey="6LcX6-YnAAAAAAjHasYD8EWemgKlDUxZ4ceSo8Eo" // Replace with your reCAPTCHA site key
               onChange={handleCaptchaChange1}
