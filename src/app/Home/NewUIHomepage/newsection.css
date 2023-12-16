@@ -1,3 +1,31 @@
+@font-face {
+  font-family: Helvetica Neu Bold;
+  src: url(../../fonts/Helvetica-Neu-Bold.ttf);
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Helvetica Neue Medium;
+  src: url(../../fonts/Helvetica-Neue-Medium.ttf);
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Helvetica Neue Light;
+  src: url(../../fonts/Helvetica-Neue-Light.ttf);
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Inter Regular;
+  src: url(../../fonts/Inter-Regular.ttf);
+}
+
+@font-face {
+  font-family: Inter Medium;
+  src: url(../../fonts/Inter-Medium.ttf);
+}
+
 #hometop-section {
   background: linear-gradient(90deg, #ffeacd 0%, #ffeacd 35%, #ffffff 100%);
   width: 100%;
@@ -206,7 +234,7 @@
   color: #121c42;
   text-align: left;
   padding-bottom: 10px;
-  /* font-family: Inter Medium; */
+  font-family: Inter Medium;
   z-index: 1;
   position: relative;
   display: block;
@@ -231,7 +259,7 @@
   width: 40%;
   font-family: Inter Medium;
   text-align: center;
-  font-size: 17px;
+  font-size: 14px;
   border: 1px solid #ff6800;
   padding: 10px;
   margin: 0px;
@@ -245,7 +273,7 @@
   width: 60%;
   font-family: Inter Medium;
   text-align: center;
-  font-size: 16px;
+  font-size: 14px;
   border: 1px solid #ff6800;
   padding: 10px;
   margin: 0px;
@@ -253,7 +281,6 @@
   border-radius: 6px;
   position: relative;
   background: #ff6800;
-  padding-left:17px !important;
 }
 
 .home-hospitals {
@@ -589,8 +616,6 @@ button.active .city-icon-h {
   .home-expert-text {
     padding: 10px 10px 5px;
   }
-
-
 
   .expert-button {
     flex-direction: column;
@@ -1147,7 +1172,7 @@ button.active .city-icon-h {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  padding: 70px 0px 0px;
+  padding: 70px 0px 45px;
   position: relative;
   margin: 0px;
   z-index: 1;
@@ -1616,7 +1641,6 @@ button.active .city-icon-h {
   font-family: Inter Medium;
   line-height: 1.25em;
   letter-spacing: 0.01em;
-  font-weight: 600;
 }
 .active .arrow {
   background-image: url(../../images/newIcon/plus-icon.png);
@@ -1674,7 +1698,7 @@ button.active .city-icon-h {
 }
 .blogs-box {
   display: flex;
-  justify-content: flex-start; 
+  justify-content: flex-start;
   flex-wrap: wrap;
   margin: 0;
   padding: 30px 0;
@@ -1824,7 +1848,6 @@ button.active .city-icon-h {
   position: relative;
   display: block;
   letter-spacing: 0px;
-  font-weight: 600;
 }
 .home-latest-updatesright {
   width: 40%;
@@ -1845,7 +1868,6 @@ button.active .city-icon-h {
   position: relative;
   display: block;
   letter-spacing: 0px;
-  font-weight: 600;
 }
 .home-latest-updatesright p {
   font-size: 14px;
@@ -1897,7 +1919,7 @@ button.active .city-icon-h {
     overflow-x: scroll;
     padding: 30px 0 20px;
     margin-bottom: 20px;
-}
+  }
   .home-our-patients {
     flex-direction: column;
     gap: 0px;
@@ -2007,7 +2029,6 @@ button.active .city-icon-h {
   z-index: 1;
   position: relative;
   display: block;
-  font-weight: 600;
 }
 
 #hometop-find-treatments .ding:before {

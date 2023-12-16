@@ -11265,12 +11265,11 @@ nav li:last-child {
   bottom: 0px;
   left: 0px;
   z-index: 1;
-  padding: 15px;
   display: block;
   background: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(40px);
   left: 6px;
-  bottom: 30px;
+  bottom: 0px;
 }
 
 .popup-inner5 .cost-estimate-items {
@@ -14807,9 +14806,7 @@ pre code {
   padding: 0px !important;
 }
 
-.popup-inner2-list-page {
-  text-align: center;
-}
+
 }
 
 .header .qsk-question {
@@ -14871,16 +14868,11 @@ pre code {
   color: red !important;
 }
 
-
-.popup-inner2-list-page {
-  max-width: 400px;
-  width: 90%;
-  padding: 20px;
-  position: absolute;
-  top: 50%;
-  left: 38%;
-  transform: translate(-50%, -50%);
-  border-radius: 16px;
-  border-top: 8px solid #ff6800;
-  background: #fff;
+.popup-inner6{max-width:450px;width:90%;padding:20px;position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%, -50%);transform:translate(-50%, -50%);border-radius: 16px;border-top:0px solid #FF6800;background:#fff;}
+.popup-inner6 .success-message{width:100%; text-align: center; padding:10px 20px; border-radius:12px;}
+.success-message img{width:60px; height:60px;}
+.success-message h4{color:#121C42;font-family: Helvetica Neue Medium; font-size:20px; margin:10px 0;}
+.success-message p{color:#6D6D6D; font-size:14px;}
+@media screen and (max-width:880px) {
+popup-inner6 .success-message{width:100%; padding:10px 20px; border-radius:12px;}
 }
