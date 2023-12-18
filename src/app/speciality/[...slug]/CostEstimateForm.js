@@ -6,8 +6,12 @@ import { ThreeDots } from "react-loader-spinner";
 import axios from "axios";
 import "intl-tel-input/build/css/intlTelInput.css";
 import intlTelInput from "intl-tel-input";
+import Success from "../../Home/successPopup/Success";
+import ErrorPopup from "../../Home/successPopup/ErrorPopup";
 
 const CostEstimateForm = ({ specialityId }) => {
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
+  const [showErrorPopup, setShowErrorPopup] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [name, setName] = useState("");
   const [pcode, setPcode] = useState("");
@@ -204,20 +208,13 @@ const CostEstimateForm = ({ specialityId }) => {
       axios
         .post(apiEndpoint, data)
         .then((response) => {
-          toast.success("questions is susscefull submitted", {
-            position: toast.POSITION.TOP_RIGHT,
-          });
+          setShowSuccessPopup(true);
           clearFormFields();
           setIsPopupOpen(false);
         })
         .catch((error) => {
           console.error("Error:", error);
-          toast.error(
-            "There was an error submitting your questions. Please try again.",
-            {
-              position: toast.POSITION.TOP_RIGHT,
-            }
-          );
+          setShowErrorPopup(true);
         })
         .finally(() => {
           setIsLoading(false);
@@ -247,6 +244,14 @@ const CostEstimateForm = ({ specialityId }) => {
 
   const renderError = (error) =>
     error && <div className="error-message">{error}</div>;
+
+  const handleCloseSuccessPopup = () => {
+    setShowSuccessPopup(false);
+  };
+
+  const handleCloseErrorPopup = () => {
+    setShowErrorPopup(false);
+  };
   return (
     <>
       <a onClick={togglePopup} style={{ cursor: "pointer" }}>
@@ -402,6 +407,20 @@ const CostEstimateForm = ({ specialityId }) => {
             </div>{" "}
           </div>{" "}
         </div>
+      )}
+
+      {showSuccessPopup && (
+        <Success
+          onClose={handleCloseSuccessPopup}
+          showSuccessPopup={showSuccessPopup}
+        />
+      )}
+
+      {showErrorPopup && (
+        <ErrorPopup
+          onClose={handleCloseErrorPopup}
+          showErrorPopup={showErrorPopup}
+        />
       )}
     </>
   );

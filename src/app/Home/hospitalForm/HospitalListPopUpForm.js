@@ -5,10 +5,13 @@ import ReCAPTCHA from "react-google-recaptcha";
 import axios from "axios";
 import "intl-tel-input/build/css/intlTelInput.css";
 import intlTelInput from "intl-tel-input";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import Success from "../successPopup/Success";
+import ErrorPopup from "../successPopup/ErrorPopup";
 
-const HospitalListPopUpForm = ({hospitalId,name}) => {
+const HospitalListPopUpForm = ({ hospitalId, name }) => {
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
+  const [showErrorPopup, setShowErrorPopup] = useState(false);
+
   const [isPopupOpen2, setIsPopupOpen2] = useState(false);
   const [name2, setName2] = useState("");
   const [pcode2, setPcode2] = useState("+91");
@@ -153,20 +156,13 @@ const HospitalListPopUpForm = ({hospitalId,name}) => {
       axios
         .post(apiEndpoint, data)
         .then((response) => {
-          toast.success("questions is susscefull submitted", {
-            position: toast.POSITION.TOP_RIGHT,
-          });
+          setShowSuccessPopup(true);
           clearFormFields2();
           setIsPopupOpen2(false);
         })
         .catch((error) => {
           console.error("Error:", error);
-          toast.error(
-            "There was an error submitting your questions. Please try again.",
-            {
-              position: toast.POSITION.TOP_RIGHT,
-            }
-          );
+          setShowErrorPopup(true);
         })
         .finally(() => {
           setIsLoading2(false);
@@ -219,6 +215,13 @@ const HospitalListPopUpForm = ({hospitalId,name}) => {
 
   const renderError = (error) =>
     error && <div className="error-message">{error}</div>;
+  const handleCloseSuccessPopup = () => {
+    setShowSuccessPopup(false);
+  };
+
+  const handleCloseErrorPopup = () => {
+    setShowErrorPopup(false);
+  };
   return (
     <>
       <a
@@ -349,7 +352,19 @@ const HospitalListPopUpForm = ({hospitalId,name}) => {
           </div>
         </div>
       )}
-      <ToastContainer />
+      {showSuccessPopup && (
+        <Success
+          onClose={handleCloseSuccessPopup}
+          showSuccessPopup={showSuccessPopup}
+        />
+      )}
+
+      {showErrorPopup && (
+        <ErrorPopup
+          onClose={handleCloseErrorPopup}
+          showErrorPopup={showErrorPopup}
+        />
+      )}
     </>
   );
 };

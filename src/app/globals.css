@@ -15,6 +15,11 @@
   src: url(../app/fonts/Helvetica-Neue-Light.ttf);
   font-display: swap;
 }
+@font-face {
+  font-family: Inter Regular;
+  src: url(../app/fonts/Inter-Regular.ttf);
+  font-display: swap;
+}
 
 html {
   scroll-behavior: smooth;
@@ -14875,4 +14880,197 @@ pre code {
 .success-message p{color:#6D6D6D; font-size:14px;}
 @media screen and (max-width:880px) {
 popup-inner6 .success-message{width:100%; padding:10px 20px; border-radius:12px;}
+}
+
+
+
+
+#questions-ans-inner {
+  max-width: 100%;
+  height: auto;
+  padding: 20px 0 40;
+  display: flex;
+  border-top: 1px solid #D7D7D7;
+  position: relative;
+  background: #fff;
+}
+.questions-ans-inner {
+  width: 100%;
+  height: auto;
+  display: flex;
+  position: relative;
+  gap: 25px;
+  margin: 40px 0 0;
+  flex-direction: column;
+}
+.questions-inner-head {
+  display: flex;
+  margin: 0px;
+  padding: 0px;
+  margin-bottom: 50px;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.questions-inner-head .back-go {
+  display: flex;
+  color: #000 !important;
+  align-items: center;
+  gap: 10px;
+  font-family: Inter Regular;
+}
+
+.questions-inner-head h1 {
+  font-size: 25px;
+  color: #090909;
+  font-weight: 400;
+  width: 70%;
+  text-align: center;
+  margin: 20px 0;
+  font-family: Helvetica Neue Medium;
+}
+
+.share-discussion {
+  background: #FF6800;
+  font-family: Helvetica Neue Light;
+  color: #ffffff !important;
+  border: 2px solid #FF6800;
+  margin: 0px;
+  font-weight: Bold;
+  font-size: 18px;
+  border-radius: 8px;
+  padding: 7px 14px;
+  width: max-content;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.questions-inner-box {
+  display: flex;
+  margin-bottom: 30px;
+  padding: 0px;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 2px dotted #DFE4E8;
+  padding-bottom: 30px;
+}
+
+.questions-inner-left {
+  width: 20%;
+  margin: 0px;
+  padding: 0px 15px;
+  text-align: center;
+}
+
+.questions-inner-left img {
+  border-radius: 100%;
+  width: 90px;
+  height: 90px;
+}
+.questions-inner-left h3 {
+  font-size: 18px;
+  font-family: Helvetica Neue Light;
+  color: #000;
+  margin: 10px 0px;
+  padding: 0px;
+}
+.questions-inner-right {
+  width: 80%;
+  margin: 0px;
+  padding: 0px;
+}
+.questions-inner-right .questions-data {
+  color: #FF6800;
+  font-size: 14px;
+  padding-bottom: 10px;
+  font-family: Inter Regular;
+}
+.questions-inner-right p {
+  color: #6D6D6D;
+  font-size: 16px;
+  font-family: Inter Regular;
+}
+.questions-inner-comments {
+  display: flex;
+  align-items: center;
+  position: relative;
+  gap: 30px;
+  margin: 14px 0 30px;
+  padding: 14px 0px 0;
+}
+.comments-iconbox {
+  color: #7C7C7C;
+  font-size: 16px;
+  gap: 7px;
+  display: flex;
+  font-family: Inter Regular;
+}
+.comments-iconbox {
+  color: #7C7C7C;
+  font-size: 16px;
+  gap: 7px;
+  display: flex;
+  font-family: Inter Regular;
+}
+.show-replies-box {
+  color: #FF6800;
+  font-size: 16px;
+  display: flex;
+  margin-top: 25px;
+  margin-bottom: 30px;
+}
+.questions-inner-box3 {
+  display: flex;
+  margin-bottom: 30px;
+  padding: 0px;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 30px;
+  border-bottom: 2px dotted #DFE4E8;
+  padding-bottom: 30px;
+}
+.questions-inner-box3 .questions-inner-left {
+  width: 10%;
+}
+.questions-inner-box3 img {
+  border-radius: 100%;
+  width: 60px;
+  height: 60px;
+}
+.questions-inner-box3 .questions-inner-right {
+  width: 90%;
+}
+.questions-inner-right .questions-data {
+  color: #FF6800;
+  font-size: 14px;
+  padding-bottom: 10px;
+}
+.questions-data span {
+  font-size: 18px;
+  font-family: Helvetica Neue Light;
+  padding-right: 20px;
+  color: #000;
+  margin: 10px 0px;
+}
+.questions-inner-right p {
+  color: #6D6D6D;
+  font-size: 16px;
+}
+.questions-inner-box1 {
+  display: flex;
+  margin-bottom: 30px;
+  padding: 0px;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 2px dotted #DFE4E8;
+  padding-bottom: 30px;
+}
+.questions-inner-box2 {
+  display: flex;
+  margin-bottom: 30px;
+  padding: 0px;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 30px;
 }

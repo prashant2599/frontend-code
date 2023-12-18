@@ -6,7 +6,11 @@ import { ThreeDots } from "react-loader-spinner";
 import "intl-tel-input/build/css/intlTelInput.css"; // Import CSS
 import intlTelInput from "intl-tel-input";
 import axios from "axios";
+import Success from "../successPopup/Success";
+import ErrorPopup from "../successPopup/ErrorPopup";
 const TreatmentForm1 = ({ treatmentId, specialityId }) => {
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
+  const [showErrorPopup, setShowErrorPopup] = useState(false);
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [userPhone, setUserPhone] = useState("");
@@ -156,11 +160,11 @@ const TreatmentForm1 = ({ treatmentId, specialityId }) => {
       axios
         .post(apiEndpoint, data)
         .then((response) => {
-          alert("questions is susscefull submitted");
+          setShowSuccessPopup(true);
           clearFormFields();
         })
         .catch((error) => {
-          // Handle any errors that occurred during the API call
+          setShowErrorPopup(true);
           console.error("Error:", error);
         })
         .finally(() => {
@@ -221,6 +225,14 @@ const TreatmentForm1 = ({ treatmentId, specialityId }) => {
 
   const renderError = (error) =>
     error && <div className="error-message">{error}</div>;
+
+  const handleCloseSuccessPopup = () => {
+    setShowSuccessPopup(false);
+  };
+
+  const handleCloseErrorPopup = () => {
+    setShowErrorPopup(false);
+  };
   return (
     <>
       <div className="treatment-right">
@@ -322,6 +334,19 @@ const TreatmentForm1 = ({ treatmentId, specialityId }) => {
           </button>
         </form>
       </div>
+      {showSuccessPopup && (
+        <Success
+          onClose={handleCloseSuccessPopup}
+          showSuccessPopup={showSuccessPopup}
+        />
+      )}
+
+      {showErrorPopup && (
+        <ErrorPopup
+          onClose={handleCloseErrorPopup}
+          showErrorPopup={showErrorPopup}
+        />
+      )}
     </>
   );
 };

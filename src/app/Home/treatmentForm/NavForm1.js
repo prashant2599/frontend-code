@@ -3,12 +3,15 @@ import { useState, useEffect, useRef } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import { ThreeDots } from "react-loader-spinner";
 import axios from "axios";
-import "intl-tel-input/build/css/intlTelInput.css"; // Import CSS
+import "intl-tel-input/build/css/intlTelInput.css";
 import intlTelInput from "intl-tel-input";
+import Success from "../successPopup/Success";
+import ErrorPopup from "../successPopup/ErrorPopup";
 
 const NavForm1 = ({ treatmentId, specialityId }) => {
   // form 2 post request
-
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
+  const [showErrorPopup, setShowErrorPopup] = useState(false);
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [userPhone, setUserPhone] = useState("");
@@ -137,13 +140,11 @@ const NavForm1 = ({ treatmentId, specialityId }) => {
       axios
         .post(apiEndpoint, data)
         .then((response) => {
-          // Handle the API response here if needed
-          console.log(response);
-          alert("questions is susscefull submitted");
+          setShowSuccessPopup(true);
           clearFormFields1();
         })
         .catch((error) => {
-          // Handle any errors that occurred during the API call
+          setShowErrorPopup(true);
           console.error("Error:", error);
         })
         .finally(() => {
@@ -182,7 +183,6 @@ const NavForm1 = ({ treatmentId, specialityId }) => {
     setPhone1(formattedPhoneNumber); // Update the phone number state
   };
 
-
   const Formstyles = {
     errorInput: {
       border: "2px solid red",
@@ -197,6 +197,14 @@ const NavForm1 = ({ treatmentId, specialityId }) => {
       color: "#333",
       marginTop: "1rem",
     },
+  };
+
+  const handleCloseSuccessPopup = () => {
+    setShowSuccessPopup(false);
+  };
+
+  const handleCloseErrorPopup = () => {
+    setShowErrorPopup(false);
   };
   return (
     <>
@@ -237,7 +245,7 @@ const NavForm1 = ({ treatmentId, specialityId }) => {
             </div>
 
             {userEmail ? null : (
-              <div className="treatment-form" style={{marginBottom:"20px"}}>
+              <div className="treatment-form" style={{ marginBottom: "20px" }}>
                 <div className="inputbox">
                   <label>Email</label>
                   <input
@@ -249,16 +257,15 @@ const NavForm1 = ({ treatmentId, specialityId }) => {
                     onBlur={handleEmailBlur}
                     autoComplete="off"
                   />
-                    {!emailValid && (
-              <div className="error-message" style={{ color: "red" }}>
-                {validationMessage}
-              </div>
-            )}
+                  {!emailValid && (
+                    <div className="error-message" style={{ color: "red" }}>
+                      {validationMessage}
+                    </div>
+                  )}
                 </div>
               </div>
             )}
 
-          
             <ReCAPTCHA
               sitekey="6LcX6-YnAAAAAAjHasYD8EWemgKlDUxZ4ceSo8Eo" // Replace with your reCAPTCHA site key
               onChange={handleCaptchaChange1}
@@ -292,6 +299,20 @@ const NavForm1 = ({ treatmentId, specialityId }) => {
           </form>
         </div>
       </div>
+
+      {showSuccessPopup && (
+        <Success
+          onClose={handleCloseSuccessPopup}
+          showSuccessPopup={showSuccessPopup}
+        />
+      )}
+
+      {showErrorPopup && (
+        <ErrorPopup
+          onClose={handleCloseErrorPopup}
+          showErrorPopup={showErrorPopup}
+        />
+      )}
     </>
   );
 };

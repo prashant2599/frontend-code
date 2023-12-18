@@ -1,48 +1,47 @@
-"use client"
+"use client";
 
-import React,{useState,useRef} from "react";
+import React, { useState, useRef } from "react";
 import {
-    FacebookShareButton,
-    TwitterShareButton,
-    WhatsappShareButton,
-    FacebookIcon,
-    TwitterIcon,
-    WhatsappIcon,
-  } from "react-share";
+  FacebookShareButton,
+  TwitterShareButton,
+  WhatsappShareButton,
+  FacebookIcon,
+  TwitterIcon,
+  WhatsappIcon,
+} from "react-share";
 
-const ShareProfile = ({slug}) => {
+const ShareProfile = ({ slug }) => {
+  const [sharedDoctorSlug, setSharedDoctorSlug] = useState("");
 
-    const [sharedDoctorSlug, setSharedDoctorSlug] = useState("");
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
-    const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const popupStyle = {
+    display: isPopupOpen ? "block" : "none",
+  };
+  const togglePopup = () => {
+    setIsPopupOpen(!isPopupOpen);
+  };
 
-    const popupStyle = {
-      display: isPopupOpen ? "block" : "none",
-    };
-    const togglePopup = () => {
-      setIsPopupOpen(!isPopupOpen);
-    };
-  
-    const shareDoctorProfile = (doctorSlug) => {
-      setSharedDoctorSlug(doctorSlug);
-      togglePopup();
-    };
+  const shareDoctorProfile = (doctorSlug) => {
+    setSharedDoctorSlug(doctorSlug);
+    togglePopup();
+  };
 
-    const inputRef = useRef(null);
-    const [copyMessage, setCopyMessage] = useState('');
+  const inputRef = useRef(null);
+  const [copyMessage, setCopyMessage] = useState("");
 
-    const copyToClipboard = () => {
-      // Select the text inside the input field
-      inputRef.current.select();
-      inputRef.current.setSelectionRange(0, 99999); // For mobile devices
-  
-      // Copy the selected text to the clipboard
-      document.execCommand("copy");
-  
-      // Deselect the text
-      inputRef.current.setSelectionRange(0, 0);
-      setCopyMessage('Link copied!');
-    };
+  const copyToClipboard = () => {
+    // Select the text inside the input field
+    inputRef.current.select();
+    inputRef.current.setSelectionRange(0, 99999); // For mobile devices
+
+    // Copy the selected text to the clipboard
+    document.execCommand("copy");
+
+    // Deselect the text
+    inputRef.current.setSelectionRange(0, 0);
+    setCopyMessage("Link copied!");
+  };
   return (
     <>
       <span
