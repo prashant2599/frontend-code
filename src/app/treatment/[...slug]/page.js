@@ -62,9 +62,6 @@ const page = async ({ params }) => {
               <div className="treatment-left">
                 <ul>
                   <li>
-                    <h2>{info.treatment_type_name}</h2> <p>Treatment Type</p>
-                  </li>
-                  <li>
                     <h2>{info.treatment_time}</h2> <p>Treatment Time</p>
                   </li>
                   <li>

@@ -4,6 +4,7 @@ import { IoChevronBack } from "react-icons/io5";
 import { FaComments } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import ShareQuestion from "./ShareQuestion";
+import UserComment from "./UserComment";
 
 const page = async ({ params }) => {
   const combinedSlug = params.slug.join("/");
@@ -63,9 +64,12 @@ const page = async ({ params }) => {
                     1008 Comments
                   </a>
                 </div>
-                <a href="#" className="share-discussion">
-                  Add a comment
-                </a>
+                <UserComment
+                  id={info.id}
+                  specialityId={info.speciality_id}
+                  subspecialityId={info.subspeciality_id}
+                  treatments={info.treatments}
+                />
               </div>
             </div>
 

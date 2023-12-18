@@ -20,11 +20,11 @@ const Success = ({ onClose,showSuccessPopup }) => {
 
             <div class="success-message">
               <img src="/images/success.png" />
-              <h4>Success Message</h4>
-              <p>
+              <h4>Form submitted successfully!</h4>
+              {/* <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore
-              </p>
+              </p> */}
             </div>
           </div>
         </div>
