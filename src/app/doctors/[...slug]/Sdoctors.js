@@ -5,6 +5,7 @@ import DoctorForm from "@/app/Home/doctorForm/DoctorForm";
 import ShareProfile from "@/app/Home/doctorForm/ShareProfile";
 import Image from "next/image";
 import DoctorListPopForm from "@/app/Home/doctorForm/DoctorListPopForm";
+import DoctorPagination from "../DoctorPagination";
 
 function formatText(text) {
   if (typeof text === "string") {
@@ -196,6 +197,11 @@ const Sdoctors = ({ treatment, doctor, hospitalIcon, combinedSlug, info }) => {
                   </h1>
                 </div>
               )}
+              <DoctorPagination
+                slug={combinedSlug}
+                doctor={doctor}
+                treatment={treatment}
+              />
             </div>
             {/* form */}
 

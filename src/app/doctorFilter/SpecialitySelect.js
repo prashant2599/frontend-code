@@ -147,7 +147,7 @@ const SpecialitySelect = ({ doctor, treatment, slug }) => {
     }
   };
   // console.log("position0", specialitySlug);
-  console.log("position1", countrySlug);
+  // console.log("position1", countrySlug);
   // console.log("position2", citySlug);
   // console.log("position3", countrySlugTreatment);
 
