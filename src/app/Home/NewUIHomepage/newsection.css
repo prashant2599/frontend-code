@@ -37,6 +37,8 @@
   z-index: 1;
 }
 
+
+
 .home-slider {
   display: flex;
   margin: 0px;
@@ -244,6 +246,7 @@
   width: 100%;
   color: #6d6d6d;
   height: 25px;
+  font-family: Inter Regular;
 }
 
 .expert-button {
@@ -378,6 +381,7 @@
   font-size: 14px;
   color: #6d6d6d;
   padding: 10px 0;
+  font-family: Inter Regular;
 }
 
 #hometop-process-treatment a img {
@@ -421,6 +425,7 @@
   text-align: center;
   width: 80%;
   margin: 0px auto;
+  font-family: Inter Regular;
 }
 
 .tab-treatment {
@@ -756,6 +761,7 @@ button.active .city-icon-h {
   padding: 10px 0;
   width: 40%;
   margin: 0px;
+  font-family: Inter Regular;
 }
 
 #home-travel-support a {
@@ -844,6 +850,7 @@ button.active .city-icon-h {
   padding: 10px 0;
   width: 100%;
   margin: 0px;
+  font-family: Inter Regular;
 }
 
 .home-medflick-about-right ul {
@@ -951,6 +958,7 @@ button.active .city-icon-h {
   font-size: 18px;
   color: #6d6d6d;
   padding: 5px 0;
+  font-family: Inter Regular;
 }
 
 #medflick-verified-doctor {
@@ -1004,6 +1012,7 @@ button.active .city-icon-h {
   color: #6d6d6d;
   padding: 0px;
   margin: 0px;
+  font-family: Inter Regular;
 }
 #medflick-verified-doctor h2 span {
   color: #ff6800;
@@ -1079,6 +1088,7 @@ button.active .city-icon-h {
   #home-medflick-difference li h3 {
     font-size: 16px;
     padding: 0px 0 10px;
+    font-family: Inter Regular;
   }
   #medflick-verified-doctor h2 {
     font-size: 28px;
@@ -1156,6 +1166,7 @@ button.active .city-icon-h {
   color: #6d6d6d;
   padding: 0px;
   margin: 0px;
+  font-family: Inter Regular;
 }
 #qualifications-standards li:last-child h3 {
   color: #ff6800;
@@ -1335,6 +1346,7 @@ button.active .city-icon-h {
   text-align: center;
   width: 60%;
   margin: 0px auto;
+  font-family: Inter Regular;
 }
 .healthcare-professionals {
   width: 100%;
@@ -1477,6 +1489,7 @@ button.active .city-icon-h {
   text-align: center;
   width: 80%;
   margin: 0px auto;
+  font-family: Inter Regular;
 }
 .home-our-patients {
   display: flex;
@@ -1651,12 +1664,14 @@ button.active .city-icon-h {
   line-height: 2rem;
   letter-spacing: 0px;
   color: #15354e;
+  font-family: Inter Regular;
 }
 .answer p {
   margin: 0;
   text-align: justify;
   color: #15354e;
   font-size: 16px;
+  font-family: Inter Regular;
 }
 .arrow {
   background-image: url(../../images/newIcon/plus1-icon.png);
@@ -1729,28 +1744,33 @@ button.active .city-icon-h {
   width: 100%;
   color: #7c7c7c;
   text-align: left;
+  font-family: Inter Regular;
 }
 .blog-text {
   display: flex;
   justify-content: space-between;
   padding: 10px 0;
+  font-family: Inter Regular;
 }
 .category-blog {
   color: #6d6d6d;
   font-size: 14px;
   position: relative;
   padding-left: 20px;
+  font-family: Inter Regular;
 }
 .blog-text span {
   position: absolute;
   top: -1px;
   left: 5px;
+  font-family: Inter Regular;
 }
 .time-blog {
   color: #6d6d6d;
   font-size: 14px;
   padding-left: 20px;
   position: relative;
+  font-family: Inter Regular;
 }
 #home-latest-resources .new-blogs {
   background: #ff6800;
@@ -1812,6 +1832,7 @@ button.active .city-icon-h {
   font-size: 14px;
   padding: 10px;
   border-radius: 6px;
+  font-family: Inter Regular;
 }
 
 #home-latest-updates {

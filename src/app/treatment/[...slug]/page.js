@@ -29,7 +29,7 @@ const page = async ({ params }) => {
     const blog = datas.treateDetailsbyCountry.blogs;
     const speciality = datas.treateDetailsbyCountry.speciality;
 
-    console.log(speciality);
+ 
 
     return (
       <>
@@ -62,16 +62,16 @@ const page = async ({ params }) => {
               <div className="treatment-left">
                 <ul>
                   <li>
-                    <h2>3-6 Months</h2> <p>Treatment Time</p>
+                    <h2>{info.treatment_time}</h2> <p>Treatment Time</p>
                   </li>
                   <li>
-                    <h2>6-8 Weeks</h2> <p>Recovery Time</p>
+                    <h2>{info.recovery_time}</h2> <p>Recovery Time</p>
                   </li>
                   <li>
-                    <h2>2-7 Days</h2> <p>Hospitalization Days</p>
+                    <h2>{info.hospitalization_days}</h2> <p>Hospitalization Days</p>
                   </li>
                   <li>
-                    <h2>84.5 - 95.1%</h2> <p>Success Rate</p>
+                    <h2>{info.success_rate}</h2> <p>Success Rate</p>
                   </li>
                 </ul>
               </div>
