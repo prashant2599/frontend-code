@@ -6,12 +6,13 @@ import { ThreeDots } from "react-loader-spinner";
 import axios from "axios";
 import "intl-tel-input/build/css/intlTelInput.css";
 import intlTelInput from "intl-tel-input";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import Success from "../successPopup/Success";
+import ErrorPopup from "../successPopup/ErrorPopup";
 
 const AppointmentForm = ({ doctorId, first, middle, last }) => {
   // form popup post method
-
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
+  const [showErrorPopup, setShowErrorPopup] = useState(false);
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [userPhone, setUserPhone] = useState("");
@@ -184,20 +185,13 @@ const AppointmentForm = ({ doctorId, first, middle, last }) => {
       axios
         .post(apiEndpoint, data)
         .then((response) => {
-          toast.success("questions is susscefull submitted", {
-            position: toast.POSITION.TOP_RIGHT,
-          });
+          setShowSuccessPopup(true);
           clearFormFields();
           setIsPopupOpen(false);
         })
         .catch((error) => {
           console.error("Error:", error);
-          toast.error(
-            "There was an error submitting your questions. Please try again.",
-            {
-              position: toast.POSITION.TOP_RIGHT,
-            }
-          );
+          setShowErrorPopup(true);
         })
         .finally(() => {
           // Set loading back to false after the API call is complete
@@ -251,6 +245,14 @@ const AppointmentForm = ({ doctorId, first, middle, last }) => {
 
   const renderError = (error) =>
     error && <div className="error-message">{error}</div>;
+
+  const handleCloseSuccessPopup = () => {
+    setShowSuccessPopup(false);
+  };
+
+  const handleCloseErrorPopup = () => {
+    setShowErrorPopup(false);
+  };
 
   return (
     <>
@@ -386,7 +388,18 @@ const AppointmentForm = ({ doctorId, first, middle, last }) => {
           </div>
         </div>
       )}
-      <ToastContainer />
+      {showSuccessPopup && (
+        <Success
+          onClose={handleCloseSuccessPopup}
+          showSuccessPopup={showSuccessPopup}
+        />
+      )}
+      {showErrorPopup && (
+        <ErrorPopup
+          onClose={handleCloseErrorPopup}
+          showErrorPopup={showErrorPopup}
+        />
+      )}
     </>
   );
 };

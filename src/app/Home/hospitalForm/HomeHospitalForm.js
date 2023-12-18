@@ -6,13 +6,15 @@ import ReCAPTCHA from "react-google-recaptcha";
 import axios from "axios";
 import "intl-tel-input/build/css/intlTelInput.css";
 import intlTelInput from "intl-tel-input";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import Success from "../successPopup/Success";
+import ErrorPopup from "../successPopup/ErrorPopup";
 
-const HomeHospitalForm = ({ country, slug,name }) => {
+const HomeHospitalForm = ({ country, slug, name, hospitalId }) => {
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
+  const [showErrorPopup, setShowErrorPopup] = useState(false);
   const [isPopupOpen2, setIsPopupOpen2] = useState(false);
   const [name2, setName2] = useState("");
-  const [pcode2, setPcode2] = useState("");
+  const [pcode2, setPcode2] = useState("+91");
   const [phone2, setPhone2] = useState("");
   const [email2, setEmail2] = useState("");
   const [query2, setQuery2] = useState("");
@@ -130,8 +132,8 @@ const HomeHospitalForm = ({ country, slug,name }) => {
         captcha: "Please Fill the captcha",
       }));
       return;
-
     }
+    const patientId = localStorage.getItem("userId");
 
     if (isValid) {
       // Create the data object to be sent in the API request
@@ -141,6 +143,8 @@ const HomeHospitalForm = ({ country, slug,name }) => {
         phone: phone2,
         email: email2,
         messages: query2,
+        hospital_id: hospitalId,
+        patient_id: patientId,
       };
 
       // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
@@ -152,20 +156,13 @@ const HomeHospitalForm = ({ country, slug,name }) => {
       axios
         .post(apiEndpoint, data)
         .then((response) => {
-          toast.success("questions is susscefull submitted", {
-            position: toast.POSITION.TOP_RIGHT,
-          });
+          setShowSuccessPopup(true);
           clearFormFields2();
           setIsPopupOpen2(false);
         })
         .catch((error) => {
           console.error("Error:", error);
-          toast.error(
-            "There was an error submitting your questions. Please try again.",
-            {
-              position: toast.POSITION.TOP_RIGHT,
-            }
-          );
+          setShowErrorPopup(true);
         })
         .finally(() => {
           setIsLoading2(false);
@@ -219,6 +216,14 @@ const HomeHospitalForm = ({ country, slug,name }) => {
   const renderError = (error) =>
     error && <div className="error-message">{error}</div>;
 
+  const handleCloseSuccessPopup = () => {
+    setShowSuccessPopup(false);
+  };
+
+  const handleCloseErrorPopup = () => {
+    setShowErrorPopup(false);
+  };
+
   return (
     <>
       <div className="expert-button">
@@ -249,11 +254,9 @@ const HomeHospitalForm = ({ country, slug,name }) => {
                 </button>
               </div>
               <h2 style={{ padding: "0px" }}>
-                Book Appointment With
-                <span style={{ color: "#ff6800" }}>
-                  {name}
-                </span>
-                now!
+                {" "}
+                Book Appointment at <br />
+                <span style={{ color: "#ff6800" }}>{name}</span> now!
               </h2>
               <form onSubmit={handleFormSubmit2}>
                 <div className="treatment-form">
@@ -356,7 +359,19 @@ const HomeHospitalForm = ({ country, slug,name }) => {
           </div>
         </div>
       )}
-      <ToastContainer />
+      {showSuccessPopup && (
+        <Success
+          onClose={handleCloseSuccessPopup}
+          showSuccessPopup={showSuccessPopup}
+        />
+      )}
+
+      {showErrorPopup && (
+        <ErrorPopup
+          onClose={handleCloseErrorPopup}
+          showErrorPopup={showErrorPopup}
+        />
+      )}
     </>
   );
 };

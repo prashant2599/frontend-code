@@ -6,13 +6,15 @@ import ReCAPTCHA from "react-google-recaptcha";
 import axios from "axios";
 import "intl-tel-input/build/css/intlTelInput.css";
 import intlTelInput from "intl-tel-input";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import Success from "../successPopup/Success";
+import ErrorPopup from "../successPopup/ErrorPopup";
 
-const HomeDoctorForm = ({ slug, first, middle, last }) => {
+const HomeDoctorForm = ({ slug, first, middle, last, doctorId }) => {
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
+  const [showErrorPopup, setShowErrorPopup] = useState(false);
   const [isPopupOpen2, setIsPopupOpen2] = useState(false);
   const [name2, setName2] = useState("");
-  const [pcode2, setPcode2] = useState("");
+  const [pcode2, setPcode2] = useState("+91");
   const [phone2, setPhone2] = useState("");
   const [email2, setEmail2] = useState("");
   const [query2, setQuery2] = useState("");
@@ -85,6 +87,7 @@ const HomeDoctorForm = ({ slug, first, middle, last }) => {
     });
 
     // Validation logic
+    const patientId = localStorage.getItem("userId");
     let isValid = true;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const phoneRegex = /^\d{10,}$/;
@@ -140,6 +143,8 @@ const HomeDoctorForm = ({ slug, first, middle, last }) => {
         phone: phone2,
         email: email2,
         messages: query2,
+        patient_id: patientId,
+        doctor_id: doctorId,
       };
 
       // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
@@ -151,20 +156,13 @@ const HomeDoctorForm = ({ slug, first, middle, last }) => {
       axios
         .post(apiEndpoint, data)
         .then((response) => {
-          toast.success("questions is susscefull submitted", {
-            position: toast.POSITION.TOP_RIGHT,
-          });
+          setShowSuccessPopup(true);
           clearFormFields2();
           setIsPopupOpen2(false);
         })
         .catch((error) => {
           console.error("Error:", error);
-          toast.error(
-            "There was an error submitting your questions. Please try again.",
-            {
-              position: toast.POSITION.TOP_RIGHT,
-            }
-          );
+          setShowErrorPopup(true);
         })
         .finally(() => {
           setIsLoading2(false);
@@ -217,6 +215,14 @@ const HomeDoctorForm = ({ slug, first, middle, last }) => {
 
   const renderError = (error) =>
     error && <div className="error-message">{error}</div>;
+
+  const handleCloseSuccessPopup = () => {
+    setShowSuccessPopup(false);
+  };
+
+  const handleCloseErrorPopup = () => {
+    setShowErrorPopup(false);
+  };
   return (
     <>
       <div className="expert-button">
@@ -354,7 +360,18 @@ const HomeDoctorForm = ({ slug, first, middle, last }) => {
           </div>
         </div>
       )}
-      <ToastContainer />
+      {showSuccessPopup && (
+        <Success
+          onClose={handleCloseSuccessPopup}
+          showSuccessPopup={showSuccessPopup}
+        />
+      )}
+      {showErrorPopup && (
+        <ErrorPopup
+          onClose={handleCloseErrorPopup}
+          showErrorPopup={showErrorPopup}
+        />
+      )}
     </>
   );
 };

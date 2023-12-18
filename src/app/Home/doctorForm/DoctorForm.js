@@ -6,11 +6,13 @@ import ReCAPTCHA from "react-google-recaptcha";
 import axios from "axios";
 import "intl-tel-input/build/css/intlTelInput.css";
 import intlTelInput from "intl-tel-input";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import Success from "../successPopup/Success";
+import ErrorPopup from "../successPopup/ErrorPopup";
 
 const DoctorForm = ({ info }) => {
   // form query post api
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
+  const [showErrorPopup, setShowErrorPopup] = useState(false);
   const [name, setName] = useState("");
   const [pcode, setPcode] = useState("+91");
   const [phone, setPhone] = useState("");
@@ -138,19 +140,12 @@ const DoctorForm = ({ info }) => {
       axios
         .post(apiEndpoint, data)
         .then((response) => {
-          toast.success("questions is susscefull submitted", {
-            position: toast.POSITION.TOP_RIGHT,
-          });
+          setIsPopupOpen(false);
           clearFormFields();
         })
         .catch((error) => {
           console.error("Error:", error);
-          toast.error(
-            "There was an error submitting your questions. Please try again.",
-            {
-              position: toast.POSITION.TOP_RIGHT,
-            }
-          );
+          setShowErrorPopup(true);
         })
         .finally(() => {
           // Set loading back to false after the API call is complete
@@ -234,6 +229,14 @@ const DoctorForm = ({ info }) => {
   const renderError = (error) =>
     error && <div className="error-message">{error}</div>;
 
+  const handleCloseSuccessPopup = () => {
+    setShowSuccessPopup(false);
+  };
+
+  const handleCloseErrorPopup = () => {
+    setShowErrorPopup(false);
+  };
+
   return (
     <>
       <div className="doctor-midbox-right">
@@ -241,15 +244,13 @@ const DoctorForm = ({ info }) => {
           <h2>Need Assistance?</h2>
 
           <form onSubmit={handleFormSubmit}>
-            <div
-              className="treatment-form"
-            >
+            <div className="treatment-form">
               <div className="inputbox">
                 <label>Name</label>
                 <input
                   type="text"
                   placeholder={userName}
-                  name="name"                 
+                  name="name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   autoComplete="off"
@@ -343,7 +344,18 @@ const DoctorForm = ({ info }) => {
           </form>
         </div>
       </div>
-      <ToastContainer />
+      {showSuccessPopup && (
+        <Success
+          onClose={handleCloseSuccessPopup}
+          showSuccessPopup={showSuccessPopup}
+        />
+      )}
+      {showErrorPopup && (
+        <ErrorPopup
+          onClose={handleCloseErrorPopup}
+          showErrorPopup={showErrorPopup}
+        />
+      )}
     </>
   );
 };

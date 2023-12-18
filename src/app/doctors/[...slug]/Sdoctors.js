@@ -4,6 +4,7 @@ import SpecialitySelect from "@/app/doctorFilter/SpecialitySelect";
 import DoctorForm from "@/app/Home/doctorForm/DoctorForm";
 import ShareProfile from "@/app/Home/doctorForm/ShareProfile";
 import Image from "next/image";
+import DoctorListPopForm from "@/app/Home/doctorForm/DoctorListPopForm";
 
 function formatText(text) {
   if (typeof text === "string") {
@@ -156,22 +157,20 @@ const Sdoctors = ({ treatment, doctor, hospitalIcon, combinedSlug, info }) => {
                         </div>
                       </div>
                       <div className="doctor-item-button">
-                        <Link href="/query" className="book-app">
-                          Book Appointment{" "}
-                          <img src="/images/2023/05/book.png" alt="icon" />
+                        <DoctorListPopForm
+                          first={e.prefix}
+                          middle={e.first_name}
+                          last={e.last_name}
+                          doctorId={e.id}
+                        />
+                        <Link
+                          href={`/doctor/${e.slug}`}
+                          className="view-profile"
+                        >
+                          View Profile{" "}
+                          <img src="/images/2023/05/profile.png" alt="icon" />
                         </Link>
 
-                        {e.slug ? ( // Check if e.slug has a value
-                          <Link
-                            href={`/doctor/${e.slug}`}
-                            className="view-profile"
-                          >
-                            View Profile{" "}
-                            <img src="/images/2023/05/profile.png" alt="icon" />
-                          </Link>
-                        ) : (
-                          <span>No profile available</span>
-                        )}
                         {/* share profile */}
 
                         <ShareProfile slug={e.slug} />

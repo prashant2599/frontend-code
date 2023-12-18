@@ -159,6 +159,7 @@ const NewSearchTreatment = () => {
                     first={e.prefix}
                     middle={e.first_name}
                     last={e.last_name}
+                    doctorId={e.id}
                   />
                 </div>
               ))
@@ -213,7 +214,7 @@ const NewSearchTreatment = () => {
                         selectedCountry.slice(1)}
                     </p>
                   </div>
-                  <HomeHospitalForm slug={e.slug} country={e.country} name={e.name} />
+                  <HomeHospitalForm slug={e.slug} country={e.country} name={e.name} hospitalId={e.id} />
                 </div>
               ))
             ) : (

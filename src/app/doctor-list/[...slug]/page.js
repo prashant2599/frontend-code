@@ -4,6 +4,7 @@ import DoctorForm from "@/app/Home/doctorForm/DoctorForm";
 import Image from "next/image";
 import SpecialitySelect from "@/app/doctorFilter/SpecialitySelect";
 import { notFound } from "next/navigation";
+import DoctorListPopForm from "@/app/Home/doctorForm/DoctorListPopForm";
 
 const page = async ({ params }) => {
   try {
@@ -150,10 +151,12 @@ const page = async ({ params }) => {
                           </div>
                         </div>
                         <div className="doctor-item-button">
-                          <Link href="/query" className="book-app">
-                            Book Appointment{" "}
-                            <img src="/images/2023/05/book.png" alt="icon" />
-                          </Link>
+                          <DoctorListPopForm
+                            first={e.prefix}
+                            middle={e.first_name}
+                            last={e.last_name}
+                            doctorId={e.id}
+                          />
 
                           {e.slug ? ( // Check if e.slug has a value
                             <Link

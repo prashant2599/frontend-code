@@ -9,7 +9,6 @@ import Qa from "./Qa";
 import Community from "@/app/Home/community/Community";
 import TreatmentFaq from "./TreatmentFaq";
 import TreatmentBlog from "./TreatmentBlog";
-import Image from "next/image";
 import "@/app/Home/NewUIHomepage/newsection.css";
 import { notFound } from "next/navigation";
 
@@ -28,6 +27,10 @@ const page = async ({ params }) => {
     const qa = datas.treateDetailsbyCountry.qa;
     const faq = datas.treateDetailsbyCountry.faqs;
     const blog = datas.treateDetailsbyCountry.blogs;
+    const speciality = datas.treateDetailsbyCountry.speciality;
+
+    console.log(speciality);
+
     return (
       <>
         <section id="treatment-section">
@@ -46,12 +49,12 @@ const page = async ({ params }) => {
             <img
               src={`https://dev.medflick.com/treatments/${info.image}`}
               alt={info.slug}
-              style={{width:"50%"}}
+              style={{ width: "50%" }}
             />
             <img
               src={`https://dev.medflick.com/treatments/${info.image}`}
               alt={info.slug}
-              style={{width:"50%"}}
+              style={{ width: "50%" }}
             />
           </div>
           <div className="midbox-inner  wiki-mk">
@@ -117,107 +120,107 @@ const page = async ({ params }) => {
                       Overview
                     </a>
                   </li>
-                  <li>
-                    {info.head_brief && (
+                  {info.head_brief && (
+                    <li>
                       <a href="#transplant-nav2">{info.head_brief}</a>
-                    )}
-                  </li>
-                  <li>
-                    {info.head_needed && (
+                    </li>
+                  )}
+                  {info.head_needed && (
+                    <li>
                       <a href="#transplant-nav3">{info.head_needed}</a>
-                    )}
-                  </li>
-                  <li>
-                    {info.head_types && (
+                    </li>
+                  )}
+                  {info.head_types && (
+                    <li>
                       <a href="#transplant-nav4" target="_self">
                         {info.head_types}
                       </a>
-                    )}
-                  </li>
-                  <li>
-                    {info.head_complications && (
+                    </li>
+                  )}
+                  {info.head_complications && (
+                    <li>
                       <a href="#transplant-nav7" target="_self">
                         {info.head_complications}
                       </a>
-                    )}
-                  </li>
-                  <li>
-                    {info.head_post_procedure && (
+                    </li>
+                  )}
+                  {info.head_post_procedure && (
+                    <li>
                       <a href="#transplant-nav8" target="_self">
                         {info.head_post_procedure}
                       </a>
-                    )}
-                  </li>
-                  <li>
-                    {info.head_life_after && (
+                    </li>
+                  )}
+                  {info.head_life_after && (
+                    <li>
                       <a href="#transplant-nav9" target="_self">
                         {info.head_life_after}
                       </a>
-                    )}
-                  </li>
-                  <li>
-                    {info.head_success_ate && (
+                    </li>
+                  )}
+                  {info.head_success_ate && (
+                    <li>
                       <a href="#transplant-nav10" target="_self">
                         {info.head_success_ate}
                       </a>
-                    )}
-                  </li>
-                  <li>
-                    {info.head_analysis_and_comparision && (
+                    </li>
+                  )}
+                  {info.head_analysis_and_comparision && (
+                    <li>
                       <a href="#transplant-nav11" target="_self">
                         {info.head_analysis_and_comparision}
                       </a>
-                    )}
-                  </li>
-                  <li>
-                    {info.head_domestic && (
+                    </li>
+                  )}
+                  {info.head_domestic && (
+                    <li>
                       <a href="#transplant-nav12" target="_self">
                         {info.head_domestic}
                       </a>
-                    )}
-                  </li>
-                  <li>
-                    {info.head_pre_evalution && (
+                    </li>
+                  )}
+                  {info.head_pre_evalution && (
+                    <li>
                       <a href="#transplant-nav21" target="_self">
                         {info.head_pre_evalution}
                       </a>
-                    )}
-                  </li>
-                  <li>
-                    {info.head_international && (
+                    </li>
+                  )}
+                  {info.head_international && (
+                    <li>
                       <a href="#transplant-nav13" target="_self">
                         {info.head_international}
                       </a>
-                    )}
-                  </li>
-                  <li>
-                    {info.head_how_treatment && (
+                    </li>
+                  )}
+                  {info.head_how_treatment && (
+                    <li>
                       <a href="#transplant-nav31" target="_self">
                         {info.head_how_treatment}
                       </a>
-                    )}
-                  </li>
-                  <li>
-                    {info.head_cost_influencing && (
+                    </li>
+                  )}
+                  {info.head_cost_influencing && (
+                    <li>
                       <a href="#transplant-nav14" target="_self">
                         {info.head_cost_influencing}
                       </a>
-                    )}
-                  </li>
-                  <li>
-                    {info.head_cost_of_diagnostics && (
+                    </li>
+                  )}
+                  {info.head_cost_of_diagnostics && (
+                    <li>
                       <a href="#transplant-nav44" target="_self">
                         {info.head_cost_of_diagnostics}
                       </a>
-                    )}
-                  </li>
-                  <li>
-                    {info.head_our_service && (
+                    </li>
+                  )}
+                  {info.head_our_service && (
+                    <li>
                       <a href="#transplant-nav15" target="_self">
                         {info.head_our_service}
                       </a>
-                    )}
-                  </li>
+                    </li>
+                  )}
                   <li>
                     <a href="#transplant-nav16" target="_self">
                       Doctors
@@ -437,91 +440,7 @@ const page = async ({ params }) => {
                     />
                   </div>
                 )}
-                {/* 
-              <div className="treatmen-midnav" id="transplant-nav12">
-                <h2>Domestic Cost Comparison</h2>
-                <p>
-                  Breakdown of the cost of liver transplant in 6 major countries
-                </p>
 
-                <div className="cost-boxmid">
-                  <div className="cost-list">
-                    <div className="name-city">Delhi</div>
-                    <div className="cost-city">₹ 18-31.5 lakh</div>
-                  </div>
-
-                  <div className="cost-list">
-                    <div className="name-city">Bangalore</div>
-                    <div className="cost-city">₹ 18-31.5 lakh</div>
-                  </div>
-
-                  <div className="cost-list">
-                    <div className="name-city">Mumbai</div>
-                    <div className="cost-city">₹ 18-31.5 lakh</div>
-                  </div>
-
-                  <div className="cost-list">
-                    <div className="name-city">Pune</div>
-                    <div className="cost-city">₹ 18-31.5 lakh</div>
-                  </div>
-
-                  <div className="cost-list">
-                    <div className="name-city">Chennai</div>
-                    <div className="cost-city">₹ 18-31.5 lakh</div>
-                  </div>
-
-                  <div className="cost-list">
-                    <div className="name-city">Hyderabad</div>
-                    <div className="cost-city">₹ 18-31.5 lakh</div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="treatmen-midnav" id="transplant-nav13">
-                <h2>international cost</h2>
-                <p>
-                  Breakdown of the cost of liver transplant in 6 major countries
-                </p>
-
-                <div className="cost-boxmid">
-                  <div className="cost-list">
-                    <div className="name-city">India</div>
-                    <div className="cost-city">₹ 18-31.5 lakh</div>
-                  </div>
-
-                  <div className="cost-list">
-                    <div className="name-city">South Africa</div>
-                    <div className="cost-city">₹ 18-31.5 lakh</div>
-                  </div>
-
-                  <div className="cost-list">
-                    <div className="name-city">Singapore</div>
-                    <div className="cost-city">₹ 18-31.5 lakh</div>
-                  </div>
-
-                  <div className="cost-list">
-                    <div className="name-city">United Kingdom</div>
-                    <div className="cost-city">₹ 18-31.5 lakh</div>
-                  </div>
-
-                  <div className="cost-list">
-                    <div className="name-city">Germany</div>
-                    <div className="cost-city">₹ 18-31.5 lakh</div>
-                  </div>
-
-                  <div className="cost-list">
-                    <div className="name-city">USA</div>
-                    <div className="cost-city">₹ 18-31.5 lakh</div>
-                  </div>
-                </div>
-
-                <div className="consultation-box">
-                  <p>Lorem ipsum dolor sit amet quis</p>
-                  <a className="consultation-button" href="#">
-                    Book a Free Consultation <img src="/images/2023/01/learn-more.png" />
-                  </a>
-                </div>
-              </div> */}
                 {info.head_cost_influencing && (
                   <div className="treatmen-midnav" id="transplant-nav14">
                     <h2>{info.head_cost_influencing}</h2>
@@ -564,8 +483,11 @@ const page = async ({ params }) => {
                   <NavDoctors doctor={doctor} />
 
                   <div className="treatment-view">
-                    <Link className="viewmore" href="/doctors">
-                      View more{" "}
+                    <Link
+                      className="viewmore"
+                      href={`/doctor-list/${speciality[0].slug}/${info.slug}`}
+                    >
+                      View more
                     </Link>
                   </div>
                 </div>
@@ -581,7 +503,10 @@ const page = async ({ params }) => {
                   <NavHospitals hospital={hospital} />
 
                   <div className="treatment-view">
-                    <Link className="viewmore" href="/hospitals">
+                    <Link
+                      className="viewmore"
+                      href={`/hospital-list/${speciality[0].slug}/${info.slug}`}
+                    >
                       View more{" "}
                     </Link>
                   </div>
@@ -603,7 +528,9 @@ const page = async ({ params }) => {
 
                 <div className="navbox">
                   <img src="/images/2023/03/02/1.png" />
-                  <Link href="/hospitals">
+                  <Link
+                    href={`/hospital-list/${speciality[0].slug}/${info.slug}`}
+                  >
                     <h4>Hospitals</h4>
                   </Link>
                   <p>Medflick Assured Hospitals</p>
@@ -611,7 +538,9 @@ const page = async ({ params }) => {
 
                 <div className="navbox">
                   <img src="/images/2023/03/02/2.png" />
-                  <Link href="/doctors">
+                  <Link
+                    href={`/doctor-list/${speciality[0].slug}/${info.slug}`}
+                  >
                     <h4>Doctors</h4>
                   </Link>
                   <p>Medflick Assured Doctors </p>
@@ -625,18 +554,19 @@ const page = async ({ params }) => {
                   <p>Access MedFlick-verified information</p>
                 </div>
 
-                <div className="symptomsbox">
-                  <h4>Symptoms</h4>
-
-                  <ul>
-                    {info.symptoms &&
-                      info.symptoms.split(",").map((amenity, index) => (
-                        <li key={index}>
-                          <a>{amenity.trim()}</a>
-                        </li>
-                      ))}
-                  </ul>
-                </div>
+                {info.symptoms && (
+                  <div className="symptomsbox">
+                    <h4>Symptoms</h4>
+                    <ul>
+                      {info.symptoms &&
+                        info.symptoms.split(",").map((amenity, index) => (
+                          <li key={index}>
+                            <a>{amenity.trim()}</a>
+                          </li>
+                        ))}
+                    </ul>
+                  </div>
+                )}
               </div>
             </div>
           </div>
