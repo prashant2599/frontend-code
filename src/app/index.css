@@ -454,41 +454,13 @@ a:hover {
   display: -webkit-box;
   overflow: hidden;
 }
-.blog-text {
-  display: flex;
-  justify-content: space-between;
-  border-top: 1px solid #ededed;
-  margin-top: 20px;
-  padding: 14px 10px;
-}
-.category-blog {
-  color: #ff6800;
-  font-size: 16px;
-  padding-left: 22px;
-  position: relative;
-}
-.time-blog {
-  color: #7c7c7c;
-  font-size: 16px;
-  padding-left: 20px;
-  position: relative;
-}
-.blog-text span {
-  position: absolute;
-  top: 8px;
-  left: 10px;
-}
-.blog-text span img {
-  width: 8px !important;
-  height: 8px;
-  border-radius: 0px;
-}
-.blog-text a img {
-  width: 15px !important;
-  height: 15px;
-  border-radius: 0px;
-  margin-top: 6px;
-}
+
+
+
+
+
+
+
 
 #pay-section {
   width: 100%;
