@@ -6,8 +6,8 @@ import { ThreeDots } from "react-loader-spinner";
 import ReCAPTCHA from "react-google-recaptcha";
 import "intl-tel-input/build/css/intlTelInput.css"; // Import CSS
 import intlTelInput from "intl-tel-input";
-import Success from "../successPopup/Success";
-import ErrorPopup from "../successPopup/ErrorPopup";
+import Success from "../Home/successPopup/Success";
+import ErrorPopup from "../Home/successPopup/ErrorPopup";
 
 const QueryForm = () => {
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
