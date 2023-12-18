@@ -137,6 +137,7 @@ const AppointmentForm = ({ hospitalId, HospitalName }) => {
       isValid = false;
     }
 
+    if(!userEmail){
     if (!email || !email.match(emailRegex)) {
       setFormErrors((prevErrors) => ({
         ...prevErrors,
@@ -144,6 +145,7 @@ const AppointmentForm = ({ hospitalId, HospitalName }) => {
       }));
       isValid = false;
     }
+  }
 
     if (!query) {
       setFormErrors((prevErrors) => ({

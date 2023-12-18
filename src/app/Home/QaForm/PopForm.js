@@ -142,27 +142,33 @@ const PopForm = () => {
     const phoneRegex = /^\d{10,}$/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (!name) {
-      setFormErrors((prevErrors) => ({
-        ...prevErrors,
-        name: "Please enter your name",
-      }));
-      isValid = false;
+    if (!userName) {
+      if (!name) {
+        setFormErrors((prevErrors) => ({
+          ...prevErrors,
+          name: "Please enter your name",
+        }));
+        isValid = false;
+      }
     }
-    if (!phone || !phone.match(phoneRegex)) {
-      setFormErrors((prevErrors) => ({
-        ...prevErrors,
-        phone: "Please enter a valid Phone number",
-      }));
-      isValid = false;
+    if (!userPhone) {
+      if (!phone || !phone.match(phoneRegex)) {
+        setFormErrors((prevErrors) => ({
+          ...prevErrors,
+          phone: "Please enter a valid Phone number",
+        }));
+        isValid = false;
+      }
     }
 
-    if (!email || !email.match(emailRegex)) {
-      setFormErrors((prevErrors) => ({
-        ...prevErrors,
-        email: "Please enter a valid email address",
-      }));
-      isValid = false;
+    if (!userEmail) {
+      if (!email || !email.match(emailRegex)) {
+        setFormErrors((prevErrors) => ({
+          ...prevErrors,
+          email: "Please enter a valid email address",
+        }));
+        isValid = false;
+      }
     }
 
     if (!query) {
@@ -190,7 +196,7 @@ const PopForm = () => {
       const data = {
         pname: userName ? userName : name,
         phone_code: pcode,
-        phone: phone,
+        phone: userPhone ? userPhone : phone,
         email: userEmail ? userEmail : email,
         askq: query,
         patient_id: patientId,
@@ -253,137 +259,210 @@ const PopForm = () => {
 
   return (
     <>
-      <div className="search-question-right">
-        <span>Have any Questions?</span>
-        <span
-          className="ask-question"
-          data-popup-open="popup-2"
-          onClick={togglePopup}
-          style={{ cursor: "pointer" }}
-        >
-          <img src="images/2023/07/ask.png" alt="" /> Ask Question
-        </span>
-      </div>
+      <span
+        className="ask-question"
+        data-popup-open="popup-2"
+        onClick={togglePopup}
+        style={{ cursor: "pointer" }}
+      >
+        <img src="images/2023/07/ask.png" alt="" /> Ask Question
+      </span>
 
-      {isPopupOpen && (
-        <div className="popup" data-popup="popup-1" style={popupStyle}>
-          <div className="popup-inner2">
-            <div className="modal-content">
-              <div className="modal-header">
-                <button
-                  type="button"
-                  className="popup-close"
-                  data-popup-close="popup-1"
-                  data-dismiss="modal"
-                  onClick={togglePopup}
-                >
-                  <span aria-hidden="true">×</span>
-                </button>
-              </div>
-              <h2>Ask Free Question</h2>
-
-              <form onSubmit={handleFormSubmit}>
-                <div className="treatment-form">
-                  <div className="inputbox">
-                    <label>Name</label>
-                    <input
-                      type="text"
-                      placeholder={userName}
-                      name="name"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      autoComplete="off"
-                      style={formErrors.name ? Formstyles.errorInput : {}}
-                    />
-                    {renderError(formErrors.name)}
-                  </div>
+      {isPopupOpen &&
+        (userEmail ? (
+          <div className="popup" data-popup="popup-2" style={popupStyle}>
+            <div className="popup-inner1">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <button
+                    type="button"
+                    className="popup-close"
+                    data-popup-close="popup-2"
+                    data-dismiss="modal"
+                    onClick={togglePopup}
+                  >
+                    <span aria-hidden="true" style={{ color: "#fff" }}>
+                      ×
+                    </span>
+                  </button>
                 </div>
+                <h2>Ask Question </h2>
 
-                <div className="treatment-form">
-                  <div className="inputbox">
-                    <label>Phone</label>
-                    <input
-                      ref={inputRef}
-                      type="tel"
-                      id="mobileode"
-                      placeholder=""
-                      value={phone}
-                      onChange={handlePhoneNumberChange}
-                      onBlur={handlePhoneBlur}
-                      style={formErrors.phone ? Formstyles.errorInput : {}}
-                    />
-                    {renderError(formErrors.phone)}
-                  </div>
-                </div>
-
-                {userEmail ? null : (
-                  <div className="treatment-form">
-                    <div className="inputbox">
-                      <label>Email</label>
-                      <input
-                        type="email"
-                        placeholder=""
-                        name="name"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        onBlur={handleEmailBlur}
-                        autoComplete="off"
-                        style={formErrors.email ? Formstyles.errorInput : {}}
-                      />
-                      {renderError(formErrors.email)}
-                    </div>
-                  </div>
-                )}
-                <div className="treatment-form">
-                  <div className="inputbox">
-                    <label>Your Query</label>
+                <div className="questions-form-box">
+                  <div className="form-group">
                     <textarea
-                      className="querybox"
                       type="textarea"
                       name="query"
-                      placeholder=""
+                      placeholder="Ask question. Use @ to mention members"
                       rows="2"
                       value={query}
                       onChange={(e) => setQuery(e.target.value)}
                       autoComplete="off"
-                      style={formErrors.query ? Formstyles.errorInput : {}}
                     ></textarea>
                     {renderError(formErrors.query)}
                   </div>
+                  <ReCAPTCHA
+                    sitekey="6LcX6-YnAAAAAAjHasYD8EWemgKlDUxZ4ceSo8Eo" // Replace with your reCAPTCHA site key
+                    onChange={handleCaptchaChange}
+                  />
+                  {renderError(formErrors.captcha)}
                 </div>
-                <ReCAPTCHA
-                  sitekey="6LcX6-YnAAAAAAjHasYD8EWemgKlDUxZ4ceSo8Eo" // Replace with your reCAPTCHA site key
-                  onChange={handleCaptchaChange}
-                />
-                {renderError(formErrors.captcha)}
-                <button
-                  type="submit"
-                  name="en"
-                  className="home-button"
-                  disabled={isLoading}
-                >
-                  {" "}
-                  {isLoading ? (
-                    <ThreeDots
-                      height="27"
-                      width="80"
-                      radius="9"
-                      color="#ffffff"
-                      ariaLabel="three-dots-loading"
-                      wrapperStyle={{}}
-                      wrapperClassName=""
-                      visible={true}
-                    />
-                  ) : (
-                    "Submit Now"
+
+                <div className="question-box7">
+                  {/* <div className="upload-report-box">
+                    <div className="medical-report-wrapper">
+                      <button className="medical-report">
+                        <img src="/images/2023/07/upload-icon.png" /> Medical
+                        report
+                      </button>
+                      <input type="file" name="file" />
+                    </div>
+                  </div> */}
+
+                  <div className="question-post-box">
+                    <button
+                      type="submit"
+                      name="en"
+                      className="cancel-button"
+                      onClick={togglePopup}
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      type="submit"
+                      name="en"
+                      className="post-button"
+                      onClick={handleFormSubmit}
+                    >
+                      Post{" "}
+                    </button>
+                  </div>
+                </div>
+              </div>{" "}
+            </div>{" "}
+          </div>
+        ) : (
+          <div className="popup" data-popup="popup-1" style={popupStyle}>
+            <div className="popup-inner2">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <button
+                    type="button"
+                    className="popup-close"
+                    data-popup-close="popup-1"
+                    data-dismiss="modal"
+                    onClick={togglePopup}
+                  >
+                    <span aria-hidden="true" style={{ color: "#fff" }}>
+                      ×
+                    </span>
+                  </button>
+                </div>
+                <h2>Ask Free Question</h2>
+
+                <form onSubmit={handleFormSubmit}>
+                  <div className="treatment-form">
+                    <div className="inputbox">
+                      <label>Name</label>
+                      <input
+                        type="text"
+                        placeholder={userName}
+                        name="name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        autoComplete="off"
+                        style={formErrors.name ? Formstyles.errorInput : {}}
+                      />
+                      {renderError(formErrors.name)}
+                    </div>
+                  </div>
+
+                  <div className="treatment-form">
+                    <div className="inputbox">
+                      <label>Phone</label>
+                      <input
+                        ref={inputRef}
+                        type="tel"
+                        id="mobileode"
+                        placeholder=""
+                        value={phone}
+                        onChange={handlePhoneNumberChange}
+                        onBlur={handlePhoneBlur}
+                        style={formErrors.phone ? Formstyles.errorInput : {}}
+                      />
+                      {renderError(formErrors.phone)}
+                    </div>
+                  </div>
+
+                  {userEmail ? null : (
+                    <div className="treatment-form">
+                      <div className="inputbox">
+                        <label>Email</label>
+                        <input
+                          type="email"
+                          placeholder=""
+                          name="name"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          onBlur={handleEmailBlur}
+                          autoComplete="off"
+                          style={formErrors.email ? Formstyles.errorInput : {}}
+                        />
+                        {renderError(formErrors.email)}
+                      </div>
+                    </div>
                   )}
-                  <img src="/images/2023/01/arrow-c.png" alt="arrow-Icon" />
-                </button>
-              </form>
+                  <div className="treatment-form">
+                    <div className="inputbox">
+                      <label>Your Query</label>
+                      <textarea
+                        className="querybox"
+                        type="textarea"
+                        name="query"
+                        placeholder=""
+                        rows="2"
+                        value={query}
+                        onChange={(e) => setQuery(e.target.value)}
+                        autoComplete="off"
+                        style={formErrors.query ? Formstyles.errorInput : {}}
+                      ></textarea>
+                      {renderError(formErrors.query)}
+                    </div>
+                  </div>
+                  <ReCAPTCHA
+                    sitekey="6LcX6-YnAAAAAAjHasYD8EWemgKlDUxZ4ceSo8Eo" // Replace with your reCAPTCHA site key
+                    onChange={handleCaptchaChange}
+                  />
+                  {renderError(formErrors.captcha)}
+                  <button
+                    type="submit"
+                    name="en"
+                    className="home-button"
+                    disabled={isLoading}
+                  >
+                    {" "}
+                    {isLoading ? (
+                      <ThreeDots
+                        height="27"
+                        width="80"
+                        radius="9"
+                        color="#ffffff"
+                        ariaLabel="three-dots-loading"
+                        wrapperStyle={{}}
+                        wrapperClassName=""
+                        visible={true}
+                      />
+                    ) : (
+                      "Submit Now"
+                    )}
+                    <img src="/images/2023/01/arrow-c.png" alt="arrow-Icon" />
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        ))}
+
       {showSuccessPopup && (
         <Success
           onClose={handleCloseSuccessPopup}

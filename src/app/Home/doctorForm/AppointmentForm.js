@@ -136,12 +136,14 @@ const AppointmentForm = ({ doctorId, first, middle, last }) => {
       isValid = false;
     }
 
-    if (!email || !email.match(emailRegex)) {
-      setFormErrors((prevErrors) => ({
-        ...prevErrors,
-        email: "Please enter a valid email address",
-      }));
-      isValid = false;
+    if (!userEmail) {
+      if (!email || !email.match(emailRegex)) {
+        setFormErrors((prevErrors) => ({
+          ...prevErrors,
+          email: "Please enter a valid email address",
+        }));
+        isValid = false;
+      }
     }
 
     if (!query) {

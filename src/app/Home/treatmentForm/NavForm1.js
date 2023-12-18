@@ -220,7 +220,7 @@ const NavForm1 = ({ treatmentId, specialityId }) => {
                 <label>Name</label>
                 <input
                   type="text"
-                  placeholder=""
+                  placeholder={userName}
                   name="name"
                   value={name1}
                   onChange={(e) => setName1(e.target.value)}

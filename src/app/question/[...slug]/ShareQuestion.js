@@ -1,6 +1,5 @@
 "use client";
 
-import { IoIosShareAlt } from "react-icons/io";
 import {
   FacebookShareButton,
   TwitterShareButton,
@@ -11,7 +10,7 @@ import {
 } from "react-share";
 import { useState, useRef } from "react";
 
-const ShareQA = ({ desc, id }) => {
+const ShareQuestion = ({ desc, id }) => {
   const [isPopupOpenShare, setIsPopupOpenShare] = useState(false);
 
   const inputRef = useRef(null);
@@ -36,16 +35,9 @@ const ShareQA = ({ desc, id }) => {
   };
   return (
     <>
-      <span
-        className="ask-comments"
-        onClick={togglePopupShare}
-        style={{ cursor: "pointer" }}
-      >
-        <i>
-          <IoIosShareAlt />
-        </i>{" "}
-        Share
-      </span>
+      <a onClick={togglePopupShare} className="share-discussion">
+        Share discussion
+      </a>
       {isPopupOpenShare && (
         <div className="popup" data-popup="popup-3" style={popupStyleShare}>
           <div className="popup-inner3">
@@ -145,4 +137,4 @@ const ShareQA = ({ desc, id }) => {
   );
 };
 
-export default ShareQA;
+export default ShareQuestion;

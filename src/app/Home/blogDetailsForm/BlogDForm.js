@@ -19,6 +19,29 @@ const BlogDForm = () => {
   const [email1, setEmail1] = useState("");
   const [query1, setQuery1] = useState("");
 
+  const [userName, setUserName] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+  const [userPhone, setUserPhone] = useState("");
+
+  // Check if 'userName' exists in localStorage on component mount
+  useEffect(() => {
+    const storedUserName = localStorage.getItem("userName");
+    const storedUserEmail = localStorage.getItem("userEmail");
+    const storedUserPhone = localStorage.getItem("userPhone");
+
+    if (storedUserName) {
+      setUserName(storedUserName);
+    }
+
+    if (storedUserPhone) {
+      setUserPhone(storedUserPhone);
+    }
+
+    if (storedUserEmail) {
+      setUserEmail(storedUserEmail);
+    }
+  }, []);
+
   const [isLoading1, setIsLoading1] = useState(false);
 
   const [formErrors, setFormErrors] = useState({
@@ -99,12 +122,14 @@ const BlogDForm = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const phoneRegex = /^\d{10,}$/;
 
-    if (!name1) {
-      setFormErrors((prevErrors) => ({
-        ...prevErrors,
-        name: "Please enter your name",
-      }));
-      isValid = false;
+    if (!userName) {
+      if (!name1) {
+        setFormErrors((prevErrors) => ({
+          ...prevErrors,
+          name: "Please enter your name",
+        }));
+        isValid = false;
+      }
     }
 
     if (!phone1 || !phone1.match(phoneRegex)) {
@@ -115,12 +140,14 @@ const BlogDForm = () => {
       isValid = false;
     }
 
-    if (!email1 || !email1.match(emailRegex)) {
-      setFormErrors((prevErrors) => ({
-        ...prevErrors,
-        email: "Please enter a valid email address",
-      }));
-      isValid = false;
+    if (!userEmail) {
+      if (!email1 || !email1.match(emailRegex)) {
+        setFormErrors((prevErrors) => ({
+          ...prevErrors,
+          email: "Please enter a valid email address",
+        }));
+        isValid = false;
+      }
     }
 
     if (!query1) {
@@ -143,14 +170,17 @@ const BlogDForm = () => {
       return;
     }
 
+    const patientId = localStorage.getItem("userId");
+
     if (isValid) {
       // Create the data object to be sent in the API request
       const data = {
-        name: name1,
+        name: userName ? userName : name1,
         phone_code: pcode1,
         phone: phone1,
-        email: email1,
+        email: userEmail ? userEmail : email1,
         messages: query1,
+        patient_id: patientId,
       };
 
       // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
@@ -236,7 +266,7 @@ const BlogDForm = () => {
                 <label>Name</label>
                 <input
                   type="text"
-                  placeholder=""
+                  placeholder={userName}
                   name="name"
                   value={name1}
                   onChange={(e) => setName1(e.target.value)}
@@ -264,22 +294,24 @@ const BlogDForm = () => {
               </div>
             </div>
 
-            <div className="treatment-form">
-              <div className="inputbox">
-                <label>Email</label>
-                <input
-                  type="email"
-                  placeholder=""
-                  name="name"
-                  value={email1}
-                  onChange={(e) => setEmail1(e.target.value)}
-                  autoComplete="off"
-                  onBlur={handleEmailBlur}
-                  style={formErrors.email ? Formstyles.errorInput : {}}
-                />
-                {renderError(formErrors.email)}
+            {userEmail ? null : (
+              <div className="treatment-form">
+                <div className="inputbox">
+                  <label>Email</label>
+                  <input
+                    type="email"
+                    placeholder=""
+                    name="name"
+                    value={email1}
+                    onChange={(e) => setEmail1(e.target.value)}
+                    onBlur={handleEmailBlur}
+                    style={formErrors.email ? Formstyles.errorInput : {}}
+                    autoComplete="off"
+                  />
+                  {renderError(formErrors.email)}
+                </div>
               </div>
-            </div>
+            )}
 
             <div className="treatment-form">
               <div className="inputbox">

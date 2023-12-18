@@ -31,7 +31,7 @@ const TreatmentList = ({ speciality, slugs }) => {
                 <div className="packages-text">
                   <div className="pack-cost">
                     <div className="pack-name">{e.name} </div>
-                    <div className="cost">${e.price}</div>
+                    <div className="cost">{e.price}</div>
                   </div>
                   <div className="packages-details">
                     {e.short_description && e.short_description.slice(0, 130)}

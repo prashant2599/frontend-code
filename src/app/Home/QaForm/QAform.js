@@ -97,12 +97,14 @@ const QAform = () => {
       isValid = false;
     }
 
-    if (!email1 || !email1.match(emailRegex)) {
-      setFormErrors((prevErrors) => ({
-        ...prevErrors,
-        email: "Please enter a valid email address",
-      }));
-      isValid = false;
+    if (!userEmail) {
+      if (!email1 || !email1.match(emailRegex)) {
+        setFormErrors((prevErrors) => ({
+          ...prevErrors,
+          email: "Please enter a valid email address",
+        }));
+        isValid = false;
+      }
     }
 
     if (!query1) {
@@ -289,10 +291,11 @@ const QAform = () => {
                     style={formErrors.email ? Formstyles.errorInput : {}}
                     autoComplete="off"
                   />
+                   {renderError(formErrors.email)}
                 </div>
               </div>
             )}
-            {renderError(formErrors.email)}
+           
 
             <div className="treatment-form">
               <div className="inputbox">

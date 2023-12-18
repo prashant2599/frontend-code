@@ -121,10 +121,10 @@ const SignUp = () => {
       validationMessage = "Password and Confirm Password do not match.";
     }
 
-    if (!captchaValue) {
-      alert("Please complete the CAPTCHA.");
-      return;
-    }
+    // if (!captchaValue) {
+    //   alert("Please complete the CAPTCHA.");
+    //   return;
+    // }
 
     if (password.length < 6) {
       isValid = false;

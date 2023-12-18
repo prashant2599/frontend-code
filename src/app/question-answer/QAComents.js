@@ -83,7 +83,7 @@ const QAComents = ({ Id, specialityId, subspecialityId, treatments }) => {
 
   return (
     <>
-      <span className="ask-comments" onClick={handleClickComments}>
+      <span className="ask-comments">
         <i>
           <FaComments />
         </i>{" "}
