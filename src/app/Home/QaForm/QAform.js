@@ -119,13 +119,13 @@ const QAform = () => {
       return;
     }
 
-    if (!captchaValue1) {
-      setFormErrors((prevErrors) => ({
-        ...prevErrors,
-        captcha: "Please Fill the captcha",
-      }));
-      return;
-    }
+    // if (!captchaValue1) {
+    //   setFormErrors((prevErrors) => ({
+    //     ...prevErrors,
+    //     captcha: "Please Fill the captcha",
+    //   }));
+    //   return;
+    // }
     if (isValid) {
       // Create the data object to be sent in the API request
       const data = {
@@ -138,7 +138,7 @@ const QAform = () => {
       };
 
       // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
-      const apiEndpoint = `https://dev.medflick.com/api/free_consultants`;
+      const apiEndpoint = `https://api.medflick.com/api/free_consultants`;
 
       setIsLoading1(true);
 
