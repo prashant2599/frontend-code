@@ -56,7 +56,7 @@ const Dashboard = () => {
           <div className="home-topbox">
             <div className="topbox-left">
               <h1>Hi {userName}</h1>
-              <h2>lorem ipsum dolor sit amet quies</h2>
+              {/* <h2>lorem ipsum dolor sit amet quies</h2> */}
             </div>
 
             <div className="topbox-right">
@@ -93,17 +93,17 @@ const Dashboard = () => {
                   <Link href="/patient-quote">
                     <h3>Request Quote</h3>
                   </Link>
-                  <p>Lorem ipsum dolor sit amer is dumm</p>
+                  {/* <p>Lorem ipsum dolor sit amer is dumm</p> */}
                 </li>
                 <li>
                   <img src="/images/2023/01/2.png" alt="icon-img" />
                   <h3>Search Treatments</h3>
-                  <p>Lorem ipsum dolor sit amer is dumm</p>
+                  {/* <p>Lorem ipsum dolor sit amer is dumm</p> */}
                 </li>
                 <li>
                   <img src="/images/2023/01/3.png" alt="icon-img" />
                   <h3>Need Help?</h3>
-                  <p>Lorem ipsum dolor sit amer is dumm</p>
+                  {/* <p>Lorem ipsum dolor sit amer is dumm</p> */}
                 </li>
               </ul>
             </div>

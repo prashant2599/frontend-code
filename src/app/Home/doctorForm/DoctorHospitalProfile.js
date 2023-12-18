@@ -19,6 +19,29 @@ const DoctorHospitalProfile = ({ slug, first, middle, last }) => {
   const [email2, setEmail2] = useState("");
   const [query2, setQuery2] = useState("");
 
+  const [userName, setUserName] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+  const [userPhone, setUserPhone] = useState("");
+
+  // Check if 'userName' exists in localStorage on component mount
+  useEffect(() => {
+    const storedUserName = localStorage.getItem("userName");
+    const storedUserEmail = localStorage.getItem("userEmail");
+    const storedUserPhone = localStorage.getItem("userPhone");
+
+    if (storedUserName) {
+      setUserName(storedUserName);
+    }
+
+    if (storedUserPhone) {
+      setUserPhone(storedUserPhone);
+    }
+
+    if (storedUserEmail) {
+      setUserEmail(storedUserEmail);
+    }
+  }, []);
+
   const togglePopup2 = () => {
     setIsPopupOpen2((prev) => !prev);
   };
@@ -91,12 +114,14 @@ const DoctorHospitalProfile = ({ slug, first, middle, last }) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const phoneRegex = /^\d{10,}$/;
 
-    if (!name2) {
-      setFormErrors((prevErrors) => ({
-        ...prevErrors,
-        name: "Please enter your name",
-      }));
-      isValid = false;
+    if (!userName) {
+      if (!name2) {
+        setFormErrors((prevErrors) => ({
+          ...prevErrors,
+          name: "Please enter your name",
+        }));
+        isValid = false;
+      }
     }
     if (!phone2 || !phone2.match(phoneRegex)) {
       setFormErrors((prevErrors) => ({
@@ -106,12 +131,14 @@ const DoctorHospitalProfile = ({ slug, first, middle, last }) => {
       isValid = false;
     }
 
-    if (!email2 || !email2.match(emailRegex)) {
-      setFormErrors((prevErrors) => ({
-        ...prevErrors,
-        email: "Please enter a valid email address",
-      }));
-      isValid = false;
+    if (!userEmail) {
+      if (!email2 || !email2.match(emailRegex)) {
+        setFormErrors((prevErrors) => ({
+          ...prevErrors,
+          email: "Please enter a valid email address",
+        }));
+        isValid = false;
+      }
     }
 
     if (!query2) {
@@ -137,10 +164,10 @@ const DoctorHospitalProfile = ({ slug, first, middle, last }) => {
     if (isValid) {
       // Create the data object to be sent in the API request
       const data = {
-        name: name2,
+        name: userName ? userName : name2,
         phone_code: pcode2,
         phone: phone2,
-        email: email2,
+        email: userEmail ? userEmail : email2,
         messages: query2,
       };
 
@@ -264,7 +291,7 @@ const DoctorHospitalProfile = ({ slug, first, middle, last }) => {
                     <label>Name</label>
                     <input
                       type="text"
-                      placeholder=""
+                      placeholder={userName}
                       name="name"
                       value={name2}
                       onChange={(e) => setName2(e.target.value)}
@@ -292,22 +319,24 @@ const DoctorHospitalProfile = ({ slug, first, middle, last }) => {
                   </div>
                 </div>
 
-                <div className="treatment-form">
-                  <div className="inputbox">
-                    <label>Email</label>
-                    <input
-                      type="email"
-                      placeholder=""
-                      name="name"
-                      value={email2}
-                      onChange={(e) => setEmail2(e.target.value)}
-                      autoComplete="off"
-                      onBlur={handleEmailBlur}
-                      style={formErrors.email ? Formstyles2.errorInput : {}}
-                    />
-                    {renderError(formErrors.email)}
+                {userEmail ? null : (
+                  <div className="treatment-form">
+                    <div className="inputbox">
+                      <label>Email</label>
+                      <input
+                        type="email"
+                        placeholder=""
+                        name="name"
+                        value={email2}
+                        onChange={(e) => setEmail2(e.target.value)}
+                        onBlur={handleEmailBlur}
+                        autoComplete="off"
+                        style={formErrors.email ? Formstyles2.errorInput : {}}
+                      />
+                      {renderError(formErrors.email)}
+                    </div>
                   </div>
-                </div>
+                )}
 
                 <div className="treatment-form">
                   <div className="inputbox">

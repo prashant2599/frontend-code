@@ -159,6 +159,7 @@ const CostEstimateForm = ({ specialityId }) => {
       isValid = false;
     }
 
+    if(!userEmail){
     if (!email || !email.match(emailRegex)) {
       setFormErrors((prevErrors) => ({
         ...prevErrors,
@@ -166,6 +167,7 @@ const CostEstimateForm = ({ specialityId }) => {
       }));
       isValid = false;
     }
+  }
 
     if (!query) {
       setFormErrors((prevErrors) => ({

@@ -3,6 +3,8 @@ import PopForm from "../Home/QaForm/PopForm";
 import getAllSpeciality from "../lib/getAllSpeciality";
 import QAComents from "./QAComents";
 import ShareQA from "./ShareQA";
+import Link from "next/link";
+import QuestionSearch from "./QuestionSearch";
 
 const page = async () => {
   const data = await getAllSpeciality();
@@ -14,84 +16,7 @@ const page = async () => {
         <div className="midbox-inner wiki-mk">
           <div className="questions-ans">
             <div className="questions-ans-left">
-              <div className="search-suestions">
-                <h1>Search for Questions</h1>
-
-                <div className="search-medflick">
-                  <div className="search-box-medflick">
-                    <span>Search Terms:</span>
-                    <div className="search-terms">
-                      <input
-                        type="text"
-                        placeholder="Search Medflick"
-                        name="name"
-                        required=""
-                      />
-                    </div>
-                  </div>
-                  {/* <button id="show-hidden-menu" onClick={toggleMenu}>
-                      Advanced Search
-                      <img
-                        className={menuVisible ? "plus1" : "plus"}
-                        src="images/2023/07/plus.png"
-                        alt=""
-                      />
-                      <img
-                        className={menuVisible ? "plus" : "plus1"}
-                        src="images/2023/07/plus1.png"
-                        alt=""
-                      />
-                    </button> */}
-                </div>
-
-                {/* <div
-                    className={`hidden-menu ${
-                      menuVisible ? "visible" : "hidden"
-                    }`}
-                    style={hiddenMenuStyle}
-                  >
-                    <div className="search-medflick">
-                      <div className="search-box-medflick">
-                        <span>Search Terms:</span>
-                        <div className="search-terms">
-                          <input
-                            type="text"
-                            placeholder="Search Medflick"
-                            name="name"
-                            required=""
-                          />
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="search-medflick">
-                      <div className="search-box-medflick">
-                        <span>Date Range:</span>
-                        <div className="date-range">
-                          <input
-                            type="text"
-                            placeholder="DD/MM/YYYY"
-                            name="name"
-                            required=""
-                          />
-                        </div>
-                        <div className="date-range1">
-                          <span>To:</span>
-                          <input
-                            type="text"
-                            placeholder="DD/MM/YYYY"
-                            name="name"
-                            required=""
-                          />
-                        </div>
-                      </div>
-
-                      <div className="search-button">
-                        <button>Search Now</button>
-                      </div>
-                    </div>
-                  </div> */}
-              </div>
+              <QuestionSearch qa={qa} />
 
               <div className="search-question">
                 <div className="search-question-left">
@@ -131,22 +56,35 @@ const page = async () => {
                     <img src="images/2023/07/ask.png" alt="" /> Ask Question
                   </span>
                 </div> */}
-                <PopForm />
+                <div className="search-question-right">
+                  <span>Have any Questions?</span>
+                  <PopForm />
+                </div>
               </div>
 
               {qa &&
                 qa.map((e) => (
                   <div className="comments-box" key={e.id}>
                     <div className="comments-profile">
-                      {/* <div className="comments-profileimg">
-                          <img src="images/2023/07/man.png" />
-                        </div> */}
-                      {/* <h3>
-                          Lorem Ipsum <span>india</span>
-                        </h3> */}
+                      <div className="comments-profileimg">
+                        <img src="/images/icon.jpg" alt="user-profile" />
+                      </div>
+                      <h3>
+                        {e.pname} <span>india</span>
+                      </h3>
                     </div>
+                    <Link
+                      href={`/question/${e.id}/${encodeURIComponent(
+                        e.short_description
+                          .toLowerCase()
+                          .replace(/[^\w\s]/g, "-")
+                          .replace(/\s+/g, "-")
+                          .replace(/-+$/, "")
+                      )}`}
+                    >
+                      <h2>Q. {e.short_description}</h2>
+                    </Link>
 
-                    <h2>Q. {e.short_description}</h2>
                     <div
                       dangerouslySetInnerHTML={{ __html: e.long_description }}
                     />
@@ -178,7 +116,7 @@ const page = async () => {
                         treatments={e.treatments}
                       />
 
-                      <ShareQA />
+                      <ShareQA desc={e.short_description} id={e.id}/>
                     </div>
                   </div>
                 ))}

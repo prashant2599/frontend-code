@@ -253,17 +253,14 @@ const PopForm = () => {
 
   return (
     <>
-      <div className="search-question-right">
-        <span>Have any Questions?</span>
-        <span
-          className="ask-question"
-          data-popup-open="popup-2"
-          onClick={togglePopup}
-          style={{ cursor: "pointer" }}
-        >
-          <img src="images/2023/07/ask.png" alt="" /> Ask Question
-        </span>
-      </div>
+      <span
+        className="ask-question"
+        data-popup-open="popup-2"
+        onClick={togglePopup}
+        style={{ cursor: "pointer" }}
+      >
+        <img src="images/2023/07/ask.png" alt="" /> Ask Question
+      </span>
 
       {isPopupOpen && (
         <div className="popup" data-popup="popup-1" style={popupStyle}>
@@ -277,7 +274,9 @@ const PopForm = () => {
                   data-dismiss="modal"
                   onClick={togglePopup}
                 >
-                  <span aria-hidden="true">×</span>
+                  <span aria-hidden="true" style={{ color: "#fff" }}>
+                    ×
+                  </span>
                 </button>
               </div>
               <h2>Ask Free Question</h2>
