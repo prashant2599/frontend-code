@@ -29,8 +29,6 @@ const page = async ({ params }) => {
     const blog = datas.treateDetailsbyCountry.blogs;
     const speciality = datas.treateDetailsbyCountry.speciality;
 
- 
-
     return (
       <>
         <section id="treatment-section">
