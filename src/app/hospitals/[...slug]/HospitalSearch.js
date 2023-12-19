@@ -17,10 +17,10 @@ function formatText(text) {
 const HospitalSearch = ({ hospital, slug }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredQa, setFilteredQa] = useState([]);
-  const parts = slug.split("/");
-  const Category = parts[0];
+  const parts = slug && slug.split("/");
+  const Category = parts && parts[0];
 
-  const fotmattedCategory = formatText(Category);
+  const fotmattedCategory = Category && formatText(Category);
 
   const handleSearch = (event) => {
     const term = event.target.value.toLowerCase();
@@ -49,7 +49,7 @@ const HospitalSearch = ({ hospital, slug }) => {
   return (
     <>
       <div className="find-doctor-box">
-        <h2>Find {fotmattedCategory} Hospitals</h2>
+        <h2>Find {fotmattedCategory && fotmattedCategory} Hospitals</h2>
 
         <div className="find-box">
           <div className="search-box">

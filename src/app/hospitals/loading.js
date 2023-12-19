@@ -22,7 +22,7 @@ const loading = () => {
                 />
               </div>
 
-              <div className="location-box">
+              {/* <div className="location-box">
                 <input
                   type="text"
                   placeholder="Any Location"
@@ -32,7 +32,7 @@ const loading = () => {
               </div>
               <button type="submit" name="en" className="find-doctor">
                 Find Doctor
-              </button>
+              </button> */}
             </div>
           </div>
         </div>

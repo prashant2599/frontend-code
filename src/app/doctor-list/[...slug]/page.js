@@ -5,6 +5,7 @@ import Image from "next/image";
 import SpecialitySelect from "@/app/doctorFilter/SpecialitySelect";
 import { notFound } from "next/navigation";
 import DoctorListPopForm from "@/app/Home/doctorForm/DoctorListPopForm";
+import DoctorsSearch from "@/app/doctors/[...slug]/DoctorsSearch";
 
 const page = async ({ params }) => {
   try {
@@ -24,33 +25,7 @@ const page = async ({ params }) => {
       <>
         <section id="find-doctors">
           <div className="midbox-inner  wiki-mk">
-            <div className="find-doctor-box">
-              <h2>Find Doctors</h2>
-
-              <div className="find-box">
-                <div className="search-box">
-                  <input
-                    type="text"
-                    placeholder="Search Doctor"
-                    name="name"
-                    required=""
-                    // value={searchQuery}
-                    // onChange={(e) => setSearchQuery(e.target.value)}
-                  />
-                </div>
-                <div className="location-box">
-                  <input
-                    type="text"
-                    placeholder="Any Location"
-                    name="name"
-                    required=""
-                  />
-                </div>
-                <button type="submit" name="en" className="find-doctor">
-                  Find Doctor
-                </button>
-              </div>
-            </div>
+          <DoctorsSearch doctors={doctor} slug={combinedSlug} />
           </div>
         </section>
         <section id="find-doctors-list">
