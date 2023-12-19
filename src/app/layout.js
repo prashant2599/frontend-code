@@ -28,7 +28,7 @@ export const metadata = {
   alternates: {
     canonical: `https://medflick.com`,
   },
-  themeColor: "#ff6800",
+
 };
 
 export default function RootLayout({ children }) {

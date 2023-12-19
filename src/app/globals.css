@@ -2519,7 +2519,7 @@ div.active {
 
 .treatment-right {
   width: 350px;
-  height: 552px;
+  /* height: 552px; */
   padding: 15px 20px;
   display: block;
   background: #ffffff;
