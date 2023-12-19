@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import PopForm from "../Home/QaForm/PopForm";
 import Link from "next/link";
 
 const QuestionSearch = ({ qa }) => {
@@ -43,7 +42,7 @@ const QuestionSearch = ({ qa }) => {
             <div className="search-terms">
               <input
                 type="text"
-                placeholder="Search Medflick"
+                placeholder="Search"
                 name="name"
                 value={searchTerm}
                 onChange={handleSearch}
