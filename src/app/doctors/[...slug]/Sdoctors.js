@@ -6,6 +6,7 @@ import ShareProfile from "@/app/Home/doctorForm/ShareProfile";
 import Image from "next/image";
 import DoctorListPopForm from "@/app/Home/doctorForm/DoctorListPopForm";
 import DoctorPagination from "../DoctorPagination";
+import DoctorsSearch from "./DoctorsSearch";
 
 function formatText(text) {
   if (typeof text === "string") {
@@ -29,33 +30,7 @@ const Sdoctors = ({ treatment, doctor, hospitalIcon, combinedSlug, info }) => {
     <>
       <section id="find-doctors">
         <div className="midbox-inner  wiki-mk">
-          <div className="find-doctor-box">
-            <h2>Find Doctors</h2>
-
-            <div className="find-box">
-              <div className="search-box">
-                <input
-                  type="text"
-                  placeholder="Search Doctor"
-                  name="name"
-                  required=""
-                  // value={searchQuery}
-                  // onChange={(e) => setSearchQuery(e.target.value)}
-                />
-              </div>
-              <div className="location-box">
-                <input
-                  type="text"
-                  placeholder="Any Location"
-                  name="name"
-                  required=""
-                />
-              </div>
-              <button type="submit" name="en" className="find-doctor">
-                Find Doctor
-              </button>
-            </div>
-          </div>
+          <DoctorsSearch doctors={doctor} slug={slugs} />
         </div>
       </section>
 
@@ -197,11 +172,11 @@ const Sdoctors = ({ treatment, doctor, hospitalIcon, combinedSlug, info }) => {
                   </h1>
                 </div>
               )}
-              {/* <DoctorPagination
+              <DoctorPagination
                 slug={combinedSlug}
                 doctor={doctor}
                 treatment={treatment}
-              /> */}
+              />
             </div>
             {/* form */}
 

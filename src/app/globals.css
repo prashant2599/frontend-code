@@ -4858,7 +4858,6 @@ table strong {
   align-items: center;
   position: relative;
   flex-direction: column;
-  overflow: hidden;
   z-index: 1;
 }
 
@@ -4937,6 +4936,7 @@ table strong {
   border-radius: 12px;
   background: rgba(255, 197, 167, 0.5);
   outline: none;
+  color: #fff;
 }
 
 .find-box .location-box input {
@@ -15136,4 +15136,23 @@ pre code {
   .treatment-bannerimg .treatment-banner-img1 {
     width: 100%;
   }
+}
+
+.searchbox-medf-hospital {
+  display: block;
+  background: #FDFDFD;
+  border-radius: 12px;
+  flex-direction: column;
+  width: 649px;
+  z-index: 999;
+  margin: 0px;
+  padding: 0px;
+  position: absolute;
+  overflow-y: scroll;
+  height: 166px;
+  border: 1px solid #EAEAEA;
+}
+
+.searchbox-medf-hospital .searchbox-main {
+  text-align: start;
 }

@@ -14,7 +14,7 @@ function formatText(text) {
   }
 }
 
-const HospitalSearch = ({ hospital, slug }) => {
+const DoctorsSearch = ({ doctors, slug }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredQa, setFilteredQa] = useState([]);
   const parts = slug.split("/");
@@ -27,9 +27,12 @@ const HospitalSearch = ({ hospital, slug }) => {
     setSearchTerm(term);
 
     // Check if the search term has at least three characters
-    if (term.length >= 3) {
-      const filteredQuestions = hospital.filter((question) =>
-        question.name.toLowerCase().includes(term)
+    if (term.length >= 2) {
+      const filteredQuestions = doctors.filter(
+        (doctor) =>
+          doctor.prefix.toLowerCase().includes(term) ||
+          doctor.first_name.toLowerCase().includes(term) ||
+          doctor.last_name.toLowerCase().includes(term)
       );
 
       setFilteredQa(filteredQuestions);
@@ -49,14 +52,15 @@ const HospitalSearch = ({ hospital, slug }) => {
   return (
     <>
       <div className="find-doctor-box">
-        <h2>Find {fotmattedCategory} Hospitals</h2>
+        <h2>Find {fotmattedCategory} Doctors</h2>
 
         <div className="find-box">
           <div className="search-box">
             <input
               type="text"
-              placeholder="Search Hospital"
+              placeholder="Search Doctor"
               name="name"
+              required=""
               value={searchTerm}
               onChange={handleSearch}
             />
@@ -64,14 +68,15 @@ const HospitalSearch = ({ hospital, slug }) => {
               <div className="searchbox-medf-hospital">
                 {filteredQa.length > 0 ? (
                   filteredQa.map((question) => (
-                    <Link
-                      href={`/hospital/${question.slug}/${question.country}`}
-                      key={question.id}
-                    >
+                    <Link href={`/doctor/${question.slug}`} key={question.id}>
                       <div
                         className="searchbox-main"
                         dangerouslySetInnerHTML={{
-                          __html: highlightTerm(question.name),
+                          __html: `${highlightTerm(
+                            question.prefix
+                          )} ${highlightTerm(
+                            question.first_name
+                          )} ${highlightTerm(question.last_name)}`,
                         }}
                       />
                     </Link>
@@ -86,22 +91,21 @@ const HospitalSearch = ({ hospital, slug }) => {
               </div>
             )}
           </div>
-
           {/* <div className="location-box">
-            <input
-              type="text"
-              placeholder="Any Location"
-              name="name"
-              required=""
-            />
-          </div>
-          <button type="submit" name="en" className="find-doctor">
-            Find Doctor
-          </button> */}
+                <input
+                  type="text"
+                  placeholder="Any Location"
+                  name="name"
+                  required=""
+                />
+              </div>
+              <button type="submit" name="en" className="find-doctor">
+                Find Doctor
+              </button> */}
         </div>
       </div>
     </>
   );
 };
 
-export default HospitalSearch;
+export default DoctorsSearch;
