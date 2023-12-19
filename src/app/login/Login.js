@@ -122,7 +122,7 @@ const Login = () => {
                 alt="Brand Logo"
               /> */}
               <h1>Welcome to <span style={{color:"#ff6800"}}>Medflick</span></h1>
-              {errorMessage && <p style={{ color: "green" }}>{errorMessage}</p>}
+              {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
               {/* <p>Lorem ipsum dolor sit amet quis alenquen</p> */}
               <form onSubmit={handleFormSubmit}>
                 <div className="inputbox">
