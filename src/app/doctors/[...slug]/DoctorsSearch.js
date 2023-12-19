@@ -64,7 +64,7 @@ const DoctorsSearch = ({ doctors, slug }) => {
               value={searchTerm}
               onChange={handleSearch}
             />
-            {searchTerm.length >= 3 && (
+            {searchTerm.length >= 2 && (
               <div className="searchbox-medf-hospital">
                 {filteredQa.length > 0 ? (
                   filteredQa.map((question) => (

@@ -129,7 +129,7 @@ const LoginButton = () => {
         ></div> */}
         <HeaderSearch />
 
-        <Link className="qsk-question" href="/question-answer">
+        <Link className="qsk-question" href="/question-answer" >
           Ask FREE Question <img src="/images/whiteArrow.png" alt="icon" />
         </Link>
       </div>
