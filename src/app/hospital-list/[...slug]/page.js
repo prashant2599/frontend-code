@@ -7,6 +7,7 @@ import Image from "next/image";
 import { AiTwotoneStar } from "react-icons/ai";
 import { notFound } from "next/navigation";
 import HospitalListPopUpForm from "@/app/Home/hospitalForm/HospitalListPopUpForm";
+import HospitalSearch from "@/app/hospitals/[...slug]/HospitalSearch";
 
 const page = async ({ params }) => {
   try {
@@ -25,31 +26,7 @@ const page = async ({ params }) => {
       <>
         <section id="find-doctors">
           <div className="midbox-inner  wiki-mk">
-            <div className="find-doctor-box">
-              <h2>Find Hospitals</h2>
-
-              <div className="find-box">
-                <div className="search-box">
-                  <input
-                    type="text"
-                    placeholder="Search Hospital"
-                    name="name"
-                  />
-                </div>
-
-                <div className="location-box">
-                  <input
-                    type="text"
-                    placeholder="Any Location"
-                    name="name"
-                    required=""
-                  />
-                </div>
-                <button type="submit" name="en" className="find-doctor">
-                  Find Doctor
-                </button>
-              </div>
-            </div>
+           <HospitalSearch hospital={hospital} slug={combinedSlug} />
           </div>
         </section>
         <section id="find-hospital-list">

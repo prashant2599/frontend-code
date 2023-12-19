@@ -4,6 +4,7 @@ import HospitalForm from "../Home/hospitalForm/HospitalForm";
 import Link from "next/link";
 import { AiTwotoneStar } from "react-icons/ai";
 import HospitalListPopUpForm from "../Home/hospitalForm/HospitalListPopUpForm";
+import HospitalSearch from "./[...slug]/HospitalSearch";
 
 const AllHospitals = async () => {
   const data = await getAllHospitals();
@@ -13,56 +14,7 @@ const AllHospitals = async () => {
     <>
       <section id="find-doctors">
         <div className="midbox-inner  wiki-mk">
-          <div className="find-doctor-box">
-            <h2>Find Hospitals</h2>
-
-            <div className="find-box">
-              <div className="search-box">
-                <input
-                  type="text"
-                  placeholder="Search Hospital"
-                  name="name"
-                  //   value={searchQuery}
-                  //   onChange={(e) => setSearchQuery(e.target.value)}
-                />
-                {/* {filteredHospital.length > 0 ? (
-                    <ul className="search-box">
-                      {searchQuery &&
-                        filteredHospital.map((doctor) => (
-                          <Link
-                            href={`/hospital/${doctor.slug}/${doctor.country}`}
-                            key={doctor.id}
-                          >
-                            <li>
-                              <h6
-                                style={{ color: "black" }}
-                              >{`${doctor.name}`}</h6>
-                            </li>
-                          </Link>
-                        ))}
-                    </ul>
-                  ) : (
-                    showNotFoundMessage && (
-                      <>
-                        <h6> OOPS! No doctors found </h6>
-                      </>
-                    )
-                  )} */}
-              </div>
-
-              <div className="location-box">
-                <input
-                  type="text"
-                  placeholder="Any Location"
-                  name="name"
-                  required=""
-                />
-              </div>
-              <button type="submit" name="en" className="find-doctor">
-                Find Doctor
-              </button>
-            </div>
-          </div>
+         <HospitalSearch hospital={hospital} />
         </div>
       </section>
       <section id="find-hospital-list">

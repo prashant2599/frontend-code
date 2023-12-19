@@ -4,6 +4,7 @@ import Link from "next/link";
 import { AiTwotoneStar } from "react-icons/ai";
 import DoctorForm from "../Home/doctorForm/DoctorForm";
 import DoctorListPopForm from "../Home/doctorForm/DoctorListPopForm";
+import DoctorsSearch from "./[...slug]/DoctorsSearch";
 
 const AllDoctors = async () => {
   const data = await getAllDoctors();
@@ -12,33 +13,7 @@ const AllDoctors = async () => {
     <>
       <section id="find-doctors">
         <div className="midbox-inner  wiki-mk">
-          <div className="find-doctor-box">
-            <h2>Find Doctors</h2>
-
-            <div className="find-box">
-              <div className="search-box">
-                <input
-                  type="text"
-                  placeholder="Search Doctor"
-                  name="name"
-                  required=""
-                  // value={searchQuery}
-                  // onChange={(e) => setSearchQuery(e.target.value)}
-                />
-              </div>
-              <div className="location-box">
-                <input
-                  type="text"
-                  placeholder="Any Location"
-                  name="name"
-                  required=""
-                />
-              </div>
-              <button type="submit" name="en" className="find-doctor">
-                Find Doctor
-              </button>
-            </div>
-          </div>
+          <DoctorsSearch doctors={doctor} />
         </div>
       </section>
       <section id="find-doctors-list">
