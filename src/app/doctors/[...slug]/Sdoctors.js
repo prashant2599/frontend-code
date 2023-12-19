@@ -172,11 +172,11 @@ const Sdoctors = ({ treatment, doctor, hospitalIcon, combinedSlug, info }) => {
                   </h1>
                 </div>
               )}
-              <DoctorPagination
+              {/* <DoctorPagination
                 slug={combinedSlug}
                 doctor={doctor}
                 treatment={treatment}
-              />
+              /> */}
             </div>
             {/* form */}
 
