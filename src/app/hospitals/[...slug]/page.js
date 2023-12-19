@@ -59,7 +59,7 @@ const page = async ({ params }) => {
       <>
         <section id="find-doctors">
           <div className="midbox-inner  wiki-mk">
-            <HospitalSearch hospital={hospital} />
+            <HospitalSearch hospital={hospital} slug={combinedSlug} />
           </div>
         </section>
         <section id="find-hospital-list">
