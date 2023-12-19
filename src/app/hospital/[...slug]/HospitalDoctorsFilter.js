@@ -218,12 +218,12 @@ const HospitalDoctorsFilter = ({ doctor }) => {
                 {e.prefix} {e.first_name} {e.last_name}
               </h3>
               <div className="department-sub">{e.designation}</div>
-              <div className="rating-star">
+              {/* <div className="rating-star">
                 <i>
                   <AiTwotoneStar />
                 </i>{" "}
                 5 (523)
-              </div>
+              </div> */}
             </div>
             <div className="doc-experience">
               <div className="years-exper">

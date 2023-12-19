@@ -544,7 +544,7 @@ a:hover {
 .qsk-question img {
   width: 38px;
   position: absolute;
-  background: #fff;
+  background: #ff6800;
   right: 5px;
   top: 8px;
   padding: 8px 10px;
@@ -4908,7 +4908,7 @@ table strong {
 
 .find-box .search-box {
   width: 100%;
-  width: 40%;
+  width: 649px;
 }
 
 .find-box .location-box {
@@ -4934,7 +4934,7 @@ table strong {
   font-weight: 700;
   font-size: 16px;
   border: 0px;
-  border-radius: 16px;
+  border-radius: 12px;
   background: rgba(255, 197, 167, 0.5);
   outline: none;
 }
@@ -5225,6 +5225,7 @@ table strong {
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   padding: 15px;
+  right: 0px;
 }
 
 .treatment-right h2 {
@@ -5528,6 +5529,7 @@ ul.tabs li.active {
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   padding: 15px;
+  right: 0px;
 }
 
 .treatment-right h2 {

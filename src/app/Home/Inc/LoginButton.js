@@ -130,7 +130,7 @@ const LoginButton = () => {
         <HeaderSearch />
 
         <Link className="qsk-question" href="/question-answer">
-          Ask FREE Question <img src="/images/2023/01/arrow-c.png" alt="icon" />
+          Ask FREE Question <img src="/images/whiteArrow.png" alt="icon" />
         </Link>
       </div>
       {/* <Script src="https://cdn.gtranslate.net/widgets/latest/dropdown.js"></Script> */}
