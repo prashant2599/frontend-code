@@ -14,7 +14,7 @@ function formatText(text) {
   }
 }
 
-const DoctorsSearch = ({ doctors, slug }) => {
+const DoctorsSearch = ({ doctors, slug, pageNumber }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredQa, setFilteredQa] = useState([]);
   const parts = slug && slug.split("/");

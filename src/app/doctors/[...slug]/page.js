@@ -39,6 +39,8 @@ const page = async ({ params, res }) => {
     const hospitalIcon = apiData.doctors_list.hospital_image;
     const treatment = apiData.doctors_list.treatment;
     const info = apiData.doctors_list.specility_name;
+    const pageNumber = apiData.doctors_list.page
+    const totalDoctor = apiData.doctors_list.count
 
     return (
       <>
@@ -49,6 +51,8 @@ const page = async ({ params, res }) => {
           combinedSlug={combinedSlug}
           info={info}
           status={apiResponse.status}
+          pageNumber={pageNumber}
+          totalDoctor={totalDoctor}
         />
       </>
     );
