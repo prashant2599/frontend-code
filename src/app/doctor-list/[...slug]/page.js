@@ -6,6 +6,7 @@ import SpecialitySelect from "@/app/doctorFilter/SpecialitySelect";
 import { notFound } from "next/navigation";
 import DoctorListPopForm from "@/app/Home/doctorForm/DoctorListPopForm";
 import DoctorsSearch from "@/app/doctors/[...slug]/DoctorsSearch";
+import TreatmentDoctorPagination from "./TreatmentDoctorPagination";
 
 const page = async ({ params }) => {
   try {
@@ -21,11 +22,13 @@ const page = async ({ params }) => {
     const hospitalIcon = datas.doctors_list.hospital_image;
     const treatment = datas.doctors_list.treatment;
     const info = datas.doctors_list.specility_name;
+    const pageNumber = datas.doctors_list.page
+    const totalDoctor = datas.doctors_list.count
     return (
       <>
         <section id="find-doctors">
           <div className="midbox-inner  wiki-mk">
-          <DoctorsSearch doctors={doctor} slug={combinedSlug} />
+            <DoctorsSearch doctors={doctor} slug={combinedSlug} />
           </div>
         </section>
         <section id="find-doctors-list">
@@ -172,6 +175,13 @@ const page = async ({ params }) => {
                     </h1>
                   </div>
                 )}
+                <TreatmentDoctorPagination
+                  slug={combinedSlug}
+                  doctor={doctor}
+                  treatment={treatment}
+                  pageNumber={pageNumber}
+                  totalDoctor={totalDoctor}
+                />
               </div>
               {/* form */}
 

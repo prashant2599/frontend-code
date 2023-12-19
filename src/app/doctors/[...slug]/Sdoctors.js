@@ -19,7 +19,15 @@ function formatText(text) {
   }
 }
 
-const Sdoctors = ({ treatment, doctor, hospitalIcon, combinedSlug, info }) => {
+const Sdoctors = ({
+  treatment,
+  doctor,
+  hospitalIcon,
+  combinedSlug,
+  info,
+  pageNumber,
+  totalDoctor,
+}) => {
   const slugs = combinedSlug;
   const parts = slugs.split("/");
   // const treatment = parts[0];
@@ -172,11 +180,13 @@ const Sdoctors = ({ treatment, doctor, hospitalIcon, combinedSlug, info }) => {
                   </h1>
                 </div>
               )}
-              {/* <DoctorPagination
+              <DoctorPagination
                 slug={combinedSlug}
                 doctor={doctor}
                 treatment={treatment}
-              /> */}
+                pageNumber={pageNumber}
+                totalDoctor={totalDoctor}
+              />
             </div>
             {/* form */}
 
