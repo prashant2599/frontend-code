@@ -1,123 +1,256 @@
-"use client"
-import React, { useState } from "react";
+"use client";
+import React, { useState, useEffect, useRef } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import { ThreeDots } from "react-loader-spinner";
 import axios from "axios";
 import Link from "next/link";
+import Success from "../successPopup/Success";
+import ErrorPopup from "../successPopup/ErrorPopup";
+import "intl-tel-input/build/css/intlTelInput.css";
+import intlTelInput from "intl-tel-input";
 
 const DontPay = () => {
-    const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
+  const [showErrorPopup, setShowErrorPopup] = useState(false);
+  const [userName, setUserName] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+  const [userPhone, setUserPhone] = useState("");
 
-    const togglePopup = () => {
-      setIsPopupOpen(!isPopupOpen);
-    };
-  
-    const popupStyle = {
-      display: isPopupOpen ? "block" : "none",
-    };
-  
-    // form query post api
-    const [name, setName] = useState("");
-    const [pcode, setPcode] = useState("");
-    const [phone, setPhone] = useState("");
-    const [email, setEmail] = useState("");
-    const [query, setQuery] = useState("");
-  
-    const [isLoading, setIsLoading] = useState(false);
-  
-    // State variables for error messages
-    const [nameError, setNameError] = useState("");
-    const [phoneError, setPhoneError] = useState("");
-    const [emailError, setEmailError] = useState("");
-    const [captchaValue, setCaptchaValue] = useState(null);
-    const handleCaptchaChange = (value) => {
-      setCaptchaValue(value);
-    };
-  
-    const clearFormFields = () => {
-      setName("");
-      setPhone("");
-      setPcode("");
-      setEmail("");
-      setQuery("");
-    };
-  
-    const Formstyles = {
-      errorInput: {
-        border: "2px solid red",
-      },
-      errorMessage: {
-        color: "red",
-        fontSize: "0.85rem",
-        marginTop: "0.25rem",
-      },
-      loadingMessage: {
-        fontSize: "1.2rem",
-        color: "#333",
-        marginTop: "1rem",
-      },
-    };
-  
-    const handleFormSubmit = (event) => {
-      event.preventDefault();
-  
-      setNameError("");
-      setPhoneError("");
-      setEmailError("");
-  
-      // Validation logic
-      let isValid = true;
-  
-      if (!name) {
-        setNameError("Name is required");
-        isValid = false;
-      }
-      if (!captchaValue) {
-        alert("Please complete the CAPTCHA.");
+  const togglePopup = () => {
+    setIsPopupOpen(!isPopupOpen);
+  };
+
+  const popupStyle = {
+    display: isPopupOpen ? "block" : "none",
+  };
+
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    if (isPopupOpen) {
+      const inputElement = inputRef.current;
+
+      if (!inputElement) {
+        console.error("Input element is null or undefined");
         return;
       }
-  
-      const phoneRegex = /^\d{10,}$/; // Matches 10 or more digits
-      if (!phone || !phone.match(phoneRegex)) {
-        setPhoneError("Phone must have at least 10 digits");
+
+      const iti = intlTelInput(inputElement, {
+        initialCountry: "in",
+        separateDialCode: true,
+        // utilsScript:
+        //   "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+      });
+
+      inputElement.addEventListener("countrychange", () => {
+        const selectedCountryData = iti.getSelectedCountryData();
+        setPcode(selectedCountryData.dialCode);
+      });
+
+      return () => {
+        iti.destroy();
+      };
+    }
+  }, [isPopupOpen]);
+
+  const handlePhoneNumberChange = (e) => {
+    const formattedPhoneNumber = e.target.value.replace(/\D/g, "");
+    setPhone(formattedPhoneNumber);
+  };
+
+  useEffect(() => {
+    const storedUserName = localStorage.getItem("userName");
+    const storedUserEmail = localStorage.getItem("userEmail");
+    const storedUserPhone = localStorage.getItem("userPhone");
+
+    if (storedUserName) {
+      setUserName(storedUserName);
+    }
+
+    if (storedUserPhone) {
+      setUserPhone(storedUserPhone);
+    }
+
+    if (storedUserEmail) {
+      setUserEmail(storedUserEmail);
+    }
+  }, []);
+
+  // form query post api
+  const [name, setName] = useState("");
+  const [pcode, setPcode] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [query, setQuery] = useState("");
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  const [formErrors, setFormErrors] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    query: "",
+    captcha: "",
+  });
+  const [captchaValue, setCaptchaValue] = useState(null);
+  const handleCaptchaChange = (value) => {
+    setCaptchaValue(value);
+  };
+
+  const clearFormFields = () => {
+    setName("");
+    setPhone("");
+    setPcode("");
+    setEmail("");
+    setQuery("");
+  };
+
+  const Formstyles = {
+    errorInput: {
+      border: "2px solid red",
+    },
+    errorMessage: {
+      color: "red",
+      fontSize: "0.85rem",
+      marginTop: "0.25rem",
+    },
+    loadingMessage: {
+      fontSize: "1.2rem",
+      color: "#333",
+      marginTop: "1rem",
+    },
+  };
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+
+    setFormErrors({
+      name: "",
+      phone: "",
+      email: "",
+      query: "",
+      captcha: "",
+    });
+
+    // Validation logic
+    let isValid = true;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^\d{10}$/;
+
+    if (!userName) {
+      if (!name) {
+        setFormErrors((prevErrors) => ({
+          ...prevErrors,
+          name: "Please enter your name",
+        }));
         isValid = false;
       }
-  
-      if (isValid) {
-        // Create the data object to be sent in the API request
-        const data = {
-          name: name,
-          phone_code: pcode,
-          phone: phone,
-          email: email,
-          messages: query,
-        };
-  
-        // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
-        const apiEndpoint = `${process.env.REACT_APP_BASE_URL}/api/free_consultants`;
-  
-        setIsLoading(true);
-  
-        // Make the API call
-        axios
-          .post(apiEndpoint, data)
-          .then((response) => {
-            // Handle the API response here if needed
-            console.log(response);
-            alert("questions is susscefull submitted");
-            clearFormFields();
-            setIsPopupOpen(false);
-          })
-          .catch((error) => {
-            // Handle any errors that occurred during the API call
-            console.error("Error:", error);
-          })
-          .finally(() => {
-            // Set loading back to false after the API call is complete
-            setIsLoading(false);
-          });
+    }
+
+    if (!phone || !phone.match(phoneRegex)) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        phone: "Please enter a valid Phone number",
+      }));
+      isValid = false;
+    }
+
+    if (!userEmail) {
+      if (!email || !email.match(emailRegex)) {
+        setFormErrors((prevErrors) => ({
+          ...prevErrors,
+          email: "Please enter a valid email address",
+        }));
+        isValid = false;
       }
-    };
+    }
+
+    if (!query) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        query: "Please enter your query",
+      }));
+      isValid = false;
+    }
+
+    if (!isValid) {
+      return;
+    }
+
+    if (!captchaValue) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        captcha: "Please Fill the captcha",
+      }));
+      return;
+    }
+
+    if (isValid) {
+      // Create the data object to be sent in the API request
+      const data = {
+        name: userName ? userName : name,
+        phone_code: pcode,
+        phone: phone,
+        email: userEmail ? userEmail : email,
+        messages: query,
+      };
+
+      // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
+      const apiEndpoint = `${process.env.REACT_APP_BASE_URL}/api/free_consultants`;
+
+      setIsLoading(true);
+
+      // Make the API call
+      axios
+        .post(apiEndpoint, data)
+        .then((response) => {
+          setShowSuccessPopup(true);
+          clearFormFields();
+          setIsPopupOpen(false);
+        })
+        .catch((error) => {
+          // Handle any errors that occurred during the API call
+          console.error("Error:", error);
+          setShowErrorPopup(true);
+        })
+        .finally(() => {
+          // Set loading back to false after the API call is complete
+          setIsLoading(false);
+        });
+    }
+  };
+
+  const phoneRegex = /^\d{10}$/;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const handlePhoneBlur = () => {
+    if (!phone || !phone.match(phoneRegex)) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        phone: "Please enter a valid Phone number",
+      }));
+    }
+  };
+
+  const handleEmailBlur = () => {
+    if (!email || !email.match(emailRegex)) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        email: "Please enter a valid email address",
+      }));
+    }
+  };
+
+  const renderError = (error) =>
+    error && <div className="error-message">{error}</div>;
+
+  const handleCloseSuccessPopup = () => {
+    setShowSuccessPopup(false);
+  };
+
+  const handleCloseErrorPopup = () => {
+    setShowErrorPopup(false);
+  };
   return (
     <>
       <section id="pays-sections">
@@ -137,7 +270,8 @@ const DontPay = () => {
                 <img src="/images/2023/01/arrow-w.png" alt="arrow-icon" />
               </a>
               <Link href="/contact-us" className="contacts">
-                Contact Us <img src="/images/2023/01/arrow-c.png" alt="contact-us" />
+                Contact Us{" "}
+                <img src="/images/2023/01/arrow-c.png" alt="contact-us" />
               </Link>
             </div>
           </div>
@@ -158,7 +292,7 @@ const DontPay = () => {
                 <span aria-hidden="true">×</span>
               </button>
             </div>
-   {/* <li>
+            {/* <li>
                       <img src="images/2023/01/home-icon3.png" alt="" />
                       Lorem ipsum dolor sitconsec sit amet dolor sitco
                     </li> */}
@@ -189,10 +323,7 @@ const DontPay = () => {
                 <h2> Request Free Consultation</h2>
                 <div className="treatment-right">
                   <form onSubmit={handleFormSubmit}>
-                    <div
-                      className="treatment-form"
-                      style={nameError ? Formstyles.errorInput : {}}
-                    >
+                    <div className="treatment-form">
                       <div className="inputbox">
                         <label>Name</label>
                         <input
@@ -203,105 +334,48 @@ const DontPay = () => {
                           value={name}
                           onChange={(e) => setName(e.target.value)}
                           autoComplete="off"
-                          style={nameError ? Formstyles.errorInput : {}}
+                          style={formErrors.name ? Formstyles.errorInput : {}}
                         />
-                        {nameError && (
-                          <span style={Formstyles.errorMessage}>
-                            {nameError}
-                          </span>
-                        )}
+                        {renderError(formErrors.name)}
                       </div>
                     </div>
 
                     <div className="treatment-form">
                       <div className="inputbox">
                         <label>Phone</label>
-                        <div className="phone-form">
-                          <div className="phone-box1">
-                            <select
-                              aria-label="Sort dropdown"
-                              className="phone-dropdown"
-                              value={pcode}
-                              onChange={(e) => setPcode(e.target.value)}
-                            >
-                              <option value="">Choose Code</option>
-                              <option value="+91">India (+91)</option>
-                              <option value="1">UK (+44)</option>
-                              <option value="213">Algeria (+213)</option>
-                              <option value="376">Andorra (+376)</option>
-                              <option value="244">Angola (+244)</option>
-                              <option value="1264">Anguilla (+1264)</option>
-                              <option value="1268">
-                                Antigua &amp; Barbuda (+1268)
-                              </option>
-                              <option value="54">Argentina (+54)</option>
-                              <option value="374">Armenia (+374)</option>
-                              <option value="297">Aruba (+297)</option>
-                              <option value="61">Australia (+61)</option>
-                              <option value="43">Austria (+43)</option>
-                              <option value="994">Azerbaijan (+994)</option>
-                              <option value="1242">Bahamas (+1242)</option>
-                              <option value="973">Bahrain (+973)</option>
-                              <option value="880">Bangladesh (+880)</option>
-                              <option value="1246">Barbados (+1246)</option>
-                              <option value="375">Belarus (+375)</option>
-                              <option value="32">Belgium (+32)</option>
-                              <option value="501">Belize (+501)</option>
-                              <option value="229">Benin (+229)</option>
-                              <option value="1441">Bermuda (+1441)</option>
-                              <option value="975">Bhutan (+975)</option>
-                              <option value="591">Bolivia (+591)</option>
-                              <option value="387">
-                                Bosnia Herzegovina (+387)
-                              </option>
-                              <option value="267">Botswana (+267)</option>
-                              <option value="55">Brazil (+55)</option>
-                              <option value="673">Brunei (+673)</option>
-                              <option value="359">Bulgaria (+359)</option>
-                              <option value="226">Burkina Faso (+226)</option>
-                              <option value="257">Burundi (+257)</option>
-                              <option value="855">Cambodia (+855)</option>
-                            </select>
-                          </div>
-                          <div className="phone-box2">
-                            <input
-                              type="tel"
-                              placeholder=""
-                              name="name"
-                              value={phone}
-                              onChange={(e) => {
-                                const phoneNumber = e.target.value.replace(
-                                  /\D/g,
-                                  ""
-                                ); // Remove non-numeric characters
-                                setPhone(phoneNumber);
-                              }}
-                              style={phoneError ? Formstyles.errorInput : {}}
-                              autoComplete="off"
-                            />
-                            {/* {phoneError && (
-                              <span style={Formstyles.errorMessage}>
-                                {phoneError}
-                              </span>
-                            )} */}
-                          </div>
+                        <input
+                          ref={inputRef}
+                          type="tel"
+                          id="mobileode"
+                          placeholder=""
+                          value={phone}
+                          onChange={handlePhoneNumberChange}
+                          onBlur={handlePhoneBlur}
+                          style={formErrors.phone ? Formstyles.errorInput : {}}
+                        />
+                        {renderError(formErrors.phone)}
+                      </div>
+                    </div>
+                    {userEmail ? null : (
+                      <div className="treatment-form">
+                        <div className="inputbox">
+                          <label>Email</label>
+                          <input
+                            type="email"
+                            placeholder=""
+                            name="name"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            onBlur={handleEmailBlur}
+                            autoComplete="off"
+                            style={
+                              formErrors.email ? Formstyles.errorInput : {}
+                            }
+                          />
+                          {renderError(formErrors.email)}
                         </div>
                       </div>
-                    </div>
-
-                    <div className="treatment-form">
-                      <div className="inputbox">
-                        <label>Email</label>
-                        <input
-                          type="email"
-                          placeholder=""
-                          name="name"
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
-                          autoComplete="off"
-                        />
-                      </div>
-                    </div>
+                    )}
 
                     <div className="treatment-form">
                       <div className="inputbox">
@@ -315,14 +389,22 @@ const DontPay = () => {
                           value={query}
                           onChange={(e) => setQuery(e.target.value)}
                           autoComplete="off"
+                          style={formErrors.query ? Formstyles.errorInput : {}}
                         ></textarea>
+                        {renderError(formErrors.query)}
                       </div>
                     </div>
                     <ReCAPTCHA
                       sitekey="6LcX6-YnAAAAAAjHasYD8EWemgKlDUxZ4ceSo8Eo" // Replace with your reCAPTCHA site key
                       onChange={handleCaptchaChange}
                     />
-                    <button type="submit" name="en" className="home-button" disabled={isLoading}>
+                    {renderError(formErrors.captcha)}
+                    <button
+                      type="submit"
+                      name="en"
+                      className="home-button"
+                      disabled={isLoading}
+                    >
                       {" "}
                       {isLoading ? (
                         <ThreeDots
@@ -348,8 +430,21 @@ const DontPay = () => {
         </div>{" "}
       </div>
 
-    </>
-  )
-}
+      {showSuccessPopup && (
+        <Success
+          onClose={handleCloseSuccessPopup}
+          showSuccessPopup={showSuccessPopup}
+        />
+      )}
 
-export default DontPay
+      {showErrorPopup && (
+        <ErrorPopup
+          onClose={handleCloseErrorPopup}
+          showErrorPopup={showErrorPopup}
+        />
+      )}
+    </>
+  );
+};
+
+export default DontPay;

@@ -139,7 +139,7 @@ const CostEstimateForm = ({ specialityId }) => {
 
     // Validation logic
     let isValid = true;
-    const phoneRegex = /^\d{10,}$/;
+    const phoneRegex = /^\d{10}$/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!userName) {
@@ -181,13 +181,13 @@ const CostEstimateForm = ({ specialityId }) => {
       return;
     }
 
-    if (!captchaValue) {
-      setFormErrors((prevErrors) => ({
-        ...prevErrors,
-        captcha: "Please Fill the captcha",
-      }));
-      return;
-    }
+    // if (!captchaValue) {
+    //   setFormErrors((prevErrors) => ({
+    //     ...prevErrors,
+    //     captcha: "Please Fill the captcha",
+    //   }));
+    //   return;
+    // }
 
     if (isValid) {
       // Create the data object to be sent in the API request
@@ -202,7 +202,7 @@ const CostEstimateForm = ({ specialityId }) => {
       };
 
       // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
-      const apiEndpoint = `https://dev.medflick.com/api/free_quote_treatment`;
+      const apiEndpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/api/free_quote_treatment`;
 
       setIsLoading(true);
 
@@ -224,7 +224,7 @@ const CostEstimateForm = ({ specialityId }) => {
     }
   };
 
-  const phoneRegex = /^\d{10,}$/;
+  const phoneRegex = /^\d{10}$/;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const handlePhoneBlur = () => {
     if (!phone || !phone.match(phoneRegex)) {

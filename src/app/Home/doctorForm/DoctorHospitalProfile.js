@@ -112,7 +112,7 @@ const DoctorHospitalProfile = ({ slug, first, middle, last }) => {
     // Validation logic
     let isValid = true;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const phoneRegex = /^\d{10,}$/;
+    const phoneRegex = /^\d{10}$/;
 
     if (!userName) {
       if (!name2) {
@@ -172,7 +172,7 @@ const DoctorHospitalProfile = ({ slug, first, middle, last }) => {
       };
 
       // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
-      const apiEndpoint = `https://dev.medflick.com/api/doctor_query`;
+      const apiEndpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/api/doctor_query`;
 
       setIsLoading2(true);
 
@@ -217,7 +217,7 @@ const DoctorHospitalProfile = ({ slug, first, middle, last }) => {
     },
   };
 
-  const phoneRegex = /^\d{10,}$/;
+  const phoneRegex = /^\d{10}$/;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const handlePhoneBlur = () => {
     if (!phone2 || !phone2.match(phoneRegex)) {

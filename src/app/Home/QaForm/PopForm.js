@@ -139,7 +139,7 @@ const PopForm = () => {
 
     // Validation logic
     let isValid = true;
-    const phoneRegex = /^\d{10,}$/;
+    const phoneRegex = /^\d{10}$/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!userName) {
@@ -203,7 +203,7 @@ const PopForm = () => {
       };
 
       // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
-      const apiEndpoint = `https://dev.medflick.com/api/askPost`;
+      const apiEndpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/api/askPost`;
 
       setIsLoading(true);
 
@@ -226,7 +226,7 @@ const PopForm = () => {
     }
   };
 
-  const phoneRegex = /^\d{10,}$/;
+  const phoneRegex = /^\d{10}$/;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const handlePhoneBlur = () => {
     if (!phone || !phone.match(phoneRegex)) {

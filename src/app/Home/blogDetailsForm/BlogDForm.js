@@ -120,7 +120,7 @@ const BlogDForm = () => {
     // Validation logic
     let isValid = true;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const phoneRegex = /^\d{10,}$/;
+    const phoneRegex = /^\d{10}$/;
 
     if (!userName) {
       if (!name1) {
@@ -162,13 +162,13 @@ const BlogDForm = () => {
       return;
     }
 
-    if (!captchaValue1) {
-      setFormErrors((prevErrors) => ({
-        ...prevErrors,
-        captcha: "Please Fill the captcha",
-      }));
-      return;
-    }
+    // if (!captchaValue1) {
+    //   setFormErrors((prevErrors) => ({
+    //     ...prevErrors,
+    //     captcha: "Please Fill the captcha",
+    //   }));
+    //   return;
+    // }
 
     const patientId = localStorage.getItem("userId");
 
@@ -184,7 +184,7 @@ const BlogDForm = () => {
       };
 
       // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
-      const apiEndpoint = `https://dev.medflick.com/api/free_consultants`;
+      const apiEndpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/api/free_consultants`;
 
       setIsLoading1(true);
 
@@ -223,7 +223,7 @@ const BlogDForm = () => {
     },
   };
 
-  const phoneRegex = /^\d{10,}$/;
+  const phoneRegex = /^\d{10}$/;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   const handlePhoneBlur = () => {
