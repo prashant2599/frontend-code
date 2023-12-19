@@ -72,7 +72,7 @@ const DoctorForm = ({ info }) => {
     let isValid = true;
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const phoneRegex = /^\d{10,}$/;
+    const phoneRegex = /^\d{10}$/;
 
     if (!userName) {
       if (!name) {
@@ -135,7 +135,7 @@ const DoctorForm = ({ info }) => {
       };
 
       // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
-      const apiEndpoint = `https://dev.medflick.com/api/doctor_query`;
+      const apiEndpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/api/doctor_query`;
 
       setIsLoading(true);
 
@@ -143,7 +143,8 @@ const DoctorForm = ({ info }) => {
       axios
         .post(apiEndpoint, data)
         .then((response) => {
-          setIsPopupOpen(false);
+          setShowSuccessPopup(true);
+         
           clearFormFields();
         })
         .catch((error) => {
@@ -209,7 +210,7 @@ const DoctorForm = ({ info }) => {
     setPhone(formattedPhoneNumber); // Update the phone number state
   };
 
-  const phoneRegex = /^\d{10,}$/;
+  const phoneRegex = /^\d{10}$/;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const handlePhoneBlur = () => {
     if (!phone || !phone.match(phoneRegex)) {

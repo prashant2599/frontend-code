@@ -91,7 +91,7 @@ const TreatmentForm1 = ({ treatmentId, specialityId }) => {
 
     // Validation logic
     let isValid = true;
-    const phoneRegex = /^\d{10,}$/;
+    const phoneRegex = /^\d{10}$/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!userName) {
@@ -154,7 +154,7 @@ const TreatmentForm1 = ({ treatmentId, specialityId }) => {
       };
 
       // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
-      const apiEndpoint = `https://dev.medflick.com/api/free_quote_treatment`;
+      const apiEndpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/api/free_quote_treatment`;
 
       setIsLoading(true);
 
@@ -205,7 +205,7 @@ const TreatmentForm1 = ({ treatmentId, specialityId }) => {
     setPhone(formattedPhoneNumber); // Update the phone number state
   };
 
-  const phoneRegex = /^\d{10,}$/;
+  const phoneRegex = /^\d{10}$/;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const handlePhoneBlur = () => {
     if (!phone || !phone.match(phoneRegex)) {
@@ -301,6 +301,7 @@ const TreatmentForm1 = ({ treatmentId, specialityId }) => {
                 placeholder=""
                 rows="2"
                 value={query}
+                onChange={(e) => setQuery(e.target.value)}
                 style={formErrors.query ? Formstyles.errorInput : {}}
               ></textarea>
               {renderError(formErrors.query)}

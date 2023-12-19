@@ -1,3 +1,4 @@
+import HomeHospitalForm from "@/app/Home/hospitalForm/HomeHospitalForm";
 import Link from "next/link";
 
 const Hospitralspe = ({ hospital, category, categoryName, slugs }) => {
@@ -15,13 +16,17 @@ const Hospitralspe = ({ hospital, category, categoryName, slugs }) => {
                 <h3>Best {categoryName} Hospitals </h3>
               ) : (
                 <h3>
-                  Best {categoryName} Hospitals in <span style={{color:"#ff6800"}}>{countrySlug.charAt(0).toUpperCase() + countrySlug.slice(1)}</span>
+                  Best {categoryName} Hospitals in{" "}
+                  <span style={{ color: "#ff6800" }}>
+                    {countrySlug.charAt(0).toUpperCase() + countrySlug.slice(1)}
+                  </span>
                 </h3>
               )}
             </div>
             <div className="new-beginnings-right">
               <Link className="view-all" href={`/hospitals/${category}`}>
-                View All <img src="/images/new-images/2023/01/treatments-arrow.png" />
+                View All{" "}
+                <img src="/images/new-images/2023/01/treatments-arrow.png" />
               </Link>
             </div>
           </div>
@@ -29,20 +34,22 @@ const Hospitralspe = ({ hospital, category, categoryName, slugs }) => {
             {Hospitals.map((e) => (
               <div class="item" key={e.id}>
                 <div class="item-home-expert">
-                  <img src={`https://dev.medflick.com/hospital/${e.image}`} />
+                  <Link href={`/hospital/${e.slug}/${e.country}`}>
+                    <img src={`https://dev.medflick.com/hospital/${e.image}`} />
+                  </Link>
                 </div>
                 <div class="home-expert-text">
-                  <h3>{e.name}</h3>
+                  <Link href={`/hospital/${e.slug}/${e.country}`}>
+                    <h3>{e.name}</h3>
+                  </Link>
                   <p>Hospitals in India</p>
                 </div>
-                <div class="expert-button">
-                  <Link class="view-profile" href={`/hospital/${e.slug}`}>
-                    View Profile
-                  </Link>
-                  <a class="book-appointment" href="#">
-                    Book Appointment
-                  </a>
-                </div>
+                <HomeHospitalForm
+                  slug={e.slug}
+                  country={e.country}
+                  name={e.name}
+                  hospitalId={e.id}
+                />
               </div>
             ))}
           </div>

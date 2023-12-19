@@ -1,3 +1,4 @@
+import HomeDoctorForm from "@/app/Home/doctorForm/HomeDoctorForm";
 import Link from "next/link";
 
 const Doctors = ({ doctor, category, categoryName, slugs }) => {
@@ -15,13 +16,17 @@ const Doctors = ({ doctor, category, categoryName, slugs }) => {
                 <h3>Best {categoryName} Doctors </h3>
               ) : (
                 <h3>
-                  Best {categoryName} Doctors in <span style={{color:"#ff6800"}}>{countrySlug.charAt(0).toUpperCase() + countrySlug.slice(1)}</span>
+                  Best {categoryName} Doctors in{" "}
+                  <span style={{ color: "#ff6800" }}>
+                    {countrySlug.charAt(0).toUpperCase() + countrySlug.slice(1)}
+                  </span>
                 </h3>
               )}
             </div>
             <div className="new-beginnings-right">
               <Link className="view-all" href={`/doctors/${category}`}>
-                View All <img src="/images/new-images/2023/01/treatments-arrow.png" />
+                View All{" "}
+                <img src="/images/new-images/2023/01/treatments-arrow.png" />
               </Link>
             </div>
           </div>
@@ -29,22 +34,25 @@ const Doctors = ({ doctor, category, categoryName, slugs }) => {
             {Doctors.map((e) => (
               <div className="item" key={e.id}>
                 <div className="item-home-expert">
-                  <img src={`https://dev.medflick.com/doctor/${e.image}`} />
+                  <Link href={`/doctor/${e.slug}`}>
+                    <img src={`https://dev.medflick.com/doctor/${e.image}`} />
+                  </Link>
                 </div>
                 <div className="home-expert-text">
-                  <h3>
-                    {e.prefix} {e.first_name} {e.last_name}
-                  </h3>
+                  <Link href={`/doctor/${e.slug}`}>
+                    <h3>
+                      {e.prefix} {e.first_name} {e.last_name}
+                    </h3>
+                  </Link>
                   <p>{e.designation}</p>
                 </div>
-                <div className="expert-button">
-                  <Link className="view-profile" href={`/doctor/${e.slug}`}>
-                    View Profile
-                  </Link>
-                  <a className="book-appointment" href="#">
-                    Book Appointment
-                  </a>
-                </div>
+                <HomeDoctorForm
+                  slug={e.slug}
+                  first={e.prefix}
+                  middle={e.first_name}
+                  last={e.last_name}
+                  doctorId={e.id}
+                />
               </div>
             ))}
           </div>

@@ -112,7 +112,7 @@ const NavForm1 = ({ treatmentId, specialityId }) => {
       return;
     }
 
-    const phoneRegex = /^\d{10,}$/; // Matches 10 or more digits
+    const phoneRegex = /^\d{10}$/; // Matches 10 or more digits
     if (!phone1 || !phone1.match(phoneRegex)) {
       setPhoneError1("Phone must have at least 10 digits");
       isValid = false;
@@ -132,7 +132,7 @@ const NavForm1 = ({ treatmentId, specialityId }) => {
       };
 
       // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
-      const apiEndpoint = `https://dev.medflick.com/api/free_quote_treatment`;
+      const apiEndpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/api/free_quote_treatment`;
 
       setIsLoading1(true);
 
