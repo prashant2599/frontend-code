@@ -27,7 +27,7 @@ const HospitalSearch = ({ hospital, slug }) => {
     setSearchTerm(term);
 
     // Check if the search term has at least three characters
-    if (term.length >= 3) {
+    if (term.length >= 2) {
       const filteredQuestions = hospital.filter((question) =>
         question.name.toLowerCase().includes(term)
       );
@@ -60,7 +60,7 @@ const HospitalSearch = ({ hospital, slug }) => {
               value={searchTerm}
               onChange={handleSearch}
             />
-            {searchTerm.length >= 3 && (
+            {searchTerm.length >= 2 && (
               <div className="searchbox-medf-hospital">
                 {filteredQa.length > 0 ? (
                   filteredQa.map((question) => (

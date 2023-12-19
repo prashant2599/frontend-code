@@ -50,8 +50,6 @@ const UserComment = ({ id, specialityId, subspecialityId, treatments }) => {
     display: isPopupOpen ? "block" : "none",
   };
 
-
-
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
@@ -106,7 +104,7 @@ const UserComment = ({ id, specialityId, subspecialityId, treatments }) => {
   };
   return (
     <>
-      <a href="#" className="share-discussion" onClick={togglePopup}>
+      <a className="share-discussion" onClick={togglePopup}>
         Add a comment
       </a>
       {isPopupOpen && (
