@@ -54,7 +54,13 @@ const NewCostSection = () => {
     async function fetchData() {
       try {
         const result = await getAllSpeciality();
-        setSpeciality(result.data.Speciality);
+
+        // Filter specialities based on the "featured" attribute
+        const featuredSpecialities = result.data.Speciality.filter(
+          (speciality) => speciality.featured === "1"
+        );
+
+        setSpeciality(featuredSpecialities);
       } catch (err) {
         console.log(err.message);
       }

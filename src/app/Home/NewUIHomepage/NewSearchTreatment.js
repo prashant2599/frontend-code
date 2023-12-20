@@ -39,6 +39,8 @@ const NewSearchTreatment = () => {
     fetchData();
   }, []);
 
+  
+
   useEffect(() => {
     const fetchDoctorsData = async () => {
       const res = await fetch(
@@ -214,7 +216,12 @@ const NewSearchTreatment = () => {
                         selectedCountry.slice(1)}
                     </p>
                   </div>
-                  <HomeHospitalForm slug={e.slug} country={e.country} name={e.name} hospitalId={e.id} />
+                  <HomeHospitalForm
+                    slug={e.slug}
+                    country={e.country}
+                    name={e.name}
+                    hospitalId={e.id}
+                  />
                 </div>
               ))
             ) : (
