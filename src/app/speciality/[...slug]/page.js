@@ -1,4 +1,3 @@
-
 import HelpYou from "@/app/Home/helpyou/HelpYou";
 import DontPay from "@/app/Home/dontPay/DontPay";
 import Community from "@/app/Home/community/Community";
@@ -38,11 +37,9 @@ const page = async ({ params }) => {
     return (
       <>
         <section id="category-slider">
-          <Image
+          <img
             src={`https://dev.medflick.com/speciality/${info && info.image}`}
             alt={info.name}
-            width="1372"
-            height="672" 
           />
           <div className="category-slidertext">
             <h1>{info && info.name}</h1>
@@ -81,7 +78,10 @@ const page = async ({ params }) => {
               <h2 style={{ marginBottom: "5rem" }}>{info && info.name}</h2>
             ) : (
               <h2 style={{ marginBottom: "5rem" }}>
-                {info && info.name} in <span style={{color:"#ff6800"}}>{countrySlug.charAt(0).toUpperCase() + countrySlug.slice(1)}</span>
+                {info && info.name} in{" "}
+                <span style={{ color: "#ff6800" }}>
+                  {countrySlug.charAt(0).toUpperCase() + countrySlug.slice(1)}
+                </span>
               </h2>
             )}
             {/* <p>
