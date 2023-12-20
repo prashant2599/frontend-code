@@ -1,15 +1,14 @@
+import Script from "next/script";
 import Link from "next/link";
 import { GoChevronDown } from "react-icons/go";
-import Script from "next/script";
-import MobileHeader from "./MobileHeader";
 import getAllSpeciality from "@/app/lib/getAllSpeciality";
-import HeaderSearch from "./HeaderSearch";
-import LoginButton from "./LoginButton";
+import MobileSearch from "../../Inc/MobileSearch";
+import MobileHeader from "../../Inc/MobileHeader";
+import LoginButton from "../../Inc/LoginButton";
 
-export default async function Header() {
+const NewHeader = async () => {
   const data = await getAllSpeciality();
   const speciality = data.data.Speciality;
-
   return (
     <>
       <header className="header" id="header-id">
@@ -23,7 +22,7 @@ export default async function Header() {
               <div className="top-menu-wrapper">
                 <ul className="top-menu">
                   <li className="has-dropdown dropdown">
-                    <a className="dropbtn">
+                    <a href="#" className="dropbtn">
                       Treatments
                       <i>
                         <GoChevronDown style={{ fontSize: "22px" }} />
@@ -51,7 +50,7 @@ export default async function Header() {
                   </li>
 
                   <li className="has-dropdown dropdown">
-                    <a className="dropbtn">
+                    <a href="#" className="dropbtn">
                       Hospitals
                       <i>
                         <GoChevronDown style={{ fontSize: "22px" }} />
@@ -76,7 +75,7 @@ export default async function Header() {
                   </li>
 
                   <li className="has-dropdown dropdown">
-                    <a className="dropbtn">
+                    <a href="#" className="dropbtn">
                       Doctors
                       <i>
                         <GoChevronDown style={{ fontSize: "22px" }} />
@@ -110,12 +109,10 @@ export default async function Header() {
               </div>
             </nav>
           </div>
-          {/* Login Button */}
           <LoginButton />
         </div>
-        {/* M view */}
+
         <MobileHeader speciality={speciality} />
-        {/* end */}
       </header>
       <Script
         id="scroll-handler-script"
@@ -140,4 +137,6 @@ export default async function Header() {
       ></Script>
     </>
   );
-}
+};
+
+export default NewHeader;

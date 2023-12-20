@@ -154,7 +154,7 @@ const NewSearchTreatment = () => {
                         {e.prefix} {e.first_name} {e.last_name}
                       </h3>
                     </Link>
-                    <p>{e.designation}</p>
+                    <p style={{height:"37px"}}>{e.designation}</p>
                   </div>
                   <HomeDoctorForm
                     slug={e.slug}

@@ -29,16 +29,23 @@ const NewQuestionAns = async () => {
                     alt="medflick-questions"
                   />
                   <div className="question-box">{e.short_description}</div>
+
                   <div
                     className="question-ans"
-                    dangerouslySetInnerHTML={{ __html: e.long_description }}
+                    dangerouslySetInnerHTML={{
+                      __html: e.long_description
+                        .split(" ")
+                        .slice(0, 30)
+                        .join(" ")
+                        .concat("..."),
+                    }}
                   />
                 </div>
               </div>
             ))}
           </div>
 
-          <Link  href="/question-answer">
+          <Link href="/question-answer">
             View All Questions
             <img src="/images/new-images/2023/01/arrow-c.png" alt="" />
           </Link>

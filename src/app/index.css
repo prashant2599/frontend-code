@@ -428,14 +428,7 @@ a:hover {
 #blog {
   margin: 20px 0;
 }
-.blog-item {
-  background: #ffffff;
-  border-radius: 24px;
-  border: 1px solid #d8dee5;
-  position: relative;
-  text-align: left;
-  margin: 10px 0;
-}
+
 .blog-item img {
   border-radius: 24px 24px 0px 0px;
   position: relative;

@@ -122,7 +122,7 @@ const NewMakeUsBetter = () => {
 
           <ul>
             <li>
-              <h3 style={{color:"#ff6800"}}>Pre-treatment Travel Support</h3>
+              <h3>Pre-treatment Travel Support</h3>
               <p>
                 Medflick goes beyond healthcare by offering unparalleled
                 pre-treatment travel support. From handling visas to curating
@@ -131,7 +131,7 @@ const NewMakeUsBetter = () => {
               </p>
             </li>
             <li>
-              <h3 style={{color:"#ff6800"}}>Follow-Up Care and Accommodations</h3>
+              <h3>Follow-Up Care and Accommodations</h3>
               <p>
                 Medflick's commitment extends beyond treatment, offering
                 dedicated follow-up care and accommodations. Ensuring continuous

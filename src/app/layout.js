@@ -9,6 +9,7 @@ import { Inter } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";
 import { DoctorDataProvider } from "./contex/DoctorDataContext";
 import { HospitalDataProvider } from "./contex/HospitalDataContext";
+import NewHeader from "./Home/NewUIHomepage/inc/NewHeader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -36,9 +37,9 @@ export default function RootLayout({ children }) {
     <>
       <html lang="en">
         <body>
-          <NextTopLoader color="#ff6800" showSpinner={false} />
+          <NextTopLoader color="#ffffff" showSpinner={false} />
           <UserProvider>
-            <Header />
+            <NewHeader />
             <Allpopudp />
             <GoogleAnalytics />
             <DoctorDataProvider>
