@@ -343,7 +343,7 @@ const PopForm = () => {
           </div>
         ) : (
           <div className="popup" data-popup="popup-1" style={popupStyle}>
-            <div className="popup-inner2">
+            <div className="popup-inner99">
               <div className="modal-content">
                 <div className="modal-header">
                   <button
@@ -377,41 +377,45 @@ const PopForm = () => {
                     </div>
                   </div>
 
-                  <div className="treatment-form">
-                    <div className="inputbox">
-                      <label>Phone</label>
-                      <input
-                        ref={inputRef}
-                        type="tel"
-                        id="mobileode"
-                        placeholder=""
-                        value={phone}
-                        onChange={handlePhoneNumberChange}
-                        onBlur={handlePhoneBlur}
-                        style={formErrors.phone ? Formstyles.errorInput : {}}
-                      />
-                      {renderError(formErrors.phone)}
-                    </div>
-                  </div>
-
-                  {userEmail ? null : (
+                  <div class="home-form">
                     <div className="treatment-form">
                       <div className="inputbox">
-                        <label>Email</label>
+                        <label>Phone</label>
                         <input
-                          type="email"
+                          ref={inputRef}
+                          type="tel"
+                          id="mobileode"
                           placeholder=""
-                          name="name"
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
-                          onBlur={handleEmailBlur}
-                          autoComplete="off"
-                          style={formErrors.email ? Formstyles.errorInput : {}}
+                          value={phone}
+                          onChange={handlePhoneNumberChange}
+                          onBlur={handlePhoneBlur}
+                          style={formErrors.phone ? Formstyles.errorInput : {}}
                         />
-                        {renderError(formErrors.email)}
+                        {renderError(formErrors.phone)}
                       </div>
                     </div>
-                  )}
+
+                    {userEmail ? null : (
+                      <div className="treatment-form">
+                        <div className="inputbox">
+                          <label>Email</label>
+                          <input
+                            type="email"
+                            placeholder=""
+                            name="name"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            onBlur={handleEmailBlur}
+                            autoComplete="off"
+                            style={
+                              formErrors.email ? Formstyles.errorInput : {}
+                            }
+                          />
+                          {renderError(formErrors.email)}
+                        </div>
+                      </div>
+                    )}
+                  </div>
                   <div className="treatment-form">
                     <div className="inputbox">
                       <label>Your Query</label>

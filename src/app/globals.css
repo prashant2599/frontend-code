@@ -28,7 +28,7 @@ html {
 body {
   padding: 0;
   margin: 0 auto;
-  font-family: Helvetica Neue Light !important;
+  font-family: Inter Regular !important;
   position: relative;
   font-weight: 400;
   overflow-x: hidden;
@@ -2021,7 +2021,7 @@ textarea {
 }
 
 #help-you .logo-med {
-  width: 160px;
+  width: 165px;
   margin: 0px auto;
   display: flex;
 }
@@ -2526,7 +2526,7 @@ div.active {
   border-radius: 12px;
   background-size: 100%;
   position: absolute;
-  right: -139px;
+  right: -60px;
   bottom: -58px;
 }
 
@@ -15129,12 +15129,18 @@ pre code {
   width: 50%;
 }
 
+
+
 @media screen and (max-width: 880px) {
   .treatment-bannerimg .treatment-banner-img2 {
     display: none;
   }
   .treatment-bannerimg .treatment-banner-img1 {
     width: 100%;
+  }
+  .popup-inner99 .home-form {
+   flex-direction: column;
+   padding: 0px;
   }
 }
 
@@ -15155,4 +15161,37 @@ pre code {
 
 .searchbox-medf-hospital .searchbox-main {
   text-align: start;
+}
+
+
+.popup-inner99 {
+  max-width: 700px;
+  width: 90%;
+  padding: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  border-radius: 16px;
+  border-top: 8px solid #ff6800;
+  background: #fff;
+}
+
+
+.popup-inner99 h2 {
+  text-align: center !important;
+  margin: 0px 0 20px;
+}
+
+
+.popup-inner99 .home-form {
+  width: 100%;
+  gap: 10px;
+  padding-bottom: 10px;
+  display: flex;
+}
+
+.popup-inner99 .treatment-form {
+width: 100%;
 }

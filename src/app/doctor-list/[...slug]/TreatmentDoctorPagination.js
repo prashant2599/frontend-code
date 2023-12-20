@@ -17,18 +17,6 @@ const TreatmentDoctorPagination = async ({
   const countrySlugTreatment = parts[3];
   const position5 = parts[5];
 
-  const isPositionCity =
-    doctor && doctor.some((e) => e.location === countrySlug);
-  const isPositionTreatmentCity =
-    doctor && doctor.some((e) => e.location === citySlug);
-
-  const isPositionInDoctorCountry = doctorCountry.some(
-    (countryObj) => countryObj.country === citySlug
-  );
-
-  console.log(isPositionInDoctorCountry);
-  console.log("country", citySlug);
-
   const itemsPerPage = 10; // You can adjust this based on your preference
   const totalPages = Math.ceil(totalDoctor / itemsPerPage);
 
@@ -43,8 +31,8 @@ const TreatmentDoctorPagination = async ({
 
             // Check if the countrySlug is in doctorCountry
             const isPositionInDoctorCountry = doctorCountry.some(
-                (countryObj) => countryObj.country === citySlug
-              );
+              (countryObj) => countryObj.country === citySlug
+            );
 
             // Check if the citySlug is in the doctor's locations
             const isPositionCity =
@@ -57,7 +45,7 @@ const TreatmentDoctorPagination = async ({
               url = `/doctor-list/${specialitySlug}/${countrySlug}/${citySlug}/page/${page}`;
             } else {
               // Default URL if no conditions are met
-              url = `/doctor-list/${specialitySlug}/page/${page}`;
+              url = `/doctor-list/${specialitySlug}/${countrySlug}/page/${page}`;
             }
 
             return (

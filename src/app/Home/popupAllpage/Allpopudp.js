@@ -6,10 +6,13 @@ import axios from "axios";
 import Image from "next/image";
 import "intl-tel-input/build/css/intlTelInput.css"; // Import CSS
 import intlTelInput from "intl-tel-input";
+import Success from "../successPopup/Success";
+import ErrorPopup from "../successPopup/ErrorPopup";
 
 const Allpopudp = () => {
   // home screen form data post api
-
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
+  const [showErrorPopup, setShowErrorPopup] = useState(false);
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [userPhone, setUserPhone] = useState("");
@@ -46,10 +49,6 @@ const Allpopudp = () => {
     setSelectedFile(event.target.files[0]);
   };
 
-  // State variables for error messages
-  const [nameError, setNameError] = useState("");
-  const [phoneError, setPhoneError] = useState("");
-
   const [captchaValue, setCaptchaValue] = useState(null);
   const handleCaptchaChange = (value) => {
     setCaptchaValue(value);
@@ -57,64 +56,79 @@ const Allpopudp = () => {
 
   // Email validations
 
-  const [emailValid, setEmailValid] = useState(true);
-  const [emailTouched, setEmailTouched] = useState(false); // Track if the email field has been touched
-  const [validationMessage, setValidationMessage] = useState("");
-
-  const handleEmailChange = (e) => {
-    const inputEmail = e.target.value;
-    setEmail(inputEmail);
-
-    if (emailTouched) {
-      validateEmail(inputEmail); // Validate email when touched
-    }
-  };
-
-  const validateEmail = (inputEmail) => {
-    const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
-    const isValid = emailPattern.test(inputEmail);
-
-    setEmailValid(isValid);
-    setValidationMessage(isValid ? "" : "Please enter a valid email address.");
-  };
-
-  const handleEmailBlur = () => {
-    setEmailTouched(true); // Mark email field as touched when it loses focus
-    validateEmail(email); // Validate email on blur
-  };
+  const [formErrors, setFormErrors] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    query: "",
+    captcha: "",
+  });
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
-    setNameError("");
-    setPhoneError("");
+    setFormErrors({
+      name: "",
+      phone: "",
+      email: "",
+      query: "",
+      captcha: "",
+    });
     const patientId = localStorage.getItem("userId");
 
     // Validation logic
     let isValid = true;
+    const phoneRegex = /^\d{10}$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (!firstName) {
-      setNameError("Name is required");
-      isValid = false;
+    if (!userName) {
+      if (!firstName) {
+        setFormErrors((prevErrors) => ({
+          ...prevErrors,
+          name: "Please enter your name",
+        }));
+        isValid = false;
+      }
     }
-    if (!userEmail) {
-      if (!emailValid) {
-        setValidationMessage("Please enter a valid email address.");
-        return;
+    if (!userPhone) {
+      if (!number || !number.match(phoneRegex)) {
+        setFormErrors((prevErrors) => ({
+          ...prevErrors,
+          phone: "Please enter a valid Phone number",
+        }));
+        isValid = false;
       }
     }
 
-    if (!captchaValue) {
-      alert("Please complete the CAPTCHA.");
-      return;
+    if (!userEmail) {
+      if (!email || !email.match(emailRegex)) {
+        setFormErrors((prevErrors) => ({
+          ...prevErrors,
+          email: "Please enter a valid email address",
+        }));
+        isValid = false;
+      }
     }
 
-    const phoneRegex = /^\d{10,}$/; // Matches 10 or more digits
-    if (!number || !number.match(phoneRegex)) {
-      setPhoneError("Phone must have at least 10 digits");
+    if (!query) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        query: "Please enter your query",
+      }));
       isValid = false;
     }
 
+    if (!isValid) {
+      return;
+    }
+
+    if (!captchaValue) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        captcha: "Please Fill the captcha",
+      }));
+      return;
+    }
     const fullName = `${firstName} ${lastName}`;
     if (isValid) {
       // Create the data object to be sent in the API request
@@ -140,15 +154,13 @@ const Allpopudp = () => {
           },
         })
         .then((response) => {
-          // Handle the API response here if needed
-          console.log(response);
-          alert("Questions have been successfully submitted");
+          setShowSuccessPopup(true);
           clearFormFields();
           setIsPopupOpen(false);
         })
         .catch((error) => {
-          // Handle any errors that occurred during the API call
           console.error("Error:", error);
+          setShowErrorPopup(true);
         })
         .finally(() => {
           setIsLoading(false);
@@ -216,8 +228,39 @@ const Allpopudp = () => {
   }, []);
 
   const handlePhoneNumberChange = (e) => {
-    const formattedPhoneNumber = e.target.value.replace(/\D/g, ""); // Remove non-numeric characters
-    setNumber(formattedPhoneNumber); // Update the phone number state
+    const formattedPhoneNumber = e.target.value.replace(/\D/g, "");
+    setNumber(formattedPhoneNumber);
+  };
+
+  const phoneRegex = /^\d{10}$/;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const handlePhoneBlur = () => {
+    if (!number || !number.match(phoneRegex)) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        phone: "Please enter a valid Phone number",
+      }));
+    }
+  };
+
+  const handleEmailBlur = () => {
+    if (!email || !email.match(emailRegex)) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        email: "Please enter a valid email address",
+      }));
+    }
+  };
+
+  const renderError = (error) =>
+    error && <div className="error-message">{error}</div>;
+
+  const handleCloseSuccessPopup = () => {
+    setShowSuccessPopup(false);
+  };
+
+  const handleCloseErrorPopup = () => {
+    setShowErrorPopup(false);
   };
 
   return (
@@ -251,19 +294,19 @@ const Allpopudp = () => {
                     type="text"
                     placeholder=""
                     name="name"
-                    required
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
-                    style={nameError ? Formstyles.errorInput : {}}
+                    style={formErrors.name ? Formstyles.errorInput : {}}
                     autoComplete="off"
                   />
+                  {renderError(formErrors.name)}
                 </div>
                 <div className="inputbox1">
                   <label>Last Name</label>
                   <input
                     type="text"
                     name="name"
-                    required
+                    
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
                     autoComplete="off"
@@ -281,7 +324,10 @@ const Allpopudp = () => {
                     placeholder=""
                     value={number}
                     onChange={handlePhoneNumberChange}
+                    onBlur={handlePhoneBlur}
+                    style={formErrors.number ? Formstyles.errorInput : {}}
                   />
+                  {renderError(formErrors.phone)}
                 </div>
                 {userEmail ? null : (
                   <div className="inputbox1">
@@ -291,16 +337,12 @@ const Allpopudp = () => {
                       placeholder=""
                       name="name"
                       value={email}
-                      onChange={handleEmailChange}
+                      onChange={(e) => setEmail(e.target.value)}
                       onBlur={handleEmailBlur}
-                      required
                       autoComplete="off"
+                      style={formErrors.email ? Formstyles.errorInput : {}}
                     />
-                    {!emailValid && (
-                      <div className="error-message" style={{ color: "red" }}>
-                        {validationMessage}
-                      </div>
-                    )}
+                    {renderError(formErrors.email)}
                   </div>
                 )}
               </div>
@@ -315,8 +357,9 @@ const Allpopudp = () => {
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     rows="2"
-                    autoComplete="off"
+                    style={formErrors.query ? Formstyles.errorInput : {}}
                   ></textarea>
+                  {renderError(formErrors.query)}
                 </div>
               </div>
 
@@ -372,6 +415,19 @@ const Allpopudp = () => {
           </div>
         </div>
       </div>
+      {showSuccessPopup && (
+        <Success
+          onClose={handleCloseSuccessPopup}
+          showSuccessPopup={showSuccessPopup}
+        />
+      )}
+
+      {showErrorPopup && (
+        <ErrorPopup
+          onClose={handleCloseErrorPopup}
+          showErrorPopup={showErrorPopup}
+        />
+      )}
     </>
   );
 };
