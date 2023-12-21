@@ -1,29 +1,31 @@
-/* Breadcrumb.css */
-
-.breadcrumb {
-
-  align-items: center;
-  font-size: 16px;
-  color: #333;
-  margin-bottom: 20px;
-  margin-left: 15rem;
-  margin-top: 3.66rem;
+.mf-breadcrumb {
+  background: #ffffff;
+  padding: 14px 0 0px;
 }
-
-.breadcrumb span {
-  margin-right: 5px;
-  cursor: pointer;
+.mf-breadcrumb ul {
+  padding: 0px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 0;
 }
-
-.separator {
-  margin: 0 5px;
-  color: #999;
+.mf-breadcrumb li:first-child {
+  padding-left: 0px;
 }
-
-@media screen and (max-width: 880px) {
-  .breadcrumb {
-    width: 100%;
-    margin: 0;
-    font-size: 14px;
-  }
+.mf-breadcrumb li {
+  padding: 7px 14px;
+  list-style: none;
+  position: relative;
+  text-align: left;
+  color: #FF6800;
+}
+.mf-breadcrumb li a {
+  color: #777777;
+  font-weight: 400;
+  font-size: 12px;
+}
+.mf-breadcrumb .fa {
+  color: #444;
+  position: absolute;
+  top: 6px;
+  right: 8px;
 }

@@ -88,7 +88,7 @@ const page = async ({ params }) => {
     return (
       <>
         <NewHeader />
-        <Breadcrumb heading={blogDetails.name} slug={blogDetails.slug} />
+
         <section id="blog-slider">
           {blogDetails.icon ? (
             <Image
@@ -111,11 +111,17 @@ const page = async ({ params }) => {
               <div className="by-box">
                 <img src="/images/2023/04/icon-two.png" alt="icon-blog" /> By -
                 Dr. Kanika Sharma
-                <span> Updated on {formattedDate}</span>
+                {/* <span> Updated on {formattedDate}</span> */}
+              </div>
+              <div className="by-box">
+                <img src="/images/date.png" alt="icon-blog" /> By -
+                {formattedDate}
+                {/* <span> Updated on {formattedDate}</span> */}
               </div>
             </div>
           </div>
         </section>
+        <Breadcrumb heading={blogDetails.name} slug={blogDetails.slug} />
 
         <section id="blog-mid">
           <div className="midbox-inner  wiki-mk">
