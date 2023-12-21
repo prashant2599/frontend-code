@@ -1,24 +1,34 @@
 import "./breadcrumb.css";
 import Link from "next/link";
 import React from "react";
+import { FaAngleRight } from "react-icons/fa6";
 
 const Breadcrumb = ({ heading, slug }) => {
   return (
-    <div className="breadcrumb">
-      <Link href="/" style={{ color: "black" }}>
-        <span>Home</span>
-      </Link>
-      <span className="separator">{">"}</span>
-
-      <Link href="/blogs" style={{ color: "black" }}>
-        <span>Blogs</span>
-      </Link>
-
-      <span className="separator">{">"}</span>
-      <Link href={`/blog/${slug}`}>
-        <span style={{ color: "#ff6800" }}>{heading}</span>
-      </Link>
-    </div>
+    <>
+      <section className="mf-breadcrumb">
+        <div className="midbox-inner  wiki-mk">
+          <ul>
+            <li>
+              <Link href="/">Home </Link>{" "}
+              <i className="fa fa-chevron-right">
+                <FaAngleRight />
+              </i>
+            </li>
+            <li>
+              {" "}
+              <Link href="/blogs">Blogs</Link>{" "}
+              <i className="fa fa-chevron-right">
+                <FaAngleRight />
+              </i>
+            </li>
+            <li>
+             {heading}
+            </li>
+          </ul>
+        </div>
+      </section>
+    </>
   );
 };
 

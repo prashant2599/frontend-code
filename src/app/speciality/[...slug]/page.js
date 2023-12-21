@@ -107,11 +107,6 @@ const page = async ({ params }) => {
 
         <section id="treatments-section">
           <div className="midbox-inner wiki-mk">
-            <SpecialityFilteration
-              countryResponse={info.country}
-              slug={info.slug}
-              slugs={combinedSlug}
-            />
             {/* <h2>
             {info && info.name} treatments in {info && info.country}
           </h2> */}
@@ -121,7 +116,11 @@ const page = async ({ params }) => {
               __html: info && info.long_description,
             }}
           /> */}
-
+            <SpecialityFilteration
+              countryResponse={info.country}
+              slug={info.slug}
+              slugs={combinedSlug}
+            />
             {/* Treatment List */}
             <TreatmentList speciality={speciality} slugs={combinedSlug} />
           </div>
