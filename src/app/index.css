@@ -121,53 +121,9 @@ a:hover {
   padding: 10px 20px;
   border-radius: 10px;
 }
-.topbox-right .find-box {
-  display: flex;
-  width: 100%;
-  margin: 10px 0;
-  align-items: center;
-  position: relative;
-  gap: 15px;
-  justify-content: center;
-}
-.topbox-right .find-box input::placeholder {
-  color: #c5c5c5;
-  font-size: 16px;
-}
-.topbox-right .find-box input:focus {
-  border: 1px solid #ff6800;
-}
-.topbox-right .find-box input {
-  height: 50px;
-  padding-left: 50px;
-  width: 100%;
-  font-weight: 400;
-  font-size: 16px;
-  border: 0px;
-  border-radius: 8px;
-  background: #fff;
-  border: 1px solid #d8dee5;
-  outline: none;
-}
 
-.topbox-right .find-box .search-box {
-  width: 60%;
-  position: relative;
-}
-/* .find-box .search-box::before {
-  content: "";
-  position: absolute;
-  top: 15px;
-  left: 10px;
-  width: 30px;
-  height: 30px;
-  background: url(./images/2023/01/search-icon.png) no-repeat;
-  background-size: 20px;
-} */
-.topbox-right .find-box .city-box {
-  width: 30%;
-  position: relative;
-}
+
+
 .find-box .city-box::before {
   content: "";
   position: absolute;
@@ -1757,19 +1713,7 @@ td {
   .topbox-left {
     width: 100%;
   }
-  .topbox-right {
-    width: 100%;
-    margin-top: 20px;
-  }
-  .topbox-right .find-box {
-    flex-direction: column;
-  }
-  .topbox-right .find-box .search-box {
-    width: 100%;
-  }
-  .topbox-right .find-box .city-box {
-    width: 100%;
-  }
+ 
   .home-searchbox {
     flex-direction: column;
   }

@@ -122,6 +122,9 @@ const NewMakeUsBetter = () => {
 
           <ul>
             <li>
+              <div class="better-icon">
+                <img src="/images/plain.png" alt="medflick-icons" />
+              </div>
               <h3>Pre-treatment Travel Support</h3>
               <p>
                 Medflick goes beyond healthcare by offering unparalleled
@@ -131,6 +134,9 @@ const NewMakeUsBetter = () => {
               </p>
             </li>
             <li>
+              <div class="better-icon">
+                <img src="/images/life.png" alt="medflick-icons" />
+              </div>
               <h3>Follow-Up Care and Accommodations</h3>
               <p>
                 Medflick's commitment extends beyond treatment, offering
@@ -140,6 +146,9 @@ const NewMakeUsBetter = () => {
               </p>
             </li>
             <li>
+              <div class="better-icon">
+                <img src="images/profileIcon.png" alt="medflick-icons" />
+              </div>
               <h3>High-Quality Profile</h3>
               <p>
                 Medflick boasts a high-quality profile by collaborating with
@@ -152,7 +161,7 @@ const NewMakeUsBetter = () => {
               <h3>Join us as Partner</h3>
               <a href="#">Learn how to participate</a>
             </li> */}
-          </ul> 
+          </ul>
         </div>
       </section>
     </>

@@ -4845,18 +4845,7 @@ table strong {
   background-size: 30px;
 }
 
-.find-box .search-box input {
-  height: 55px;
-  padding-left: 15px;
-  width: 100%;
-  font-weight: 700;
-  font-size: 16px;
-  border: 0px;
-  border-radius: 12px;
-  background: rgba(255, 197, 167, 0.5);
-  outline: none;
-  color: #fff;
-}
+
 
 .find-box .location-box input {
   height: 55px;
@@ -13988,7 +13977,7 @@ pre code {
   border: 1px solid #dee0e1;
   border-radius: 8px;
   padding-left: 50px;
-  background: #f1f1f1;
+  background: #fff;
   outline: none;
 }
 
@@ -15247,4 +15236,65 @@ footer {
   width: 100%;
   text-align: center;
 }
+}
+
+.topbox-right {
+  width: 60%;
+  background: #fff;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+.topbox-right .find-box {
+  display: flex;
+  width: 100%;
+  margin: 10px 0;
+  align-items: center;
+  position: relative;
+  gap: 15px;
+  justify-content: center;
+}
+
+.topbox-right .find-box .search-box {
+  width: 90%;
+  position: relative;
+}
+
+.find-box .search-box::before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 10px;
+  width: 30px;
+  height: 30px;
+  background: url(./images/search-icon.png) no-repeat;
+  background-size: 20px;
+}
+.topbox-right .find-box input {
+  height: 50px;
+  padding-left: 50px;
+  width: 100%;
+  font-weight: 400;
+  font-size: 16px;
+  border: 0px;
+  border-radius: 8px;
+  background: #fff;
+  border: 1px solid #D8DEE5;
+  outline: none;
+}
+
+.topbox-right .find-box input {
+  height: 50px;
+  padding-left: 50px;
+  width: 100%;
+  font-weight: 400;
+  font-size: 16px;
+  border: 0px;
+  border-radius: 8px;
+  background: #fff;
+  border: 1px solid #D8DEE5;
+  outline: none !important;
+}
+.topbox-right .find-box input::placeholder {
+ color: #D8DEE5;
 }

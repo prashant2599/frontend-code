@@ -23,7 +23,8 @@ const Dashboard = () => {
     const storedUserId = localStorage.getItem("userId");
 
     if (storedUserName) {
-      setUserName(storedUserName);
+      const firstWord = storedUserName.split(' ')[0];
+      setUserName(firstWord);
     }
     if (storedUserId) {
       setPatientId(storedUserId);
@@ -50,34 +51,27 @@ const Dashboard = () => {
 
   return (
     <>
-      {/* <PHeader /> */}
+   
       <section id="hometop-patient-section">
         <div className="midbox-inner wiki-mk">
           <div className="home-topbox">
             <div className="topbox-left">
               <h1>Hi {userName}</h1>
-              {/* <h2>lorem ipsum dolor sit amet quies</h2> */}
+              <h2>lorem ipsum dolor sit amet quies</h2>
             </div>
 
-            <div className="topbox-right">
-              <div className="find-box">
-                <div className="search-box">
+            <div class="topbox-right">
+              <div class="find-box">
+                <div class="search-box">
                   <input
                     type="text"
                     placeholder="Search for doctor, hospital or treatments"
                     name="name"
-                    required=""
+                    required
                   />
                 </div>
-                <div className="city-box">
-                  <input
-                    type="text"
-                    placeholder="City"
-                    name="name"
-                    required=""
-                  />
-                </div>
-                <button type="submit" name="en" className="find-button">
+
+                <button type="submit" name="en" class="find-button">
                   Search
                 </button>
               </div>

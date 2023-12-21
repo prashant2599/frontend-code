@@ -79,7 +79,10 @@ const LoginButton = () => {
         {userName || userNames ? (
           <div className="action">
             <div className="profile" onClick={toggleMenu}>
-              <VscAccount fontSize="32px" style={{ cursor: "pointer" }} />
+              <img
+                src="/images/userIcon.png"
+                style={{ width: "46px", marginTop: "10px", cursor: "pointer" }}
+              />
             </div>
             <div className={`menu ${isActive ? "active" : ""}`}>
               <ul>
@@ -129,7 +132,7 @@ const LoginButton = () => {
         ></div> */}
         <HeaderSearch />
 
-        <Link className="qsk-question" href="/question-answer" >
+        <Link className="qsk-question" href="/question-answer">
           Ask FREE Question <img src="/images/whiteArrow.png" alt="icon" />
         </Link>
       </div>
