@@ -5,6 +5,9 @@ import { FaComments } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import ShareQuestion from "./ShareQuestion";
 import UserComment from "./UserComment";
+import SearchQuestions from "./SearchQuestions";
+import NewHeader from "@/app/Home/NewUIHomepage/inc/NewHeader";
+import NewFooter from "@/app/Home/NewUIHomepage/inc/NewFooter";
 
 const page = async ({ params }) => {
   const combinedSlug = params.slug.join("/");
@@ -25,16 +28,12 @@ const page = async ({ params }) => {
   });
   return (
     <>
+      <NewHeader />
       <section id="questions-ans-inner">
         <div className="midbox-inner  wiki-mk">
           <div className="questions-ans-inner">
+            <SearchQuestions />
             <div className="questions-inner-head">
-              <Link href="/question-answer" className="back-go">
-                <i>
-                  <IoChevronBack style={{ fontSize: "19px" }} />
-                </i>{" "}
-                Go Back
-              </Link>
               <h1>{info.short_description}</h1>
               <ShareQuestion desc={info.short_description} id={info.id} />
             </div>
@@ -55,13 +54,13 @@ const page = async ({ params }) => {
                     <i>
                       <FaHeart style={{ fontSize: "20px" }} />
                     </i>
-                    23 Helpful
+                    Helpful
                   </a>
                   <a className="comments-iconbox" href="#">
                     <i>
                       <FaComments style={{ fontSize: "20px" }} />
                     </i>
-                    1008 Comments
+                    Comments
                   </a>
                 </div>
                 <UserComment
@@ -225,6 +224,7 @@ const page = async ({ params }) => {
           </div>
         </div>
       </section>
+      <NewFooter />
     </>
   );
 };

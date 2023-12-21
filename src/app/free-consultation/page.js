@@ -1,9 +1,13 @@
+import NewFooter from "../Home/NewUIHomepage/inc/NewFooter";
+import NewHeader from "../Home/NewUIHomepage/inc/NewHeader";
 import FreeConsultation from "./FreeConsultation";
 
 const page = () => {
   return (
     <>
+    <NewHeader />
       <FreeConsultation />
+      <NewFooter />
     </>
   );
 };

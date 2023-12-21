@@ -3,6 +3,8 @@ import Sdoctors from "./Sdoctors";
 import { Suspense } from "react";
 import { useRouter } from "next/navigation";
 import { notFound } from "next/navigation";
+import NewHeader from "@/app/Home/NewUIHomepage/inc/NewHeader";
+import NewFooter from "@/app/Home/NewUIHomepage/inc/NewFooter";
 function formatText(text) {
   if (typeof text === "string") {
     return text
@@ -39,11 +41,12 @@ const page = async ({ params, res }) => {
     const hospitalIcon = apiData.doctors_list.hospital_image;
     const treatment = apiData.doctors_list.treatment;
     const info = apiData.doctors_list.specility_name;
-    const pageNumber = apiData.doctors_list.page
-    const totalDoctor = apiData.doctors_list.count
+    const pageNumber = apiData.doctors_list.page;
+    const totalDoctor = apiData.doctors_list.count;
 
     return (
       <>
+        <NewHeader />
         <Sdoctors
           doctor={doctor}
           hospitalIcon={hospitalIcon}
@@ -54,6 +57,7 @@ const page = async ({ params, res }) => {
           pageNumber={pageNumber}
           totalDoctor={totalDoctor}
         />
+        <NewFooter />
       </>
     );
   } catch (error) {

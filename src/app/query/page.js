@@ -1,13 +1,13 @@
-
+import NewFooter from "../Home/NewUIHomepage/inc/NewFooter";
+import NewHeader from "../Home/NewUIHomepage/inc/NewHeader";
 import QueryForm from "./QueryForm";
-
 
 const page = () => {
   return (
     <>
-    
-        <QueryForm />
-    
+      <NewHeader />
+      <QueryForm />
+      <NewFooter />
     </>
   );
 };
@@ -21,6 +21,3 @@ export async function generateMetadata() {
     },
   };
 }
-
-
-

@@ -1,3 +1,5 @@
+import NewFooter from "../Home/NewUIHomepage/inc/NewFooter";
+import NewHeader from "../Home/NewUIHomepage/inc/NewHeader";
 import getAllHospitals from "../lib/getAllHospitals";
 
 const page = async () => {
@@ -5,6 +7,7 @@ const page = async () => {
   const hospital = data.data.hospital;
   return (
     <>
+    <NewHeader />
       <section id="partner-with">
         <div className="midbox-inner  wiki-mk">
           <div className="partner-with-box">
@@ -193,6 +196,7 @@ const page = async () => {
           </div>
         </div>
       </section>
+      <NewFooter />
     </>
   );
 };

@@ -106,11 +106,6 @@ a:hover {
   width: 100%;
 }
 
-#hometop-section {
-  background: linear-gradient(to bottom, #ff6800 55%, #eaecf0 0%);
-  padding: 70px 0 40px;
-  border-top: 1px solid #ffa76a;
-}
 
 .home-topbox {
   display: flex;

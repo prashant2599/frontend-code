@@ -1,8 +1,9 @@
-import Link from "next/link";
-import Image from "next/image";
+
 import getALLBlogs from "../lib/getALLBlogs";
 import getAllSpeciality from "../lib/getAllSpeciality";
 import NewBlogPage from "./NewBlogPage";
+import NewHeader from "../Home/NewUIHomepage/inc/NewHeader";
+import NewFooter from "../Home/NewUIHomepage/inc/NewFooter";
 
 const page = async () => {
   const data = await getALLBlogs();
@@ -10,7 +11,9 @@ const page = async () => {
 
   return (
     <>
+      <NewHeader />
       <NewBlogPage blog={blog} />
+      <NewFooter />
     </>
   );
 };

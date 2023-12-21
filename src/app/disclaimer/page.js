@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect } from "react";
-
+import NewHeader from "../Home/NewUIHomepage/inc/NewHeader";
+import NewFooter from "../Home/NewUIHomepage/inc/NewFooter";
 
 const ScrollToTop = () => {
   useEffect(() => {
@@ -13,7 +14,7 @@ const ScrollToTop = () => {
 const page = () => {
   return (
     <>
-  
+      <NewHeader />
       <ScrollToTop />
       <section id="medflick-disclaimer">
         <div className="midbox-inner  wiki-mk">
@@ -106,7 +107,7 @@ const page = () => {
           </p>
         </div>
       </section>
-      
+      <NewFooter />
     </>
   );
 };

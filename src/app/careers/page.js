@@ -1,10 +1,11 @@
-
-
+import NewFooter from "../Home/NewUIHomepage/inc/NewFooter";
+import NewHeader from "../Home/NewUIHomepage/inc/NewHeader";
 import DontPay from "../Home/dontPay/DontPay";
 
 const page = () => {
   return (
     <>
+      <NewHeader />
       <section id="career-slider">
         <img src="/images/careerD.jpg" className="category-d" />
         <img src="/images/careerM.jpg" className="category-m" />
@@ -183,6 +184,7 @@ const page = () => {
       </section>
 
       <DontPay />
+      <NewFooter />
     </>
   );
 };

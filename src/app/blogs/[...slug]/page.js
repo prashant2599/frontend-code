@@ -2,6 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import PaginationBlogs from "./PaginationBlogs";
 import { notFound } from "next/navigation";
+import NewHeader from "@/app/Home/NewUIHomepage/inc/NewHeader";
+import NewFooter from "@/app/Home/NewUIHomepage/inc/NewFooter";
 
 function formatText(text) {
   if (typeof text === "string") {
@@ -35,7 +37,9 @@ const page = async ({ params }) => {
 
     return (
       <>
+        <NewHeader />
         <PaginationBlogs blogs={blogs} number={number} category={category} />
+        <NewFooter />
       </>
     );
   } catch (error) {
