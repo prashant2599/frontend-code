@@ -33,7 +33,11 @@ const SpecialityBlog = ({ blog, category }) => {
                     </Link>
                     <div
                       dangerouslySetInnerHTML={{
-                        __html: e.short_description,
+                        __html: e.short_description
+                          .split(" ")
+                          .slice(0, 15)
+                          .join(" ")
+                          .concat("..."),
                       }}
                     />
                     <div class="blog-text">
@@ -45,7 +49,6 @@ const SpecialityBlog = ({ blog, category }) => {
                           />
                         </span>
                         {formattedDate}{" "}
-                        {/* Display the formatted creation date here */}
                       </div>
                       <div class="time-blog">
                         <span>
@@ -64,7 +67,8 @@ const SpecialityBlog = ({ blog, category }) => {
 
             <Link href={`/blogs/${category}`}>
               <span className="new-blogs">
-                View All <img src="/images/new-images/2023/01/arrow-c.png" alt="" />
+                View All{" "}
+                <img src="/images/new-images/2023/01/arrow-c.png" alt="" />
               </span>
             </Link>
           </div>

@@ -36,9 +36,14 @@ const NewBlogs = async () => {
                   </Link>
                   <div
                     dangerouslySetInnerHTML={{
-                      __html: e.short_description,
+                      __html: e.short_description
+                        .split(" ")
+                        .slice(0, 15)
+                        .join(" ")
+                        .concat("..."),
                     }}
                   />
+
                   <div className="blog-text">
                     <div className="category-blog">
                       <span>
@@ -68,7 +73,8 @@ const NewBlogs = async () => {
           <Link href="/blogs">
             <span className="new-blogs">
               {" "}
-              View All <img src="/images/new-images/2023/01/arrow-c.png" alt="" />
+              View All{" "}
+              <img src="/images/new-images/2023/01/arrow-c.png" alt="" />
             </span>
           </Link>
         </div>

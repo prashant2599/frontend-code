@@ -8,6 +8,8 @@ import HospitalTotalReview from "./HospitalTotalReview";
 import { BsStarFill } from "react-icons/bs";
 import { BsStarHalf } from "react-icons/bs";
 import { notFound } from "next/navigation";
+import NewHeader from "@/app/Home/NewUIHomepage/inc/NewHeader";
+import NewFooter from "@/app/Home/NewUIHomepage/inc/NewFooter";
 
 const page = async ({ params }) => {
   try {
@@ -34,6 +36,7 @@ const page = async ({ params }) => {
     const hasHalfStar = overallRating % 1 !== 0;
     return (
       <>
+      <NewHeader />
         <section id="hospitalprofile-section">
           <div className="midbox-inner  wiki-mk">
             <div className="hospitalprofile">
@@ -296,6 +299,7 @@ const page = async ({ params }) => {
             <HospitalTotalReview hospitalId={hospitalDetails.id}  />
           </div>
         </section>
+        <NewFooter />
       </>
     );
   } catch (error) {

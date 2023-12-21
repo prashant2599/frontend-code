@@ -10,6 +10,8 @@ import { notFound } from "next/navigation";
 import RelatedDoctor from "./RelatedDoctor";
 import "@/app/Home/NewUIHomepage/newsection.css";
 import DoctorForm from "@/app/Home/doctorForm/DoctorForm";
+import NewHeader from "@/app/Home/NewUIHomepage/inc/NewHeader";
+import NewFooter from "@/app/Home/NewUIHomepage/inc/NewFooter";
 
 const page = async ({ params }) => {
   try {
@@ -36,6 +38,7 @@ const page = async ({ params }) => {
     const hasHalfStar = overallRating % 1 !== 0;
     return (
       <>
+        <NewHeader />
         <section id="doctorprofile-section">
           <div className="midbox-inner  wiki-mk">
             <div className="doctorprofile">
@@ -314,6 +317,7 @@ const page = async ({ params }) => {
           category={speciality[0].slug}
           doctorId={docotorDetails.id}
         />
+        <NewFooter />
       </>
     );
   } catch (error) {

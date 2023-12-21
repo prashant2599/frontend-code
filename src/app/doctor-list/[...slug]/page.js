@@ -7,6 +7,9 @@ import { notFound } from "next/navigation";
 import DoctorListPopForm from "@/app/Home/doctorForm/DoctorListPopForm";
 import DoctorsSearch from "@/app/doctors/[...slug]/DoctorsSearch";
 import TreatmentDoctorPagination from "./TreatmentDoctorPagination";
+import NewHeader from "@/app/Home/NewUIHomepage/inc/NewHeader";
+import NewFooter from "@/app/Home/NewUIHomepage/inc/NewFooter";
+
 
 const page = async ({ params }) => {
   try {
@@ -22,10 +25,11 @@ const page = async ({ params }) => {
     const hospitalIcon = datas.doctors_list.hospital_image;
     const treatment = datas.doctors_list.treatment;
     const info = datas.doctors_list.specility_name;
-    const pageNumber = datas.doctors_list.page
-    const totalDoctor = datas.doctors_list.count
+    const pageNumber = datas.doctors_list.page;
+    const totalDoctor = datas.doctors_list.count;
     return (
       <>
+        <NewHeader />
         <section id="find-doctors">
           <div className="midbox-inner  wiki-mk">
             <DoctorsSearch doctors={doctor} slug={combinedSlug} />
@@ -113,8 +117,8 @@ const page = async ({ params }) => {
                         </div> */}
                           <div className="department-sub-shotdesc">
                             {e.short_description &&
-                            e.short_description.length > 200
-                              ? `${e.short_description.slice(0, 200)}...`
+                            e.short_description.length > 100
+                              ? `${e.short_description.slice(0, 100)}...`
                               : e.short_description}
                           </div>
                           <div className="doc-experience">
@@ -189,6 +193,8 @@ const page = async ({ params }) => {
             </div>
           </div>
         </section>
+        <NewFooter />
+     
       </>
     );
   } catch (error) {

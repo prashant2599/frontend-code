@@ -11,6 +11,8 @@ import TreatmentFaq from "./TreatmentFaq";
 import TreatmentBlog from "./TreatmentBlog";
 import "@/app/Home/NewUIHomepage/newsection.css";
 import { notFound } from "next/navigation";
+import NewHeader from "@/app/Home/NewUIHomepage/inc/NewHeader";
+import NewFooter from "@/app/Home/NewUIHomepage/inc/NewFooter";
 
 const page = async ({ params }) => {
   try {
@@ -31,6 +33,7 @@ const page = async ({ params }) => {
 
     return (
       <>
+      <NewHeader />
         <section id="treatment-section">
           <div className="midbox-inner wiki-mk">
             <div className="treatment-top">
@@ -582,6 +585,7 @@ const page = async ({ params }) => {
         {/* Blog */}
 
         <TreatmentBlog blog={blog} />
+        <NewFooter />
       </>
     );
   } catch (error) {

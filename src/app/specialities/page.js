@@ -1,7 +1,11 @@
 import Link from "next/link";
+import NewHeader from "../Home/NewUIHomepage/inc/NewHeader";
+import NewFooter from "../Home/NewUIHomepage/inc/NewFooter";
 
 async function getSpeciality() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/speciality/list`);
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/speciality/list`
+  );
 
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
@@ -17,6 +21,7 @@ const page = async () => {
   const treatment = data.treatemen_list;
   return (
     <>
+      <NewHeader />
       <section id="medical-treatments">
         <div className="midbox-inner  wiki-mk">
           <h1>Medical Treatments</h1>
@@ -39,10 +44,7 @@ const page = async () => {
                   <ul>
                     {galleryImages &&
                       galleryImages.map((p) => (
-                        <Link
-                          href={`/treatment/${p.slug}`}
-                          key={p.id}
-                        >
+                        <Link href={`/treatment/${p.slug}`} key={p.id}>
                           <li>{p.name}</li>
                         </Link>
                       ))}
@@ -68,6 +70,7 @@ const page = async () => {
           </div>
         </div>
       </section>
+      <NewFooter />
     </>
   );
 };

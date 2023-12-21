@@ -9,6 +9,9 @@ import { Inter } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";
 import { DoctorDataProvider } from "./contex/DoctorDataContext";
 import { HospitalDataProvider } from "./contex/HospitalDataContext";
+import NewHeader from "./Home/NewUIHomepage/inc/NewHeader";
+import PatientHeader from "./(patient)/Inc/PatientHeader";
+import { useRouter } from "next/navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,7 +31,6 @@ export const metadata = {
   alternates: {
     canonical: `https://medflick.com`,
   },
-
 };
 
 export default function RootLayout({ children }) {
@@ -36,16 +38,12 @@ export default function RootLayout({ children }) {
     <>
       <html lang="en">
         <body>
-          <NextTopLoader color="#ff6800" showSpinner={false} />
+          <NextTopLoader color="#ffffff" showSpinner={false} />
           <UserProvider>
-            <Header />
             <Allpopudp />
             <GoogleAnalytics />
             <DoctorDataProvider>
-              <HospitalDataProvider>
-                {children}
-                <Footer />
-              </HospitalDataProvider>
+              <HospitalDataProvider>{children}</HospitalDataProvider>
             </DoctorDataProvider>
           </UserProvider>
         </body>

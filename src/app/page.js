@@ -13,10 +13,13 @@ import NewStayInTouch from "./Home/NewUIHomepage/NewStayInTouch";
 import NewTestomonials from "./Home/NewUIHomepage/NewTestomonials";
 import NewVideoSection from "./Home/NewUIHomepage/NewVideoSection";
 import NewVisaTravelSection from "./Home/NewUIHomepage/NewVisaTravelSection";
+import NewHeader from "./Home/NewUIHomepage/inc/NewHeader";
+import NewFooter from "./Home/NewUIHomepage/inc/NewFooter";
 
 export default function Home() {
   return (
     <main>
+      <NewHeader />
       <NewSection1 />
       <NewHospital />
       <NewSearchTreatment />
@@ -32,7 +35,7 @@ export default function Home() {
       <NewBlogs />
       <NewFindHospitalDoctors />
       <NewStayInTouch />
-     
+     <NewFooter />
     </main>
   );
 }

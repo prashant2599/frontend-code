@@ -13,6 +13,8 @@ import NewQuestionAns from "@/app/Home/NewUIHomepage/NewQuestionAns";
 import NewTestomonials from "@/app/Home/NewUIHomepage/NewTestomonials";
 import "../../Home/NewUIHomepage/newsection.css";
 import NewVideoSection from "@/app/Home/NewUIHomepage/NewVideoSection";
+import NewHeader from "@/app/Home/NewUIHomepage/inc/NewHeader";
+import NewFooter from "@/app/Home/NewUIHomepage/inc/NewFooter";
 
 const page = async ({ params }) => {
   try {
@@ -36,6 +38,7 @@ const page = async ({ params }) => {
 
     return (
       <>
+        <NewHeader />
         <section id="category-slider">
           <img
             src={`https://dev.medflick.com/speciality/${info && info.image}`}
@@ -60,14 +63,12 @@ const page = async ({ params }) => {
                 animationDuration: "21s",
               }}
             >
+              <div className="Marquee-tag"> 35+ Countries </div>
+              <div className="Marquee-tag"> 150+ Hospitals </div>
+              <div className="Marquee-tag"> 11000+ Doctors </div>
+              <div className="Marquee-tag"> 250+ surgeries </div>
               <div className="Marquee-tag"> 100+ Surgeries </div>
               <div className="Marquee-tag"> 95% Success Rate </div>
-              <div className="Marquee-tag"> 4000+ Top Doctors </div>
-              <div className="Marquee-tag"> 1000+ Top Hospital </div>
-              <div className="Marquee-tag"> 100+ Surgeries </div>
-              <div className="Marquee-tag"> 95% Success Rate </div>
-              <div className="Marquee-tag"> 4000+ Top Doctors </div>
-              <div className="Marquee-tag"> 1000+ Top Hospital </div>
             </div>
           </div>
         </section>
@@ -175,6 +176,7 @@ const page = async ({ params }) => {
         <Community />
 
         <SpecialityBlog blog={blog} category={info.slug} />
+        <NewFooter />
       </>
     );
   } catch (error) {

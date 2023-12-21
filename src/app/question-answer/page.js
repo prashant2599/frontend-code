@@ -1,10 +1,12 @@
 import QAform from "../Home/QaForm/QAform";
 import PopForm from "../Home/QaForm/PopForm";
 import getAllSpeciality from "../lib/getAllSpeciality";
-import QAComents from "./QAComents";
 import ShareQA from "./ShareQA";
 import Link from "next/link";
 import QuestionSearch from "./QuestionSearch";
+import { FaComments } from "react-icons/fa";
+import NewHeader from "../Home/NewUIHomepage/inc/NewHeader";
+import NewFooter from "../Home/NewUIHomepage/inc/NewFooter";
 
 const page = async () => {
   const data = await getAllSpeciality();
@@ -12,6 +14,7 @@ const page = async () => {
 
   return (
     <>
+      <NewHeader />
       <section id="questions-ans-section">
         <div className="midbox-inner wiki-mk">
           <div className="questions-ans">
@@ -109,14 +112,14 @@ const page = async () => {
                           )}
                           Likes {likes[e.id] || 0}
                         </a> */}
-                      <QAComents
-                        Id={e.id}
-                        specialityId={e.speciality_id}
-                        subspecialityId={e.subspeciality_id}
-                        treatments={e.treatments}
-                      />
+                      <span className="ask-comments">
+                        <i>
+                          <FaComments />
+                        </i>{" "}
+                        Comments
+                      </span>
 
-                      <ShareQA desc={e.short_description} id={e.id}/>
+                      <ShareQA desc={e.short_description} id={e.id} />
                     </div>
                   </div>
                 ))}
@@ -126,6 +129,7 @@ const page = async () => {
           </div>
         </div>
       </section>
+      <NewFooter />
     </>
   );
 };

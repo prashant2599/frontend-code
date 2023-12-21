@@ -1,13 +1,13 @@
-
-
+import NewFooter from "../Home/NewUIHomepage/inc/NewFooter";
+import NewHeader from "../Home/NewUIHomepage/inc/NewHeader";
 import Terms from "./Terms";
 
 const page = () => {
   return (
     <>
-  
+      <NewHeader />
       <Terms />
-      
+      <NewFooter />
     </>
   );
 };

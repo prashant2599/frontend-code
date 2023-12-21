@@ -8,6 +8,8 @@ import { AiTwotoneStar } from "react-icons/ai";
 import { notFound } from "next/navigation";
 import HospitalListPopUpForm from "@/app/Home/hospitalForm/HospitalListPopUpForm";
 import HospitalSearch from "@/app/hospitals/[...slug]/HospitalSearch";
+import NewHeader from "@/app/Home/NewUIHomepage/inc/NewHeader";
+import NewFooter from "@/app/Home/NewUIHomepage/inc/NewFooter";
 
 const page = async ({ params }) => {
   try {
@@ -24,6 +26,7 @@ const page = async ({ params }) => {
     const images = datas.hospital_list.hospital_gallery;
     return (
       <>
+      <NewHeader />
         <section id="find-doctors">
           <div className="midbox-inner  wiki-mk">
            <HospitalSearch hospital={hospital} slug={combinedSlug} />
@@ -188,6 +191,7 @@ const page = async ({ params }) => {
             </div>
           </div>
         </section>
+        <NewFooter />
       </>
     );
   } catch (error) {

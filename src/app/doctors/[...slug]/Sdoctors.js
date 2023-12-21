@@ -124,8 +124,8 @@ const Sdoctors = ({
                         </div> */}
                         <div className="department-sub-shotdesc">
                           {e.short_description &&
-                          e.short_description.length > 200
-                            ? `${e.short_description.slice(0, 200)}...`
+                          e.short_description.length > 100
+                            ? `${e.short_description.slice(0, 100)}...`
                             : e.short_description}
                         </div>
 
