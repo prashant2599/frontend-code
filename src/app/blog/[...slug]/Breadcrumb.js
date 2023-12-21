@@ -12,14 +12,14 @@ const Breadcrumb = ({ heading, slug }) => {
             <li>
               <Link href="/">Home </Link>{" "}
               <i className="fa fa-chevron-right">
-                <FaAngleRight />
+                <FaAngleRight style={{top:"-3px",position:"relative"}} />
               </i>
             </li>
             <li>
               {" "}
               <Link href="/blogs">Blogs</Link>{" "}
               <i className="fa fa-chevron-right">
-                <FaAngleRight />
+                <FaAngleRight style={{top:"-3px",position:"relative"}} />
               </i>
             </li>
             <li>

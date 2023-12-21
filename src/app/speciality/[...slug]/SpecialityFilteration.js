@@ -18,76 +18,68 @@ const SpecialityFilteration = ({ countryResponse, slug, slugs }) => {
 
   const [selectedCountry, setSelectedCountry] = useState(null);
 
-  const handleSelectCountry = (e) => {
-    const select = e.target.value;
-    setSelectedCountry(select);
-
-    router.push(`/speciality/${slug}/${select}`);
+  const handleSelectCountry = (selectedCountry) => {
+    setSelectedCountry(selectedCountry);
+    router.push(`/speciality/${slug}/${selectedCountry}`);
   };
+  
 
   useEffect(() => {
     setSelectedCountry(countrySlug);
   }, [countrySlug]);
+  const countryIcon = [
+    {
+      name: "India",
+      "city-icon": "/images/icons/india.png",
+      "city-icon-h": "/images/icons/indiaOne.png",
+    },
+    {
+      name: "Oman",
+      "city-icon": "/images/icons/oman.png",
+      "city-icon-h": "/images/icons/omanOne.png",
+    },
+    {
+      name: "Turkey",
+      "city-icon": "/images/icons/turkey.png",
+      "city-icon-h": "/images/icons/turkeyOne.png",
+    },
+  ];
   return (
     <>
       <div class="tab-treatment">
-      {countries.map((country, index) => (
-        <button
-          class="tablinks"
-          onclick="openCity(event, 'treatment-1')"
-          id="defaultOpen"
-          value={country} key={index}
-        >
-          <img
-            src="https://wgrowth.partners/wwpl/medflick_newsite/images/2023/01/06/1.png"
-            alt=""
-          />{" "}
-          {country.charAt(0).toUpperCase() + country.slice(1)}
-        </button>
-        ))}
-
-        {/* <button class="tablinks" onclick="openCity(event, 'treatment-2')">
-          <img
-            src="https://wgrowth.partners/wwpl/medflick_newsite/images/2023/01/06/2.png"
-            alt=""
-          />{" "}
-          Turkey
-        </button>
-
-        <button class="tablinks" onclick="openCity(event, 'treatment-3')">
-          <img
-            src="https://wgrowth.partners/wwpl/medflick_newsite/images/2023/01/06/3.png"
-            alt=""
-          />{" "}
-          UAE
-        </button>
-
-        <button class="tablinks" onclick="openCity(event, 'treatment-4')">
-          <img
-            src="https://wgrowth.partners/wwpl/medflick_newsite/images/2023/01/06/4.png"
-            alt=""
-          />{" "}
-          Thailand
-        </button> */}
-      </div>
-      {/* <div className="doctors-list-find">
-        <div className="ding" style={{ width: "20%" }}>
-          <select
-            id="wiki-select"
-            onChange={handleSelectCountry}
-            value={selectedCountry}
+        {countries.map((country, index) => {
+          const icon = countryIcon.find(
+            (icon) => icon.name.toLowerCase() === country.toLowerCase()
+          );
+  
+          return (
+            <button
+            className={`tablinks ${selectedCountry === country ? 'active' : ''}`}
+            onClick={() => handleSelectCountry(country)}
           >
-            <option>Select Country</option>
-            {countries.map((country, index) => (
-              <option value={country} key={index}>
-                {country.charAt(0).toUpperCase() + country.slice(1)}
-              </option>
-            ))}
-          </select>
-        </div>
-      </div> */}
+            {icon && (
+              <>
+                <img
+                  className="city-icon"
+                  src={icon["city-icon"]}
+                  alt={country}
+                />
+                <img
+                  className="city-icon-h"
+                  src={icon["city-icon-h"]}
+                  alt={country}
+                />
+              </>
+            )}
+            {country.charAt(0).toUpperCase() + country.slice(1)}
+          </button>
+          
+          );
+        })}
+      </div>
     </>
   );
+  
 };
 
 export default SpecialityFilteration;

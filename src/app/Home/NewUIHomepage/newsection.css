@@ -1133,6 +1133,7 @@ button.active .city-icon-h {
   position: relative;
   display: block;
   letter-spacing: 0px;
+  margin: 0;
 }
 
 #qualifications-standards h2 span {
@@ -2051,6 +2052,21 @@ button.active .city-icon-h {
   #hometop-section .dr-img {
     height: auto;
   }
+  #qualifications-standards ul {
+    gap: 0px;
+    padding: 30px 0px 0px;
+    flex-direction: column;
+}
+#qualifications-standards li {
+  width: 100%;
+  margin-bottom: 25px;
+  padding-left: 0px;
+}
+#qualifications-standards .better-icon {
+  width: 60px;
+  height: 60px;
+  padding: 16px;
+}
 }
 
 .footer-navbox .but {

@@ -515,13 +515,7 @@ a:hover {
   width: 10px;
   height: 15px;
 }
-.barbox {
-  width: 70%;
-}
-.barbox img {
-  width: 100%;
-  height: 12px;
-}
+
 
 #request-quote-section {
   background: linear-gradient(to bottom, #ff6800 55%, #eaecf0 0%);
@@ -733,13 +727,7 @@ a:hover {
   margin-bottom: 20px;
   height: 72px;
 }
-.upload-medical p {
-  font-size: 14px;
-  color: #d8dee5;
-  width: 40%;
-  font-weight: 200;
-  margin-bottom: 15px;
-}
+
 
 .medical-report-all {
   position: relative;

@@ -113,9 +113,16 @@ const UploadReport = () => {
             <Link href="/patient-quote">
               <img src="/images/2023/01/back-icon.png" alt="icon" /> Back
             </Link>
-            <div className="barbox">
-              {" "}
-              <img src="/images/2023/01/bar-img1.png" alt="bar-icon" />{" "}
+            <div class="barbox">
+              <div class="barbox-bar">
+                <img src="/images/2023/02/3.png" /> Select Medical Problem
+              </div>
+              <div class="barbox-bar">
+                <img src="/images/2023/02/1.png" /> Upload Medical Report
+              </div>
+              <div class="barbox-bar1">
+                <img src="/images/2023/02/2.png" /> Get Quotes
+              </div>
             </div>
           </div>
 
@@ -124,21 +131,57 @@ const UploadReport = () => {
             <form onSubmit={handleFormSubmit}>
               <div className="upload-medical">
                 <img src="/images/2023/01/upload.png" alt="upload-icon" />
-                <p>
+                {/* <p>
                   Drag and drop a document here to upload or browse for a
                   document to upload
-                </p>
-                {selectedFile && (
+                </p> */}
+                {/* {selectedFile && (
                   <div>
                     <p>Selected File:</p>
                     <p>{selectedFile.name}</p>
                   </div>
-                )}
-
-                <div className="medical-report-all">
+                )} */}
+                <div class="wrap">
+                  <form action="#" name="form" method="get">
+                    <div class="file">
+                      <div class="file__input" id="file__input">
+                        <input
+                          class="file__input--file"
+                          id="customFile"
+                          type="file"
+                          multiple="multiple"
+                          name="files[]"
+                        />
+                        <label
+                          class="file__input--label"
+                          for="customFile"
+                          data-text-btn=" "
+                        >
+                          {" "}
+                          Choose files or drag &amp; drop{" "}
+                        </label>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <p>
+                  File format supported: .png, .doc, .pdf and the file size
+                  should be less than 3Mb
+                </p>
+                <div class="or-box">OR</div>
+                <div class="upload-link-box">
+                  <input
+                    type="text"
+                    placeholder="Enter link to your report..."
+                    name="name"
+                    required=""
+                    fdprocessedid="jgfiyb"
+                  />
+                </div>
+                {/* <div className="medical-report-all">
                   <button className="medical-report-file">Select File</button>
                   <input type="file" name="file" onChange={handleFileChange} />
-                </div>
+                </div> */}
               </div>
 
               <div className="medical-reports">
@@ -154,7 +197,7 @@ const UploadReport = () => {
               </div>
 
               <div className="continue-buttonbox">
-                <Link
+                {/* <Link
                   href="/patient-hospital"
                   // state={{
                   //   specialityId: specialityId,
@@ -162,7 +205,7 @@ const UploadReport = () => {
                   // }}
                 >
                   <button className="skip-step"> Skip this step</button>
-                </Link>
+                </Link> */}
                 <button className="continue1" disabled={isLoading}>
                   {" "}
                   {isLoading ? (

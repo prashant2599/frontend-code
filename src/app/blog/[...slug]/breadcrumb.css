@@ -7,25 +7,28 @@
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 0;
+  align-items: center;
 }
 .mf-breadcrumb li:first-child {
   padding-left: 0px;
 }
 .mf-breadcrumb li {
-  padding: 7px 14px;
+  padding: 0px 14px;
   list-style: none;
   position: relative;
   text-align: left;
   color: #FF6800;
+  font-size: 14px;
 }
 .mf-breadcrumb li a {
   color: #777777;
   font-weight: 400;
-  font-size: 12px;
 }
 .mf-breadcrumb .fa {
-  color: #444;
+  color: #777777;
   position: absolute;
-  top: 6px;
+  top: -3px;
   right: 8px;
+  font-size: 14px;
 }
+

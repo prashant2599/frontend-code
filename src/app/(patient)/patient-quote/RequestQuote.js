@@ -61,28 +61,37 @@ const RequestQuote = () => {
   const [selectedspecialityName, setSelectedspecialityName] = useState(null);
   const [selectedTreatmentName, setSelectedTreatmentName] = useState(null);
 
+  // const handleNameClick = (id, spe, speNAME, treatmentName) => {
+  //   if (id === selectedtreatmentId) {
+  //     // If the clicked item is already selected, deselect it
+  //     setShowContinue(false);
+  //     setSelectedtreatmentId(null);
+  //     setSelectedspecialityId(null);
+  //     setSelectedspecialityName(null);
+  //     setSelectedTreatmentName(null);
+  //   } else {
+  //     // If the clicked item is not selected, select it
+  //     setShowContinue(true);
+  //     setSelectedtreatmentId(id);
+  //     setSelectedspecialityId(spe);
+  //     setSelectedspecialityName(speNAME);
+  //     setSelectedTreatmentName(treatmentName);
+  //   }
+  // };
   const handleNameClick = (id, spe, speNAME, treatmentName) => {
-    if (id === selectedtreatmentId) {
-      // If the clicked item is already selected, deselect it
-      setShowContinue(false);
-      setSelectedtreatmentId(null);
-      setSelectedspecialityId(null);
-      setSelectedspecialityName(null);
-      setSelectedTreatmentName(null);
-    } else {
-      // If the clicked item is not selected, select it
-      setShowContinue(true);
-      setSelectedtreatmentId(id);
-      setSelectedspecialityId(spe);
-      setSelectedspecialityName(speNAME);
-      setSelectedTreatmentName(treatmentName);
-    }
+    // Save selected data to localStorage
+    localStorage.setItem('treatment', id);
+    localStorage.setItem('speciality', spe);
+    localStorage.setItem('selectedspecialityName', speNAME);
+    localStorage.setItem('selectedTreatmentName', treatmentName);
+  
+    // Redirect to the patient-report page
+    router.push('/patient-report');
   };
-
-  useEffect(() => {
-    localStorage.setItem("treatment", selectedtreatmentId);
-    localStorage.setItem("speciality", selectedspecialityId);
-  }, [selectedtreatmentId, selectedspecialityId]);
+  // useEffect(() => {
+  //   localStorage.setItem("treatment", selectedtreatmentId);
+  //   localStorage.setItem("speciality", selectedspecialityId);
+  // }, [selectedtreatmentId, selectedspecialityId]);
 
   console.log(selectedtreatmentId);
   console.log(selectedTreatmentName);
@@ -104,8 +113,15 @@ const RequestQuote = () => {
               <img src="/images/2023/01/back-icon.png" alt="icon" /> Back
             </a>
             <div className="barbox">
-              {" "}
-              <img src="/images/2023/01/bar-img.png" alt="bar-icon" />{" "}
+              <div className="barbox-bar">
+                <img src="/images/2023/02/1.png" /> Select Medical Problem
+              </div>
+              <div className="barbox-bar">
+                <img src="/images/2023/02/2.png" /> Upload Medical Report
+              </div>
+              <div className="barbox-bar1">
+                <img src="/images/2023/02/2.png" /> Get Quotes
+              </div>
             </div>
           </div>
 
@@ -188,7 +204,7 @@ const RequestQuote = () => {
                 ))}
             </div>
 
-            {showContinue && (
+            {/* {showContinue && (
               <div className="continue-buttonbox">
                 <Link
                   href="/patient-report"
@@ -202,7 +218,7 @@ const RequestQuote = () => {
                   Continue
                 </Link>
               </div>
-            )}
+            )} */}
           </div>
         </div>
       </section>
