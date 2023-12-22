@@ -10,7 +10,7 @@ const loading = () => {
           <div className="find-doctor-box">
             <h2>Find Doctors</h2>
 
-            <div className="find-box">
+            <div className="find-box-list">
               <div className="search-box">
                 <input
                   type="text"

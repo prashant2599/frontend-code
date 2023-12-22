@@ -1,9 +1,37 @@
-"use client"
-import {useEffect} from "react";
+"use client";
+import { useEffect, useState } from "react";
 import { GoChevronDown } from "react-icons/go";
 import Link from "next/link";
 
 const PatientHeader = () => {
+  const [isOffcanvas, setIsOffcanvas] = useState(false);
+  const [userName, setUserName] = useState("");
+
+  useEffect(() => {
+    const storedUserName = localStorage.getItem("userName");
+
+    if (storedUserName) {
+      const firstWord = storedUserName.split(' ')[0];
+      setUserName(firstWord);
+    }
+   
+  }, []);
+
+  const toggleOffcanvas = () => {
+    setIsOffcanvas((prevIsOffcanvas) => !prevIsOffcanvas);
+  };
+  const handleCollapsibleClick = (event) => {
+    const clickedCollapsible = event.target.closest(".has-collapsible");
+    const allCollapsibles = document.querySelectorAll(".has-collapsible");
+
+    allCollapsibles.forEach((collapsible) => {
+      if (collapsible !== clickedCollapsible) {
+        collapsible.classList.remove("active");
+      }
+    });
+
+    clickedCollapsible.classList.toggle("active");
+  };
   useEffect(() => {
     // Function to handle scroll
     function handleScroll() {
@@ -18,30 +46,30 @@ const PatientHeader = () => {
     }
 
     // Attach scroll event listener when component mounts
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
     // Clean up the event listener when the component unmounts
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
   return (
     <>
-      <header class="header" id="header-id">
-        <div class="headerTertiary">
-          <Link href="/patient-dashboard" target="_self" class="logo-d">
+      <header className="header" id="header-id">
+        <div className="headerTertiary">
+          <Link href="/patient-dashboard" target="_self" className="logo-d">
             {" "}
             <img src="images/2023/01/logo.png" alt="Brand Logo" />
           </Link>
-          <div class="topnav-right page-header">
+          <div className="topnav-right page-header">
             <nav>
-              <div class="top-menu-wrapper">
-                <ul class="top-menu">
+              <div className="top-menu-wrapper">
+                <ul className="top-menu">
                   <li>
                     <a href="#"> Home </a>
                   </li>
-                  <li class="has-dropdown dropdown">
-                    <a href="#" class="dropbtn">
+                  <li className="has-dropdown dropdown">
+                    <a href="#" className="dropbtn">
                       Search
                       <i>
                         <GoChevronDown style={{ fontSize: "22px" }} />
@@ -65,9 +93,9 @@ const PatientHeader = () => {
               </div>
             </nav>
           </div>
-          <div class="navbar__buttons">
-            <div class="most-recent">
-              <select class="jdgm-sort-dropdown" aria-label="Sort dropdown">
+          <div className="navbar__buttons">
+            <div className="most-recent">
+              <select className="jdgm-sort-dropdown" aria-label="Sort dropdown">
                 <option value="select-language">Select Language</option>
                 <option value="English" selected>
                   {" "}
@@ -76,34 +104,34 @@ const PatientHeader = () => {
               </select>
             </div>
 
-            <a class="navigation" href="#">
+            <a className="navigation" href="#">
               <img src="/images/note.png" alt="notification" />
             </a>
-            <a class="man-top" href="#">
-              <img src="/images/man-icon.png" alt="profile" /> Alex
+            <a className="man-top" >
+              <img src="/images/userIcon.png" alt="profile" /> {userName}
             </a>
           </div>
         </div>
 
-        <div class="headerSecondry">
-          <div class="header-inner wiki-mk">
-            <a href="index.html" target="_self" class="logo-m">
+        <div className="headerSecondry">
+          <div className="header-inner wiki-mk">
+            <Link href="/patient-dashboard" target="_self" className="logo-m">
               {" "}
               <img src="images/2023/01/logo.png" alt="Brand Logo" />
-            </a>
+            </Link>
 
-            <nav class="navbar">
-              <span class="open-menu">
+            <nav className="navbar">
+              <span className="open-menu" onClick={toggleOffcanvas}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="16">
                   <g fill="#fff" fill-rule="evenodd">
                     <path d="M0 0h24v2H0zM0 7h24v2H0zM0 14h24v2H0z" />
                   </g>
                 </svg>
               </span>
-              <div class="menu-wrapper">
-                <ul class="menu">
-                  <li class="menu-block">
-                    <span class="close-menu">
+              <div className={`menu-wrapper${isOffcanvas ? " offcanvas" : ""}`}>
+                <ul className="menu">
+                  <li className="menu-block">
+                    <span className="close-menu" onClick={toggleOffcanvas}>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="20"
@@ -118,32 +146,32 @@ const PatientHeader = () => {
                     </span>
                   </li>
 
-                  <li class="menu-item has-collapsible">
+                  <li className="menu-item has-collapsible">
                     <a href="#"> Home</a>
                   </li>
-                  <li class="menu-item has-collapsible">
-                    <a href="#">
+                  <li className="menu-item has-collapsible">
+                    <a href="#" onClick={handleCollapsibleClick}>
                       <span></span> Search
                     </a>
-                    <ul class="menu-child">
-                      <li class="menu-child-item">
+                    <ul className="menu-child">
+                      <li className="menu-child-item">
                         <a href="#">Treatments </a>
                       </li>
-                      <li class="menu-child-item">
+                      <li className="menu-child-item">
                         <a href="#">Hospitals </a>
                       </li>
                     </ul>
                   </li>
-                  <li class="menu-item has-collapsible">
+                  <li className="menu-item has-collapsible">
                     <a href="#"> Request Quote</a>
                   </li>
-                  <li class="menu-item has-collapsible">
+                  <li className="menu-item has-collapsible">
                     <a href="#"> Message </a>
                   </li>
-                  <li class="menu-item has-collapsible">
+                  <li className="menu-item has-collapsible">
                     <a href="#">Videos</a>
                   </li>
-                  <li class="menu-item has-collapsible">
+                  <li className="menu-item has-collapsible">
                     <a href="#">Visa Assistance</a>
                   </li>
                 </ul>
@@ -152,7 +180,6 @@ const PatientHeader = () => {
           </div>
         </div>
       </header>
-     
     </>
   );
 };

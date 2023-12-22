@@ -35,7 +35,7 @@ const HospitalDoctorsFilter = ({ doctor }) => {
   const ExpOptions = Array.from(
     new Set(filteredDoctors.map((doctor) => doctor.experience_year))
   )
-    .map((exp) => ({ value: exp, label: exp }))
+    .map((exp) => ({ value: exp, label: `${exp} years experience` }))
     .sort((a, b) => {
       // Convert the values to numbers before comparison
       const numA = parseInt(a.value);
@@ -168,7 +168,7 @@ const HospitalDoctorsFilter = ({ doctor }) => {
               value={selectedDep}
               onChange={handleSelectDep}
               options={depOptions}
-              isSearchable={true} // Enables search
+              isSearchable={true}
               placeholder="Department"
               maxMenuHeight={150}
             />
@@ -179,7 +179,7 @@ const HospitalDoctorsFilter = ({ doctor }) => {
               value={selectedeExp}
               onChange={handleSelectExp}
               options={ExpOptions}
-              isSearchable={true} // Enables search
+              isSearchable={true}
               placeholder="Experience"
               maxMenuHeight={150}
             />

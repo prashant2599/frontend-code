@@ -156,7 +156,7 @@ const HospitalFilters = ({ hospital, slug, treatment }) => {
 
   useEffect(() => {
     if (isPositionInTreatment !== true) {
-      setSelectedTreatment("Select Option");
+      setSelectedTreatment("Treatments");
     } else if (isPositionInTreatment === true) {
       setSelectedTreatment(countrySlug);
     }
@@ -291,7 +291,7 @@ const HospitalFilters = ({ hospital, slug, treatment }) => {
             onChange={handleSelectTreatment}
             value={selectedTreatment}
           >
-            <option disabled>Select Option</option>
+            <option disabled>Treatments</option>
             {treatment.map((e) => (
               <option value={e.slug} key={e.id}>
                 {e.name}

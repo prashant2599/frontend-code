@@ -172,12 +172,7 @@ const RequestQuote = () => {
                       {details.map((items) => (
                         <div
                           className="specialists-boxitem"
-                          style={{
-                            border:
-                              items.id === selectedtreatmentId
-                                ? "1px solid #ff6800"
-                                : "inherit",
-                          }}
+                        
                           key={items.id}
                         >
                           <div

@@ -8,6 +8,7 @@ import UserComment from "./UserComment";
 import SearchQuestions from "./SearchQuestions";
 import NewHeader from "@/app/Home/NewUIHomepage/inc/NewHeader";
 import NewFooter from "@/app/Home/NewUIHomepage/inc/NewFooter";
+import ComentList from "./ComentList";
 
 const page = async ({ params }) => {
   const combinedSlug = params.slug.join("/");
@@ -71,66 +72,17 @@ const page = async ({ params }) => {
                 />
               </div>
             </div>
-
-            {/* <div className="questions-inner-box1">
+            {/* <div className="questions-inner-box2">
               <div className="questions-inner-left">
                 <img src="/images/reply.jpg" />
               </div>
               <div className="questions-inner-right">
                 <div className="questions-data">
-                  <span>Lorem Ipsum</span> Feb 12th 2023 | 5:35 AM
+                  <span>{info.pname}</span> {formattedDate}
                 </div>
-                <p>
-                  For many, the change in seasons is a good time to do a deep
-                  clean in their home, but how many of you have thought to go
-                  through your medicine cabinets or storage bins and take
-                  inventory of what medication you have in your home? You may be
-                  surprised to find that you have expired medication that you
-                  had forgotten about or unused medication that isn’t a part of
-                  your current medication regimen. So, what do you do with all
-                  of that unused and expired medication? forgotten about or
-                  unused medication that isn’t a part of your current medication
-                  regimen. So, what do you do with
-                </p>
-
-                <div className="questions-inner-comments">
-                  <a className="comments-iconbox" href="#">
-                    <i className="fa fa-heart"></i>23 Helpful
-                  </a>
-                  <a className="comments-iconbox" href="#">
-                    <i className="fa fa-comments"></i>1008 Comments
-                  </a>
-                  <a className="reply-iconbox" href="#">
-                    <span>|</span> Reply
-                  </a>
-                </div>
-
-                <a className="show-replies-box" href="#">
-                  Show Replies
-                </a>
-              </div>
-            </div>
-
-            <div className="questions-inner-box2">
-              <div className="questions-inner-left">
-                <img src="/images/reply.jpg" />
-              </div>
-              <div className="questions-inner-right">
-                <div className="questions-data">
-                  <span>Lorem Ipsum</span> Feb 12th 2023 | 5:35 AM
-                </div>
-                <p>
-                  For many, the change in seasons is a good time to do a deep
-                  clean in their home, but how many of you have thought to go
-                  through your medicine cabinets or storage bins and take
-                  inventory of what medication you have in your home? You may be
-                  surprised to find that you have expired medication that you
-                  had forgotten about or unused medication that isn’t a part of
-                  your current medication regimen. So, what do you do with all
-                  of that unused and expired medication? forgotten about or
-                  unused medication that isn’t a part of your current medication
-                  regimen. So, what do you do with
-                </p>
+                <div
+                  dangerouslySetInnerHTML={{ __html: info.long_description }}
+                />
 
                 <div className="questions-inner-comments">
                   <a className="comments-iconbox" href="#">
@@ -148,41 +100,7 @@ const page = async ({ params }) => {
                   Hide Replies
                 </a>
 
-                <div className="questions-inner-box3">
-                  <div className="questions-inner-left">
-                    <img src="/images/reply.jpg" />
-                  </div>
-                  <div className="questions-inner-right">
-                    <div className="questions-data">
-                      <span>Lorem Ipsum</span> Feb 12th 2023 | 5:35 AM
-                    </div>
-                    <p>
-                      For many, the change in seasons is a good time to do a
-                      deep clean in their home, but how many of you have thought
-                      to go through your medicine cabinets or storage bins and
-                      take inventory of what medication you have in your home?
-                      You may be surprised to find that you have expired
-                      medication that you had forgotten about or unused
-                      medication that isn’t a part of your current medication
-                      regimen. So, what do you do with all of that unused and
-                      expired medication? forgotten about or unused medication
-                      that isn’t a part of your current medication regimen. So,
-                      what do you do with
-                    </p>
-
-                    <div className="questions-inner-comments">
-                      <a className="comments-iconbox" href="#">
-                        <i className="fa fa-heart"></i>23 Helpful
-                      </a>
-                      <a className="comments-iconbox" href="#">
-                        <i className="fa fa-comments"></i>1008 Comments
-                      </a>
-                      <a className="reply-iconbox" href="#">
-                        <span>|</span> Reply
-                      </a>
-                    </div>
-                  </div>
-                </div>
+                <ComentList questionId={info.id} />
 
                 <div className="questions-inner-box3">
                   <div className="questions-inner-left">
@@ -221,6 +139,9 @@ const page = async ({ params }) => {
                 </div>
               </div>
             </div> */}
+            
+           
+            <ComentList questionId={info.id} />
           </div>
         </div>
       </section>
