@@ -124,14 +124,14 @@ const UserComment = ({ id, specialityId, subspecialityId, treatments }) => {
                   </span>
                 </button>
               </div>
-              <h2>Ask Question </h2>
+              <h2>Add a comment </h2>
 
               <div className="questions-form-box">
                 <div className="form-group">
                   <textarea
                     type="textarea"
                     name="query"
-                    placeholder="Ask question. Use @ to mention members"
+                    placeholder="Add a comment. Use @ to mention members"
                     rows="2"
                     value={comment}
                     onChange={(e) => setComment(e.target.value)}
