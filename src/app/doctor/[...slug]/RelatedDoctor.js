@@ -30,7 +30,7 @@ const RelatedDoctor = async ({ category, doctorId }) => {
           </div>
         </div>
 
-        <Link href={`/doctors/${category}/india`} className="related-doctors">
+        <Link href={`/doctors/${category}`} className="related-doctors">
           View All <img src="/images/new-images/2023/01/arrow-c.png" alt="" />
         </Link>
       </section>

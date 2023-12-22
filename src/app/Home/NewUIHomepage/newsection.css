@@ -2143,11 +2143,11 @@ button.active .city-icon-h {
   margin: 20px auto;
   font-size: 19px;
   border-radius: 8px;
-  padding: 5px 71px 12px 14px;
+  padding: 5px 71px 12px 24px;
   position: relative;
   display: flex;
   justify-content: center;
-  width: 9%;
+  width: fit-content;
 }
 
 #home-doc-hos .related-doctors img {

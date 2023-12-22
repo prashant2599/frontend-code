@@ -184,15 +184,15 @@ const UploadReport = () => {
   };
 
   const fileDisplay = selectedFile ? (
-    <div className="file__value">
-      <div className="file__value--text" onClick={() => setSelectedFile(null)}>
+    <div className="file__value" onClick={() => setSelectedFile(null)}>
+      <div className="file__value--text" >
         {selectedFile.name}
       </div>
       <div className="file__value--remove" data-id={selectedFile.name}></div>
     </div>
   ) : null;
 
-  console.log(selectedFile);
+
 
   return (
     <>
@@ -302,7 +302,7 @@ const UploadReport = () => {
                       height="27"
                       width="70"
                       radius="9"
-                      color="#ff6800"
+                      color="#fff"
                       ariaLabel="three-dots-loading"
                       wrapperStyle={{}}
                       wrapperClassName=""

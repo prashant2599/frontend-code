@@ -2422,15 +2422,15 @@ div.active {
 
 .treatment-right {
   width: 350px;
-  /* height: 552px; */
+  height: auto;
   padding: 15px 20px;
   display: block;
   background: #ffffff;
   border-radius: 12px;
   background-size: 100%;
   position: absolute;
-  right: -60px;
-  bottom: -58px;
+  right: 0;
+  bottom: -110px;
 }
 
 .treatment-right h2 {
@@ -15482,4 +15482,126 @@ footer {
   width: 25px;
   height: 25px;
   line-height: 13px;
+}
+
+
+.topbox-right {
+  width: 60%;
+  background: #fff;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 880px){
+#hometop-patient-section h1 {
+    font-size: 30px;
+}
+#hometop-patient-section h2 {
+  font-size: 18px;
+}
+.topbox-right {
+  padding: 10px;
+  width: 100%;
+  margin-top: 20px;
+}
+.barbox {
+  width: 100%;
+}
+.barbox-bar {
+  padding-left: 22px;
+  font-size: 12px;
+}
+.barbox-bar::before {
+  width: 0%;
+  height: 0px;
+}
+.barbox-bar img {
+  width: 15px !important;
+  height: 15px !important;
+  top: 4px;
+}
+.barbox-bar1 {
+  padding-left: 22px;
+  font-size: 12px;
+}
+.barbox-bar1 img {
+  width: 15px !important;
+  height: 15px !important;
+  top: 4px;
+}
+.top-back {
+  gap: 20px;
+  flex-direction: column;
+}
+.file {
+  font-size: 12px;
+}
+.wrap {
+  width: 100%;
+}
+.upload-medical p {
+  width: 100%;
+}
+.upload-link-box {
+  width: 100%;
+}
+}
+
+.treatment-form .wrap {
+  width: 100%;
+  margin: auto;
+  position: relative;
+}
+
+.treatment-form .wrap .file {
+  position: relative;
+  max-width: 100%;
+  font-size: 14px;
+}
+
+.treatment-form .wrap .file .file__input {
+  background: #fff2e9;
+    border: 1px solid #FF6800;
+    border-radius: 6px;
+    margin-bottom: 0rem;
+    color: rgba(255, 255, 255, 0.3);
+    padding: 5px 15px;
+    text-align: center;
+}
+
+.treatment-form .wrap .file .file__value {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #7C7C7C;
+  border: 1px solid #D8DEE5;
+  background: #fff;
+  margin-top: 4px;
+}
+
+.treatment-form .wrap .file .file__value:after {
+  content: "X";
+  cursor: pointer;
+  background: #FF6800;
+  color: #ffffff !important;
+  padding: 5px;
+  border-radius: 100%;
+  width: 22px;
+  height: 22px;
+  line-height: 12px;
+  text-align: center;
+}
+
+
+.treatment-form .wrap label {
+  color: #FF6800 !important;
+  margin-bottom: 0px !important;
+}
+
+
+.treatment-form .wrap .file .file__input img {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
 }
