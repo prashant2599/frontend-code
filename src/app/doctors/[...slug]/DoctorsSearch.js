@@ -54,7 +54,7 @@ const DoctorsSearch = ({ doctors, slug, pageNumber }) => {
       <div className="find-doctor-box">
         <h2>Find {fotmattedCategory} Doctors</h2>
 
-        <div className="find-box">
+        <div className="find-box-list">
           <div className="search-box">
             <input
               type="text"

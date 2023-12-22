@@ -8,6 +8,8 @@ import React from "react";
 import { notFound } from "next/navigation";
 import HospitalListPopUpForm from "@/app/Home/hospitalForm/HospitalListPopUpForm";
 import HospitalSearch from "./HospitalSearch";
+import NewHeader from "@/app/Home/NewUIHomepage/inc/NewHeader";
+import NewFooter from "@/app/Home/NewUIHomepage/inc/NewFooter";
 
 function formatText(text) {
   if (typeof text === "string") {
@@ -57,6 +59,7 @@ const page = async ({ params }) => {
 
     return (
       <>
+      <NewHeader />
         <section id="find-doctors">
           <div className="midbox-inner  wiki-mk">
             <HospitalSearch hospital={hospital} slug={combinedSlug} />
@@ -283,6 +286,7 @@ const page = async ({ params }) => {
             </div>
           </div>
         </section>
+        <NewFooter />
       </>
     );
   } catch (error) {

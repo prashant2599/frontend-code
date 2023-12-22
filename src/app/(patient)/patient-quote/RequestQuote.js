@@ -190,6 +190,7 @@ const RequestQuote = () => {
                                 items.name
                               )
                             }
+                            style={{cursor:"pointer"}}
                           >
                             <img
                               src={`https://dev.medflick.com/speciality/${e.icon}`}
