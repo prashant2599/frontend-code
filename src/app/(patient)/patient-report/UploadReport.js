@@ -44,40 +44,118 @@ const UploadReport = () => {
 
   const [selectedFile, setSelectedFile] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [linkValue, setLinkValue] = useState("");
+  const [fileInputDisabled, setFileInputDisabled] = useState(false);
+  const [linkInputDisabled, setLinkInputDisabled] = useState(false);
   const [query, setQuery] = useState("");
+  const [linkValidationMessage, setLinkValidationMessage] = useState("");
+  const [fileValidationMessage, setFileValidationMessage] = useState("");
+
+  const isValidFile = (file) => {
+    const allowedTypes = ["image/png", "image/jpeg", "application/pdf"];
+    const maxFileSize = 2 * 1024 * 1024; // 2MB
+  
+    if (!file) {
+      return 'Please select a file.';
+    }
+  
+    if (!allowedTypes.includes(file.type)) {
+      return 'Please select a valid file type (PNG, JPG, PDF).';
+    }
+  
+    if (file.size > maxFileSize) {
+      return 'File size must be less than or equal to 2MB.';
+    }
+  
+    return '';
+  };
+  
+  
   const handleFileChange = (event) => {
-    setSelectedFile(event.target.files[0]);
+    const file = event.target.files[0];
+  
+    // Validate file type and size
+    const validationMessage = isValidFile(file);
+    if (validationMessage) {
+      setFileValidationMessage(validationMessage);
+      event.target.value = null; // Clear the file input
+      return;
+    } else {
+      setFileValidationMessage('');
+    }
+  
+    setSelectedFile(file);
+  
+    // Update the disabled state based on whether a file is selected
+    setLinkInputDisabled(!!file);
+  };
+
+  const isValidLink = (link) => {
+    // Regular expression for a simple URL validation
+    const urlPattern = /^(https?:\/\/)?([\w.-]+)\.([a-z]{2,})(\/\S*)?$/;
+    return urlPattern.test(link);
+  };
+  
+  const handleLinkChange = (event) => {
+    setLinkValue(event.target.value);
+    if (event.target.value && !isValidLink(event.target.value)) {
+      setLinkValidationMessage("Please enter a valid link.");
+    } else {
+      setLinkValidationMessage("");
+    }
+    // Update the disabled state based on whether a link is provided
+    setFileInputDisabled(!!event.target.value);
   };
 
   const clearFormFields = () => {
     setQuery("");
     setSelectedFile("");
+    setLinkValue("")
   };
+
+
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
-    if (!selectedFile) {
-      // No file is selected, show an error message and prevent form submission
-      // alert("Please upload a medical report before submitting the form.");
-      toast.error(
-        "Please upload a medical report before submitting the form.",
-        {
-          position: toast.POSITION.TOP_RIGHT,
-        }
-      );
+    // Create the data object to be sent in the API request
+    // const data = {
+    //   uploadfiles: selectedFile,
+    //   patient_id: patientId,
+    //   speciality_id: specialityId,
+    //   treatment_id: selectedtreatmentId,
+    //   message: query,
+    // };
 
+    // if (selectedFile && !isValidFile(selectedFile)) {
+    //   alert(
+    //     "Please select a valid file type (PNG, JPG, PDF) and ensure it is less than 2MB."
+    //   );
+    //   return;
+    // }
+
+    if (linkValue && !isValidLink(linkValue)) {
+      setLinkValidationMessage("Please enter a valid link.");
       return;
+    } else {
+      setLinkValidationMessage("");
     }
 
-    // Create the data object to be sent in the API request
-    const data = {
-      uploadfiles: selectedFile,
-      patient_id: patientId,
-      speciality_id: specialityId,
-      treatment_id: selectedtreatmentId,
-      message: query,
-    };
+    if (!selectedFile && !linkValue) {
+      // Display an error message or handle the validation in the way you prefer
+      alert("Please upload a file or provide a link before submitting.");
+      return;
+    }
+    const data = new FormData();
+    if (selectedFile) {
+      data.append("uploadfiles", selectedFile);
+    } else {
+      data.append("uploadfiles", linkValue);
+    }
+    data.append("patient_id", patientId);
+    data.append("speciality_id", specialityId);
+    data.append("treatment_id", selectedtreatmentId);
+    data.append("message", query);
 
     // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
     const apiEndpoint = `https://dev.medflick.com/api/uploadreport`;
@@ -105,6 +183,17 @@ const UploadReport = () => {
       });
   };
 
+  const fileDisplay = selectedFile ? (
+    <div className="file__value">
+      <div className="file__value--text" onClick={() => setSelectedFile(null)}>
+        {selectedFile.name}
+      </div>
+      <div className="file__value--remove" data-id={selectedFile.name}></div>
+    </div>
+  ) : null;
+
+  console.log(selectedFile);
+
   return (
     <>
       <section id="request-quote-section">
@@ -113,14 +202,14 @@ const UploadReport = () => {
             <Link href="/patient-quote">
               <img src="/images/2023/01/back-icon.png" alt="icon" /> Back
             </Link>
-            <div class="barbox">
-              <div class="barbox-bar">
+            <div className="barbox">
+              <div className="barbox-bar">
                 <img src="/images/2023/02/3.png" /> Select Medical Problem
               </div>
-              <div class="barbox-bar">
+              <div className="barbox-bar">
                 <img src="/images/2023/02/1.png" /> Upload Medical Report
               </div>
-              <div class="barbox-bar1">
+              <div className="barbox-bar1">
                 <img src="/images/2023/02/2.png" /> Get Quotes
               </div>
             </div>
@@ -131,52 +220,52 @@ const UploadReport = () => {
             <form onSubmit={handleFormSubmit}>
               <div className="upload-medical">
                 <img src="/images/2023/01/upload.png" alt="upload-icon" />
-                {/* <p>
-                  Drag and drop a document here to upload or browse for a
-                  document to upload
-                </p> */}
-                {/* {selectedFile && (
-                  <div>
-                    <p>Selected File:</p>
-                    <p>{selectedFile.name}</p>
-                  </div>
-                )} */}
-                <div class="wrap">
-                  <form action="#" name="form" method="get">
-                    <div class="file">
-                      <div class="file__input" id="file__input">
-                        <input
-                          class="file__input--file"
-                          id="customFile"
-                          type="file"
-                          multiple="multiple"
-                          name="files[]"
-                        />
-                        <label
-                          class="file__input--label"
-                          for="customFile"
-                          data-text-btn=" "
-                        >
-                          {" "}
-                          Choose files or drag &amp; drop{" "}
-                        </label>
-                      </div>
+
+                <div className="wrap">
+                  <div className="file">
+                    <div className="file__input" id="file__input">
+                      <input
+                        className="file__input--file"
+                        id="customFile"
+                        type="file"
+                        multiple="multiple"
+                        name="files[]"
+                        onChange={handleFileChange}
+                        disabled={fileInputDisabled}
+                      />
+                      <label
+                        className="file__input--label"
+                        for="customFile"
+                        data-text-btn=" "
+                      >
+                        {" "}
+                        Choose files or drag &amp; drop{" "}
+                      </label>
+                      {fileValidationMessage && (
+                        <p style={{ color: "red" }}>{fileValidationMessage}</p>
+                      )}
                     </div>
-                  </form>
+                    {fileDisplay}
+                  </div>
                 </div>
                 <p>
-                  File format supported: .png, .doc, .pdf and the file size
-                  should be less than 3Mb
+                  File format supported: .png, .jpg, .pdf and the file size
+                  should be less than 2Mb
                 </p>
-                <div class="or-box">OR</div>
-                <div class="upload-link-box">
+                <div className="or-box">OR</div>
+                <div className="upload-link-box">
                   <input
-                    type="text"
+                    type="link"
                     placeholder="Enter link to your report..."
                     name="name"
                     required=""
-                    fdprocessedid="jgfiyb"
+                    value={linkValue}
+                    onChange={handleLinkChange}
+                    disabled={linkInputDisabled}
                   />
+                  {linkValidationMessage && (
+                    <p style={{ color: "red" }}>{linkValidationMessage}</p>
+                  )}
                 </div>
                 {/* <div className="medical-report-all">
                   <button className="medical-report-file">Select File</button>

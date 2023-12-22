@@ -15433,8 +15433,53 @@ footer {
   text-align: center;
 }
 
-
-
 .upload-link-box input::placeholder {
   color: #D8DEE5;
+}
+
+.find-box-list {
+  display: flex;
+  width: 80%;
+  margin-top: 20px;
+  align-items: center;
+  position: relative;
+  gap: 15px;
+  justify-content: center;
+  z-index: 2;
+}
+.find-box-list .search-box {
+  width: 100%;
+  width: 649px;
+}
+
+.find-box-list .search-box input {
+  height: 55px;
+  width: 100%;
+  font-weight: 700;
+  font-size: 16px;
+  background: rgba(255,197,167,.5);
+  outline: none;
+  padding-left: 15px;
+    border: 0;
+    border-radius: 12px;
+    color: #fff;
+}
+
+.file__value {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #7C7C7C;
+  border: 1px solid #D8DEE5;
+}
+.file__value:after {
+  content: "X";
+  cursor: pointer;
+  background: #FF6800;
+  color: #ffffff !important;
+  padding: 5px;
+  border-radius: 100%;
+  width: 25px;
+  height: 25px;
+  line-height: 13px;
 }

@@ -51,7 +51,7 @@ const HospitalSearch = ({ hospital, slug }) => {
       <div className="find-doctor-box">
         <h2>Find {fotmattedCategory && fotmattedCategory} Hospitals</h2>
 
-        <div className="find-box">
+        <div className="find-box-list">
           <div className="search-box">
             <input
               type="text"
