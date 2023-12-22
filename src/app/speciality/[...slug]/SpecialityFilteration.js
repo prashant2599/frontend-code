@@ -56,6 +56,7 @@ const SpecialityFilteration = ({ countryResponse, slug, slugs }) => {
             <button
             className={`tablinks ${selectedCountry === country ? 'active' : ''}`}
             onClick={() => handleSelectCountry(country)}
+            key={index}
           >
             {icon && (
               <>
