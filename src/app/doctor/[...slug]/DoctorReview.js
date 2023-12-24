@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { AiTwotoneStar } from "react-icons/ai";
 import { AiOutlineStar } from "react-icons/ai";
 import axios from "axios";
+import Success from "@/app/Home/successPopup/Success";
+import ErrorPopup from "@/app/Home/successPopup/ErrorPopup";
 
 const DoctorReview = ({
   first,
@@ -13,6 +15,8 @@ const DoctorReview = ({
   specialityId,
   hospitalId,
 }) => {
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
+  const [showErrorPopup, setShowErrorPopup] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const [review, setReview] = useState("");
   const [rating, setRating] = useState(0);
@@ -70,9 +74,7 @@ const DoctorReview = ({
     axios
       .post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/ratingPost`, reviewData)
       .then((response) => {
-        // Handle success
-        console.log(response.data);
-        alert("Review submitted successfully");
+        setShowSuccessPopup(true);
         // Optionally, you can reset the rating and review field here
         setRating(0);
         setReview("");
@@ -80,13 +82,23 @@ const DoctorReview = ({
         setReviewValidationMessage("");
       })
       .catch((error) => {
-        // Handle error
+        setShowErrorPopup(true);
         console.error("Error submitting review:", error);
       })
       .finally(() => {
         setLoading(false); // Set loading back to false
       });
   };
+
+  const handleCloseSuccessPopup = () => {
+    setShowSuccessPopup(false);
+  };
+
+  const handleCloseErrorPopup = () => {
+    setShowErrorPopup(false);
+  };
+
+  const message = "Thank you for your review!"
   return (
     <>
       <div className="star-reviews-box">
@@ -142,6 +154,21 @@ const DoctorReview = ({
           </a>
         </div>
       </div>
+
+      {showSuccessPopup && (
+        <Success
+          onClose={handleCloseSuccessPopup}
+          showSuccessPopup={showSuccessPopup}
+          message = {message}
+        />
+      )}
+
+      {showErrorPopup && (
+        <ErrorPopup
+          onClose={handleCloseErrorPopup}
+          showErrorPopup={showErrorPopup}
+        />
+      )}
     </>
   );
 };

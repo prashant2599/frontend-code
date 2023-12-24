@@ -1,15 +1,17 @@
 import React from "react";
 
-const Success = ({ onClose,showSuccessPopup }) => {
+const Success = ({ onClose,showSuccessPopup,message }) => {
+  const defaultMessage = "Form submitted successfully!";
+
   return (
     <>
-      <div class="popup" data-popup="popup-6" style={{ display: showSuccessPopup ? "block" : "none" }}>
-        <div class="popup-inner6">
-          <div class="modal-content">
-            <div class="modal-header">
+      <div className="popup" data-popup="popup-6" style={{ display: showSuccessPopup ? "block" : "none" }}>
+        <div className="popup-inner6">
+          <div className="modal-content">
+            <div className="modal-header">
               <button
                 type="button"
-                class="popup-close"
+                className="popup-close"
                 data-popup-close="popup-6"
                 data-dismiss="modal"
                 onClick={onClose}
@@ -18,9 +20,9 @@ const Success = ({ onClose,showSuccessPopup }) => {
               </button>
             </div>
 
-            <div class="success-message">
+            <div className="success-message">
               <img src="/images/success.png" />
-              <h4>Form submitted successfully!</h4>
+              <h4>{message || defaultMessage}</h4>
               {/* <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore

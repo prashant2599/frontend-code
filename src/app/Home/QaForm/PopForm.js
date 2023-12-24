@@ -16,6 +16,8 @@ const PopForm = () => {
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [userPhone, setUserPhone] = useState("");
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [fileValidationMessage, setFileValidationMessage] = useState("");
   // form popup post method
 
   const [name, setName] = useState("");

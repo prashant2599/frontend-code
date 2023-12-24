@@ -60,6 +60,7 @@ const TreatmentForm1 = ({ treatmentId, specialityId }) => {
     setPcode("");
     setEmail("");
     setQuery("");
+    setSelectedFile(null)
   };
 
   const Formstyles = {
