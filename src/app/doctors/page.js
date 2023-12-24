@@ -2,7 +2,6 @@ import React from "react";
 import AllDoctors from "./AllDoctors";
 import NewHeader from "../Home/NewUIHomepage/inc/NewHeader";
 import NewFooter from "../Home/NewUIHomepage/inc/NewFooter";
-import Script from "next/script";
 
 const page = () => {
   return (
@@ -10,27 +9,6 @@ const page = () => {
       <NewHeader />
       <AllDoctors />
       <NewFooter />
-      <Script
-        id="scroll-handler-script"
-        dangerouslySetInnerHTML={{
-          __html: `
-                    window.onscroll = function () {
-                      myFunction();
-                    };
-    
-                    var header = document.getElementById("header-id");
-                    var sticky = header.offsetTop;
-    
-                    function myFunction() {
-                      if (window.pageYOffset > sticky) {
-                        header.classList.add("sticky");
-                      } else {
-                        header.classList.remove("sticky");
-                      }
-                    }
-                  `,
-        }}
-      ></Script>
     </>
   );
 };

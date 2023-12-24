@@ -19,6 +19,41 @@ const HomeHospitalForm = ({ country, slug, name, hospitalId }) => {
   const [email2, setEmail2] = useState("");
   const [query2, setQuery2] = useState("");
 
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [fileValidationMessage, setFileValidationMessage] = useState("");
+
+  const isValidFile = (file) => {
+    const allowedTypes = ["image/png", "image/jpeg", "application/pdf"];
+    const maxFileSize = 2 * 1024 * 1024; // 2MB
+
+    if (!file) {
+      return "Please select a file.";
+    }
+
+    if (!allowedTypes.includes(file.type)) {
+      return "Please select a valid file type (PNG, JPG, PDF).";
+    }
+
+    if (file.size > maxFileSize) {
+      return "File size must be less than or equal to 2MB.";
+    }
+
+    return "";
+  };
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    const validationMessage = isValidFile(file);
+    if (validationMessage) {
+      setFileValidationMessage(validationMessage);
+      event.target.value = null; // Clear the file input
+      return;
+    } else {
+      setFileValidationMessage("");
+    }
+    setSelectedFile(file);
+  };
+
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [userPhone, setUserPhone] = useState("");
@@ -153,13 +188,13 @@ const HomeHospitalForm = ({ country, slug, name, hospitalId }) => {
       return;
     }
 
-    if (!captchaValue2) {
-      setFormErrors((prevErrors) => ({
-        ...prevErrors,
-        captcha: "Please Fill the captcha",
-      }));
-      return;
-    }
+    // if (!captchaValue2) {
+    //   setFormErrors((prevErrors) => ({
+    //     ...prevErrors,
+    //     captcha: "Please Fill the captcha",
+    //   }));
+    //   return;
+    // }
     const patientId = localStorage.getItem("userId");
 
     if (isValid) {
@@ -172,6 +207,7 @@ const HomeHospitalForm = ({ country, slug, name, hospitalId }) => {
         messages: query2,
         hospital_id: hospitalId,
         patient_id: patientId,
+        file:selectedFile
       };
 
       // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
@@ -181,7 +217,11 @@ const HomeHospitalForm = ({ country, slug, name, hospitalId }) => {
 
       // Make the API call
       axios
-        .post(apiEndpoint, data)
+        .post(apiEndpoint, data,{
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
         .then((response) => {
           setShowSuccessPopup(true);
           clearFormFields2();
@@ -202,6 +242,7 @@ const HomeHospitalForm = ({ country, slug, name, hospitalId }) => {
     setPhone2("");
     setEmail2("");
     setQuery2("");
+    setSelectedFile(null)
   };
 
   const Formstyles2 = {
@@ -250,6 +291,13 @@ const HomeHospitalForm = ({ country, slug, name, hospitalId }) => {
   const handleCloseErrorPopup = () => {
     setShowErrorPopup(false);
   };
+
+  const fileDisplay = selectedFile ? (
+    <div className="file__value" onClick={() => setSelectedFile(null)}>
+      <div className="file__value--text">{selectedFile.name}</div>
+      <div className="file__value--remove" data-id={selectedFile.name}></div>
+    </div>
+  ) : null;
 
   return (
     <>
@@ -353,6 +401,35 @@ const HomeHospitalForm = ({ country, slug, name, hospitalId }) => {
                       style={formErrors.query ? Formstyles2.errorInput : {}}
                     ></textarea>
                     {renderError(formErrors.query)}
+                  </div>
+                </div>
+                <div class="treatment-form">
+                  <div class="wrap">
+                    <div class="file">
+                      <div class="file__input" id="file__input">
+                        <input
+                          class="file__input--file"
+                          id="customFile"
+                          type="file"
+                          multiple="multiple"
+                          name="files[]"
+                          onChange={handleFileChange}
+                        />
+                        <label
+                          class="file__input--label"
+                          for="customFile"
+                          data-text-btn=" "
+                        >
+                          {" "}
+                          <img src="/images/upload-icon1.png" /> Choose files or
+                          drag &amp; drop{" "}
+                        </label>
+                      </div>
+                      {fileValidationMessage && (
+                        <p style={{ color: "red" }}>{fileValidationMessage}</p>
+                      )}
+                      {fileDisplay}
+                    </div>
                   </div>
                 </div>
                 <ReCAPTCHA

@@ -15596,10 +15596,11 @@ footer {
 .treatment-form .wrap label {
   color: #FF6800 !important;
   margin-bottom: 0px !important;
+  display: inline-block;
 }
 
 .treatment-form .wrap .file .file__input img {
-  display: inline-block;
+  display: inline-block !important;
   width: 16px;
   height: 16px;
   margin-right: 5px;

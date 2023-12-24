@@ -24,12 +24,6 @@ const page = async ({ params, res }) => {
       { cache: "no-store" }
     );
 
-    console.log(apiResponse.status);
-
-    if (!apiResponse.ok) {
-      throw new Error(`Failed to fetch data: ${apiResponse.status}`);
-    }
-
     const apiData = await apiResponse.json();
 
     // Check for error conditions in the response data

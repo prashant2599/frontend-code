@@ -1,39 +1,76 @@
-import getAllDoctors from "../lib/getALLDoctors";
-import ShareProfile from "../Home/doctorForm/ShareProfile";
+import NewFooter from "@/app/Home/NewUIHomepage/inc/NewFooter";
+import NewHeader from "@/app/Home/NewUIHomepage/inc/NewHeader";
+import DoctorsSearch from "../../[...slug]/DoctorsSearch";
 import Link from "next/link";
-import { AiTwotoneStar } from "react-icons/ai";
-import DoctorForm from "../Home/doctorForm/DoctorForm";
-import DoctorListPopForm from "../Home/doctorForm/DoctorListPopForm";
-import DoctorsSearch from "./[...slug]/DoctorsSearch";
-import AllDoctorPagination from "./AllDoctorPagination";
+import DoctorListPopForm from "@/app/Home/doctorForm/DoctorListPopForm";
+import Image from "next/image";
+import ShareProfile from "@/app/Home/doctorForm/ShareProfile";
+import DoctorForm from "@/app/Home/doctorForm/DoctorForm";
 
-const AllDoctors = async () => {
-  const data = await getAllDoctors();
-  const doctor = data.data.doctors;
-  const pageNumber = data.data.pageNumber;
-  const count = data.data.count
+const page = async ({ params }) => {
+  const combinedSlug = params.slug;
+  const apiResponse = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/doctors/page/${combinedSlug}`,
+    { cache: "no-store" }
+  );
+  const apiData = await apiResponse.json();
+  const doctors = apiData.data.doctors;
+  const pageNumber = apiData.data.pageNumber;
+  const count = apiData.data.count
+
   return (
     <>
+      <NewHeader />
       <section id="find-doctors">
         <div className="midbox-inner  wiki-mk">
-          <DoctorsSearch doctors={doctor} />
+          <DoctorsSearch doctors={doctors} />
         </div>
       </section>
       <section id="find-doctors-list">
         <div className="midbox-inner  wiki-mk">
-          <h1>
+          {/* {info.doc_title && position1 === matchingCity && (
+            <>
+              <h1>
+                Best {info.name} Doctors in {formattedcity}, {formattedcountry}{" "}
+                <span>({doctor.length} Results)</span>
+              </h1>
+            </>
+          )}
+          {info.doc_title &&
+            matchedTreatment &&
+            position1 === matchedTreatment.slug && (
+              <>
+                <h1>
+                  Best {formattedposition1} Doctors in {formattedcountry}{" "}
+                  <span>({doctor.length} Results)</span>
+                </h1>
+              </>
+            )}
+          {info.doc_title &&
+            position1 === matchingCountry &&
+            !matchedTreatment && (
+              <>
+                <h1>
+                  Best {info.name} Doctors in {formattedcountry}{" "}
+                  <span>({doctor.length} Results)</span>
+                </h1>
+              </>
+            )} */}
+
+          {/* <h1>
             Medflick Assured Doctors <span>({doctor.length} Results)</span>
-          </h1>
+          </h1> */}
           {/* filters nav section */}
           {/* <SpecialitySelect
             doctor={doctor}
             treatment={treatment}
             slug={combinedSlug}
           /> */}
+
           <div className="doctor-midbox">
             <div className="doctor-midbox-left">
-              {doctor &&
-                doctor.map((e) => {
+              {doctors.length > 0 ? (
+                doctors.map((e) => {
                   //   const matchedHospital = hospitalIcon?.find(
                   //     (hospital) => String(hospital.id) === e.hospital_id
                   //   );
@@ -41,9 +78,12 @@ const AllDoctors = async () => {
                     <div className="doctor-item-list" key={e.id}>
                       <div className="doctor-item-img">
                         <Link href={`/doctor/${e.slug}`}>
-                          <img
+                          <Image
                             src={`https://dev.medflick.com/doctor/${e.image}`}
                             alt={e.slug}
+                            width="181"
+                            height="221"
+                            className="doctor-speciality-img"
                           />
                         </Link>
                       </div>
@@ -53,7 +93,12 @@ const AllDoctors = async () => {
                             {e.prefix} {e.first_name} {e.last_name}
                           </h3>
                         </Link>
-                        <div className="department-sub">{e.designation}</div>
+                        <div
+                          className="department-sub"
+                          style={{ color: "#ff6800" }}
+                        >
+                          {e.designation}
+                        </div>
                         {/* <div className="rating-star">
                           5{" "}
                           <i>
@@ -67,6 +112,7 @@ const AllDoctors = async () => {
                             ? `${e.short_description.slice(0, 100)}...`
                             : e.short_description}
                         </div>
+
                         <div className="doc-experience">
                           <div className="years-exper">
                             {e.experience_year}+ Years of Experience{" "}
@@ -85,7 +131,6 @@ const AllDoctors = async () => {
                           last={e.last_name}
                           doctorId={e.id}
                         />
-
                         <Link
                           href={`/doctor/${e.slug}`}
                           className="view-profile"
@@ -99,28 +144,43 @@ const AllDoctors = async () => {
                         <ShareProfile slug={e.slug} />
 
                         <div className="doc-Hospital">
-                          {e.location}
+                          {e.location.charAt(0).toUpperCase() +
+                            e.location.slice(1)}
                           {/* {matchedHospital && (
-                        <img
-                          src={`${process.env.BASE_URL}/hospital/${matchedHospital.icon}`}
-                          alt="icon"
-                        />
-                      )} */}
+                            <img
+                              src={`https://dev.medflick.com/hospital/${matchedHospital.icon}`}
+                              alt="icon"
+                            />
+                          )} */}
                         </div>
                       </div>
                     </div>
                   );
-                })}
-                <AllDoctorPagination pageNumber={pageNumber} count={count}  />
+                })
+              ) : (
+                <div>
+                  <h1 style={{ textAlign: "center", margin: "20px" }}>
+                    No Doctor Found
+                  </h1>
+                </div>
+              )}
+              {/* <DoctorPagination
+                slug={combinedSlug}
+                doctor={doctor}
+                treatment={treatment}
+                pageNumber={pageNumber}
+                totalDoctor={totalDoctor}
+              /> */}
             </div>
             {/* form */}
 
-            <DoctorForm />
+            {/* <DoctorForm info={info} /> */}
           </div>
         </div>
       </section>
+      <NewFooter />
     </>
   );
 };
 
-export default AllDoctors;
+export default page;
