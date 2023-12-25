@@ -15,7 +15,10 @@ const AllDoctorPagination = ({ pageNumber, count }) => {
   startPage = Math.max(1, endPage - displayPages + 1);
 
   // Generate an array of page numbers
-  const pages = Array.from({ length: endPage - startPage + 1 }, (_, index) => startPage + index);
+  const pages = Array.from(
+    { length: endPage - startPage + 1 },
+    (_, index) => startPage + index
+  );
 
   return (
     <>
@@ -23,29 +26,24 @@ const AllDoctorPagination = ({ pageNumber, count }) => {
         <ul>
           {startPage > 1 && (
             <li>
-              <Link href={`/doctors`}>
-                1
-              </Link>
+              <Link href={`/doctors`}>1</Link>
             </li>
           )}
-          {startPage > 2 && (
-            <li>...</li>
-          )}
+          {startPage > 2 && <li>...</li>}
           {pages.map((e) => (
             <li key={e}>
-              <Link href={`/doctors/page/${e}`} className={e === 1 ? "active" : ""}>
+              <Link
+                href={e == 1 ? `/doctors` : `/doctors/page/${e}`}
+                className={e == pageNumber ? "active" : ""}
+              >
                 {e}
               </Link>
             </li>
           ))}
-          {endPage < totalPages - 1 && (
-            <li>...</li>
-          )}
+          {endPage < totalPages - 1 && <li>...</li>}
           {endPage < totalPages && (
             <li>
-              <Link href={`/doctors/page/${totalPages}`}>
-                {totalPages}
-              </Link>
+              <Link href={`/doctors/page/${totalPages}`}>{totalPages}</Link>
             </li>
           )}
         </ul>

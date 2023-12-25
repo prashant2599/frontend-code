@@ -6,8 +6,8 @@ import DoctorListPopForm from "@/app/Home/doctorForm/DoctorListPopForm";
 import Image from "next/image";
 import ShareProfile from "@/app/Home/doctorForm/ShareProfile";
 import DoctorForm from "@/app/Home/doctorForm/DoctorForm";
-import DoctorPagePagination from "./DoctorPagePagination";
 import AllDoctorsFilteration from "../../AllDoctorsFilteration";
+import AllDoctorPagination from "../../AllDoctorPagination";
 
 const page = async ({ params }) => {
   const combinedSlug = params.slug;
@@ -34,7 +34,7 @@ const page = async ({ params }) => {
             Medflick Assured Doctors <span>({count} Results)</span>
           </h1>
           {/* filters nav section */}
-      
+
           <AllDoctorsFilteration />
           <div className="doctor-midbox">
             <div className="doctor-midbox-left">
@@ -133,7 +133,8 @@ const page = async ({ params }) => {
                   </h1>
                 </div>
               )}
-              <DoctorPagePagination pageNumber={pageNumber} count={count} />
+              {/* <DoctorPagePagination pageNumber={pageNumber} count={count} /> */}
+              <AllDoctorPagination pageNumber={pageNumber} count={count} />
             </div>
             {/* form */}
 

@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const DoctorPagePagination = ({ pageNumber, count }) => {
+const AllHospitalPagination = ({ count, pageNumber }) => {
   const itemsPerPage = 10; // You can adjust this based on your preference
   const totalPages = Math.ceil(count / itemsPerPage);
 
@@ -19,21 +19,20 @@ const DoctorPagePagination = ({ pageNumber, count }) => {
     { length: endPage - startPage + 1 },
     (_, index) => startPage + index
   );
-
   return (
     <>
       <div className="list-item-no">
         <ul>
           {startPage > 1 && (
             <li>
-              <Link href={`/doctors`}>1</Link>
+              <Link href={`/hospitals`}>1</Link>
             </li>
           )}
           {startPage > 2 && <li>...</li>}
           {pages.map((e) => (
             <li key={e}>
               <Link
-                href={e == 1 ? `/doctors` : `/doctors/page/${e}`}
+                href={e == 1 ? `/hospitals` : `/hospitals/page/${e}`}
                 className={e == pageNumber ? "active" : ""}
               >
                 {e}
@@ -43,7 +42,7 @@ const DoctorPagePagination = ({ pageNumber, count }) => {
           {endPage < totalPages - 1 && <li>...</li>}
           {endPage < totalPages && (
             <li>
-              <Link href={`/doctors/page/${totalPages}`} >{totalPages}</Link>
+              <Link href={`/hospitals/page/${totalPages}`}>{totalPages}</Link>
             </li>
           )}
         </ul>
@@ -52,4 +51,4 @@ const DoctorPagePagination = ({ pageNumber, count }) => {
   );
 };
 
-export default DoctorPagePagination;
+export default AllHospitalPagination;

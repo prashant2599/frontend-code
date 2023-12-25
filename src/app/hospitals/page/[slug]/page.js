@@ -1,21 +1,25 @@
-import getAllHospitals from "../lib/getAllHospitals";
-import HospitalShare from "../Home/hospitalForm/HospitalShare";
-import HospitalForm from "../Home/hospitalForm/HospitalForm";
+import HospitalSearch from "../../[...slug]/HospitalSearch";
 import Link from "next/link";
 import { AiTwotoneStar } from "react-icons/ai";
-import HospitalListPopUpForm from "../Home/hospitalForm/HospitalListPopUpForm";
-import HospitalSearch from "./[...slug]/HospitalSearch";
-import AllHospitalPagination from "./AllHospitalPagination";
-import AllHospitalsFilteration from "./AllHospitalsFilteration";
+import HospitalListPopUpForm from "@/app/Home/hospitalForm/HospitalListPopUpForm";
+import AllHospitalPagination from "../../AllHospitalPagination";
+import NewHeader from "@/app/Home/NewUIHomepage/inc/NewHeader";
+import NewFooter from "@/app/Home/NewUIHomepage/inc/NewFooter";
+import AllHospitalsFilteration from "../../AllHospitalsFilteration";
 
-const AllHospitals = async () => {
-  const data = await getAllHospitals();
-  const hospital = data.data.hospital;
-  const pageNumber = data.data.page;
-  const count = data.data.count;
-
+const page = async ({ params }) => {
+  const combinedSlug = params.slug;
+  const apiResponse = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/hospitals/page/${combinedSlug}`,
+    { cache: "no-store" }
+  );
+  const apiData = await apiResponse.json();
+  const hospital = apiData.data.hospital;
+  const pageNumber = apiData.data.page;
+  const count = apiData.data.count;
   return (
     <>
+      <NewHeader />
       <section id="find-doctors">
         <div className="midbox-inner  wiki-mk">
           <HospitalSearch hospital={hospital} />
@@ -61,8 +65,8 @@ const AllHospitals = async () => {
                         <h3>{hospital.name}</h3>
                       </Link>
                       {/* <div className="department-sub">
-                          Oncologist, Medical Oncologist
-                        </div> */}
+                        Oncologist, Medical Oncologist
+                      </div> */}
                       <div className="rating-star">
                         5{" "}
                         <i>
@@ -128,10 +132,10 @@ const AllHospitals = async () => {
                         <img src="/images/2023/05/profile.png" alt="icon" />
                       </Link>
                       {/* share  */}
-                      <HospitalShare
+                      {/* <HospitalShare
                         slug={hospital.slug}
                         country={hospital.country}
-                      />
+                      /> */}
 
                       <div className="hospital-location-box">
                         {hospital.address}
@@ -145,12 +149,13 @@ const AllHospitals = async () => {
             </div>
 
             {/* Form */}
-            <HospitalForm />
+            {/* <HospitalForm /> */}
           </div>
         </div>
       </section>
+      <NewFooter />
     </>
   );
 };
 
-export default AllHospitals;
+export default page;

@@ -4,6 +4,7 @@ import Link from "next/link";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
+import DashboardSearch from "./DashboardSearch";
 
 const Dashboard = () => {
   const router = useRouter();
@@ -23,7 +24,7 @@ const Dashboard = () => {
     const storedUserId = localStorage.getItem("userId");
 
     if (storedUserName) {
-      const firstWord = storedUserName.split(' ')[0];
+      const firstWord = storedUserName.split(" ")[0];
       setUserName(firstWord);
     }
     if (storedUserId) {
@@ -51,7 +52,6 @@ const Dashboard = () => {
 
   return (
     <>
-   
       <section id="hometop-patient-section">
         <div className="midbox-inner wiki-mk">
           <div className="home-topbox">
@@ -60,22 +60,7 @@ const Dashboard = () => {
               <h2>lorem ipsum dolor sit amet quies</h2>
             </div>
 
-            <div class="topbox-right">
-              <div class="find-box">
-                <div class="search-box">
-                  <input
-                    type="text"
-                    placeholder="Search for doctor, hospital or treatments"
-                    name="name"
-                    required
-                  />
-                </div>
-
-                <button type="submit" name="en" class="find-button">
-                  Search
-                </button>
-              </div>
-            </div>
+            <DashboardSearch />
           </div>
 
           <div className="home-searchbox">
