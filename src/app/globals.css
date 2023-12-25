@@ -1706,10 +1706,10 @@ textarea {
   overflow: hidden;
   padding-top: 32px;
 }
-
 #category-slider img {
-  border-radius: 48px;
-  position: relative;
+  border-radius: 20px;
+  height: auto;
+  width: auto;
 }
 
 #category-slider::before {
@@ -8068,34 +8068,21 @@ ul.tabs li.active {
   #category-slider {
     margin: 10px 0;
     top: 0;
+    padding: 0px;
   }
 
-  #category-slider img {
-    border-radius: 48px;
-    position: relative;
-  }
+
 
   #category-slider::before {
     height: 90%;
   }
 
   .category-slidertext {
-    position: absolute;
-    align-items: center;
-    width: 722px;
-    height: 306px;
-    bottom: 40px;
-    left: 30px;
-    z-index: 1;
-    color: #fff;
-    box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.2);
-    background: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(40px);
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    padding: 32px;
-  }
+    position: relative;
+    width: 100%;
+    left: 0;
+    padding: 20px;
+}
 
   .category-slidertext h1 {
     font-size: 35px;

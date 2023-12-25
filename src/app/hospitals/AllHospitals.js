@@ -9,89 +9,21 @@ import HospitalSearch from "./[...slug]/HospitalSearch";
 const AllHospitals = async () => {
   const data = await getAllHospitals();
   const hospital = data.data.hospital;
+  const pageNumber = data.data.page;
+  const count = data.data.count;
 
   return (
     <>
       <section id="find-doctors">
         <div className="midbox-inner  wiki-mk">
-         <HospitalSearch hospital={hospital} />
+          <HospitalSearch hospital={hospital} />
         </div>
       </section>
       <section id="find-hospital-list">
         <div className="midbox-inner  wiki-mk">
           <h1>
-            Medflick Assured Hospitals In India{" "}
-            <span>({hospital.length} Results)</span>
+            Medflick Assured Hospitals <span>({count} Results)</span>
           </h1>
-          {/* <div className="hospital-list-find">
-              <div className="ding">
-                <select
-                  id="wiki-select"
-                  onChange={handleSpecialtyChange}
-                  value={selectedSpecialtyId}
-                >
-                  {speciality &&
-                    speciality.map((e) => (
-                      <option value={e.slug} key={e.id}>
-                        {e.name}
-                      </option>
-                    ))}
-                </select>
-              </div>
-              <div className="ding">
-                <select
-                  id="wiki-select"
-                  onChange={handleSelectCity}
-                  value={selectedCity}
-                >
-                  <option>Location</option>
-                  {hospital &&
-                    hospital.map((e) => (
-                      <option value={e.location} key={e.id}>
-                        {e.location.charAt(0).toUpperCase() +
-                          e.location.slice(1)}
-                      </option>
-                    ))}
-                </select>
-              </div>
-           
-              <div className="ding">
-                <select
-                  id="wiki-select"
-                  onChange={handleTreatmentChange}
-                  value={selectedTreatment}
-                >
-                  <option>Treatments</option>
-                  {treatments &&
-                    treatments.map((e) => (
-                      <option value={e.slug} key={e.id}>
-                        {e.name}
-                      </option>
-                    ))}
-                </select>
-              </div>
-          
-
-              <div className="ding">
-                <Select
-                  id="wiki"
-              
-                  isSearchable={true} 
-                  placeholder="Rating"
-                  maxMenuHeight={150}
-                />
-              </div>
-
-              <div className="refresh-box-hospital">
-                <span onClick={handleClearSelection}>
-                  <img
-                    src={loadingImg}
-                    alt="changes"
-                    style={{ height: "auto", width: "100%" }}
-                  />
-                </span>
-              </div>
-            </div> */}
 
           <div className="hospital-midbox">
             <div className="hospital-midbox-left">

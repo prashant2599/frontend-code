@@ -67,7 +67,6 @@ const page = async ({ params }) => {
               <div className="Marquee-tag"> 150+ Hospitals </div>
               <div className="Marquee-tag"> 11000+ Doctors </div>
               <div className="Marquee-tag"> 250+ surgeries </div>
-              <div className="Marquee-tag"> 100+ Surgeries </div>
               <div className="Marquee-tag"> 95% Success Rate </div>
             </div>
           </div>

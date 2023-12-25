@@ -6,12 +6,13 @@ import DoctorForm from "../Home/doctorForm/DoctorForm";
 import DoctorListPopForm from "../Home/doctorForm/DoctorListPopForm";
 import DoctorsSearch from "./[...slug]/DoctorsSearch";
 import AllDoctorPagination from "./AllDoctorPagination";
+import AllDoctorsFilteration from "./AllDoctorsFilteration";
 
 const AllDoctors = async () => {
   const data = await getAllDoctors();
   const doctor = data.data.doctors;
-  const pageNumber = data.data.pageNumber;
-  const count = data.data.count
+  const pageNumber = data.data.page;
+  const count = data.data.count;
   return (
     <>
       <section id="find-doctors">
@@ -22,14 +23,10 @@ const AllDoctors = async () => {
       <section id="find-doctors-list">
         <div className="midbox-inner  wiki-mk">
           <h1>
-            Medflick Assured Doctors <span>({doctor.length} Results)</span>
+            Medflick Assured Doctors <span>({count} Results)</span>
           </h1>
           {/* filters nav section */}
-          {/* <SpecialitySelect
-            doctor={doctor}
-            treatment={treatment}
-            slug={combinedSlug}
-          /> */}
+          <AllDoctorsFilteration />
           <div className="doctor-midbox">
             <div className="doctor-midbox-left">
               {doctor &&
@@ -111,7 +108,7 @@ const AllDoctors = async () => {
                     </div>
                   );
                 })}
-                <AllDoctorPagination pageNumber={pageNumber} count={count}  />
+              <AllDoctorPagination pageNumber={pageNumber} count={count} />
             </div>
             {/* form */}
 
