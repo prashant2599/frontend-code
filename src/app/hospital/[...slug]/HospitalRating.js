@@ -5,8 +5,10 @@ import { AiOutlineStar } from "react-icons/ai";
 import axios from "axios";
 import Success from "@/app/Home/successPopup/Success";
 import ErrorPopup from "@/app/Home/successPopup/ErrorPopup";
+import LoginPopUp from "@/app/Home/LoginPopUp/LoginPopUp";
 
 const HospitalRating = ({ name, hospitalId }) => {
+  const [showLoginPopup, setShowLoginPopup] = useState(false);
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const [showErrorPopup, setShowErrorPopup] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
@@ -34,7 +36,7 @@ const HospitalRating = ({ name, hospitalId }) => {
 
   const handleReviewSubmit = () => {
     if (!loggedIn) {
-      alert("Please login first to leave a review.");
+      setShowLoginPopup(true);
       return;
     }
 
@@ -87,7 +89,14 @@ const HospitalRating = ({ name, hospitalId }) => {
   const handleCloseErrorPopup = () => {
     setShowErrorPopup(false);
   };
-  const message = "Thank you for your review!"
+
+  const handleCloseLoginPopup = () => {
+    setShowLoginPopup(false);
+  };
+
+  const message = "Review Submitted";
+  const desc =
+    "Thank you for submitting your review. We appreciate your feedback and consider it invaluable for our improvement.";
   return (
     <>
       <div className="star-reviews-box">
@@ -139,19 +148,24 @@ const HospitalRating = ({ name, hospitalId }) => {
           </a>
         </div>
       </div>
-      
       {showSuccessPopup && (
         <Success
           onClose={handleCloseSuccessPopup}
           showSuccessPopup={showSuccessPopup}
-          message = {message}
+          message={message}
+          desc={desc}
         />
       )}
-
       {showErrorPopup && (
         <ErrorPopup
           onClose={handleCloseErrorPopup}
           showErrorPopup={showErrorPopup}
+        />
+      )}
+      {showLoginPopup && (
+        <LoginPopUp
+          onClose={handleCloseLoginPopup}
+          showLoginPopup={showLoginPopup}
         />
       )}
     </>

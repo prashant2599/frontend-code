@@ -739,22 +739,7 @@ a:hover {
   top: 0;
   opacity: 0;
 }
-.medical-report-file {
-  background: #ff6800;
-  color: #ffffff !important;
-  border: 2px solid #ff6800;
-  font-family: Helvetica Neue Light;
-  font-size: 16px;
-  border-radius: 8px;
-  padding: 8px 11px;
-  position: relative;
-  width: 150px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0px auto;
-  cursor: pointer;
-}
+
 
 .request-quote textarea::placeholder {
   color: #c5c5c5;

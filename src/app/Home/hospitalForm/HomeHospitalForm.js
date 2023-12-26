@@ -188,13 +188,13 @@ const HomeHospitalForm = ({ country, slug, name, hospitalId }) => {
       return;
     }
 
-    // if (!captchaValue2) {
-    //   setFormErrors((prevErrors) => ({
-    //     ...prevErrors,
-    //     captcha: "Please Fill the captcha",
-    //   }));
-    //   return;
-    // }
+    if (!captchaValue2) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        captcha: "Please Fill the captcha",
+      }));
+      return;
+    }
     const patientId = localStorage.getItem("userId");
 
     if (isValid) {
@@ -207,7 +207,7 @@ const HomeHospitalForm = ({ country, slug, name, hospitalId }) => {
         messages: query2,
         hospital_id: hospitalId,
         patient_id: patientId,
-        file:selectedFile
+        file: selectedFile,
       };
 
       // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
@@ -217,7 +217,7 @@ const HomeHospitalForm = ({ country, slug, name, hospitalId }) => {
 
       // Make the API call
       axios
-        .post(apiEndpoint, data,{
+        .post(apiEndpoint, data, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
@@ -242,7 +242,7 @@ const HomeHospitalForm = ({ country, slug, name, hospitalId }) => {
     setPhone2("");
     setEmail2("");
     setQuery2("");
-    setSelectedFile(null)
+    setSelectedFile(null);
   };
 
   const Formstyles2 = {
@@ -298,6 +298,9 @@ const HomeHospitalForm = ({ country, slug, name, hospitalId }) => {
       <div className="file__value--remove" data-id={selectedFile.name}></div>
     </div>
   ) : null;
+
+  const desc =
+    "Thanks for reaching out to us! We recieved your appointment request. Our team will connect with you shortly to confirm the allocated time slot.";
 
   return (
     <>
@@ -469,6 +472,7 @@ const HomeHospitalForm = ({ country, slug, name, hospitalId }) => {
         <Success
           onClose={handleCloseSuccessPopup}
           showSuccessPopup={showSuccessPopup}
+          desc={desc}
         />
       )}
 

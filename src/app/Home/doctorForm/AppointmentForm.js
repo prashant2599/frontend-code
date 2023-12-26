@@ -246,6 +246,7 @@ const AppointmentForm = ({ doctorId, first, middle, last }) => {
     setPhone("");
     setEmail("");
     setQuery("");
+    setSelectedFile(null);
   };
 
   const Formstyles = {
@@ -301,6 +302,9 @@ const AppointmentForm = ({ doctorId, first, middle, last }) => {
       <div className="file__value--remove" data-id={selectedFile.name}></div>
     </div>
   ) : null;
+
+  const desc =
+    "Your appointment request has been received. We will get back to you soon. Thanks for your patience!";
 
   return (
     <>
@@ -469,6 +473,7 @@ const AppointmentForm = ({ doctorId, first, middle, last }) => {
         <Success
           onClose={handleCloseSuccessPopup}
           showSuccessPopup={showSuccessPopup}
+          desc={desc}
         />
       )}
       {showErrorPopup && (

@@ -4,13 +4,13 @@ import { FaComments } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { ThreeDots } from "react-loader-spinner";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import ReCAPTCHA from "react-google-recaptcha";
 import Success from "@/app/Home/successPopup/Success";
 import ErrorPopup from "@/app/Home/successPopup/ErrorPopup";
+import LoginPopUp from "@/app/Home/LoginPopUp/LoginPopUp";
 
 const UserComment = ({ id, specialityId, subspecialityId, treatments }) => {
+  const [showLoginPopup, setShowLoginPopup] = useState(false);
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const [showErrorPopup, setShowErrorPopup] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
@@ -38,10 +38,7 @@ const UserComment = ({ id, specialityId, subspecialityId, treatments }) => {
 
   const togglePopup = () => {
     if (!loggedIn) {
-      // alert("Please login first.");
-      toast.error("Please login first.", {
-        position: toast.POSITION.BOTTOM_LEFT,
-      });
+      setShowLoginPopup(true);
     } else {
       setIsPopupOpen((prev) => !prev);
     }
@@ -102,6 +99,15 @@ const UserComment = ({ id, specialityId, subspecialityId, treatments }) => {
   const handleCloseErrorPopup = () => {
     setShowErrorPopup(false);
   };
+
+  const handleCloseLoginPopup = () => {
+    setShowLoginPopup(false);
+  };
+
+  const message = "Comment Submitted";
+  const desc =
+    "Thank you! Your comment has been successfully submitted. Your input is highly valuable to us.";
+
   return (
     <>
       <a className="share-discussion" onClick={togglePopup}>
@@ -174,7 +180,7 @@ const UserComment = ({ id, specialityId, subspecialityId, treatments }) => {
                     className="post-button"
                     onClick={handleFormSubmit}
                   >
-                    Post{" "}
+                    Submit
                   </button>
                 </div>
               </div>
@@ -186,6 +192,8 @@ const UserComment = ({ id, specialityId, subspecialityId, treatments }) => {
         <Success
           onClose={handleCloseSuccessPopup}
           showSuccessPopup={showSuccessPopup}
+          message={message}
+          desc={desc}
         />
       )}
 
@@ -195,7 +203,13 @@ const UserComment = ({ id, specialityId, subspecialityId, treatments }) => {
           showErrorPopup={showErrorPopup}
         />
       )}
-      <ToastContainer />
+
+      {showLoginPopup && (
+        <LoginPopUp
+          onClose={handleCloseLoginPopup}
+          showLoginPopup={showLoginPopup}
+        />
+      )}
     </>
   );
 };

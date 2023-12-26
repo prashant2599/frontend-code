@@ -38,12 +38,50 @@ const NavForm2 = ({ treatmentId, specialityId }) => {
   const [pcode, setPcode] = useState("+91");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
+  const [fileValidationMessage, setFileValidationMessage] = useState("");
+  const [selectedFile, setSelectedFile] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
+  const isValidFile = (file) => {
+    const allowedTypes = ["image/png", "image/jpeg", "application/pdf"];
+    const maxFileSize = 2 * 1024 * 1024; // 2MB
+
+    if (!file) {
+      return "Please select a file.";
+    }
+
+    if (!allowedTypes.includes(file.type)) {
+      return "Please select a valid file type (PNG, JPG, PDF).";
+    }
+
+    if (file.size > maxFileSize) {
+      return "File size must be less than or equal to 2MB.";
+    }
+
+    return "";
+  };
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    const validationMessage = isValidFile(file);
+    if (validationMessage) {
+      setFileValidationMessage(validationMessage);
+      event.target.value = null;
+      return;
+    } else {
+      setFileValidationMessage("");
+    }
+    setSelectedFile(file);
+  };
+
   // State variables for error messages
-  const [nameError, setNameError] = useState("");
-  const [phoneError, setPhoneError] = useState("");
-  const [emailError, setEmailError] = useState("");
+  const [formErrors, setFormErrors] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    query: "",
+    captcha: "",
+  });
 
   const [captchaValue, setCaptchaValue] = useState(null);
 
@@ -54,6 +92,7 @@ const NavForm2 = ({ treatmentId, specialityId }) => {
     setName("");
     setPhone("");
     setEmail("");
+    setSelectedFile(null);
   };
 
   const Formstyles = {
@@ -75,34 +114,56 @@ const NavForm2 = ({ treatmentId, specialityId }) => {
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
-    setNameError("");
-    setPhoneError("");
-    setEmailError("");
+    setFormErrors({
+      name: "",
+      phone: "",
+      email: "",
+      query: "",
+      captcha: "",
+    });
 
     // Validation logic
     let isValid = true;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^\d{10}$/;
 
     if (!userName) {
       if (!name) {
-        setNameError("Name is required");
+        setFormErrors((prevErrors) => ({
+          ...prevErrors,
+          name: "Please enter your name",
+        }));
         isValid = false;
       }
     }
+    if (!phone || !phone.match(phoneRegex)) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        phone: "Please enter a valid Phone number",
+      }));
+      isValid = false;
+    }
+
     if (!userEmail) {
-      if (!email) {
-        setEmailError("Email is required");
+      if (!email || !email.match(emailRegex)) {
+        setFormErrors((prevErrors) => ({
+          ...prevErrors,
+          email: "Please enter a valid email address",
+        }));
         isValid = false;
       }
     }
-    if (!captchaValue) {
-      alert("Please complete the CAPTCHA.");
+
+    if (!isValid) {
       return;
     }
 
-    const phoneRegex = /^\d{10}$/; // Matches 10 or more digits
-    if (!phone || !phone.match(phoneRegex)) {
-      setPhoneError("Phone must have at least 10 digits");
-      isValid = false;
+    if (!captchaValue) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        captcha: "Please Fill the captcha",
+      }));
+      return;
     }
 
     if (isValid) {
@@ -115,6 +176,7 @@ const NavForm2 = ({ treatmentId, specialityId }) => {
         // messages: query,
         speciality_id: specialityId,
         treatment_id: treatmentId,
+        file: selectedFile,
       };
 
       // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
@@ -124,7 +186,11 @@ const NavForm2 = ({ treatmentId, specialityId }) => {
 
       // Make the API call
       axios
-        .post(apiEndpoint, data)
+        .post(apiEndpoint, data, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
         .then((response) => {
           setShowSuccessPopup(true);
           clearFormFields();
@@ -168,6 +234,30 @@ const NavForm2 = ({ treatmentId, specialityId }) => {
     const formattedPhoneNumber = e.target.value.replace(/\D/g, ""); // Remove non-numeric characters
     setPhone(formattedPhoneNumber); // Update the phone number state
   };
+
+  const phoneRegex = /^\d{10}$/;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const handlePhoneBlur = () => {
+    if (!phone || !phone.match(phoneRegex)) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        phone: "Please enter a valid Phone number",
+      }));
+    }
+  };
+
+  const handleEmailBlur = () => {
+    if (!email || !email.match(emailRegex)) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        email: "Please enter a valid email address",
+      }));
+    }
+  };
+
+  const renderError = (error) =>
+    error && <div className="error-message">{error}</div>;
+
   const handleCloseSuccessPopup = () => {
     setShowSuccessPopup(false);
   };
@@ -175,6 +265,16 @@ const NavForm2 = ({ treatmentId, specialityId }) => {
   const handleCloseErrorPopup = () => {
     setShowErrorPopup(false);
   };
+
+  const fileDisplay = selectedFile ? (
+    <div className="file__value" onClick={() => setSelectedFile(null)}>
+      <div className="file__value--text">{selectedFile.name}</div>
+      <div className="file__value--remove" data-id={selectedFile.name}></div>
+    </div>
+  ) : null;
+
+  const desc =
+    "Thank you! We received your details. Your information is in safe hands! ";
 
   return (
     <>
@@ -196,8 +296,9 @@ const NavForm2 = ({ treatmentId, specialityId }) => {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   autoComplete="off"
-                  style={nameError ? Formstyles.errorInput : {}}
+                  style={formErrors.name ? Formstyles.errorInput : {}}
                 />
+                {renderError(formErrors.name)}
               </div>
             </div>
 
@@ -211,7 +312,10 @@ const NavForm2 = ({ treatmentId, specialityId }) => {
                   placeholder=""
                   value={phone}
                   onChange={handlePhoneNumberChange}
+                  onBlur={handlePhoneBlur}
+                  style={formErrors.phone ? Formstyles.errorInput : {}}
                 />
+                {renderError(formErrors.phone)}
               </div>
             </div>
 
@@ -225,16 +329,48 @@ const NavForm2 = ({ treatmentId, specialityId }) => {
                     name="name"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    onBlur={handleEmailBlur}
                     autoComplete="off"
+                    style={formErrors.email ? Formstyles.errorInput : {}}
                   />
+                  {renderError(formErrors.email)}
                 </div>
               </div>
             )}
+            <div className="treatment-form">
+              <div className="wrap">
+                <div className="file">
+                  <div className="file__input" id="file__input">
+                    <input
+                      className="file__input--file"
+                      id="customFile"
+                      type="file"
+                      multiple="multiple"
+                      name="files[]"
+                      onChange={handleFileChange}
+                    />
+                    <label
+                      className="file__input--label"
+                      for="customFile"
+                      data-text-btn=" "
+                    >
+                      {" "}
+                      <img src="/images/upload-icon1.png" /> Choose files or
+                      drag &amp; drop{" "}
+                    </label>
+                  </div>
+                  {fileValidationMessage && (
+                    <p style={{ color: "red" }}>{fileValidationMessage}</p>
+                  )}
+                  {fileDisplay}
+                </div>
+              </div>
+            </div>
             <ReCAPTCHA
               sitekey="6LcX6-YnAAAAAAjHasYD8EWemgKlDUxZ4ceSo8Eo" // Replace with your reCAPTCHA site key
               onChange={handleCaptchaChange}
             />
-
+            {renderError(formErrors.captcha)}
             <div className="assistance-box">
               <button
                 type="submit"
@@ -267,6 +403,7 @@ const NavForm2 = ({ treatmentId, specialityId }) => {
         <Success
           onClose={handleCloseSuccessPopup}
           showSuccessPopup={showSuccessPopup}
+          desc={desc}
         />
       )}
 

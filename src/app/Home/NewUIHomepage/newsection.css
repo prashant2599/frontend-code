@@ -2159,7 +2159,7 @@ button.active .city-icon-h {
   color: #dee0e1;
 }
 
-@media screen and (max-width: 880px){
+@media screen and (max-width: 880px) {
   .footer-latest-news input::placeholder {
     width: 100%;
   }

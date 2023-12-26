@@ -15,7 +15,7 @@ const CostEstimateForm = ({ specialityId }) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
   const [name, setName] = useState("");
-  const [pcode, setPcode] = useState("");
+  const [pcode, setPcode] = useState("+91");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [query, setQuery] = useState("");
@@ -244,7 +244,7 @@ const CostEstimateForm = ({ specialityId }) => {
 
       // Make the API call
       axios
-        .post(apiEndpoint, data,{
+        .post(apiEndpoint, data, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
@@ -301,6 +301,10 @@ const CostEstimateForm = ({ specialityId }) => {
       <div className="file__value--remove" data-id={selectedFile.name}></div>
     </div>
   ) : null;
+
+  const desc =
+    "Your cost estimate request is acknowledged. We are connecting with hospitals to provide you the best price and detailed quote shortly. Your patience is greatly appreciated.";
+
   return (
     <>
       <a onClick={togglePopup} style={{ cursor: "pointer" }}>
@@ -493,6 +497,7 @@ const CostEstimateForm = ({ specialityId }) => {
         <Success
           onClose={handleCloseSuccessPopup}
           showSuccessPopup={showSuccessPopup}
+          desc={desc}
         />
       )}
 

@@ -79,12 +79,46 @@ const DontPay = () => {
 
   // form query post api
   const [name, setName] = useState("");
-  const [pcode, setPcode] = useState("");
+  const [pcode, setPcode] = useState("+91");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [query, setQuery] = useState("");
+  const [fileValidationMessage, setFileValidationMessage] = useState("");
+  const [selectedFile, setSelectedFile] = useState(null);
 
   const [isLoading, setIsLoading] = useState(false);
+
+  const isValidFile = (file) => {
+    const allowedTypes = ["image/png", "image/jpeg", "application/pdf"];
+    const maxFileSize = 2 * 1024 * 1024; // 2MB
+
+    if (!file) {
+      return "Please select a file.";
+    }
+
+    if (!allowedTypes.includes(file.type)) {
+      return "Please select a valid file type (PNG, JPG, PDF).";
+    }
+
+    if (file.size > maxFileSize) {
+      return "File size must be less than or equal to 2MB.";
+    }
+
+    return "";
+  };
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    const validationMessage = isValidFile(file);
+    if (validationMessage) {
+      setFileValidationMessage(validationMessage);
+      event.target.value = null; // Clear the file input
+      return;
+    } else {
+      setFileValidationMessage("");
+    }
+    setSelectedFile(file);
+  };
 
   const [formErrors, setFormErrors] = useState({
     name: "",
@@ -194,16 +228,21 @@ const DontPay = () => {
         phone: phone,
         email: userEmail ? userEmail : email,
         messages: query,
+        file: selectedFile,
       };
 
       // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
-      const apiEndpoint = `${process.env.REACT_APP_BASE_URL}/api/free_consultants`;
+      const apiEndpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/api/free_consultants`;
 
       setIsLoading(true);
 
       // Make the API call
       axios
-        .post(apiEndpoint, data)
+        .post(apiEndpoint, data, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
         .then((response) => {
           setShowSuccessPopup(true);
           clearFormFields();
@@ -251,6 +290,17 @@ const DontPay = () => {
   const handleCloseErrorPopup = () => {
     setShowErrorPopup(false);
   };
+
+  const fileDisplay = selectedFile ? (
+    <div className="file__value" onClick={() => setSelectedFile(null)}>
+      <div className="file__value--text">{selectedFile.name}</div>
+      <div className="file__value--remove" data-id={selectedFile.name}></div>
+    </div>
+  ) : null;
+
+  const desc =
+    "Thank you! We have received your details. We wil get back to you at earliest.";
+
   return (
     <>
       <section id="pays-sections">
@@ -265,7 +315,11 @@ const DontPay = () => {
             </div>
 
             <div className="medflick-payright">
-              <a className="consultations" onClick={togglePopup}>
+              <a
+                className="consultations"
+                onClick={togglePopup}
+                style={{ cursor: "pointer" }}
+              >
                 Request a free consultation{" "}
                 <img src="/images/2023/01/arrow-w.png" alt="arrow-icon" />
               </a>
@@ -328,9 +382,8 @@ const DontPay = () => {
                         <label>Name</label>
                         <input
                           type="text"
-                          placeholder=""
+                          placeholder={userName}
                           name="name"
-                          required
                           value={name}
                           onChange={(e) => setName(e.target.value)}
                           autoComplete="off"
@@ -394,6 +447,37 @@ const DontPay = () => {
                         {renderError(formErrors.query)}
                       </div>
                     </div>
+                    <div class="treatment-form">
+                      <div class="wrap">
+                        <div class="file">
+                          <div class="file__input" id="file__input">
+                            <input
+                              class="file__input--file"
+                              id="customFile"
+                              type="file"
+                              multiple="multiple"
+                              name="files[]"
+                              onChange={handleFileChange}
+                            />
+                            <label
+                              class="file__input--label"
+                              for="customFile"
+                              data-text-btn=" "
+                            >
+                              {" "}
+                              <img src="/images/upload-icon1.png" /> Choose
+                              files or drag &amp; drop{" "}
+                            </label>
+                          </div>
+                          {fileValidationMessage && (
+                            <p style={{ color: "red" }}>
+                              {fileValidationMessage}
+                            </p>
+                          )}
+                          {fileDisplay}
+                        </div>
+                      </div>
+                    </div>
                     <ReCAPTCHA
                       sitekey="6LcX6-YnAAAAAAjHasYD8EWemgKlDUxZ4ceSo8Eo" // Replace with your reCAPTCHA site key
                       onChange={handleCaptchaChange}
@@ -434,6 +518,7 @@ const DontPay = () => {
         <Success
           onClose={handleCloseSuccessPopup}
           showSuccessPopup={showSuccessPopup}
+          desc={desc}
         />
       )}
 

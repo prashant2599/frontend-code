@@ -290,6 +290,9 @@ const HospitalForm = ({ info }) => {
     </div>
   ) : null;
 
+  const desc =
+    "Help on the way! We appreciate your patience! We will get back to you soon.";
+
   return (
     <>
       <div className="hospital-midbox-right">
@@ -429,6 +432,7 @@ const HospitalForm = ({ info }) => {
         <Success
           onClose={handleCloseSuccessPopup}
           showSuccessPopup={showSuccessPopup}
+          desc={desc}
         />
       )}
 

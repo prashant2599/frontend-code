@@ -44,6 +44,7 @@ const Login = () => {
       password: password,
       email: email,
     };
+    const previousUrl = document.referrer;
 
     // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
     const apiEndpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/api/login`;
@@ -67,7 +68,8 @@ const Login = () => {
         toast.success("You are successfully logged in", {
           position: toast.POSITION.TOP_RIGHT,
         });
-        router.push("/patient-dashboard");
+        const redirectUrl = previousUrl || "/patient-dashboard";
+        router.push(redirectUrl);
       })
       .catch((error) => {
         if (error.response && error.response.status === 401) {
@@ -121,7 +123,9 @@ const Login = () => {
                 className="logo-login"
                 alt="Brand Logo"
               /> */}
-              <h1>Welcome to <span style={{color:"#ff6800"}}>Medflick</span></h1>
+              <h1>
+                Welcome to <span style={{ color: "#ff6800" }}>Medflick</span>
+              </h1>
               {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
               {/* <p>Lorem ipsum dolor sit amet quis alenquen</p> */}
               <form onSubmit={handleFormSubmit}>

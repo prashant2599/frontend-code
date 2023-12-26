@@ -1707,9 +1707,8 @@ textarea {
   padding-top: 32px;
 }
 #category-slider img {
-  border-radius: 20px;
-  height: auto;
-  width: auto;
+  border-radius: 48px;
+  position: relative;
 }
 
 #category-slider::before {
@@ -11272,14 +11271,7 @@ textarea {
   height: 80px;
 }
 
-.medical-report-all {
-  position: relative;
-  overflow: hidden;
-  display: inline-block;
-  width: 100%;
-  margin-top: 8px;
-  text-align: left;
-}
+
 
 .medical-report-all input[type="file"] {
   font-size: 100px;
@@ -11292,8 +11284,8 @@ textarea {
 .medical-report-file {
   background: #ffff;
   font-family: Helvetica Neue Light;
-  color: #ff6800 !important;
-  border: 2px solid #ff6800;
+  color: #FF6800 !important;
+  border: 2px solid #FF6800;
   font-size: 16px;
   border-radius: 8px;
   padding: 8px 11px;
@@ -14554,6 +14546,8 @@ pre code {
 .success-message img {
   width: 60px;
   height: 60px;
+  display: inline-block;
+  margin: 0px;
 }
 .success-message h4 {
   color: #121c42;
@@ -14562,8 +14556,11 @@ pre code {
   margin: 10px 0;
 }
 .success-message p {
-  color: #6d6d6d;
-  font-size: 14px;
+  color: #6d6d6d !important;
+  font-size: 14px !important;
+  width: 100% !important;
+  margin: 0px !important;
+  padding: 0px !important;
 }
 @media screen and (max-width: 880px) {
   popup-inner6 .success-message {
@@ -15545,6 +15542,64 @@ footer {
 }
 .upload-link-box {
   width: 100%;
+}
+.questions-ans-inner {
+  flex-direction: column;
+  width: 100%;
+}
+.questions-inner-head {
+  flex-direction: column;
+  align-items: self-start;
+}
+.questions-inner-head h1 {
+  width: 100%;
+  font-size: 20px;
+  text-align: left;
+}
+.questions-inner-box {
+  flex-direction: column;
+}
+.questions-inner-left {
+  display: flex;
+  width: 100%;
+  gap: 25px;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 0px 0px;
+}
+.questions-inner-left img {
+  width: 70px;
+  height: 70px;
+}
+.questions-inner-right {
+  width: 100%;
+}
+.questions-inner-right p {
+  font-size: 14px;
+}
+.questions-inner-box1 .questions-inner-left {
+  width: 20% !important;
+}
+.questions-inner-box1 .questions-inner-left img {
+  width: 40px;
+  height: 40px;
+}
+.questions-inner-box1 .questions-inner-right {
+  width: 80%;
+}
+.questions-inner-box1 .questions-inner-comments {
+  flex-direction: column;
+  gap: 5px;
+  align-items: flex-start;
+}
+.show-replies-box {
+  margin-top: -20px;
+  margin-bottom: 0px;
+}
+#category-slider img {
+  border-radius: 20px;
+  height: auto;
+  width: auto;
 }
 }
 

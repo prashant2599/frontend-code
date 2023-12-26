@@ -259,6 +259,9 @@ const PopForm = () => {
     setShowErrorPopup(false);
   };
 
+  const desc =
+    "Thanks for getting in touch! We have received your query. Our team will reach out to you shortly.";
+
   return (
     <>
       <span
@@ -311,7 +314,7 @@ const PopForm = () => {
                 </div>
 
                 <div className="question-box7">
-                  {/* <div className="upload-report-box">
+                  <div className="upload-report-box">
                     <div className="medical-report-wrapper">
                       <button className="medical-report">
                         <img src="/images/2023/07/upload-icon.png" /> Medical
@@ -319,7 +322,7 @@ const PopForm = () => {
                       </button>
                       <input type="file" name="file" />
                     </div>
-                  </div> */}
+                  </div>
 
                   <div className="question-post-box">
                     <button
@@ -336,7 +339,7 @@ const PopForm = () => {
                       className="post-button"
                       onClick={handleFormSubmit}
                     >
-                      Post{" "}
+                      Submit
                     </button>
                   </div>
                 </div>
@@ -473,6 +476,7 @@ const PopForm = () => {
         <Success
           onClose={handleCloseSuccessPopup}
           showSuccessPopup={showSuccessPopup}
+          desc={desc}
         />
       )}
 
