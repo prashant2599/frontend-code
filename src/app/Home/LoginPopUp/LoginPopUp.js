@@ -2,17 +2,19 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
-const LoginPopUp = ({ showLoginPopup, onClose }) => {
+const LoginPopUp = ({ showLoginPopup, onClose, url }) => {
   const router = useRouter();
+
   useEffect(() => {
     if (showLoginPopup) {
+      localStorage.setItem("previousUrl", url);
       const timerId = setTimeout(() => {
         router.push("/login");
       }, 2000);
 
       return () => clearTimeout(timerId);
     }
-  }, [showLoginPopup, router]);
+  }, [showLoginPopup, router, url]);
 
   return (
     <>
@@ -38,9 +40,7 @@ const LoginPopUp = ({ showLoginPopup, onClose }) => {
             <div className="success-message">
               <img src="/images/login.png" />
               <h4>Please Login</h4>
-              <p>
-                To Comment Please Login First!
-              </p>
+              <p>To Comment Please Login First!</p>
             </div>
             {/* <Link href="/login">
               <button>Login Now</button>
