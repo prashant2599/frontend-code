@@ -112,7 +112,7 @@ const AllDoctors = async () => {
             </div>
             {/* form */}
 
-            {/* <DoctorForm /> */}
+            <DoctorForm />
           </div>
         </div>
       </section>

@@ -109,8 +109,8 @@ const AllHospitals = async () => {
                       )}
                       <div className="department-sub-shotdesc">
                         {hospital.short_description &&
-                        hospital.short_description.length > 200
-                          ? `${hospital.short_description.slice(0, 200)}...`
+                        hospital.short_description.length > 100
+                          ? `${hospital.short_description.slice(0, 100)}...`
                           : hospital.short_description}
                       </div>
                     </div>
