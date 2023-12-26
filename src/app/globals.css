@@ -8071,8 +8071,16 @@ ul.tabs li.active {
     padding: 0px;
   }
 
+  iframe{
+    width: 229px !important;
+  }
+.blog-rightbox{
+  overflow: hidden;
+}
+.blog-midbox p{
+  text-align: justify;
 
-
+}
   #category-slider::before {
     height: 90%;
   }
