@@ -18,7 +18,7 @@ const NewStayInTouch = () => {
                 <input
                   className="footer-news"
                   type="text"
-                  placeholder="Email address"
+                  placeholder="Enter Your Email address"
                   name="name"
                   required=""
                 />

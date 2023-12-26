@@ -259,7 +259,6 @@ const SpecialitySelect = ({ doctor, treatment, slug }) => {
     positionTreatmentCountry,
   ]);
 
-
   return (
     <>
       <div className="doctors-list-find">
@@ -335,8 +334,6 @@ const SpecialitySelect = ({ doctor, treatment, slug }) => {
               id="wiki-select"
               onChange={handleSelectTreatment}
               value={selectedTreatment}
-
-              
             >
               <option disabled>Treatments</option>
               {treatment.map((e) => (
