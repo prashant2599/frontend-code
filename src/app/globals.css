@@ -5090,7 +5090,7 @@ table strong {
 
 .doc-Hospital img {
   width: 55px;
-  height: 55px;
+  height: auto;
   background: #f3f3f3;
   padding: 7px;
 }
@@ -5388,7 +5388,7 @@ ul.tabs li.active {
   text-align: right;
   color: #7c7c7c;
   font-weight: 600;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 
 .hospital-location-box img {
@@ -8080,6 +8080,12 @@ ul.tabs li.active {
 .blog-midbox p{
   text-align: justify;
 
+}
+.hospital-midbox-right {
+  overflow: hidden;
+}
+.doctor-midbox-right {
+  overflow: hidden;
 }
   #category-slider::before {
     height: 90%;
