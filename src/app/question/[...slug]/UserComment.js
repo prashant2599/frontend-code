@@ -9,7 +9,13 @@ import Success from "@/app/Home/successPopup/Success";
 import ErrorPopup from "@/app/Home/successPopup/ErrorPopup";
 import LoginPopUp from "@/app/Home/LoginPopUp/LoginPopUp";
 
-const UserComment = ({ id, specialityId, subspecialityId, treatments }) => {
+const UserComment = ({
+  id,
+  specialityId,
+  subspecialityId,
+  treatments,
+  url,
+}) => {
   const [showLoginPopup, setShowLoginPopup] = useState(false);
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const [showErrorPopup, setShowErrorPopup] = useState(false);
@@ -208,6 +214,7 @@ const UserComment = ({ id, specialityId, subspecialityId, treatments }) => {
         <LoginPopUp
           onClose={handleCloseLoginPopup}
           showLoginPopup={showLoginPopup}
+          url={url}
         />
       )}
     </>

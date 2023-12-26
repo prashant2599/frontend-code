@@ -27,6 +27,9 @@ const page = async ({ params }) => {
     minute: "numeric",
     hour12: true,
   });
+
+  const url = `question/${combinedSlug}`
+
   return (
     <>
       <NewHeader />
@@ -69,6 +72,7 @@ const page = async ({ params }) => {
                   specialityId={info.speciality_id}
                   subspecialityId={info.subspeciality_id}
                   treatments={info.treatments}
+                  url={url}
                 />
               </div>
             </div>
@@ -139,8 +143,7 @@ const page = async ({ params }) => {
                 </div>
               </div>
             </div> */}
-            
-           
+
             <ComentList questionId={info.id} />
           </div>
         </div>

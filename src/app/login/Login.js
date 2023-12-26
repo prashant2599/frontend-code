@@ -44,7 +44,9 @@ const Login = () => {
       password: password,
       email: email,
     };
-    const previousUrl = document.referrer;
+    const previousUrl = localStorage.getItem("previousUrl");
+
+    console.log(previousUrl);
 
     // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
     const apiEndpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/api/login`;
@@ -68,8 +70,11 @@ const Login = () => {
         toast.success("You are successfully logged in", {
           position: toast.POSITION.TOP_RIGHT,
         });
-        const redirectUrl = previousUrl || "/patient-dashboard";
+        const redirectUrl = previousUrl
+          ? `/${previousUrl}`
+          : "/patient-dashboard";
         router.push(redirectUrl);
+        localStorage.removeItem("previousUrl");
       })
       .catch((error) => {
         if (error.response && error.response.status === 401) {
