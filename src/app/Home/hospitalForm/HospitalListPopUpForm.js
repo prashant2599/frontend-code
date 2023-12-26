@@ -296,6 +296,9 @@ const HospitalListPopUpForm = ({ hospitalId, name }) => {
       <div className="file__value--remove" data-id={selectedFile.name}></div>
     </div>
   ) : null;
+
+  const desc =
+    "Thanks for reaching out to us! We recieved your appointment request. Our team will connect with you shortly to confirm the allocated time slot.";
   return (
     <>
       <a
@@ -460,9 +463,9 @@ const HospitalListPopUpForm = ({ hospitalId, name }) => {
         <Success
           onClose={handleCloseSuccessPopup}
           showSuccessPopup={showSuccessPopup}
+          desc={desc}
         />
       )}
-
       {showErrorPopup && (
         <ErrorPopup
           onClose={handleCloseErrorPopup}

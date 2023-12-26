@@ -44,9 +44,38 @@ const Allpopudp = () => {
   const [pcode, setPcode] = useState("");
 
   const [selectedFile, setSelectedFile] = useState(null);
+  const [fileValidationMessage, setFileValidationMessage] = useState("");
+
+  const isValidFile = (file) => {
+    const allowedTypes = ["image/png", "image/jpeg", "application/pdf"];
+    const maxFileSize = 2 * 1024 * 1024; // 2MB
+
+    if (!file) {
+      return "Please select a file.";
+    }
+
+    if (!allowedTypes.includes(file.type)) {
+      return "Please select a valid file type (PNG, JPG, PDF).";
+    }
+
+    if (file.size > maxFileSize) {
+      return "File size must be less than or equal to 2MB.";
+    }
+
+    return "";
+  };
 
   const handleFileChange = (event) => {
-    setSelectedFile(event.target.files[0]);
+    const file = event.target.files[0];
+    const validationMessage = isValidFile(file);
+    if (validationMessage) {
+      setFileValidationMessage(validationMessage);
+      event.target.value = null; // Clear the file input
+      return;
+    } else {
+      setFileValidationMessage("");
+    }
+    setSelectedFile(file);
   };
 
   const [captchaValue, setCaptchaValue] = useState(null);
@@ -263,6 +292,16 @@ const Allpopudp = () => {
     setShowErrorPopup(false);
   };
 
+  const fileDisplay = selectedFile ? (
+    <div className="file__value" onClick={() => setSelectedFile(null)}>
+      <div className="file__value--text">{selectedFile.name}</div>
+      <div className="file__value--remove" data-id={selectedFile.name}></div>
+    </div>
+  ) : null;
+
+  const desc =
+    "Thanks for choosing us! We will get back with the best-personalized offers for you.";
+
   return (
     <>
       <button className="open-button" onClick={togglePopup}>
@@ -306,7 +345,6 @@ const Allpopudp = () => {
                   <input
                     type="text"
                     name="name"
-                    
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
                     autoComplete="off"
@@ -325,7 +363,7 @@ const Allpopudp = () => {
                     value={number}
                     onChange={handlePhoneNumberChange}
                     onBlur={handlePhoneBlur}
-                    style={formErrors.number ? Formstyles.errorInput : {}}
+                    style={formErrors.phone ? Formstyles.errorInput : {}}
                   />
                   {renderError(formErrors.phone)}
                 </div>
@@ -364,31 +402,21 @@ const Allpopudp = () => {
               </div>
 
               <div className="home-form">
-                <div className="inputbox1">
-                  <div className="home-form">
-                    <div className="medical-report-all">
-                      <button
-                        className="medical-report-file"
-                        style={{ width: "230px" }}
-                      >
-                        <img src="/images/2023/07/upload-icon1.png" alt="img" />{" "}
-                        Uplod medical report
-                      </button>
-                      <input
-                        type="file"
-                        name="file"
-                        onChange={handleFileChange}
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="inputbox1">
-                  <ReCAPTCHA
-                    sitekey="6LcX6-YnAAAAAAjHasYD8EWemgKlDUxZ4ceSo8Eo" // Replace with your reCAPTCHA site key
-                    onChange={handleCaptchaChange}
-                  />
+                <div className="medical-report-all">
+                  <button className="medical-report-file">
+                    <img src="/images/2023/07/upload-icon1.png" alt="img" />{" "}
+                    Uplod medical report
+                  </button>
+                  <input type="file" name="file" onChange={handleFileChange} />
+                  {fileDisplay}
                 </div>
               </div>
+
+              <ReCAPTCHA
+                sitekey="6LcX6-YnAAAAAAjHasYD8EWemgKlDUxZ4ceSo8Eo"
+                onChange={handleCaptchaChange}
+              />
+              {renderError(formErrors.captcha)}
 
               <button
                 type="submit"
@@ -419,6 +447,7 @@ const Allpopudp = () => {
         <Success
           onClose={handleCloseSuccessPopup}
           showSuccessPopup={showSuccessPopup}
+          desc={desc}
         />
       )}
 

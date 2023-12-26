@@ -122,7 +122,7 @@ const NewMakeUsBetter = () => {
 
           <ul>
             <li>
-              <div class="better-icon">
+              <div className="better-icon">
                 <img src="/images/plain.png" alt="medflick-icons" />
               </div>
               <h3>Pre-treatment Travel Support</h3>
@@ -134,7 +134,7 @@ const NewMakeUsBetter = () => {
               </p>
             </li>
             <li>
-              <div class="better-icon">
+              <div className="better-icon">
                 <img src="/images/life.png" alt="medflick-icons" />
               </div>
               <h3>Follow-Up Care and Accommodations</h3>
@@ -146,8 +146,8 @@ const NewMakeUsBetter = () => {
               </p>
             </li>
             <li>
-              <div class="better-icon">
-                <img src="images/profileIcon.png" alt="medflick-icons" />
+              <div className="better-icon">
+                <img src="/images/profileIcon.png" alt="medflick-icons" />
               </div>
               <h3>High-Quality Profile</h3>
               <p>

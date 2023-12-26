@@ -257,7 +257,7 @@ const QueryForm = () => {
       <section id="query-form-page">
         <div className="midbox-inner  wiki-mk">
           <img
-            src="images/2023/02/logo.png"
+            src="/images/2023/02/logo.png"
             className="logo-med"
             alt="Brand Logo"
           />

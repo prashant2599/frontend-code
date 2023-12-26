@@ -93,7 +93,7 @@ const QAform = () => {
     setPhone1("");
     setEmail1("");
     setQuery1("");
-    setSelectedFile(null)
+    setSelectedFile(null);
   };
 
   const handleFormSubmit1 = (event) => {
@@ -154,13 +154,13 @@ const QAform = () => {
       return;
     }
 
-    if (!captchaValue1) {
-      setFormErrors((prevErrors) => ({
-        ...prevErrors,
-        captcha: "Please Fill the captcha",
-      }));
-      return;
-    }
+    // if (!captchaValue1) {
+    //   setFormErrors((prevErrors) => ({
+    //     ...prevErrors,
+    //     captcha: "Please Fill the captcha",
+    //   }));
+    //   return;
+    // }
     if (isValid) {
       // Create the data object to be sent in the API request
       const data = {
@@ -283,6 +283,9 @@ const QAform = () => {
       <div className="file__value--remove" data-id={selectedFile.name}></div>
     </div>
   ) : null;
+
+  const desc =
+    "Help on the way! We appreciate your patience! We will get back to you soon.";
 
   return (
     <>
@@ -424,6 +427,7 @@ const QAform = () => {
         <Success
           onClose={handleCloseSuccessPopup}
           showSuccessPopup={showSuccessPopup}
+          desc={desc}
         />
       )}
       {showErrorPopup && (

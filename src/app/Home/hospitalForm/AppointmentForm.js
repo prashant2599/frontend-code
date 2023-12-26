@@ -151,7 +151,7 @@ const AppointmentForm = ({ hospitalId, HospitalName }) => {
     // Validation logic
     let isValid = true;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const phoneRegex = /^\d{10}$/; 
+    const phoneRegex = /^\d{10}$/;
 
     if (!userName) {
       if (!name) {
@@ -171,15 +171,15 @@ const AppointmentForm = ({ hospitalId, HospitalName }) => {
       isValid = false;
     }
 
-    if(!userEmail){
-    if (!email || !email.match(emailRegex)) {
-      setFormErrors((prevErrors) => ({
-        ...prevErrors,
-        email: "Please enter a valid email address",
-      }));
-      isValid = false;
+    if (!userEmail) {
+      if (!email || !email.match(emailRegex)) {
+        setFormErrors((prevErrors) => ({
+          ...prevErrors,
+          email: "Please enter a valid email address",
+        }));
+        isValid = false;
+      }
     }
-  }
 
     if (!query) {
       setFormErrors((prevErrors) => ({
@@ -211,7 +211,7 @@ const AppointmentForm = ({ hospitalId, HospitalName }) => {
         messages: query,
         patient_id: patientId,
         hospital_id: hospitalId,
-        file:selectedFile
+        file: selectedFile,
       };
 
       // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
@@ -221,7 +221,7 @@ const AppointmentForm = ({ hospitalId, HospitalName }) => {
 
       // Make the API call
       axios
-        .post(apiEndpoint, data,{
+        .post(apiEndpoint, data, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
@@ -247,7 +247,7 @@ const AppointmentForm = ({ hospitalId, HospitalName }) => {
     setPhone("");
     setEmail("");
     setQuery("");
-    setSelectedFile(null)
+    setSelectedFile(null);
   };
 
   const Formstyles = {
@@ -266,7 +266,7 @@ const AppointmentForm = ({ hospitalId, HospitalName }) => {
     },
   };
 
-  const phoneRegex = /^\d{10}$/; 
+  const phoneRegex = /^\d{10}$/;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const handlePhoneBlur = () => {
     if (!phone || !phone.match(phoneRegex)) {
@@ -303,6 +303,9 @@ const AppointmentForm = ({ hospitalId, HospitalName }) => {
       <div className="file__value--remove" data-id={selectedFile.name}></div>
     </div>
   ) : null;
+
+  const desc =
+    "Thanks for reaching out to us! We recieved your appointment request. Our team will connect with you shortly to confirm the allocated time slot.";
 
   return (
     <>
@@ -469,6 +472,7 @@ const AppointmentForm = ({ hospitalId, HospitalName }) => {
         <Success
           onClose={handleCloseSuccessPopup}
           showSuccessPopup={showSuccessPopup}
+          desc={desc}
         />
       )}
 

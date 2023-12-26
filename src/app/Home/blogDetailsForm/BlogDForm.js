@@ -98,6 +98,7 @@ const BlogDForm = () => {
     setPhone1("");
     setEmail1("");
     setQuery1("");
+    setSelectedFile(null)
   };
 
   const inputRef = useRef(null);
@@ -197,13 +198,13 @@ const BlogDForm = () => {
       return;
     }
 
-    // if (!captchaValue1) {
-    //   setFormErrors((prevErrors) => ({
-    //     ...prevErrors,
-    //     captcha: "Please Fill the captcha",
-    //   }));
-    //   return;
-    // }
+    if (!captchaValue1) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        captcha: "Please Fill the captcha",
+      }));
+      return;
+    }
 
     const patientId = localStorage.getItem("userId");
 
@@ -301,6 +302,9 @@ const BlogDForm = () => {
       <div className="file__value--remove" data-id={selectedFile.name}></div>
     </div>
   ) : null;
+
+  const desc =
+    "Help on the way! We appreciate your patience! We will get back to you soon.";
   return (
     <>
       <div className="blog-rightbox">
@@ -407,7 +411,7 @@ const BlogDForm = () => {
               </div>
             </div>
             <ReCAPTCHA
-              sitekey="6LcX6-YnAAAAAAjHasYD8EWemgKlDUxZ4ceSo8Eo" 
+              sitekey="6LcX6-YnAAAAAAjHasYD8EWemgKlDUxZ4ceSo8Eo"
               onChange={handleCaptchaChange1}
             />
             {renderError(formErrors.captcha)}
@@ -442,6 +446,7 @@ const BlogDForm = () => {
         <Success
           onClose={handleCloseSuccessPopup}
           showSuccessPopup={showSuccessPopup}
+          desc={desc}
         />
       )}
 
