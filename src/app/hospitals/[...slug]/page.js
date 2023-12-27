@@ -382,7 +382,7 @@ export async function generateMetadata({ params }) {
         "and review | Book hassle free appointment",
 
       alternates: {
-        canonical: `https://medflick.com/doctors/${combinedSlug}`,
+        canonical: `https://medflick.com/hospitals/${combinedSlug}`,
       },
     };
   } else if (isPositionCity === true) {
@@ -416,7 +416,7 @@ export async function generateMetadata({ params }) {
         " " +
         "and review | Book hassle free appointment",
       alternates: {
-        canonical: `https://medflick.com/doctors/${combinedSlug}`,
+        canonical: `https://medflick.com/hospitals/${combinedSlug}`,
       },
     };
   } else if (isPositionTreatmentCity === true) {
@@ -469,7 +469,7 @@ export async function generateMetadata({ params }) {
         " " +
         "surgeons and review | Book hassle free appointment ",
       alternates: {
-        canonical: `https://medflick.com/doctors/${combinedSlug}`,
+        canonical: `https://medflick.com/hospitals/${combinedSlug}`,
       },
     };
   }

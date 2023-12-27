@@ -4,16 +4,16 @@ const ErrorPopup = ({ onClose, showErrorPopup }) => {
   return (
     <>
       <div
-        class="popup"
+        className="popup"
         data-popup="popup-6"
         style={{ display: showErrorPopup ? "block" : "none" }}
       >
-        <div class="popup-inner6">
-          <div class="modal-content">
-            <div class="modal-header">
+        <div className="popup-inner6">
+          <div className="modal-content">
+            <div className="modal-header">
               <button
                 type="button"
-                class="popup-close"
+                className="popup-close"
                 data-popup-close="popup-6"
                 data-dismiss="modal"
                 onClick={onClose}
@@ -23,7 +23,7 @@ const ErrorPopup = ({ onClose, showErrorPopup }) => {
               </button>
             </div>
 
-            <div class="success-message">
+            <div className="success-message">
               <img src="/images/error.png" />
               <h4 style={{ color: "red" }}>Oops! Something went wrong.</h4>
               <p>

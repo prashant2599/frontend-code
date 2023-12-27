@@ -367,12 +367,12 @@ const DoctorForm = ({ info }) => {
                 {renderError(formErrors.query)}
               </div>
             </div>
-            <div class="treatment-form">
-              <div class="wrap">
-                <div class="file">
-                  <div class="file__input" id="file__input">
+            <div className="treatment-form">
+              <div className="wrap">
+                <div className="file">
+                  <div className="file__input" id="file__input">
                     <input
-                      class="file__input--file"
+                      className="file__input--file"
                       id="customFile"
                       type="file"
                       multiple="multiple"
@@ -380,7 +380,7 @@ const DoctorForm = ({ info }) => {
                       onChange={handleFileChange}
                     />
                     <label
-                      class="file__input--label"
+                      className="file__input--label"
                       for="customFile"
                       data-text-btn=" "
                     >

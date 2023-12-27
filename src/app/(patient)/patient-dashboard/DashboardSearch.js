@@ -71,9 +71,9 @@ const DashboardSearch = () => {
     : [];
   return (
     <>
-      <div class="topbox-right">
-        <div class="find-box">
-          <div class="search-box">
+      <div className="topbox-right">
+        <div className="find-box">
+          <div className="search-box">
             <input
               type="text"
               placeholder="Search for doctor, hospital or treatments"
@@ -235,7 +235,7 @@ const DashboardSearch = () => {
             )}
           </div>
 
-          <button type="submit" name="en" class="find-button">
+          <button type="submit" name="en" className="find-button">
             Search
           </button>
         </div>

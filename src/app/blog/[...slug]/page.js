@@ -99,8 +99,8 @@ const page = async ({ params }) => {
               height="453"
             />
           ) : null}
-          {/* <img src="images/2023/04/blog-m.png" class="blog-m" alt="Category" /> */}
-          <div class="blog-slidertext">
+          {/* <img src="images/2023/04/blog-m.png" className="blog-m" alt="Category" /> */}
+          <div className="blog-slidertext">
             <h1>{blogDetails.name}</h1>
             {/* <p>
             Aliqua id fugiat nostrud irure ex duis ea quis id quis ad et. Sunt

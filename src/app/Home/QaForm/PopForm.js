@@ -382,7 +382,7 @@ const PopForm = () => {
                     </div>
                   </div>
 
-                  <div class="home-form">
+                  <div className="home-form">
                     <div className="treatment-form">
                       <div className="inputbox">
                         <label>Phone</label>

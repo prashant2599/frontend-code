@@ -6,7 +6,7 @@ const Qa = ({ qa }) => {
     <>
       {shouldRenderSection && (
         <section id="home-health-queries">
-          <div class="midbox-inner wiki-mk">
+          <div className="midbox-inner wiki-mk">
             <h2>
               Get answers to your <span>health queries</span>
             </h2>
@@ -16,18 +16,18 @@ const Qa = ({ qa }) => {
               always
             </h6>
 
-            <div class="healthcare-professionals">
+            <div className="healthcare-professionals">
               {qa.map((e) => (
                 <div
-                  class="professionals animation-element slide-up in-view"
+                  className="professionals animation-element slide-up in-view"
                   key={e.id}
                 >
-                  <div class="professionals-box">
+                  <div className="professionals-box">
                     <img
                       src="/images/new-images/2023/01/icon-m.png"
                       alt="medflick-questions"
                     />
-                    <div class="question-box">{e.short_description}</div>
+                    <div className="question-box">{e.short_description}</div>
                     <div
                       className="question-ans"
                       dangerouslySetInnerHTML={{ __html: e.long_description }}

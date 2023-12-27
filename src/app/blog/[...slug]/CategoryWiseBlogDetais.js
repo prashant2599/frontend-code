@@ -15,16 +15,16 @@ const CategoryWiseBlogDetais = async () => {
   return (
     <>
       <section id="related-blog">
-        <div class="midbox-inner  wiki-mk">
-          <div class="blog-content">
-            <div class="blog-cont-left">
+        <div className="midbox-inner  wiki-mk">
+          <div className="blog-content">
+            <div className="blog-cont-left">
               <h2>
                 All <span>Category</span>
               </h2>
             </div>
           </div>
 
-          <div class="symptoms-nav">
+          <div className="symptoms-nav">
             {uniqueLocations.map((blog) => {
               const matchingSpecialities = speciality.filter(
                 (speciality) => String(speciality.id) === String(blog)

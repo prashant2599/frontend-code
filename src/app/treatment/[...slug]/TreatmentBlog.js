@@ -34,10 +34,10 @@ const TreatmentBlog = ({ blog }) => {
     <>
       {shouldRenderSection && (
         <section id="home-latest-resources">
-          <div class="midbox-inner wiki-mk">
+          <div className="midbox-inner wiki-mk">
             <h2>Our Latest Resources</h2>
 
-            <div class="blogs-box">
+            <div className="blogs-box">
               {blog1.map((e) => {
                 const createdAtDate = new Date(e.created_at);
                 const formattedDate = createdAtDate.toLocaleDateString(
@@ -46,7 +46,7 @@ const TreatmentBlog = ({ blog }) => {
                 );
 
                 return (
-                  <div class="blog-item" key={e.id}>
+                  <div className="blog-item" key={e.id}>
                     {e.icon ? (
                       <img
                         src={`https://dev.medflick.com/blog/${e.icon}`}
@@ -65,8 +65,8 @@ const TreatmentBlog = ({ blog }) => {
                           .concat("..."),
                       }}
                     />
-                    <div class="blog-text">
-                      <div class="category-blog">
+                    <div className="blog-text">
+                      <div className="category-blog">
                         <span>
                           <img
                             src="/images/new-images/2023/01/11/do.png"
@@ -76,7 +76,7 @@ const TreatmentBlog = ({ blog }) => {
                         {formattedDate}{" "}
                         {/* Display the formatted creation date here */}
                       </div>
-                      <div class="time-blog">
+                      <div className="time-blog">
                         <span>
                           <img
                             src="/images/new-images/2023/01/11/do.png"
