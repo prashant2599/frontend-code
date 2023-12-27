@@ -36,6 +36,8 @@ const page = async ({ params }) => {
     const numStars = Math.floor(overallRating);
 
     const hasHalfStar = overallRating % 1 !== 0;
+
+    const url = `doctor/${combinedSlug}`
     return (
       <>
         <NewHeader />
@@ -188,6 +190,7 @@ const page = async ({ params }) => {
                     doctorId={docotorDetails.id}
                     specialityId={docotorDetails.speciality_id}
                     hospitalId={docotorDetails.hospital_id}
+                    url={url}
                   />
                 </div>
 

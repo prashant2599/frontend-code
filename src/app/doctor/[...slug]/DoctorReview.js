@@ -15,6 +15,7 @@ const DoctorReview = ({
   doctorId,
   specialityId,
   hospitalId,
+  url
 }) => {
   const [showLoginPopup, setShowLoginPopup] = useState(false);
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
@@ -182,6 +183,7 @@ const DoctorReview = ({
         <LoginPopUp
           onClose={handleCloseLoginPopup}
           showLoginPopup={showLoginPopup}
+          url={url}
         />
       )}
     </>

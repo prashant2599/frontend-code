@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { notFound } from "next/navigation";
 import NewHeader from "@/app/Home/NewUIHomepage/inc/NewHeader";
 import NewFooter from "@/app/Home/NewUIHomepage/inc/NewFooter";
+import getALLCountry from "@/app/lib/getAllCountry";
 function formatText(text) {
   if (typeof text === "string") {
     return text
@@ -104,112 +105,188 @@ export async function generateMetadata({ params }) {
   const treatmentApi = datas.doctors_list.treatment;
   const doctor = datas.doctors_list.doctors_list;
 
+  const country = await getALLCountry();
+  const doctorCountry = country.country_name;
+
   const slugs = combinedSlug;
   const parts = slugs.split("/");
-  const treatment = parts[0];
-  const city = parts[2];
-  const position1 = parts[1];
-
+  const specialitySlug = parts[0];
+  const countrySlug = parts[1];
+  const citySlug = parts[2];
+  const treatmentSlug = parts[1];
+  const countrySlugTreatment = parts[3];
+  const position5 = parts[5];
   //  for treatment formant country wise
-  const formattedTreatment = formatText(position1);
 
-  let updatedTreatment;
+  // if (formattedTreatment.includes("Surgery")) {
+  //   updatedTreatment = formattedTreatment.replace(/Surgery/g, "Surgeon");
+  // } else {
+  //   updatedTreatment = formattedTreatment;
+  // }
 
-  if (formattedTreatment.includes("Surgery")) {
-    updatedTreatment = formattedTreatment.replace(/Surgery/g, "Surgeon"); // Use a regular expression with the 'g' flag for global replacement
-  } else {
-    updatedTreatment = formattedTreatment;
-  }
+  const formattedSpeciality = formatText(specialitySlug);
+  const formattedCountry = formatText(countrySlug);
+  const formattedCity = formatText(citySlug);
 
-  const formattedSpeciality = formatText(treatment);
-
-  const matchedTreatment = treatmentApi.find(
-    (treatment) => treatment.slug === position1
+  const isPositionInDoctorCountry = doctorCountry.some(
+    (countryObj) => countryObj.country === countrySlug
   );
-  const formattedcity = formatText(position1);
+  const isPositionCity = doctor.some((e) => e.location === countrySlug);
 
-  const formattedcountry =
-    doctor && doctor.length > 0 ? formatText(doctor[0].country) : null;
+  let updatedSpeciality;
 
-  const matchingCity = doctor && doctor.length > 0 ? doctor[0].location : null;
-  const matchingCountry =
-    doctor && doctor.length > 0 ? doctor[0].country : null;
-  console.log(matchedTreatment);
-  if (info.doc_title && position1 === matchingCity) {
-    return {
-      title:
-        "Best " +
-        formattedSpeciality +
-        " " +
-        "doctors in " +
-        formattedcity +
-        " - Updated " +
-        currentMonthName +
-        " " +
-        currentYear,
-      description:
-        currentMonthName +
-        " " +
-        currentYear +
-        ", Find the best " +
-        formattedSpeciality +
-        " doctors in " +
-        formattedcity +
-        ". Book an appointment online! View " +
-        formattedSpeciality +
-        " doctors, profile, experience & review.",
-      alternates: {
-        canonical: `https://medflick.com/doctors/${combinedSlug}`,
-      },
-      openGraph: {
-        images: "https://medflick.com/images/2023/02/logo.png",
-      },
-    };
-  } else if (
-    info.doc_title &&
-    matchedTreatment &&
-    position1 === matchedTreatment.slug
-  ) {
-    return {
-      title:
-        "Best " +
-        updatedTreatment +
-        " doctors in " +
-        formattedcountry +
-        " - Updated " +
-        currentMonthName +
-        " " +
-        currentYear,
-      description:
-        currentMonthName +
-        " " +
-        currentYear +
-        ", Find the best " +
-        updatedTreatment +
-        " doctors in" +
-        formattedcountry +
-        ". Book an appointment online! View " +
-        updatedTreatment +
-        "  doctors, profile, experience & review.",
-      alternates: {
-        canonical: `https://medflick.com/doctors/${combinedSlug}`,
-      },
-      openGraph: {
-        images: "https://medflick.com/images/2023/02/logo.png",
-      },
-    };
+  if (formattedSpeciality.includes("Neurosurgery")) {
+    updatedSpeciality = formattedSpeciality.replace(
+      /Neurosurgery/g,
+      "Neurosurgeon"
+    );
   } else {
+    updatedSpeciality = formattedSpeciality;
+  }
+
+  // const matchedTreatment = treatmentApi.find(
+  //   (treatment) => treatment.slug === position1
+  // );
+  // const formattedcity = formatText(position1);
+
+  // const formattedcountry =
+  //   doctor && doctor.length > 0 ? formatText(doctor[0].country) : null;
+
+  // const matchingCity = doctor && doctor.length > 0 ? doctor[0].location : null;
+  // const matchingCountry =
+  //   doctor && doctor.length > 0 ? doctor[0].country : null;
+  // console.log(matchedTreatment);
+
+  if (isPositionInDoctorCountry === true) {
     return {
-      title: info.doc_title,
-      description: info.doc_description,
-      openGraph: {
-        title: info.doc_title,
-        description: info.doc_description,
-        images: "https://medflick.com/images/2023/02/logo.png",
+      title:
+        "Best " +
+        updatedSpeciality +
+        " " +
+        "Doctors in " +
+        formattedCountry +
+        " " +
+        "View reviews - " +
+        currentYear,
+
+      description:
+        "Find Updated list of Best " +
+        updatedSpeciality +
+        " " +
+        "in " +
+        formattedCountry +
+        ". Find Top " +
+        updatedSpeciality +
+        " " +
+        "reviews. | Book Hassle-Free Appointment",
+      alternates: {
+        canonical: `https://medflick.com/doctors/${combinedSlug}`,
       },
+    };
+  } else if (isPositionCity === true) {
+    return {
+      title:
+        "Best " +
+        updatedSpeciality +
+        " " +
+        "Doctors in " +
+        formattedCountry +
+        ", " +
+        formattedCity +
+        " " +
+        "View reviews - " +
+        currentYear,
+      description:
+        "Find Updated list of Best " +
+        updatedSpeciality +
+        " " +
+        "in " +
+        formattedCountry +
+        ". Find Top " +
+        updatedSpeciality +
+        " " +
+        "reviews. | Book Hassle-Free Appointment",
       alternates: {
         canonical: `https://medflick.com/doctors/${combinedSlug}`,
       },
     };
   }
+
+  // if (info.doc_title && position1 === matchingCity) {
+  //   return {
+  //     title:
+  //       "Best " +
+  //       formattedSpeciality +
+  //       " " +
+  //       "doctors in " +
+  //       formattedcity +
+  //       " - Updated " +
+  //       currentMonthName +
+  //       " " +
+  //       currentYear,
+  //     description:
+  //       currentMonthName +
+  //       " " +
+  //       currentYear +
+  //       ", Find the best " +
+  //       formattedSpeciality +
+  //       " doctors in " +
+  //       formattedcity +
+  //       ". Book an appointment online! View " +
+  //       formattedSpeciality +
+  //       " doctors, profile, experience & review.",
+  //     alternates: {
+  //       canonical: `https://medflick.com/doctors/${combinedSlug}`,
+  //     },
+  //     openGraph: {
+  //       images: "https://medflick.com/images/2023/02/logo.png",
+  //     },
+  //   };
+  // } else if (
+  //   info.doc_title &&
+  //   matchedTreatment &&
+  //   position1 === matchedTreatment.slug
+  // ) {
+  //   return {
+  //     title:
+  //       "Best " +
+  //       updatedTreatment +
+  //       " doctors in " +
+  //       formattedcountry +
+  //       " - Updated " +
+  //       currentMonthName +
+  //       " " +
+  //       currentYear,
+  //     description:
+  //       currentMonthName +
+  //       " " +
+  //       currentYear +
+  //       ", Find the best " +
+  //       updatedTreatment +
+  //       " doctors in" +
+  //       formattedcountry +
+  //       ". Book an appointment online! View " +
+  //       updatedTreatment +
+  //       "  doctors, profile, experience & review.",
+  //     alternates: {
+  //       canonical: `https://medflick.com/doctors/${combinedSlug}`,
+  //     },
+  //     openGraph: {
+  //       images: "https://medflick.com/images/2023/02/logo.png",
+  //     },
+  //   };
+  // } else {
+  //   return {
+  //     title: info.doc_title,
+  //     description: info.doc_description,
+  //     openGraph: {
+  //       title: info.doc_title,
+  //       description: info.doc_description,
+  //       images: "https://medflick.com/images/2023/02/logo.png",
+  //     },
+  //     alternates: {
+  //       canonical: `https://medflick.com/doctors/${combinedSlug}`,
+  //     },
+  //   };
+  // }
 }

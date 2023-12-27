@@ -6,6 +6,7 @@ import HeaderSearch from "./HeaderSearch";
 import { useUser } from "@/app/UserContext";
 import { useRouter } from "next/navigation";
 import { VscAccount } from "react-icons/vsc";
+import Script from "next/script";
 
 const LoginButton = () => {
   const router = useRouter();
@@ -47,17 +48,17 @@ const LoginButton = () => {
   //   document.body.appendChild(script);
 
   //   // Ensure that the script is loaded before attempting to change the language
-  //   // script.onload = () => {
-  //   //   // Change the language using the global gtranslateSettings object
-  //   //   if (window.gtranslateSettings) {
-  //   //     window.gtranslateSettings.default_language = selectedLanguage;
-  //   //   }
-  //   // };
+  //   script.onload = () => {
+  //     // Change the language using the global gtranslateSettings object
+  //     if (window.gtranslateSettings) {
+  //       window.gtranslateSettings.default_language = selectedLanguage;
+  //     }
+  //   };
 
-  //   // return () => {
-  //   //   // Clean up: remove the script when the component unmounts
-  //   //   document.body.removeChild(script);
-  //   // };
+  //   return () => {
+  //     // Clean up: remove the script when the component unmounts
+  //     document.body.removeChild(script);
+  //   };
   // }, []);
 
   return (
