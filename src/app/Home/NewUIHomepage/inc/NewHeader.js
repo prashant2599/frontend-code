@@ -1,6 +1,5 @@
-import Script from "next/script";
 import Link from "next/link";
-import { GoChevronDown } from "react-icons/go";
+import { FaChevronDown } from "react-icons/fa";
 import getAllSpeciality from "@/app/lib/getAllSpeciality";
 import MobileSearch from "../../Inc/MobileSearch";
 import MobileHeader from "../../Inc/MobileHeader";
@@ -25,7 +24,7 @@ const NewHeader = async () => {
                     <a href="#" className="dropbtn">
                       Treatments
                       <i>
-                        <GoChevronDown style={{ fontSize: "22px" }} />
+                        <FaChevronDown />
                       </i>
                     </a>
                     <div className="dropdown-content">
@@ -53,7 +52,7 @@ const NewHeader = async () => {
                     <a href="#" className="dropbtn">
                       Hospitals
                       <i>
-                        <GoChevronDown style={{ fontSize: "22px" }} />
+                        <FaChevronDown />
                       </i>
                     </a>
                     <div className="dropdown-content">
@@ -78,7 +77,7 @@ const NewHeader = async () => {
                     <a href="#" className="dropbtn">
                       Doctors
                       <i>
-                        <GoChevronDown style={{ fontSize: "22px" }} />
+                        <FaChevronDown />
                       </i>
                     </a>
                     <div className="dropdown-content">
@@ -114,27 +113,6 @@ const NewHeader = async () => {
 
         <MobileHeader speciality={speciality} />
       </header>
-      <Script
-        id="scroll-handler-script"
-        dangerouslySetInnerHTML={{
-          __html: `
-                    window.onscroll = function () {
-                      myFunction();
-                    };
-    
-                    var header = document.getElementById("header-id");
-                    var sticky = header.offsetTop;
-    
-                    function myFunction() {
-                      if (window.pageYOffset > sticky) {
-                        header.classList.add("sticky");
-                      } else {
-                        header.classList.remove("sticky");
-                      }
-                    }
-                  `,
-        }}
-      ></Script>
     </>
   );
 };

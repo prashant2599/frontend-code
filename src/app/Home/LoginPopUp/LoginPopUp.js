@@ -10,7 +10,7 @@ const LoginPopUp = ({ showLoginPopup, onClose, url }) => {
       localStorage.setItem("previousUrl", url);
       const timerId = setTimeout(() => {
         router.push("/login");
-      }, 2000);
+      }, 1000);
 
       return () => clearTimeout(timerId);
     }

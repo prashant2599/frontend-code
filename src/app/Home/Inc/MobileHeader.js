@@ -26,6 +26,28 @@ const MobileHeader = ({ speciality }) => {
     clickedCollapsible.classList.toggle("active");
   };
 
+  useEffect(() => {
+    // Function to handle scroll
+    function handleScroll() {
+      const header = document.getElementById("header-id");
+      const sticky = header.offsetTop;
+
+      if (window.pageYOffset > sticky) {
+        header.classList.add("sticky");
+      } else {
+        header.classList.remove("sticky");
+      }
+    }
+
+    // Attach scroll event listener when component mounts
+    window.addEventListener("scroll", handleScroll);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <>
       <div className="headerSecondry">
