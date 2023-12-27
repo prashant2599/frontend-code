@@ -27,7 +27,7 @@ const NewBlogPage = async ({ blog }) => {
   return (
     <>
       <section id="blog-list-medflick">
-        <div class="midbox-inner  wiki-mk">
+        <div className="midbox-inner  wiki-mk">
           <h1>
             Healthcare <span>Blogs</span>
           </h1>
@@ -38,10 +38,10 @@ const NewBlogPage = async ({ blog }) => {
         </div>
       </section>
 
-      <section class="blog-list-medflick">
-        <div class="midbox-inner  wiki-mk">
-          <div class="blog-box-medflick">
-            <div class="blog-left-medflick">
+      <section className="blog-list-medflick">
+        <div className="midbox-inner  wiki-mk">
+          <div className="blog-box-medflick">
+            <div className="blog-left-medflick">
               <ul>
                 {blog.map((e) => (
                   <li key={e.id}>
@@ -66,7 +66,7 @@ const NewBlogPage = async ({ blog }) => {
               <NumberPage blogs={Rblog} />
             </div>
 
-            <div class="blog-right-medflick">
+            <div className="blog-right-medflick">
               <h4>Recent Posts</h4>
               <ul>
                 {recentTen.map((e) => (

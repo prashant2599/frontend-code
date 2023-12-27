@@ -106,7 +106,7 @@ const page = async ({ params }) => {
                                   />
                                 </Link>
                               </div>
-                              <ul class="tabs tab-h">
+                              <ul className="tabs tab-h">
                                 {galleryImages.map((e) => (
                                   <React.Fragment
                                     className="active"
@@ -300,7 +300,7 @@ export async function generateMetadata({ params }) {
         FormatedCity +
         " and reviews | Book hassle-free appointment",
       alternates: {
-        canonical: `https://medflick.com/doctors/${combinedSlug}`,
+        canonical: `https://medflick.com/hospitals/${combinedSlug}`,
       },
     };
   } else {
@@ -320,7 +320,7 @@ export async function generateMetadata({ params }) {
         " " +
         "Specialist  and reviews | Book hassle-free appointment",
       alternates: {
-        canonical: `https://medflick.com/doctors/${combinedSlug}`,
+        canonical: `https://medflick.com/hospitals/${combinedSlug}`,
       },
     };
   }

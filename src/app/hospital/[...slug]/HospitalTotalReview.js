@@ -48,10 +48,10 @@ const HospitalTotalReview = async ({ hospitalId }) => {
   };
   return (
     <>
-      <div id="reviews" class="profile-data-section">
+      <div id="reviews" className="profile-data-section">
         <h2>Reviews</h2>
-        <div class="most-reviews">
-          <select class="reviews-dropdown" aria-label="Sort dropdown">
+        <div className="most-reviews">
+          <select className="reviews-dropdown" aria-label="Sort dropdown">
             <option value="select-language">Most Relevant</option>
             <option value="">Oncology</option>
             <option value="">Medical Oncology</option>
@@ -85,7 +85,7 @@ const HospitalTotalReview = async ({ hospitalId }) => {
 
        
 
-        <a href="#" class="read-mor-reviews">
+        <a href="#" className="read-mor-reviews">
           Read More Reviews
         </a>
       </div>

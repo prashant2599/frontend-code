@@ -57,23 +57,23 @@ const QuoteReady = () => {
   return (
     <>
       <section id="request-quote-section">
-        <div class="midbox-inner wiki-mk">
-          <div class="top-back">
+        <div className="midbox-inner wiki-mk">
+          <div className="top-back">
             <Link href="/patient-report">
               <img src="/images/2023/01/back-icon.png" alt="icon" /> Back
             </Link>
-            <div class="barbox">
+            <div className="barbox">
               {" "}
               <img src="/images/2023/01/bar-img2.png" alt="icon" />{" "}
             </div>
           </div>
 
-          <div class="search-find-box">
+          <div className="search-find-box">
             <h1>Your Quote is Ready</h1>
 
-            <div class="hospitals-list">
-              <div class="hospitals-list-left">
-                <div class="hospitals-tab">
+            <div className="hospitals-list">
+              <div className="hospitals-list-left">
+                <div className="hospitals-tab">
                   {hospital &&
                     hospital.map((e, index) => (
                       <button
@@ -138,7 +138,7 @@ const QuoteReady = () => {
                 </div>
               </div>
 
-              <div class="hospitals-tab1">
+              <div className="hospitals-tab1">
                 {hospital &&
                   hospital.map((e, index) => (
                     <button
@@ -201,7 +201,7 @@ const QuoteReady = () => {
                     </button>
                   ))}
               </div>
-              <div class="hospitals-quote-ready" style={{ height: "650px" }}>
+              <div className="hospitals-quote-ready" style={{ height: "650px" }}>
                 {hospital &&
                   hospital.map((e) => (
                     <div
@@ -218,13 +218,13 @@ const QuoteReady = () => {
                         height="100%"
                         id="packages1"
                       ></iframe>
-                      <div class="free-quote1">
-                        <a href="#/" class="request-free-quote">
+                      <div className="free-quote1">
+                        <a href="#/" className="request-free-quote">
                           {" "}
                           Connect with Us
                         </a>
                         <span
-                          class="download-quote"
+                          className="download-quote"
                           onClick={() =>
                             handleDownloadClick(
                               `https://dev.medflick.com/hospital/${e.hospital_quote}`
@@ -256,12 +256,12 @@ const QuoteReady = () => {
       </section>
 
       <section id="section-assistance">
-        <div class="midbox-inner wiki-mk">
+        <div className="midbox-inner wiki-mk">
           <ul>
             <li>
               <h3>Need Assistance?</h3>
               <p>Can’t find what you’re looking for? Let up help</p>
-              <a href="#/" class="get-help">
+              <a href="#/" className="get-help">
                 {" "}
                 Get Help
               </a>
@@ -269,7 +269,7 @@ const QuoteReady = () => {
             <li>
               <h3>Need Assistance?</h3>
               <p>Can’t find what you’re looking for? Let up help</p>
-              <a href="#/" class="get-help">
+              <a href="#/" className="get-help">
                 {" "}
                 Get Help
               </a>
@@ -277,7 +277,7 @@ const QuoteReady = () => {
             <li>
               <h3>Need Assistance?</h3>
               <p>Can’t find what you’re looking for? Let up help</p>
-              <a href="#/" class="get-help">
+              <a href="#/" className="get-help">
                 {" "}
                 Get Help
               </a>

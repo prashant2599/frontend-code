@@ -52,7 +52,7 @@ const PaginationBlogs = async ({ blogs, number, category }) => {
   return (
     <div>
       <section id="blog-list-medflick">
-        <div class="midbox-inner  wiki-mk">
+        <div className="midbox-inner  wiki-mk">
           {category == "page" ? (
             <h1>
               Healthcare <span>Blogs</span>
@@ -83,10 +83,10 @@ const PaginationBlogs = async ({ blogs, number, category }) => {
         </div>
       </section>
 
-      <section class="blog-list-medflick">
-        <div class="midbox-inner  wiki-mk">
-          <div class="blog-box-medflick">
-            <div class="blog-left-medflick">
+      <section className="blog-list-medflick">
+        <div className="midbox-inner  wiki-mk">
+          <div className="blog-box-medflick">
+            <div className="blog-left-medflick">
               <ul>
                 {blogs.map((e) => (
                   <li key={e.id}>
@@ -109,7 +109,7 @@ const PaginationBlogs = async ({ blogs, number, category }) => {
               </ul>
 
               {number !== undefined && (
-                <div class="list-item-no">
+                <div className="list-item-no">
                   <ul>
                     {pages.map((page) => (
                       <li key={page}>
@@ -126,7 +126,7 @@ const PaginationBlogs = async ({ blogs, number, category }) => {
               )}
             </div>
 
-            <div class="blog-right-medflick">
+            <div className="blog-right-medflick">
               <h4>Recent Posts</h4>
               <ul>
                 {recentTen.map((e) => (

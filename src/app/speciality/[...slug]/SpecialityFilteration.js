@@ -46,7 +46,7 @@ const SpecialityFilteration = ({ countryResponse, slug, slugs }) => {
   ];
   return (
     <>
-      <div class="tab-treatment">
+      <div className="tab-treatment">
         {countries.map((country, index) => {
           const icon = countryIcon.find(
             (icon) => icon.name.toLowerCase() === country.toLowerCase()

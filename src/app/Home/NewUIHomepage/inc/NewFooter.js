@@ -59,9 +59,9 @@ const NewFooter = () => {
   return (
     <>
       <footer>
-        <div class="midbox-inner wiki-mk">
-          <div class="footer-section">
-            <div class="footer-about">
+        <div className="midbox-inner wiki-mk">
+          <div className="footer-section">
+            <div className="footer-about">
               <img src="/images/2023/01/logo.png" alt="Brand Logo" />
               <p>
                 Beyond Boundaries, Around the Clock Healthcare knows no
@@ -72,9 +72,9 @@ const NewFooter = () => {
               </p>
             </div>
 
-            <div class="footer-links">
-              <div class="footer-navbox">
-                <h4 class="footer-nav-des">Medflick</h4>
+            <div className="footer-links">
+              <div className="footer-navbox">
+                <h4 className="footer-nav-des">Medflick</h4>
                 <h4
                   className={`but ${
                     activeButton === "button1" ? "active" : ""
@@ -114,8 +114,8 @@ const NewFooter = () => {
                   </li>
                 </ul>
               </div>
-              <div class="footer-navbox">
-                <h4 class="footer-nav-des">Treatments</h4>
+              <div className="footer-navbox">
+                <h4 className="footer-nav-des">Treatments</h4>
                 <h4
                   className={`but ${
                     activeButton === "button2" ? "active" : ""
@@ -136,8 +136,8 @@ const NewFooter = () => {
                     ))}
                 </ul>
               </div>
-              <div class="footer-navbox">
-                <h4 class="footer-nav-des">Quick Links</h4>
+              <div className="footer-navbox">
+                <h4 className="footer-nav-des">Quick Links</h4>
                 <h4
                   className={`but footer-nav-mob ${
                     activeButton === "button1" ? "active" : ""
@@ -182,8 +182,8 @@ const NewFooter = () => {
                 </li> */}
                 </ul>
               </div>
-              <div class="footer-navbox">
-                <h4 class="footer-nav-des">Watch</h4>
+              <div className="footer-navbox">
+                <h4 className="footer-nav-des">Watch</h4>
                 <h4
                   className={`but ${
                     activeButton === "button4" ? "active" : ""
@@ -195,7 +195,7 @@ const NewFooter = () => {
                     <AiOutlinePlus style={{ fontSize: "22px" }} />
                   </i>
                 </h4>
-                <ul class="footerbox">
+                <ul className="footerbox">
                   <li>
                     <a href="#" target="_self">
                       Expert Videos{" "}
@@ -213,8 +213,8 @@ const NewFooter = () => {
                   </li>
                 </ul>
               </div>
-              <div class="footer-navbox">
-                <h4 class="footer-nav-des">Support</h4>
+              <div className="footer-navbox">
+                <h4 className="footer-nav-des">Support</h4>
                 <h4
                   className={`but ${
                     activeButton === "button5" ? "active" : ""
@@ -252,8 +252,8 @@ const NewFooter = () => {
             </div>
           </div>
 
-          <div class="copyright">
-            <div class="wiki">
+          <div className="copyright">
+            <div className="wiki">
               <ul>
                 <li>
                   <a
@@ -283,7 +283,7 @@ const NewFooter = () => {
                 </li>
               </ul>
             </div>
-            <div class="wh">
+            <div className="wh">
               © 2023 Medflick. All Rights Reserved |{" "}
               <a href="#" target="_black">
                 Privacy Policy
