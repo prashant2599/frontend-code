@@ -7,7 +7,7 @@ import Success from "@/app/Home/successPopup/Success";
 import ErrorPopup from "@/app/Home/successPopup/ErrorPopup";
 import LoginPopUp from "@/app/Home/LoginPopUp/LoginPopUp";
 
-const HospitalRating = ({ name, hospitalId }) => {
+const HospitalRating = ({ name, hospitalId, url }) => {
   const [showLoginPopup, setShowLoginPopup] = useState(false);
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const [showErrorPopup, setShowErrorPopup] = useState(false);
@@ -166,6 +166,7 @@ const HospitalRating = ({ name, hospitalId }) => {
         <LoginPopUp
           onClose={handleCloseLoginPopup}
           showLoginPopup={showLoginPopup}
+          url={url}
         />
       )}
     </>

@@ -26,25 +26,25 @@ const DoctorsSearch = ({ doctors, slug, pageNumber, treatment }) => {
   const countrySlugTreatment = parts && parts[3];
   const position5 = parts && parts[5];
 
-  const [doctorCountry, setDoctorCountry] = useState([]);
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const result = await getALLCountry();
-        setDoctorCountry(result.country_name);
-      } catch (err) {
-        console.log(err.message); // Set the error message in state
-      }
-    }
+  // const [doctorCountry, setDoctorCountry] = useState([]);
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     try {
+  //       const result = await getALLCountry();
+  //       setDoctorCountry(result.country_name);
+  //     } catch (err) {
+  //       console.log(err.message); // Set the error message in state
+  //     }
+  //   }
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
-  const fotmattedCategory = Category && formatText(Category);
-  const formattedcountry = countrySlug && formatText(countrySlug);
-  const formattedcity = citySlug && formatText(citySlug);
-  const formattedTreatmentCountry =
-    countrySlugTreatment && formatText(countrySlugTreatment);
+  // const fotmattedCategory = Category && formatText(Category);
+  // const formattedcountry = countrySlug && formatText(countrySlug);
+  // const formattedcity = citySlug && formatText(citySlug);
+  // const formattedTreatmentCountry =
+  //   countrySlugTreatment && formatText(countrySlugTreatment);
 
   const handleSearch = (event) => {
     const term = event.target.value.toLowerCase();
@@ -74,28 +74,27 @@ const DoctorsSearch = ({ doctors, slug, pageNumber, treatment }) => {
     );
   };
 
-  const isPositionInDoctorCountry = doctorCountry.some(
-    (countryObj) => countryObj.country === countrySlug
-  );
+  // const isPositionInDoctorCountry = doctorCountry.some(
+  //   (countryObj) => countryObj.country === countrySlug
+  // );
 
-  const isPositionTreatmentCity =
-    doctors && doctors.some((e) => e.location === citySlug);
+  // const isPositionTreatmentCity =
+  //   doctors && doctors.some((e) => e.location === citySlug);
 
-  // Check if the citySlug is in the doctor's locations
-  const isPositionCity =
-    doctors && doctors.some((e) => e.location === countrySlug);
+  // // Check if the citySlug is in the doctor's locations
+  // const isPositionCity =
+  //   doctors && doctors.some((e) => e.location === countrySlug);
 
-  const isPositionInTreatment =
-    treatment && treatment.some((e) => e.slug === countrySlug);
-  const positionTreatmentCountry = doctorCountry.some(
-    (e) => e.country === citySlug
-  );
+  // const isPositionInTreatment =
+  //   treatment && treatment.some((e) => e.slug === countrySlug);
+  // const positionTreatmentCountry = doctorCountry.some(
+  //   (e) => e.country === citySlug
+  // );
 
-  console.log(isPositionTreatmentCity);
   return (
     <>
       <div className="find-doctor-box">
-        {isPositionInDoctorCountry ? (
+        {/* {isPositionInDoctorCountry ? (
           <h2>
             Find {fotmattedCategory} Doctors in {formattedcountry}
           </h2>
@@ -117,7 +116,9 @@ const DoctorsSearch = ({ doctors, slug, pageNumber, treatment }) => {
           <h2>Find {formattedcountry} Doctors</h2>
         ) : (
           <h2>Find {fotmattedCategory} Doctors</h2>
-        )}
+        )} */}
+
+        <h2>Find Doctors</h2>
 
         <div className="find-box-list">
           <div className="search-box">

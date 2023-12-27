@@ -34,9 +34,11 @@ const page = async ({ params }) => {
     const numStars = Math.floor(overallRating);
 
     const hasHalfStar = overallRating % 1 !== 0;
+
+    const url = `hospital/${combinedSlug}`;
     return (
       <>
-      <NewHeader />
+        <NewHeader />
         <section id="hospitalprofile-section">
           <div className="midbox-inner  wiki-mk">
             <div className="hospitalprofile">
@@ -91,7 +93,10 @@ const page = async ({ params }) => {
                 <div className="doctor-book-an">
                   <HospitalShareProfile hospitalDetails={hospitalDetails} />
 
-                  <AppointmentForm hospitalId={hospitalDetails.id} HospitalName={hospitalDetails.name} />
+                  <AppointmentForm
+                    hospitalId={hospitalDetails.id}
+                    HospitalName={hospitalDetails.name}
+                  />
                 </div>
               </div>
             </div>
@@ -187,6 +192,7 @@ const page = async ({ params }) => {
                   <HospitalRating
                     name={hospitalDetails.name}
                     hospitalId={hospitalDetails.id}
+                    url={url}
                   />
                 </div>
 
@@ -296,7 +302,7 @@ const page = async ({ params }) => {
                 </div>
               ) : null}
             </div>
-            <HospitalTotalReview hospitalId={hospitalDetails.id}  />
+            <HospitalTotalReview hospitalId={hospitalDetails.id} />
           </div>
         </section>
         <NewFooter />
