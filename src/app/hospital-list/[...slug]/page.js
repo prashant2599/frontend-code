@@ -10,6 +10,18 @@ import HospitalListPopUpForm from "@/app/Home/hospitalForm/HospitalListPopUpForm
 import HospitalSearch from "@/app/hospitals/[...slug]/HospitalSearch";
 import NewHeader from "@/app/Home/NewUIHomepage/inc/NewHeader";
 import NewFooter from "@/app/Home/NewUIHomepage/inc/NewFooter";
+import getALLCountry from "@/app/lib/getAllCountry";
+
+function formatText(text) {
+  if (typeof text === "string") {
+    return text
+      .split("-")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  } else {
+    return "Invalid input";
+  }
+}
 
 const page = async ({ params }) => {
   try {
@@ -24,16 +36,44 @@ const page = async ({ params }) => {
     const treatment = datas.hospital_list.treatment;
     const info = datas.hospital_list.specility_name;
     const images = datas.hospital_list.hospital_gallery;
+    const pageNumber = datas.hospital_list.page;
+    const totalHospital = datas.hospital_list.count;
+
+    const country = await getALLCountry();
+    const doctorCountry = country.country_name;
+
+    const parts = combinedSlug.split("/");
+    const specialitySlug = parts[0];
+    const countrySlug = parts[1];
+    const citySlug = parts[2];
+
+    const isPositionInDoctorCountry = doctorCountry.some(
+      (countryObj) => countryObj.country === citySlug
+    );
+
+    const FormatedTreatment = formatText(countrySlug);
+    const FormatedCity = formatText(citySlug);
     return (
       <>
-      <NewHeader />
+        <NewHeader />
         <section id="find-doctors">
           <div className="midbox-inner  wiki-mk">
-           <HospitalSearch hospital={hospital} slug={combinedSlug} />
+            <HospitalSearch hospital={hospital} slug={combinedSlug} />
           </div>
         </section>
         <section id="find-hospital-list">
           <div className="midbox-inner  wiki-mk">
+            {isPositionInDoctorCountry ? (
+              <h1>
+                Best {FormatedTreatment} hospital in {FormatedCity}{" "}
+                <span>({totalHospital} Results)</span>
+              </h1>
+            ) : (
+              <h1>
+                Best {FormatedTreatment} Specialist{" "}
+                <span>({totalHospital} Results)</span>
+              </h1>
+            )}
             <HospitalFilters
               hospital={hospital}
               slug={combinedSlug}
@@ -204,10 +244,84 @@ const page = async ({ params }) => {
 export default page;
 
 export async function generateMetadata({ params }) {
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  const currentDate = new Date();
+  const currentMonthIndex = currentDate.getMonth();
+  const currentMonthName = monthNames[currentMonthIndex];
+  const currentYear = currentDate.getFullYear();
   const combinedSlug = params.slug.join("/");
-  return {
-    alternates: {
-      canonical: `https://medflick.com/hospital-list/${combinedSlug}`,
-    },
-  };
+  const parts = combinedSlug.split("/");
+  const specialitySlug = parts[0];
+  const countrySlug = parts[1];
+  const citySlug = parts[2];
+  const country = await getALLCountry();
+  const doctorCountry = country.country_name;
+  const isPositionInDoctorCountry = doctorCountry.some(
+    (countryObj) => countryObj.country === citySlug
+  );
+  const FormatedTreatment = formatText(countrySlug);
+  const FormatedCity = formatText(citySlug);
+
+  if (isPositionInDoctorCountry === true) {
+    return {
+      title:
+        "Best " +
+        FormatedTreatment +
+        " " +
+        "hospitals in " +
+        FormatedCity +
+        "- " +
+        "View review -" +
+        currentYear,
+      description:
+        "Find Updated List of " +
+        FormatedTreatment +
+        " " +
+        "Specialist hospitals in " +
+        FormatedCity +
+        ". Find Top " +
+        FormatedTreatment +
+        " " +
+        "Specialist " +
+        FormatedCity +
+        " and reviews | Book hassle-free appointment",
+      alternates: {
+        canonical: `https://medflick.com/doctors/${combinedSlug}`,
+      },
+    };
+  } else {
+    return {
+      title:
+        "Best " +
+        FormatedTreatment +
+        " " +
+        "hospitals | Medflick Doctor List -" +
+        currentYear,
+      description:
+        "Find Updated List of " +
+        FormatedTreatment +
+        " " +
+        "Specialist hospitals. Find Top " +
+        FormatedTreatment +
+        " " +
+        "Specialist  and reviews | Book hassle-free appointment",
+      alternates: {
+        canonical: `https://medflick.com/doctors/${combinedSlug}`,
+      },
+    };
+  }
 }

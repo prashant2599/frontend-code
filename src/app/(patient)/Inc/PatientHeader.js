@@ -1,9 +1,11 @@
 "use client";
 import { useEffect, useState } from "react";
-import { GoChevronDown } from "react-icons/go";
+import { FaChevronDown } from "react-icons/fa";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const PatientHeader = () => {
+  const router = useRouter();
   const [isOffcanvas, setIsOffcanvas] = useState(false);
   const [userName, setUserName] = useState("");
 
@@ -11,10 +13,9 @@ const PatientHeader = () => {
     const storedUserName = localStorage.getItem("userName");
 
     if (storedUserName) {
-      const firstWord = storedUserName.split(' ')[0];
+      const firstWord = storedUserName.split(" ")[0];
       setUserName(firstWord);
     }
-   
   }, []);
 
   const toggleOffcanvas = () => {
@@ -53,6 +54,25 @@ const PatientHeader = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  const [isActive, setIsActive] = useState(false);
+
+  // Function to toggle the menu
+  const toggleMenu = () => {
+    setIsActive(!isActive);
+  };
+
+  const handleLogout = () => {
+    // Remove 'userName' from localStorage
+    localStorage.removeItem("userName");
+    localStorage.removeItem("userId");
+    localStorage.removeItem("userEmail");
+
+    // Clear the user name in the component state
+    // setUserNames("");
+    setUserName("");
+    window.location.reload();
+  };
   return (
     <>
       <header className="header" id="header-id">
@@ -66,19 +86,19 @@ const PatientHeader = () => {
               <div className="top-menu-wrapper">
                 <ul className="top-menu">
                   <li>
-                    <a href="#"> Home </a>
+                    <Link href="/patient-dashboard"> Home </Link>
                   </li>
                   <li className="has-dropdown dropdown">
                     <a href="#" className="dropbtn">
                       Search
                       <i>
-                        <GoChevronDown style={{ fontSize: "22px" }} />
+                        <FaChevronDown />
                       </i>
                     </a>
                   </li>
 
                   <li>
-                    <a href="#">Request Quote</a>
+                    <Link href="/patient-quote">Request Quote</Link>
                   </li>
                   <li>
                     <a href="#"> Message </a>
@@ -107,9 +127,46 @@ const PatientHeader = () => {
             <a className="navigation" href="#">
               <img src="/images/note.png" alt="notification" />
             </a>
-            <a className="man-top" >
+            {/* <a className="man-top">
               <img src="/images/userIcon.png" alt="profile" /> {userName}
-            </a>
+            </a> */}
+            <div className="action">
+              <div className="man-top" onClick={toggleMenu}>
+                <img src="/images/userIcon.png" /> {userName}
+              </div>
+              <div className={`menu-dashboard ${isActive ? "active" : ""}`}>
+                <ul>
+                  <li>
+                    <img src="/images/website.png" />
+                    <Link
+                      href="/"
+                      onClick={() => {
+                        toggleMenu(); // Close the offcanvas
+                        router.push("/"); // Navigate to the link
+                      }}
+                    >
+                      Visit Website
+                    </Link>
+                  </li>
+                  <li>
+                    <img src="/images/profile.png" />
+                    <Link
+                      href="/patient-account"
+                      onClick={() => {
+                        toggleMenu(); // Close the offcanvas
+                        router.push("/patient-account"); // Navigate to the link
+                      }}
+                    >
+                      View profile
+                    </Link>
+                  </li>
+                  <li>
+                    <img src="/images/logout.png" />
+                    <a onClick={handleLogout}>Logout</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
 

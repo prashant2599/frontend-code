@@ -80,13 +80,13 @@ const RequestQuote = () => {
   // };
   const handleNameClick = (id, spe, speNAME, treatmentName) => {
     // Save selected data to localStorage
-    localStorage.setItem('treatment', id);
-    localStorage.setItem('speciality', spe);
-    localStorage.setItem('selectedspecialityName', speNAME);
-    localStorage.setItem('selectedTreatmentName', treatmentName);
-  
+    localStorage.setItem("treatment", id);
+    localStorage.setItem("speciality", spe);
+    localStorage.setItem("selectedspecialityName", speNAME);
+    localStorage.setItem("selectedTreatmentName", treatmentName);
+
     // Redirect to the patient-report page
-    router.push('/patient-report');
+    router.push("/patient-report");
   };
   // useEffect(() => {
   //   localStorage.setItem("treatment", selectedtreatmentId);
@@ -109,9 +109,9 @@ const RequestQuote = () => {
       <section id="request-quote-section">
         <div className="midbox-inner wiki-mk">
           <div className="top-back">
-            <a>
+            <Link href="/patient-dashboard">
               <img src="/images/2023/01/back-icon.png" alt="icon" /> Back
-            </a>
+            </Link>
             <div className="barbox">
               <div className="barbox-bar">
                 <img src="/images/2023/02/1.png" /> Select Medical Problem
@@ -170,11 +170,7 @@ const RequestQuote = () => {
                   >
                     <div className="specialists-item">
                       {details.map((items) => (
-                        <div
-                          className="specialists-boxitem"
-                        
-                          key={items.id}
-                        >
+                        <div className="specialists-boxitem" key={items.id}>
                           <div
                             className="boxitem"
                             onClick={() =>
@@ -185,7 +181,7 @@ const RequestQuote = () => {
                                 items.name
                               )
                             }
-                            style={{cursor:"pointer"}}
+                            style={{ cursor: "pointer" }}
                           >
                             <img
                               src={`https://dev.medflick.com/speciality/${e.icon}`}

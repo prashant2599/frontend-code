@@ -88,7 +88,7 @@ const LoginButton = () => {
             <div className={`menu ${isActive ? "active" : ""}`}>
               <ul>
                 <li>
-                  <img src="/images/2023/user1.png" />
+                  <img src="/images/dashboard.png" />
                   <Link
                     href="/patient-dashboard"
                     onClick={() => {
@@ -96,11 +96,11 @@ const LoginButton = () => {
                       router.push("/patient-dashboard"); // Navigate to the link
                     }}
                   >
-                    My Account
+                    Dashboard
                   </Link>
                 </li>
                 <li>
-                  <img src="/images/2023/edit.png" />
+                  <img src="/images/profile.png" />
                   <Link
                     href="/patient-account"
                     onClick={() => {
@@ -108,11 +108,11 @@ const LoginButton = () => {
                       router.push("/patient-account"); // Navigate to the link
                     }}
                   >
-                    Edit profile
+                    View profile
                   </Link>
                 </li>
                 <li>
-                  <img src="/images/2023/logout.png" />
+                  <img src="/images/logout.png" />
                   <a href="#" onClick={handleLogout}>
                     Logout
                   </a>
@@ -128,6 +128,10 @@ const LoginButton = () => {
         {/* <div
           // value={selectedLanguage}
           // onChange={handleLanguageChange}
+          label="Select Language"
+          className="gtranslate_wrapper most-recent"
+        ></div> */}
+        {/* <div
           label="Select Language"
           className="gtranslate_wrapper most-recent"
         ></div> */}

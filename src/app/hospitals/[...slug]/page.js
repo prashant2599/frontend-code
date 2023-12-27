@@ -10,6 +10,7 @@ import HospitalListPopUpForm from "@/app/Home/hospitalForm/HospitalListPopUpForm
 import HospitalSearch from "./HospitalSearch";
 import NewHeader from "@/app/Home/NewUIHomepage/inc/NewHeader";
 import NewFooter from "@/app/Home/NewUIHomepage/inc/NewFooter";
+import getALLCountry from "@/app/lib/getAllCountry";
 
 function formatText(text) {
   if (typeof text === "string") {
@@ -36,30 +37,37 @@ const page = async ({ params }) => {
     const treatment = datas.hospital_list.treatment;
     const info = datas.hospital_list.specility_name;
     const images = datas.hospital_list.hospital_gallery;
+    const pageNumber = datas.hospital_list.page;
+    const totalHospital = datas.hospital_list.count;
+
+    const country = await getALLCountry();
+    const doctorCountry = country.country_name;
 
     const slugs = combinedSlug;
     const parts = slugs.split("/");
-    // const treatment = parts[0];
-    const city = parts[2];
-    const position1 = parts[1];
+    const specialitySlug = parts[0];
+    const countrySlug = parts[1];
+    const citySlug = parts[2];
+    const treatmentSlug = parts[1];
+    const countrySlugTreatment = parts[3];
+    const position5 = parts[5];
+    const isPositionInDoctorCountry = doctorCountry.some(
+      (countryObj) => countryObj.country === countrySlug
+    );
+    const isPositionCity = hospital.some((e) => e.location === countrySlug);
 
-    const matchedTreatment = treatment.find(
-      (treatment) => treatment.slug === position1
+    const isPositionTreatmentCity = hospital.some(
+      (e) => e.location === citySlug
     );
 
-    const formattedposition1 = formatText(position1);
-    const formattedcity = formatText(position1);
-    const formattedcountry =
-      hospital && hospital.length > 0 ? formatText(hospital[0].country) : null;
-
-    const matchingCity =
-      hospital && hospital.length > 0 ? hospital[0].location : null;
-    const matchingCountry =
-      hospital && hospital.length > 0 ? hospital[0].country : null;
+    const formattedSpeciality = formatText(specialitySlug);
+    const formattedCountry = formatText(countrySlug);
+    const formattedCity = formatText(citySlug);
+    const formattedTreatmentCountry = formatText(countrySlugTreatment);
 
     return (
       <>
-      <NewHeader />
+        <NewHeader />
         <section id="find-doctors">
           <div className="midbox-inner  wiki-mk">
             <HospitalSearch hospital={hospital} slug={combinedSlug} />
@@ -67,39 +75,28 @@ const page = async ({ params }) => {
         </section>
         <section id="find-hospital-list">
           <div className="midbox-inner  wiki-mk">
-            {info.hos_title && position1 === matchingCity && (
-              <>
-                <h1>
-                  Best {info.name} Hospitals in {formattedcity},{" "}
-                  {formattedcountry} <span>({hospital.length} Results)</span>
-                </h1>
-              </>
+            {isPositionInDoctorCountry ? (
+              <h1>
+                Best {formattedSpeciality} Hospitals in {formattedCountry}{" "}
+                <span>({totalHospital} Results)</span>
+              </h1>
+            ) : isPositionCity ? (
+              <h1>
+                Best {formattedSpeciality} Hospitals in {formattedCountry},{" "}
+                {formattedCity} <span>({totalHospital} Results)</span>
+              </h1>
+            ) : isPositionTreatmentCity ? (
+              <h1>
+                Best {formattedCountry} Hospitals in {formattedCity},{" "}
+                {formattedTreatmentCountry}{" "}
+                <span>({totalHospital} Results)</span>
+              </h1>
+            ) : (
+              <h1>
+                Best {formattedSpeciality} Hospitals{" "}
+                <span>({totalHospital} Results)</span>
+              </h1>
             )}
-            {info.hos_title &&
-              position1 !== "city" &&
-              matchedTreatment &&
-              position1 === matchedTreatment.slug && (
-                <>
-                  <h1>
-                    Best {formattedposition1} Hospitals in {formattedcountry}{" "}
-                    <span>({hospital.length} Results)</span>
-                  </h1>
-                </>
-              )}
-            {info.hos_title &&
-              position1 === matchingCountry &&
-              !matchedTreatment && (
-                <>
-                  <h1>
-                    Best {info.name} Hospitals in {formattedcountry}{" "}
-                    <span>({hospital.length} Results)</span>
-                  </h1>
-                </>
-              )}
-            {/* <h1>
-            Medflick Assured Hospitals In India{" "}
-            <span>({hospital.length} Results)</span>
-          </h1> */}
 
             <HospitalFilters
               hospital={hospital}
@@ -327,102 +324,152 @@ export async function generateMetadata({ params }) {
   const info = datas.hospital_list.specility_name;
   const treatmentApi = datas.hospital_list.treatment;
   const hospital = datas.hospital_list.hospital_list;
+
+  const country = await getALLCountry();
+  const doctorCountry = country.country_name;
   const slugs = combinedSlug;
   const parts = slugs.split("/");
-  const treatment = parts[0];
-  const city = parts[2];
-  const position1 = parts[1];
-
+  const specialitySlug = parts[0];
+  const countrySlug = parts[1];
+  const citySlug = parts[2];
+  const treatmentSlug = parts[1];
+  const countrySlugTreatment = parts[3];
+  const position5 = parts[5];
   //  for treatment formant country wise
-  const formattedTreatment = formatText(position1);
 
-  //  for city wise doctor
+  // if (formattedTreatment.includes("Surgery")) {
+  //   updatedTreatment = formattedTreatment.replace(/Surgery/g, "Surgeon");
+  // } else {
+  //   updatedTreatment = formattedTreatment;
+  // }
 
-  const formattedSpeciality = formatText(treatment);
-  const formattedcity = formatText(position1);
+  const formattedSpeciality = formatText(specialitySlug);
+  const formattedCountry = formatText(countrySlug);
+  const formattedCity = formatText(citySlug);
+  const formattedTreatmnetCountry = formatText(countrySlugTreatment);
 
-  const matchedTreatment = treatmentApi.find(
-    (treatment) => treatment.slug === position1
+  const isPositionInDoctorCountry = doctorCountry.some(
+    (countryObj) => countryObj.country === countrySlug
   );
+  const isPositionCity = hospital.some((e) => e.location === countrySlug);
 
-  const formattedcountry =
-    hospital && hospital.length > 0 ? formatText(hospital[0].country) : null;
+  const isPositionTreatmentCity = hospital.some((e) => e.location === citySlug);
 
-  const matchingCity =
-    hospital && hospital.length > 0 ? hospital[0].location : null;
-  const matchingCountry =
-    hospital && hospital.length > 0 ? hospital[0].country : null;
-
-  if (info.hos_title && position1 === matchingCity) {
+  if (isPositionInDoctorCountry === true) {
     return {
       title:
         "Best " +
         formattedSpeciality +
         " " +
-        "hospitals  in " +
-        formattedcity +
-        " - Updated " +
-        currentMonthName +
+        "hospitals in " +
+        formattedCountry +
         " " +
+        "View reviews - " +
         currentYear,
+
       description:
-        currentYear +
-        " updated list of " +
+        "Find Updated list of " +
         formattedSpeciality +
-        " hospitals  in " +
-        formattedcity +
-        ". Know about best " +
+        " " +
+        "hospitals in " +
+        formattedCountry +
+        ". Find Top " +
         formattedSpeciality +
-        " hospitals, reviews |  Book hassle-free appointment | Plan affordable treatment ",
+        " " +
+        "Surgeons in " +
+        formattedCountry +
+        " " +
+        "and review | Book hassle free appointment",
+
       alternates: {
         canonical: `https://medflick.com/doctors/${combinedSlug}`,
-      },
-      openGraph: {
-        images: "https://medflick.com/images/2023/02/logo.png",
       },
     };
-  } else if (
-    info.hos_title &&
-    matchedTreatment &&
-    position1 === matchedTreatment.slug
-  ) {
+  } else if (isPositionCity === true) {
     return {
       title:
         "Best " +
-        formattedTreatment +
-        " hospitals  in " +
-        formattedcountry +
-        " - " +
-        currentMonthName +
+        formattedSpeciality +
         " " +
+        "hospitals in " +
+        formattedCountry +
+        ", " +
+        formattedCity +
+        " " +
+        "View reviews - " +
         currentYear,
       description:
-        currentYear +
-        "updated list of " +
-        formattedTreatment +
-        " doctors in " +
-        formattedcountry +
-        " . Know about best " +
-        formattedTreatment +
-        "  hospitals, reviews |  Book hassle-free appointment  | Plan affordable treatment",
+        "Find Updated list of " +
+        formattedSpeciality +
+        " " +
+        "hospitals in " +
+        formattedCountry +
+        ", " +
+        formattedCity +
+        ". Find Top " +
+        formattedSpeciality +
+        " " +
+        "Surgeons in " +
+        formattedCountry +
+        ", " +
+        formattedCity +
+        " " +
+        "and review | Book hassle free appointment",
       alternates: {
         canonical: `https://medflick.com/doctors/${combinedSlug}`,
       },
-      openGraph: {
-        images: "https://medflick.com/images/2023/02/logo.png",
-      },
+    };
+  } else if (isPositionTreatmentCity === true) {
+    return {
+      title:
+        "Best " +
+        formattedCountry +
+        " " +
+        "hospitals in " +
+        formattedCity +
+        ", " +
+        formattedTreatmnetCountry +
+        "- View review " +
+        currentYear,
+      description:
+        "Find Updated List of " +
+        formattedCountry +
+        " " +
+        "Specialist hospitals in " +
+        formattedCity +
+        "," +
+        formattedTreatmnetCountry +
+        ". Find Top " +
+        formattedCountry +
+        " " +
+        "Specialist " +
+        formattedCity +
+        "," +
+        formattedTreatmnetCountry +
+        " and reviews | Book hassle-free appointment",
     };
   } else {
     return {
-      title: info.hos_title,
-      description: info.hos_description,
-      openGraph: {
-        title: info.hos_title,
-        description: info.hos_description,
-        images: "https://medflick.com/images/2023/02/logo.png",
-      },
+      title:
+        "Best " +
+        formattedSpeciality +
+        " " +
+        "hospitals | Experts " +
+        formattedSpeciality +
+        " " +
+        "Surgeons View Review - " +
+        currentYear,
+
+      description:
+        "Find Updated List Of " +
+        formattedSpeciality +
+        " " +
+        "hospitals. Find top " +
+        formattedSpeciality +
+        " " +
+        "surgeons and review | Book hassle free appointment ",
       alternates: {
-        canonical: `https://medflick.com/hospitals/${combinedSlug}`,
+        canonical: `https://medflick.com/doctors/${combinedSlug}`,
       },
     };
   }

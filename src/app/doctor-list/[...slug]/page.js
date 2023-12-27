@@ -9,7 +9,18 @@ import DoctorsSearch from "@/app/doctors/[...slug]/DoctorsSearch";
 import TreatmentDoctorPagination from "./TreatmentDoctorPagination";
 import NewHeader from "@/app/Home/NewUIHomepage/inc/NewHeader";
 import NewFooter from "@/app/Home/NewUIHomepage/inc/NewFooter";
+import getALLCountry from "@/app/lib/getAllCountry";
 
+function formatText(text) {
+  if (typeof text === "string") {
+    return text
+      .split("-")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  } else {
+    return "Invalid input";
+  }
+}
 
 const page = async ({ params }) => {
   try {
@@ -27,48 +38,47 @@ const page = async ({ params }) => {
     const info = datas.doctors_list.specility_name;
     const pageNumber = datas.doctors_list.page;
     const totalDoctor = datas.doctors_list.count;
+
+    const country = await getALLCountry();
+    const doctorCountry = country.country_name;
+
+    const parts = combinedSlug.split("/");
+    const specialitySlug = parts[0];
+    const countrySlug = parts[1];
+    const citySlug = parts[2];
+
+    const isPositionInDoctorCountry = doctorCountry.some(
+      (countryObj) => countryObj.country === citySlug
+    );
+
+    const FormatedTreatment = formatText(countrySlug);
+    const FormatedCity = formatText(citySlug);
     return (
       <>
         <NewHeader />
         <section id="find-doctors">
           <div className="midbox-inner  wiki-mk">
-            <DoctorsSearch doctors={doctor} slug={combinedSlug} treatment={treatment} />
+            <DoctorsSearch
+              doctors={doctor}
+              slug={combinedSlug}
+              treatment={treatment}
+            />
           </div>
         </section>
         <section id="find-doctors-list">
           <div className="midbox-inner  wiki-mk">
-            {/* {info.doc_title && position1 === matchingCity && (
-            <>
+            {isPositionInDoctorCountry ? (
               <h1>
-                Best {info.name} Doctors in {formattedcity}, {formattedcountry}{" "}
-                <span>({doctor.length} Results)</span>
+                Best {FormatedTreatment} doctor in {FormatedCity}{" "}
+                <span>({totalDoctor} Results)</span>
               </h1>
-            </>
-          )}
-          {info.doc_title &&
-            matchedTreatment &&
-            position1 === matchedTreatment.slug && (
-              <>
-                <h1>
-                  Best {formattedposition1} Doctors in {formattedcountry}{" "}
-                  <span>({doctor.length} Results)</span>
-                </h1>
-              </>
+            ) : (
+              <h1>
+                Best {FormatedTreatment} Specialist{" "}
+                <span>({totalDoctor} Results)</span>
+              </h1>
             )}
-          {info.doc_title &&
-            position1 === matchingCountry &&
-            !matchedTreatment && (
-              <>
-                <h1>
-                  Best {info.name} Doctors in {formattedcountry}{" "}
-                  <span>({doctor.length} Results)</span>
-                </h1>
-              </>
-            )} */}
 
-            {/* <h1>
-            Medflick Assured Doctors <span>({doctor.length} Results)</span>
-          </h1> */}
             {/* filters nav section */}
             <SpecialitySelect
               doctor={doctor}
@@ -194,7 +204,6 @@ const page = async ({ params }) => {
           </div>
         </section>
         <NewFooter />
-     
       </>
     );
   } catch (error) {
@@ -207,13 +216,84 @@ const page = async ({ params }) => {
 export default page;
 
 export async function generateMetadata({ params }) {
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  const currentDate = new Date();
+  const currentMonthIndex = currentDate.getMonth();
+  const currentMonthName = monthNames[currentMonthIndex];
+  const currentYear = currentDate.getFullYear();
   const combinedSlug = params.slug.join("/");
-  return {
-    openGraph: {
-      images: "https://medflick.com/images/2023/02/logo.png",
-    },
-    alternates: {
-      canonical: `https://medflick.com/doctor-list/${combinedSlug}`,
-    },
-  };
+  const parts = combinedSlug.split("/");
+  const specialitySlug = parts[0];
+  const countrySlug = parts[1];
+  const citySlug = parts[2];
+  const country = await getALLCountry();
+  const doctorCountry = country.country_name;
+  const isPositionInDoctorCountry = doctorCountry.some(
+    (countryObj) => countryObj.country === citySlug
+  );
+  const FormatedTreatment = formatText(countrySlug);
+  const FormatedCity = formatText(citySlug);
+
+  if (isPositionInDoctorCountry === true) {
+    return {
+      title:
+        "Best " +
+        FormatedTreatment +
+        " " +
+        "doctors in " +
+        FormatedCity +
+        "- " +
+        "View review -" +
+        currentYear,
+      description:
+        "Find Updated List of " +
+        FormatedTreatment +
+        " " +
+        "Specialist doctors in " +
+        FormatedCity +
+        ". Find Top " +
+        FormatedTreatment +
+        " " +
+        "Specialist " +
+        FormatedCity +
+        " and reviews | Book hassle-free appointment",
+      alternates: {
+        canonical: `https://medflick.com/doctors/${combinedSlug}`,
+      },
+    };
+  } else {
+    return {
+      title:
+        "Best " +
+        FormatedTreatment +
+        " " +
+        "doctors | Medflick Doctor List -" +
+        currentYear,
+      description:
+        "Find Updated List of " +
+        FormatedTreatment +
+        " " +
+        "Specialist doctors. Find Top " +
+        FormatedTreatment +
+        " " +
+        "Specialist  and reviews | Book hassle-free appointment",
+      alternates: {
+        canonical: `https://medflick.com/doctors/${combinedSlug}`,
+      },
+    };
+  }
 }

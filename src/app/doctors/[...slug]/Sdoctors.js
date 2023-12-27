@@ -27,12 +27,40 @@ const Sdoctors = ({
   info,
   pageNumber,
   totalDoctor,
+  doctorCountry,
 }) => {
   const slugs = combinedSlug;
   const parts = slugs.split("/");
-  // const treatment = parts[0];
-  const city = parts[2];
-  const position1 = parts[1];
+  const specialitySlug = parts[0];
+  const countrySlug = parts[1];
+  const citySlug = parts[2];
+  const treatmentSlug = parts[1];
+  const countrySlugTreatment = parts[3];
+  const position5 = parts[5];
+  const isPositionInDoctorCountry = doctorCountry.some(
+    (countryObj) => countryObj.country === countrySlug
+  );
+  const isPositionCity = doctor.some((e) => e.location === countrySlug);
+
+  const isPositionTreatmentCity = doctor.some((e) => e.location === citySlug);
+
+  const formattedSpeciality = formatText(specialitySlug);
+  const formattedCountry = formatText(countrySlug);
+  const formattedCity = formatText(citySlug);
+  const formattedTreatmentCountry = formatText(countrySlugTreatment);
+
+  let updatedSpeciality;
+
+  if (formattedSpeciality.includes("Neurosurgery")) {
+    updatedSpeciality = formattedSpeciality.replace(
+      /Neurosurgery/g,
+      "Neurosurgeon"
+    );
+  } else if (formattedSpeciality.includes("Surgery")) {
+    updatedSpeciality = formattedSpeciality.replace(/Surgery/g, "Surgeon");
+  } else {
+    updatedSpeciality = formattedSpeciality;
+  }
 
   return (
     <>
@@ -44,38 +72,27 @@ const Sdoctors = ({
 
       <section id="find-doctors-list">
         <div className="midbox-inner  wiki-mk">
-          {/* {info.doc_title && position1 === matchingCity && (
-            <>
-              <h1>
-                Best {info.name} Doctors in {formattedcity}, {formattedcountry}{" "}
-                <span>({doctor.length} Results)</span>
-              </h1>
-            </>
+          {isPositionInDoctorCountry ? (
+            <h1>
+              Best {updatedSpeciality} Doctors in {formattedCountry}{" "}
+              <span>({totalDoctor} Results)</span>
+            </h1>
+          ) : isPositionCity ? (
+            <h1>
+              Best {updatedSpeciality} Doctors in {formattedCountry},{" "}
+              {formattedCity} <span>({totalDoctor} Results)</span>
+            </h1>
+          ) : isPositionTreatmentCity ? (
+            <h1>
+              Best {formattedCountry} Specialist  in {formattedCity},{" "}
+              {formattedTreatmentCountry} <span>({totalDoctor} Results)</span>
+            </h1>
+          ) : (
+            <h1>
+              Best {updatedSpeciality} Doctors{" "}
+              <span>({totalDoctor} Results)</span>
+            </h1>
           )}
-          {info.doc_title &&
-            matchedTreatment &&
-            position1 === matchedTreatment.slug && (
-              <>
-                <h1>
-                  Best {formattedposition1} Doctors in {formattedcountry}{" "}
-                  <span>({doctor.length} Results)</span>
-                </h1>
-              </>
-            )}
-          {info.doc_title &&
-            position1 === matchingCountry &&
-            !matchedTreatment && (
-              <>
-                <h1>
-                  Best {info.name} Doctors in {formattedcountry}{" "}
-                  <span>({doctor.length} Results)</span>
-                </h1>
-              </>
-            )} */}
-
-          {/* <h1>
-            Medflick Assured Doctors <span>({doctor.length} Results)</span>
-          </h1> */}
           {/* filters nav section */}
           <SpecialitySelect
             doctor={doctor}
