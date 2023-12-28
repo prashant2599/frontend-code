@@ -218,7 +218,7 @@ const HomeHospitalForm = ({
       };
 
       // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
-      const apiEndpoint = `https://api.medflick.com/api/homepage_hospital_appointment `;
+      const apiEndpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/api/homepage_hospital_appointment `;
 
       setIsLoading2(true);
 

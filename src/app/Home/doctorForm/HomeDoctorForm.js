@@ -218,7 +218,7 @@ const HomeDoctorForm = ({
       };
 
       // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
-      const apiEndpoint = `https://api.medflick.com/api/homepage_doctor_appointment `;
+      const apiEndpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/api/homepage_doctor_appointment `;
 
       setIsLoading2(true);
 
@@ -414,7 +414,7 @@ const HomeDoctorForm = ({
                   </div>
                 </div>
 
-                <div className="treatment-form">
+                <div className="treatment-form" style={{paddingBottom:"5px"}}>
                   <div className="wrap">
                     <div className="file">
                       <div className="file__input" id="file__input">

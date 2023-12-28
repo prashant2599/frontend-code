@@ -337,7 +337,10 @@ const NavForm2 = ({ treatmentId, specialityId }) => {
                 </div>
               </div>
             )}
-            <div className="treatment-form">
+            <div
+              className="treatment-form"
+              style={{ paddingTop: "10px", paddingBottom: "10px" }}
+            >
               <div className="wrap">
                 <div className="file">
                   <div className="file__input" id="file__input">
