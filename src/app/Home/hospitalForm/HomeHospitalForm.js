@@ -9,7 +9,13 @@ import intlTelInput from "intl-tel-input";
 import Success from "../successPopup/Success";
 import ErrorPopup from "../successPopup/ErrorPopup";
 
-const HomeHospitalForm = ({ country, slug, name, hospitalId }) => {
+const HomeHospitalForm = ({
+  country,
+  slug,
+  name,
+  hospitalId,
+  specialityId,
+}) => {
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const [showErrorPopup, setShowErrorPopup] = useState(false);
   const [isPopupOpen2, setIsPopupOpen2] = useState(false);
@@ -188,13 +194,13 @@ const HomeHospitalForm = ({ country, slug, name, hospitalId }) => {
       return;
     }
 
-    if (!captchaValue2) {
-      setFormErrors((prevErrors) => ({
-        ...prevErrors,
-        captcha: "Please Fill the captcha",
-      }));
-      return;
-    }
+    // if (!captchaValue2) {
+    //   setFormErrors((prevErrors) => ({
+    //     ...prevErrors,
+    //     captcha: "Please Fill the captcha",
+    //   }));
+    //   return;
+    // }
     const patientId = localStorage.getItem("userId");
 
     if (isValid) {
@@ -206,12 +212,13 @@ const HomeHospitalForm = ({ country, slug, name, hospitalId }) => {
         email: userEmail ? userEmail : email2,
         messages: query2,
         hospital_id: hospitalId,
+        speciality_id: specialityId,
         patient_id: patientId,
         file: selectedFile,
       };
 
       // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
-      const apiEndpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/api/hospital_query`;
+      const apiEndpoint = `https://api.medflick.com/api/homepage_hospital_appointment `;
 
       setIsLoading2(true);
 
