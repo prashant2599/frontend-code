@@ -247,6 +247,7 @@ const HospitalDoctorsFilter = ({ doctor }) => {
               first={e.prefix}
               middle={e.first_name}
               last={e.last_name}
+              specialityId={e.speciality_id}
             />
           </div>
         ))}

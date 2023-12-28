@@ -9,7 +9,7 @@ import intlTelInput from "intl-tel-input";
 import Success from "../successPopup/Success";
 import ErrorPopup from "../successPopup/ErrorPopup";
 
-const DoctorHospitalProfile = ({ slug, first, middle, last }) => {
+const DoctorHospitalProfile = ({ slug, first, middle, last, specialityId }) => {
   const [isPopupOpen2, setIsPopupOpen2] = useState(false);
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const [showErrorPopup, setShowErrorPopup] = useState(false);
@@ -203,11 +203,12 @@ const DoctorHospitalProfile = ({ slug, first, middle, last }) => {
         phone: phone2,
         email: userEmail ? userEmail : email2,
         messages: query2,
+        speciality_id: specialityId,
         file: selectedFile,
       };
 
       // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
-      const apiEndpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/api/doctor_query`;
+      const apiEndpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/api/homepage_doctor_appointment`;
 
       setIsLoading2(true);
 

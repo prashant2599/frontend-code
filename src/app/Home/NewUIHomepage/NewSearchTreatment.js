@@ -220,6 +220,7 @@ const NewSearchTreatment = () => {
                     country={e.country}
                     name={e.name}
                     hospitalId={e.id}
+                    specialityId={e.speciality_id}
                   />
                 </div>
               ))
