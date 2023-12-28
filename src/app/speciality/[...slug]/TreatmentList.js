@@ -14,12 +14,9 @@ const TreatmentList = ({ speciality, slugs }) => {
         {speciality.length > 0 ? (
           speciality.map((e) => (
             <li key={e.id}>
-              <Image
+              <img
                 src={`https://dev.medflick.com/treatments/${e.home_image}`}
                 alt={e.name}
-                width="398"
-                height="487"
-                className="treatment-mobile-img"
               />
               <Link
                 href={
@@ -34,7 +31,7 @@ const TreatmentList = ({ speciality, slugs }) => {
                     <div className="cost">{e.price}</div>
                   </div>
                   <div className="packages-details">
-                    {e.short_description && e.short_description.slice(0, 130)}
+                    {e.short_description && e.short_description.slice(0, 140)}
                     ....
                   </div>
 

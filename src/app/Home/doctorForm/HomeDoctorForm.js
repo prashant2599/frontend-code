@@ -9,7 +9,14 @@ import intlTelInput from "intl-tel-input";
 import Success from "../successPopup/Success";
 import ErrorPopup from "../successPopup/ErrorPopup";
 
-const HomeDoctorForm = ({ slug, first, middle, last, doctorId }) => {
+const HomeDoctorForm = ({
+  slug,
+  first,
+  middle,
+  last,
+  doctorId,
+  specialityId,
+}) => {
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const [showErrorPopup, setShowErrorPopup] = useState(false);
   const [isPopupOpen2, setIsPopupOpen2] = useState(false);
@@ -206,11 +213,12 @@ const HomeDoctorForm = ({ slug, first, middle, last, doctorId }) => {
         messages: query2,
         patient_id: patientId,
         doctor_id: doctorId,
+        speciality_id: specialityId,
         file: selectedFile,
       };
 
       // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
-      const apiEndpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/api/doctor_query`;
+      const apiEndpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/api/homepage_doctor_appointment `;
 
       setIsLoading2(true);
 
@@ -298,7 +306,7 @@ const HomeDoctorForm = ({ slug, first, middle, last, doctorId }) => {
   ) : null;
 
   const desc =
-  "Your appointment request has been received. We will get back to you soon. Thanks for your patience!";
+    "Your appointment request has been received. We will get back to you soon. Thanks for your patience!";
   return (
     <>
       <div className="expert-button">

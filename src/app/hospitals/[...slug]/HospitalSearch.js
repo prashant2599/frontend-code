@@ -49,7 +49,7 @@ const HospitalSearch = ({ hospital, slug }) => {
   return (
     <>
       <div className="find-doctor-box">
-        <h2>Find {fotmattedCategory && fotmattedCategory} Hospitals</h2>
+        <h2>Find Hospitals</h2>
 
         <div className="find-box-list">
           <div className="search-box">

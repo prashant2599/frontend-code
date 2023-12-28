@@ -84,7 +84,7 @@ const DashboardSearch = () => {
             />
             {searchQuery.length >= 2 && (
               <div className="searchbox-medf">
-                {filteredSpeciality.length > 0 ? <h3>Specialities:</h3> : null}
+                {filteredSpeciality.length > 0 ? <h3>Specialities</h3> : null}
                 {filteredSpeciality.map((doctor) => (
                   <Link
                     key={doctor.id}
@@ -112,7 +112,7 @@ const DashboardSearch = () => {
                     </div>
                   </Link>
                 ))}
-                {filteredTreatment.length > 0 ? <h3>Treatments:</h3> : null}
+                {filteredTreatment.length > 0 ? <h3>Treatments</h3> : null}
 
                 {filteredTreatment.map((doctor) => (
                   <Link
@@ -142,7 +142,7 @@ const DashboardSearch = () => {
                   </Link>
                 ))}
 
-                {filteredDoctors.length > 0 ? <h3>Doctors:</h3> : null}
+                {filteredDoctors.length > 0 ? <h3>Doctors</h3> : null}
 
                 {filteredDoctors.map((doctor) => (
                   <Link
@@ -172,7 +172,7 @@ const DashboardSearch = () => {
                   </Link>
                 ))}
 
-                {filteredHospitals.length > 0 ? <h3>Hospitals:</h3> : null}
+                {filteredHospitals.length > 0 ? <h3>Hospitals</h3> : null}
 
                 {filteredHospitals.map((doctor) => (
                   <Link
@@ -202,7 +202,7 @@ const DashboardSearch = () => {
                   </Link>
                 ))}
 
-                {filteredBlogs.length > 0 ? <h3>Blogs:</h3> : null}
+                {filteredBlogs.length > 0 ? <h3>Blogs</h3> : null}
 
                 {filteredBlogs.map((doctor) => (
                   <Link
