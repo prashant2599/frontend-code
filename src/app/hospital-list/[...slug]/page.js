@@ -195,6 +195,7 @@ const page = async ({ params }) => {
                           <HospitalListPopUpForm
                             name={hospital.name}
                             hospitalId={hospital.id}
+                            specialityId={hospital.speciality_id}
                           />
                           <Link
                             href={`/hospital/${hospital.slug}/${hospital.country}`}
