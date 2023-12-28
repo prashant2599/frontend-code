@@ -148,6 +148,7 @@ const page = async ({ params }) => {
                             middle={e.first_name}
                             last={e.last_name}
                             doctorId={e.id}
+                            specialityId={e.speciality_id}
                           />
 
                           {e.slug ? ( // Check if e.slug has a value

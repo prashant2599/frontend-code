@@ -1,7 +1,5 @@
-import Link from "next/link";
 import ShareProfile from "@/app/Home/doctorForm/ShareProfile";
 import AppointmentForm from "@/app/Home/doctorForm/AppointmentForm";
-import Image from "next/image";
 import DoctorReview from "./DoctorReview";
 import DoctorTotalReview from "./DoctorTotalReview";
 import { BsStarFill } from "react-icons/bs";
@@ -9,7 +7,6 @@ import { BsStarHalf } from "react-icons/bs";
 import { notFound } from "next/navigation";
 import RelatedDoctor from "./RelatedDoctor";
 import "@/app/Home/NewUIHomepage/newsection.css";
-import DoctorForm from "@/app/Home/doctorForm/DoctorForm";
 import NewHeader from "@/app/Home/NewUIHomepage/inc/NewHeader";
 import NewFooter from "@/app/Home/NewUIHomepage/inc/NewFooter";
 
@@ -37,7 +34,7 @@ const page = async ({ params }) => {
 
     const hasHalfStar = overallRating % 1 !== 0;
 
-    const url = `doctor/${combinedSlug}`
+    const url = `doctor/${combinedSlug}`;
     return (
       <>
         <NewHeader />
@@ -99,6 +96,7 @@ const page = async ({ params }) => {
                     first={docotorDetails.prefix}
                     middle={docotorDetails.first_name}
                     last={docotorDetails.last_name}
+                    specialityId={docotorDetails.speciality_id}
                   />
                 </div>
               </div>

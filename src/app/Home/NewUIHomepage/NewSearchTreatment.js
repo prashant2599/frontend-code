@@ -39,8 +39,6 @@ const NewSearchTreatment = () => {
     fetchData();
   }, []);
 
-  
-
   useEffect(() => {
     const fetchDoctorsData = async () => {
       const res = await fetch(
@@ -154,7 +152,7 @@ const NewSearchTreatment = () => {
                         {e.prefix} {e.first_name} {e.last_name}
                       </h3>
                     </Link>
-                    <p style={{height:"37px"}}>{e.designation}</p>
+                    <p style={{ height: "37px" }}>{e.designation}</p>
                   </div>
                   <HomeDoctorForm
                     slug={e.slug}
@@ -162,6 +160,7 @@ const NewSearchTreatment = () => {
                     middle={e.first_name}
                     last={e.last_name}
                     doctorId={e.id}
+                    specialityId={e.speciality_id}
                   />
                 </div>
               ))

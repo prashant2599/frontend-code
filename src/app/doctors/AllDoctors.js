@@ -81,6 +81,7 @@ const AllDoctors = async () => {
                           middle={e.first_name}
                           last={e.last_name}
                           doctorId={e.id}
+                          specialityId={e.speciality_id}
                         />
 
                         <Link

@@ -1,4 +1,3 @@
-import { AiTwotoneStar } from "react-icons/ai";
 import Link from "next/link";
 import SpecialitySelect from "@/app/doctorFilter/SpecialitySelect";
 import DoctorForm from "@/app/Home/doctorForm/DoctorForm";
@@ -84,7 +83,7 @@ const Sdoctors = ({
             </h1>
           ) : isPositionTreatmentCity ? (
             <h1>
-              Best {formattedCountry} Specialist  in {formattedCity},{" "}
+              Best {formattedCountry} Specialist in {formattedCity},{" "}
               {formattedTreatmentCountry} <span>({totalDoctor} Results)</span>
             </h1>
           ) : (
@@ -163,6 +162,7 @@ const Sdoctors = ({
                           middle={e.first_name}
                           last={e.last_name}
                           doctorId={e.id}
+                          specialityId={e.speciality_id}
                         />
                         <Link
                           href={`/doctor/${e.slug}`}

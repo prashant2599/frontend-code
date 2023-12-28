@@ -40,10 +40,20 @@ const page = async ({ params }) => {
       <>
         <NewHeader />
         <section id="category-slider">
-          <img
+          {/* <img
             src={`https://dev.medflick.com/speciality/${info && info.image}`}
             alt={info.name}
-          />
+          /> */}
+          <img
+            src={`https://dev.medflick.com/speciality/${info && info.image}`}
+            class="category-d"
+            alt="Category"
+          ></img>
+          <img
+            src={`https://dev.medflick.com/speciality/${info && info.image}`}
+            class="category-m"
+            alt="Category"
+          ></img>
           <div className="category-slidertext">
             <h1>{info && info.name}</h1>
             <div

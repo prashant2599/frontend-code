@@ -6,6 +6,7 @@ const TreadingBlogs = async () => {
   const featured = await getALLFeaturedBlogs();
 
   const Fblog = featured.data.featured;
+
   return (
     <>
       <ul>
