@@ -131,17 +131,17 @@ const LoginButton = () => {
           label="Select Language"
           className="gtranslate_wrapper most-recent"
         ></div> */}
-        {/* <div
+        <div
           label="Select Language"
           className="gtranslate_wrapper most-recent"
-        ></div> */}
+        ></div>
         <HeaderSearch />
 
         <Link className="qsk-question" href="/question-answer">
           Ask FREE Question <img src="/images/whiteArrow.png" alt="icon" />
         </Link>
       </div>
-      {/* <Script src="https://cdn.gtranslate.net/widgets/latest/dropdown.js"></Script> */}
+      <Script src="https://cdn.gtranslate.net/widgets/latest/dropdown.js"></Script>
     </>
   );
 };
