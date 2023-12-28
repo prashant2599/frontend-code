@@ -114,7 +114,7 @@ const PatientHeader = () => {
             </nav>
           </div>
           <div className="navbar__buttons">
-            <div className="most-recent">
+            {/* <div className="most-recent">
               <select className="jdgm-sort-dropdown" aria-label="Sort dropdown">
                 <option value="select-language">Select Language</option>
                 <option value="English" selected>
@@ -122,7 +122,7 @@ const PatientHeader = () => {
                   English
                 </option>
               </select>
-            </div>
+            </div> */}
 
             <a className="navigation" href="#">
               <img src="/images/note.png" alt="notification" />
