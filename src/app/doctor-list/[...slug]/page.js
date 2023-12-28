@@ -69,12 +69,12 @@ const page = async ({ params }) => {
           <div className="midbox-inner  wiki-mk">
             {isPositionInDoctorCountry ? (
               <h1>
-                Best {FormatedTreatment} doctor in {FormatedCity}{" "}
+                Best {FormatedTreatment} Doctors in {FormatedCity}{" "}
                 <span>({totalDoctor} Results)</span>
               </h1>
             ) : (
               <h1>
-                Best {FormatedTreatment} Specialist{" "}
+                Best {FormatedTreatment} Doctors{" "}
                 <span>({totalDoctor} Results)</span>
               </h1>
             )}

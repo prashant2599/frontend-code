@@ -232,7 +232,7 @@ const DontPay = () => {
       };
 
       // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
-      const apiEndpoint = `https://api.medflick.com/api/free_consultants`;
+      const apiEndpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/api/free_consultants`;
 
       setIsLoading(true);
 

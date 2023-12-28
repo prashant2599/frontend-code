@@ -133,11 +133,11 @@ const Dashboard = () => {
               <p>Can’t find what you’re looking for? Let up help</p>
             </div>
             <div className="medflick-payright">
-              <a href="#/" className="consultation">
+              <Link href="/contact-us" className="consultation">
                 {" "}
                 We are here to assist you 24X7
                 <img src="/images/2023/01/arrow-c.png" alt="arrow-icons" />
-              </a>
+              </Link>
             </div>
           </div>
         </div>
