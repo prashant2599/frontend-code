@@ -15607,15 +15607,15 @@ footer {
   display: none;
 }
 
-@media screen and (max-width: 880px){
-#category-slider img {
+@media screen and (max-width: 880px) {
+  #category-slider img {
     border-radius: 20px;
     margin: 0px auto;
     width: 95%;
-}
-#category-slider .category-m {
-  display: block;
-}
+  }
+  #category-slider .category-m {
+    display: block;
+  }
 }
 
 .treatment-form .wrap {

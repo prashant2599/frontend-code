@@ -213,6 +213,7 @@ const AppointmentForm = ({ hospitalId, HospitalName, specialityId }) => {
         hospital_id: hospitalId,
         speciality_id: specialityId,
         file: selectedFile,
+        
       };
 
       // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
