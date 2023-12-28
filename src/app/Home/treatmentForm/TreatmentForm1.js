@@ -282,6 +282,9 @@ const TreatmentForm1 = ({ treatmentId, specialityId }) => {
       <div className="file__value--remove" data-id={selectedFile.name}></div>
     </div>
   ) : null;
+
+  const desc =
+    "Your request is acknowledged. We are connecting with hospitals to provide you the best price and detailed quote shortly. Your patience is greatly appreciated.";
   return (
     <>
       <div className="treatment-right">
@@ -417,6 +420,7 @@ const TreatmentForm1 = ({ treatmentId, specialityId }) => {
         <Success
           onClose={handleCloseSuccessPopup}
           showSuccessPopup={showSuccessPopup}
+          desc={desc}
         />
       )}
 

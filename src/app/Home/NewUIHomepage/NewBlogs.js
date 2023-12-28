@@ -25,25 +25,27 @@ const NewBlogs = async () => {
 
               return (
                 <div className="blog-item" key={e.id}>
-                  {e.icon ? (
-                    <img
-                      src={`https://dev.medflick.com/blog/${e.icon}`}
-                      alt={e.name}
-                    />
-                  ) : null}
                   <Link href={`/blog/${e.slug}`}>
+                    {e.icon ? (
+                      <img
+                        src={`https://dev.medflick.com/blog/${e.icon}`}
+                        alt={e.name}
+                      />
+                    ) : null}
+
                     <h3>{e.name}</h3>
                   </Link>
                   <div
                     dangerouslySetInnerHTML={{
                       __html: e.short_description
-                        .split(" ")
-                        .slice(0, 15)
-                        .join(" ")
-                        .concat("..."),
+                        ? e.short_description
+                            .split(" ")
+                            .slice(0, 15)
+                            .join(" ")
+                            .concat("...")
+                        : "",
                     }}
                   />
-
                   <div className="blog-text">
                     <div className="category-blog">
                       <span>
