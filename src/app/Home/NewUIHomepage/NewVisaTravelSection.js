@@ -8,11 +8,11 @@ const NewVisaTravelSection = () => {
           <h2>Visa & Travel Support</h2>
           <p>
             We assist you in curating your Journey to India for your medical
-            treatment, where your comfort is our priority. Entrust us with
-            your travel plannings visa arrangements & personalized Travel Plan.
+            treatment, where your comfort is our priority. Entrust us with your
+            travel plannings visa arrangements & personalized Travel Plan.
           </p>
 
-          <Link href="/query">
+          <Link href="/get-visa-assistance">
             Get Visa Assistance{" "}
             <img src="/images/new-images/2023/01/pack-arrow.png" alt="" />
           </Link>

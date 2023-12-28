@@ -43,7 +43,7 @@ const NewProgcess = () => {
             </li>
           </ul>
 
-          <Link href="/query">
+          <Link href="/request-a-free-quote">
             {" "}
             Request a free Quote{" "}
             <img src="/images/new-images/2023/01/arrow-c.png" alt="" />

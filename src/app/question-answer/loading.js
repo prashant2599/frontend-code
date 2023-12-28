@@ -29,21 +29,7 @@ const loading = () => {
                   </div>
                 </div>
               </div>
-              <div className="search-question">
-                <div className="search-question-left"></div>
-                {/* <div className="search-question-right">
-                  <span>Have any Questions?</span>
-                  <span
-                    className="ask-question"
-                    data-popup-open="popup-2"
-                    // onClick={togglePopup}
-                    style={{ cursor: "pointer" }}
-                  >
-                    <img src="images/2023/07/ask.png" alt="" /> Ask Question
-                  </span>
-                </div> */}
-                <PopForm />
-              </div>
+
               <div className="comments-box">
                 <h2>
                   <Skeleton />

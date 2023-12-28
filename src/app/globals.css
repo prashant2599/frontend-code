@@ -5085,6 +5085,7 @@ table strong {
   text-align: right;
   color: #7c7c7c;
   font-weight: 400;
+  justify-content: right;
 }
 
 .doc-Hospital img {
@@ -11791,10 +11792,7 @@ a {
   background-color: transparent;
 }
 
-a:hover {
-  color: #0056b3;
-  text-decoration: underline;
-}
+
 
 a:not([href]):not([class]),
 a:not([href]):not([class]):hover {
@@ -15674,6 +15672,8 @@ footer {
   width: 16px;
   height: 16px;
   margin-right: 5px;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 .action .menu-dashboard.active {

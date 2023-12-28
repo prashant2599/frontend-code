@@ -57,7 +57,7 @@ const Dashboard = () => {
           <div className="home-topbox">
             <div className="topbox-left">
               <h1>Hi {userName}</h1>
-              <h2>lorem ipsum dolor sit amet quies</h2>
+              <h2>Welcome to Medflick!</h2>
             </div>
 
             <DashboardSearch />
@@ -69,20 +69,22 @@ const Dashboard = () => {
               <ul>
                 <li>
                   <img src="/images/2023/01/1.png" alt="icon-img" />
-                  <Link href="/patient-quote">
-                    <h3>Request Quote</h3>
-                  </Link>
-                  <p>Lorem ipsum dolor sit amer is dumm</p>
+
+                  <h3>View Quote</h3>
+
+                  <p>Know the best price for you</p>
                 </li>
                 <li>
-                  <img src="/images/2023/01/2.png" alt="icon-img" />
-                  <h3>Search Treatments</h3>
-                  <p>Lorem ipsum dolor sit amer is dumm</p>
+                  <Link href="/patient-quote">
+                    <img src="/images/2023/01/2.png" alt="icon-img" />
+                    <h3>Request Quote</h3>
+                  </Link>
+                  <p>Receive cost estimate at earliest</p>
                 </li>
                 <li>
                   <img src="/images/2023/01/3.png" alt="icon-img" />
                   <h3>Need Help?</h3>
-                  <p>Lorem ipsum dolor sit amer is dumm</p>
+                  <p>We are here to help you</p>
                 </li>
               </ul>
             </div>
@@ -133,7 +135,7 @@ const Dashboard = () => {
             <div className="medflick-payright">
               <a href="#/" className="consultation">
                 {" "}
-                Lorem ipsum dolor sit amet{" "}
+                We are here to assist you 24X7
                 <img src="/images/2023/01/arrow-c.png" alt="arrow-icons" />
               </a>
             </div>
