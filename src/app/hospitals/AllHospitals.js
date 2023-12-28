@@ -118,6 +118,7 @@ const AllHospitals = async () => {
                       <HospitalListPopUpForm
                         name={hospital.name}
                         hospitalId={hospital.id}
+                        specialityId={hospital.speciality_id}
                       />
 
                       <Link

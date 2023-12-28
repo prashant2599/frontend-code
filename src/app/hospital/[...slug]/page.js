@@ -96,6 +96,7 @@ const page = async ({ params }) => {
                   <AppointmentForm
                     hospitalId={hospitalDetails.id}
                     HospitalName={hospitalDetails.name}
+                    specialityId={hospitalDetails.speciality_id}
                   />
                 </div>
               </div>
