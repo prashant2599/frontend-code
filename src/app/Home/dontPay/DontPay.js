@@ -212,13 +212,13 @@ const DontPay = () => {
       return;
     }
 
-    if (!captchaValue) {
-      setFormErrors((prevErrors) => ({
-        ...prevErrors,
-        captcha: "Please Fill the captcha",
-      }));
-      return;
-    }
+    // if (!captchaValue) {
+    //   setFormErrors((prevErrors) => ({
+    //     ...prevErrors,
+    //     captcha: "Please Fill the captcha",
+    //   }));
+    //   return;
+    // }
 
     if (isValid) {
       // Create the data object to be sent in the API request
