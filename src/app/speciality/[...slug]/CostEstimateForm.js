@@ -238,7 +238,7 @@ const CostEstimateForm = ({ specialityId }) => {
       };
 
       // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
-      const apiEndpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/api/free_quote_treatment`;
+      const apiEndpoint = `https://api.medflick.com/api/free_quote_treatment`;
 
       setIsLoading(true);
 
