@@ -38,7 +38,7 @@ const LoginPopUp = ({ showLoginPopup, onClose, url }) => {
             </div>
 
             <div className="success-message">
-              <img src="/images/login.png" />
+              <img src="/images/Login.png" />
               <h4>Please Login</h4>
               <p>To Comment Please Login First!</p>
             </div>
