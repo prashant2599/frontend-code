@@ -274,6 +274,11 @@ const AppointmentForm = ({ doctorId, first, middle, last, specialityId }) => {
         ...prevErrors,
         phone: "Please enter a valid Phone number",
       }));
+    } else {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        phone: "",
+      }));
     }
   };
 
@@ -283,6 +288,41 @@ const AppointmentForm = ({ doctorId, first, middle, last, specialityId }) => {
         ...prevErrors,
         email: "Please enter a valid email address",
       }));
+    } else {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        email: "",
+      }));
+    }
+  };
+
+  const handleQueryBlur = () => {
+    if (!query) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        query: "Please enter your query",
+      }));
+    } else {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        query: "",
+      }));
+    }
+  };
+
+  const handleNameBlur = () => {
+    if (!userName) {
+      if (!name) {
+        setFormErrors((prevErrors) => ({
+          ...prevErrors,
+          name: "Please enter your name",
+        }));
+      } else {
+        setFormErrors((prevErrors) => ({
+          ...prevErrors,
+          name: "",
+        }));
+      }
     }
   };
 
@@ -348,6 +388,7 @@ const AppointmentForm = ({ doctorId, first, middle, last, specialityId }) => {
                       placeholder={userName}
                       name="name"
                       value={name}
+                      onBlur={handleNameBlur}
                       onChange={(e) => setName(e.target.value)}
                       autoComplete="off"
                       style={formErrors.name ? Formstyles.errorInput : {}}
@@ -403,6 +444,7 @@ const AppointmentForm = ({ doctorId, first, middle, last, specialityId }) => {
                       value={query}
                       onChange={(e) => setQuery(e.target.value)}
                       autoComplete="off"
+                      onBlur={handleQueryBlur}
                       style={formErrors.query ? Formstyles.errorInput : {}}
                     ></textarea>
                     {renderError(formErrors.query)}

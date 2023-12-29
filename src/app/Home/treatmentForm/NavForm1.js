@@ -288,10 +288,10 @@ const NavForm1 = ({ treatmentId, specialityId }) => {
           <form onSubmit={handleFormSubmit1}>
             <div className="assistance-box">
               <div className="input-box1">
-                <label>Name</label>
+                {/* <label>Name</label> */}
                 <input
                   type="text"
-                  placeholder={userName}
+                  placeholder="Name"
                   name="name"
                   value={name1}
                   onChange={(e) => setName1(e.target.value)}
@@ -302,14 +302,14 @@ const NavForm1 = ({ treatmentId, specialityId }) => {
               </div>
             </div>
 
-            <div className="treatment-form">
-              <div className="inputbox">
-                <label>Phone</label>
+            <div className="assistance-box assistance-box">
+              <div className="input-box1">
+                {/* <label>Phone</label> */}
                 <input
                   ref={inputRef}
                   type="tel"
                   id="mobile_code"
-                  placeholder=""
+                  placeholder="Phone"
                   value={phone1}
                   onChange={handlePhoneNumberChange}
                   onBlur={handlePhoneBlur}
@@ -320,12 +320,12 @@ const NavForm1 = ({ treatmentId, specialityId }) => {
             </div>
 
             {userEmail ? null : (
-              <div className="treatment-form" style={{ marginBottom: "20px" }}>
-                <div className="inputbox">
-                  <label>Email</label>
+              <div className="assistance-box">
+                <div className="input-box1">
+                  {/* <label>Email</label> */}
                   <input
                     type="email"
-                    placeholder=""
+                    placeholder="Email"
                     name="name"
                     value={email1}
                     onChange={(e) => setEmail1(e.target.value)}
@@ -338,10 +338,7 @@ const NavForm1 = ({ treatmentId, specialityId }) => {
               </div>
             )}
 
-            <div
-              className="treatment-form"
-              style={{ paddingTop: "10px", paddingBottom: "10px" }}
-            >
+            <div className="treatment-form">
               <div className="wrap">
                 <div className="file">
                   <div className="file__input" id="file__input">
