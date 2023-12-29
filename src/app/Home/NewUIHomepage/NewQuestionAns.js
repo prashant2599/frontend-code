@@ -28,9 +28,8 @@ const NewQuestionAns = async () => {
                     src="/images/new-images/2023/01/icon-m.png"
                     alt="medflick-questions"
                   />
-                
-                    <div className="question-box">{e.short_description}</div>
-                
+
+                  <div className="question-box">{e.short_description}</div>
 
                   <div
                     className="question-ans"

@@ -13,6 +13,7 @@ import "@/app/Home/NewUIHomepage/newsection.css";
 import { notFound } from "next/navigation";
 import NewHeader from "@/app/Home/NewUIHomepage/inc/NewHeader";
 import NewFooter from "@/app/Home/NewUIHomepage/inc/NewFooter";
+import TreatmentFreeQuotePopup from "./TreatmentFreeQuotePopup";
 
 const page = async ({ params }) => {
   try {
@@ -289,10 +290,7 @@ const page = async ({ params }) => {
                     />
 
                     <div className="consultation-box1">
-                      <Link className="free-quote" href="/query">
-                        Get a free quote{" "}
-                        <img src="/images/2023/01/arrow-c.png" />
-                      </Link>
+                     <TreatmentFreeQuotePopup />
 
                       <a className="view-hospitals" href="#transplant-nav17">
                         View Hospitals

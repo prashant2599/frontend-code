@@ -149,13 +149,13 @@ const DoctorForm = ({ info }) => {
       return;
     }
 
-    if (!captchaValue) {
-      setFormErrors((prevErrors) => ({
-        ...prevErrors,
-        captcha: "Please Fill the captcha",
-      }));
-      return;
-    }
+    // if (!captchaValue) {
+    //   setFormErrors((prevErrors) => ({
+    //     ...prevErrors,
+    //     captcha: "Please Fill the captcha",
+    //   }));
+    //   return;
+    // }
     if (isValid) {
       // Create the data object to be sent in the API request
       const data = {
@@ -170,7 +170,7 @@ const DoctorForm = ({ info }) => {
       };
 
       // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
-      const apiEndpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/api/doctor_query`;
+      const apiEndpoint = `https://api.medflick.com/api/doctor_query`;
 
       setIsLoading(true);
 
