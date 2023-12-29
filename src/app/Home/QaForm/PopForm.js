@@ -238,7 +238,7 @@ const PopForm = () => {
       };
 
       // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
-      const apiEndpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/api/askPost`;
+      const apiEndpoint = `https://dev.medflick.com/api/askPost`;
 
       setIsLoading(true);
 
@@ -483,7 +483,10 @@ const PopForm = () => {
                     </div>
                   </div>
 
-                  <div className="treatment-form">
+                  <div
+                    className="treatment-form"
+                    style={{ paddingBottom: "6px" }}
+                  >
                     <div className="wrap">
                       <div className="file">
                         <div className="file__input" id="file__input">
