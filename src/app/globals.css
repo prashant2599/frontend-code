@@ -1,25 +1,26 @@
 @font-face {
   font-family: Helvetica Neu Bold;
   src: url(../app/fonts/Helvetica-Neu-Bold.ttf);
-  font-display: swap;
+
 }
 
 @font-face {
   font-family: Helvetica Neue Medium;
   src: url(../app/fonts/Helvetica-Neue-Medium.ttf);
-  font-display: swap;
+ 
 }
 
 @font-face {
   font-family: Helvetica Neue Light;
   src: url(../app/fonts/Helvetica-Neue-Light.ttf);
-  font-display: swap;
+ 
 }
 @font-face {
   font-family: Inter Regular;
   src: url(../app/fonts/Inter-Regular.ttf);
-  font-display: swap;
+  
 }
+
 
 html {
   scroll-behavior: smooth;
@@ -87,6 +88,7 @@ ul,
 p {
   padding: 0px;
   margin: 0px;
+  font-weight: normal;
 }
 
 textarea {
@@ -10496,10 +10498,14 @@ nav li:last-child {
 .popup h2 {
   font-family: Helvetica Neue Medium !important;
   color: #000000 !important;
-  font-size: 25px !important;
-  line-height: 30px !important;
+  font-size: 22px !important;
+  line-height: 25px !important;
   width: 100% !important;
-  margin: 20px 0 30px !important;
+  margin: 0px 0 15px !important;
+}
+
+.popup .home-button {
+  padding: 8px 62px 8px 14px;
 }
 
 .questions-form-box {
@@ -15706,3 +15712,5 @@ footer {
   color: #7C7C7C;
   font-size: 14px;
 }
+
+.popup-inner2 .treatment-form{margin-bottom:7px;}

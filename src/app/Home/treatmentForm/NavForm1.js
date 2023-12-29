@@ -302,7 +302,7 @@ const NavForm1 = ({ treatmentId, specialityId }) => {
               </div>
             </div>
 
-            <div className="assistance-box assistance-box">
+            <div className="assistance-box">
               <div className="input-box1">
                 {/* <label>Phone</label> */}
                 <input
@@ -338,7 +338,7 @@ const NavForm1 = ({ treatmentId, specialityId }) => {
               </div>
             )}
 
-            <div className="treatment-form">
+            <div className="assistance-box treatment-form">
               <div className="wrap">
                 <div className="file">
                   <div className="file__input" id="file__input">
