@@ -290,7 +290,10 @@ const page = async ({ params }) => {
                     />
 
                     <div className="consultation-box1">
-                     <TreatmentFreeQuotePopup />
+                      <TreatmentFreeQuotePopup
+                        specialityId={info.speciality_id}
+                        treatmentId={info.id}
+                      />
 
                       <a className="view-hospitals" href="#transplant-nav17">
                         View Hospitals
@@ -333,10 +336,10 @@ const page = async ({ params }) => {
                     />
 
                     <div className="consultation-box1">
-                      <Link className="free-quote" href="/query">
-                        Get a free quote{" "}
-                        <img src="/images/2023/01/arrow-c.png" />
-                      </Link>
+                      <TreatmentFreeQuotePopup
+                        specialityId={info.speciality_id}
+                        treatmentId={info.id}
+                      />
                       <a className="view-hospitals" href="#transplant-nav16">
                         View Hospitals
                       </a>
@@ -410,10 +413,10 @@ const page = async ({ params }) => {
                     />
 
                     <div className="consultation-box1">
-                      <Link className="free-quote" href="/query">
-                        Get a free quote{" "}
-                        <img src="/images/2023/01/arrow-c.png" />
-                      </Link>
+                      <TreatmentFreeQuotePopup
+                        specialityId={info.speciality_id}
+                        treatmentId={info.id}
+                      />
                       <a className="view-hospitals" href="#transplant-nav17">
                         View Hospitals
                       </a>

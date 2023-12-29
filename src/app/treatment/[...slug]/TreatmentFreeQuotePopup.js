@@ -9,7 +9,7 @@ import intlTelInput from "intl-tel-input";
 import Success from "@/app/Home/successPopup/Success";
 import ErrorPopup from "@/app/Home/successPopup/ErrorPopup";
 
-const TreatmentFreeQuotePopup = () => {
+const TreatmentFreeQuotePopup = ({ treatmentId, specialityId }) => {
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const [showErrorPopup, setShowErrorPopup] = useState(false);
   const [userName, setUserName] = useState("");
@@ -216,6 +216,7 @@ const TreatmentFreeQuotePopup = () => {
         .then((response) => {
           setShowSuccessPopup(true);
           clearFormFields();
+          setIsPopupOpen(false);
         })
         .catch((error) => {
           setShowErrorPopup(true);
@@ -326,7 +327,7 @@ const TreatmentFreeQuotePopup = () => {
                   <span aria-hidden="true">×</span>
                 </button>
               </div>
-              <h2></h2>
+              <h2>Get a free quote</h2>
               <form onSubmit={handleFormSubmit}>
                 <div className="treatment-form">
                   <div className="inputbox">
@@ -395,7 +396,10 @@ const TreatmentFreeQuotePopup = () => {
                     {renderError(formErrors.query)}
                   </div>
                 </div>
-                <div className="treatment-form">
+                <div
+                  className="treatment-form"
+                  style={{ paddingBottom: "5px" }}
+                >
                   <div className="wrap">
                     <div className="file">
                       <div className="file__input" id="file__input">
