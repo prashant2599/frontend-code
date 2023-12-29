@@ -149,7 +149,7 @@ const SignUp = () => {
     };
 
     // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
-    const apiEndpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/api/register`;
+    const apiEndpoint = `https://api.medflick.com/api/register`;
 
     setIsLoading(true);
 
@@ -255,11 +255,11 @@ const SignUp = () => {
                     required
                   />
                 </div>
-                  {!emailValid && (
-                    <div className="error-message" style={{ color: "red" }}>
-                      {passwordvalidationMessage}
-                    </div>
-                  )}
+                {!emailValid && (
+                  <div className="error-message" style={{ color: "red" }}>
+                    {passwordvalidationMessage}
+                  </div>
+                )}
                 <div className="inputbox">
                   <label>Password</label>
                   <input
