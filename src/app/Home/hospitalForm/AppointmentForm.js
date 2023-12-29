@@ -213,7 +213,6 @@ const AppointmentForm = ({ hospitalId, HospitalName, specialityId }) => {
         hospital_id: hospitalId,
         speciality_id: specialityId,
         file: selectedFile,
-        
       };
 
       // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
@@ -276,6 +275,11 @@ const AppointmentForm = ({ hospitalId, HospitalName, specialityId }) => {
         ...prevErrors,
         phone: "Please enter a valid Phone number",
       }));
+    } else {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        phone: "",
+      }));
     }
   };
 
@@ -285,6 +289,41 @@ const AppointmentForm = ({ hospitalId, HospitalName, specialityId }) => {
         ...prevErrors,
         email: "Please enter a valid email address",
       }));
+    } else {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        email: "",
+      }));
+    }
+  };
+
+  const handleQueryBlur = () => {
+    if (!query) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        query: "Please enter your query",
+      }));
+    } else {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        query: "",
+      }));
+    }
+  };
+
+  const handleNameBlur = () => {
+    if (!userName) {
+      if (!name) {
+        setFormErrors((prevErrors) => ({
+          ...prevErrors,
+          name: "Please enter your name",
+        }));
+      } else {
+        setFormErrors((prevErrors) => ({
+          ...prevErrors,
+          name: "",
+        }));
+      }
     }
   };
 
@@ -349,6 +388,7 @@ const AppointmentForm = ({ hospitalId, HospitalName, specialityId }) => {
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       autoComplete="off"
+                      onBlur={handleNameBlur}
                       style={formErrors.name ? Formstyles.errorInput : {}}
                     />
                     {renderError(formErrors.name)}
@@ -379,7 +419,7 @@ const AppointmentForm = ({ hospitalId, HospitalName, specialityId }) => {
                       <input
                         type="email"
                         placeholder=""
-                        name="name"
+                        name="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         onBlur={handleEmailBlur}
@@ -402,6 +442,7 @@ const AppointmentForm = ({ hospitalId, HospitalName, specialityId }) => {
                       value={query}
                       onChange={(e) => setQuery(e.target.value)}
                       autoComplete="off"
+                      onBlur={handleQueryBlur}
                       style={formErrors.query ? Formstyles.errorInput : {}}
                     ></textarea>
                     {renderError(formErrors.query)}

@@ -258,6 +258,11 @@ const DoctorForm = ({ info }) => {
         ...prevErrors,
         phone: "Please enter a valid Phone number",
       }));
+    } else {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        phone: "",
+      }));
     }
   };
 
@@ -267,6 +272,41 @@ const DoctorForm = ({ info }) => {
         ...prevErrors,
         email: "Please enter a valid email address",
       }));
+    } else {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        email: "",
+      }));
+    }
+  };
+
+  const handleQueryBlur = () => {
+    if (!query) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        query: "Please enter your query",
+      }));
+    } else {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        query: "",
+      }));
+    }
+  };
+
+  const handleNameBlur = () => {
+    if (!userName) {
+      if (!name) {
+        setFormErrors((prevErrors) => ({
+          ...prevErrors,
+          name: "Please enter your name",
+        }));
+      } else {
+        setFormErrors((prevErrors) => ({
+          ...prevErrors,
+          name: "",
+        }));
+      }
     }
   };
 
@@ -308,6 +348,7 @@ const DoctorForm = ({ info }) => {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   autoComplete="off"
+                  onBlur={handleNameBlur}
                   style={formErrors.name ? Formstyles.errorInput : {}}
                 />
                 {renderError(formErrors.name)}
@@ -362,6 +403,7 @@ const DoctorForm = ({ info }) => {
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   autoComplete="off"
+                  onBlur={handleQueryBlur}
                   style={formErrors.query ? Formstyles.errorInput : {}}
                 ></textarea>
                 {renderError(formErrors.query)}

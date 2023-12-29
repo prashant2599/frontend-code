@@ -25,7 +25,9 @@ const Dashboard = () => {
 
     if (storedUserName) {
       const firstWord = storedUserName.split(" ")[0];
-      setUserName(firstWord);
+      const capitalizedFirstWord =
+        firstWord.charAt(0).toUpperCase() + firstWord.slice(1);
+      setUserName(capitalizedFirstWord);
     }
     if (storedUserId) {
       setPatientId(storedUserId);

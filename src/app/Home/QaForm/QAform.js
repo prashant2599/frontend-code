@@ -255,6 +255,11 @@ const QAform = () => {
         ...prevErrors,
         phone: "Please enter a valid Phone number",
       }));
+    } else {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        phone: "",
+      }));
     }
   };
 
@@ -264,8 +269,44 @@ const QAform = () => {
         ...prevErrors,
         email: "Please enter a valid email address",
       }));
+    } else {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        email: "",
+      }));
     }
   };
+
+  const handleQueryBlur = () => {
+    if (!query1) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        query: "Please enter your query",
+      }));
+    } else {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        query: "",
+      }));
+    }
+  };
+
+  const handleNameBlur = () => {
+    if (!userName) {
+      if (!name1) {
+        setFormErrors((prevErrors) => ({
+          ...prevErrors,
+          name: "Please enter your name",
+        }));
+      } else {
+        setFormErrors((prevErrors) => ({
+          ...prevErrors,
+          name: "",
+        }));
+      }
+    }
+  };
+
   const renderError = (error) =>
     error && <div className="error-message">{error}</div>;
 
@@ -304,6 +345,7 @@ const QAform = () => {
                   value={name1}
                   onChange={(e) => setName1(e.target.value)}
                   autoComplete="off"
+                  onBlur={handleNameBlur}
                   style={formErrors.name ? Formstyles.errorInput : {}}
                 />
                 {renderError(formErrors.name)}
@@ -358,6 +400,7 @@ const QAform = () => {
                   value={query1}
                   onChange={(e) => setQuery1(e.target.value)}
                   autoComplete="off"
+                  onBlur={handleQueryBlur}
                   style={formErrors.query ? Formstyles.errorInput : {}}
                 ></textarea>
                 {renderError(formErrors.query)}

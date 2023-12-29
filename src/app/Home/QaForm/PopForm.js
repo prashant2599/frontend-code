@@ -16,8 +16,7 @@ const PopForm = () => {
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [userPhone, setUserPhone] = useState("");
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [fileValidationMessage, setFileValidationMessage] = useState("");
+
   // form popup post method
 
   const [name, setName] = useState("");
@@ -26,37 +25,6 @@ const PopForm = () => {
   const [email, setEmail] = useState("");
   const [query, setQuery] = useState("");
 
-  const isValidFile = (file) => {
-    const allowedTypes = ["image/png", "image/jpeg", "application/pdf"];
-    const maxFileSize = 2 * 1024 * 1024; // 2MB
-
-    if (!file) {
-      return "Please select a file.";
-    }
-
-    if (!allowedTypes.includes(file.type)) {
-      return "Please select a valid file type (PNG, JPG, PDF).";
-    }
-
-    if (file.size > maxFileSize) {
-      return "File size must be less than or equal to 2MB.";
-    }
-
-    return "";
-  };
-
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    const validationMessage = isValidFile(file);
-    if (validationMessage) {
-      setFileValidationMessage(validationMessage);
-      event.target.value = null; // Clear the file input
-      return;
-    } else {
-      setFileValidationMessage("");
-    }
-    setSelectedFile(file);
-  };
   // Check if 'userName' exists in localStorage on component mount
   useEffect(() => {
     const storedUserName = localStorage.getItem("userName");
@@ -234,7 +202,6 @@ const PopForm = () => {
         email: userEmail ? userEmail : email,
         askq: query,
         patient_id: patientId,
-        file: selectedFile,
       };
 
       // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
@@ -273,6 +240,11 @@ const PopForm = () => {
         ...prevErrors,
         phone: "Please enter a valid Phone number",
       }));
+    } else {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        phone: "",
+      }));
     }
   };
 
@@ -282,6 +254,41 @@ const PopForm = () => {
         ...prevErrors,
         email: "Please enter a valid email address",
       }));
+    } else {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        email: "",
+      }));
+    }
+  };
+
+  const handleQueryBlur = () => {
+    if (!query) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        query: "Please enter your query",
+      }));
+    } else {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        query: "",
+      }));
+    }
+  };
+
+  const handleNameBlur = () => {
+    if (!userName) {
+      if (!name) {
+        setFormErrors((prevErrors) => ({
+          ...prevErrors,
+          name: "Please enter your name",
+        }));
+      } else {
+        setFormErrors((prevErrors) => ({
+          ...prevErrors,
+          name: "",
+        }));
+      }
     }
   };
 
@@ -295,13 +302,6 @@ const PopForm = () => {
   const handleCloseErrorPopup = () => {
     setShowErrorPopup(false);
   };
-
-  const fileDisplay = selectedFile ? (
-    <div className="file__value" onClick={() => setSelectedFile(null)}>
-      <div className="file__value--text">{selectedFile.name}</div>
-      <div className="file__value--remove" data-id={selectedFile.name}></div>
-    </div>
-  ) : null;
 
   const desc =
     "Thanks for getting in touch! We have received your query. Our team will reach out to you shortly.";
@@ -358,7 +358,7 @@ const PopForm = () => {
                 </div>
 
                 <div className="question-box7">
-                  <div className="upload-report-box">
+                  {/* <div className="upload-report-box">
                     <div className="medical-report-wrapper">
                       <button className="medical-report">
                         <img src="/images/2023/07/upload-icon.png" /> Medical
@@ -366,7 +366,7 @@ const PopForm = () => {
                       </button>
                       <input type="file" name="file" />
                     </div>
-                  </div>
+                  </div> */}
 
                   <div className="question-post-box">
                     <button
@@ -420,6 +420,7 @@ const PopForm = () => {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         autoComplete="off"
+                        onBlur={handleNameBlur}
                         style={formErrors.name ? Formstyles.errorInput : {}}
                       />
                       {renderError(formErrors.name)}
@@ -477,46 +478,13 @@ const PopForm = () => {
                         value={query}
                         onChange={(e) => setQuery(e.target.value)}
                         autoComplete="off"
+                        onBlur={handleQueryBlur}
                         style={formErrors.query ? Formstyles.errorInput : {}}
                       ></textarea>
                       {renderError(formErrors.query)}
                     </div>
                   </div>
 
-                  <div
-                    className="treatment-form"
-                    style={{ paddingBottom: "6px" }}
-                  >
-                    <div className="wrap">
-                      <div className="file">
-                        <div className="file__input" id="file__input">
-                          <input
-                            className="file__input--file"
-                            id="customFile"
-                            type="file"
-                            multiple="multiple"
-                            name="files[]"
-                            onChange={handleFileChange}
-                          />
-                          <label
-                            className="file__input--label"
-                            for="customFile"
-                            data-text-btn=" "
-                          >
-                            {" "}
-                            <img src="/images/upload-icon1.png" /> Choose files
-                            or drag &amp; drop{" "}
-                          </label>
-                        </div>
-                        {fileValidationMessage && (
-                          <p style={{ color: "red" }}>
-                            {fileValidationMessage}
-                          </p>
-                        )}
-                        {fileDisplay}
-                      </div>
-                    </div>
-                  </div>
                   <ReCAPTCHA
                     sitekey="6LcX6-YnAAAAAAjHasYD8EWemgKlDUxZ4ceSo8Eo" // Replace with your reCAPTCHA site key
                     onChange={handleCaptchaChange}

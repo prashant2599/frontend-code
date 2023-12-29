@@ -271,20 +271,60 @@ const HomeHospitalForm = ({
   const phoneRegex = /^\d{10}$/;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const handlePhoneBlur = () => {
-    if (!phone2 || !phone2.match(phoneRegex)) {
+    if (!phone || !phone.match(phoneRegex)) {
       setFormErrors((prevErrors) => ({
         ...prevErrors,
         phone: "Please enter a valid Phone number",
+      }));
+    } else {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        phone: "",
       }));
     }
   };
 
   const handleEmailBlur = () => {
-    if (!email2 || !email2.match(emailRegex)) {
+    if (!email || !email.match(emailRegex)) {
       setFormErrors((prevErrors) => ({
         ...prevErrors,
         email: "Please enter a valid email address",
       }));
+    } else {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        email: "",
+      }));
+    }
+  };
+
+  const handleQueryBlur = () => {
+    if (!query) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        query: "Please enter your query",
+      }));
+    } else {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        query: "",
+      }));
+    }
+  };
+
+  const handleNameBlur = () => {
+    if (!userName) {
+      if (!name) {
+        setFormErrors((prevErrors) => ({
+          ...prevErrors,
+          name: "Please enter your name",
+        }));
+      } else {
+        setFormErrors((prevErrors) => ({
+          ...prevErrors,
+          name: "",
+        }));
+      }
     }
   };
 
@@ -354,6 +394,7 @@ const HomeHospitalForm = ({
                       value={name2}
                       onChange={(e) => setName2(e.target.value)}
                       autoComplete="off"
+                      onBlur={handleNameBlur}
                       style={formErrors.name ? Formstyles2.errorInput : {}}
                     />
                     {renderError(formErrors.name)}
@@ -408,6 +449,7 @@ const HomeHospitalForm = ({
                       value={query2}
                       onChange={(e) => setQuery2(e.target.value)}
                       autoComplete="off"
+                      onBlur={handleQueryBlur}
                       style={formErrors.query ? Formstyles2.errorInput : {}}
                     ></textarea>
                     {renderError(formErrors.query)}
