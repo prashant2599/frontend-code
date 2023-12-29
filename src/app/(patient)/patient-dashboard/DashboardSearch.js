@@ -76,7 +76,7 @@ const DashboardSearch = () => {
           <div className="search-box">
             <input
               type="text"
-              placeholder="Search for doctor, hospital or treatments"
+              placeholder="Search For Doctors, Hospitals, Speciality or Treatments"
               name="name"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
@@ -202,7 +202,7 @@ const DashboardSearch = () => {
                   </Link>
                 ))}
 
-                {filteredBlogs.length > 0 ? <h3>Blogs</h3> : null}
+                {/* {filteredBlogs.length > 0 ? <h3>Blogs</h3> : null}
 
                 {filteredBlogs.map((doctor) => (
                   <Link
@@ -230,7 +230,7 @@ const DashboardSearch = () => {
                         )}
                     </div>
                   </Link>
-                ))}
+                ))} */}
               </div>
             )}
           </div>

@@ -2720,6 +2720,7 @@ textarea {
   height: 100%;
   display: block;
   position: relative;
+  text-align: justify;
 }
 
 .treatment-rightbox {
@@ -5389,7 +5390,7 @@ ul.tabs li.active {
   text-align: right;
   color: #7c7c7c;
   font-weight: 600;
-  justify-content: right
+  justify-content: right;
 }
 
 .hospital-location-box img {
@@ -5661,6 +5662,7 @@ ul.tabs li.active {
   height: 100%;
   display: block;
   position: relative;
+  text-align: justify;
 }
 
 .blog-midbox h3 {
@@ -11721,7 +11723,6 @@ h6 {
   margin-top: 0;
 }
 
-
 abbr[data-original-title],
 abbr[title] {
   text-decoration: underline;
@@ -11786,8 +11787,6 @@ a {
   text-decoration: none;
   background-color: transparent;
 }
-
-
 
 a:not([href]):not([class]),
 a:not([href]):not([class]):hover {
