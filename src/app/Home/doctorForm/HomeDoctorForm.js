@@ -377,19 +377,19 @@ const HomeDoctorForm = ({
                 </button>
               </div>
               <h2 style={{ padding: "0px" }}>
-                Book Appointment With
-                <span style={{ color: "#ff6800" }}>
+                Book Appointment With{" "}
+                <span style={{ color: "#ff6800", display: "inline-block" }}>
                   {first} {middle} {last}
-                </span>
+                </span>{" "}
                 now!
               </h2>
               <form onSubmit={handleFormSubmit2}>
                 <div className="treatment-form">
                   <div className="inputbox">
-                    <label>Name</label>
+                    {/* <label>Name</label> */}
                     <input
                       type="text"
-                      placeholder={userName}
+                      placeholder="name"
                       name="name"
                       value={name2}
                       onChange={(e) => setName2(e.target.value)}
@@ -403,12 +403,12 @@ const HomeDoctorForm = ({
 
                 <div className="treatment-form">
                   <div className="inputbox">
-                    <label>Phone</label>
+                    {/* <label>Phone</label> */}
                     <input
                       ref={inputRef}
                       type="tel"
                       id="mobileode"
-                      placeholder=""
+                      placeholder="Phone"
                       value={phone2}
                       onChange={handlePhoneNumberChange}
                       onBlur={handlePhoneBlur}
@@ -421,10 +421,10 @@ const HomeDoctorForm = ({
                 {userEmail ? null : (
                   <div className="treatment-form">
                     <div className="inputbox">
-                      <label>Email</label>
+                      {/* <label>Email</label> */}
                       <input
                         type="email"
-                        placeholder=""
+                        placeholder="Email"
                         name="email"
                         value={email2}
                         onChange={(e) => setEmail2(e.target.value)}
@@ -439,12 +439,12 @@ const HomeDoctorForm = ({
 
                 <div className="treatment-form">
                   <div className="inputbox">
-                    <label>Your Query</label>
+                    {/* <label>Your Query</label> */}
                     <textarea
                       className="querybox"
                       type="textarea"
                       name="query"
-                      placeholder=""
+                      placeholder="Your Query"
                       rows="2"
                       value={query2}
                       onChange={(e) => setQuery2(e.target.value)}
