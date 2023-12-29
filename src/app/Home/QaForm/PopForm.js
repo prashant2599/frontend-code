@@ -238,7 +238,7 @@ const PopForm = () => {
       };
 
       // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
-      const apiEndpoint = `https://dev.medflick.com/api/askPost`;
+      const apiEndpoint = `https://api.medflick.com/api/askPost`;
 
       setIsLoading(true);
 
