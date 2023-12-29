@@ -1442,6 +1442,7 @@ textarea {
   top: 10px;
   padding: 10px;
   border-radius: 6px;
+  margin: 0px !important;
 }
 
 .homeform-right {
