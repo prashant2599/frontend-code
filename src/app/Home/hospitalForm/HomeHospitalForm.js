@@ -194,13 +194,13 @@ const HomeHospitalForm = ({
       return;
     }
 
-    // if (!captchaValue2) {
-    //   setFormErrors((prevErrors) => ({
-    //     ...prevErrors,
-    //     captcha: "Please Fill the captcha",
-    //   }));
-    //   return;
-    // }
+    if (!captchaValue2) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        captcha: "Please Fill the captcha",
+      }));
+      return;
+    }
     const patientId = localStorage.getItem("userId");
 
     if (isValid) {
@@ -271,7 +271,7 @@ const HomeHospitalForm = ({
   const phoneRegex = /^\d{10}$/;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const handlePhoneBlur = () => {
-    if (!phone || !phone.match(phoneRegex)) {
+    if (!phone2 || !phone2.match(phoneRegex)) {
       setFormErrors((prevErrors) => ({
         ...prevErrors,
         phone: "Please enter a valid Phone number",
@@ -285,7 +285,7 @@ const HomeHospitalForm = ({
   };
 
   const handleEmailBlur = () => {
-    if (!email || !email.match(emailRegex)) {
+    if (!email2 || !email2.match(emailRegex)) {
       setFormErrors((prevErrors) => ({
         ...prevErrors,
         email: "Please enter a valid email address",
@@ -299,7 +299,7 @@ const HomeHospitalForm = ({
   };
 
   const handleQueryBlur = () => {
-    if (!query) {
+    if (!query2) {
       setFormErrors((prevErrors) => ({
         ...prevErrors,
         query: "Please enter your query",
@@ -314,7 +314,7 @@ const HomeHospitalForm = ({
 
   const handleNameBlur = () => {
     if (!userName) {
-      if (!name) {
+      if (!name2) {
         setFormErrors((prevErrors) => ({
           ...prevErrors,
           name: "Please enter your name",
@@ -381,15 +381,18 @@ const HomeHospitalForm = ({
               <h2 style={{ padding: "0px" }}>
                 {" "}
                 Book Appointment at <br />
-                <span style={{ color: "#ff6800" }}>{name}</span> now!
+                <span style={{ color: "#ff6800", display: "inline-block" }}>
+                  {name}
+                </span>{" "}
+                now!
               </h2>
               <form onSubmit={handleFormSubmit2}>
                 <div className="treatment-form">
                   <div className="inputbox">
-                    <label>Name</label>
+                    {/* <label>Name</label> */}
                     <input
                       type="text"
-                      placeholder={userName}
+                      placeholder="name"
                       name="name"
                       value={name2}
                       onChange={(e) => setName2(e.target.value)}
@@ -403,12 +406,12 @@ const HomeHospitalForm = ({
 
                 <div className="treatment-form">
                   <div className="inputbox">
-                    <label>Phone</label>
+                    {/* <label>Phone</label> */}
                     <input
                       ref={inputRef}
                       type="tel"
                       id="mobileode"
-                      placeholder=""
+                      placeholder="Phone"
                       value={phone2}
                       onChange={handlePhoneNumberChange}
                       onBlur={handlePhoneBlur}
@@ -421,10 +424,10 @@ const HomeHospitalForm = ({
                 {userEmail ? null : (
                   <div className="treatment-form">
                     <div className="inputbox">
-                      <label>Email</label>
+                      {/* <label>Email</label> */}
                       <input
                         type="email"
-                        placeholder=""
+                        placeholder="Email"
                         name="name"
                         value={email2}
                         onChange={(e) => setEmail2(e.target.value)}
@@ -439,12 +442,12 @@ const HomeHospitalForm = ({
 
                 <div className="treatment-form">
                   <div className="inputbox">
-                    <label>Your Query</label>
+                    {/* <label>Your Query</label> */}
                     <textarea
                       className="querybox"
                       type="textarea"
                       name="query"
-                      placeholder=""
+                      placeholder="Your Query"
                       rows="2"
                       value={query2}
                       onChange={(e) => setQuery2(e.target.value)}
@@ -485,7 +488,7 @@ const HomeHospitalForm = ({
                   </div>
                 </div>
                 <ReCAPTCHA
-                  sitekey="6LcX6-YnAAAAAAjHasYD8EWemgKlDUxZ4ceSo8Eo" // Replace with your reCAPTCHA site key
+                  sitekey="6LcX6-YnAAAAAAjHasYD8EWemgKlDUxZ4ceSo8Eo"
                   onChange={handleCaptchaChange2}
                 />
                 {renderError(formErrors.captcha)}
