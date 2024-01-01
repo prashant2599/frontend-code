@@ -4955,7 +4955,7 @@ table strong {
 }
 
 .doctor-item-doc {
-  width: 58%;
+  width: 50%;
   border-radius: 16px;
   margin: 0px;
   padding: 0px;
@@ -4982,7 +4982,7 @@ table strong {
 
 .doctor-item-doc .rating-star {
   color: #ffaf15;
-  font-size: 20px;
+  font-size: 18px;
   font-family: Helvetica Neue Medium;
 }
 
@@ -4995,17 +4995,17 @@ table strong {
 
 .doc-experience .years-exper {
   color: #ff6800;
-  font-size: 18px;
+  font-size: 17px;
   font-family: Helvetica Neue Medium;
 }
 
 .doc-experience .successful-plus {
   color: #7c7c7c;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .doctor-item-button {
-  width: 22%;
+  width: 30%;
   border-radius: 16px;
   margin: 0px;
   padding: 0px;
@@ -15251,7 +15251,7 @@ footer {
   justify-content: space-between;
 }
 .barbox-bar {
-  width: 33.33%;
+  width: auto;
   margin: 0px;
   padding-left: 37px;
   position: relative;
@@ -15261,15 +15261,16 @@ footer {
 .barbox-bar::before {
   position: absolute;
   content: "";
-  width: 30%;
-  height: 6px;
+  width: 0%;
+  height: 0px;
   border-radius: 87px;
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.40);
   background-position: bottom right;
   z-index: -1;
   bottom: 8px;
   right: 0px;
 }
+
 .barbox-bar img {
   width: 27px !important;
   height: 27px !important;
@@ -15435,10 +15436,11 @@ footer {
   }
   .barbox {
     width: 100%;
-  }
+    justify-content: center;
+}
   .barbox-bar {
     padding-left: 22px;
-    font-size: 12px;
+    font-size: 0px;
   }
   .barbox-bar::before {
     width: 0%;
@@ -15715,3 +15717,181 @@ footer {
 
 .popup-inner2 .treatment-form{margin-bottom:7px;}
 
+#request-quote-section {
+  background: linear-gradient(to bottom, #FF6800 55%, #EAECF0 0%);
+  padding: 70px 0 40px;
+  border-top: 1px solid #ffa76a;
+}
+
+.hospital-doctor-box {
+  background: #fff;
+  border: 1px solid #D8DEE5;
+  padding: 30px 40px 70px;
+  border-radius: 24px;
+}
+#request-quote-section h1 {
+  margin-bottom: 50px;
+}
+
+#request-quote-section h1 {
+  font-size: 30px;
+  color: #000000;
+  font-weight: 400;
+  width: 100%;
+  text-align: center;
+  font-family: Helvetica Neue Medium;
+}
+.hospital-doctor-box h2 {
+  color: #000;
+  font-family: Helvetica Neue Medium;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  padding-bottom: 15px;
+}
+
+.hospital-doctor-box .conditions-services {
+  gap: 30px;
+}
+
+.conditions-services {
+  display: flex;
+  border: 1px solid #d8dee5;
+  padding: 0px;
+  border-radius: 8px;
+}
+.hospital-doctor-box .hospitals-tab {
+  width: 30%;
+  display: block;
+}
+[class^=scrollbar] {
+  height: 650px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding-right: 10px;
+  margin-right: -10px;
+}
+.hospital-doctor-box .hospitals-tab button.active {
+  border: 1px solid #FF6800;
+  background: rgba(255, 104, 0, 0.10);
+}
+
+.hospitals-tab button.active {
+  border-radius: 16px;
+}
+.hospital-item {
+  width: 100%;
+  gap: 20px;
+  padding: 10px;
+  display: flex;
+}
+
+.hospital-item .hospital-item-img {
+  width: 30%;
+  border-radius: 16px;
+  margin: 0px;
+  padding: 0px;
+}
+
+.hospital-item-img img {
+  border-radius: 16px;
+  height: 100%;
+}
+
+.hospital-item-doc {
+  width: 70%;
+  text-align: left;
+  border-radius: 16px;
+  margin: 0px;
+  padding: 0px;
+  position: relative;
+}
+
+.hospital-item-doc h3 {
+  font-family: Helvetica Neue Medium;
+  font-size: 18px;
+  line-height: 20px;
+  width: 100%;
+  color: #000000;
+}
+
+.hospital-item-doc .department-sub {
+  color: #7c7c7c;
+  font-size: 14px;
+  margin: 0px 0 4px;
+}
+.hospital-item-doc .rating-star {
+  color: #FF6800;
+  font-size: 18px;
+  font-family: Helvetica Neue Medium;
+}
+.ho-docimg {
+  display: flex;
+  gap: 10px;
+  margin: 5px 0;
+  padding: 5px 0;
+}
+.ho-docimg img {
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+}
+.hospital-doctor-box .conditionsbox {
+  padding: 0px;
+}
+
+.conditionsbox {
+  float: left;
+  width: 70%;
+  padding:20px;
+  border-left: none;
+  height: 100%;
+  display: none;
+}
+.get-qs {
+  font-size: 14px;
+  float: right;
+}
+#request-quote-section {
+  background: linear-gradient(to bottom, #FF6800 55%, #EAECF0 0%);
+  padding: 70px 0 40px;
+  border-top: 1px solid #ffa76a;
+}
+.request-quote {
+  background: #fff;
+  border: 1px solid #D8DEE5;
+  padding: 30px 200px 70px;
+  border-radius: 24px;
+}
+.get-help-box {
+  margin: 40px 0px 0;
+  padding: 10px 0px;
+  position: relative;
+}
+.get-help-box label {
+  font-size: 16px;
+  width: 100%;
+  font-size: 14px;
+  margin-bottom: 10px !important;
+  text-align: left;
+  font-family: Helvetica Neue Medium;
+}
+.get-help-box input, textarea {
+  height: 46px ;
+  border: 1px solid #DBDBDB ;
+  border-radius: 8px ;
+  font-family: Helvetica Neue Medium;
+}
+
+@media screen and (max-width: 880px) {
+  #request-quote-section h1 {
+    font-size: 25px;
+    margin-top: 20px;
+}
+.hospital-doctor-box .hospitals-tab {
+  width: 100%;
+}
+[class^=scrollbar] {
+  height: 250px;
+}
+}

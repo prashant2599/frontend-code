@@ -574,13 +574,7 @@ a:hover {
   background-size: auto;
   background-size: 20px;
 }
-.conditions-services {
-  display: flex;
-  border: 1px solid #d8dee5;
-  padding: 0px;
-  border-radius: 8px;
-  gap: 20px;
-}
+
 .specialists-item {
   display: flex;
   gap: 10px;
@@ -1014,31 +1008,15 @@ a:hover {
   display: flex;
 }
 .hospital-item .hospital-item-img {
-  width: 20%;
+  width: 30%;
   border-radius: 16px;
-  margin: 0px;
-  padding: 0px;
-}
-.hospital-item-img img {
-  border-radius: 16px;
-  height: 100%;
-}
-.hospital-item-img img {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
   margin: 0px;
   padding: 0px;
 }
 
-.hospital-item-doc {
-  width: 58%;
-  text-align: left;
-  border-radius: 16px;
-  margin: 0px;
-  padding: 0px;
-  position: relative;
-}
+
+
+
 .hospital-item-doc h3 {
   font-family: Helvetica Neue Medium;
   font-size: 18px;
@@ -1046,11 +1024,7 @@ a:hover {
   width: 100%;
   color: #000000;
 }
-.hospital-item-doc .department-sub {
-  color: #7c7c7c;
-  font-size: 14px;
-  margin: 0px 0 4px;
-}
+
 .hospital-item-doc .rating-star {
   color: #ffaf15;
   font-size: 18px;
@@ -1099,15 +1073,7 @@ a:hover {
   border-radius: 24px;
   border: 1px solid #d8dee5;
 }
-#request-quote-section h1 {
-  font-size: 30px;
-  color: #000000;
-  font-weight: 400;
-  width: 100%;
-  text-align: center;
-  margin-bottom: 20px;
-  font-family: Helvetica Neue Medium;
-}
+
 
 .quote-pdf {
   position: absolute;
@@ -2026,20 +1992,10 @@ td {
   border-radius: 8px;
 }
 
-.hospitals-tab button.active {
-  border: 1px solid #ff6800;
-  border-radius: 16px;
-}
+
 
 /* Style the tab content */
-.conditionsbox {
-  float: left;
-  padding: 20px;
-  width: 70%;
-  border-left: none;
-  height: 100%;
-  display: none;
-}
+
 .tab1 {
   display: none;
 }

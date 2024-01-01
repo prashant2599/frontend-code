@@ -86,7 +86,7 @@ const RequestQuote = () => {
     localStorage.setItem("selectedTreatmentName", treatmentName);
 
     // Redirect to the patient-report page
-    router.push("/patient-report");
+    router.push("/patient-select");
   };
   // useEffect(() => {
   //   localStorage.setItem("treatment", selectedtreatmentId);
@@ -114,13 +114,19 @@ const RequestQuote = () => {
             </Link>
             <div className="barbox">
               <div className="barbox-bar">
-                <img src="/images/2023/02/1.png" /> Select Medical Problem
+                <img src="images/2023/02/3.png" /> Select Medical Problem
               </div>
               <div className="barbox-bar">
-                <img src="/images/2023/02/2.png" /> Upload Medical Report
+                <img src="images/2023/02/2.png" /> Select Doctor &amp; Hospital
               </div>
-              <div className="barbox-bar1">
-                <img src="/images/2023/02/2.png" /> Get Quotes
+              <div className="barbox-bar">
+                <img src="images/2023/02/2.png" /> Patient Details
+              </div>
+              <div className="barbox-bar">
+                <img src="images/2023/02/2.png" /> Upload Medical Report
+              </div>
+              <div className="barbox-bar">
+                <img src="images/2023/02/2.png" /> Get Quotes
               </div>
             </div>
           </div>
@@ -177,8 +183,8 @@ const RequestQuote = () => {
                               handleNameClick(
                                 items.id,
                                 e.id,
-                                e.name,
-                                items.name
+                                e.slug,
+                                items.slug
                               )
                             }
                             style={{ cursor: "pointer" }}
