@@ -9,6 +9,7 @@ import "intl-tel-input/build/css/intlTelInput.css";
 import intlTelInput from "intl-tel-input";
 import Success from "../successPopup/Success";
 import ErrorPopup from "../successPopup/ErrorPopup";
+import Link from "next/link";
 
 const HeaderPopup = () => {
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
@@ -302,13 +303,14 @@ const HeaderPopup = () => {
     "Thanks for getting in touch! We have received your query. Our team will reach out to you shortly.";
   return (
     <>
-      <a
+      <Link
         className="qsk-question"
-        onClick={togglePopup}
-        style={{ cursor: "pointer" }}
+        href="/question-answer"
+        // onClick={togglePopup}
+        // style={{ cursor: "pointer" }}
       >
         Ask FREE Question <img src="/images/whiteArrow.png" alt="icon" />
-      </a>
+      </Link>
       {isPopupOpen &&
         (userEmail ? (
           <div className="popup" data-popup="popup-2" style={popupStyle}>
