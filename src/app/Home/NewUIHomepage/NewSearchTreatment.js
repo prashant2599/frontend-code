@@ -143,7 +143,7 @@ const NewSearchTreatment = () => {
                 <div className="item" key={e.id}>
                   <div className="item-home-expert">
                     <Link href={`/doctor/${e.slug}`}>
-                      <img src={`https://dev.medflick.com/doctor/${e.image}`} />
+                      <img src={`https://dev.medflick.com/doctor/${e.icon}`} />
                     </Link>
                   </div>
                   <div className="home-expert-text">
