@@ -100,16 +100,16 @@ const page = async ({ params }) => {
         <section id="category-mid">
           <div className="midbox-inner  wiki-mk">
             {countrySlug === undefined ? (
-              <h2>{info && info.name}</h2>
+              <h2 style={{marginBottom:"3rem"}}>{info && info.name}</h2>
             ) : (
-              <h2>
+              <h2 style={{marginBottom:"3rem"}}>
                 {info && info.name} in{" "}
                 <span style={{ color: "#ff6800" }}>
                   {countrySlug.charAt(0).toUpperCase() + countrySlug.slice(1)}
                 </span>
               </h2>
             )}
-            <p>
+            {/* <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore Ut enim ad minim veniam, quis
               nostrud exercitation ullamco laboris nisi ut aliquip ex ea commo
@@ -122,7 +122,7 @@ const page = async ({ params }) => {
               orem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore Ut enim ad minim veniam, quis
               nostrud exercitation
-            </p>
+            </p> */}
 
             {/* cost form */}
             <CostEstimateForm specialityId={info.id} />
