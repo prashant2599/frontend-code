@@ -29,8 +29,8 @@ const PatientDetails = () => {
     };
   }, []);
   const handlePhoneNumberChange = (e) => {
-    const formattedPhoneNumber = e.target.value.replace(/\D/g, ""); // Remove non-numeric characters
-    setPhone1(formattedPhoneNumber); // Update the phone number state
+    const formattedPhoneNumber = e.target.value.replace(/\D/g, "");
+    setPhone1(formattedPhoneNumber);
   };
 
   return (
@@ -143,17 +143,18 @@ const PatientDetails = () => {
                         />
                       </div>
                     </div>
-
-                    <button
-                      type="submit"
-                      name="en"
-                      data-popup-open="popup-6"
-                      className="home-button"
-                      fdprocessedid="mhccan"
-                    >
-                      {" "}
-                      Continue
-                    </button>
+                    <Link href="/patient-report">
+                      <button
+                        type="submit"
+                        name="en"
+                        data-popup-open="popup-6"
+                        className="home-button"
+                        fdprocessedid="mhccan"
+                      >
+                        {" "}
+                        Continue
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </h1>

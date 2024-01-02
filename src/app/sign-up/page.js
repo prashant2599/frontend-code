@@ -1,14 +1,9 @@
-
-import NewFooter from "../Home/NewUIHomepage/inc/NewFooter";
-import NewHeader from "../Home/NewUIHomepage/inc/NewHeader";
 import SignUp from "./SignUp";
 
 const page = () => {
   return (
     <>
-    <NewHeader />
       <SignUp />
-      <NewFooter />
     </>
   );
 };
@@ -22,4 +17,3 @@ export async function generateMetadata() {
     },
   };
 }
-

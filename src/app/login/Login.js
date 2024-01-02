@@ -106,18 +106,18 @@ const Login = () => {
                       src="/images/2023/compliance helpline.png"
                       alt="icon1"
                     />
-                    <h5>Confidentiality</h5>
+                    <h5>Compliance Helpline</h5>
                   </li>
                   <li>
                     <img src="/images/2023/confidentiality.png" alt="icon2" />
-                    <h5>Transparent Policies</h5>
+                    <h5>Confidentiality</h5>
                   </li>
                   <li>
                     <img
                       src="/images/2023/transparent policie.png"
                       alt="icon3"
                     />
-                    <h5>Compliance Helpline</h5>
+                    <h5>Transparent Policies</h5>
                   </li>
                 </ul>
               </div>

@@ -65,12 +65,10 @@ const NewFooter = () => {
               <img src="/images/2023/01/logo.png" alt="Brand Logo" />
 
               <p>
-                Beyond Boundaries, Around the Clock Healthcare knows no
-                boundaries, and neither does our support. Medflick&apos;s 24/7
-                availability ensures that whether you&apos;re at home or halfway
-                across the world, we&apos;re here to provide the guidance you
-                need. Your health transcends time zones, and our support is
-                designed to do the same, accompanying you whenever you need us.
+                Beyond boundaries and around-the-clock healthcare extends
+                without limits, and so does our commitment. Medflick's 24/7
+                availability ensures that whether you're at home or halfway
+                across the world, we're here to provide the guidance you need.
               </p>
             </div>
 

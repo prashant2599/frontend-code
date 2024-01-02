@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import CallMeBackForm from "./CallMeBackForm";
 
 const ScrollToTop = () => {
   useEffect(() => {
@@ -29,9 +30,7 @@ const ContactUs = () => {
               inquiries you might have
             </p>
 
-            <Link href="/free-consultation" className="learn">
-              Call me Back <img src="/images/2023/01/arrow-w.png" alt="" />
-            </Link>
+            <CallMeBackForm />
           </div>
         </div>
       </section>
@@ -73,7 +72,7 @@ const ContactUs = () => {
             >
               <h2>Visit Us</h2>
               <p>
-                View our office HQ : D-213 Sector - 63, Noida - 201301 India
+                View our office HQ : D-213 Sector - 63, Noida - 201301, India
               </p>
               <a
                 href="#"

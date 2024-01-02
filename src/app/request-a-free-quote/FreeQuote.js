@@ -21,6 +21,29 @@ const FreeQuote = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [fileValidationMessage, setFileValidationMessage] = useState("");
 
+  const [userName, setUserName] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+  const [userPhone, setUserPhone] = useState("");
+
+  // Check if 'userName' exists in localStorage on component mount
+  useEffect(() => {
+    const storedUserName = localStorage.getItem("userName");
+    const storedUserEmail = localStorage.getItem("userEmail");
+    const storedUserPhone = localStorage.getItem("userPhone");
+
+    if (storedUserName) {
+      setUserName(storedUserName);
+    }
+
+    if (storedUserPhone) {
+      setUserPhone(storedUserPhone);
+    }
+
+    if (storedUserEmail) {
+      setUserEmail(storedUserEmail);
+    }
+  }, []);
+
   const isValidFile = (file) => {
     const allowedTypes = ["image/png", "image/jpeg", "application/pdf"];
     const maxFileSize = 2 * 1024 * 1024; // 2MB
@@ -273,10 +296,10 @@ const FreeQuote = () => {
               <form onSubmit={handleFormSubmit}>
                 <div className="treatment-form">
                   <div className="inputbox">
-                    <label>Name</label>
+                    {/* <label>Name</label> */}
                     <input
                       type="text"
-                      placeholder=""
+                      placeholder={userName ? userName : "Name"}
                       name="name"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
@@ -289,12 +312,12 @@ const FreeQuote = () => {
 
                 <div className="treatment-form">
                   <div className="inputbox">
-                    <label>Phone</label>
+                    {/* <label>Phone</label> */}
                     <input
                       ref={inputRef}
                       type="tel"
                       id="mobile_code"
-                      placeholder=""
+                      placeholder="Phone"
                       value={phone}
                       onChange={handlePhoneNumberChange}
                       onBlur={handlePhoneBlur}
@@ -303,32 +326,33 @@ const FreeQuote = () => {
                     {renderError(formErrors.phone)}
                   </div>
                 </div>
-
-                <div className="treatment-form">
-                  <div className="inputbox">
-                    <label>Email</label>
-                    <input
-                      type="email"
-                      placeholder=""
-                      name="name"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      onBlur={handleEmailBlur}
-                      autoComplete="off"
-                      style={formErrors.email ? Formstyles.errorInput : {}}
-                    />
-                    {renderError(formErrors.email)}
+                {userEmail ? null : (
+                  <div className="treatment-form">
+                    <div className="inputbox">
+                      {/* <label>Email</label> */}
+                      <input
+                        type="email"
+                        placeholder="Email"
+                        name="name"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        onBlur={handleEmailBlur}
+                        autoComplete="off"
+                        style={formErrors.email ? Formstyles.errorInput : {}}
+                      />
+                      {renderError(formErrors.email)}
+                    </div>
                   </div>
-                </div>
+                )}
 
                 <div className="treatment-form">
                   <div className="inputbox">
-                    <label>Your Query</label>
+                    {/* <label>Your Query</label> */}
                     <textarea
                       className="querybox"
                       type="textarea"
                       name="query"
-                      placeholder=""
+                      placeholder="Your Query"
                       rows="2"
                       value={query}
                       onChange={(e) => setQuery(e.target.value)}
@@ -338,6 +362,7 @@ const FreeQuote = () => {
                     {renderError(formErrors.query)}
                   </div>
                 </div>
+
                 <div className="treatment-form">
                   <div className="wrap">
                     <div className="file">
@@ -374,8 +399,10 @@ const FreeQuote = () => {
                 {renderError(formErrors.captcha)}
                 <p>
                   I agree to the{" "}
-                  <Link href="/terms">Terms of use Privacy policy</Link> and
-                  receive marketing letters that may be of interest.
+                  <Link href="/terms-and-conditions">
+                    Terms of use Privacy policy
+                  </Link>{" "}
+                  and receive marketing letters that may be of interest.
                 </p>
                 <button
                   type="submit"

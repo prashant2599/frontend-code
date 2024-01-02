@@ -31,19 +31,12 @@ const page = () => {
       <section id="our-mission">
         <div className="midbox-inner  wiki-mk">
           <h2>
-            Our <span>Mission</span>
+            Our <span>Ethos</span>
           </h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore Ut enim ad minim veniam, quis
-            nostrud exercitation ullamco laboris nisi ut aliquip ex ea commo
-            orem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore Ut enim ad minim veniam, quis
-            nostrud exercitation ullamco laboris nisi ut aliquip ex ea commo
-            orem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore Ut enim ad minim veniam, quis
-            nostrud exercitation ullamco laboris nisi ut aliquip ex ea commo
-            orem.
+            Even though we are a virtual healthcare provider that delivers care
+            virtually, it’s important, on a daily basis, to remember that the
+            person at the other end is real.
           </p>
         </div>
       </section>
@@ -54,33 +47,32 @@ const page = () => {
             <h2>
               Our <span>Perks</span>
             </h2>
-
             <ul>
               <li>
                 <img src="/images/100.png" alt="" />
-                <h3>Explore</h3>
-                <p>100% paid employee health benefit options</p>
+                <h3>100% Professional Growth</h3>
+                {/* <p>100% paid employee health benefit options</p> */}
               </li>
               <li>
                 <img src="/images/tree.png" alt="" />
-                <h3>Read Reviews</h3>
-                <p>Corporate wellness programs with Headspace and Peloton</p>
+                <h3>Learning and Development Opportunities</h3>
+                {/* <p>Corporate wellness programs with Headspace and Peloton</p> */}
               </li>
               <li>
                 <img src="/images/tree1.png" alt="" />
-                <h3>Prepare</h3>
-                <p>
+                <h3>Recognition Opportunities</h3>
+                {/* <p>
                   Cell phone <br />
                   reimbursement
-                </p>
+                </p> */}
               </li>
               <li>
                 <img src="/images/tree2.png" alt="" />
-                <h3>Treat</h3>
-                <p>
+                <h3>Work-Life Balance</h3>
+                {/* <p>
                   Vacation and parental <br />
                   leave packages
-                </p>
+                </p> */}
               </li>
             </ul>
           </div>

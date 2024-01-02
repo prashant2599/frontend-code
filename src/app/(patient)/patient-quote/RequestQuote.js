@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import SearchSpeciality from "./SearchSpeciality";
 
 const RequestQuote = () => {
   const router = useRouter();
@@ -133,14 +134,7 @@ const RequestQuote = () => {
 
           <div className="request-quote">
             <h1>What is the medical problem you want to address?</h1>
-            {/* <div className="search-medbox">
-              <input
-                type="text"
-                placeholder="Search for doctor, hospital or treatments"
-                name="name"
-                required=""
-              />
-            </div> */}
+            <SearchSpeciality />
 
             <h2>Medical conditions & Services</h2>
 
