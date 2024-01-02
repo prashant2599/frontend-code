@@ -480,7 +480,7 @@ const AppointmentForm = ({ doctorId, first, middle, last, specialityId }) => {
                   </div>
                 </div>
                 <ReCAPTCHA
-                  sitekey="6LcX6-YnAAAAAAjHasYD8EWemgKlDUxZ4ceSo8Eo" // Replace with your reCAPTCHA site key
+                  sitekey="6LcX6-YnAAAAAAjHasYD8EWemgKlDUxZ4ceSo8Eo"
                   onChange={handleCaptchaChange}
                 />
                 {renderError(formErrors.captcha)}

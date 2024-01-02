@@ -13,11 +13,12 @@ const page = () => {
           <div className="career-slidertext">
             <h1>Join Us</h1>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscin elit, sed do
-              eiusmod tempor incididunt ut labore consectetur ipsum dolor sit
-              amet, consectetur elit, sed do eiusmod tempor incidid Lorem ipsum
-              dolor sit amet adipiscin elit, sed do eiusmod tempor lorem ipsum
-              dolor amet, consectetur adipiscin elit.
+              Medflick is a healthcare platform that connects patients and
+              providers, fostering trust and exceptional values. Our culture is
+              built on teamwork, optimism, brilliant learning opportunities, and
+              professional growth. Medflick seeks professionals with unique
+              perspectives, the ability to see opportunities, and the conviction
+              to change the world with the right resources and team.
             </p>
 
             <a href="#">
@@ -49,30 +50,24 @@ const page = () => {
             </h2>
             <ul>
               <li>
-                <img src="/images/100.png" alt="" />
-                <h3>100% Professional Growth</h3>
-                {/* <p>100% paid employee health benefit options</p> */}
+                <img src="/images/c1.png" alt="" />
+                {/* <h3>100% Professional Growth</h3> */}
+                <p>100% Professional Growth</p>
               </li>
               <li>
-                <img src="/images/tree.png" alt="" />
-                <h3>Learning and Development Opportunities</h3>
-                {/* <p>Corporate wellness programs with Headspace and Peloton</p> */}
+                <img src="/images/c2.png" alt="" />
+                {/* <h3>Learning and Development Opportunities</h3> */}
+                <p>Learning and Development Opportunities</p>
               </li>
               <li>
-                <img src="/images/tree1.png" alt="" />
-                <h3>Recognition Opportunities</h3>
-                {/* <p>
-                  Cell phone <br />
-                  reimbursement
-                </p> */}
+                <img src="/images/c3.png" alt="" />
+                {/* <h3>Recognition Opportunities</h3> */}
+                <p>Recognition Opportunities</p>
               </li>
               <li>
-                <img src="/images/tree2.png" alt="" />
-                <h3>Work-Life Balance</h3>
-                {/* <p>
-                  Vacation and parental <br />
-                  leave packages
-                </p> */}
+                <img src="/images/c4.png" alt="" />
+                {/* <h3>Work-Life Balance</h3> */}
+                <p>Work-Life Balance</p>
               </li>
             </ul>
           </div>

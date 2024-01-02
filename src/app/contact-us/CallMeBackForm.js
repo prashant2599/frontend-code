@@ -338,7 +338,7 @@ const CallMeBackForm = () => {
   ) : null;
 
   const desc =
-    "Your appointment request has been received. We will get back to you soon. Thanks for your patience!";
+    "Thanks for connecting! Your callback request has been received. We will get back to you shortly!";
   return (
     <>
       <a className="learn" onClick={togglePopup2} style={{ cursor: "pointer" }}>
