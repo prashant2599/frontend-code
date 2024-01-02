@@ -380,10 +380,10 @@ const AppointmentForm = ({ hospitalId, HospitalName, specialityId }) => {
               <form onSubmit={handleFormSubmit}>
                 <div className="treatment-form">
                   <div className="inputbox">
-                    <label>Name</label>
+                    {/* <label>Name</label> */}
                     <input
                       type="text"
-                      placeholder={userName}
+                      placeholder={userName ? userName : "Name"}
                       name="name"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
@@ -397,12 +397,12 @@ const AppointmentForm = ({ hospitalId, HospitalName, specialityId }) => {
 
                 <div className="treatment-form">
                   <div className="inputbox">
-                    <label>Phone</label>
+                    {/* <label>Phone</label> */}
                     <input
                       ref={inputRef}
                       type="tel"
                       id="mobileode"
-                      placeholder=""
+                      placeholder="Phone"
                       value={phone}
                       onChange={handlePhoneNumberChange}
                       onBlur={handlePhoneBlur}
@@ -415,10 +415,10 @@ const AppointmentForm = ({ hospitalId, HospitalName, specialityId }) => {
                 {userEmail ? null : (
                   <div className="treatment-form">
                     <div className="inputbox">
-                      <label>Email</label>
+                      {/* <label>Email</label> */}
                       <input
                         type="email"
-                        placeholder=""
+                        placeholder="Email"
                         name="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
@@ -432,12 +432,12 @@ const AppointmentForm = ({ hospitalId, HospitalName, specialityId }) => {
                 )}
                 <div className="treatment-form">
                   <div className="inputbox">
-                    <label>Your Query</label>
+                    {/* <label>Your Query</label> */}
                     <textarea
                       className="querybox"
                       type="textarea"
                       name="query"
-                      placeholder=""
+                      placeholder="Your Query"
                       rows="2"
                       value={query}
                       onChange={(e) => setQuery(e.target.value)}

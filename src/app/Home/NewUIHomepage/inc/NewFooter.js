@@ -63,12 +63,14 @@ const NewFooter = () => {
           <div className="footer-section">
             <div className="footer-about">
               <img src="/images/2023/01/logo.png" alt="Brand Logo" />
+
               <p>
                 Beyond Boundaries, Around the Clock Healthcare knows no
                 boundaries, and neither does our support. Medflick&apos;s 24/7
                 availability ensures that whether you&apos;re at home or halfway
                 across the world, we&apos;re here to provide the guidance you
-                need.
+                need. Your health transcends time zones, and our support is
+                designed to do the same, accompanying you whenever you need us.
               </p>
             </div>
 
@@ -166,7 +168,7 @@ const NewFooter = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/query" target="_self">
+                    <Link href="/request-a-free-quote" target="_self">
                       Request a free quote
                     </Link>
                   </li>
@@ -228,24 +230,18 @@ const NewFooter = () => {
                 </h4>
                 <ul className="footerbox">
                   <li>
-                    <Link href="/contact-us" target="_self">
-                      Write to us
-                    </Link>
+                    <Link href="/contact-us">Write to us</Link>
                   </li>
                   <li>
-                    <Link href="/terms" target="_self">
+                    <Link href="/terms-and-conditions">
                       Terms and Conditions
                     </Link>
                   </li>
                   <li>
-                    <Link href="/terms" target="_self">
-                      Privacy Policy
-                    </Link>
+                    <Link href="/privacy-policy">Privacy Policy</Link>
                   </li>
                   <li>
-                    <Link href="/disclaimer" target="_self">
-                      Disclaimer
-                    </Link>
+                    <Link href="/disclaimer">Disclaimer</Link>
                   </li>
                 </ul>
               </div>
@@ -284,19 +280,13 @@ const NewFooter = () => {
               </ul>
             </div>
             <div className="wh">
-              © 2023 Medflick. All Rights Reserved |{" "}
-              <a href="#" target="_black">
-                Privacy Policy
-              </a>{" "}
-              |{" "}
-              <a href="#" target="_black">
-                Terms &amp; Conditions
-              </a>
+              © 2024 Medflick. All Rights Reserved |{" "}
+              <Link href="/privacy-policy">Privacy Policy</Link> |{" "}
+              <Link href="/terms-and-conditions">Terms &amp; Conditions</Link>
             </div>
           </div>
         </div>
       </footer>
-    
     </>
   );
 };

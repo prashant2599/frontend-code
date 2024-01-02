@@ -7,6 +7,7 @@ import { useUser } from "@/app/UserContext";
 import { useRouter } from "next/navigation";
 import { VscAccount } from "react-icons/vsc";
 import Script from "next/script";
+import HeaderPopup from "../QaForm/HeaderPopup";
 
 const LoginButton = () => {
   const router = useRouter();
@@ -137,9 +138,7 @@ const LoginButton = () => {
         ></div> */}
         <HeaderSearch />
 
-        <Link className="qsk-question" href="/question-answer">
-          Ask FREE Question <img src="/images/whiteArrow.png" alt="icon" />
-        </Link>
+        <HeaderPopup />
       </div>
       {/* <Script src="https://cdn.gtranslate.net/widgets/latest/dropdown.js"></Script> */}
     </>

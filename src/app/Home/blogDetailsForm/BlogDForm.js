@@ -3,7 +3,7 @@
 import ReCAPTCHA from "react-google-recaptcha";
 import { ThreeDots } from "react-loader-spinner";
 import { useState, useEffect, useRef } from "react";
-import "intl-tel-input/build/css/intlTelInput.css"; 
+import "intl-tel-input/build/css/intlTelInput.css";
 import intlTelInput from "intl-tel-input";
 import axios from "axios";
 import Success from "../successPopup/Success";
@@ -98,7 +98,7 @@ const BlogDForm = () => {
     setPhone1("");
     setEmail1("");
     setQuery1("");
-    setSelectedFile(null)
+    setSelectedFile(null);
   };
 
   const inputRef = useRef(null);
@@ -314,10 +314,10 @@ const BlogDForm = () => {
           <form onSubmit={handleFormSubmit1}>
             <div className="treatment-form">
               <div className="inputbox">
-                <label>Name</label>
+                {/* <label>Name</label> */}
                 <input
                   type="text"
-                  placeholder={userName}
+                  placeholder={userName ? userName : "Name"}
                   name="name"
                   value={name1}
                   onChange={(e) => setName1(e.target.value)}
@@ -330,12 +330,12 @@ const BlogDForm = () => {
 
             <div className="treatment-form">
               <div className="inputbox">
-                <label>Phone</label>
+                {/* <label>Phone</label> */}
                 <input
                   ref={inputRef}
                   type="tel"
                   id="mobile_code"
-                  placeholder=""
+                  placeholder="Phone"
                   value={phone1}
                   onChange={handlePhoneNumberChange}
                   onBlur={handlePhoneBlur}
@@ -348,10 +348,10 @@ const BlogDForm = () => {
             {userEmail ? null : (
               <div className="treatment-form">
                 <div className="inputbox">
-                  <label>Email</label>
+                  {/* <label>Email</label> */}
                   <input
                     type="email"
-                    placeholder=""
+                    placeholder="Email"
                     name="name"
                     value={email1}
                     onChange={(e) => setEmail1(e.target.value)}
@@ -366,12 +366,12 @@ const BlogDForm = () => {
 
             <div className="treatment-form">
               <div className="inputbox">
-                <label>Your Query</label>
+                {/* <label>Your Query</label> */}
                 <textarea
                   className="querybox"
                   type="textarea"
                   name="query"
-                  placeholder=""
+                  placeholder="Your Query"
                   rows="2"
                   value={query1}
                   onChange={(e) => setQuery1(e.target.value)}

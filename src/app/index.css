@@ -581,15 +581,7 @@ a:hover {
   align-items: center;
   flex-wrap: wrap;
 }
-.specialists-boxitem {
-  width: 18%;
-  text-align: center;
-  margin: 0px;
-  padding: 10px;
-  border-radius: 16px;
-  border: 1px solid #e9ebef;
-  height: 120px;
-}
+
 .specialists-boxitem .boxitem {
   display: block;
 }

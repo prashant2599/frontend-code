@@ -1,26 +1,21 @@
 @font-face {
   font-family: Helvetica Neu Bold;
   src: url(../app/fonts/Helvetica-Neu-Bold.ttf);
-
 }
 
 @font-face {
   font-family: Helvetica Neue Medium;
   src: url(../app/fonts/Helvetica-Neue-Medium.ttf);
- 
 }
 
 @font-face {
   font-family: Helvetica Neue Light;
   src: url(../app/fonts/Helvetica-Neue-Light.ttf);
- 
 }
 @font-face {
   font-family: Inter Regular;
   src: url(../app/fonts/Inter-Regular.ttf);
-  
 }
-
 
 html {
   scroll-behavior: smooth;
@@ -4683,7 +4678,7 @@ table strong {
 }
 
 .specialists-boxitem {
-  width: 10%;
+  width: 28%;
   text-align: center;
   margin: 0px;
   padding: 10px;
@@ -5676,6 +5671,7 @@ ul.tabs li.active {
   margin-bottom: 14px;
   font-family: Helvetica Neue Medium;
   text-transform: capitalize;
+  text-align: left;
 }
 
 .blog-midbox h4 {
@@ -11824,8 +11820,6 @@ caption {
   caption-side: bottom;
 }
 
-
-
 label {
   display: inline-block;
   margin-bottom: 0.5rem;
@@ -15264,7 +15258,7 @@ footer {
   width: 0%;
   height: 0px;
   border-radius: 87px;
-  background: rgba(255, 255, 255, 0.40);
+  background: rgba(255, 255, 255, 0.4);
   background-position: bottom right;
   z-index: -1;
   bottom: 8px;
@@ -15437,7 +15431,7 @@ footer {
   .barbox {
     width: 100%;
     justify-content: center;
-}
+  }
   .barbox-bar {
     padding-left: 22px;
     font-size: 0px;
@@ -15690,42 +15684,53 @@ footer {
 }
 
 .treatment-form .inputbox input::placeholder {
-  color: #7C7C7C;
+  color: #7c7c7c;
   font-size: 14px;
 }
 .treatment-form .inputbox textarea::placeholder {
-  color: #7C7C7C;
+  color: #7c7c7c;
   font-size: 14px;
 }
 
 .assistance-box.inputbox input::placeholder {
-  color: #7C7C7C;
+  color: #7c7c7c;
   font-size: 14px;
 }
 .assistance-box.inputbox1 input::placeholder {
-  color: #7C7C7C;
+  color: #7c7c7c;
   font-size: 14px;
 }
 .assistance-box .input-box1 input::placeholder {
-  color: #7C7C7C;
+  color: #7c7c7c;
   font-size: 14px;
 }
 .assistance-box .inputbox textarea::placeholder {
-  color: #7C7C7C;
+  color: #7c7c7c;
   font-size: 14px;
 }
 
-.popup-inner2 .treatment-form{margin-bottom:7px;}
+.form-container  .homequery textarea::placeholder {
+  color: #7c7c7c;
+  font-size: 14px;
+}
+.form-container  .inputbox1 input::placeholder {
+  color: #7c7c7c;
+  font-size: 14px;
+}
+
+.popup-inner2 .treatment-form {
+  margin-bottom: 7px;
+}
 
 #request-quote-section {
-  background: linear-gradient(to bottom, #FF6800 55%, #EAECF0 0%);
+  background: linear-gradient(to bottom, #ff6800 55%, #eaecf0 0%);
   padding: 70px 0 40px;
   border-top: 1px solid #ffa76a;
 }
 
 .hospital-doctor-box {
   background: #fff;
-  border: 1px solid #D8DEE5;
+  border: 1px solid #d8dee5;
   padding: 30px 40px 70px;
   border-radius: 24px;
 }
@@ -15764,7 +15769,57 @@ footer {
   width: 30%;
   display: block;
 }
-[class^=scrollbar] {
+.scrollbar{
+  scrollbar-width: thin;
+   scrollbar-color:#FF6800 #FF6800;
+}
+.scrollbar::-webkit-scrollbar {
+  width:4px;
+  height:4px;
+}
+.scrollbar::-webkit-scrollbar-track {
+  background-clip: content-box;
+  border:0.5px solid transparent;
+}
+.scrollbar::-webkit-scrollbar-thumb {
+  background-color:#FF6800;
+}
+.scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color:#FF6800;
+}
+.scrollbar::-webkit-scrollbar-corner, .scrollbar::-webkit-scrollbar-track {
+  background-color:#F7F7F7;
+}
+[class^="scrollbar"] {
+  height: 650px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding-right: 10px;
+  margin-right: -10px;
+  color: #ff6800 ;
+}
+.scrollbar1{
+  scrollbar-width: thin;
+   scrollbar-color:#FF6800 #FF6800;
+}
+.scrollbar1::-webkit-scrollbar {
+  width:4px;
+  height:4px;
+}
+.scrollbar1::-webkit-scrollbar-track {
+  background-clip: content-box;
+  border:0.5px solid transparent;
+}
+.scrollbar1::-webkit-scrollbar-thumb {
+  background-color:#FF6800;
+}
+.scrollbar1::-webkit-scrollbar-thumb:hover {
+  background-color:#FF6800;
+}
+.scrollbar1::-webkit-scrollbar-corner, .scrollbar::-webkit-scrollbar-track {
+  background-color:#F7F7F7;;
+}
+[class^=scrollbar1] {
   height: 650px;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -15772,8 +15827,8 @@ footer {
   margin-right: -10px;
 }
 .hospital-doctor-box .hospitals-tab button.active {
-  border: 1px solid #FF6800;
-  background: rgba(255, 104, 0, 0.10);
+  border: 1px solid #ff6800;
+  background: rgba(255, 104, 0, 0.1);
 }
 
 .hospitals-tab button.active {
@@ -15821,7 +15876,7 @@ footer {
   margin: 0px 0 4px;
 }
 .hospital-item-doc .rating-star {
-  color: #FF6800;
+  color: #ff6800;
   font-size: 18px;
   font-family: Helvetica Neue Medium;
 }
@@ -15843,7 +15898,7 @@ footer {
 .conditionsbox {
   float: left;
   width: 70%;
-  padding:20px;
+  padding: 20px;
   border-left: none;
   height: 100%;
   display: none;
@@ -15853,13 +15908,13 @@ footer {
   float: right;
 }
 #request-quote-section {
-  background: linear-gradient(to bottom, #FF6800 55%, #EAECF0 0%);
+  background: linear-gradient(to bottom, #ff6800 55%, #eaecf0 0%);
   padding: 70px 0 40px;
   border-top: 1px solid #ffa76a;
 }
 .request-quote {
   background: #fff;
-  border: 1px solid #D8DEE5;
+  border: 1px solid #d8dee5;
   padding: 30px 200px 70px;
   border-radius: 24px;
 }
@@ -15876,22 +15931,40 @@ footer {
   text-align: left;
   font-family: Helvetica Neue Medium;
 }
-.get-help-box input, textarea {
-  height: 46px ;
-  border: 1px solid #DBDBDB ;
-  border-radius: 8px ;
+.get-help-box input,
+textarea {
+  height: 46px;
+  border: 1px solid #dbdbdb;
+  border-radius: 8px;
   font-family: Helvetica Neue Medium;
+  padding-left: 15px;
+  width: 100%;
+  font-weight: 700;
+  font-size: 16px;
+
+  background-color: #fff;
+  outline: none;
+  text-align: left;
+}
+
+.treatmentPatient-form .iti {
+  width: 100%;
+  font-weight: 700;
+  font-size: 16px;
+  background-color: #fff;
+  outline: none;
+  text-align: left;
 }
 
 @media screen and (max-width: 880px) {
   #request-quote-section h1 {
     font-size: 25px;
     margin-top: 20px;
-}
-.hospital-doctor-box .hospitals-tab {
-  width: 100%;
-}
-[class^=scrollbar] {
-  height: 250px;
-}
+  }
+  .hospital-doctor-box .hospitals-tab {
+    width: 100%;
+  }
+  [class^="scrollbar"] {
+    height: 250px;
+  }
 }

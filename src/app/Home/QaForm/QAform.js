@@ -45,7 +45,7 @@ const QAform = () => {
   const [isLoading1, setIsLoading1] = useState(false);
   const isValidFile = (file) => {
     const allowedTypes = ["image/png", "image/jpeg", "application/pdf"];
-    const maxFileSize = 2 * 1024 * 1024; // 2MB
+    const maxFileSize = 2 * 1024 * 1024;
 
     if (!file) {
       return "Please select a file.";
@@ -337,10 +337,10 @@ const QAform = () => {
           <form onSubmit={handleFormSubmit1}>
             <div className="treatment-form">
               <div className="inputbox">
-                <label>Name</label>
+                {/* <label>Name</label> */}
                 <input
                   type="text"
-                  placeholder={userName}
+                  placeholder={userName ? userName : "Name"}
                   name="name"
                   value={name1}
                   onChange={(e) => setName1(e.target.value)}
@@ -354,12 +354,12 @@ const QAform = () => {
 
             <div className="treatment-form">
               <div className="inputbox">
-                <label>Phone</label>
+                {/* <label>Phone</label> */}
                 <input
                   ref={inputRef}
                   type="tel"
                   id="mobile_code"
-                  placeholder=""
+                  placeholder="Phone"
                   value={phone1}
                   onChange={handlePhoneNumberChange}
                   onBlur={handlePhoneBlur}
@@ -372,10 +372,10 @@ const QAform = () => {
             {userEmail ? null : (
               <div className="treatment-form">
                 <div className="inputbox">
-                  <label>Email</label>
+                  {/* <label>Email</label> */}
                   <input
                     type="email"
-                    placeholder=""
+                    placeholder="Email"
                     name="name"
                     value={email1}
                     onChange={(e) => setEmail1(e.target.value)}
@@ -390,12 +390,12 @@ const QAform = () => {
 
             <div className="treatment-form">
               <div className="inputbox">
-                <label>Your Query</label>
+                {/* <label>Your Query</label> */}
                 <textarea
                   className="querybox"
                   type="textarea"
                   name="query"
-                  placeholder=""
+                  placeholder="Your Query"
                   rows="2"
                   value={query1}
                   onChange={(e) => setQuery1(e.target.value)}
