@@ -410,12 +410,15 @@ const PopForm = () => {
                 <h2>Ask Free Question</h2>
 
                 <form onSubmit={handleFormSubmit}>
-                  <div className="treatment-form">
+                  <div
+                    className="treatment-form"
+                    style={{ paddingBottom: "10px" }}
+                  >
                     <div className="inputbox">
-                      <label>Name</label>
+                      {/* <label>Name</label> */}
                       <input
                         type="text"
-                        placeholder={userName}
+                        placeholder="Name"
                         name="name"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
@@ -430,12 +433,12 @@ const PopForm = () => {
                   <div className="home-form">
                     <div className="treatment-form">
                       <div className="inputbox">
-                        <label>Phone</label>
+                        {/* <label>Phone</label> */}
                         <input
                           ref={inputRef}
                           type="tel"
                           id="mobileode"
-                          placeholder=""
+                          placeholder="Phone"
                           value={phone}
                           onChange={handlePhoneNumberChange}
                           onBlur={handlePhoneBlur}
@@ -448,10 +451,10 @@ const PopForm = () => {
                     {userEmail ? null : (
                       <div className="treatment-form">
                         <div className="inputbox">
-                          <label>Email</label>
+                          {/* <label>Email</label> */}
                           <input
                             type="email"
-                            placeholder=""
+                            placeholder="Email"
                             name="name"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
@@ -468,12 +471,12 @@ const PopForm = () => {
                   </div>
                   <div className="treatment-form">
                     <div className="inputbox">
-                      <label>Your Query</label>
+                      {/* <label>Your Query</label> */}
                       <textarea
                         className="querybox"
                         type="textarea"
                         name="query"
-                        placeholder=""
+                        placeholder="Your Query"
                         rows="2"
                         value={query}
                         onChange={(e) => setQuery(e.target.value)}
@@ -486,7 +489,7 @@ const PopForm = () => {
                   </div>
 
                   <ReCAPTCHA
-                    sitekey="6LcX6-YnAAAAAAjHasYD8EWemgKlDUxZ4ceSo8Eo" // Replace with your reCAPTCHA site key
+                    sitekey="6LcX6-YnAAAAAAjHasYD8EWemgKlDUxZ4ceSo8Eo"
                     onChange={handleCaptchaChange}
                   />
                   {renderError(formErrors.captcha)}

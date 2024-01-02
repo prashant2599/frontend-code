@@ -273,10 +273,10 @@ const VisaForm = () => {
               <form onSubmit={handleFormSubmit}>
                 <div className="treatment-form">
                   <div className="inputbox">
-                    <label>Name</label>
+                    {/* <label>Name</label> */}
                     <input
                       type="text"
-                      placeholder=""
+                      placeholder="Name"
                       name="name"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
@@ -289,12 +289,12 @@ const VisaForm = () => {
 
                 <div className="treatment-form">
                   <div className="inputbox">
-                    <label>Phone</label>
+                    {/* <label>Phone</label> */}
                     <input
                       ref={inputRef}
                       type="tel"
                       id="mobile_code"
-                      placeholder=""
+                      placeholder="Phone"
                       value={phone}
                       onChange={handlePhoneNumberChange}
                       onBlur={handlePhoneBlur}
@@ -306,10 +306,10 @@ const VisaForm = () => {
 
                 <div className="treatment-form">
                   <div className="inputbox">
-                    <label>Email</label>
+                    {/* <label>Email</label> */}
                     <input
                       type="email"
-                      placeholder=""
+                      placeholder="Email"
                       name="name"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
@@ -323,12 +323,12 @@ const VisaForm = () => {
 
                 <div className="treatment-form">
                   <div className="inputbox">
-                    <label>Your Query</label>
+                    {/* <label>Your Query</label> */}
                     <textarea
                       className="querybox"
                       type="textarea"
                       name="query"
-                      placeholder=""
+                      placeholder="Your Query"
                       rows="2"
                       value={query}
                       onChange={(e) => setQuery(e.target.value)}
@@ -338,6 +338,7 @@ const VisaForm = () => {
                     {renderError(formErrors.query)}
                   </div>
                 </div>
+
                 <div className="treatment-form">
                   <div className="wrap">
                     <div className="file">
@@ -374,8 +375,10 @@ const VisaForm = () => {
                 {renderError(formErrors.captcha)}
                 <p>
                   I agree to the{" "}
-                  <Link href="/terms">Terms of use Privacy policy</Link> and
-                  receive marketing letters that may be of interest.
+                  <Link href="/terms-and-conditions">
+                    Terms of use Privacy policy
+                  </Link>{" "}
+                  and receive marketing letters that may be of interest.
                 </p>
                 <button
                   type="submit"

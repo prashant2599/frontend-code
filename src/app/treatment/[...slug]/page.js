@@ -51,21 +51,19 @@ const page = async ({ params }) => {
             <img
               src={`https://dev.medflick.com/treatments/${info.image}`}
               alt={info.slug}
-              
             />
             <img
               src={`https://dev.medflick.com/treatments/${info.image}`}
               alt={info.slug}
-             
             />
           </div>
           <div className="midbox-inner  wiki-mk">
             <div className="treatment-headbox">
               <div className="treatment-left">
                 <ul>
-                <li>
+                  {/* <li>
                     <h2>XXXXXXXX</h2> <p>Treatment Type</p>
-                  </li>
+                  </li> */}
                   <li>
                     <h2>{info.treatment_time}</h2> <p>Treatment Time</p>
                   </li>

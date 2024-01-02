@@ -1,95 +1,28 @@
 "use client";
-
-import React, { useState, useEffect, useRef } from "react";
-import ReCAPTCHA from "react-google-recaptcha";
+import React, { useState, useRef, useEffect } from "react";
 import { ThreeDots } from "react-loader-spinner";
+import ReCAPTCHA from "react-google-recaptcha";
 import axios from "axios";
 import "intl-tel-input/build/css/intlTelInput.css";
 import intlTelInput from "intl-tel-input";
-import Success from "@/app/Home/successPopup/Success";
-import ErrorPopup from "@/app/Home/successPopup/ErrorPopup";
+import Success from "../Home/successPopup/Success";
+import ErrorPopup from "../Home/successPopup/ErrorPopup";
 
-const TreatmentFreeQuotePopup = ({ treatmentId, specialityId }) => {
+const CallMeBackForm = () => {
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const [showErrorPopup, setShowErrorPopup] = useState(false);
-  const [userName, setUserName] = useState("");
-  const [userEmail, setUserEmail] = useState("");
-  const [userPhone, setUserPhone] = useState("");
-
-  // form popup
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
-
-  const togglePopup = () => {
-    setIsPopupOpen((prev) => !prev);
-  };
-
-  const popupStyle = {
-    display: isPopupOpen ? "block" : "none",
-  };
-
-  // Check if 'userName' exists in localStorage on component mount
-  useEffect(() => {
-    const storedUserName = localStorage.getItem("userName");
-    const storedUserEmail = localStorage.getItem("userEmail");
-    const storedUserPhone = localStorage.getItem("userPhone");
-
-    if (storedUserName) {
-      setUserName(storedUserName);
-    }
-
-    if (storedUserPhone) {
-      setUserPhone(storedUserPhone);
-    }
-
-    if (storedUserEmail) {
-      setUserEmail(storedUserEmail);
-    }
-  }, []);
-  const [name, setName] = useState("");
-  const [pcode, setPcode] = useState("");
-  const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
-  const [query, setQuery] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [isPopupOpen2, setIsPopupOpen2] = useState(false);
+  const [name2, setName2] = useState("");
+  const [pcode2, setPcode2] = useState("+91");
+  const [phone2, setPhone2] = useState("");
+  const [email2, setEmail2] = useState("");
+  const [query2, setQuery2] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
   const [fileValidationMessage, setFileValidationMessage] = useState("");
 
-  const [formErrors, setFormErrors] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    query: "",
-    captcha: "",
-  });
-  const [captchaValue, setCaptchaValue] = useState(null);
-  const handleCaptchaChange = (value) => {
-    setCaptchaValue(value);
-  };
-
-  const clearFormFields = () => {
-    setName("");
-    setPhone("");
-    setPcode("");
-    setEmail("");
-    setQuery("");
-    setSelectedFile(null);
-  };
-
-  const Formstyles = {
-    errorInput: {
-      border: "2px solid red",
-    },
-    errorMessage: {
-      color: "red",
-      fontSize: "0.85rem",
-      marginTop: "0.25rem",
-    },
-    loadingMessage: {
-      fontSize: "1.2rem",
-      color: "#333",
-      marginTop: "1rem",
-    },
-  };
+  const [userName, setUserName] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+  const [userPhone, setUserPhone] = useState("");
 
   const isValidFile = (file) => {
     const allowedTypes = ["image/png", "image/jpeg", "application/pdf"];
@@ -123,116 +56,37 @@ const TreatmentFreeQuotePopup = ({ treatmentId, specialityId }) => {
     setSelectedFile(file);
   };
 
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
+  // Check if 'userName' exists in localStorage on component mount
+  useEffect(() => {
+    const storedUserName = localStorage.getItem("userName");
+    const storedUserEmail = localStorage.getItem("userEmail");
+    const storedUserPhone = localStorage.getItem("userPhone");
 
-    setFormErrors({
-      name: "",
-      phone: "",
-      email: "",
-      query: "",
-      captcha: "",
-    });
-
-    const patientId = localStorage.getItem("userId");
-
-    // Validation logic
-    let isValid = true;
-    const phoneRegex = /^\d{10}$/;
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!userName) {
-      if (!name) {
-        setFormErrors((prevErrors) => ({
-          ...prevErrors,
-          name: "Please enter your name",
-        }));
-        isValid = false;
-      }
-    }
-    if (!phone || !phone.match(phoneRegex)) {
-      setFormErrors((prevErrors) => ({
-        ...prevErrors,
-        phone: "Please enter a valid Phone number",
-      }));
-      isValid = false;
+    if (storedUserName) {
+      setUserName(storedUserName);
     }
 
-    if (!userEmail) {
-      if (!email || !email.match(emailRegex)) {
-        setFormErrors((prevErrors) => ({
-          ...prevErrors,
-          email: "Please enter a valid email address",
-        }));
-        isValid = false;
-      }
+    if (storedUserPhone) {
+      setUserPhone(storedUserPhone);
     }
 
-    if (!query) {
-      setFormErrors((prevErrors) => ({
-        ...prevErrors,
-        query: "Please enter your query",
-      }));
-      isValid = false;
+    if (storedUserEmail) {
+      setUserEmail(storedUserEmail);
     }
+  }, []);
 
-    if (!isValid) {
-      return;
-    }
+  const togglePopup2 = () => {
+    setIsPopupOpen2((prev) => !prev);
+  };
 
-    // if (!captchaValue) {
-    //   setFormErrors((prevErrors) => ({
-    //     ...prevErrors,
-    //     captcha: "Please Fill the captcha",
-    //   }));
-    //   return;
-    // }
-    if (isValid) {
-      // Create the data object to be sent in the API request
-      const data = {
-        name: userName ? userName : name,
-        phone_code: pcode,
-        phone: phone,
-        email: userEmail ? userEmail : email,
-        messages: query,
-        patient_id: patientId,
-        speciality_id: specialityId,
-        treatment_id: treatmentId,
-        file: selectedFile,
-      };
-
-      // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
-      const apiEndpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/api/free_quote_treatment`;
-
-      setIsLoading(true);
-
-      // Make the API call
-      axios
-        .post(apiEndpoint, data, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        })
-        .then((response) => {
-          setShowSuccessPopup(true);
-          clearFormFields();
-          setIsPopupOpen(false);
-        })
-        .catch((error) => {
-          setShowErrorPopup(true);
-          console.error("Error:", error);
-        })
-        .finally(() => {
-          // Set loading back to false after the API call is complete
-          setIsLoading(false);
-        });
-    }
+  const popupStyle2 = {
+    display: isPopupOpen2 ? "block" : "none",
   };
 
   const inputRef = useRef(null);
 
   useEffect(() => {
-    if (isPopupOpen) {
+    if (isPopupOpen2) {
       const inputElement = inputRef.current;
 
       if (!inputElement) {
@@ -249,37 +103,219 @@ const TreatmentFreeQuotePopup = ({ treatmentId, specialityId }) => {
 
       inputElement.addEventListener("countrychange", () => {
         const selectedCountryData = iti.getSelectedCountryData();
-        setPcode(selectedCountryData.dialCode);
+        setPcode2(selectedCountryData.dialCode);
       });
 
       return () => {
         iti.destroy();
       };
     }
-  }, [isPopupOpen]);
+  }, [isPopupOpen2]);
 
   const handlePhoneNumberChange = (e) => {
-    const formattedPhoneNumber = e.target.value.replace(/\D/g, ""); // Remove non-numeric characters
-    setPhone(formattedPhoneNumber); // Update the phone number state
+    const formattedPhoneNumber = e.target.value.replace(/\D/g, "");
+    setPhone2(formattedPhoneNumber);
+  };
+
+  const [isLoading2, setIsLoading2] = useState(false);
+
+  const [formErrors, setFormErrors] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    query: "",
+    captcha: "",
+  });
+  const [captchaValue2, setCaptchaValue2] = useState(null);
+  const handleCaptchaChange2 = (value) => {
+    setCaptchaValue2(value);
+  };
+
+  const handleFormSubmit2 = (event) => {
+    event.preventDefault();
+
+    setFormErrors({
+      name: "",
+      phone: "",
+      email: "",
+      query: "",
+      captcha: "",
+    });
+
+    // Validation logic
+    const patientId = localStorage.getItem("userId");
+    let isValid = true;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^\d{10}$/;
+
+    if (!userName) {
+      if (!name2) {
+        setFormErrors((prevErrors) => ({
+          ...prevErrors,
+          name: "Please enter your name",
+        }));
+        isValid = false;
+      }
+    }
+    if (!phone2 || !phone2.match(phoneRegex)) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        phone: "Please enter a valid Phone number",
+      }));
+      isValid = false;
+    }
+
+    if (!userEmail) {
+      if (!email2 || !email2.match(emailRegex)) {
+        setFormErrors((prevErrors) => ({
+          ...prevErrors,
+          email: "Please enter a valid email address",
+        }));
+        isValid = false;
+      }
+    }
+
+    if (!query2) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        query: "Please enter your query",
+      }));
+      isValid = false;
+    }
+
+    if (!isValid) {
+      return;
+    }
+
+    if (!captchaValue2) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        captcha: "Please Fill the captcha",
+      }));
+      return;
+    }
+
+    if (isValid) {
+      // Create the data object to be sent in the API request
+      const data = {
+        name: userName ? userName : name2,
+        phone_code: pcode2,
+        phone: phone2,
+        email: userEmail ? userEmail : email2,
+        messages: query2,
+        patient_id: patientId,
+        doctor_id: doctorId,
+        speciality_id: specialityId,
+        file: selectedFile,
+      };
+
+      // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
+      const apiEndpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/api/homepage_doctor_appointment `;
+
+      setIsLoading2(true);
+
+      // Make the API call
+      axios
+        .post(apiEndpoint, data, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
+        .then((response) => {
+          setShowSuccessPopup(true);
+          clearFormFields2();
+          setIsPopupOpen2(false);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          setShowErrorPopup(true);
+        })
+        .finally(() => {
+          setIsLoading2(false);
+        });
+    }
+  };
+
+  const clearFormFields2 = () => {
+    setName2("");
+    setPhone2("");
+    setEmail2("");
+    setQuery2("");
+  };
+
+  const Formstyles2 = {
+    errorInput: {
+      border: "2px solid red",
+    },
+    errorMessage: {
+      color: "red",
+      fontSize: "0.85rem",
+      marginTop: "0.25rem",
+    },
+    loadingMessage: {
+      fontSize: "1.2rem",
+      color: "#333",
+      marginTop: "1rem",
+    },
   };
 
   const phoneRegex = /^\d{10}$/;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const handlePhoneBlur = () => {
-    if (!phone || !phone.match(phoneRegex)) {
+    if (!phone2 || !phone2.match(phoneRegex)) {
       setFormErrors((prevErrors) => ({
         ...prevErrors,
         phone: "Please enter a valid Phone number",
+      }));
+    } else {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        phone: "",
       }));
     }
   };
 
   const handleEmailBlur = () => {
-    if (!email || !email.match(emailRegex)) {
+    if (!email2 || !email2.match(emailRegex)) {
       setFormErrors((prevErrors) => ({
         ...prevErrors,
         email: "Please enter a valid email address",
       }));
+    } else {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        email: "",
+      }));
+    }
+  };
+
+  const handleQueryBlur = () => {
+    if (!query2) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        query: "Please enter your query",
+      }));
+    } else {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        query: "",
+      }));
+    }
+  };
+
+  const handleNameBlur = () => {
+    if (!userName) {
+      if (!name2) {
+        setFormErrors((prevErrors) => ({
+          ...prevErrors,
+          name: "Please enter your name",
+        }));
+      } else {
+        setFormErrors((prevErrors) => ({
+          ...prevErrors,
+          name: "",
+        }));
+      }
     }
   };
 
@@ -302,18 +338,14 @@ const TreatmentFreeQuotePopup = ({ treatmentId, specialityId }) => {
   ) : null;
 
   const desc =
-    "Your request is acknowledged. We are connecting with hospitals to provide you the best price and detailed quote shortly. Your patience is greatly appreciated.";
+    "Your appointment request has been received. We will get back to you soon. Thanks for your patience!";
   return (
     <>
-      <a
-        className="free-quote"
-        onClick={togglePopup}
-        style={{ cursor: "pointer" }}
-      >
-        Get a free quote <img src="/images/2023/01/arrow-c.png" />
+      <a className="learn" onClick={togglePopup2} style={{ cursor: "pointer" }}>
+        Call me Back <img src="/images/2023/01/arrow-w.png" alt="" />
       </a>
-      {isPopupOpen && (
-        <div className="popup" data-popup="popup-1" style={popupStyle}>
+      {isPopupOpen2 && (
+        <div className="popup" data-popup="popup-1" style={popupStyle2}>
           <div className="popup-inner2">
             <div className="modal-content">
               <div className="modal-header">
@@ -322,13 +354,13 @@ const TreatmentFreeQuotePopup = ({ treatmentId, specialityId }) => {
                   className="popup-close"
                   data-popup-close="popup-1"
                   data-dismiss="modal"
-                  onClick={togglePopup}
+                  onClick={togglePopup2}
                 >
                   <span aria-hidden="true">×</span>
                 </button>
               </div>
-              <h2>Get a free quote</h2>
-              <form onSubmit={handleFormSubmit}>
+              <h2> Call me Back</h2>
+              <form onSubmit={handleFormSubmit2}>
                 <div className="treatment-form">
                   <div className="inputbox">
                     {/* <label>Name</label> */}
@@ -336,10 +368,11 @@ const TreatmentFreeQuotePopup = ({ treatmentId, specialityId }) => {
                       type="text"
                       placeholder={userName ? userName : "Name"}
                       name="name"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
+                      value={name2}
+                      onChange={(e) => setName2(e.target.value)}
                       autoComplete="off"
-                      style={formErrors.name ? Formstyles.errorInput : {}}
+                      onBlur={handleNameBlur}
+                      style={formErrors.name ? Formstyles2.errorInput : {}}
                     />
                     {renderError(formErrors.name)}
                   </div>
@@ -351,12 +384,12 @@ const TreatmentFreeQuotePopup = ({ treatmentId, specialityId }) => {
                     <input
                       ref={inputRef}
                       type="tel"
-                      id="mobile_code"
+                      id="mobileode"
                       placeholder="Phone"
-                      value={phone}
+                      value={phone2}
                       onChange={handlePhoneNumberChange}
                       onBlur={handlePhoneBlur}
-                      style={formErrors.phone ? Formstyles.errorInput : {}}
+                      style={formErrors.phone ? Formstyles2.errorInput : {}}
                     />
                     {renderError(formErrors.phone)}
                   </div>
@@ -369,17 +402,18 @@ const TreatmentFreeQuotePopup = ({ treatmentId, specialityId }) => {
                       <input
                         type="email"
                         placeholder="Email"
-                        name="name"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        name="email"
+                        value={email2}
+                        onChange={(e) => setEmail2(e.target.value)}
                         onBlur={handleEmailBlur}
                         autoComplete="off"
-                        style={formErrors.email ? Formstyles.errorInput : {}}
+                        style={formErrors.email ? Formstyles2.errorInput : {}}
                       />
                       {renderError(formErrors.email)}
                     </div>
                   </div>
                 )}
+
                 <div className="treatment-form">
                   <div className="inputbox">
                     {/* <label>Your Query</label> */}
@@ -389,14 +423,20 @@ const TreatmentFreeQuotePopup = ({ treatmentId, specialityId }) => {
                       name="query"
                       placeholder="Your Query"
                       rows="2"
-                      value={query}
-                      onChange={(e) => setQuery(e.target.value)}
-                      style={formErrors.query ? Formstyles.errorInput : {}}
+                      value={query2}
+                      onChange={(e) => setQuery2(e.target.value)}
+                      autoComplete="off"
+                      onBlur={handleQueryBlur}
+                      style={formErrors.query ? Formstyles2.errorInput : {}}
                     ></textarea>
                     {renderError(formErrors.query)}
                   </div>
                 </div>
-                <div className="treatment-form">
+
+                <div
+                  className="treatment-form"
+                  style={{ paddingBottom: "5px" }}
+                >
                   <div className="wrap">
                     <div className="file">
                       <div className="file__input" id="file__input">
@@ -427,17 +467,17 @@ const TreatmentFreeQuotePopup = ({ treatmentId, specialityId }) => {
                 </div>
                 <ReCAPTCHA
                   sitekey="6LcX6-YnAAAAAAjHasYD8EWemgKlDUxZ4ceSo8Eo" // Replace with your reCAPTCHA site key
-                  onChange={handleCaptchaChange}
+                  onChange={handleCaptchaChange2}
                 />
                 {renderError(formErrors.captcha)}
                 <button
                   type="submit"
                   name="en"
                   className="home-button"
-                  disabled={isLoading}
+                  disabled={isLoading2}
                 >
                   {" "}
-                  {isLoading ? (
+                  {isLoading2 ? (
                     <ThreeDots
                       height="27"
                       width="80"
@@ -475,4 +515,4 @@ const TreatmentFreeQuotePopup = ({ treatmentId, specialityId }) => {
   );
 };
 
-export default TreatmentFreeQuotePopup;
+export default CallMeBackForm;

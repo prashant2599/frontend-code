@@ -1,13 +1,9 @@
-import NewFooter from "../Home/NewUIHomepage/inc/NewFooter";
-import NewHeader from "../Home/NewUIHomepage/inc/NewHeader";
 import Login from "./Login";
 
 const page = () => {
   return (
     <>
-      <NewHeader />
       <Login />
-      <NewFooter />
     </>
   );
 };
