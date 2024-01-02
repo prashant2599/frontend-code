@@ -392,7 +392,7 @@ const HomeHospitalForm = ({
                     {/* <label>Name</label> */}
                     <input
                       type="text"
-                      placeholder="name"
+                      placeholder={userName ? userName : "Name"}
                       name="name"
                       value={name2}
                       onChange={(e) => setName2(e.target.value)}

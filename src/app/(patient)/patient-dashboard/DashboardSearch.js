@@ -64,11 +64,7 @@ const DashboardSearch = () => {
       )
     : [];
 
-  const filteredBlogs = blogs
-    ? blogs.filter((item) =>
-        item.name.toLowerCase().includes(searchQuery.toLowerCase())
-      )
-    : [];
+
   return (
     <>
       <div className="topbox-right">

@@ -67,13 +67,13 @@ const page = async ({ params }) => {
                       {/* <div className="department-sub">
                         Oncologist, Medical Oncologist
                       </div> */}
-                      <div className="rating-star">
+                      {/* <div className="rating-star">
                         5{" "}
                         <i>
                           <AiTwotoneStar />
                         </i>{" "}
                         (523)
-                      </div>
+                      </div> */}
 
                       <div className="ho-docimg">
                         {hospital.nabl && (
@@ -118,7 +118,7 @@ const page = async ({ params }) => {
                           : hospital.short_description}
                       </div>
                     </div>
-                    <div className="hospital-item-button">
+                    <div className="doctor-item-button">
                       <HospitalListPopUpForm
                         name={hospital.name}
                         hospitalId={hospital.id}
@@ -138,7 +138,8 @@ const page = async ({ params }) => {
                       /> */}
 
                       <div className="hospital-location-box">
-                        {hospital.address}
+                        {hospital.city.charAt(0).toUpperCase() +
+                          hospital.city.slice(1)}
                         <img src="/images/2023/05/loc.png" alt="icon" />
                       </div>
                     </div>

@@ -1,6 +1,7 @@
 import NewFooter from "../Home/NewUIHomepage/inc/NewFooter";
 import NewHeader from "../Home/NewUIHomepage/inc/NewHeader";
 import DontPay from "../Home/dontPay/DontPay";
+import Link from "next/link";
 
 const page = () => {
   return (
@@ -23,10 +24,10 @@ const page = () => {
                 Start Your Journey Now
                 <br /> Ask a Free Question{" "}
               </h2>
-              <a href="#">
+              <Link href="/contact-us">
                 {" "}
                 Contact Us <img src="/images/2023/01/arrow-c.png" alt="icon" />
-              </a>
+              </Link>
             </div>
             <div className="about-middle-right">
               <p>
@@ -59,11 +60,11 @@ const page = () => {
                   <p>Over 2,000 Patients on a Journey to Well-being</p>
                 </li>
                 <li>
-                  <h3>4000+</h3>
-                  <p>A Network of Over 4,000 Trusted Doctors</p>
+                  <h3>11000+</h3>
+                  <p>A Network of Over 11,000 Trusted Doctors</p>
                 </li>
                 <li>
-                  <h3>1000+</h3>
+                  <h3>150+</h3>
                   <p>Medflick Trusted India&apos;s Premier Hospitals</p>
                 </li>
               </ul>
@@ -125,7 +126,7 @@ const page = () => {
               <div className="item" style={{ margin: "10px" }}>
                 <div className="item-medflick">
                   <img src="/images/2023/06/iconn.png" alt="icon" />
-                  <h3>India&apos;s Top Doctors</h3>
+                  <h3>World&apos;s Top Doctors</h3>
                   <p>
                     Medflick connects you with India&apos;s top doctors and
                     specialists, so you can be confident that you&apos;re
@@ -202,10 +203,10 @@ const page = () => {
                 transparency, trust, real experiences, and access to the best
                 doctors and hospitals in India. Your well-being is our priority.
               </p>
-              <a href="#">
+              <Link href="/contact-us">
                 {" "}
                 Contact Us <img src="/images/2023/01/arrow-c.png" alt="" />
-              </a>
+              </Link>
             </div>
           </div>
         </div>

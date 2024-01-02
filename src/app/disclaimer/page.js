@@ -56,9 +56,9 @@ const page = () => {
 
             <li>
               {" "}
-              <strong> Individual Variability:</strong> Everyone&pos;s health
-              and medical demands are unique. The material on Medflick may or
-              may not be pertinent to your individual situation. For tailored
+              <strong> Individual Variability:</strong> Everyone's health and
+              medical demands are unique. The material on Medflick may or may
+              not be pertinent to your individual situation. For tailored
               advice, always visit a healthcare practitioner.
             </li>
 
@@ -99,11 +99,10 @@ const page = () => {
           </ul>
 
           <p>
-            {" "}
             You acknowledge and accept this disclaimer by using Medflick. If you
             have any questions or concerns about the information on our
             platform, we encourage you to seek the advice of a certified
-            healthcare expert.{" "}
+            healthcare expert.
           </p>
         </div>
       </section>

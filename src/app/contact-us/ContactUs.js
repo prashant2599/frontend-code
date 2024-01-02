@@ -72,7 +72,9 @@ const ContactUs = () => {
               className={`support-itembox ${activeItem === 2 ? "active" : ""}`}
             >
               <h2>Visit Us</h2>
-              <p>View our office HQ</p>
+              <p>
+                View our office HQ : D-213 Sector - 63, Noida - 201301 India
+              </p>
               <a
                 href="#"
                 className="sales-box"
@@ -87,7 +89,7 @@ const ContactUs = () => {
               className={`support-itembox ${activeItem === 3 ? "active" : ""}`}
             >
               <h2>Call Us</h2>
-              <p>Mon-Fri: 10 AM - 7 PM</p>
+              <p>we are available 24/7</p>
               <a
                 href="tel:+919111922232"
                 className="sales-box"

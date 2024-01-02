@@ -1749,7 +1749,7 @@ button.active .city-icon-h {
   z-index: 1;
   position: relative;
   display: block;
-  height: 62px;
+  height: 68px;
 }
 .blog-item p {
   font-size: 14px;
@@ -1758,6 +1758,7 @@ button.active .city-icon-h {
   text-align: left;
   font-family: Inter Regular;
   margin: 0;
+
 }
 .blog-text {
   display: flex;
@@ -1946,6 +1947,7 @@ button.active .city-icon-h {
     line-height: 37px;
     width: 100%;
   }
+
   .home-hospitals {
     flex-wrap: initial;
     justify-content: left;

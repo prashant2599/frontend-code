@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Link from "next/link";
+import Search from "./Search";
 
 const SelectHospitalDoctors = () => {
   const [hospital, setHospital] = useState([]);
@@ -27,18 +28,18 @@ const SelectHospitalDoctors = () => {
           `https://dev.medflick.com/api/hospital-list/${storedSpeciality}/${storedTreatment}`
         )
         .then((response) => {
-          const limitedHospitals =
-            response.data.hospital_list.hospital_list.slice(0, 10);
-          setHospital(limitedHospitals);
+          // const limitedHospitals =
+          //   response.data.hospital_list.hospital_list.slice(0, 10);
+          setHospital(response.data.hospital_list.hospital_list);
           // Select the first hospital by default
-          if (limitedHospitals.length > 0) {
-            const firstHospital = limitedHospitals[0];
-            handleHospitalSelection(
-              null,
-              firstHospital.slug,
-              firstHospital.country
-            );
-          }
+          // if (limitedHospitals.length > 0) {
+          //   const firstHospital = limitedHospitals[0];
+          //   handleHospitalSelection(
+          //     null,
+          //     firstHospital.slug,
+          //     firstHospital.country
+          //   );
+          // }
         })
         .catch((error) => {
           console.error("Error fetching details data:", error);
@@ -103,17 +104,10 @@ const SelectHospitalDoctors = () => {
           <div className="hospital-doctor-box">
             <h1>Select lorem ipsum dolor sit amet Hospital &amp; Doctors</h1>
             <h1>
-              <div className="search-medbox">
-                <input
-                  type="text"
-                  placeholder="Search for doctor, hospital or treatments"
-                  name="name"
-                  required=""
-                />
-              </div>
+              <Search />
             </h1>
             <h2>
-              Hospitals (23){" "}
+              Hospitals ({hospital.length}){" "}
               <Link href="/patient-details" className="get-qs">
                 {" "}
                 Skip step &gt;

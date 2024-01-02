@@ -54,26 +54,25 @@ const UploadReport = () => {
   const isValidFile = (file) => {
     const allowedTypes = ["image/png", "image/jpeg", "application/pdf"];
     const maxFileSize = 2 * 1024 * 1024; // 2MB
-  
+
     if (!file) {
-      return 'Please select a file.';
+      return "Please select a file.";
     }
-  
+
     if (!allowedTypes.includes(file.type)) {
-      return 'Please select a valid file type (PNG, JPG, PDF).';
+      return "Please select a valid file type (PNG, JPG, PDF).";
     }
-  
+
     if (file.size > maxFileSize) {
-      return 'File size must be less than or equal to 2MB.';
+      return "File size must be less than or equal to 2MB.";
     }
-  
-    return '';
+
+    return "";
   };
-  
-  
+
   const handleFileChange = (event) => {
     const file = event.target.files[0];
-  
+
     // Validate file type and size
     const validationMessage = isValidFile(file);
     if (validationMessage) {
@@ -81,11 +80,11 @@ const UploadReport = () => {
       event.target.value = null; // Clear the file input
       return;
     } else {
-      setFileValidationMessage('');
+      setFileValidationMessage("");
     }
-  
+
     setSelectedFile(file);
-  
+
     // Update the disabled state based on whether a file is selected
     setLinkInputDisabled(!!file);
   };
@@ -95,7 +94,7 @@ const UploadReport = () => {
     const urlPattern = /^(https?:\/\/)?([\w.-]+)\.([a-z]{2,})(\/\S*)?$/;
     return urlPattern.test(link);
   };
-  
+
   const handleLinkChange = (event) => {
     setLinkValue(event.target.value);
     if (event.target.value && !isValidLink(event.target.value)) {
@@ -110,10 +109,8 @@ const UploadReport = () => {
   const clearFormFields = () => {
     setQuery("");
     setSelectedFile("");
-    setLinkValue("")
+    setLinkValue("");
   };
-
-
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -185,32 +182,34 @@ const UploadReport = () => {
 
   const fileDisplay = selectedFile ? (
     <div className="file__value" onClick={() => setSelectedFile(null)}>
-      <div className="file__value--text" >
-        {selectedFile.name}
-      </div>
+      <div className="file__value--text">{selectedFile.name}</div>
       <div className="file__value--remove" data-id={selectedFile.name}></div>
     </div>
   ) : null;
-
-
 
   return (
     <>
       <section id="request-quote-section">
         <div className="midbox-inner wiki-mk">
           <div className="top-back">
-            <Link href="/patient-quote">
+            <Link href="/patient-details">
               <img src="/images/2023/01/back-icon.png" alt="icon" /> Back
             </Link>
             <div className="barbox">
               <div className="barbox-bar">
-                <img src="/images/2023/02/3.png" /> Select Medical Problem
+                <img src="/images/selectedImg.png" /> Select Medical Problem
               </div>
               <div className="barbox-bar">
-                <img src="/images/2023/02/1.png" /> Upload Medical Report
+                <img src="/images/selectedImg.png" /> Select Doctor &amp; Hospital
               </div>
-              <div className="barbox-bar1">
-                <img src="/images/2023/02/2.png" /> Get Quotes
+              <div className="barbox-bar">
+                <img src="/images/selectedImg.png" /> Patient Details
+              </div>
+              <div className="barbox-bar">
+                <img src="images/2023/02/3.png" /> Upload Medical Report
+              </div>
+              <div className="barbox-bar">
+                <img src="images/2023/02/2.png" /> Get Quotes
               </div>
             </div>
           </div>

@@ -157,6 +157,10 @@ const RequestQuote = () => {
                       id={e.id}
                       key={e.id}
                     >
+                      {/* <img
+                        src={`https://dev.medflick.com/speciality/${e.icon}`}
+                        alt={e.name}
+                      /> */}
                       {e.name}
                     </button>
                   ))}

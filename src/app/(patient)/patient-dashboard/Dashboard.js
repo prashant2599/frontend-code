@@ -61,7 +61,6 @@ const Dashboard = () => {
               <h1>Hi {userName}</h1>
               <h2>Welcome to Medflick!</h2>
             </div>
-
             <DashboardSearch />
           </div>
 
@@ -71,9 +70,7 @@ const Dashboard = () => {
               <ul>
                 <li>
                   <img src="/images/2023/01/1.png" alt="icon-img" />
-
                   <h3>View Quote</h3>
-
                   <p>Know the best price for you</p>
                 </li>
                 <li>

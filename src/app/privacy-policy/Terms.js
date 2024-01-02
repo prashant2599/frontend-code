@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const ScrollToTop = () => {
   useEffect(() => {
@@ -11,6 +11,37 @@ const ScrollToTop = () => {
 };
 
 const Terms = () => {
+  const [latestDate, setLatestDate] = useState({
+    day: 0,
+    month: "",
+    year: 0,
+  });
+
+  useEffect(() => {
+    // Function to update the latest date
+    const updateLatestDate = () => {
+      const currentDate = new Date();
+      const day = currentDate.getDate();
+      const month = currentDate.getMonth() + 1; // Months are 0-indexed
+      const year = currentDate.getFullYear();
+
+      setLatestDate({
+        day,
+        month,
+        year,
+      });
+    };
+
+    // Call the function to set the initial state
+    updateLatestDate();
+
+    // Set up an interval or other triggers to update the date as needed
+    // For example, update the date every minute
+    const intervalId = setInterval(updateLatestDate, 60000);
+
+    // Clean up the interval on component unmount
+    return () => clearInterval(intervalId);
+  }, []);
   return (
     <>
       <ScrollToTop />{" "}
@@ -18,7 +49,10 @@ const Terms = () => {
         <div className="midbox-inner  wiki-mk">
           <h1>Medflick&apos;s Privacy Statement</h1>
 
-          <h2>Last updated on 25/08/2023.</h2>
+          <h2>
+            Last updated on {latestDate.day}/{latestDate.month}/
+            {latestDate.year}
+          </h2>
 
           <p>
             Your privacy is essential to us at Medflick. This Privacy Statement

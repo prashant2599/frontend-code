@@ -328,10 +328,10 @@ const Allpopudp = () => {
             <form onSubmit={handleFormSubmit}>
               <div className="home-form">
                 <div className="inputbox1">
-                  <label>First name</label>
+                  {/* <label>First name</label> */}
                   <input
                     type="text"
-                    placeholder=""
+                    placeholder="First name"
                     name="name"
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
@@ -341,10 +341,11 @@ const Allpopudp = () => {
                   {renderError(formErrors.name)}
                 </div>
                 <div className="inputbox1">
-                  <label>Last Name</label>
+                  {/* <label>Last Name</label> */}
                   <input
                     type="text"
-                    name="name"
+                    name="Last Name"
+                    placeholder="Last Name"
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
                     autoComplete="off"
@@ -354,12 +355,12 @@ const Allpopudp = () => {
 
               <div className="home-form">
                 <div className="inputbox1">
-                  <label>Phone</label>
+                  {/* <label>Phone</label> */}
                   <input
                     ref={inputRef}
                     type="tel"
                     id="mobile_code"
-                    placeholder=""
+                    placeholder="Phone"
                     value={number}
                     onChange={handlePhoneNumberChange}
                     onBlur={handlePhoneBlur}
@@ -369,10 +370,10 @@ const Allpopudp = () => {
                 </div>
                 {userEmail ? null : (
                   <div className="inputbox1">
-                    <label>Email Address</label>
+                    {/* <label>Email Address</label> */}
                     <input
                       type="email"
-                      placeholder=""
+                      placeholder="Email Address"
                       name="name"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
@@ -387,10 +388,11 @@ const Allpopudp = () => {
 
               <div className="home-form">
                 <div className="homequery">
-                  <label>Message</label>
+                  {/* <label>Message</label> */}
                   <textarea
                     className="magbox"
                     type="textarea"
+                    placeholder="Message"
                     name="query"
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
