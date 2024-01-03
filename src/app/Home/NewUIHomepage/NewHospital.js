@@ -5,7 +5,9 @@ import Link from "next/link";
 const NewHospital = async () => {
   const data = await getAllHospitals();
   const hospital = data.data.hospital;
-  const featuredHospitals = hospital.filter(hospital => hospital.featured === "1");
+  const featuredHospitals = hospital.filter(
+    (hospital) => hospital.featured === "1"
+  );
   return (
     <>
       <section id="hospital-section">
@@ -15,11 +17,22 @@ const NewHospital = async () => {
             {featuredHospitals.map((e) => (
               <div className="Marquee-tag" key={e.id}>
                 <Link href={`/hospital/${e.slug}/${e.country}`}>
-                <img
-                  className="dr-img"
-                  src={`https://dev.medflick.com/hospital/${e.icon}`}
-                  alt={e.name}
-                />
+                  <img
+                    className="dr-img"
+                    src={`https://dev.medflick.com/hospital/${e.icon}`}
+                    alt={e.name}
+                  />
+                </Link>
+              </div>
+            ))}
+            {featuredHospitals.map((e) => (
+              <div className="Marquee-tag" key={e.id}>
+                <Link href={`/hospital/${e.slug}/${e.country}`}>
+                  <img
+                    className="dr-img"
+                    src={`https://dev.medflick.com/hospital/${e.icon}`}
+                    alt={e.name}
+                  />
                 </Link>
               </div>
             ))}
