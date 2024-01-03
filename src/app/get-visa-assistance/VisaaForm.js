@@ -12,11 +12,11 @@ import ErrorPopup from "../Home/successPopup/ErrorPopup";
 const VisaaForm = () => {
   const [attendantCount, setAttendantCount] = useState(1);
 
-  const handleAddAttendant = () => {
-    if (attendantCount < 3) {
-      setAttendantCount(attendantCount + 1);
-    }
-  };
+  // const handleAddAttendant = () => {
+  //   if (attendantCount < 3) {
+  //     setAttendantCount(attendantCount + 1);
+  //   }
+  // };
 
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const [showErrorPopup, setShowErrorPopup] = useState(false);
@@ -27,6 +27,28 @@ const VisaaForm = () => {
   const [query, setQuery] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
   const [fileValidationMessage, setFileValidationMessage] = useState("");
+
+  const [passportNumber, setPassportNumber] = useState("");
+  const [passportImage, setPassportImage] = useState(null);
+  const [attendants, setAttendants] = useState([{ number: "", image: null }]);
+
+  const handleAttendantChange = (index, key, value) => {
+    const updatedAttendants = [...attendants];
+    updatedAttendants[index][key] = value;
+    setAttendants(updatedAttendants);
+  };
+
+  const handleAttendantImageChange = (index, image) => {
+    const updatedAttendants = [...attendants];
+    updatedAttendants[index].image = image;
+    setAttendants(updatedAttendants);
+  };
+
+  const handleAddAttendant = () => {
+    if (attendants.length < 3) {
+      setAttendants([...attendants, { number: "", image: null }]);
+    }
+  };
 
   const isValidFile = (file) => {
     const allowedTypes = ["image/png", "image/jpeg", "application/pdf"];
@@ -196,6 +218,8 @@ const VisaaForm = () => {
     }
   };
 
+  console.log(attendants);
+
   const inputRef = useRef(null);
 
   useEffect(() => {
@@ -268,7 +292,7 @@ const VisaaForm = () => {
                 className="medflick-logo"
                 alt="Brand Logo"
               />
-              <h2>We make visas easy for you</h2>
+              <h2>We Make Medical Visas Easy For You</h2>
               <p>
                 Applicants upload necessary documents and make payment through
                 an online platform.
@@ -375,32 +399,45 @@ const VisaaForm = () => {
                   </div>
                 </div>
               </div>
-              {[...Array(attendantCount)].map((_, index) => (
-                <div key={index} className="visa-form">
-                  <div className="visa-form-box">
-                    <label>{`Attendant ${index + 1} Passport Number`}</label>
-                    <div className="visa-form2">
+
+              <div className="visa-form">
+                <div className="visa-form-box">
+                  <label>Attendant Passport Number</label>
+                  {attendants.map((attendant, index) => (
+                    <div className="visa-form2" key={index}>
                       <input
                         type="text"
+                        // placeholder={`Attendant ${index + 1} Passport Number`}
                         placeholder="XXXXXXXXXXXX"
-                        name={`name${index}`}
+                        value={attendant.number}
+                        onChange={(e) =>
+                          handleAttendantChange(index, "number", e.target.value)
+                        }
                         required=""
                       />
                       <div className="medical-report-all">
                         <button className="medical-report-file">
                           Upload Passport
                         </button>
-                        <input type="file" name={`file${index}`} />
+                        <input
+                          type="file"
+                          name={`attendantImage${index}`}
+                          onChange={(e) =>
+                            handleAttendantImageChange(index, e.target.files[0])
+                          }
+                        />
                       </div>
                     </div>
-                  </div>
+                  ))}
                 </div>
-              ))}
+              </div>
 
-              {attendantCount < 3 && (
-                <a onClick={handleAddAttendant} style={{ color: "#ff6800" }}>
-                  Add Attendant +
-                </a>
+              {attendants.length < 3 && (
+                <div className="visa-form-box">
+                  <a onClick={handleAddAttendant} style={{ color: "#ff6800" }}>
+                    Add Attendant +
+                  </a>
+                </div>
               )}
 
               <div className="visa-form-box">

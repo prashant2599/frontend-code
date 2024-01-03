@@ -7,6 +7,7 @@ import LoginButton from "../../Inc/LoginButton";
 const NewHeader = async () => {
   const data = await getAllSpeciality();
   const speciality = data.data.Speciality;
+
   return (
     <>
       <header className="header" id="header-id">
