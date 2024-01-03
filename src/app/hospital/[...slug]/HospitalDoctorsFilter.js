@@ -5,8 +5,10 @@ import Select from "react-select";
 import Image from "next/image";
 import { AiTwotoneStar } from "react-icons/ai";
 import DoctorHospitalProfile from "@/app/Home/doctorForm/DoctorHospitalProfile";
+import { useRouter } from "next/navigation";
 
 const HospitalDoctorsFilter = ({ doctor }) => {
+  const router = useRouter();
   const [selectedLocation, setSelectedLocation] = useState("");
   const [selectedDep, setSelecteddep] = useState("");
   const [selectedeExp, setSelectedExp] = useState("");
@@ -114,7 +116,38 @@ const HospitalDoctorsFilter = ({ doctor }) => {
               onChange={(e) => setSearchQuery(e.target.value)}
               autoComplete="off"
             />
-            {searchDoctors.length > 0 ? (
+            {searchQuery.length >= 2 && (
+              <div className="searchbox-medf" style={{ textAlign: "start" }}>
+                {searchDoctors.map((doctor) => (
+                  <Link
+                    key={doctor.id}
+                    href={`/doctor/${doctor.slug}`}
+                    onClick={() => {
+                      setSearchQuery("");
+                      if (typeof togglePopup === "function") {
+                        togglePopup();
+                      }
+                      router.push(`/doctor/${doctor.slug}`); // Navigate to the link
+                    }}
+                  >
+                    <div className="searchbox-main" key={doctor.id}>
+                      {`${doctor.prefix} ${doctor.first_name} ${doctor.last_name}`
+                        .split(new RegExp(`(${searchQuery})`, "gi"))
+                        .map((part, index) =>
+                          part.toLowerCase() === searchQuery.toLowerCase() ? (
+                            <span key={index} style={{ color: "#ff6800" }}>
+                              {part}
+                            </span>
+                          ) : (
+                            <span key={index}>{part}</span>
+                          )
+                        )}
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            )}
+            {/* {searchDoctors.length > 0 ? (
               <ul
                 className="search-results"
                 style={{
@@ -148,7 +181,7 @@ const HospitalDoctorsFilter = ({ doctor }) => {
                   <h6> OOPS! No doctors found </h6>
                 </>
               )
-            )}
+            )} */}
           </div>
 
           <div className="ding">

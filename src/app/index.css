@@ -424,13 +424,7 @@ a:hover {
   margin: 0px;
   padding: 10px 0;
 }
-.medflick-payright {
-  display: flex;
-  text-align: center;
-  width: 40%;
-  gap: 10px;
-  justify-content: right;
-}
+
 
 .medflick-payright .consultation {
   background: #ff6800;

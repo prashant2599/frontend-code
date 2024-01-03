@@ -50,6 +50,7 @@ const SelectHospitalDoctors = () => {
   }, []);
 
   const [selectedHospital, setSelectedHospital] = useState(null);
+  const [selectedHospitalIcon, setSelectedHospitalIcon] = useState(null);
   const [selectedHospitalCountry, setSelectedHospitalCountry] = useState(null);
   const [doctors, setDoctors] = useState([]);
 
@@ -57,7 +58,8 @@ const SelectHospitalDoctors = () => {
     event,
     hospitalSlug,
     country,
-    hospitalId
+    hospitalId,
+    hospitalIcon
   ) => {
     if (event) {
       event.preventDefault();
@@ -65,6 +67,7 @@ const SelectHospitalDoctors = () => {
 
     setSelectedHospital(hospitalSlug);
     setSelectedHospitalCountry(country);
+    setSelectedHospitalIcon(hospitalIcon);
     await fetchDoctorsData(hospitalSlug, country);
     localStorage.setItem("selectedHospitalId", hospitalId);
   };
@@ -89,6 +92,7 @@ const SelectHospitalDoctors = () => {
     router.push("/patient-details");
   };
 
+  console.log(selectedHospitalIcon);
   return (
     <>
       <section id="request-quote-section">
@@ -118,7 +122,7 @@ const SelectHospitalDoctors = () => {
           </div>
 
           <div className="hospital-doctor-box">
-            <h1>Select lorem ipsum dolor sit amet Hospital &amp; Doctors</h1>
+            <h1>Find Top Doctors and Hospitals</h1>
             <h1>
               <Search />
             </h1>
@@ -140,7 +144,13 @@ const SelectHospitalDoctors = () => {
                         selectedHospital === e.slug ? "active" : ""
                       }`}
                       onClick={(event) =>
-                        handleHospitalSelection(event, e.slug, e.country, e.id)
+                        handleHospitalSelection(
+                          event,
+                          e.slug,
+                          e.country,
+                          e.id,
+                          e.icon
+                        )
                       }
                       id="defaultOpen"
                     >
@@ -231,7 +241,10 @@ const SelectHospitalDoctors = () => {
                           <div className="doc-Hospital">
                             {e.location.charAt(0).toUpperCase() +
                               e.location.slice(1)}
-                            <img src="/images/2023/02/1.png" />
+                            <img
+                              src={`https://dev.medflick.com/hospital/${selectedHospitalIcon}`}
+                              alt={selectedHospital}
+                            />
                           </div>
                         </div>
                       </div>

@@ -40,7 +40,7 @@ const ContactUs = () => {
             <div
               className={`support-itembox ${activeItem === 0 ? "active" : ""}`}
             >
-              <h2>Chat with Sales</h2>
+              <h2>Chat with Med Buddy</h2>
               <p>Speak to our friendly team</p>
               <a
                 href="mailto:care@medflick.com"
