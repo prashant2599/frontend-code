@@ -3,8 +3,10 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Link from "next/link";
 import Search from "./Search";
+import { useRouter } from "next/navigation";
 
 const SelectHospitalDoctors = () => {
+  const router = useRouter();
   const [hospital, setHospital] = useState([]);
   const [speciality, setSpeciality] = useState("");
   const [treatment, seTeatment] = useState("");
@@ -51,7 +53,12 @@ const SelectHospitalDoctors = () => {
   const [selectedHospitalCountry, setSelectedHospitalCountry] = useState(null);
   const [doctors, setDoctors] = useState([]);
 
-  const handleHospitalSelection = async (event, hospitalSlug, country) => {
+  const handleHospitalSelection = async (
+    event,
+    hospitalSlug,
+    country,
+    hospitalId
+  ) => {
     if (event) {
       event.preventDefault();
     }
@@ -59,6 +66,7 @@ const SelectHospitalDoctors = () => {
     setSelectedHospital(hospitalSlug);
     setSelectedHospitalCountry(country);
     await fetchDoctorsData(hospitalSlug, country);
+    localStorage.setItem("selectedHospitalId", hospitalId);
   };
 
   const fetchDoctorsData = async (hospitalSlug, country) => {
@@ -71,6 +79,14 @@ const SelectHospitalDoctors = () => {
     } catch (error) {
       console.error("Error fetching doctors data", error);
     }
+  };
+
+  const handleBookAppointment = (doctorId) => {
+    // Save the doctorId to local storage
+    localStorage.setItem("selectedDoctorId", doctorId);
+
+    // Redirect to /patient-details page
+    router.push("/patient-details");
   };
 
   return (
@@ -124,7 +140,7 @@ const SelectHospitalDoctors = () => {
                         selectedHospital === e.slug ? "active" : ""
                       }`}
                       onClick={(event) =>
-                        handleHospitalSelection(event, e.slug, e.country)
+                        handleHospitalSelection(event, e.slug, e.country, e.id)
                       }
                       id="defaultOpen"
                     >
@@ -204,7 +220,11 @@ const SelectHospitalDoctors = () => {
                           </div>
                         </div>
                         <div className="doctor-item-button">
-                          <a href="#" className="book-app">
+                          <a
+                            className="book-app"
+                            onClick={() => handleBookAppointment(e.id)}
+                            style={{ cursor: "pointer" }}
+                          >
                             Book Appointment{" "}
                             <img src="/images/2023/05/book.png" />
                           </a>

@@ -1,5 +1,3 @@
-import Footer from "./Home/Inc/Footer";
-import Header from "./Home/Inc/Header";
 import GoogleAnalytics from "./Home/googleAnalytics/GoogleAnalytics";
 import Allpopudp from "./Home/popupAllpage/Allpopudp";
 import "./globals.css";
@@ -9,9 +7,7 @@ import { Inter } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";
 import { DoctorDataProvider } from "./contex/DoctorDataContext";
 import { HospitalDataProvider } from "./contex/HospitalDataContext";
-import NewHeader from "./Home/NewUIHomepage/inc/NewHeader";
-import PatientHeader from "./(patient)/Inc/PatientHeader";
-import { useRouter } from "next/navigation";
+import { ToggleFormProvider } from "./contex/toggleFormContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -40,11 +36,13 @@ export default function RootLayout({ children }) {
         <body>
           <NextTopLoader color="#ffffff" showSpinner={false} />
           <UserProvider>
-            <Allpopudp />
-            <GoogleAnalytics />
-            <DoctorDataProvider>
-              <HospitalDataProvider>{children}</HospitalDataProvider>
-            </DoctorDataProvider>
+            <ToggleFormProvider>
+              <Allpopudp />
+              <GoogleAnalytics />
+              <DoctorDataProvider>
+                <HospitalDataProvider>{children}</HospitalDataProvider>
+              </DoctorDataProvider>
+            </ToggleFormProvider>
           </UserProvider>
         </body>
       </html>

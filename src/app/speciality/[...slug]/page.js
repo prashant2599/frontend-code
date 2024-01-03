@@ -87,7 +87,7 @@ const page = async ({ params }) => {
           style={{ marginTop: "20px" }}
         >
           <div className="marquee-wrapper">
-            <div className="marquee" style={{ animationDuration: "21s" }}>
+            <div className="marquee" style={{ animationDuration: "11s" }}>
               <div className="Marquee-tag"> 95% Success Rate </div>
               <div className="Marquee-tag"> 11000+ Top Doctors </div>
               <div className="Marquee-tag"> 150+ Top Hospital </div>

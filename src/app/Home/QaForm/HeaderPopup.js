@@ -9,9 +9,10 @@ import "intl-tel-input/build/css/intlTelInput.css";
 import intlTelInput from "intl-tel-input";
 import Success from "../successPopup/Success";
 import ErrorPopup from "../successPopup/ErrorPopup";
-import Link from "next/link";
+import { useToggleForm } from "@/app/contex/toggleFormContext";
 
 const HeaderPopup = () => {
+  const { isPopupOpen, setIsPopupOpen, togglePopup } = useToggleForm();
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const [showErrorPopup, setShowErrorPopup] = useState(false);
   const [userName, setUserName] = useState("");
@@ -44,12 +45,12 @@ const HeaderPopup = () => {
       setUserEmail(storedUserEmail);
     }
   }, []);
-  // form popup scripts
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  // // form popup scripts
+  // const [isPopupOpen, setIsPopupOpen] = useState(false);
 
-  const togglePopup = () => {
-    setIsPopupOpen((prev) => !prev);
-  };
+  // const togglePopup = () => {
+  //   setIsPopupOpen((prev) => !prev);
+  // };
   const popupStyle = {
     display: isPopupOpen ? "block" : "none",
   };
@@ -303,14 +304,14 @@ const HeaderPopup = () => {
     "Thanks for getting in touch! We have received your query. Our team will reach out to you shortly.";
   return (
     <>
-      <Link
+      <a
         className="qsk-question"
-        href="/question-answer"
-        // onClick={togglePopup}
-        // style={{ cursor: "pointer" }}
+        // href="/question-answer"
+        onClick={togglePopup}
+        style={{ cursor: "pointer" }}
       >
         Ask FREE Question <img src="/images/whiteArrow.png" alt="icon" />
-      </Link>
+      </a>
       {isPopupOpen &&
         (userEmail ? (
           <div className="popup" data-popup="popup-2" style={popupStyle}>
