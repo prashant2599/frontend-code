@@ -11510,7 +11510,6 @@ textarea {
   margin-bottom: 6%;
 }
 
-
 @media screen and (max-width: 880px) {
   .tab {
     width: 100%;
@@ -16009,4 +16008,253 @@ textarea {
     height: 250px;
   }
 }
+
+#medflick-visa {
+  background: #fff;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  padding: 40px 0px 40px;
+  position: relative;
+  margin: 0px;
+}
+.medflick-visa {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  margin: 0px;
+  gap: 25px;
+  border-radius: 24px;
+  border: 1px solid #d3d3d3;
+  background: #fff;
+}
+.medflick-visa-left {
+  width: 50%;
+  padding: 20px;
+  margin: 0px;
+  border-radius: 12px;
+  border: 1px solid #f8eee2;
+  background: #f8eee2;
+}
+.medflick-visa-left .medflick-logo {
+  width: 140px;
+  margin: 20px 0px 30px;
+  border: none;
+  padding: 0;
+}
+.medflick-visa-left h2 {
+  color: #000;
+  font-family: Helvetica Neue Medium;
+  font-size: 35px;
+  margin-bottom: 12px;
+}
+.medflick-visa-left p {
+  color: #7c7c7c;
+  font-size: 16px;
+}
+
+.medflick-visa-left ul {
+  margin: 60px 0px 0px;
+  padding: 0px;
+  position: relative;
+  display: block;
+}
+.medflick-visa-left li {
+  margin: 0px 0px 35px;
+  padding: 25px 20px;
+  list-style: none;
+  border-radius: 8px;
+  border: 1px solid #ededed;
+  background: #fff;
+  box-shadow: 0px 4px 13.2px -12px rgba(0, 0, 0, 0.25);
+  position: relative;
+}
+.medflick-visa-left li span {
+  border-radius: 110px;
+  border: 1px solid #ff6800;
+  background: #ffe8d9;
+  color: #ff6800;
+  font-size: 14px;
+  padding: 3px 20px;
+  top: -14px;
+  position: absolute;
+}
+.medflick-visa-left li h3 {
+  color: #000;
+  font-family: Helvetica Neue Medium;
+  font-size: 18px;
+  margin-bottom: 7px;
+  margin-top: 10px;
+}
+.medflick-visa-left li p {
+  color: #7c7c7c;
+  font-size: 16px;
+}
+
+.medflick-visa-right {
+  width: 50%;
+  padding: 20px;
+  margin: 0px;
+}
+.medflick-visa-right h2 {
+  color: #000;
+  font-family: Helvetica Neue Medium;
+  font-size: 35px;
+  margin-bottom: 35px;
+}
+.medflick-visa-right .visa-form {
+  width: 100%;
+  gap: 10px;
+  padding-bottom: 14px;
+  display: flex;
+}
+.medflick-visa-right .visa-form1 {
+  width: 100%;
+  gap: 10px;
+  display: flex;
+}
+.medflick-visa-right .visa-form2 {
+  width: 100%;
+  gap: 10px;
+  padding-bottom: 14px;
+  display: flex;
+}
+.medflick-visa-right .visa-form-box {
+  width: 100%;
+  display: block;
+}
+.medflick-visa-right a {
+  top: -21px;
+  position: relative;
+}
+.visa-form ::placeholder {
+  color: #818181;
+  font-size: 16px;
+}
+.medflick-visa-right em {
+  color: #000000;
+  font-size: 14px;
+}
+.visa-form input:focus {
+  border: 1px solid #ff6800;
+}
+.visa-form select:focus {
+  border: 1px solid #ff6800;
+}
+.visa-form textarea:focus {
+  border: 1px solid #ff6800;
+}
+.visa-form label {
+  font-size: 14px;
+  color: #000;
+}
+.visa-form input,
+textarea {
+  border: 1px solid #d2d4df;
+  height: 47px;
+  padding-left: 15px;
+  width: 100%;
+  font-size: 16px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  outline: none;
+  text-align: left;
+}
+.visa-submit {
+  background: #ff6800;
+  color: #ffffff;
+  border: 2px solid #ff6800;
+  margin: 0px 0 10px;
+  font-size: 18px;
+  border-radius: 8px;
+  padding: 10px;
+  position: relative;
+  width: 100%;
+}
+.visa-submit:hover {
+  background: #ffe8d9;
+  color: #ff6800;
+}
+
+.medflick-visa-right .medical-report-all {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  width: 340px;
+  margin-top: 0px;
+  text-align: left;
+}
+.medflick-visa-right .medical-report-all input[type="file"] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+.medflick-visa-right .medical-report-file {
+  background: #ff6800;
+  color: #fff !important;
+  border: 2px solid #ff6800;
+  font-size: 16px;
+  border-radius: 8px;
+  padding: 10px;
+  position: relative;
+  width: 100%;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.medflick-visa-right .medical-report-all img {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+}
+
+.visa-form .visa-phoneCode .iti {
+width: 100% !important;
+}
+
+@media screen and (max-width: 880px) {
+  .medflick-visa {
+    flex-direction: column;
+    gap: 0px;
+    padding: 10px;
+  }
+  .medflick-visa-left {
+    width: 100%;
+    padding: 10px;
+  }
+  .medflick-visa-left .medflick-logo {
+    width: 100px;
+    margin: 20px 0px 20px;
+  }
+  .medflick-visa-left h2 {
+    font-size: 28px;
+  }
+  .medflick-visa-left p {
+    font-size: 14px;
+  }
+  .medflick-visa-right {
+    width: 100%;
+    padding: 10px;
+  }
+  .medflick-visa-right h2 {
+    font-size: 28px;
+    margin-top: 20px;
+  }
+  .medflick-visa-right .visa-form1 {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .medflick-visa-right .visa-form2 {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .medflick-visa-right .medical-report-all {
+    width: 100%;
+  }
+}
+
 
