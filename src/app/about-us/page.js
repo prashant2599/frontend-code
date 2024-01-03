@@ -2,6 +2,7 @@ import NewFooter from "../Home/NewUIHomepage/inc/NewFooter";
 import NewHeader from "../Home/NewUIHomepage/inc/NewHeader";
 import DontPay from "../Home/dontPay/DontPay";
 import Link from "next/link";
+import AboutCarousel from "./AboutCarousel";
 
 const page = () => {
   return (
@@ -34,7 +35,7 @@ const page = () => {
                 Medflick: Trusted health information when you need it the most.
                 With Medflick, you don&apos;t have to do it alone. Your online
                 hub for expert health videos, forums, informative blogs,
-                treatments, best doctors, and top rated hospitals in India at
+                treatments, best doctors, and top rated hospitals in World at
                 one place.
               </p>
 
@@ -65,7 +66,7 @@ const page = () => {
                 </li>
                 <li>
                   <h3>150+</h3>
-                  <p>Medflick Trusted India&apos;s Premier Hospitals</p>
+                  <p>Medflick Trusted World&apos;s Premier Hospitals</p>
                 </li>
               </ul>
             </div>
@@ -80,62 +81,7 @@ const page = () => {
         <div className="midbox-inner  wiki-mk">
           <h2>Why Choose Medflick?</h2>
 
-          <div className="owl-slider">
-            <div id="medflick" className="owl-carousel">
-              <div className="item" style={{ margin: "10px" }}>
-                <div className="item-medflick">
-                  <img src="/images/2023/06/iconn.png" alt="icon" />
-                  <h3>Direct hospital prices</h3>
-                  <p>
-                    At Medflick, we believe in transparency. We provide you with
-                    direct access to hospital prices, ensuring you have a clear
-                    understanding of the costs involved in your healthcare
-                    journey. No hidden fees and unexpected expenses.
-                  </p>
-                </div>
-              </div>
-
-              <div className="item" style={{ margin: "10px" }}>
-                <div className="item-medflick">
-                  <img src="/images/2023/06/iconn.png" alt="icon" />
-                  <h3>Trusted Hospitals</h3>
-                  <p>
-                    We have a network of India&apos;s top hospitals, known for
-                    their excellence in healthcare. When you choose Medflick,
-                    you&apos;re selecting from a list of most trusted hospitals
-                    with world class facilities and technology. We ensure you
-                    receive the best possible care.
-                  </p>
-                </div>
-              </div>
-
-              <div className="item" style={{ margin: "10px" }}>
-                <div className="item-medflick">
-                  <img src="/images/2023/06/iconn.png" alt="icon" />
-                  <h3>Real Reviews</h3>
-                  <p>
-                    Your trust is important to us. That&apos;s why we offer real
-                    reviews from patients who have experienced our partner
-                    hospitals and doctors firsthand. Hear from others who have
-                    walked the same path and make informed decisions based on
-                    their experiences.
-                  </p>
-                </div>
-              </div>
-
-              <div className="item" style={{ margin: "10px" }}>
-                <div className="item-medflick">
-                  <img src="/images/2023/06/iconn.png" alt="icon" />
-                  <h3>World&apos;s Top Doctors</h3>
-                  <p>
-                    Medflick connects you with India&apos;s top doctors and
-                    specialists, so you can be confident that you&apos;re
-                    receiving the best care and are in safe hands.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+          <AboutCarousel />
         </div>
       </section>
 
@@ -192,8 +138,8 @@ const page = () => {
                 Medflick offers a wide range of services to meet your healthcare
                 needs, ensuring that you receive holistic support throughout
                 your medical journey. From providing direct access to
-                India&apos;s best hospital prices, connecting you with the most
-                trusted hospitals and India&apos;s best doctors, to offering
+                World&apos;s best hospital prices, connecting you with the most
+                trusted hospitals and World&apos;s best doctors, to offering
                 real and honest reviews from patients who have been there, we
                 strive to empower you with the information and resources
                 necessary for informed health decisions.
@@ -201,7 +147,7 @@ const page = () => {
               <p>
                 Choose Medflick for a healthcare experience that prioritizes
                 transparency, trust, real experiences, and access to the best
-                doctors and hospitals in India. Your well-being is our priority.
+                doctors and hospitals in World. Your well-being is our priority.
               </p>
               <Link href="/contact-us">
                 {" "}

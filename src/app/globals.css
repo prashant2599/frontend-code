@@ -6474,6 +6474,7 @@ ul.tabs li.active {
   font-size: 18px;
   color: #7c7c7c;
   padding: 10px 0;
+  height: 159px;
 }
 
 .services-section-list {
@@ -6492,6 +6493,7 @@ ul.tabs li.active {
   display: flex;
   gap: 125px;
   padding: 40px;
+  align-items: center;
 }
 
 .medflick-services-left {
@@ -9184,6 +9186,7 @@ ul.tabs li.active {
 
   .item-medflick p {
     font-size: 16px;
+    height: 200px;
   }
 
   .services-list {
