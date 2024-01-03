@@ -93,6 +93,11 @@ const page = async ({ params }) => {
               <div className="Marquee-tag"> 150+ Top Hospital </div>
               <div className="Marquee-tag"> 250+ Surgeries </div>
               <div className="Marquee-tag"> 35+ Countries </div>
+              <div className="Marquee-tag"> 95% Success Rate </div>
+              <div className="Marquee-tag"> 11000+ Top Doctors </div>
+              <div className="Marquee-tag"> 150+ Top Hospital </div>
+              <div className="Marquee-tag"> 250+ Surgeries </div>
+              <div className="Marquee-tag"> 35+ Countries </div>
             </div>
           </div>
         </section>
@@ -100,9 +105,9 @@ const page = async ({ params }) => {
         <section id="category-mid">
           <div className="midbox-inner  wiki-mk">
             {countrySlug === undefined ? (
-              <h2 style={{marginBottom:"3rem"}}>{info && info.name}</h2>
+              <h2 style={{ marginBottom: "3rem" }}>{info && info.name}</h2>
             ) : (
-              <h2 style={{marginBottom:"3rem"}}>
+              <h2 style={{ marginBottom: "3rem" }}>
                 {info && info.name} in{" "}
                 <span style={{ color: "#ff6800" }}>
                   {countrySlug.charAt(0).toUpperCase() + countrySlug.slice(1)}

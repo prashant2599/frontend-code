@@ -1186,20 +1186,7 @@ textarea {
   height: 180px !important;
 }
 
-.home-button {
-  background: #ff6800;
-  font-family: Helvetica Neue Light;
-  color: #ffffff !important;
-  border: 2px solid #ff6800;
-  margin: 20px 0;
-  font-weight: Bold;
-  font-size: 20px;
-  border-radius: 8px;
-  padding: 10px 62px 10px 14px;
-  position: relative;
-  width: 100%;
-  text-align: center;
-}
+
 /*------Query Form END-----*/
 
 #your-account {
