@@ -302,13 +302,14 @@ const HeaderPopup = () => {
 
   const desc =
     "Thanks for getting in touch! We have received your query. Our team will reach out to you shortly.";
+
   return (
     <>
       <a
         className="qsk-question"
-        // href="/question-answer"
-        onClick={togglePopup}
-        style={{ cursor: "pointer" }}
+        href="/question-answer"
+        // onClick={togglePopup}
+        // style={{ cursor: "pointer" }}
       >
         Ask FREE Question <img src="/images/whiteArrow.png" alt="icon" />
       </a>

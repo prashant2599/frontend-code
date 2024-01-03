@@ -5,10 +5,14 @@ import Link from "next/link";
 import { GoChevronDown } from "react-icons/go";
 import MobileSearch from "./MobileSearch";
 import { useRouter } from "next/navigation";
+import { useToggleForm } from "@/app/contex/toggleFormContext";
 
 const MobileHeader = ({ speciality }) => {
+  const { isPopupOpen } = useToggleForm();
   const router = useRouter();
   const [isOffcanvas, setIsOffcanvas] = useState(false);
+
+  console.log(isPopupOpen);
 
   const toggleOffcanvas = () => {
     setIsOffcanvas((prevIsOffcanvas) => !prevIsOffcanvas);
@@ -30,12 +34,22 @@ const MobileHeader = ({ speciality }) => {
     // Function to handle scroll
     function handleScroll() {
       const header = document.getElementById("header-id");
-      const sticky = header.offsetTop;
 
-      if (window.pageYOffset > sticky) {
-        header.classList.add("sticky");
-      } else {
-        header.classList.remove("sticky");
+      // Check if header element exists
+      if (header) {
+        const sticky = header.offsetTop;
+
+        if (window.pageYOffset > sticky) {
+          // Check if header is sticky and isPopupOpen is true
+          if (isPopupOpen) {
+            header.classList.remove("sticky");
+            window.removeEventListener("scroll", handleScroll);
+          } else {
+            header.classList.add("sticky");
+          }
+        } else {
+          header.classList.remove("sticky");
+        }
       }
     }
 
@@ -46,7 +60,9 @@ const MobileHeader = ({ speciality }) => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [isPopupOpen]);
+
+  // Add isPopupOpen as a dependency to useEffect
 
   return (
     <>
