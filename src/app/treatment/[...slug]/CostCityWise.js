@@ -54,7 +54,7 @@ const CostCityWise = ({ cost, info }) => {
                         <h3>{e.name}</h3>
                         <ul>
                           <li>
-                            <h4>{e.lowest_cost}</h4>
+                            <h4>{e.lowest_cost}</h4>  
                             <img
                               src="/images/2023/03/line-icon.png"
                               alt="icons"

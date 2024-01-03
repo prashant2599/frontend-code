@@ -15,6 +15,17 @@ import NewHeader from "@/app/Home/NewUIHomepage/inc/NewHeader";
 import NewFooter from "@/app/Home/NewUIHomepage/inc/NewFooter";
 import TreatmentFreeQuotePopup from "./TreatmentFreeQuotePopup";
 
+function formatText(text) {
+  if (typeof text === "string") {
+    return text
+      .split("-")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  } else {
+    return "Invalid input";
+  }
+}
+
 const page = async ({ params }) => {
   try {
     const combinedSlug = params.slug.join("/");
@@ -32,6 +43,11 @@ const page = async ({ params }) => {
     const blog = datas.treateDetailsbyCountry.blogs;
     const speciality = datas.treateDetailsbyCountry.speciality;
 
+    const parts = combinedSlug.split("/");
+    const specialitySlug = parts[0];
+
+    const Treatment = formatText(specialitySlug);
+
     return (
       <>
         <NewHeader />
@@ -42,7 +58,11 @@ const page = async ({ params }) => {
                 <h1>{info.name}</h1>
                 <p>Avg Price: {info.special_price}</p>
               </div>
-              <div className="treatment-subtext">{info.quote}</div>
+              {/* <div className="treatment-subtext">{info.quote}</div> */}
+              <div className="treatment-subtext">
+                {Treatment} An Insight into Innovative Approaches and Cost
+                Analysis
+              </div>
             </div>
           </div>
         </section>

@@ -290,6 +290,28 @@ const PartnersForm = () => {
               {renderError(formErrors.name)}
             </div>
           </div>
+          <div class="treatment-form">
+            <div class="phone-box2">
+              <label>Country</label>
+              <div class="most-reviews1">
+                <select class="reviews-dropdown " aria-label="Sort dropdown">
+                  <option value="select-language">Select Country </option>
+                  <option value=""> India</option>
+                  <option value=""> India</option>
+                </select>
+              </div>
+            </div>
+            <div class="phone-box2">
+              <label>City</label>
+              <div class="most-reviews1">
+                <select class="reviews-dropdown " aria-label="Sort dropdown">
+                  <option value="select-language">Select City</option>
+                  <option value=""> Delhi</option>
+                  <option value=""> Delhi</option>
+                </select>
+              </div>
+            </div>
+          </div>
 
           <div className="treatment-form">
             <div className="inputbox">
@@ -324,23 +346,16 @@ const PartnersForm = () => {
               {renderError(formErrors.email)}
             </div>
           </div>
-
-          <div className="treatment-form">
-            <div className="inputbox">
-              <label>Your Query</label>
-              <textarea
-                className="querybox"
-                type="textarea"
-                name="query"
-                placeholder=""
-                rows="2"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                autoComplete="off"
-                onBlur={handleQueryBlur}
-                style={formErrors.query ? Formstyles.errorInput : {}}
-              ></textarea>
-              {renderError(formErrors.query)}
+          <div class="treatment-form">
+            <div class="inputbox">
+              <label>I’m interested in</label>
+              <div class="most-reviews1">
+                <select class="reviews-dropdown " aria-label="Sort dropdown">
+                  <option value="select-language">Patient appointments</option>
+                  <option value=""> Patient appointments</option>
+                  <option value=""> Patient appointments</option>
+                </select>
+              </div>
             </div>
           </div>
           <ReCAPTCHA

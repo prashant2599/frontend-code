@@ -359,7 +359,7 @@ const CallMeBackForm = () => {
                   <span aria-hidden="true">×</span>
                 </button>
               </div>
-              <h2> Call me Back</h2>
+              <h2>Contact Us</h2>
               <form onSubmit={handleFormSubmit2}>
                 <div className="treatment-form">
                   <div className="inputbox">
