@@ -66,7 +66,7 @@ const Dashboard = () => {
 
           <div className="home-searchbox">
             <div className="searchbox-left">
-              <h2>Lorem ipsum dolor</h2>
+              {/* <h2>Lorem ipsum dolor</h2> */}
               <ul>
                 <li>
                   <img src="/images/2023/01/1.png" alt="icon-img" />
