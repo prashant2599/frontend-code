@@ -16257,4 +16257,49 @@ width: 100% !important;
   }
 }
 
-
+.treatment-form .phone-box2 {
+  width: 60%;
+  height: auto;
+  float: right;
+}
+.most-reviews1 {
+  width: 100%;
+  position: relative;
+  border: 1px solid #dcdde1;
+  border-radius: 8px;
+  font-size: 16px;
+  column-count: 1;
+  background: #fff;
+}
+.most-reviews1::before {
+  position: absolute;
+  content: "";
+  width: 15px;
+  height: 15px;
+  background: url(images/2023/01/l-arrow.png) no-repeat;
+  background-size: 15px;
+  z-index: 1;
+  right: 9px;
+  top: 15px;
+}
+.most-reviews1 .reviews-dropdown {
+  padding: 8px 20px 8px 15px;
+  font-size: 14px;
+  font-weight: 200;
+  appearance: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  width: 170px;
+  outline: none;
+}
+.most-reviews1  .reviews-dropdown {
+  width: 100%;
+}
+.reviews-dropdown option {
+  font-family: arial;
+  padding: 19px 0px;
+  background: #fff;
+}
