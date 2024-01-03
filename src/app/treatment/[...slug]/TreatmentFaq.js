@@ -31,7 +31,7 @@ const TreatmentFaq = ({ faq }) => {
                   }`}
                   onClick={() => handleQuestionClick(index)}
                 >
-                  <h5> Q. {e.short_description}</h5>
+                  <h5>{e.short_description}</h5>
                   <div
                     className={`arrow ${
                       activeQuestion === index ? "arrow-active" : ""
@@ -56,7 +56,7 @@ const TreatmentFaq = ({ faq }) => {
                   }`}
                   onClick={() => handleQuestionClick(e.short_description2)}
                 >
-                  <h5> Q. {e.short_description2}</h5>
+                  <h5>{e.short_description2}</h5>
                   <div
                     className={`arrow ${
                       activeQuestion === e.short_description2
@@ -84,7 +84,7 @@ const TreatmentFaq = ({ faq }) => {
                   }`}
                   onClick={() => handleQuestionClick(e.short_description3)}
                 >
-                  <h5> Q. {e.short_description3}</h5>
+                  <h5>{e.short_description3}</h5>
                   <div
                     className={`arrow ${
                       activeQuestion === e.short_description3
@@ -113,7 +113,7 @@ const TreatmentFaq = ({ faq }) => {
                   }`}
                   onClick={() => handleQuestionClick(e.short_description4)}
                 >
-                  <h5> Q. {e.short_description4}</h5>
+                  <h5>{e.short_description4}</h5>
                   <div
                     className={`arrow ${
                       activeQuestion === e.short_description4
@@ -142,7 +142,7 @@ const TreatmentFaq = ({ faq }) => {
                   }`}
                   onClick={() => handleQuestionClick(e.short_description6)}
                 >
-                  <h5> Q. {e.short_description6}</h5>
+                  <h5>{e.short_description6}</h5>
                   <div
                     className={`arrow ${
                       activeQuestion === e.short_description6
@@ -170,7 +170,7 @@ const TreatmentFaq = ({ faq }) => {
                   }`}
                   onClick={() => handleQuestionClick(e.short_description5)}
                 >
-                  <h5> Q. {e.short_description5}</h5>
+                  <h5>{e.short_description5}</h5>
                   <div
                     className={`arrow ${
                       activeQuestion === e.short_description5
@@ -199,7 +199,7 @@ const TreatmentFaq = ({ faq }) => {
                   }`}
                   onClick={() => handleQuestionClick(e.short_description7)}
                 >
-                  <h5> Q. {e.short_description7}</h5>
+                  <h5>{e.short_description7}</h5>
                   <div
                     className={`arrow ${
                       activeQuestion === e.short_description7
@@ -228,7 +228,7 @@ const TreatmentFaq = ({ faq }) => {
                   }`}
                   onClick={() => handleQuestionClick(e.short_description8)}
                 >
-                  <h5> Q. {e.short_description8}</h5>
+                  <h5>{e.short_description8}</h5>
                   <div
                     className={`arrow ${
                       activeQuestion === e.short_description8
@@ -264,7 +264,7 @@ const TreatmentFaq = ({ faq }) => {
                           handleQuestionClick(e.short_description9)
                         }
                       >
-                        <h5> Q. {e.short_description9}</h5>
+                        <h5>{e.short_description9}</h5>
                         <div
                           className={`arrow ${
                             activeQuestion === e.short_description9
@@ -306,7 +306,7 @@ const TreatmentFaq = ({ faq }) => {
                           handleQuestionClick(e.short_description10)
                         }
                       >
-                        <h5> Q. {e.short_description10}</h5>
+                        <h5> {e.short_description10}</h5>
                         <div
                           className={`arrow ${
                             activeQuestion === e.short_description10
@@ -348,7 +348,7 @@ const TreatmentFaq = ({ faq }) => {
                           handleQuestionClick(e.short_description11)
                         }
                       >
-                        <h5> Q. {e.short_description11}</h5>
+                        <h5>{e.short_description11}</h5>
                         <div
                           className={`arrow ${
                             activeQuestion === e.short_description11
@@ -390,7 +390,7 @@ const TreatmentFaq = ({ faq }) => {
                           handleQuestionClick(e.short_description12)
                         }
                       >
-                        <h5> Q. {e.short_description11}</h5>
+                        <h5>{e.short_description11}</h5>
                         <div
                           className={`arrow ${
                             activeQuestion === e.short_description12
@@ -433,7 +433,7 @@ const TreatmentFaq = ({ faq }) => {
                           handleQuestionClick(e.short_description13)
                         }
                       >
-                        <h5> Q. {e.short_description11}</h5>
+                        <h5>{e.short_description11}</h5>
                         <div
                           className={`arrow ${
                             activeQuestion === e.short_description13
@@ -476,7 +476,7 @@ const TreatmentFaq = ({ faq }) => {
                           handleQuestionClick(e.short_description14)
                         }
                       >
-                        <h5> Q. {e.short_description11}</h5>
+                        <h5>{e.short_description11}</h5>
                         <div
                           className={`arrow ${
                             activeQuestion === e.short_description14
@@ -519,7 +519,7 @@ const TreatmentFaq = ({ faq }) => {
                           handleQuestionClick(e.short_description15)
                         }
                       >
-                        <h5> Q. {e.short_description11}</h5>
+                        <h5>{e.short_description11}</h5>
                         <div
                           className={`arrow ${
                             activeQuestion === e.short_description15
