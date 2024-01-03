@@ -11386,6 +11386,21 @@ textarea {
   border-radius: 8px;
 }
 
+.health-tabs button img {
+  position: absolute;
+  width: 25px !important;
+  height: 25px;
+  margin-right: 10px;
+  left: 14px;
+  top: 17px;
+}
+.health-tabs button.active img {
+  filter: brightness(0) invert(1);
+}
+.health-tabs button:hover img {
+  filter: brightness(0) invert(1);
+}
+
 /* Style the buttons inside the tab */
 .tab button {
   display: block;
@@ -11482,6 +11497,7 @@ textarea {
   height: 100%;
   margin-bottom: 6%;
 }
+
 
 @media screen and (max-width: 880px) {
   .tab {
@@ -14561,10 +14577,12 @@ pre code {
 .questions-inner-box {
   display: flex;
   margin-bottom: 30px;
-  padding: 0px;
+  padding: 20px;
   justify-content: space-between;
   align-items: flex-start;
-  border-bottom: 2px dotted #dfe4e8;
+  border-bottom: 2px dotted #efefef;
+  background: #f8f8f8;
+  border-radius: 12px;
   padding-bottom: 30px;
 }
 
@@ -15715,11 +15733,11 @@ footer {
   font-size: 14px;
 }
 
-.form-container  .homequery textarea::placeholder {
+.form-container .homequery textarea::placeholder {
   color: #7c7c7c;
   font-size: 14px;
 }
-.form-container  .inputbox1 input::placeholder {
+.form-container .inputbox1 input::placeholder {
   color: #7c7c7c;
   font-size: 14px;
 }
@@ -15775,26 +15793,27 @@ footer {
   width: 30%;
   display: block;
 }
-.scrollbar{
+.scrollbar {
   scrollbar-width: thin;
-   scrollbar-color:#FF6800 #FF6800;
+  scrollbar-color: #ff6800 #ff6800;
 }
 .scrollbar::-webkit-scrollbar {
-  width:4px;
-  height:4px;
+  width: 4px;
+  height: 4px;
 }
 .scrollbar::-webkit-scrollbar-track {
   background-clip: content-box;
-  border:0.5px solid transparent;
+  border: 0.5px solid transparent;
 }
 .scrollbar::-webkit-scrollbar-thumb {
-  background-color:#FF6800;
+  background-color: #ff6800;
 }
 .scrollbar::-webkit-scrollbar-thumb:hover {
-  background-color:#FF6800;
+  background-color: #ff6800;
 }
-.scrollbar::-webkit-scrollbar-corner, .scrollbar::-webkit-scrollbar-track {
-  background-color:#F7F7F7;
+.scrollbar::-webkit-scrollbar-corner,
+.scrollbar::-webkit-scrollbar-track {
+  background-color: #f7f7f7;
 }
 [class^="scrollbar"] {
   height: 650px;
@@ -15802,30 +15821,31 @@ footer {
   overflow-x: hidden;
   padding-right: 10px;
   margin-right: -10px;
-  color: #ff6800 ;
+  color: #ff6800;
 }
-.scrollbar1{
+.scrollbar1 {
   scrollbar-width: thin;
-   scrollbar-color:#FF6800 #FF6800;
+  scrollbar-color: #ff6800 #ff6800;
 }
 .scrollbar1::-webkit-scrollbar {
-  width:4px;
-  height:4px;
+  width: 4px;
+  height: 4px;
 }
 .scrollbar1::-webkit-scrollbar-track {
   background-clip: content-box;
-  border:0.5px solid transparent;
+  border: 0.5px solid transparent;
 }
 .scrollbar1::-webkit-scrollbar-thumb {
-  background-color:#FF6800;
+  background-color: #ff6800;
 }
 .scrollbar1::-webkit-scrollbar-thumb:hover {
-  background-color:#FF6800;
+  background-color: #ff6800;
 }
-.scrollbar1::-webkit-scrollbar-corner, .scrollbar::-webkit-scrollbar-track {
-  background-color:#F7F7F7;;
+.scrollbar1::-webkit-scrollbar-corner,
+.scrollbar::-webkit-scrollbar-track {
+  background-color: #f7f7f7;
 }
-[class^=scrollbar1] {
+[class^="scrollbar1"] {
   height: 650px;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -15974,3 +15994,4 @@ textarea {
     height: 250px;
   }
 }
+

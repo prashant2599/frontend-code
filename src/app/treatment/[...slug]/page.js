@@ -93,7 +93,7 @@ const page = async ({ params }) => {
         <CostCityWise cost={cost} info={info.menu_name} />
         <section className="treatment-marquee" id="category-marquee">
           <div className="marquee-wrapper">
-            <div className="marquee" style={{ animationDuration: "21s" }}>
+            <div className="marquee" style={{ animationDuration: "11s" }}>
               <div className="Marquee-tag"> 95% Success Rate </div>
               <div className="Marquee-tag"> 11000+ Doctors </div>
               <div className="Marquee-tag"> 150+ Top Hospital </div>

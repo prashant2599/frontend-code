@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { FaChevronDown } from "react-icons/fa";
 import getAllSpeciality from "@/app/lib/getAllSpeciality";
-import MobileSearch from "../../Inc/MobileSearch";
 import MobileHeader from "../../Inc/MobileHeader";
 import LoginButton from "../../Inc/LoginButton";
 

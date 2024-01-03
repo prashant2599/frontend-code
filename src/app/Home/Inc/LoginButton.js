@@ -12,6 +12,7 @@ import HeaderPopup from "../QaForm/HeaderPopup";
 const LoginButton = () => {
   const router = useRouter();
   //  for login user
+
   const [userNames, setUserNames] = useState("");
   const { userName, setUserName } = useUser();
 
@@ -138,6 +139,9 @@ const LoginButton = () => {
         ></div> */}
         <HeaderSearch />
 
+        {/* <Link className="qsk-question" href="/question-answer">
+          Ask FREE Question <img src="/images/whiteArrow.png" alt="icon" />
+        </Link> */}
         <HeaderPopup />
       </div>
       {/* <Script src="https://cdn.gtranslate.net/widgets/latest/dropdown.js"></Script> */}
