@@ -11504,6 +11504,9 @@ textarea {
     width: 100%;
     display: none;
   }
+  .health-tabs button img {
+    top: 27px;
+  }
 
   .tabcontent {
     width: 100%;
