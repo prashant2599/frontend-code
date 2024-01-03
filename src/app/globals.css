@@ -2393,7 +2393,7 @@ div.active {
 
 .treatment-left li {
   padding: 0 10px;
-  width: 20%;
+  width: 25%;
   list-style: none;
 }
 
@@ -2854,7 +2854,7 @@ textarea {
 
 .consultation-box1 .free-quote {
   background: #ff6800;
-  width: 50%;
+  width: 40%;
   font-family: Helvetica Neue Light;
   color: #ffffff !important;
   border: 2px solid #fff;
@@ -2878,24 +2878,28 @@ textarea {
 
 .view-hospitals {
   border-radius: 8px;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: Bold;
   margin: 20px 0;
   padding: 12px 30px;
   color: #ff6800;
   background: #fffaf5;
+  width: 26%;
   border: 1px solid #e2e4ea;
+  text-align: center;
 }
 
 .view-doctors {
   border-radius: 8px;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: Bold;
   margin: 20px 0;
   padding: 12px 30px;
   color: #ff6800;
   background: #fffaf5;
   border: 1px solid #e2e4ea;
+  width: 26%;
+  text-align: center;
 }
 
 table {
@@ -8438,10 +8442,16 @@ ul.tabs li.active {
 
   .view-hospitals {
     margin: 10px 0 0;
+    width: 100%;
   }
 
   .view-doctors {
     margin: 14px 0 0;
+    width: 100%;
+  }
+  .navbox img {
+    width: 40px;
+    height: 40px;
   }
 
   .consultation-box2 {
