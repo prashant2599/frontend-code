@@ -1,29 +1,29 @@
-"use client"
+"use client";
 
 import Link from "next/link";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 const responsive = {
-    superLargeDesktop: {
-      // the naming can be any, depends on you.
-      breakpoint: { max: 4000, min: 3000 },
-      items: 3,
-    },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 3,
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2,
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1,
-    },
-  };
+  superLargeDesktop: {
+    // the naming can be any, depends on you.
+    breakpoint: { max: 4000, min: 3000 },
+    items: 3,
+  },
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 3,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 2,
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+  },
+};
 
-const NavDoctors = ({doctor}) => {
+const NavDoctors = ({ doctor }) => {
   return (
     <>
       <div className="owl-slider">
@@ -48,7 +48,8 @@ const NavDoctors = ({doctor}) => {
                     </h3>
                     <div className="doctors-sub">{e.designation}</div>
                     <Link href={`/doctor/${e.slug}`} className="contact-now">
-                      Contact Now <img src="/images/2023/01/arrow-c.png" alt="arrow-icon" />
+                      Contact Now{" "}
+                      <img src="/images/2023/01/arrow-c.png" alt="arrow-icon" />
                     </Link>
                   </div>
                 </div>
