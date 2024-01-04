@@ -200,7 +200,8 @@ const UploadReport = () => {
                 <img src="/images/selectedImg.png" /> Select Medical Problem
               </div>
               <div className="barbox-bar">
-                <img src="/images/selectedImg.png" /> Select Doctor &amp; Hospital
+                <img src="/images/selectedImg.png" /> Select Doctor &amp;
+                Hospital
               </div>
               <div className="barbox-bar">
                 <img src="/images/selectedImg.png" /> Patient Details
