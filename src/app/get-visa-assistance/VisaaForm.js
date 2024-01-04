@@ -272,7 +272,7 @@ const VisaaForm = () => {
       };
 
       // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
-      const apiEndpoint = `https://api.medflick.com/api/get_a_visa`;
+      const apiEndpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/api/get_a_visa`;
 
       setIsLoading(true);
 
