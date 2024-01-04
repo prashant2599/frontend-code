@@ -28,9 +28,17 @@ const NewQuestionAns = async () => {
                     src="/images/new-images/2023/01/icon-m.png"
                     alt="medflick-questions"
                   />
-
-                  <div className="question-box">{e.short_description}</div>
-
+                  <Link
+                    href={`/question/${e.id}/${encodeURIComponent(
+                      e.short_description
+                        .toLowerCase()
+                        .replace(/[^\w\s]/g, "-")
+                        .replace(/\s+/g, "-")
+                        .replace(/-+$/, "")
+                    )}`}
+                  >
+                    <div className="question-box">{e.short_description}</div>
+                  </Link>
                   <div
                     className="question-ans"
                     dangerouslySetInnerHTML={{

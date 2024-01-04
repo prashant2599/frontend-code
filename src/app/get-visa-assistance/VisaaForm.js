@@ -21,32 +21,99 @@ const VisaaForm = () => {
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const [showErrorPopup, setShowErrorPopup] = useState(false);
   const [name, setName] = useState("");
-  const [pcode, setPcode] = useState("");
+  const [pcode, setPcode] = useState("+91");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [query, setQuery] = useState("");
+
   const [selectedFile, setSelectedFile] = useState(null);
   const [fileValidationMessage, setFileValidationMessage] = useState("");
 
   const [passportNumber, setPassportNumber] = useState("");
   const [passportImage, setPassportImage] = useState(null);
-  const [attendants, setAttendants] = useState([{ number: "", image: null }]);
+  // const [attendantsNumber, setAttendantsNumber] = useState([""]);
+  // const [attendantsImage, setAttendantsImage] = useState([null, null, null]);
 
-  const handleAttendantChange = (index, key, value) => {
-    const updatedAttendants = [...attendants];
-    updatedAttendants[index][key] = value;
-    setAttendants(updatedAttendants);
+  // const handleAttendantNumberChange = (index, value) => {
+  //   const updatedAttendantsNumber = [...attendantsNumber];
+  //   updatedAttendantsNumber[index] = value;
+  //   setAttendantsNumber(updatedAttendantsNumber);
+  // };
+  // const handleAttendantImageChange = (index, image) => {
+  //   const updatedAttendantsImage = [...attendantsImage];
+  //   updatedAttendantsImage[index] = image;
+  //   setAttendantsImage(updatedAttendantsImage);
+  // };
+
+  // const handleAddAttendant = () => {
+  //   if (attendantsNumber.length < 3) {
+  //     setAttendantsNumber([...attendantsNumber, ""]);
+  //   }
+  // };
+
+  const [numAttendants, setNumAttendants] = useState(1);
+
+  const [attendantNumber1, setAttendantNumber1] = useState("");
+  const [attendantNumber2, setAttendantNumber2] = useState("");
+  const [attendantNumber3, setAttendantNumber3] = useState("");
+
+  const [attendantImage1, setAttendantImage1] = useState(null);
+  const [attendantImage2, setAttendantImage2] = useState(null);
+  const [attendantImage3, setAttendantImage3] = useState(null);
+
+  const handleAttendantNumberChange = (index, value) => {
+    switch (index) {
+      case 1:
+        setAttendantNumber1(value);
+        break;
+      case 2:
+        setAttendantNumber2(value);
+        break;
+      case 3:
+        setAttendantNumber3(value);
+        break;
+      default:
+        break;
+    }
   };
 
-  const handleAttendantImageChange = (index, image) => {
-    const updatedAttendants = [...attendants];
-    updatedAttendants[index].image = image;
-    setAttendants(updatedAttendants);
+  // const handleAttendantImageChange = (index, image) => {
+  //   switch (index) {
+  //     case 1:
+  //       setAttendantImage1(image);
+  //       break;
+  //     case 2:
+  //       setAttendantImage2(image);
+  //       break;
+  //     case 3:
+  //       setAttendantImage3(image);
+  //       break;
+  //     default:
+  //       break;
+  //   }
+  // };
+
+  const handleAttendantImageChange = (index, event) => {
+    const imageFile = event.target.files[0];
+
+    switch (index) {
+      case 1:
+        setAttendantImage1(imageFile);
+        break;
+      case 2:
+        setAttendantImage2(imageFile);
+        break;
+      case 3:
+        setAttendantImage3(imageFile);
+        break;
+      default:
+        break;
+    }
   };
 
   const handleAddAttendant = () => {
-    if (attendants.length < 3) {
-      setAttendants([...attendants, { number: "", image: null }]);
+    if (numAttendants < 3) {
+      setNumAttendants(numAttendants + 1);
     }
   };
 
@@ -103,6 +170,13 @@ const VisaaForm = () => {
     setEmail("");
     setQuery("");
     setSelectedFile(null);
+    setAttendantImage1(null);
+    setAttendantImage2(null);
+    setAttendantImage3(null);
+    setAttendantNumber1("");
+    setAttendantNumber2("");
+    setAttendantNumber3("");
+    setPassportNumber("");
   };
 
   const Formstyles = {
@@ -160,25 +234,25 @@ const VisaaForm = () => {
       isValid = false;
     }
 
-    if (!query) {
-      setFormErrors((prevErrors) => ({
-        ...prevErrors,
-        query: "Please enter your query",
-      }));
-      isValid = false;
-    }
+    // if (!query) {
+    //   setFormErrors((prevErrors) => ({
+    //     ...prevErrors,
+    //     query: "Please enter your query",
+    //   }));
+    //   isValid = false;
+    // }
 
     if (!isValid) {
       return;
     }
 
-    if (!captchaValue) {
-      setFormErrors((prevErrors) => ({
-        ...prevErrors,
-        captcha: "Please Fill the captcha",
-      }));
-      return;
-    }
+    // if (!captchaValue) {
+    //   setFormErrors((prevErrors) => ({
+    //     ...prevErrors,
+    //     captcha: "Please Fill the captcha",
+    //   }));
+    //   return;
+    // }
 
     if (isValid) {
       // Create the data object to be sent in the API request
@@ -187,12 +261,18 @@ const VisaaForm = () => {
         phone_code: pcode,
         phone: phone,
         email: email,
-        messages: query,
-        file: selectedFile,
+        passport_number: passportNumber,
+        passport_file: selectedFile,
+        passport_alt_file: attendantImage1,
+        passport_alt_file1: attendantImage2,
+        passport_alt_file2: attendantImage3,
+        passport_alt_number: attendantNumber1,
+        passport_alt_number1: attendantNumber2,
+        passport_alt_number2: attendantNumber3,
       };
 
       // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
-      const apiEndpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/api/get_a_visa`;
+      const apiEndpoint = `https://api.medflick.com/api/get_a_visa`;
 
       setIsLoading(true);
 
@@ -217,8 +297,6 @@ const VisaaForm = () => {
         });
     }
   };
-
-  console.log(attendants);
 
   const inputRef = useRef(null);
 
@@ -278,6 +356,36 @@ const VisaaForm = () => {
   const handleCloseErrorPopup = () => {
     setShowErrorPopup(false);
   };
+
+  const fileDisplay = selectedFile ? (
+    <div className="file__value" onClick={() => setSelectedFile(null)}>
+      <div className="file__value--text">{selectedFile.name}</div>
+      <div className="file__value--remove" data-id={selectedFile.name}></div>
+    </div>
+  ) : null;
+  const fileDisplay1 = attendantImage1 ? (
+    <div className="file__value" onClick={() => setAttendantImage1(null)}>
+      <div className="file__value--text">{attendantImage1.name}</div>
+      <div className="file__value--remove" data-id={attendantImage1.name}></div>
+    </div>
+  ) : null;
+
+  const fileDisplay2 = attendantImage2 ? (
+    <div className="file__value" onClick={() => setAttendantImage2(null)}>
+      <div className="file__value--text">{attendantImage2.name}</div>
+      <div className="file__value--remove" data-id={attendantImage2.name}></div>
+    </div>
+  ) : null;
+
+  const fileDisplay3 = attendantImage3 ? (
+    <div className="file__value" onClick={() => setAttendantImage3(null)}>
+      <div className="file__value--text">{attendantImage3.name}</div>
+      <div className="file__value--remove" data-id={attendantImage3.name}></div>
+    </div>
+  ) : null;
+
+  const desc =
+    "Thank you! We have received your details. Our team will contact you soon to assist you in your VISA application process.";
   return (
     <>
       <section id="medflick-visa">
@@ -326,132 +434,252 @@ const VisaaForm = () => {
             </div>
             <div className="medflick-visa-right">
               <h2>Apply for Visa</h2>
-
-              <div className="visa-form">
-                <div className="visa-form-box">
-                  <label>Full Name *</label>
-                  <input
-                    type="text"
-                    placeholder="Name"
-                    name="name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    autoComplete="off"
-                    style={formErrors.name ? Formstyles.errorInput : {}}
-                  />
-                  {renderError(formErrors.name)}
-                </div>
-              </div>
-
-              <div className="visa-form">
-                <div className="visa-form-box">
-                  <label>Phone Number *</label>
-                  <div className="visa-phoneCode">
-                    <input
-                      ref={inputRef}
-                      type="tel"
-                      id="mobile_code"
-                      placeholder="Phone"
-                      value={phone}
-                      onChange={handlePhoneNumberChange}
-                      onBlur={handlePhoneBlur}
-                      style={formErrors.phone ? Formstyles.errorInput : {}}
-                    />
-                    {renderError(formErrors.phone)}
-                  </div>
-                </div>
-              </div>
-
-              <div className="visa-form">
-                <div className="visa-form-box">
-                  <label>Email Address *</label>
-                  <input
-                    type="email"
-                    placeholder="Email"
-                    name="name"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    onBlur={handleEmailBlur}
-                    autoComplete="off"
-                    style={formErrors.email ? Formstyles.errorInput : {}}
-                  />
-                  {renderError(formErrors.email)}
-                </div>
-              </div>
-
-              <div className="visa-form">
-                <div className="visa-form-box">
-                  <label>Patient Passport Number</label>
-                  <div className="visa-form1">
+              <form onSubmit={handleFormSubmit}>
+                <div className="visa-form">
+                  <div className="visa-form-box">
+                    <label>Full Name *</label>
                     <input
                       type="text"
-                      placeholder="XXXXXXXXXXXX"
+                      placeholder="Name"
                       name="name"
-                      required=""
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      autoComplete="off"
+                      style={formErrors.name ? Formstyles.errorInput : {}}
                     />
-                    <div className="medical-report-all">
-                      <button className="medical-report-file">
-                        {" "}
-                        Upload Passport
-                      </button>
-                      <input type="file" name="file" />
+                    {renderError(formErrors.name)}
+                  </div>
+                </div>
+
+                <div className="visa-form">
+                  <div className="visa-form-box">
+                    <label>Phone Number *</label>
+                    <div className="visa-phoneCode">
+                      <input
+                        ref={inputRef}
+                        type="tel"
+                        id="mobile_code"
+                        placeholder="Phone"
+                        value={phone}
+                        onChange={handlePhoneNumberChange}
+                        onBlur={handlePhoneBlur}
+                        style={formErrors.phone ? Formstyles.errorInput : {}}
+                      />
+                      {renderError(formErrors.phone)}
                     </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="visa-form">
-                <div className="visa-form-box">
-                  <label>Attendant Passport Number</label>
-                  {attendants.map((attendant, index) => (
-                    <div className="visa-form2" key={index}>
+                <div className="visa-form">
+                  <div className="visa-form-box">
+                    <label>Email Address *</label>
+                    <input
+                      type="email"
+                      placeholder="Email"
+                      name="name"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      onBlur={handleEmailBlur}
+                      autoComplete="off"
+                      style={formErrors.email ? Formstyles.errorInput : {}}
+                    />
+                    {renderError(formErrors.email)}
+                  </div>
+                </div>
+
+                <div className="visa-form">
+                  <div className="visa-form-box">
+                    <label>Patient Passport Number</label>
+                    <div className="visa-form1">
                       <input
                         type="text"
-                        // placeholder={`Attendant ${index + 1} Passport Number`}
                         placeholder="XXXXXXXXXXXX"
-                        value={attendant.number}
-                        onChange={(e) =>
-                          handleAttendantChange(index, "number", e.target.value)
-                        }
-                        required=""
+                        name="name"
+                        value={passportNumber}
+                        onChange={(e) => setPassportNumber(e.target.value)}
                       />
                       <div className="medical-report-all">
-                        <button className="medical-report-file">
-                          Upload Passport
-                        </button>
-                        <input
-                          type="file"
-                          name={`attendantImage${index}`}
-                          onChange={(e) =>
-                            handleAttendantImageChange(index, e.target.files[0])
-                          }
-                        />
+                        {fileDisplay}
+                        {!selectedFile && (
+                          <div>
+                            <button className="medical-report-file">
+                              Upload Passport
+                            </button>
+                            {fileValidationMessage && (
+                              <p style={{ color: "red" }}>
+                                {fileValidationMessage}
+                              </p>
+                            )}
+                            <input
+                              type="file"
+                              name="file"
+                              onChange={handleFileChange}
+                            />
+                          </div>
+                        )}
                       </div>
                     </div>
-                  ))}
+                  </div>
                 </div>
-              </div>
 
-              {attendants.length < 3 && (
+                <div className="visa-form">
+                  <div className="visa-form-box">
+                    <label>Attendant Passport Number</label>
+                    {numAttendants >= 1 && (
+                      <div className="visa-form2">
+                        <input
+                          type="text"
+                          placeholder="XXXXXXXXXXX"
+                          value={attendantNumber1}
+                          onChange={(e) =>
+                            handleAttendantNumberChange(1, e.target.value)
+                          }
+                        />
+                        <div className="medical-report-all">
+                          {fileDisplay1}
+                          {!attendantImage1 && (
+                            <>
+                              <button className="medical-report-file">
+                                Upload Passport
+                              </button>
+                              <input
+                                type="file"
+                                name="attendantImage1"
+                                onChange={(e) =>
+                                  handleAttendantImageChange(1, e)
+                                }
+                              />
+                            </>
+                          )}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Attendant 2 */}
+                    {numAttendants >= 2 && (
+                      <div className="visa-form2">
+                        <input
+                          type="text"
+                          placeholder="XXXXXXXXXXX"
+                          value={attendantNumber2}
+                          onChange={(e) =>
+                            handleAttendantNumberChange(2, e.target.value)
+                          }
+                        />
+                        <div className="medical-report-all">
+                          {fileDisplay2}
+                          {!attendantImage2 && (
+                            <>
+                              <button className="medical-report-file">
+                                Upload Passport
+                              </button>
+                              <input
+                                type="file"
+                                name="attendantImage1"
+                                onChange={(e) =>
+                                  handleAttendantImageChange(2, e)
+                                }
+                              />
+                            </>
+                          )}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Attendant 3 */}
+                    {numAttendants >= 3 && (
+                      <div className="visa-form2">
+                        <input
+                          type="text"
+                          placeholder="XXXXXXXXXXX"
+                          value={attendantNumber3}
+                          onChange={(e) =>
+                            handleAttendantNumberChange(3, e.target.value)
+                          }
+                        />
+                        <div className="medical-report-all">
+                          {fileDisplay3}
+                          {!attendantImage3 && (
+                            <>
+                              <button className="medical-report-file">
+                                Upload Passport
+                              </button>
+                              <input
+                                type="file"
+                                name="attendantImage1"
+                                onChange={(e) =>
+                                  handleAttendantImageChange(3, e)
+                                }
+                              />
+                            </>
+                          )}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {numAttendants < 3 && (
+                  <div className="visa-form-box">
+                    <a
+                      onClick={handleAddAttendant}
+                      style={{ color: "#ff6800" }}
+                    >
+                      Add Attendant +
+                    </a>
+                  </div>
+                )}
+
                 <div className="visa-form-box">
-                  <a onClick={handleAddAttendant} style={{ color: "#ff6800" }}>
-                    Add Attendant +
-                  </a>
+                  {/* <button type="submit" name="en" className="visa-submit">
+                    {" "}
+                    Submit Now{" "}
+                  </button> */}
+                  <button
+                    type="submit"
+                    name="en"
+                    className="visa-submit"
+                    disabled={isLoading}
+                  >
+                    {" "}
+                    {isLoading ? (
+                      <ThreeDots
+                        height="27"
+                        width="80"
+                        radius="9"
+                        color="#ffffff"
+                        ariaLabel="three-dots-loading"
+                        wrapperStyle={{}}
+                        wrapperClassName=""
+                        visible={true}
+                      />
+                    ) : (
+                      "Submit Now"
+                    )}
+                    {/* <img src="/images/2023/01/arrow-c.png" alt="arrow-Icon" /> */}
+                  </button>
                 </div>
-              )}
-
-              <div className="visa-form-box">
-                <button type="submit" name="en" className="visa-submit">
-                  {" "}
-                  Submit Now{" "}
-                </button>
-              </div>
+              </form>
 
               <em>*$50 USD Application fees is applicable</em>
             </div>
           </div>
         </div>
       </section>
+      {showSuccessPopup && (
+        <Success
+          onClose={handleCloseSuccessPopup}
+          showSuccessPopup={showSuccessPopup}
+          desc={desc}
+        />
+      )}
+
+      {showErrorPopup && (
+        <ErrorPopup
+          onClose={handleCloseErrorPopup}
+          showErrorPopup={showErrorPopup}
+        />
+      )}
     </>
   );
 };

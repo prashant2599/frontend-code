@@ -224,24 +224,27 @@ const RequestQuote = () => {
         <div className="midbox-inner wiki-mk">
           <ul>
             <li>
-              <h3>Need Assistance?</h3>
-              <p>Can’t find what you’re looking for? Let up help</p>
+              <h3>Call Us</h3>
+              <p>
+                {" "}
+                For inquiries and assistance, please feel free to reach out.
+              </p>
               <a href="#/" className="get-help">
                 {" "}
                 Get Help
               </a>
             </li>
             <li>
-              <h3>Need Assistance?</h3>
-              <p>Can’t find what you’re looking for? Let up help</p>
+              <h3>WhatsApp</h3>
+              <p> Connect with us on WhatsApp for quick support.</p>
               <a href="#/" className="get-help">
                 {" "}
                 Get Help
               </a>
             </li>
             <li>
-              <h3>Need Assistance?</h3>
-              <p>Can’t find what you’re looking for? Let up help</p>
+              <h3>Live Chat</h3>
+              <p>Chat with us for real-time assistance.</p>
               <a href="#/" className="get-help">
                 {" "}
                 Get Help

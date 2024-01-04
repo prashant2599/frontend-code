@@ -571,9 +571,9 @@ button.active .city-icon-h {
   }
 
   .home-slider-left h2 {
-    font-size: 19px;
+    font-size: 22px;
     line-height: 37px;
-    padding-bottom: 30px;
+    padding-bottom: 7px;
     width: 100%;
   }
 
@@ -1445,7 +1445,7 @@ button.active .city-icon-h {
     width: 100%;
   }
   .home-expert-text h3 {
-    font-size: 16px;
+    font-size: 15px;
     padding-bottom: 5px;
     height: 32px;
   }
@@ -1759,7 +1759,6 @@ button.active .city-icon-h {
   text-align: left;
   font-family: Inter Regular;
   margin: 0;
-
 }
 .blog-text {
   display: flex;
@@ -2167,3 +2166,17 @@ button.active .city-icon-h {
     width: 100%;
   }
 }
+
+#home-health-queries .healthcare-professionals a {
+  font-size: 20px;
+  color: #121c42;
+  font-weight: Bold;
+  margin: 0px;
+  padding:0px;
+  position: relative;
+  font-family: Inter Regular;
+  background: none;
+  border: none;
+  display: inline;
+}
+

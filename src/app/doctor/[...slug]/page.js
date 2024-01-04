@@ -9,6 +9,8 @@ import RelatedDoctor from "./RelatedDoctor";
 import "@/app/Home/NewUIHomepage/newsection.css";
 import NewHeader from "@/app/Home/NewUIHomepage/inc/NewHeader";
 import NewFooter from "@/app/Home/NewUIHomepage/inc/NewFooter";
+import HospitalShareProfile from "@/app/hospital/[...slug]/HospitalShareProfile";
+import DoctorShare from "./DoctorShare";
 
 const page = async ({ params }) => {
   try {
@@ -75,6 +77,7 @@ const page = async ({ params }) => {
                     {rating.length === 1 ? "review" : "reviews"}
                   </a>
                 </div>
+
                 <div className="experience-total">
                   <div className="experience-text">
                     <img src="/images/2023/05/experience.png" alt="icon" />{" "}
@@ -84,11 +87,9 @@ const page = async ({ params }) => {
                     {docotorDetails.experience_year}+ Years
                   </div>
                 </div>
+
                 <div className="doctor-book-an">
-                  <span className="save-profile">
-                    {" "}
-                    <ShareProfile slug={docotorDetails.slug} />
-                  </span>
+                  <DoctorShare slug={docotorDetails.slug} />
 
                   {/*  Appoinment form */}
                   <AppointmentForm

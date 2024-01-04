@@ -436,7 +436,7 @@ const QAform = () => {
               </div>
             </div>
             <ReCAPTCHA
-              sitekey="6LcX6-YnAAAAAAjHasYD8EWemgKlDUxZ4ceSo8Eo" // Replace with your reCAPTCHA site key
+              sitekey="6LcX6-YnAAAAAAjHasYD8EWemgKlDUxZ4ceSo8Eo" 
               onChange={handleCaptchaChange1}
             />
             {renderError(formErrors.captcha)}
