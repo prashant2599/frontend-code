@@ -28,7 +28,7 @@ const page = async ({ params }) => {
     hour12: true,
   });
 
-  const url = `question/${combinedSlug}`
+  const url = `question/${combinedSlug}`;
 
   return (
     <>
@@ -154,3 +154,15 @@ const page = async ({ params }) => {
 };
 
 export default page;
+
+export async function generateMetadata({ params }) {
+  const combinedSlug = params.slug.join("/");
+  return {
+    openGraph: {
+      images: "https://medflick.com/images/2023/02/logo.png",
+    },
+    alternates: {
+      canonical: `https://medflick.com/question/${combinedSlug}`,
+    },
+  };
+}

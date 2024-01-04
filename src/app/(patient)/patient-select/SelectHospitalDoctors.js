@@ -50,6 +50,7 @@ const SelectHospitalDoctors = () => {
   }, []);
 
   const [selectedHospital, setSelectedHospital] = useState(null);
+  const [selectedHospitalId, setSelectedHospitalId] = useState(null);
   const [selectedHospitalIcon, setSelectedHospitalIcon] = useState(null);
   const [selectedHospitalCountry, setSelectedHospitalCountry] = useState(null);
   const [doctors, setDoctors] = useState([]);
@@ -68,21 +69,41 @@ const SelectHospitalDoctors = () => {
     setSelectedHospital(hospitalSlug);
     setSelectedHospitalCountry(country);
     setSelectedHospitalIcon(hospitalIcon);
-    await fetchDoctorsData(hospitalSlug, country);
+    setSelectedHospitalId(hospitalId);
+    // await fetchDoctorsData(hospitalSlug, country);
     localStorage.setItem("selectedHospitalId", hospitalId);
   };
 
-  const fetchDoctorsData = async (hospitalSlug, country) => {
-    try {
-      const response = await axios.get(
-        `https://dev.medflick.com/api/hospital/${hospitalSlug}/${country}`
-      );
-      setDoctors(response.data.data.doctors);
-      console.log(response.data);
-    } catch (error) {
-      console.error("Error fetching doctors data", error);
+  useEffect(() => {
+    const storedSpeciality = localStorage.getItem("selectedspecialityName");
+    const storedTreatment = localStorage.getItem("selectedTreatmentName");
+    if (storedSpeciality && storedTreatment) {
+      // Fetch the details data based on the activePackage ID
+      axios
+        .get(
+          `https://dev.medflick.com/api/doctor-list/${storedSpeciality}/${storedTreatment}`
+        )
+        .then((response) => {
+          setDoctors(response.data.doctors_list.doctors_list);
+          console.log(response.data.doctors_list.doctors_list);
+        })
+        .catch((error) => {
+          console.error("Error fetching details data:", error);
+        });
     }
-  };
+  }, []);
+
+  // const fetchDoctorsData = async (hospitalSlug, country) => {
+  //   try {
+  //     const response = await axios.get(
+  //       `https://dev.medflick.com/api/hospital/${hospitalSlug}/${country}`
+  //     );
+  //     setDoctors(response.data.data.doctors);
+  //     console.log(response.data);
+  //   } catch (error) {
+  //     console.error("Error fetching doctors data", error); 
+  //   }
+  // };
 
   const handleBookAppointment = (doctorId) => {
     // Save the doctorId to local storage
@@ -93,6 +114,14 @@ const SelectHospitalDoctors = () => {
   };
 
   console.log(selectedHospitalIcon);
+
+  const filteredDoctors = doctors.filter(
+    (doctor) => doctor.hospital_id === String(selectedHospitalId)
+  );
+
+  console.log(filteredDoctors);
+
+  console.log(selectedHospitalId);
   return (
     <>
       <section id="request-quote-section">
@@ -201,54 +230,67 @@ const SelectHospitalDoctors = () => {
                   style={{ display: "block" }}
                 >
                   <div className="scrollbar1">
-                    {doctors.map((e) => (
-                      <div className="doctor-item-list" key={e.id}>
-                        <div className="doctor-item-img">
-                          <img
-                            src={`https://dev.medflick.com/doctor/${e.image}`}
-                            alt={e.name}
-                          />
-                        </div>
-                        <div className="doctor-item-doc">
-                          <h3>
-                            {" "}
-                            {e.prefix} {e.first_name} {e.last_name}
-                          </h3>
-                          <div className="department-sub">{e.designation}</div>
-                          {/* <div className="rating-star">
-                            <i className="fa fa-star"></i> 5 (523)
-                          </div> */}
-                          <div className="doc-experience">
-                            <div className="years-exper">
-                              {e.experience_year}+ Years of Experience{" "}
-                            </div>
-                            {e.surgery_treatment !== null && (
-                              <div className="successful-plus">
-                                {e.surgery_treatment}+ Successful Surgeries
-                              </div>
-                            )}
-                          </div>
-                        </div>
-                        <div className="doctor-item-button">
-                          <a
-                            className="book-app"
-                            onClick={() => handleBookAppointment(e.id)}
-                            style={{ cursor: "pointer" }}
-                          >
-                            Book Appointment{" "}
-                            <img src="/images/2023/05/book.png" />
-                          </a>
-                          <div className="doc-Hospital">
-                            {e.location.charAt(0).toUpperCase() +
-                              e.location.slice(1)}
+                    {filteredDoctors.length === 0 ? (
+                      <div>
+                        <h4 style={{ textAlign: "center", fontSize: "22px" }}>
+                          No doctors found
+                        </h4>
+                      </div>
+                    ) : (
+                      filteredDoctors.map((e) => (
+                        <div className="doctor-item-list" key={e.id}>
+                          <div className="doctor-item-img">
                             <img
-                              src={`https://dev.medflick.com/hospital/${selectedHospitalIcon}`}
-                              alt={selectedHospital}
+                              src={`https://dev.medflick.com/doctor/${e.image}`}
+                              alt={e.name}
                             />
                           </div>
+                          <div className="doctor-item-doc">
+                            <h3>
+                              {" "}
+                              {e.prefix} {e.first_name} {e.last_name}
+                            </h3>
+                            <div className="department-sub">
+                              {e.designation}
+                            </div>
+                            {/* <div className="rating-star">
+          <i className="fa fa-star"></i> 5 (523)
+        </div> */}
+                            <div className="doc-experience">
+                              <div className="years-exper">
+                                {e.experience_year}+ Years of Experience{" "}
+                              </div>
+                              {e.surgery_treatment !== null && (
+                                <div className="successful-plus">
+                                  {e.surgery_treatment}+ Successful Surgeries
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                          <div className="doctor-item-button">
+                            <a
+                              className="book-app"
+                              onClick={() => handleBookAppointment(e.id)}
+                              style={{ cursor: "pointer" }}
+                            >
+                              Book Appointment{" "}
+                              <img
+                                src="/images/2023/05/book.png"
+                                alt="Book Icon"
+                              />
+                            </a>
+                            <div className="doc-Hospital">
+                              {e.location.charAt(0).toUpperCase() +
+                                e.location.slice(1)}
+                              <img
+                                src={`https://dev.medflick.com/hospital/${selectedHospitalIcon}`}
+                                alt={selectedHospital}
+                              />
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      ))
+                    )}
                   </div>
                 </div>
               )}

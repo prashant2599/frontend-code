@@ -273,7 +273,7 @@ export async function generateMetadata({ params }) {
         FormatedCity +
         " and reviews | Book hassle-free appointment",
       alternates: {
-        canonical: `https://medflick.com/doctors/${combinedSlug}`,
+        canonical: `https://medflick.com/doctor-list/${combinedSlug}`,
       },
     };
   } else {
@@ -293,7 +293,7 @@ export async function generateMetadata({ params }) {
         " " +
         "Specialist  and reviews | Book hassle-free appointment",
       alternates: {
-        canonical: `https://medflick.com/doctors/${combinedSlug}`,
+        canonical: `https://medflick.com/doctor-list/${combinedSlug}`,
       },
     };
   }

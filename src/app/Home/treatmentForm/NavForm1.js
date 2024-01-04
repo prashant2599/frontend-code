@@ -277,6 +277,7 @@ const NavForm1 = ({ treatmentId, specialityId }) => {
 
   const desc =
     "Thank you! We received your details. Your information is in safe hands! ";
+
   return (
     <>
       <div className="treatment-mid-form">

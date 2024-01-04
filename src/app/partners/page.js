@@ -2,6 +2,7 @@ import NewFooter from "../Home/NewUIHomepage/inc/NewFooter";
 import NewHeader from "../Home/NewUIHomepage/inc/NewHeader";
 import getAllHospitals from "../lib/getAllHospitals";
 import PartnersForm from "./PartnersForm";
+import Link from "next/link";
 
 const page = async () => {
   const data = await getAllHospitals();
@@ -78,10 +79,12 @@ const page = async () => {
           <div className="partners-logo">
             {hospital.map((e) => (
               <div className="logo-img" key={e.id}>
-                <img
-                  src={`https://dev.medflick.com/hospital/${e.icon}`}
-                  alt={e.slug}
-                />
+                <Link href={`/hospital/${e.slug}/${e.country}`}>
+                  <img
+                    src={`https://dev.medflick.com/hospital/${e.icon}`}
+                    alt={e.slug}
+                  />
+                </Link>
               </div>
             ))}
           </div>

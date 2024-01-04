@@ -4202,7 +4202,7 @@ table strong {
 }
 
 .hospital-Searchbox input {
-  height: 47px;
+  height: 40px;
   padding-left: 15px;
   width: 350px;
   font-size: 16px;
@@ -4212,19 +4212,17 @@ table strong {
   background: #f8f8f8;
   outline: none;
 }
-
 .hospital-Searchbox::before {
   content: "";
   position: absolute;
-  top: 12px;
-  right: 10px;
+  top: 9px;
+  right: 12px;
   width: 20px;
   height: 20px;
   background: url(../app/images/2023/05/search-icon.png) no-repeat;
   background-size: auto;
   background-size: 20px;
 }
-
 .exparts-item-h {
   width: 100%;
   border-bottom: 2px solid #d9d9d9;
@@ -8024,6 +8022,7 @@ ul.tabs li.active {
 
   .home-form .inputbox1 {
     width: 100%;
+    padding-bottom: 12px;
   }
 
   .home-drbox {
@@ -16213,7 +16212,7 @@ textarea {
 }
 
 .visa-form .visa-phoneCode .iti {
-width: 100% !important;
+  width: 100% !important;
 }
 
 @media screen and (max-width: 880px) {
@@ -16295,11 +16294,303 @@ width: 100% !important;
   width: 170px;
   outline: none;
 }
-.most-reviews1  .reviews-dropdown {
+.most-reviews1 .reviews-dropdown {
   width: 100%;
 }
 .reviews-dropdown option {
   font-family: arial;
   padding: 19px 0px;
   background: #fff;
+}
+
+.assistance-box .iti {
+  width: 100%;
+}
+
+.get-help-box select {
+  height: 46px;
+  border: 1px solid #dbdbdb;
+  border-radius: 8px;
+  font-family: Helvetica Neue Medium;
+  padding-left: 15px;
+  width: 100%;
+  font-size: 16px;
+  background-color: #fff;
+  outline: none;
+  text-align: left;
+}
+
+.get-help-box option {
+  color: #000;
+  font-size: 14px;
+  font-weight: 200;
+}
+
+.visa-form1 .medical-report-all .file__value:after {
+  padding: 7px !important;
+}
+
+.preview-section {
+  background: #fff;
+  display: flex;
+  gap: 20px;
+  margin: 0px;
+  padding: 0px;
+}
+
+.preview-left-box {
+  width: 75%;
+  margin: 0px;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #d8dee5;
+}
+.preview-left-box h3 {
+  font-size: 14px;
+  color: #000000;
+  text-align: left;
+}
+.medical-condition-preview {
+  display: flex;
+  gap: 14px;
+  margin: 10px 0 20px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #d8dee5;
+}
+.condition-preview-box {
+  border-radius: 4px;
+  border: 1px solid #e1e1e1;
+  background: #f0f0f0;
+  font-size: 14px;
+  color: #797e82;
+  padding: 5px 20px 5px 5px;
+}
+.condition-preview-box img {
+  position: relative;
+  width: 22px;
+  height: auto;
+  margin-right: 6px;
+}
+.hospital-doctors-preview {
+  display: flex;
+  gap: 14px;
+  margin: 0px 0 0px;
+  padding: 10px 0px;
+}
+
+.hospital-preview-box {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #d9d9d9;
+  gap: 20px;
+  padding: 10px;
+  display: flex;
+  text-align: left;
+}
+.hospital-preview-img {
+  width: 35%;
+  border-radius: 16px;
+  margin: 0px;
+  padding: 0px;
+}
+.hospital-preview-img img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  margin: 0px;
+  padding: 0px;
+}
+.hospital-preview-doc {
+  width: 65%;
+  border-radius: 16px;
+  margin: 0px;
+  padding: 0px;
+  position: relative;
+}
+.hospital-preview-doc h3 {
+  font-family: Helvetica Neue Medium;
+  font-size: 14px;
+  line-height: 30px;
+  width: 100%;
+  color: #000000;
+}
+.hospital-preview-doc .department-sub {
+  color: #7c7c7c;
+  font-size: 14px;
+  margin: 0px 0 10px;
+}
+.hospital-preview-doc .rating-star {
+  color: #ff6800;
+  font-size: 14px;
+  font-family: Helvetica Neue Medium;
+}
+
+.doctors-preview-box {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #d9d9d9;
+  gap: 20px;
+  padding: 10px;
+  display: flex;
+  text-align: left;
+}
+.doctor-preview-img {
+  width: 35%;
+  border-radius: 16px;
+  margin: 0px;
+  padding: 0px;
+}
+.doctor-preview-img img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  margin: 0px;
+  padding: 0px;
+}
+.doctor-preview-doc {
+  width: 65%;
+  border-radius: 16px;
+  margin: 0px;
+  padding: 0px;
+  position: relative;
+}
+.doctor-preview-doc h3 {
+  font-family: Helvetica Neue Medium;
+  font-size: 14px;
+  line-height: 30px;
+  width: 100%;
+  color: #000000;
+}
+.doctor-preview-doc .department-sub {
+  color: #7c7c7c;
+  font-size: 14px;
+  margin: 0px 0 10px;
+}
+.doctor-preview-doc .rating-star {
+  color: #ff6800;
+  font-size: 14px;
+  font-family: Helvetica Neue Medium;
+}
+.doctor-preview-doc .years-exper {
+  font-size: 14px;
+}
+.doctor-preview-doc .successful-plus {
+  font-size: 14px;
+}
+
+.preview-right-box {
+  width: 25%;
+  margin: 0px;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #d8dee5;
+}
+.preview-right-box .preview-details {
+  display: flex;
+  margin: 8px 0px;
+  padding: 0px;
+  position: relative;
+  z-index: 2;
+  justify-content: space-between;
+}
+.preview-details h5 {
+  font-size: 13px;
+  color: #797e82;
+  padding-bottom: 5px;
+  margin: 0;
+}
+.preview-details span {
+  font-size: 13px;
+  color: #000;
+}
+.uploadedfile-box {
+  font-size: 13px;
+  padding: 7px 15px;
+  text-align: left;
+  margin: 8px 0px;
+  border-radius: 4px;
+  border: 1px solid #ff6800;
+  background: #ffe7d6;
+  color: #ff6800;
+}
+
+.preview-continue-button {
+  display: flex;
+  border-top: 1px solid #d8dee5;
+  padding: 10px 0px;
+  margin-top: 30px;
+  gap: 14px;
+  justify-content: right;
+}
+.preview-continue {
+  background: #f2f2f2;
+  color: #bebebe !important;
+  margin: 5px 0px;
+  font-size: 16px;
+  border-radius: 8px;
+  padding: 10px 20px;
+  width: max-content;
+  text-align: center;
+}
+.preview-continue:hover {
+  background: #ff6800;
+  color: #ffffff !important;
+}
+
+@media screen and (max-width: 880px) {
+  .hospital-doctor-box {
+    padding: 30px 14px 70px;
+  }
+  .preview-section {
+    flex-direction: column;
+    gap: 0px;
+  }
+  .medical-condition-preview {
+    flex-direction: column;
+  }
+  .hospital-preview-doc h3 {
+    font-size: 13px;
+    line-height: normal;
+  }
+  .hospital-preview-doc .department-sub {
+    font-size: 13px;
+  }
+  .hospital-preview-doc .rating-star {
+    font-size: 13px;
+  }
+  .preview-left-box {
+    width: 100%;
+    flex-direction: column;
+    gap: 0px;
+    padding: 20px 10px;
+  }
+  .hospital-doctors-preview {
+    flex-direction: column;
+  }
+  .hospital-preview-img img {
+    height: auto;
+  }
+  .doctor-preview-img img {
+    height: auto;
+  }
+  .preview-right-box {
+    width: 100%;
+    margin-top: 25px;
+  }
+  .doctor-preview-doc h3 {
+    font-size: 13px;
+    line-height: normal;
+  }
+  .doctor-preview-doc .department-sub {
+    font-size: 13px;
+    margin: 0px 0 5px;
+  }
+  .doctor-preview-doc .rating-star {
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+  .doc-experience .years-exper {
+    font-size: 13px;
+  }
 }

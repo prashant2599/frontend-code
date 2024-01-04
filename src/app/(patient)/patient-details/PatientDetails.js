@@ -69,7 +69,7 @@ const PatientDetails = () => {
                   <div className="treatmentPatient-right">
                     <div className="treatmentPatient-form">
                       <div className="inputbox">
-                        <label>Full Name</label>
+                        <label>Full Name*</label>
                         <input
                           type="text"
                           placeholder=""
@@ -81,7 +81,7 @@ const PatientDetails = () => {
 
                     <div className="treatmentPatient-form">
                       <div className="inputbox">
-                        <label>Phone</label>
+                        <label>Phone*</label>
                         <input
                           ref={inputRef}
                           type="tel"
@@ -98,7 +98,7 @@ const PatientDetails = () => {
 
                     <div className="treatmentPatient-form">
                       <div className="inputbox">
-                        <label>Email Address</label>
+                        <label>Email Address*</label>
                         <input
                           type="text"
                           placeholder=""
@@ -110,7 +110,7 @@ const PatientDetails = () => {
 
                     <div className="treatmentPatient-form">
                       <div className="inputbox">
-                        <label>UHID</label>
+                        <label>UHID (If Available)</label>
                         <input
                           type="text"
                           placeholder=""
@@ -122,13 +122,15 @@ const PatientDetails = () => {
 
                     <div className="treatmentPatient-form">
                       <div className="inputbox">
-                        <label>Gender</label>
-                        <input
-                          type="text"
-                          placeholder=""
-                          name="name"
-                          required=""
-                        />
+                        <label>Gender*</label>
+                        <select name="gender" required>
+                          <option value="" disabled selected>
+                            Select gender
+                          </option>
+                          <option value="male">Male</option>
+                          <option value="female">Female</option>
+                          <option value="other">Other</option>
+                        </select>
                       </div>
                     </div>
 
