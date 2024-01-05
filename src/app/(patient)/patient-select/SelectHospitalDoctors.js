@@ -72,6 +72,8 @@ const SelectHospitalDoctors = () => {
     setSelectedHospitalId(hospitalId);
     // await fetchDoctorsData(hospitalSlug, country);
     localStorage.setItem("selectedHospitalId", hospitalId);
+    localStorage.setItem("selectedHospitalSlug", hospitalSlug);
+    localStorage.setItem("selectedHospitalCountry", country);
   };
 
   useEffect(() => {
@@ -101,13 +103,14 @@ const SelectHospitalDoctors = () => {
   //     setDoctors(response.data.data.doctors);
   //     console.log(response.data);
   //   } catch (error) {
-  //     console.error("Error fetching doctors data", error); 
+  //     console.error("Error fetching doctors data", error);
   //   }
   // };
 
-  const handleBookAppointment = (doctorId) => {
+  const handleBookAppointment = (doctorId, doctorSlug) => {
     // Save the doctorId to local storage
     localStorage.setItem("selectedDoctorId", doctorId);
+    localStorage.setItem("selectedDoctorSlug", doctorSlug);
 
     // Redirect to /patient-details page
     router.push("/patient-details");
@@ -270,7 +273,9 @@ const SelectHospitalDoctors = () => {
                           <div className="doctor-item-button">
                             <a
                               className="book-app"
-                              onClick={() => handleBookAppointment(e.id)}
+                              onClick={() =>
+                                handleBookAppointment(e.id, e.slug)
+                              }
                               style={{ cursor: "pointer" }}
                             >
                               Book Appointment{" "}

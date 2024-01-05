@@ -469,7 +469,7 @@ a:hover {
   font-weight: Bold;
   font-size: 18px;
   border-radius: 8px;
-  padding: 10px 52px 10px 10px;
+  padding: 8.5px 52px 8.5px 10px;
   position: relative;
 }
 
@@ -7416,7 +7416,7 @@ ul.tabs li.active {
 #query-form-page .logo-med {
   width: 160px;
   margin: 0px auto;
-  padding-top: 50px;
+  padding-top: 30px;
   display: flex;
 }
 
@@ -13840,8 +13840,8 @@ pre code {
 .head-searchbox::before {
   content: "";
   position: absolute;
-  top: 12px;
-  left: 15px;
+  top: 10px;
+  left: 12px;
   width: 20px;
   height: 20px;
   background: url(./images/2023/07/search.png) no-repeat;
@@ -13854,7 +13854,7 @@ pre code {
 }
 
 .head-searchbox input {
-  height: 47px;
+  height: 40px;
   width: 100%;
   font-size: 16px;
   border: 1px solid #dee0e1;
@@ -14844,7 +14844,7 @@ pre code {
   transition: transform 0.3s ease-in-out;
   background: #ff6800;
   border-radius: 8px;
-  padding: 14px;
+  padding: 12px;
 }
 .page-header {
   /* position: relative; */

@@ -5,6 +5,8 @@ import intlTelInput from "intl-tel-input";
 import Success from "../Home/successPopup/Success";
 import ErrorPopup from "../Home/successPopup/ErrorPopup";
 import ReCAPTCHA from "react-google-recaptcha";
+import countryList from "./CountryList";
+import axios from "axios";
 const PartnersForm = () => {
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const [showErrorPopup, setShowErrorPopup] = useState(false);
@@ -12,7 +14,9 @@ const PartnersForm = () => {
   const [pcode, setPcode] = useState("+91");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-  const [query, setQuery] = useState("");
+  const [country, setCountry] = useState("");
+  const [city, setCity] = useState("");
+  // const [query, setQuery] = useState("");
 
   const [formErrors, setFormErrors] = useState({
     name: "",
@@ -91,14 +95,6 @@ const PartnersForm = () => {
       isValid = false;
     }
 
-    if (!query) {
-      setFormErrors((prevErrors) => ({
-        ...prevErrors,
-        query: "Please enter your query",
-      }));
-      isValid = false;
-    }
-
     if (!isValid) {
       return;
     }
@@ -117,7 +113,7 @@ const PartnersForm = () => {
         phone_code: pcode,
         phone: phone,
         email: email,
-        messages: query,
+        // messages: query,
       };
 
       // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
@@ -268,6 +264,9 @@ const PartnersForm = () => {
 
   const desc =
     "Help on the way! We appreciate your patience! We will get back to you soon.";
+
+  console.log(city);
+  console.log(country);
   return (
     <>
       <div className="partner-with-right">
@@ -294,22 +293,34 @@ const PartnersForm = () => {
             <div class="phone-box2">
               <label>Country</label>
               <div class="most-reviews1">
-                <select class="reviews-dropdown " aria-label="Sort dropdown">
-                  <option value="select-language">Select Country </option>
-                  <option value=""> India</option>
-                  <option value=""> India</option>
+                <select
+                  class="reviews-dropdown "
+                  aria-label="Sort dropdown"
+                  onChange={(e) => setCountry(e.target.value)}
+                >
+                  <option>Select Country </option>
+                  {countryList.map((country, index) => (
+                    <option key={index} value={country}>
+                      {country}
+                    </option>
+                  ))}
                 </select>
               </div>
             </div>
             <div class="phone-box2">
               <label>City</label>
-              <div class="most-reviews1">
+              <input
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+                autoComplete="off"
+              />
+              {/* <div class="most-reviews1">
                 <select class="reviews-dropdown " aria-label="Sort dropdown">
                   <option value="select-language">Select City</option>
                   <option value=""> Delhi</option>
                   <option value=""> Delhi</option>
                 </select>
-              </div>
+              </div> */}
             </div>
           </div>
 
