@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 function formatText(text) {
   if (typeof text === "string") {
@@ -14,10 +15,17 @@ function formatText(text) {
 }
 
 const PatientPreviewQuote = () => {
+  const router = useRouter();
   const [doctor, setDoctor] = useState([]);
   const [speciality, setSpeciality] = useState("");
   const [treatment, setTreatment] = useState("");
   const [specialityIcon, setSpecialityIcon] = useState("");
+
+  useEffect(() => {
+    if (!localStorage.getItem("userId")) {
+      router.push("/");
+    }
+  });
 
   useEffect(() => {
     const storedDoctor = localStorage.getItem("selectedDoctorSlug");
