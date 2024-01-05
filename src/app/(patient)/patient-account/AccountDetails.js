@@ -9,10 +9,10 @@ import { useRouter } from "next/navigation";
 
 const AccountDetails = () => {
   const router = useRouter();
-  const [activeContent, setActiveContent] = useState("packages1"); // Initialize as null
+  const [activeContent, setActiveContent] = useState("packages1");
 
   const handleContentClick = (contentNumber) => {
-    setActiveContent(contentNumber); // Toggle content visibility
+    setActiveContent(contentNumber);
   };
 
   const [patientId, setPatientId] = useState("");
@@ -36,17 +36,19 @@ const AccountDetails = () => {
   }, []);
 
   useEffect(() => {
-    const apiUrl = `https://dev.medflick.com/api/patient/id/${patientId}`;
-    axios
-      .get(apiUrl)
-      .then((response) => {
-        setUser(response.data.data.patient_data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-        setLoading(false);
-      });
+    if (patientId) {
+      const apiUrl = `https://dev.medflick.com/api/patient/id/${patientId}`;
+      axios
+        .get(apiUrl)
+        .then((response) => {
+          setUser(response.data.data.patient_data);
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+          setLoading(false);
+        });
+    }
   }, [patientId]);
 
   const [readonly, setReadonly] = useState(true);

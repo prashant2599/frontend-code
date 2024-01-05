@@ -8,6 +8,7 @@ import "intl-tel-input/build/css/intlTelInput.css";
 import intlTelInput from "intl-tel-input";
 import Success from "../successPopup/Success";
 import ErrorPopup from "../successPopup/ErrorPopup";
+import { useUser } from "@/app/UserContext";
 
 const HomeDoctorForm = ({
   slug,
@@ -17,6 +18,7 @@ const HomeDoctorForm = ({
   doctorId,
   specialityId,
 }) => {
+  const { userData } = useUser();
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const [showErrorPopup, setShowErrorPopup] = useState(false);
   const [isPopupOpen2, setIsPopupOpen2] = useState(false);
@@ -347,6 +349,11 @@ const HomeDoctorForm = ({
 
   const desc =
     "Your appointment request has been received. We will get back to you soon. Thanks for your patience!";
+
+  // const userNames = userData.name
+
+  // console.log(userNames)
+
   return (
     <>
       <div className="expert-button">

@@ -5,11 +5,13 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import DashboardSearch from "./DashboardSearch";
+import { useUser } from "@/app/UserContext";
 
 const Dashboard = () => {
+  const { userData } = useUser();
+
   const router = useRouter();
 
-  const [userName, setUserName] = useState("");
   const [patientId, setPatientId] = useState("");
 
   useEffect(() => {
@@ -20,15 +22,8 @@ const Dashboard = () => {
 
   // Check if 'userName' exists in localStorage on component mount
   useEffect(() => {
-    const storedUserName = localStorage.getItem("userName");
     const storedUserId = localStorage.getItem("userId");
 
-    if (storedUserName) {
-      const firstWord = storedUserName.split(" ")[0];
-      const capitalizedFirstWord =
-        firstWord.charAt(0).toUpperCase() + firstWord.slice(1);
-      setUserName(capitalizedFirstWord);
-    }
     if (storedUserId) {
       setPatientId(storedUserId);
     }
@@ -37,20 +32,30 @@ const Dashboard = () => {
   const [query, setQuery] = useState([]);
 
   useEffect(() => {
-    const apiUrl = `https://dev.medflick.com/api/dashboard/questionans/patientid/${patientId}`;
-    console.log(apiUrl);
-    axios
-      .get(apiUrl)
-      .then((response) => {
-        setQuery(response.data.qaPatient.qaPatient);
-        // console.log("manisjh", response.data.qaPatient.qaPatient);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
+    // Check if patientId exists before making the API call
+    if (patientId) {
+      const apiUrl = `https://dev.medflick.com/api/dashboard/questionans/patientid/${patientId}`;
+
+      axios
+        .get(apiUrl)
+        .then((response) => {
+          setQuery(response.data.qaPatient.qaPatient);
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        });
+    }
   }, [patientId]);
 
   const queryLatest = query?.slice(0, 4) ?? [];
+
+  const displayText =
+    userData && userData.name
+      ? `Hi ${
+          userData.name.split(" ")[0].charAt(0).toUpperCase() +
+          userData.name.split(" ")[0].slice(1)
+        }`
+      : null;
 
   return (
     <>
@@ -58,7 +63,7 @@ const Dashboard = () => {
         <div className="midbox-inner wiki-mk">
           <div className="home-topbox">
             <div className="topbox-left">
-              <h1>Hi {userName}</h1>
+              <h1>{displayText}</h1>
               <h2>Welcome to Medflick!</h2>
             </div>
             <DashboardSearch />
