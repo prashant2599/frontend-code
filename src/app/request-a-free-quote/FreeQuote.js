@@ -173,6 +173,7 @@ const FreeQuote = () => {
       }));
       return;
     }
+    
 
     if (isValid) {
       // Create the data object to be sent in the API request

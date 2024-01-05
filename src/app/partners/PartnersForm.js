@@ -6,6 +6,8 @@ import Success from "../Home/successPopup/Success";
 import ErrorPopup from "../Home/successPopup/ErrorPopup";
 import ReCAPTCHA from "react-google-recaptcha";
 import countryList from "./CountryList";
+import { ThreeDots } from "react-loader-spinner";
+
 import axios from "axios";
 const PartnersForm = () => {
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
@@ -16,13 +18,16 @@ const PartnersForm = () => {
   const [email, setEmail] = useState("");
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
+  const [interest, setInterest] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   // const [query, setQuery] = useState("");
 
   const [formErrors, setFormErrors] = useState({
     name: "",
     phone: "",
     email: "",
-    query: "",
+    country: "",
+    city: "",
     captcha: "",
   });
   const [captchaValue, setCaptchaValue] = useState(null);
@@ -59,7 +64,8 @@ const PartnersForm = () => {
       name: "",
       phone: "",
       email: "",
-      query: "",
+      country: "",
+      city: "",
       captcha: "",
     });
 
@@ -94,6 +100,21 @@ const PartnersForm = () => {
       }));
       isValid = false;
     }
+    if (!country) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        country: "Please Select Country",
+      }));
+      isValid = false;
+    }
+
+    if (!city) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        city: "Please enter your city",
+      }));
+      isValid = false;
+    }
 
     if (!isValid) {
       return;
@@ -113,11 +134,13 @@ const PartnersForm = () => {
         phone_code: pcode,
         phone: phone,
         email: email,
-        // messages: query,
+        country: country,
+        city: city,
+        intrested: interest,
       };
 
       // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
-      const apiEndpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/api/partnerPost`;
+      const apiEndpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/api/partner_with_us`;
 
       setIsLoading(true);
 
@@ -144,8 +167,8 @@ const PartnersForm = () => {
     setName("");
     setPhone("");
     setEmail("");
-    setQuery("");
-    setSelectedFile(null);
+    setCountry(null);
+    setCity("");
   };
 
   const Formstyles = {
@@ -223,20 +246,6 @@ const PartnersForm = () => {
     }
   };
 
-  const handleQueryBlur = () => {
-    if (!query) {
-      setFormErrors((prevErrors) => ({
-        ...prevErrors,
-        query: "Please enter your query",
-      }));
-    } else {
-      setFormErrors((prevErrors) => ({
-        ...prevErrors,
-        query: "",
-      }));
-    }
-  };
-
   const handleNameBlur = () => {
     if (!name) {
       setFormErrors((prevErrors) => ({
@@ -265,120 +274,157 @@ const PartnersForm = () => {
   const desc =
     "Help on the way! We appreciate your patience! We will get back to you soon.";
 
-  console.log(city);
-  console.log(country);
+  console.log(interest);
+
   return (
     <>
       <div className="partner-with-right">
         <div className="treatment-right">
           <h2>Partner with Us</h2>
-
-          <div className="treatment-form">
-            <div className="inputbox">
-              <label>Name</label>
-              <input
-                type="text"
-                placeholder=""
-                name="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                autoComplete="off"
-                onBlur={handleNameBlur}
-                style={formErrors.name ? Formstyles.errorInput : {}}
-              />
-              {renderError(formErrors.name)}
-            </div>
-          </div>
-          <div class="treatment-form">
-            <div class="phone-box2">
-              <label>Country</label>
-              <div class="most-reviews1">
-                <select
-                  class="reviews-dropdown "
-                  aria-label="Sort dropdown"
-                  onChange={(e) => setCountry(e.target.value)}
-                >
-                  <option>Select Country </option>
-                  {countryList.map((country, index) => (
-                    <option key={index} value={country}>
-                      {country}
-                    </option>
-                  ))}
-                </select>
+          <form onSubmit={handleFormSubmit}>
+            <div className="treatment-form">
+              <div className="inputbox">
+                <label>Name</label>
+                <input
+                  type="text"
+                  placeholder=""
+                  name="name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  autoComplete="off"
+                  onBlur={handleNameBlur}
+                  style={formErrors.name ? Formstyles.errorInput : {}}
+                />
+                {renderError(formErrors.name)}
               </div>
             </div>
-            <div class="phone-box2">
-              <label>City</label>
-              <input
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
-                autoComplete="off"
-              />
-              {/* <div class="most-reviews1">
+            <div class="treatment-form">
+              <div class="phone-box2">
+                <label>Country</label>
+                <div class="most-reviews1">
+                  <select
+                    class="reviews-dropdown "
+                    aria-label="Sort dropdown"
+                    onChange={(e) => setCountry(e.target.value)}
+                  >
+                    <option>Select Country </option>
+                    {countryList.map((country, index) => (
+                      <option key={index} value={country}>
+                        {country}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+              <div class="phone-box2">
+                <label>City</label>
+                <input
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
+                  autoComplete="off"
+                />
+                {/* <div class="most-reviews1">
                 <select class="reviews-dropdown " aria-label="Sort dropdown">
                   <option value="select-language">Select City</option>
                   <option value=""> Delhi</option>
                   <option value=""> Delhi</option>
                 </select>
               </div> */}
-            </div>
-          </div>
-
-          <div className="treatment-form">
-            <div className="inputbox">
-              <label>Phone</label>
-              <input
-                ref={inputRef}
-                type="tel"
-                id="mobile_code"
-                placeholder=""
-                value={phone}
-                onChange={handlePhoneNumberChange}
-                onBlur={handlePhoneBlur}
-                style={formErrors.phone ? Formstyles.errorInput : {}}
-              />
-              {renderError(formErrors.phone)}
-            </div>
-          </div>
-
-          <div className="treatment-form">
-            <div className="inputbox">
-              <label>Email</label>
-              <input
-                type="text"
-                placeholder=""
-                name="name"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                onBlur={handleEmailBlur}
-                autoComplete="off"
-                style={formErrors.email ? Formstyles.errorInput : {}}
-              />
-              {renderError(formErrors.email)}
-            </div>
-          </div>
-          <div class="treatment-form">
-            <div class="inputbox">
-              <label>I’m interested in</label>
-              <div class="most-reviews1">
-                <select class="reviews-dropdown " aria-label="Sort dropdown">
-                  <option value="select-language">Patient appointments</option>
-                  <option value=""> Patient appointments</option>
-                  <option value=""> Patient appointments</option>
-                </select>
               </div>
             </div>
-          </div>
-          <ReCAPTCHA
-            sitekey="6LcX6-YnAAAAAAjHasYD8EWemgKlDUxZ4ceSo8Eo"
-            onChange={handleCaptchaChange}
-          />
-          {renderError(formErrors.captcha)}
 
-          <button type="submit" name="en" className="home-button">
-            {" "}
-            Submit Now <img src="images/2023/01/arrow-c.png" alt="" />
-          </button>
+            <div className="treatment-form">
+              <div className="inputbox">
+                <label>Phone</label>
+                <input
+                  ref={inputRef}
+                  type="tel"
+                  id="mobile_code"
+                  placeholder=""
+                  value={phone}
+                  onChange={handlePhoneNumberChange}
+                  onBlur={handlePhoneBlur}
+                  style={formErrors.phone ? Formstyles.errorInput : {}}
+                />
+                {renderError(formErrors.phone)}
+              </div>
+            </div>
+
+            <div className="treatment-form">
+              <div className="inputbox">
+                <label>Email</label>
+                <input
+                  type="text"
+                  placeholder=""
+                  name="name"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  onBlur={handleEmailBlur}
+                  autoComplete="off"
+                  style={formErrors.email ? Formstyles.errorInput : {}}
+                />
+                {renderError(formErrors.email)}
+              </div>
+            </div>
+            <div class="treatment-form">
+              <div class="inputbox">
+                <label>I’m interested in</label>
+                <div class="most-reviews1">
+                  <select
+                    class="reviews-dropdown "
+                    aria-label="Sort dropdown"
+                    onChange={(e) => setInterest(e.target.value)}
+                  >
+                    <option value="select-language">Select Option</option>
+                    <option value="Patient appointments">
+                      Patient appointments
+                    </option>
+                    <option value="Medical education & Training">
+                      {" "}
+                      Medical education & Training
+                    </option>
+                    <option value="Business agreements & Consulting">
+                      {" "}
+                      Business agreements & Consulting
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <ReCAPTCHA
+              sitekey="6LcX6-YnAAAAAAjHasYD8EWemgKlDUxZ4ceSo8Eo"
+              onChange={handleCaptchaChange}
+            />
+            {renderError(formErrors.captcha)}
+
+            {/* <button type="submit" name="en" className="home-button">
+              {" "}
+              Submit Now <img src="images/2023/01/arrow-c.png" alt="" />
+            </button> */}
+            <button
+              type="submit"
+              name="en"
+              className="home-button"
+              disabled={isLoading}
+            >
+              {" "}
+              {isLoading ? (
+                <ThreeDots
+                  height="27"
+                  width="80"
+                  radius="9"
+                  color="#ffffff"
+                  ariaLabel="three-dots-loading"
+                  wrapperStyle={{}}
+                  wrapperClassName=""
+                  visible={true}
+                />
+              ) : (
+                "Submit Now"
+              )}
+              <img src="/images/2023/01/arrow-c.png" alt="arrow-Icon" />
+            </button>
+          </form>
         </div>
       </div>
       {showSuccessPopup && (

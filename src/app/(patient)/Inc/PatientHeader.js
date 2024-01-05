@@ -3,9 +3,11 @@ import { useEffect, useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useUser } from "@/app/UserContext";
 
 const PatientHeader = () => {
   const router = useRouter();
+  const { userData } = useUser();
   const [isOffcanvas, setIsOffcanvas] = useState(false);
   const [userName, setUserName] = useState("");
 
@@ -75,6 +77,14 @@ const PatientHeader = () => {
     setUserName("");
     window.location.reload();
   };
+
+  const displayText =
+    userData && userData.name
+      ? `${
+          userData.name.split(" ")[0].charAt(0).toUpperCase() +
+          userData.name.split(" ")[0].slice(1)
+        }`
+      : null;
   return (
     <>
       <header className="header" id="header-id">
@@ -134,7 +144,7 @@ const PatientHeader = () => {
             </a> */}
             <div className="action">
               <div className="man-top" onClick={toggleMenu}>
-                <img src="/images/userIcon.png" /> {userName}
+                <img src="/images/userIcon.png" /> {displayText}
               </div>
               <div className={`menu-dashboard ${isActive ? "active" : ""}`}>
                 <ul>

@@ -124,11 +124,11 @@ const page = async ({ params }) => {
             {info && info.name} treatments in {info && info.country}
           </h2> */}
 
-            {/* <div
-            dangerouslySetInnerHTML={{
-              __html: info && info.long_description,
-            }}
-          /> */}
+            <div
+              dangerouslySetInnerHTML={{
+                __html: info.long_description ? info.long_description : "",
+              }}
+            />
             <SpecialityFilteration
               countryResponse={info.country}
               slug={info.slug}
