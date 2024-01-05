@@ -152,9 +152,9 @@ const NewSearchTreatment = () => {
                         {e.prefix} {e.first_name} {e.last_name}
                       </h3>
                     </Link>
-                    <p style={{ height: "37px" }}>
-                      {e.designation.length > 50
-                        ? `${e.designation.slice(0, 50)}...`
+                    <p>
+                      {e.designation.length > 28
+                        ? `${e.designation.slice(0, 28)}...`
                         : e.designation}
                     </p>
                   </div>
