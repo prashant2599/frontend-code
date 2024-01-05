@@ -31,16 +31,14 @@ const TreatmentList = ({ speciality, slugs }) => {
                     <div className="cost">{e.price}</div>
                   </div>
                   <div className="packages-details">
-                    {e.short_description && e.short_description.slice(0, 140)}
-                    ....
+                    {e.short_description && (
+                      <>
+                        {e.short_description.slice(0, 140)}
+                        {e.short_description.length > 140 && "...."}
+                      </>
+                    )}
                   </div>
 
-                  {/* <div
-                          className="packages-details"
-                          dangerouslySetInnerHTML={{
-                            __html: e.short_description,
-                          }}
-                        /> */}
                   <span>
                     <img
                       src="/images/2023/01/pack-arrow.png"

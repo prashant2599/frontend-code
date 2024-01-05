@@ -58,11 +58,11 @@ const page = async ({ params }) => {
                 <h1>{info.name}</h1>
                 <p>Avg Price: {info.special_price}</p>
               </div>
-              {/* <div className="treatment-subtext">{info.quote}</div> */}
-              <div className="treatment-subtext">
+              <div className="treatment-subtext">{info.quote}</div>
+              {/* <div className="treatment-subtext">
                 {Treatment} An Insight into Innovative Approaches and Cost
                 Analysis
-              </div>
+              </div> */}
             </div>
           </div>
         </section>

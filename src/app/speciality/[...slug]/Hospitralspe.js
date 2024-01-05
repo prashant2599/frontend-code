@@ -42,7 +42,13 @@ const Hospitralspe = ({ hospital, category, categoryName, slugs }) => {
                   <Link href={`/hospital/${e.slug}/${e.country}`}>
                     <h3>{e.name}</h3>
                   </Link>
-                  <p>Hospitals in India</p>
+                  <p>
+                    Hospitals in{" "}
+                    {e.city && e.city.charAt(0).toUpperCase() + e.city.slice(1)}
+                    ,{" "}
+                    {e.country &&
+                      e.country.charAt(0).toUpperCase() + e.country.slice(1)}
+                  </p>
                 </div>
                 <HomeHospitalForm
                   slug={e.slug}

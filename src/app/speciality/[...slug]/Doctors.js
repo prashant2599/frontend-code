@@ -44,7 +44,11 @@ const Doctors = ({ doctor, category, categoryName, slugs }) => {
                       {e.prefix} {e.first_name} {e.last_name}
                     </h3>
                   </Link>
-                  <p style={{ height: "37px" }}>{e.designation}</p>
+                  <p>
+                    {e.designation.length > 30
+                      ? `${e.designation.slice(0, 30)}...`
+                      : e.designation}
+                  </p>
                 </div>
                 <HomeDoctorForm
                   slug={e.slug}
