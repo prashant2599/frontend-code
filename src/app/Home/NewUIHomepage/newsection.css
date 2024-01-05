@@ -240,6 +240,10 @@
   margin: 0;
 }
 
+.home-hospitals .home-expert-text h3 {
+ height: 54px;
+}
+
 .home-expert-text p {
   font-size: 14px;
   width: 100%;
@@ -992,6 +996,7 @@ button.active .city-icon-h {
   gap: 20px;
   justify-content: space-between;
 }
+
 #medflick-verified-doctor li {
   flex: 0 0 48%;
   align-items: center;
@@ -1007,6 +1012,7 @@ button.active .city-icon-h {
   color: #121c42;
   padding: 5px 0;
 }
+
 #medflick-verified-doctor li p {
   font-size: 14px;
   color: #6d6d6d;
@@ -1014,6 +1020,7 @@ button.active .city-icon-h {
   margin: 0px;
   font-family: Inter Regular;
 }
+
 #medflick-verified-doctor h2 span {
   color: #ff6800;
   font-size: 30px;
@@ -1090,18 +1097,22 @@ button.active .city-icon-h {
     padding: 0px 0 10px;
     font-family: Inter Regular;
   }
+
   #medflick-verified-doctor h2 {
     font-size: 28px;
     line-height: 34px;
     width: 100%;
   }
+
   #medflick-verified-doctor h2 span {
     font-size: 24px;
   }
+
   #medflick-verified-doctor ul {
     gap: 0px;
     padding: 30px 0px 0px;
   }
+
   #medflick-verified-doctor li {
     flex: 0 0 100%;
     padding: 10px 0px;
@@ -1138,6 +1149,7 @@ button.active .city-icon-h {
   display: block;
   margin-bottom: 20px;
 }
+
 #qualifications-standards ul {
   display: flex;
   align-items: flex-start;
@@ -1147,6 +1159,7 @@ button.active .city-icon-h {
   gap: 50px;
   justify-content: space-between;
 }
+
 #qualifications-standards li {
   width: 33%;
   align-items: center;
@@ -1156,6 +1169,7 @@ button.active .city-icon-h {
   padding-left: 0px;
   margin-bottom: 25px;
 }
+
 #qualifications-standards .better-icon {
   display: flex;
   position: relative;
@@ -1166,12 +1180,14 @@ button.active .city-icon-h {
   padding: 15px;
   margin-bottom: 7px;
 }
+
 #qualifications-standards li h3 {
   font-size: 20px;
   font-family: Helvetica Neue Medium;
   color: #121c42 !important;
   padding: 5px 0;
 }
+
 #qualifications-standards li p {
   font-size: 14px;
   color: #6d6d6d;
@@ -1179,9 +1195,11 @@ button.active .city-icon-h {
   margin: 0px;
   font-family: Inter Regular;
 }
+
 #qualifications-standards li:last-child h3 {
   color: #ff6800;
 }
+
 #qualifications-standards li a {
   color: #6d6d6d;
   text-decoration: underline;
@@ -1211,6 +1229,7 @@ button.active .city-icon-h {
   bottom: 0px;
   left: 6%;
 }
+
 .home-expert-video {
   position: relative;
   width: 100%;
@@ -1225,6 +1244,7 @@ button.active .city-icon-h {
   width: 55%;
   position: relative;
 }
+
 .home-expert-video-left h2 {
   font-size: 40px;
   line-height: 50px;
@@ -1237,6 +1257,7 @@ button.active .city-icon-h {
   position: relative;
   display: block;
 }
+
 .home-expert-video-left p {
   font-size: 18px;
   color: #15354e;
@@ -1244,10 +1265,12 @@ button.active .city-icon-h {
   width: 80%;
   font-family: Inter Regular;
 }
+
 .home-expert-video-left h2 span {
   color: #ff6800;
   display: block;
 }
+
 .home-expert-video-left a {
   background: #ff6800;
   font-family: Helvetica Neue Medium;
@@ -1262,6 +1285,7 @@ button.active .city-icon-h {
   justify-content: center;
   width: 30%;
 }
+
 .home-expert-video-left a img {
   width: 38px;
   position: absolute;
@@ -1271,6 +1295,7 @@ button.active .city-icon-h {
   padding: 10px 10px;
   border-radius: 6px;
 }
+
 .home-expert-video-right {
   margin: 0px;
   padding: 0px;
@@ -1279,6 +1304,7 @@ button.active .city-icon-h {
   display: flex;
   gap: 25px;
 }
+
 /* .home-expert-video-right .expert-video-item {
   width: 50%;
   background: #fff;
@@ -1301,10 +1327,12 @@ button.active .city-icon-h {
   right: 45%;
   z-index: 2;
 }
+
 .home-expert-video-right .video-iconbox img {
   width: 60px;
   height: 60px;
 }
+
 .home-expert-video-right .home-expert-text {
   position: relative;
   background: #fff;
@@ -1313,6 +1341,7 @@ button.active .city-icon-h {
   width: 100%;
   z-index: 2;
 }
+
 .home-expert-video-right h3 {
   font-size: 18px;
   color: #121c42;
@@ -1323,6 +1352,7 @@ button.active .city-icon-h {
   position: relative;
   display: block;
 }
+
 .home-expert-video-right p {
   font-size: 14px;
   width: 100%;
@@ -1338,6 +1368,7 @@ button.active .city-icon-h {
   position: relative;
   margin: 0px;
 }
+
 #home-health-queries h2 {
   font-size: 40px;
   line-height: 50px;
@@ -1351,6 +1382,7 @@ button.active .city-icon-h {
   position: relative;
   display: block;
 }
+
 #home-health-queries h6 {
   font-size: 16px;
   color: #6d6d6d;
@@ -1360,6 +1392,7 @@ button.active .city-icon-h {
   margin: 0px auto;
   font-family: Inter Regular;
 }
+
 .healthcare-professionals {
   width: 100%;
   margin-top: 60px;
@@ -1367,6 +1400,7 @@ button.active .city-icon-h {
   display: flex;
   flex-wrap: wrap;
 }
+
 .professionals {
   background: #ffffff;
   border-radius: 16px;
@@ -1390,6 +1424,7 @@ button.active .city-icon-h {
   justify-content: center;
   width: max-content;
 }
+
 #home-health-queries a img {
   width: 38px;
   position: absolute;
@@ -1406,64 +1441,80 @@ button.active .city-icon-h {
     line-height: 34px;
     width: 100%;
   }
+
   #qualifications-standards h2 span {
     font-size: 24px;
   }
+
   #qualifications-standards h2 span {
     font-size: 24px;
   }
+
   #qualifications-standards li {
     flex: 0 0 100%;
     padding: 10px 0px;
     margin-bottom: 5px;
   }
+
   .home-expert-video {
     flex-direction: column;
   }
+
   .home-expert-video-left {
     width: 100%;
   }
+
   .home-expert-video-left h2 {
     font-size: 30px;
     line-height: 37px;
     width: 100%;
   }
+
   .home-expert-video-left p {
     width: 100%;
     font-size: 14px;
   }
+
   .home-expert-video-left a {
     width: 60%;
   }
+
   .home-expert-video-right {
     width: 100%;
     margin-top: 20px;
     flex-direction: column;
     display: none;
   }
+
   .home-expert-video-right .expert-video-item {
     width: 100%;
   }
+
   .home-expert-text h3 {
     font-size: 15px;
     padding-bottom: 5px;
     height: 32px;
   }
+
   #home-health-queries h2 {
     font-size: 30px;
     line-height: 37px;
     width: 100%;
   }
+
   #home-health-queries p {
     width: 100%;
     font-size: 14px;
   }
+
   .healthcare-professionals {
     margin-top: 20px;
   }
+
   .professionals {
     width: 100%;
   }
+
   #home-health-queries a {
     width: 90%;
   }
@@ -1503,6 +1554,7 @@ button.active .city-icon-h {
   margin: 0px auto;
   font-family: Inter Regular;
 }
+
 .home-our-patients {
   display: flex;
   margin: 0px;
@@ -1511,19 +1563,23 @@ button.active .city-icon-h {
   gap: 20px;
   justify-content: space-between;
 }
+
 #home-real-stories .home-our-patients .our-patients-item {
   flex: 0 0 50%;
 }
+
 .home-our-patients .our-patients-img {
   width: 100%;
   height: 100%;
   position: relative;
 }
+
 .home-our-patients .our-patients-img video {
   border-radius: 12px;
   width: 100%;
   height: 100%;
 }
+
 .home-our-patients .our-patients-text {
   position: absolute;
   inset: auto 0px 0px;
@@ -1536,6 +1592,7 @@ button.active .city-icon-h {
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 0%, #000 100%);
   border-radius: 12px;
 }
+
 .our-patients-text .beginnings-head {
   display: flex;
   align-items: center;
@@ -1543,6 +1600,7 @@ button.active .city-icon-h {
   margin: 0px;
   width: 100%;
 }
+
 .our-patients-text h3 {
   font-size: 22px;
   color: #ffffff;
@@ -1575,6 +1633,7 @@ button.active .city-icon-h {
   display: block;
   letter-spacing: 0px;
 }
+
 #home-real-stories a {
   background: #ff6800;
   font-family: Helvetica Neue Medium;
@@ -1589,10 +1648,12 @@ button.active .city-icon-h {
   justify-content: center;
   width: 16%;
 }
+
 #home-real-stories a:hover {
   background: #ffffff;
   color: #ff6800;
 }
+
 #home-real-stories a img {
   width: 38px;
   position: absolute;
@@ -1620,6 +1681,7 @@ button.active .city-icon-h {
   position: relative;
   overflow: hidden;
 }
+
 .faqs-section {
   position: relative;
   width: 100%;
@@ -1627,10 +1689,12 @@ button.active .city-icon-h {
   gap: 10px;
   flex-direction: column;
 }
+
 .faqs-section .faqs-left {
   width: 100%;
   padding: 0px;
 }
+
 .faqs-section .faqs-left h2 {
   font-size: 35px;
   color: #121c42;
@@ -1643,10 +1707,12 @@ button.active .city-icon-h {
   display: block;
   letter-spacing: 0px;
 }
+
 .faqs-section .faqs-right {
   width: 100%;
   padding: 0px;
 }
+
 .question {
   color: #696979;
   position: relative;
@@ -1654,9 +1720,11 @@ button.active .city-icon-h {
   cursor: pointer;
   border-bottom: 1px solid #d9c9b3;
 }
+
 .active h5 {
   color: #ff6800 !important;
 }
+
 .question h5 {
   margin: 0px;
   color: #121c42;
@@ -1666,9 +1734,11 @@ button.active .city-icon-h {
   line-height: 1.25em;
   letter-spacing: 0.01em;
 }
+
 .active .arrow {
   background-image: url(../../images/newIcon/plus-icon.png);
 }
+
 .answer {
   display: none;
   padding: 2rem 0px 1rem;
@@ -1678,6 +1748,7 @@ button.active .city-icon-h {
   color: #15354e;
   font-family: Inter Regular;
 }
+
 .answer p {
   margin: 0;
   text-align: justify;
@@ -1685,6 +1756,7 @@ button.active .city-icon-h {
   font-size: 16px;
   font-family: Inter Regular;
 }
+
 .arrow {
   background-image: url(../../images/newIcon/plus1-icon.png);
   width: 22px;
@@ -1695,6 +1767,7 @@ button.active .city-icon-h {
   top: 44px;
   right: 10px;
 }
+
 .arrow-active {
   background-image: url(../../images/newIcon/plus-icon.png);
 }
@@ -1709,6 +1782,7 @@ button.active .city-icon-h {
   margin: 0px;
   text-align: center;
 }
+
 #home-latest-resources h2 {
   font-size: 40px;
   line-height: 50px;
@@ -1722,6 +1796,7 @@ button.active .city-icon-h {
   position: relative;
   display: block;
 }
+
 .blogs-box {
   display: flex;
   justify-content: flex-start;
@@ -1738,9 +1813,11 @@ button.active .city-icon-h {
   padding: 15px;
   box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.1);
 }
+
 .blog-item img {
   border-radius: 6px;
 }
+
 .blog-item h3 {
   font-size: 20px;
   color: #032054;
@@ -1752,20 +1829,23 @@ button.active .city-icon-h {
   display: block;
   height: 68px;
 }
+
 .blog-item p {
   font-size: 14px;
   width: 100%;
   color: #7c7c7c;
-  text-align: left;
+  text-align: left !important;
   font-family: Inter Regular;
   margin: 0;
 }
+
 .blog-text {
   display: flex;
   justify-content: space-between;
   padding: 10px 0;
   font-family: Inter Regular;
 }
+
 .category-blog {
   color: #6d6d6d;
   font-size: 14px;
@@ -1773,12 +1853,14 @@ button.active .city-icon-h {
   padding-left: 20px;
   font-family: Inter Regular;
 }
+
 .blog-text span {
   position: absolute;
   top: -1px;
   left: 5px;
   font-family: Inter Regular;
 }
+
 .time-blog {
   color: #6d6d6d;
   font-size: 14px;
@@ -1786,6 +1868,7 @@ button.active .city-icon-h {
   position: relative;
   font-family: Inter Regular;
 }
+
 #home-latest-resources .new-blogs {
   background: #ff6800;
   font-family: Helvetica Neue Medium;
@@ -1800,6 +1883,7 @@ button.active .city-icon-h {
   justify-content: center;
   width: max-content;
 }
+
 #home-latest-resources .new-blogs img {
   width: 38px;
   position: absolute;
@@ -1820,6 +1904,7 @@ button.active .city-icon-h {
   margin: 0px;
   text-align: center;
 }
+
 #home-doc-hos h2 {
   font-size: 35px;
   color: #121c42;
@@ -1831,6 +1916,7 @@ button.active .city-icon-h {
   display: block;
   letter-spacing: 0px;
 }
+
 .home-symptoms-nav {
   display: flex;
   flex-wrap: wrap;
@@ -1839,6 +1925,7 @@ button.active .city-icon-h {
   padding: 0px;
   width: 100%;
 }
+
 .home-symptoms-nav a {
   background: #fff1e8;
   border: 1px solid #ff6800;
@@ -1858,6 +1945,7 @@ button.active .city-icon-h {
   position: relative;
   margin: 0px;
 }
+
 .home-latest-updates {
   display: flex;
   margin: 0px;
@@ -1865,12 +1953,14 @@ button.active .city-icon-h {
   position: relative;
   align-items: center;
 }
+
 .home-latest-updatesleft {
   width: 55%;
   margin-right: 5%;
   padding: 0px;
   position: relative;
 }
+
 .home-latest-updatesleft h2 {
   font-size: 35px;
   color: #121c42;
@@ -1883,6 +1973,7 @@ button.active .city-icon-h {
   display: block;
   letter-spacing: 0px;
 }
+
 .home-latest-updatesright {
   width: 40%;
   background: #fff;
@@ -1892,6 +1983,7 @@ button.active .city-icon-h {
   position: relative;
   box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.1);
 }
+
 .home-latest-updatesright h3 {
   font-size: 24px;
   color: #121c42;
@@ -1903,12 +1995,14 @@ button.active .city-icon-h {
   display: block;
   letter-spacing: 0px;
 }
+
 .home-latest-updatesright p {
   font-size: 14px;
   width: 100%;
   color: #15354e;
   text-align: center;
 }
+
 .footer-latest-news {
   display: flex;
   width: 100%;
@@ -1917,6 +2011,7 @@ button.active .city-icon-h {
   position: relative;
   align-items: center;
 }
+
 .footer-news {
   border: 1px solid #e1e1e1;
   height: 55px;
@@ -1929,6 +2024,7 @@ button.active .city-icon-h {
   outline: none;
   text-align: left;
 }
+
 .footer-news-button {
   background: #f8eee2;
   color: #ff6800 !important;
@@ -1955,24 +2051,29 @@ button.active .city-icon-h {
     padding: 30px 0 20px;
     margin-bottom: 20px;
   }
+
   .home-our-patients {
     flex-direction: column;
     gap: 0px;
     display: none;
   }
+
   #home-real-stories .home-our-patients .our-patients-item {
     flex: 0 0 100%;
     margin-bottom: 20px;
   }
+
   #home-real-stories a {
     width: 60%;
     margin: 0px auto;
   }
+
   .faqs-section .faqs-left h2 {
     font-size: 30px;
     line-height: 37px;
     width: 100%;
   }
+
   .question h5 {
     font-size: 1.25rem;
     font-style: normal;
@@ -1981,11 +2082,13 @@ button.active .city-icon-h {
     line-height: 1.25em;
     padding-right: 40px;
   }
+
   .arrow {
     width: 25px;
     height: 25px;
     right: 5px;
   }
+
   .answer {
     font-size: 1rem;
     font-style: normal;
@@ -1994,71 +2097,89 @@ button.active .city-icon-h {
     line-height: 1.5;
     margin: 0px 0px 1rem;
   }
+
   #home-latest-resources h2 {
     font-size: 30px;
     line-height: 37px;
     width: 100%;
   }
+
   .blog-item {
     width: 100%;
   }
+
   #home-latest-resources .new-blogs {
     width: 60%;
     margin: 10px auto;
   }
+
   #home-doc-hos h2 {
     font-size: 25px;
     margin: 10px 0;
   }
+
   .home-latest-updates {
     flex-direction: column;
   }
+
   .home-latest-updatesleft {
     width: 100%;
     margin-right: 0%;
     margin-bottom: 25px;
   }
+
   .home-latest-updatesleft h2 {
     width: 100%;
     font-size: 30px;
     line-height: 37px;
     text-align: center;
   }
+
   .home-latest-updatesright {
     width: 100%;
   }
+
   .home-latest-updatesright h3 {
     font-size: 24px;
     line-height: 25px;
   }
+
   .footer-latest-news {
     flex-direction: column;
   }
+
   .footer-news {
     width: 100%;
   }
+
   .footer-news-button {
     width: 50%;
   }
+
   .footer-navbox .but {
     display: block !important;
   }
+
   .footer-navbox .new-fotter-navbox {
     display: none !important;
   }
+
   #hometop-section .dr-img {
     height: auto;
   }
+
   #qualifications-standards ul {
     gap: 0px;
     padding: 30px 0px 0px;
     flex-direction: column;
   }
+
   #qualifications-standards li {
     width: 100%;
     margin-bottom: 25px;
     padding-left: 0px;
   }
+
   #qualifications-standards .better-icon {
     width: 60px;
     height: 60px;
@@ -2093,6 +2214,7 @@ button.active .city-icon-h {
   right: 9px;
   top: 20px;
 }
+
 #hometop-find-treatments .ding #wiki-select {
   visibility: visible;
   flex: 1 1 auto;
@@ -2172,11 +2294,10 @@ button.active .city-icon-h {
   color: #121c42;
   font-weight: Bold;
   margin: 0px;
-  padding:0px;
+  padding: 0px;
   position: relative;
   font-family: Inter Regular;
   background: none;
   border: none;
   display: inline;
 }
-

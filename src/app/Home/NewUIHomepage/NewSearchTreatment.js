@@ -152,7 +152,11 @@ const NewSearchTreatment = () => {
                         {e.prefix} {e.first_name} {e.last_name}
                       </h3>
                     </Link>
-                    <p style={{ height: "37px" }}>{e.designation}</p>
+                    <p style={{ height: "37px" }}>
+                      {e.designation.length > 50
+                        ? `${e.designation.slice(0, 50)}...`
+                        : e.designation}
+                    </p>
                   </div>
                   <HomeDoctorForm
                     slug={e.slug}
@@ -211,6 +215,7 @@ const NewSearchTreatment = () => {
                     </Link>
                     <p>
                       Hospitals in{" "}
+                      {e.city.charAt(0).toUpperCase() + e.city.slice(1)},{" "}
                       {selectedCountry.charAt(0).toUpperCase() +
                         selectedCountry.slice(1)}
                     </p>

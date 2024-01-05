@@ -149,7 +149,11 @@ const PatientPreviewQuote = () => {
                     </div>
                     <div className="hospital-preview-doc">
                       <h3>{hospital.name}</h3>
-                      <div className="department-sub">{hospital.location}</div>
+                      <div className="department-sub">
+                        {hospital.city.charAt(0).toUpperCase() +
+                          hospital.city.slice(1)}
+                      </div>
+
                       {/* <div className="rating-star">
                         <i className="fa fa-star"></i> 5 (523)
                       </div> */}
