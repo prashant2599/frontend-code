@@ -79,12 +79,13 @@ const RequestQuote = () => {
   //     setSelectedTreatmentName(treatmentName);
   //   }
   // };
-  const handleNameClick = (id, spe, speNAME, treatmentName) => {
+  const handleNameClick = (id, spe, speNAME, treatmentName, icon) => {
     // Save selected data to localStorage
     localStorage.setItem("treatment", id);
     localStorage.setItem("speciality", spe);
     localStorage.setItem("selectedspecialityName", speNAME);
     localStorage.setItem("selectedTreatmentName", treatmentName);
+    localStorage.setItem("specialityIcon", icon);
 
     // Redirect to the patient-report page
     router.push("/patient-select");
@@ -183,7 +184,8 @@ const RequestQuote = () => {
                                 items.id,
                                 e.id,
                                 e.slug,
-                                items.slug
+                                items.slug,
+                                e.icon
                               )
                             }
                             style={{ cursor: "pointer" }}

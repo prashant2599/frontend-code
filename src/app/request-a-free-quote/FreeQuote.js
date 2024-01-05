@@ -296,7 +296,7 @@ const FreeQuote = () => {
               <form onSubmit={handleFormSubmit}>
                 <div className="treatment-form">
                   <div className="inputbox">
-                    {/* <label>Name</label> */}
+                    <label>Name</label>
                     <input
                       type="text"
                       placeholder={userName ? userName : "Name"}
@@ -312,7 +312,7 @@ const FreeQuote = () => {
 
                 <div className="treatment-form">
                   <div className="inputbox">
-                    {/* <label>Phone</label> */}
+                    <label>Phone</label>
                     <input
                       ref={inputRef}
                       type="tel"
@@ -329,7 +329,7 @@ const FreeQuote = () => {
                 {userEmail ? null : (
                   <div className="treatment-form">
                     <div className="inputbox">
-                      {/* <label>Email</label> */}
+                      <label>Email</label>
                       <input
                         type="email"
                         placeholder="Email"
@@ -347,7 +347,7 @@ const FreeQuote = () => {
 
                 <div className="treatment-form">
                   <div className="inputbox">
-                    {/* <label>Your Query</label> */}
+                    <label>Your Query</label>
                     <textarea
                       className="querybox"
                       type="textarea"
