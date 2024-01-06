@@ -46,12 +46,12 @@ const page = async ({ params }) => {
           /> */}
           <img
             src={`https://dev.medflick.com/speciality/${info && info.image}`}
-            class="category-d"
+            className="category-d"
             alt="Category"
           ></img>
           <img
             src={`https://dev.medflick.com/speciality/${info && info.image}`}
-            class="category-m"
+            className="category-m"
             alt="Category"
           ></img>
           <div className="category-slidertext">
