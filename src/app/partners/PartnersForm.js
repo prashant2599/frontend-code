@@ -4,9 +4,9 @@ import "intl-tel-input/build/css/intlTelInput.css";
 import intlTelInput from "intl-tel-input";
 import Success from "../Home/successPopup/Success";
 import ErrorPopup from "../Home/successPopup/ErrorPopup";
-import ReCAPTCHA from "react-google-recaptcha";
 import countryList from "./CountryList";
 import { ThreeDots } from "react-loader-spinner";
+import ReCaptchaComponent from "../Home/ReCapcha/ReCaptchaComponent";
 
 import axios from "axios";
 const PartnersForm = () => {
@@ -274,8 +274,6 @@ const PartnersForm = () => {
   const desc =
     "Help on the way! We appreciate your patience! We will get back to you soon.";
 
-  console.log(interest);
-
   return (
     <>
       <div className="partner-with-right">
@@ -387,14 +385,12 @@ const PartnersForm = () => {
                       {" "}
                       Business agreements & Consulting
                     </option>
+                    <option value="other"> Other</option>
                   </select>
                 </div>
               </div>
             </div>
-            <ReCAPTCHA
-              sitekey="6LcX6-YnAAAAAAjHasYD8EWemgKlDUxZ4ceSo8Eo"
-              onChange={handleCaptchaChange}
-            />
+            <ReCaptchaComponent onCaptchaChange={handleCaptchaChange} />
             {renderError(formErrors.captcha)}
 
             {/* <button type="submit" name="en" className="home-button">

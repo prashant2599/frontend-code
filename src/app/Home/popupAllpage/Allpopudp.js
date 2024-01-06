@@ -1,13 +1,12 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import ReCAPTCHA from "react-google-recaptcha";
 import { ThreeDots } from "react-loader-spinner";
 import axios from "axios";
-import Image from "next/image";
-import "intl-tel-input/build/css/intlTelInput.css"; // Import CSS
+import "intl-tel-input/build/css/intlTelInput.css";
 import intlTelInput from "intl-tel-input";
 import Success from "../successPopup/Success";
 import ErrorPopup from "../successPopup/ErrorPopup";
+import ReCaptchaComponent from "../ReCapcha/ReCaptchaComponent";
 
 const Allpopudp = () => {
   // home screen form data post api
@@ -414,10 +413,7 @@ const Allpopudp = () => {
                 </div>
               </div>
 
-              <ReCAPTCHA
-                sitekey="6LcX6-YnAAAAAAjHasYD8EWemgKlDUxZ4ceSo8Eo"
-                onChange={handleCaptchaChange}
-              />
+              <ReCaptchaComponent onCaptchaChange={handleCaptchaChange} />
               {renderError(formErrors.captcha)}
 
               <button

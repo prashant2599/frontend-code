@@ -2,12 +2,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { ThreeDots } from "react-loader-spinner";
-import ReCAPTCHA from "react-google-recaptcha";
 import axios from "axios";
 import "intl-tel-input/build/css/intlTelInput.css";
 import intlTelInput from "intl-tel-input";
 import Success from "../successPopup/Success";
 import ErrorPopup from "../successPopup/ErrorPopup";
+import ReCaptchaComponent from "../ReCapcha/ReCaptchaComponent";
 
 const HomeHospitalForm = ({
   country,
@@ -487,10 +487,7 @@ const HomeHospitalForm = ({
                     </div>
                   </div>
                 </div>
-                <ReCAPTCHA
-                  sitekey="6LcX6-YnAAAAAAjHasYD8EWemgKlDUxZ4ceSo8Eo"
-                  onChange={handleCaptchaChange2}
-                />
+                <ReCaptchaComponent onCaptchaChange={handleCaptchaChange2} />
                 {renderError(formErrors.captcha)}
                 <button
                   type="submit"

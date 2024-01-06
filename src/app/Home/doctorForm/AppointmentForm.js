@@ -1,13 +1,13 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import ReCAPTCHA from "react-google-recaptcha";
 import { ThreeDots } from "react-loader-spinner";
 import axios from "axios";
 import "intl-tel-input/build/css/intlTelInput.css";
 import intlTelInput from "intl-tel-input";
 import Success from "../successPopup/Success";
 import ErrorPopup from "../successPopup/ErrorPopup";
+import ReCaptchaComponent from "../ReCapcha/ReCaptchaComponent";
 
 const AppointmentForm = ({ doctorId, first, middle, last, specialityId }) => {
   // form popup post method
@@ -479,10 +479,11 @@ const AppointmentForm = ({ doctorId, first, middle, last, specialityId }) => {
                     </div>
                   </div>
                 </div>
-                <ReCAPTCHA
+                {/* <ReCAPTCHA
                   sitekey="6LcX6-YnAAAAAAjHasYD8EWemgKlDUxZ4ceSo8Eo"
                   onChange={handleCaptchaChange}
-                />
+                /> */}
+                <ReCaptchaComponent onCaptchaChange={handleCaptchaChange} />
                 {renderError(formErrors.captcha)}
                 <button
                   type="submit"

@@ -5,8 +5,6 @@ import Link from "next/link";
 import HeaderSearch from "./HeaderSearch";
 import { useUser } from "@/app/UserContext";
 import { useRouter } from "next/navigation";
-import { VscAccount } from "react-icons/vsc";
-import Script from "next/script";
 import HeaderPopup from "../QaForm/HeaderPopup";
 
 const LoginButton = () => {

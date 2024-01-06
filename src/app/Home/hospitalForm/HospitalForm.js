@@ -2,12 +2,12 @@
 
 import { useState, useEffect, useRef } from "react";
 import { ThreeDots } from "react-loader-spinner";
-import ReCAPTCHA from "react-google-recaptcha";
 import "intl-tel-input/build/css/intlTelInput.css"; // Import CSS
 import intlTelInput from "intl-tel-input";
 import axios from "axios";
 import Success from "../successPopup/Success";
 import ErrorPopup from "../successPopup/ErrorPopup";
+import ReCaptchaComponent from "../ReCapcha/ReCaptchaComponent";
 
 const HospitalForm = ({ info }) => {
   // form submitting and validation of form
@@ -439,10 +439,7 @@ const HospitalForm = ({ info }) => {
                 </div>
               </div>
             </div>
-            <ReCAPTCHA
-              sitekey="6LcX6-YnAAAAAAjHasYD8EWemgKlDUxZ4ceSo8Eo" // Replace with your reCAPTCHA site key
-              onChange={handleCaptchaChange}
-            />
+            <ReCaptchaComponent onCaptchaChange={handleCaptchaChange} />
             {renderError(formErrors.captcha)}
             <button
               type="submit"

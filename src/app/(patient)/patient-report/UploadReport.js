@@ -5,11 +5,14 @@ import Link from "next/link";
 import axios from "axios";
 import { ThreeDots } from "react-loader-spinner";
 import { useRouter } from "next/navigation";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import Success from "@/app/Home/successPopup/Success";
+import ErrorPopup from "@/app/Home/successPopup/ErrorPopup";
+import DashBoardAssistance from "../Inc/DashBoardAssistance";
 
 const UploadReport = () => {
   const router = useRouter();
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
+  const [showErrorPopup, setShowErrorPopup] = useState(false);
   useEffect(() => {
     if (!localStorage.getItem("userId")) {
       router.push("/");
@@ -50,6 +53,7 @@ const UploadReport = () => {
   const [query, setQuery] = useState("");
   const [linkValidationMessage, setLinkValidationMessage] = useState("");
   const [fileValidationMessage, setFileValidationMessage] = useState("");
+  const [formValidationMessage, setFormValidationMessage] = useState("");
 
   const isValidFile = (file) => {
     const allowedTypes = ["image/png", "image/jpeg", "application/pdf"];
@@ -140,7 +144,9 @@ const UploadReport = () => {
 
     if (!selectedFile && !linkValue) {
       // Display an error message or handle the validation in the way you prefer
-      alert("Please upload a file or provide a link before submitting.");
+      setFormValidationMessage(
+        "Please upload a file or provide a link before submitting."
+      );
       return;
     }
     const data = new FormData();
@@ -168,16 +174,26 @@ const UploadReport = () => {
       .then((response) => {
         // Handle the API response here if needed
         console.log(response);
-        alert("Questions have been successfully submitted");
+        setShowSuccessPopup(true);
+        // alert("Questions have been successfully submitted");
         clearFormFields();
+        router.push("/patient-preview-quote");
       })
       .catch((error) => {
-        // Handle any errors that occurred during the API call
         console.error("Error:", error);
+        setShowErrorPopup(true);
       })
       .finally(() => {
         setIsLoading(false);
       });
+  };
+
+  const handleCloseSuccessPopup = () => {
+    setShowSuccessPopup(false);
+  };
+
+  const handleCloseErrorPopup = () => {
+    setShowErrorPopup(false);
   };
 
   const fileDisplay = selectedFile ? (
@@ -186,6 +202,8 @@ const UploadReport = () => {
       <div className="file__value--remove" data-id={selectedFile.name}></div>
     </div>
   ) : null;
+
+  const desc = "Your medical report has been submitted";
 
   return (
     <>
@@ -284,7 +302,9 @@ const UploadReport = () => {
                   onChange={(e) => setQuery(e.target.value)}
                 ></textarea>
               </div>
-
+              {formValidationMessage && (
+                <p style={{ color: "red" }}>{formValidationMessage}</p>
+              )}
               <div className="continue-buttonbox">
                 {/* <Link
                   href="/patient-hospital"
@@ -295,7 +315,14 @@ const UploadReport = () => {
                 >
                   <button className="skip-step"> Skip this step</button>
                 </Link> */}
-                <button className="continue1" disabled={isLoading}>
+                <button
+                  className="continue1"
+                  disabled={isLoading}
+                  style={{
+                    background: selectedFile || linkValue ? "#ff6800" : "",
+                    color: selectedFile || linkValue ? "#fff" : "",
+                  }}
+                >
                   {" "}
                   {isLoading ? (
                     <ThreeDots
@@ -318,28 +345,20 @@ const UploadReport = () => {
         </div>
       </section>
 
-      <section id="section-assistance">
-        <div className="midbox-inner wiki-mk">
-          <ul>
-            <li>
-              <h3>Need Assistance?</h3>
-              <p>Can&apos;t find what you&apos;re looking for? Let up help</p>
-              <a className="get-help"> Get Help</a>
-            </li>
-            <li>
-              <h3>Need Assistance?</h3>
-              <p>Can&apos;t find what you&apos;re looking for? Let up help</p>
-              <a className="get-help"> Get Help</a>
-            </li>
-            <li>
-              <h3>Need Assistance?</h3>
-              <p>Can&apos;t find what you&apos;re looking for? Let up help</p>
-              <a className="get-help"> Get Help</a>
-            </li>
-          </ul>
-        </div>
-      </section>
-      <ToastContainer />
+      <DashBoardAssistance />
+      {showSuccessPopup && (
+        <Success
+          onClose={handleCloseSuccessPopup}
+          showSuccessPopup={showSuccessPopup}
+          desc={desc}
+        />
+      )}
+      {showErrorPopup && (
+        <ErrorPopup
+          onClose={handleCloseErrorPopup}
+          showErrorPopup={showErrorPopup}
+        />
+      )}
     </>
   );
 };

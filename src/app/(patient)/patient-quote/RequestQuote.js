@@ -5,6 +5,7 @@ import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import SearchSpeciality from "./SearchSpeciality";
+import DashBoardAssistance from "../Inc/DashBoardAssistance";
 
 const RequestQuote = () => {
   const router = useRouter();
@@ -222,39 +223,7 @@ const RequestQuote = () => {
         </div>
       </section>
 
-      <section id="section-assistance">
-        <div className="midbox-inner wiki-mk">
-          <ul>
-            <li>
-              <h3>Call Us</h3>
-              <p>
-                {" "}
-                For inquiries and assistance, please feel free to reach out.
-              </p>
-              <a href="#/" className="get-help">
-                {" "}
-                Get Help
-              </a>
-            </li>
-            <li>
-              <h3>WhatsApp</h3>
-              <p> Connect with us on WhatsApp for quick support.</p>
-              <a href="#/" className="get-help">
-                {" "}
-                Get Help
-              </a>
-            </li>
-            <li>
-              <h3>Live Chat</h3>
-              <p>Chat with us for real-time assistance.</p>
-              <a href="#/" className="get-help">
-                {" "}
-                Get Help
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+      <DashBoardAssistance />
     </>
   );
 };

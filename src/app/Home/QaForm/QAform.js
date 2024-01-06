@@ -2,12 +2,12 @@
 
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import ReCAPTCHA from "react-google-recaptcha";
 import { ThreeDots } from "react-loader-spinner";
 import "intl-tel-input/build/css/intlTelInput.css"; // Import CSS
 import intlTelInput from "intl-tel-input";
 import Success from "../successPopup/Success";
 import ErrorPopup from "../successPopup/ErrorPopup";
+import ReCaptchaComponent from "../ReCapcha/ReCaptchaComponent";
 const QAform = () => {
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const [showErrorPopup, setShowErrorPopup] = useState(false);
@@ -435,10 +435,7 @@ const QAform = () => {
                 </div>
               </div>
             </div>
-            <ReCAPTCHA
-              sitekey="6LcX6-YnAAAAAAjHasYD8EWemgKlDUxZ4ceSo8Eo" 
-              onChange={handleCaptchaChange1}
-            />
+            <ReCaptchaComponent onCaptchaChange={handleCaptchaChange1} />
             {renderError(formErrors.captcha)}
             <button
               type="submit"

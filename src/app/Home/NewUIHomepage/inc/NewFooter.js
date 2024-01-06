@@ -56,6 +56,8 @@ const NewFooter = () => {
     // Set the active button
     setActiveButton(button);
   };
+
+  const selectedSpecialities = speciality.slice(0, 4);
   return (
     <>
       <footer>
@@ -128,12 +130,15 @@ const NewFooter = () => {
                   </i>
                 </h4>
                 <ul className="footerbox">
-                  {speciality &&
-                    speciality.map((e) => (
+                  {selectedSpecialities &&
+                    selectedSpecialities.map((e) => (
                       <Link href={`/speciality/${e.slug}`} key={e.id}>
                         <li>{e.name}</li>
                       </Link>
                     ))}
+                  <Link href="/specialities">
+                    <li>View All</li>
+                  </Link>
                 </ul>
               </div>
               <div className="footer-navbox">

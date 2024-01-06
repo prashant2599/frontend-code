@@ -1,13 +1,13 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import ReCAPTCHA from "react-google-recaptcha";
 import { ThreeDots } from "react-loader-spinner";
 import axios from "axios";
 import "intl-tel-input/build/css/intlTelInput.css";
 import intlTelInput from "intl-tel-input";
 import Success from "../successPopup/Success";
 import ErrorPopup from "../successPopup/ErrorPopup";
+import ReCaptchaComponent from "../ReCapcha/ReCaptchaComponent";
 
 const NavForm2 = ({ treatmentId, specialityId }) => {
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
@@ -366,10 +366,7 @@ const NavForm2 = ({ treatmentId, specialityId }) => {
                 </div>
               </div>
             </div>
-            <ReCAPTCHA
-              sitekey="6LcX6-YnAAAAAAjHasYD8EWemgKlDUxZ4ceSo8Eo" // Replace with your reCAPTCHA site key
-              onChange={handleCaptchaChange}
-            />
+            <ReCaptchaComponent onCaptchaChange={handleCaptchaChange} />
             {renderError(formErrors.captcha)}
             <div className="assistance-box">
               <button

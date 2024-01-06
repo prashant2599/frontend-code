@@ -3,12 +3,12 @@
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { ThreeDots } from "react-loader-spinner";
-import ReCAPTCHA from "react-google-recaptcha";
 import "intl-tel-input/build/css/intlTelInput.css";
 import intlTelInput from "intl-tel-input";
 import Success from "../Home/successPopup/Success";
 import ErrorPopup from "../Home/successPopup/ErrorPopup";
 import Link from "next/link";
+import ReCaptchaComponent from "../Home/ReCapcha/ReCaptchaComponent";
 
 const FreeQuote = () => {
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
@@ -173,7 +173,6 @@ const FreeQuote = () => {
       }));
       return;
     }
-    
 
     if (isValid) {
       // Create the data object to be sent in the API request
@@ -393,10 +392,7 @@ const FreeQuote = () => {
                     </div>
                   </div>
                 </div>
-                <ReCAPTCHA
-                  sitekey="6LcX6-YnAAAAAAjHasYD8EWemgKlDUxZ4ceSo8Eo" // Replace with your reCAPTCHA site key
-                  onChange={handleCaptchaChange}
-                />
+                <ReCaptchaComponent onCaptchaChange={handleCaptchaChange} />
                 {renderError(formErrors.captcha)}
                 <p>
                   I agree to the{" "}

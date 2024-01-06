@@ -2,12 +2,12 @@
 
 import { useState, useEffect, useRef } from "react";
 import { ThreeDots } from "react-loader-spinner";
-import ReCAPTCHA from "react-google-recaptcha";
 import axios from "axios";
 import "intl-tel-input/build/css/intlTelInput.css";
 import intlTelInput from "intl-tel-input";
 import Success from "../successPopup/Success";
 import ErrorPopup from "../successPopup/ErrorPopup";
+import ReCaptchaComponent from "../ReCapcha/ReCaptchaComponent";
 
 const DoctorForm = ({ info }) => {
   // form query post api
@@ -438,11 +438,14 @@ const DoctorForm = ({ info }) => {
                 </div>
               </div>
             </div>
-            <ReCAPTCHA
+            {/* <ReCAPTCHA
               sitekey="6LcX6-YnAAAAAAjHasYD8EWemgKlDUxZ4ceSo8Eo"
               onChange={handleCaptchaChange}
             />
+            {renderError(formErrors.captcha)} */}
+            <ReCaptchaComponent onCaptchaChange={handleCaptchaChange} />
             {renderError(formErrors.captcha)}
+
             <button
               type="submit"
               name="en"

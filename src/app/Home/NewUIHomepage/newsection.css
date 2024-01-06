@@ -241,7 +241,7 @@
 }
 
 .home-hospitals .home-expert-text h3 {
- height: 54px;
+  height: 54px;
 }
 
 .home-expert-text p {
@@ -1483,7 +1483,7 @@ button.active .city-icon-h {
     width: 100%;
     margin-top: 20px;
     flex-direction: column;
-    display: none;
+    
   }
 
   .home-expert-video-right .expert-video-item {
@@ -2055,7 +2055,7 @@ button.active .city-icon-h {
   .home-our-patients {
     flex-direction: column;
     gap: 0px;
-    display: none;
+    /* display: none; */
   }
 
   #home-real-stories .home-our-patients .our-patients-item {
@@ -2285,6 +2285,12 @@ button.active .city-icon-h {
 
 @media screen and (max-width: 880px) {
   .footer-latest-news input::placeholder {
+    width: 100%;
+  }
+  #home-health-queries h6 {
+    width: 100%;
+  }
+  #home-real-stories p {
     width: 100%;
   }
 }

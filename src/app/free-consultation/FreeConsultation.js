@@ -2,12 +2,12 @@
 
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import ReCAPTCHA from "react-google-recaptcha";
 import { ThreeDots } from "react-loader-spinner";
 import "intl-tel-input/build/css/intlTelInput.css";
 import intlTelInput from "intl-tel-input";
 import Success from "../Home/successPopup/Success";
 import ErrorPopup from "../Home/successPopup/ErrorPopup";
+import ReCaptchaComponent from "../Home/ReCapcha/ReCaptchaComponent";
 
 const FreeConsultation = () => {
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
@@ -405,10 +405,7 @@ const FreeConsultation = () => {
                         </div>
                       </div>
                     </div>
-                    <ReCAPTCHA
-                      sitekey="6LcX6-YnAAAAAAjHasYD8EWemgKlDUxZ4ceSo8Eo" // Replace with your reCAPTCHA site key
-                      onChange={handleCaptchaChange}
-                    />
+                    <ReCaptchaComponent onCaptchaChange={handleCaptchaChange} />
                     {renderError(formErrors.captcha)}
                     <button
                       type="submit"
