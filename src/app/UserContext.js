@@ -23,7 +23,8 @@ export function UserProvider({ children }) {
   };
 
   useEffect(() => {
-    fetchUserDataById("579");
+    const patientId = localStorage.getItem("userId");
+    fetchUserDataById(patientId);
   }, []);
 
   return (
