@@ -8,6 +8,8 @@ const NewHeader = async () => {
   const data = await getAllSpeciality();
   const speciality = data.data.Speciality;
 
+
+
   return (
     <>
       <header className="header" id="header-id">

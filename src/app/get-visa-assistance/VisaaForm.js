@@ -10,14 +10,7 @@ import Success from "../Home/successPopup/Success";
 import ErrorPopup from "../Home/successPopup/ErrorPopup";
 
 const VisaaForm = () => {
-  const [attendantCount, setAttendantCount] = useState(1);
-
-  // const handleAddAttendant = () => {
-  //   if (attendantCount < 3) {
-  //     setAttendantCount(attendantCount + 1);
-  //   }
-  // };
-
+ 
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const [showErrorPopup, setShowErrorPopup] = useState(false);
   const [name, setName] = useState("");

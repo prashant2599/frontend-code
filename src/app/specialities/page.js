@@ -24,7 +24,9 @@ const page = async () => {
       <NewHeader />
       <section id="medical-treatments">
         <div className="midbox-inner  wiki-mk">
-          <h1>Medical Treatments</h1>
+          <h1>
+            Medical <span style={{ color: "#ff6800" }}>Treatments</span>
+          </h1>
           {/* <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore Ut enim ad minim veniam, quis
@@ -58,15 +60,17 @@ const page = async () => {
 
       <section className="treatment-marquee" id="category-marquee">
         <div className="marquee-wrapper">
-          <div className="marquee" style={{ animationDuration: "21s" }}>
-            <div className="Marquee-tag"> 100+ Surgeries </div>
+          <div className="marquee" style={{ animationDuration: "11s" }}>
             <div className="Marquee-tag"> 95% Success Rate </div>
-            <div className="Marquee-tag"> 4000+ Top Doctors </div>
-            <div className="Marquee-tag"> 1000+ Top Hospital </div>
-            <div className="Marquee-tag"> 100+ Surgeries </div>
+            <div className="Marquee-tag"> 11000+ Top Doctors </div>
+            <div className="Marquee-tag"> 150+ Top Hospital </div>
+            <div className="Marquee-tag"> 250+ Surgeries </div>
+            <div className="Marquee-tag"> 35+ Countries </div>
             <div className="Marquee-tag"> 95% Success Rate </div>
-            <div className="Marquee-tag"> 4000+ Top Doctors </div>
-            <div className="Marquee-tag"> 1000+ Top Hospital </div>
+            <div className="Marquee-tag"> 11000+ Top Doctors </div>
+            <div className="Marquee-tag"> 150+ Top Hospital </div>
+            <div className="Marquee-tag"> 250+ Surgeries </div>
+            <div className="Marquee-tag"> 35+ Countries </div>
           </div>
         </div>
       </section>

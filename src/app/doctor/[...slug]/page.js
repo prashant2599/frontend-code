@@ -1,4 +1,3 @@
-import ShareProfile from "@/app/Home/doctorForm/ShareProfile";
 import AppointmentForm from "@/app/Home/doctorForm/AppointmentForm";
 import DoctorReview from "./DoctorReview";
 import DoctorTotalReview from "./DoctorTotalReview";
@@ -9,7 +8,6 @@ import RelatedDoctor from "./RelatedDoctor";
 import "@/app/Home/NewUIHomepage/newsection.css";
 import NewHeader from "@/app/Home/NewUIHomepage/inc/NewHeader";
 import NewFooter from "@/app/Home/NewUIHomepage/inc/NewFooter";
-import HospitalShareProfile from "@/app/hospital/[...slug]/HospitalShareProfile";
 import DoctorShare from "./DoctorShare";
 
 const page = async ({ params }) => {

@@ -6,13 +6,12 @@ import { GoChevronDown } from "react-icons/go";
 import MobileSearch from "./MobileSearch";
 import { useRouter } from "next/navigation";
 import { useToggleForm } from "@/app/contex/toggleFormContext";
+import { useUser } from "@/app/UserContext";
 
 const MobileHeader = ({ speciality }) => {
   const { isPopupOpen } = useToggleForm();
   const router = useRouter();
   const [isOffcanvas, setIsOffcanvas] = useState(false);
-
-  console.log(isPopupOpen);
 
   const toggleOffcanvas = () => {
     setIsOffcanvas((prevIsOffcanvas) => !prevIsOffcanvas);
@@ -62,7 +61,27 @@ const MobileHeader = ({ speciality }) => {
     };
   }, [isPopupOpen]);
 
-  // Add isPopupOpen as a dependency to useEffect
+  const [userNames, setUserNames] = useState("");
+  const { userName, setUserName } = useUser();
+
+  useEffect(() => {
+    const storedUserName = localStorage.getItem("userName");
+    if (storedUserName) {
+      setUserNames(storedUserName);
+    }
+  }, []);
+
+  const handleLogout = () => {
+    // Remove 'userName' from localStorage
+    localStorage.removeItem("userName");
+    localStorage.removeItem("userId");
+    localStorage.removeItem("userEmail");
+
+    // Clear the user name in the component state
+    setUserNames("");
+    setUserName("");
+    window.location.reload();
+  };
 
   return (
     <>
@@ -196,7 +215,7 @@ const MobileHeader = ({ speciality }) => {
                       <GoChevronDown
                         style={{
                           fontFamily: "Material Icons",
-                          content: "'\\E5CC'", // Use the Unicode code point instead of the character itself
+                          content: "'\\E5CC'",
                           fontSize: "1.5rem",
                           fontWeight: 400,
                           lineHeight: "inherit",
@@ -217,8 +236,8 @@ const MobileHeader = ({ speciality }) => {
                             href={`/doctors/${e.slug}`}
                             className="dropbtn"
                             onClick={() => {
-                              toggleOffcanvas(); // Close the offcanvas
-                              router.push(`/doctors/${e.slug}`); // Navigate to the link
+                              toggleOffcanvas();
+                              router.push(`/doctors/${e.slug}`);
                             }}
                           >
                             {e.name} Doctors
@@ -227,19 +246,81 @@ const MobileHeader = ({ speciality }) => {
                       ))}
                   </ul>
                 </li>
-                {/* <li className="menu-item has-collapsible">
-                    <Link href="/">Testimonials</Link>
-                  </li> */}
-                <li className="menu-item has-collapsible">
-                  <a
-                    onClick={() => {
-                      toggleOffcanvas();
-                      router.push("/query");
-                    }}
-                  >
-                    Book an Appointment
-                  </a>
-                </li>
+                {userName || userNames ? (
+                  <li className="menu-item has-collapsible">
+                    <a
+                      onClick={handleCollapsibleClick}
+                      className="submenu-link"
+                    >
+                      My Account
+                      <i style={{ marginLeft: "11.5rem" }}>
+                        <GoChevronDown
+                          style={{
+                            fontFamily: "Material Icons",
+                            content: "'\\E5CC'",
+                            fontSize: "1.5rem",
+                            fontWeight: 400,
+                            lineHeight: "inherit",
+                            position: "absolute",
+                            /* top: "5rem", */
+                            right: "0.5rem",
+                            color: "rgb(87, 87, 87)",
+                            transition: "all 0.35s ease 0s",
+                          }}
+                        />
+                      </i>
+                    </a>
+                    <ul className="menu-child">
+                      <li className="menu-child-item">
+                        {" "}
+                        <Link
+                          href="/patient-dashboard"
+                          className="dropbtn"
+                          onClick={() => {
+                            toggleOffcanvas();
+                            router.push("/patient-dashboard");
+                          }}
+                        >
+                          Dashboard{" "}
+                        </Link>
+                      </li>
+
+                      <li className="menu-child-item">
+                        {" "}
+                        <Link
+                          href="/patient-account"
+                          className="dropbtn"
+                          onClick={() => {
+                            toggleOffcanvas();
+                            router.push("/patient-account");
+                          }}
+                        >
+                          View profile{" "}
+                        </Link>
+                      </li>
+
+                      <li className="menu-child-item">
+                        {" "}
+                        <a className="dropbtn" onClick={handleLogout}>
+                          Logout{" "}
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                ) : (
+                  <li className="menu-item has-collapsible">
+                    <a
+                      onClick={() => {
+                        toggleOffcanvas();
+                        router.push("/login");
+                      }}
+                      className="submenu-link"
+                    >
+                      Login
+                    </a>
+                  </li>
+                )}
+
                 <li className="menu-item" style={{ background: "#ff6800" }}>
                   {/* <Link className="menu-link" style={{ color: "#fff" }}>
                     Quick info
@@ -255,7 +336,7 @@ const MobileHeader = ({ speciality }) => {
                       News & Events
                     </Link>
                   </li> */}
-                <li className="menu-item">
+                <li className="menu-item has-collapsible">
                   <a
                     onClick={() => {
                       toggleOffcanvas();
@@ -263,10 +344,21 @@ const MobileHeader = ({ speciality }) => {
                     }}
                     className="submenu-link"
                   >
-                    Blog
+                    Blogs
                   </a>
                 </li>
-                <li className="menu-item">
+                <li className="menu-item has-collapsible">
+                  <a
+                    onClick={() => {
+                      toggleOffcanvas();
+                      router.push("/question-answer");
+                    }}
+                    className="submenu-link"
+                  >
+                    Q&A
+                  </a>
+                </li>
+                <li className="menu-item ">
                   <a
                     href="/contact-us"
                     onClick={() => {

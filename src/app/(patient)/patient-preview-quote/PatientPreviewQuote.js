@@ -247,9 +247,13 @@ const PatientPreviewQuote = () => {
             </div>
 
             <div className="preview-continue-button">
-              <a href="#" className="preview-continue">
+              <a
+                href="#"
+                className="preview-continue"
+                style={{ background: "#ff6800", color: "#fff !important" }}
+              >
                 {" "}
-                Continue
+                Submit
               </a>
             </div>
           </div>

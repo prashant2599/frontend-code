@@ -7211,6 +7211,7 @@ ul.tabs li.active {
   margin: 0px auto;
   font-family: Helvetica Neue Medium;
   text-align: center;
+  padding-bottom: 15px;
 }
 
 #medical-treatments p {

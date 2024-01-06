@@ -594,7 +594,7 @@ a:hover {
 }
 .continue1 {
   background: #f2f2f2;
-  color: #bebebe !important;
+  color: #bebebe;
   border: 2px solid #f2f2f2;
   margin: 5px 0px;
   font-size: 16px;

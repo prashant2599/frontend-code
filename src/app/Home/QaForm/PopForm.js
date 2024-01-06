@@ -2,13 +2,13 @@
 
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import ReCAPTCHA from "react-google-recaptcha";
 import { ThreeDots } from "react-loader-spinner";
 import "react-toastify/dist/ReactToastify.css";
 import "intl-tel-input/build/css/intlTelInput.css";
 import intlTelInput from "intl-tel-input";
 import Success from "../successPopup/Success";
 import ErrorPopup from "../successPopup/ErrorPopup";
+import ReCaptchaComponent from "../ReCapcha/ReCaptchaComponent";
 
 const PopForm = () => {
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
@@ -123,7 +123,6 @@ const PopForm = () => {
     setPhone("");
     setEmail("");
     setQuery("");
-    setSelectedFile(null);
   };
 
   const handleFormSubmit = (event) => {
@@ -350,12 +349,9 @@ const PopForm = () => {
                     ></textarea>
                     {renderError(formErrors.query)}
                   </div>
-                  <ReCAPTCHA
-                    sitekey="6LcX6-YnAAAAAAjHasYD8EWemgKlDUxZ4ceSo8Eo" // Replace with your reCAPTCHA site key
-                    onChange={handleCaptchaChange}
-                  />
-                  {renderError(formErrors.captcha)}
                 </div>
+                <ReCaptchaComponent onCaptchaChange={handleCaptchaChange} />
+                {renderError(formErrors.captcha)}
 
                 <div className="question-box7">
                   {/* <div className="upload-report-box">
@@ -488,10 +484,7 @@ const PopForm = () => {
                     </div>
                   </div>
 
-                  <ReCAPTCHA
-                    sitekey="6LcX6-YnAAAAAAjHasYD8EWemgKlDUxZ4ceSo8Eo"
-                    onChange={handleCaptchaChange}
-                  />
+                  <ReCaptchaComponent onCaptchaChange={handleCaptchaChange} />
                   {renderError(formErrors.captcha)}
                   <button
                     type="submit"
