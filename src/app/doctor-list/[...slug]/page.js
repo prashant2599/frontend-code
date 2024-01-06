@@ -116,7 +116,9 @@ const page = async ({ params }) => {
                             className="department-sub"
                             style={{ color: "#ff6800" }}
                           >
-                            {e.designation}
+                            {e.designation.length > 55
+                              ? `${e.designation.slice(0, 55)}...`
+                              : e.designation}
                           </div>
                           {/* <div className="rating-star">
                           5{" "}

@@ -113,8 +113,6 @@ const Sdoctors = ({
                           <img
                             src={`https://dev.medflick.com/doctor/${e.image}`}
                             alt={e.slug}
-                          
-                          
                           />
                         </Link>
                       </div>
@@ -128,7 +126,9 @@ const Sdoctors = ({
                           className="department-sub"
                           style={{ color: "#ff6800" }}
                         >
-                          {e.designation}
+                          {e.designation.length > 55
+                            ? `${e.designation.slice(0, 55)}...`
+                            : e.designation}
                         </div>
                         {/* <div className="rating-star">
                           5{" "}

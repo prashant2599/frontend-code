@@ -222,9 +222,9 @@ const AccountDetails = () => {
                           <span>
                             {loading ? (
                               <span className="skeleton">Loading...</span>
-                            ) : (
+                            ) : user ? (
                               user.name
-                            )}
+                            ) : null}
                           </span>
                         ) : (
                           <input
@@ -242,7 +242,7 @@ const AccountDetails = () => {
                       {loading ? (
                         <span className="skeleton">Loading...</span> // Skeleton loading for email content
                       ) : (
-                        <span>{user.email}</span>
+                        <span>{user && user.email}</span>
                       )}{" "}
                       <MdVerified color="blue" />
                     </div>
@@ -253,8 +253,8 @@ const AccountDetails = () => {
                           <span>
                             {loading ? (
                               <span className="skeleton">Loading...</span>
-                            ) : user.phone ? (
-                              user.phone
+                            ) : user && user.phone ? (
+                              user && user.phone
                             ) : (
                               "null"
                             )}
