@@ -6,6 +6,7 @@ const UserContext = createContext();
 
 export function UserProvider({ children }) {
   const [userName, setUserName] = useState("");
+  const [userId, setUserId] = useState("");
   const [userData, setUserData] = useState(null);
 
   const fetchUserDataById = async (userId) => {
@@ -23,11 +24,14 @@ export function UserProvider({ children }) {
   };
 
   useEffect(() => {
-    fetchUserDataById("579");
+    const patientId = localStorage.getItem("userId");
+    fetchUserDataById(patientId);
   }, []);
 
   return (
-    <UserContext.Provider value={{ userName, setUserName, userData }}>
+    <UserContext.Provider
+      value={{ userName, setUserName, userData, setUserId, userId }}
+    >
       {children}
     </UserContext.Provider>
   );

@@ -1,11 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import { MdVerified } from "react-icons/md";
 import axios from "axios";
 import ChangePassword from "./ChangePassword";
 import { useRouter } from "next/navigation";
+import DashBoardAssistance from "../DashBoardAssistance";
+import DeleteAccount from "./DeleteAccount";
 
 const AccountDetails = () => {
   const router = useRouter();
@@ -20,6 +21,7 @@ const AccountDetails = () => {
   const [uname, setUname] = useState("");
   const [uphone, setUphone] = useState("");
   const [loading, setLoading] = useState(true);
+  const [lastLogin, setLastLogin] = useState("");
 
   useEffect(() => {
     if (!localStorage.getItem("userId")) {
@@ -30,8 +32,12 @@ const AccountDetails = () => {
   // Check if 'userName' exists in localStorage on component mount
   useEffect(() => {
     const storedUserId = localStorage.getItem("userId");
+    const lastLogin = localStorage.getItem("lastLogin");
     if (storedUserId) {
       setPatientId(storedUserId);
+    }
+    if (lastLogin) {
+      setLastLogin(new Date(lastLogin));
     }
   }, []);
 
@@ -94,6 +100,26 @@ const AccountDetails = () => {
     window.location.reload();
   };
 
+  const calculateTimeAgo = (timestamp) => {
+    const now = new Date();
+    const seconds = Math.floor((now - timestamp) / 1000);
+
+    if (seconds < 60) {
+      return `${seconds} sec ago`;
+    } else if (seconds < 3600) {
+      const minutes = Math.floor(seconds / 60);
+      return `${minutes} min ago`;
+    } else if (seconds < 86400) {
+      const hours = Math.floor(seconds / 3600);
+      return `${hours} hour ago`;
+    } else {
+      const days = Math.floor(seconds / 86400);
+      return `${days} day ago`;
+    }
+  };
+
+  const timeAgo = lastLogin ? calculateTimeAgo(new Date(lastLogin)) : "";
+
   return (
     <>
       <section id="your-account">
@@ -122,7 +148,7 @@ const AccountDetails = () => {
                   {" "}
                   Password
                 </button>
-                <button
+                {/* <button
                   className={`conditions ${
                     activeContent === "packages3" ? "active" : ""
                   }`}
@@ -130,7 +156,7 @@ const AccountDetails = () => {
                 >
                   {" "}
                   Account Security{" "}
-                </button>
+                </button> */}
                 <button
                   className={`conditions ${
                     activeContent === "packages4" ? "active" : ""
@@ -140,7 +166,7 @@ const AccountDetails = () => {
                   {" "}
                   Notifications
                 </button>
-                <button
+                {/* <button
                   className={`conditions ${
                     activeContent === "packages5" ? "active" : ""
                   }`}
@@ -148,7 +174,7 @@ const AccountDetails = () => {
                 >
                   {" "}
                   Billing Info
-                </button>
+                </button> */}
                 <button
                   className={`conditions ${
                     activeContent === "packages6" ? "active" : ""
@@ -271,6 +297,7 @@ const AccountDetails = () => {
                               ); // Remove non-numeric characters
                               setUphone(phoneNumber);
                             }}
+                            placeholder={user.phone}
                           />
                         )}
                       </div>
@@ -300,11 +327,6 @@ const AccountDetails = () => {
                   display: activeContent === "packages2" ? "block" : "none",
                 }}
               >
-                <div className="edit-profile">
-                  <h2>Profile</h2>
-                  <a href="#/">Edit</a>
-                </div>
-
                 <ChangePassword />
               </div>
 
@@ -363,7 +385,7 @@ const AccountDetails = () => {
                   <h2>Notifications</h2>
                 </div>
 
-                <table cellspacing="0" cellpadding="0">
+                <table cellSpacing="0" cellPadding="0">
                   <tbody>
                     <tr>
                       <td>
@@ -382,19 +404,19 @@ const AccountDetails = () => {
                     <tr>
                       <td>Task Updates</td>
                       <td>
-                        <label className="container">
+                        <label className="container-checkbox">
                           <input type="checkbox" checked="checked" />
                           <span className="checkmark"></span>
                         </label>
                       </td>
                       <td>
-                        <label className="container">
+                        <label className="container-checkbox">
                           <input type="checkbox" />
                           <span className="checkmark"></span>
                         </label>
                       </td>
                       <td>
-                        <label className="container">
+                        <label className="container-checkbox">
                           <input type="checkbox" />
                           <span className="checkmark"></span>
                         </label>
@@ -406,19 +428,19 @@ const AccountDetails = () => {
                         <br /> Notifications
                       </td>
                       <td>
-                        <label className="container">
+                        <label className="container-checkbox">
                           <input type="checkbox" />
                           <span className="checkmark"></span>
                         </label>
                       </td>
                       <td>
-                        <label className="container">
+                        <label className="container-checkbox">
                           <input type="checkbox" />
                           <span className="checkmark"></span>
                         </label>
                       </td>
                       <td>
-                        <label className="container">
+                        <label className="container-checkbox">
                           <input type="checkbox" />
                           <span className="checkmark"></span>
                         </label>
@@ -553,20 +575,20 @@ const AccountDetails = () => {
                 <ul>
                   <li>
                     <img src="image/2023/01/loc.png" alt="" />
-                    <div className="login-name"> Mysore, Karnataka </div>
+                    {/* <div className="login-name"> Mysore, Karnataka </div> */}
                     <div className="login-active">
                       <div className="default-device">
                         <img src="/images/2023/01/g-dotted.png" alt="icons" />
-                        20 hrs Ago
+                        {timeAgo && <span>{timeAgo}</span>}
                       </div>
-                      <div className="default-device">
+                      {/* <div className="default-device">
                         <img src="/images/2023/01/g-dotted.png" alt="icons" />
                         Samsung ST123N{" "}
-                      </div>
+                      </div> */}
                     </div>
                   </li>
 
-                  <li>
+                  {/* <li>
                     <img src="images/2023/01/loc.png" alt="" />
                     <div className="login-name"> Mysore, Karnataka </div>
                     <div className="login-active">
@@ -609,7 +631,7 @@ const AccountDetails = () => {
                         Samsung ST123N{" "}
                       </div>
                     </div>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
 
@@ -635,37 +657,14 @@ const AccountDetails = () => {
                   <h2>Delete Account</h2>
                 </div>
 
-                <div className="cancel-appointment">
-                  <p>
-                    Once you&apos;ve deleted your account, you will no longer be
-                    able to log in to the Medflick site or apps. This action
-                    cannot be undone.
-                  </p>
-                  <a href="#/">Delete Account</a>
-                </div>
+                <DeleteAccount patientId={patientId} />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="pay-section">
-        <div className="midbox-inner  wiki-mk">
-          <div className="pay-box">
-            <div className="medflick-payleft">
-              <h2>Need Assistance?</h2>
-              <p>Can’t find what you’re looking for? Let up help</p>
-            </div>
-            <div className="medflick-payright">
-              <a href="#/" className="consultation">
-                {" "}
-                Lorem ipsum dolor sit amet{" "}
-                <img src="images/2023/01/arrow-c.png" alt="" />
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+      <DashBoardAssistance />
     </>
   );
 };

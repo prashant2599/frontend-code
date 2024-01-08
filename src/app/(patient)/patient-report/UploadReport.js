@@ -205,6 +205,43 @@ const UploadReport = () => {
 
   const desc = "Your medical report has been submitted";
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (linkValue && !isValidLink(linkValue)) {
+      setLinkValidationMessage("Please enter a valid link.");
+      return;
+    } else {
+      setLinkValidationMessage("");
+    }
+
+    if (!selectedFile && !linkValue) {
+      // Display an error message or handle the validation in the way you prefer
+      setFormValidationMessage(
+        "Please upload a file or provide a link before submitting."
+      );
+      return;
+    }
+
+    if (selectedFile) {
+      // Convert the File to Base64 and save it in localStorage
+      const filename = selectedFile.name;
+      localStorage.setItem("patientFileName", filename);
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const base64Data = reader.result.split(",")[1];
+        localStorage.setItem("patientFile", base64Data);
+      };
+      reader.readAsDataURL(selectedFile);
+    } else {
+      localStorage.setItem("patientFileLink", linkValue);
+    }
+
+    router.push("/patient-preview-quote");
+  };
+
+
+
   return (
     <>
       <section id="request-quote-section">
@@ -317,27 +354,13 @@ const UploadReport = () => {
                 </Link> */}
                 <button
                   className="continue1"
-                  disabled={isLoading}
+                  onClick={handleSubmit}
                   style={{
                     background: selectedFile || linkValue ? "#ff6800" : "",
                     color: selectedFile || linkValue ? "#fff" : "",
                   }}
                 >
-                  {" "}
-                  {isLoading ? (
-                    <ThreeDots
-                      height="27"
-                      width="70"
-                      radius="9"
-                      color="#fff"
-                      ariaLabel="three-dots-loading"
-                      wrapperStyle={{}}
-                      wrapperClassName=""
-                      visible={true}
-                    />
-                  ) : (
-                    "Continue"
-                  )}
+                  Continue
                 </button>
               </div>
             </form>

@@ -149,7 +149,7 @@ const SignUp = () => {
     };
 
     // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
-    const apiEndpoint = `https://api.medflick.com/api/register`;
+    const apiEndpoint = `https://dev.medflick.com/api/register`;
 
     setIsLoading(true);
 

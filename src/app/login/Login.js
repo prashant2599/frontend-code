@@ -13,7 +13,7 @@ const Login = () => {
   const router = useRouter();
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const { setUserName } = useUser();
+  const { setUserName, setUserId } = useUser();
   const [errorMessage, setErrorMessage] = useState("");
 
   const [isLoading, setIsLoading] = useState(false);
@@ -62,11 +62,13 @@ const Login = () => {
         // alert("Login susscefull");
         clearFormFields();
         setUserName(response.data.data.name);
+        setUserId(response.data.data.id);
         localStorage.setItem("userId", response.data.data.id);
         localStorage.setItem("userRole", response.data.data.role);
         localStorage.setItem("userName", response.data.data.name);
         localStorage.setItem("userEmail", response.data.data.email);
         localStorage.setItem("userPhone", response.data.data.phone);
+        localStorage.setItem("lastLogin", response.data.data.last_login);
         toast.success("You are successfully logged in", {
           position: toast.POSITION.TOP_RIGHT,
         });
