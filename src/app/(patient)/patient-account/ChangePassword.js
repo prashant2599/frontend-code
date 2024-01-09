@@ -71,7 +71,7 @@ const ChangePassword = () => {
     };
     setIsLoading(true);
     axios
-      .post("https://dev.medflick.com/api/patient_update/passwordUpdate", data)
+      .post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/patient_update/passwordUpdate`, data)
       .then((response) => {
         setShowSuccessPopup(true);
         clearFormFields();

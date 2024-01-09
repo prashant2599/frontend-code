@@ -14,7 +14,7 @@ const SignUp = () => {
   const [cpassword, setCpassword] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const { setUserName } = useUser();
+  const { setUserName, setUserId } = useUser();
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -149,7 +149,7 @@ const SignUp = () => {
     };
 
     // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
-    const apiEndpoint = `https://dev.medflick.com/api/register`;
+    const apiEndpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/api/register`;
 
     setIsLoading(true);
 
@@ -162,6 +162,7 @@ const SignUp = () => {
         // alert("Register susscefull");
         clearFormFields();
         setUserName(response.data.data.name);
+        setUserId(response.data.data.id);
         localStorage.setItem("userId", response.data.data.id);
         localStorage.setItem("userRole", response.data.data.role);
         localStorage.setItem("userName", response.data.data.name);
@@ -199,11 +200,12 @@ const SignUp = () => {
                 className="sign-up-login"
                 alt="Brand Logo"
               />
-              <h2>Let us help you run sit amet lorem ipsum</h2>
+              <h2>Access best medical care from top doctors and hospitals</h2>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipicing elit, sed do
-                eiusmod tempor incididunt ut labore Lorem ipsum dolor sit amet,
-                consectetur
+                We are committed to fostering the relationship of trust and
+                reliability. Choose and connect instantly for transparent,
+                expert, and personalized care. With Medflick at your side, make
+                accurate and informed health decisions.
               </p>
 
               <div className="signup-testimonials">
@@ -230,8 +232,10 @@ const SignUp = () => {
             </div>
 
             <div className="login-box-right">
-              <h1>Join Medflick</h1>
-              <p>Lorem ipsum dolor sit amet quis alenquen</p>
+              <h1>
+                Join <span style={{ color: "#ff6800" }}>Medflick</span>
+              </h1>
+              <p>Get in touch with the best doctors and hospitals instantly.</p>
               <form onSubmit={handleFormSubmit}>
                 <div className="inputbox">
                   <label>Full Name</label>

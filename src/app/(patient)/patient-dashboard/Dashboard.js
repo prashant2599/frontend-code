@@ -35,7 +35,7 @@ const Dashboard = () => {
   useEffect(() => {
     // Check if patientId exists before making the API call
     if (patientId) {
-      const apiUrl = `https://dev.medflick.com/api/dashboard/questionans/patientid/${patientId}`;
+      const apiUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/api/dashboard/questionans/patientid/${patientId}`;
 
       axios
         .get(apiUrl)

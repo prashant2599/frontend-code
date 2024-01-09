@@ -58,7 +58,12 @@ const page = async ({ params }) => {
                 <h1>{info.name}</h1>
                 <p>Avg Price: {info.special_price}</p>
               </div>
-              <div className="treatment-subtext">{info.quote}</div>
+
+              <div className="treatment-subtext">
+                {info.quote.length > 173
+                  ? `${info.quote.slice(0, 173)}...`
+                  : info.quote}
+              </div>
               {/* <div className="treatment-subtext">
                 {Treatment} An Insight into Innovative Approaches and Cost
                 Analysis
@@ -275,7 +280,7 @@ const page = async ({ params }) => {
                     />
 
                     <div className="consultation-box">
-                      <p>Plan with the best</p>
+                      <p>Take Charge of Your Health</p>
                       <Link
                         className="consultation-button"
                         href="/free-consultation"
@@ -341,7 +346,7 @@ const page = async ({ params }) => {
                       }}
                     />
                     <div className="consultation-box">
-                      <p>Plan your wellness journey with confidence</p>
+                      <p>Your Health is Our Priority</p>
                       <Link
                         className="consultation-button"
                         href="/free-consultation"
@@ -403,10 +408,7 @@ const page = async ({ params }) => {
                     />
 
                     <div className="consultation-box">
-                      <p>
-                        The journey doesn&apos;t end here. We&apos;ll stay
-                        connected throughout your recovery.
-                      </p>
+                      <p>Avail the Expert Health Advice</p>
                       <Link
                         className="consultation-button"
                         href="/free-consultation"
