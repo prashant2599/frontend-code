@@ -25,8 +25,8 @@ export function UserProvider({ children }) {
 
   useEffect(() => {
     const patientId = localStorage.getItem("userId");
-    fetchUserDataById(patientId);
-  }, []);
+    fetchUserDataById(patientId || userId);
+  }, [userId]);
 
   return (
     <UserContext.Provider
