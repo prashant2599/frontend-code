@@ -267,7 +267,7 @@ const PatientPreviewQuote = () => {
     data.append("uploadfiles", patientFile);
 
     // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
-    const apiEndpoint = `https://api.medflick.com/api/uploadreport`;
+    const apiEndpoint = `https://dev.medflick.com/api/uploadreport`;
 
     // Make the API call
     axios
