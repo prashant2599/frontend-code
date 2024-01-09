@@ -306,20 +306,20 @@ const Allpopudp = () => {
       <button className="open-button" onClick={togglePopup}>
         <img
           className="footer-but-d"
-          src="/images/2023/07/query-img.png"
+          src="/images/df.png"
           alt="query-img"
         />
-        <img className="footer-but-m" src="/images/2023/free.png" />
+        <img className="footer-but-m" src="/images/mFree.png" />
       </button>
       <div className="form-popup" id="myForm" style={popupStyle}>
         <div className="form-container">
           <div style={{ display: "block", textAlign: "center" }}>
             <button type="button" className="btn cancel" onClick={togglePopup}>
-              <img src="/images/2023/07/query-img.png" alt="query-img" />
+              <img src="/images/df.png" alt="query-img" />
             </button>
           </div>
           <div className="homeform-left">
-            <h2>Get free Personalised Offer</h2>
+            <h2>Get Free Personalised Offer</h2>
             <p>
               Share your medical reports and get an exclusive offer tailored to
               your needs, requirements and preferences
