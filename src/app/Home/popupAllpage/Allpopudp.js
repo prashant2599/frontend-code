@@ -304,11 +304,7 @@ const Allpopudp = () => {
   return (
     <>
       <button className="open-button" onClick={togglePopup}>
-        <img
-          className="footer-but-d"
-          src="/images/df.png"
-          alt="query-img"
-        />
+        <img className="footer-but-d" src="/images/df.png" alt="query-img" />
         <img className="footer-but-m" src="/images/mFree.png" />
       </button>
       <div className="form-popup" id="myForm" style={popupStyle}>
