@@ -50,7 +50,12 @@ const AllDoctors = async () => {
                             {e.prefix} {e.first_name} {e.last_name}
                           </h3>
                         </Link>
-                        <div className="department-sub">{e.designation}</div>
+                        <div className="department-sub">
+                          {" "}
+                          {e.designation.length > 55
+                            ? `${e.designation.slice(0, 55)}...`
+                            : e.designation}
+                        </div>
                         {/* <div className="rating-star">
                           5{" "}
                           <i>

@@ -16,11 +16,9 @@ const NewSection1 = () => {
                 Information When you Need it Most.
               </h2>
 
-              <Image
+              <img
                 className="dr-img"
-                src="/images/home-slider.png"
-                width="1380"
-                height="580"
+                src="/images/medflick-home.png"
                 alt="inspiring-better-health"
                 loading="lazy"
               />
