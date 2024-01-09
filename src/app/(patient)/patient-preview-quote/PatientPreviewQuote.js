@@ -20,7 +20,7 @@ const PatientPreviewQuote = () => {
   const router = useRouter();
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const [showErrorPopup, setShowErrorPopup] = useState(false);
-  const [doctor, setDoctor] = useState([]);
+  const [doctor, setDoctor] = useState(null);
   const [speciality, setSpeciality] = useState("");
   const [treatment, setTreatment] = useState("");
   const [specialityIcon, setSpecialityIcon] = useState("");
@@ -173,7 +173,7 @@ const PatientPreviewQuote = () => {
     // return () => clearInterval(intervalId);
   }, []);
 
-  const [hospital, setHospital] = useState([]);
+  const [hospital, setHospital] = useState(null);
 
   useEffect(() => {
     const storedHospital = localStorage.getItem("selectedHospitalSlug");
@@ -370,73 +370,78 @@ const PatientPreviewQuote = () => {
                 <h3>Hospital and Doctor</h3>
 
                 <div className="hospital-doctors-preview">
-                  <div className="hospital-preview-box">
-                    <div className="hospital-preview-img">
-                      <img
-                        src={`https://dev.medflick.com/hospital/${hospital.image}`}
-                        alt={hospital.slug}
-                      />
-                    </div>
-                    <div className="hospital-preview-doc">
-                      <h3>{hospital.name}</h3>
-                      <div className="department-sub">
-                        {hospital.city
-                          ? hospital.city.charAt(0).toUpperCase() +
-                            hospital.city.slice(1)
-                          : null}
+                  {hospital && (
+                    <div className="hospital-preview-box">
+                      <div className="hospital-preview-img">
+                        <img
+                          src={`https://dev.medflick.com/hospital/${hospital.image}`}
+                          alt={hospital.slug}
+                        />
                       </div>
-
-                      {/* <div className="rating-star">
-                        <i className="fa fa-star"></i> 5 (523)
-                      </div> */}
-                      <div className="ho-docimg">
-                        {hospital.nabl && (
-                          <img
-                            src={`https://dev.medflick.com/hospital/${hospital.nabl}`}
-                            alt={hospital.name}
-                          />
-                        )}
-                        {hospital.nabh && (
-                          <img
-                            src={`https://dev.medflick.com/hospital/${hospital.nabh}`}
-                            alt={hospital.name}
-                          />
-                        )}
-                        {hospital.jci && (
-                          <img
-                            src={`https://dev.medflick.com/hospital/${hospital.jci}`}
-                            alt={hospital.name}
-                          />
-                        )}
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="doctors-preview-box">
-                    <div className="doctor-preview-img">
-                      <img
-                        src={`https://dev.medflick.com/doctor/${doctor.image}`}
-                        alt={doctor.slug}
-                      />
-                    </div>
-                    <div className="doctor-preview-doc">
-                      <h3>
-                        {doctor.prefix} {doctor.first_name} {doctor.last_name}
-                      </h3>
-                      <div className="department-sub">{doctor.designation}</div>
-                      {/* <div className="rating-star">
-                        <i className="fa fa-star"></i> 5 (523)
-                      </div> */}
-                      <div className="doc-experience">
-                        <div className="years-exper">
-                          {doctor.experience_year}+ Years
+                      <div className="hospital-preview-doc">
+                        <h3>{hospital.name}</h3>
+                        <div className="department-sub">
+                          {hospital.city
+                            ? hospital.city.charAt(0).toUpperCase() +
+                              hospital.city.slice(1)
+                            : null}
                         </div>
-                        <div className="successful-plus">
-                          {doctor.surgery_treatment}+ Successful Surgeries
+
+                        {/* <div className="rating-star">
+                        <i className="fa fa-star"></i> 5 (523)
+                      </div> */}
+                        <div className="ho-docimg">
+                          {hospital.nabl && (
+                            <img
+                              src={`https://dev.medflick.com/hospital/${hospital.nabl}`}
+                              alt={hospital.name}
+                            />
+                          )}
+                          {hospital.nabh && (
+                            <img
+                              src={`https://dev.medflick.com/hospital/${hospital.nabh}`}
+                              alt={hospital.name}
+                            />
+                          )}
+                          {hospital.jci && (
+                            <img
+                              src={`https://dev.medflick.com/hospital/${hospital.jci}`}
+                              alt={hospital.name}
+                            />
+                          )}
                         </div>
                       </div>
                     </div>
-                  </div>
+                  )}
+                  {doctor && (
+                    <div className="doctors-preview-box">
+                      <div className="doctor-preview-img">
+                        <img
+                          src={`https://dev.medflick.com/doctor/${doctor.image}`}
+                          alt={doctor.slug}
+                        />
+                      </div>
+                      <div className="doctor-preview-doc">
+                        <h3>
+                          {doctor.prefix} {doctor.first_name} {doctor.last_name}
+                        </h3>
+                        <div className="department-sub">
+                          {doctor.designation}
+                        </div>
+                        {/* <div className="rating-star">
+                        <i className="fa fa-star"></i> 5 (523)
+                      </div> */}
+                        <div className="doc-experience">
+                          <div className="years-exper">
+                            {doctor.experience_year}+ Years
+                          </div>
+                          <div className="successful-plus">
+                            {doctor.surgery_treatment}+ Successful Surgeries
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
 
