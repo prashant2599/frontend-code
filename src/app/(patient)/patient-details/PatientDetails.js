@@ -3,22 +3,15 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import "intl-tel-input/build/css/intlTelInput.css";
 import intlTelInput from "intl-tel-input";
-import Success from "@/app/Home/successPopup/Success";
-import ErrorPopup from "@/app/Home/successPopup/ErrorPopup";
-import axios from "axios";
-import { ThreeDots } from "react-loader-spinner";
 import { useRouter } from "next/navigation";
 
 const PatientDetails = () => {
   // form query post api
   const router = useRouter();
-  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
-  const [showErrorPopup, setShowErrorPopup] = useState(false);
   const [name, setName] = useState("");
   const [pcode, setPcode] = useState("+91");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-  const [query, setQuery] = useState("");
   const [gender, setGender] = useState("");
   const [uhid, setUhid] = useState("");
   const [passport, setPassport] = useState("");
@@ -60,7 +53,7 @@ const PatientDetails = () => {
     }
   }, []);
 
-  const handleFormSubmit = (event) => {
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
     setFormErrors({
       name: "",
@@ -70,22 +63,18 @@ const PatientDetails = () => {
       captcha: "",
     });
 
-    const patientId = localStorage.getItem("userId");
-
     // Validation logic
     let isValid = true;
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const phoneRegex = /^\d{10}$/;
 
-    if (!userName) {
-      if (!name) {
-        setFormErrors((prevErrors) => ({
-          ...prevErrors,
-          name: "Please enter your name",
-        }));
-        isValid = false;
-      }
+    if (!name) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        name: "Please enter your name",
+      }));
+      isValid = false;
     }
 
     if (!phone || !phone.match(phoneRegex)) {
@@ -96,14 +85,12 @@ const PatientDetails = () => {
       isValid = false;
     }
 
-    if (!userEmail) {
-      if (!email || !email.match(emailRegex)) {
-        setFormErrors((prevErrors) => ({
-          ...prevErrors,
-          email: "Please enter a valid email address",
-        }));
-        isValid = false;
-      }
+    if (!email || !email.match(emailRegex)) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        email: "Please enter a valid email address",
+      }));
+      isValid = false;
     }
 
     if (!gender) {
@@ -125,44 +112,34 @@ const PatientDetails = () => {
       }));
       return;
     }
-    if (isValid) {
-      // Create the data object to be sent in the API request
-      const data = {
-        name: userName ? userName : name,
-        phone_code: pcode,
+
+    setIsLoading(true);
+
+    try {
+      // Simulate an asynchronous operation with a delay
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      const formData = {
+        name: name,
+        pcode: pcode,
         phone: phone,
-        email: userEmail ? userEmail : email,
-        passport: passport,
-        patient_id: patientId,
+        email: email,
         gender: gender,
         uhid: uhid,
+        passport: passport,
       };
+      console.log("FormData:", formData);
+      localStorage.setItem("patientFormData", JSON.stringify(formData));
 
-      // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
-      const apiEndpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/api/doctor_query`;
-
-      setIsLoading(true);
-
-      // Make the API call
-      axios
-        .post(apiEndpoint, data, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        })
-        .then((response) => {
-          setShowSuccessPopup(true);
-          clearFormFields();
-          router.push("/patient-report");
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-          setShowErrorPopup(true);
-        })
-        .finally(() => {
-          // Set loading back to false after the API call is complete
-          setIsLoading(false);
-        });
+      // Assuming you have a function called clearFormFields
+      clearFormFields();
+      setShowSuccessPopup(true);
+      router.push("/patient-report");
+    } catch (error) {
+      console.error("Error:", error);
+      setShowErrorPopup(true);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -170,8 +147,9 @@ const PatientDetails = () => {
     setName("");
     setPhone("");
     setEmail("");
-    setQuery("");
-    setSelectedFile(null);
+    setPassport("");
+    setGender("");
+    setUhid("");
   };
 
   const Formstyles = {
@@ -275,15 +253,76 @@ const PatientDetails = () => {
       </div>
     );
 
-  const handleCloseSuccessPopup = () => {
-    setShowSuccessPopup(false);
-  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setFormErrors({
+      name: "",
+      phone: "",
+      email: "",
+      gender: "",
+      captcha: "",
+    });
 
-  const handleCloseErrorPopup = () => {
-    setShowErrorPopup(false);
-  };
+    // Validation logic
+    let isValid = true;
 
-  const desc = "Your Contact Details has been submitted";
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^\d{10}$/;
+
+    if (!userName) {
+      if (!name) {
+        setFormErrors((prevErrors) => ({
+          ...prevErrors,
+          name: "Please enter your name",
+        }));
+        isValid = false;
+      }
+    }
+
+    if (!phone || !phone.match(phoneRegex)) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        phone: "Please enter a valid Phone number",
+      }));
+      isValid = false;
+    }
+
+    if (!userEmail) {
+      if (!email || !email.match(emailRegex)) {
+        setFormErrors((prevErrors) => ({
+          ...prevErrors,
+          email: "Please enter a valid email address",
+        }));
+        isValid = false;
+      }
+    }
+
+    if (!gender) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        gender: "Please select your gender",
+      }));
+      isValid = false;
+    }
+
+    if (!isValid) {
+      return;
+    }
+
+    if (isValid) {
+      // Save data to local storage
+
+      localStorage.setItem("pcode", pcode);
+      localStorage.setItem("phone", phone);
+      localStorage.setItem("gender", gender);
+      localStorage.setItem("patientName", name);
+      localStorage.setItem("patientEmail", email);
+      localStorage.setItem("uhid", uhid);
+      localStorage.setItem("passport", passport);
+      clearFormFields();
+      router.push("/patient-report");
+    }
+  };
 
   return (
     <>
@@ -325,7 +364,7 @@ const PatientDetails = () => {
                           <label>Full Name*</label>
                           <input
                             type="text"
-                            placeholder=""
+                            placeholder={userName}
                             name="name"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
@@ -361,7 +400,7 @@ const PatientDetails = () => {
                           <label>Email Address*</label>
                           <input
                             type="text"
-                            placeholder=""
+                            placeholder={userEmail}
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             onBlur={handleEmailBlur}
@@ -424,23 +463,9 @@ const PatientDetails = () => {
                         type="submit"
                         name="en"
                         className="home-button"
-                        disabled={isLoading}
+                        onClick={handleSubmit}
                       >
-                        {" "}
-                        {isLoading ? (
-                          <ThreeDots
-                            height="27"
-                            width="80"
-                            radius="9"
-                            color="#ffffff"
-                            ariaLabel="three-dots-loading"
-                            wrapperStyle={{}}
-                            wrapperClassName=""
-                            visible={true}
-                          />
-                        ) : (
-                          "Continue"
-                        )}
+                        Continue
                         <img
                           src="/images/2023/01/arrow-c.png"
                           alt="arrow-Icon"
@@ -454,19 +479,6 @@ const PatientDetails = () => {
           </div>
         </div>
       </section>
-      {showSuccessPopup && (
-        <Success
-          onClose={handleCloseSuccessPopup}
-          showSuccessPopup={showSuccessPopup}
-          desc={desc}
-        />
-      )}
-      {showErrorPopup && (
-        <ErrorPopup
-          onClose={handleCloseErrorPopup}
-          showErrorPopup={showErrorPopup}
-        />
-      )}
     </>
   );
 };

@@ -313,10 +313,13 @@ const page = async ({ params }) => {
             <DoctorTotalReview doctorId={docotorDetails.id} />
           </div>
         </section>
-        <RelatedDoctor
-          category={speciality[0].slug}
-          doctorId={docotorDetails.id}
-        />
+        {speciality && speciality.length > 0 && (
+          <RelatedDoctor
+            category={speciality[0].slug}
+            doctorId={docotorDetails.id}
+          />
+        )}
+
         <NewFooter />
       </>
     );
@@ -336,8 +339,9 @@ export async function generateMetadata({ params }) {
   );
   const datas = await res.json();
   const docotorDetails = datas.data.doctor_info;
+  
   const hospitalIndex = datas.data.hospital[0];
-  const hospitalName = hospitalIndex.name;
+  const hospitalName = hospitalIndex &&  hospitalIndex.name;
 
   if (!(docotorDetails.title && docotorDetails.description))
     return {

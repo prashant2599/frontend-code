@@ -1336,13 +1336,13 @@ textarea {
   justify-content: center;
 }
 .changes-button .save-changes {
-  background: #ff6800;
-  padding: 6px 20px;
+  background: #FF6800;
+  padding: 6px 19px;
   margin-top: 20px;
   display: flex;
   width: 150px;
   border-radius: 8px;
-  border: 1px solid #ff6800;
+  border: 1px solid #FF6800;
   font-size: 16px;
   color: #fff !important;
   align-items: center;
@@ -1359,7 +1359,7 @@ textarea {
 }
 .cancel-appointment a {
   background: #ff6800;
-  padding: 6px 20px;
+  padding: 6px 19px;
   margin-top: 20px;
   display: flex;
   width: 220px;
@@ -1388,7 +1388,7 @@ td {
 }
 
 /* Hide the browser's default checkbox */
-.container input {
+.container-checkbox input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -1408,12 +1408,12 @@ td {
 }
 
 /* On mouse-over, add a grey background color */
-.container:hover input ~ .checkmark {
+.container-checkbox:hover input ~ .checkmark {
   background-color: #ccc;
 }
 
 /* When the checkbox is checked, add a blue background */
-.container input:checked ~ .checkmark {
+.container-checkbox input:checked ~ .checkmark {
   background-color: #ff6800;
 }
 
@@ -1425,12 +1425,12 @@ td {
 }
 
 /* Show the checkmark when checked */
-.container input:checked ~ .checkmark:after {
+.container-checkbox input:checked ~ .checkmark:after {
   display: block;
 }
 
 /* Style the checkmark/indicator */
-.container .checkmark:after {
+.container-checkbox .checkmark:after {
   left: 9px;
   top: 7px;
   width: 5px;
