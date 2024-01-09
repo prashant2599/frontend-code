@@ -253,6 +253,11 @@ const TreatmentForm1 = ({ treatmentId, specialityId }) => {
         ...prevErrors,
         phone: "Please enter a valid Phone number",
       }));
+    } else {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        phone: "",
+      }));
     }
   };
 
@@ -262,6 +267,41 @@ const TreatmentForm1 = ({ treatmentId, specialityId }) => {
         ...prevErrors,
         email: "Please enter a valid email address",
       }));
+    } else {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        email: "",
+      }));
+    }
+  };
+
+  const handleQueryBlur = () => {
+    if (!query) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        query: "Please enter your query",
+      }));
+    } else {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        query: "",
+      }));
+    }
+  };
+
+  const handleNameBlur = () => {
+    if (!userName) {
+      if (!name) {
+        setFormErrors((prevErrors) => ({
+          ...prevErrors,
+          name: "Please enter your name",
+        }));
+      } else {
+        setFormErrors((prevErrors) => ({
+          ...prevErrors,
+          name: "",
+        }));
+      }
     }
   };
 
@@ -300,6 +340,7 @@ const TreatmentForm1 = ({ treatmentId, specialityId }) => {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 autoComplete="off"
+                onBlur={handleNameBlur}
                 style={formErrors.name ? Formstyles.errorInput : {}}
               />
               {renderError(formErrors.name)}
@@ -351,6 +392,7 @@ const TreatmentForm1 = ({ treatmentId, specialityId }) => {
                 placeholder="Your Query"
                 rows="2"
                 value={query}
+                onBlur={handleQueryBlur}
                 onChange={(e) => setQuery(e.target.value)}
                 style={formErrors.query ? Formstyles.errorInput : {}}
               ></textarea>

@@ -185,7 +185,7 @@ const PatientPreviewQuote = () => {
       // Fetch the details data based on the activePackage ID
       axios
         .get(
-          `https://dev.medflick.com/api/hospital/${storedHospital}/${storedHospitalCountry}`
+          `${process.env.NEXT_PUBLIC_BASE_URL}/api/hospital/${storedHospital}/${storedHospitalCountry}`
         )
         .then((response) => {
           setHospital(response.data.data.hospital_info);
@@ -267,7 +267,7 @@ const PatientPreviewQuote = () => {
     data.append("uploadfiles", patientFile);
 
     // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
-    const apiEndpoint = `https://dev.medflick.com/api/uploadreport`;
+    const apiEndpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/api/uploadreport`;
 
     // Make the API call
     axios

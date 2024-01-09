@@ -4,7 +4,7 @@ const DeleteAccount = ({ patientId }) => {
   const handleDelete = () => {
     // Make a DELETE request using Axios
     axios
-      .get(`https://dev.medflick.com/api/deleteaccount/${patientId}`, {
+      .get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/deleteaccount/${patientId}`, {
         // Include any additional options like data, auth, etc.
       })
       .then((response) => {

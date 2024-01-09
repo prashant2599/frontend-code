@@ -7,6 +7,8 @@ import MobileSearch from "./MobileSearch";
 import { useRouter } from "next/navigation";
 import { useToggleForm } from "@/app/contex/toggleFormContext";
 import { useUser } from "@/app/UserContext";
+import HeaderSearch from "./HeaderSearch";
+import MobileSideBarShare from "./MobileSideBarShare";
 
 const MobileHeader = ({ speciality }) => {
   const { isPopupOpen } = useToggleForm();
@@ -117,6 +119,15 @@ const MobileHeader = ({ speciality }) => {
             <div className={`menu-wrapper${isOffcanvas ? " offcanvas" : ""}`}>
               <ul className="menu">
                 <li className="menu-block">
+                  <a
+                    onClick={() => {
+                      toggleOffcanvas();
+                      router.push("/");
+                    }}
+                  >
+                    {" "}
+                    <img src="/images/2023/01/logo.png" alt="Brand Logo" />
+                  </a>
                   <span className="close-menu" onClick={toggleOffcanvas}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -125,11 +136,23 @@ const MobileHeader = ({ speciality }) => {
                     >
                       <path
                         fill="#fff"
-                        fillRule="evenodd"
+                        fill-rule="evenodd"
                         d="M17.778.808l1.414 1.414L11.414 10l7.778 7.778-1.414 1.414L10 11.414l-7.778 7.778-1.414-1.414L8.586 10 .808 2.222 2.222.808 10 8.586 17.778.808z"
-                      />
+                      ></path>
                     </svg>
                   </span>
+                </li>
+                <li>
+                  {/* <div className="head-searchbox">
+                    <input
+                      type="text"
+                      placeholder="Search Medflick"
+                      name="name"
+                      required=""
+                    />
+                   
+                  </div> */}
+                  <HeaderSearch />
                 </li>
 
                 <li className="menu-item has-collapsible">
@@ -246,7 +269,7 @@ const MobileHeader = ({ speciality }) => {
                       ))}
                   </ul>
                 </li>
-                {userName || userNames ? (
+                {/* {userName || userNames ? (
                   <li className="menu-item has-collapsible">
                     <a
                       onClick={handleCollapsibleClick}
@@ -262,7 +285,7 @@ const MobileHeader = ({ speciality }) => {
                             fontWeight: 400,
                             lineHeight: "inherit",
                             position: "absolute",
-                            /* top: "5rem", */
+                    
                             right: "0.5rem",
                             color: "rgb(87, 87, 87)",
                             transition: "all 0.35s ease 0s",
@@ -319,23 +342,8 @@ const MobileHeader = ({ speciality }) => {
                       Login
                     </a>
                   </li>
-                )}
+                )} */}
 
-                <li className="menu-item" style={{ background: "#ff6800" }}>
-                  {/* <Link className="menu-link" style={{ color: "#fff" }}>
-                    Quick info
-                  </Link> */}
-                </li>
-                {/* <li className="menu-item">
-                    <Link href="careers.html" className="submenu-link">
-                      Careers
-                    </Link>
-                  </li> */}
-                {/* <li className="menu-item">
-                    <Link href="/" className="submenu-link">
-                      News & Events
-                    </Link>
-                  </li> */}
                 <li className="menu-item has-collapsible">
                   <a
                     onClick={() => {
@@ -347,7 +355,8 @@ const MobileHeader = ({ speciality }) => {
                     Blogs
                   </a>
                 </li>
-                <li className="menu-item has-collapsible">
+
+                <li className="menu-item ">
                   <a
                     onClick={() => {
                       toggleOffcanvas();
@@ -355,21 +364,63 @@ const MobileHeader = ({ speciality }) => {
                     }}
                     className="submenu-link"
                   >
-                    Q&A
+                    Question & Answer
                   </a>
                 </li>
-                <li className="menu-item ">
+                <li className="menu-item">
                   <a
-                    href="/contact-us"
                     onClick={() => {
                       toggleOffcanvas();
-                      router.push("/contact-us");
+                      router.push("/login");
                     }}
-                    className="submenu-link"
+                    className="login-link"
                   >
-                    Contact Us
+                    Login
                   </a>
                 </li>
+                <li className="menu-item">
+                  <a
+                    onClick={() => {
+                      toggleOffcanvas();
+                      router.push("/sign-up");
+                    }}
+                    className="sign-up-link"
+                  >
+                    Sign Up
+                  </a>
+                </li>
+                <div class="menu-footer">
+                  <a
+                    class="qsk-question"
+                    href="#"
+                    style={{ color: "#ff6800 !important" }}
+                  >
+                    Ask FREE Question{" "}
+                    <img src="/images/whiteArrow.png" alt="" />
+                  </a>
+
+                  <div class="menu-footer-link">
+                    <MobileSideBarShare />
+                    <Link
+                      href="/about-us"
+                      onClick={() => {
+                        toggleOffcanvas();
+                        router.push("/about-us");
+                      }}
+                    >
+                      About Us
+                    </Link>
+                    <a
+                      href="/contact-us"
+                      onClick={() => {
+                        toggleOffcanvas();
+                        router.push("/contact-us");
+                      }}
+                    >
+                      Help
+                    </a>
+                  </div>
+                </div>
               </ul>
             </div>
           </nav>

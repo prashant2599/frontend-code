@@ -7636,7 +7636,7 @@ ul.tabs li.active {
 }
 
 .sign-up-left h2 {
-  font-size: 30px;
+  font-size: 29px;
   color: #000000;
   font-weight: 400;
   width: 90%;
@@ -9586,12 +9586,12 @@ ul.tabs li.active {
 
 .close-menu {
   position: absolute;
-  top: -24px;
+  top: 0px;
   right: 0rem;
   border: none;
   outline: none;
   color: #fff;
-  background: linear-gradient(90deg, #fe7d5e 0%, #fe7d5e 35%, #ffa774 100%);
+  /* background: linear-gradient(90deg, #FE7D5E 0%, #FE7D5E 35%, #FFA774 100%); */
   padding: 16px;
 }
 
@@ -9645,10 +9645,10 @@ ul.tabs li.active {
   top: 0;
   left: 0;
   bottom: 0;
-  max-width: 20rem;
+  max-width: 100%;
   width: 100%;
-  padding: 1.5rem 0rem;
-  z-index: 999;
+  padding: rem 0rem;
+  z-index: 999999;
   overflow-y: auto;
   color: #252a32;
   background: #fff;
@@ -9662,7 +9662,9 @@ ul.tabs li.active {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 3rem;
+  margin-bottom: 15px;
+  background: #FF6800;
+  height: 60px;
 }
 
 .header .navbar .menu-link {
@@ -9685,13 +9687,13 @@ ul.tabs li.active {
 .header .navbar .menu-item a {
   font-family: inherit;
   font-size: 1rem;
-  font-weight: bold;
   line-height: inherit;
-  text-transform: uppercase;
+  text-transform: initial;
   padding: 0.7rem 1rem;
   display: block;
   color: #575757;
   transition: color 0.35s ease-out;
+  font-weight: normal;
 }
 
 .header .navbar .menu-item a:hover {
@@ -9700,7 +9702,7 @@ ul.tabs li.active {
 
 .header .navbar .menu-item.has-collapsible {
   position: relative;
-  border-bottom: 1px dashed #adadad;
+  border-bottom: 0px dashed #ADADAD;
 }
 
 .header .navbar .menu-item.has-collapsible .menu-child {
@@ -14917,6 +14919,11 @@ pre code {
     backdrop-filter: none;
     background: #ff6800 !important;
   }
+  #header-id {
+    height: 70px;
+    width: 100%;
+    overflow: hidden;
+}
 }
 
 /* patient dashboard */
@@ -16690,4 +16697,59 @@ color: #575757;
 
 .details-box input::placeholder {
   color: #7c7c7c;
+}
+
+.menu-block img {
+  width: 100px;
+  margin-left: 20px;
+}
+
+.menu .head-searchbox {
+  width: 90%;
+  margin: 0px auto;
+  border-bottom: 1px solid #E7E7E7;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-radius: 0px;
+}
+
+.login-link {
+  color: #FF6800 !important;
+  border-top: 1px solid #E7E7E7;
+  padding: 0.7rem 0.7rem 0.3rem  0rem !important;
+  text-transform: capitalize !important;
+  margin: 10px 20px;
+}
+.sign-up-link {
+  color: #FF6800 !important;
+  padding: 0rem 0.7rem 0.3rem  0rem !important;
+  text-transform: capitalize !important;
+  margin: 0px 20px;
+}
+.menu-footer {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  background: #FF6800;
+  color: #fff;
+  padding: 10px 56px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.menu-footer .qsk-question {
+  margin: 9px 0;
+}
+.menu-footer-link {
+  display: flex;
+  margin: 0px;
+  padding: 0px;
+  gap: 20px;
+  justify-content: center;
+}
+.menu-footer-link a {
+  font-size: 12px;
+  color: #fff !important;
+  margin: 0px;
+  padding: 0px;
 }

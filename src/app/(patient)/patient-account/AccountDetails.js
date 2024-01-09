@@ -43,7 +43,7 @@ const AccountDetails = () => {
 
   useEffect(() => {
     if (patientId) {
-      const apiUrl = `https://dev.medflick.com/api/patient/id/${patientId}`;
+      const apiUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/api/patient/id/${patientId}`;
       axios
         .get(apiUrl)
         .then((response) => {
