@@ -2005,7 +2005,7 @@ td {
   .conditionsbox {
     width: 100%;
   }
-  .specialists-boxitem {
+ .specialists-boxitem {
     width: 100%;
   }
   .health-tabs {
@@ -2749,4 +2749,13 @@ td {
 
 .VIpgJd-ZVi9od-aZ2wEe-wOHMyf-ti6hGc {
   display: none;
+}
+
+#specialists .specialists-boxitem {
+  width: 10%;
+}
+@media screen and (max-width: 880px){
+#specialists .specialists-boxitem {
+  width: 48%;
+}
 }
