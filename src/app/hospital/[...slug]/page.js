@@ -1,4 +1,4 @@
-import Link from "next/link";
+
 import HospitalDoctorsFilter from "./HospitalDoctorsFilter";
 import AppointmentForm from "@/app/Home/hospitalForm/AppointmentForm";
 import HospitalShareProfile from "./HospitalShareProfile";
@@ -10,6 +10,7 @@ import { BsStarHalf } from "react-icons/bs";
 import { notFound } from "next/navigation";
 import NewHeader from "@/app/Home/NewUIHomepage/inc/NewHeader";
 import NewFooter from "@/app/Home/NewUIHomepage/inc/NewFooter";
+import HospitalHeader from "./HospitalHeader";
 
 const page = async ({ params }) => {
   try {
@@ -54,6 +55,26 @@ const page = async ({ params }) => {
                   <div className="location">
                     {hospitalDetails.location.charAt(0).toUpperCase() +
                       hospitalDetails.location.slice(1)}
+                  </div>
+                  <div className="ho-docimg">
+                    {hospitalDetails.nabl && (
+                      <img
+                        src={`https://dev.medflick.com/hospital/${hospitalDetails.nabl}`}
+                        alt={hospitalDetails.name}
+                      />
+                    )}
+                    {hospitalDetails.nabh && (
+                      <img
+                        src={`https://dev.medflick.com/hospital/${hospitalDetails.nabh}`}
+                        alt={hospitalDetails.name}
+                      />
+                    )}
+                    {hospitalDetails.jci && (
+                      <img
+                        src={`https://dev.medflick.com/hospital/${hospitalDetails.jci}`}
+                        alt={hospitalDetails.name}
+                      />
+                    )}
                   </div>
                 </div>
               </div>
@@ -103,60 +124,8 @@ const page = async ({ params }) => {
             </div>
           </div>
         </section>
-        <section id="profile-link">
-          <div className="midbox-inner  wiki-mk ">
-            <ul>
-              <li>
-                <a href="#reviews" target="_self" className="active">
-                  Reviews
-                </a>
-              </li>
-              <li>
-                <a href="#overview" target="_self">
-                  Overview
-                </a>
-              </li>
-              <li>
-                <a href="#Search-doctor" target="_self">
-                  Search Doctor
-                </a>
-              </li>
-              <li>
-                <a href="#gallery" target="_self">
-                  Gallery
-                </a>
-              </li>
-              <li>
-                <a href="#doctor" target="_self">
-                  Doctors
-                </a>
-              </li>
-              <li>
-                <a href="#amenitie" target="_self">
-                  Amenities
-                </a>
-              </li>
-            </ul>
 
-            <div className="expert-profilebox">
-              <div className="hospital-boxright">
-                <div className="hos-profile">
-                  <div className="hosprofile-img">
-                    <img
-                      src={`https://dev.medflick.com/hospital/${hospitalDetails.icon}`}
-                      alt={hospitalDetails.name}
-                    />
-                  </div>{" "}
-                  <span>{hospitalDetails.name}</span>
-                </div>
-                <a href="#" className="book-appointment">
-                  Enquire Now <img src="/images/2023/05/book.png" />
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-
+        <HospitalHeader hospitalDetails={hospitalDetails} />
         <section id="profile-data-section">
           <div className="midbox-inner  wiki-mk">
             <div className="reviews-section">

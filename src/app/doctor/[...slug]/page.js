@@ -9,6 +9,7 @@ import "@/app/Home/NewUIHomepage/newsection.css";
 import NewHeader from "@/app/Home/NewUIHomepage/inc/NewHeader";
 import NewFooter from "@/app/Home/NewUIHomepage/inc/NewFooter";
 import DoctorShare from "./DoctorShare";
+import DoctorHeader from "./DoctorHeader";
 
 const page = async ({ params }) => {
   try {
@@ -103,50 +104,7 @@ const page = async ({ params }) => {
           </div>
         </section>
 
-        <section id="profile-link">
-          <div className="midbox-inner  wiki-mk ">
-            <ul>
-              <li>
-                <a href="#reviews" target="_self" className="active">
-                  Reviews
-                </a>
-              </li>
-              <li>
-                <a href="#about" target="_self">
-                  About
-                </a>
-              </li>
-              <li>
-                <a href="#specializations" target="_self">
-                  Specializations
-                </a>
-              </li>
-              <li>
-                <a href="#services" target="_self">
-                  Services
-                </a>
-              </li>
-            </ul>
-
-            <div className="expert-profilebox">
-              <div className="dr-boxright">
-                <div className="doc-profile">
-                  <img
-                    src={`https://dev.medflick.com/doctor/${docotorDetails.image}`}
-                    alt={docotorDetails.slug}
-                  />{" "}
-                  {docotorDetails.prefix} {docotorDetails.first_name}{" "}
-                  {docotorDetails.last_name}
-                </div>
-                <a href="#" className="book-appointment">
-                  Book Appointment{" "}
-                  <img src="/images/2023/05/book.png" alt="icon" />
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-
+        <DoctorHeader docotorDetails={docotorDetails} treament={treament} />
         <section id="profile-data-section">
           <div className="midbox-inner  wiki-mk">
             <div id="overview" className="reviews-section">
@@ -285,31 +243,27 @@ const page = async ({ params }) => {
               <div id="specializations" className="profile-data-section">
                 <h2>Specialization</h2>
                 <div className="medical-box">
-                  {/* {docotorDetails.specialization &&
-                  docotorDetails.specialization
-                    .split(",")
-                    .map((amenity, index) => (
-                      <Link key={index}>{amenity.trim()}</Link>
-                    ))} */}
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: docotorDetails && docotorDetails.specialization,
-                    }}
-                  />
+                  {docotorDetails.specialization &&
+                    docotorDetails.specialization
+                      .split(",")
+                      .map((amenity, index) => (
+                        <a key={index}>{amenity.trim()}</a>
+                      ))}
                 </div>
               </div>
             )}
-
-            <div id="services" className="profile-data-section">
-              <h2>Services</h2>
-              <div className="medical-box">
-                {treament.map((e) => (
-                  <a href="#" target="_self" key={e.id}>
-                    {e.name}
-                  </a>
-                ))}
+            {treament.length > 0 && (
+              <div id="services" className="profile-data-section">
+                <h2>Services</h2>
+                <div className="medical-box">
+                  {treament.map((e) => (
+                    <a href="#" target="_self" key={e.id}>
+                      {e.name}
+                    </a>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
             <DoctorTotalReview doctorId={docotorDetails.id} />
           </div>
         </section>
@@ -339,9 +293,9 @@ export async function generateMetadata({ params }) {
   );
   const datas = await res.json();
   const docotorDetails = datas.data.doctor_info;
-  
+
   const hospitalIndex = datas.data.hospital[0];
-  const hospitalName = hospitalIndex &&  hospitalIndex.name;
+  const hospitalName = hospitalIndex && hospitalIndex.name;
 
   if (!(docotorDetails.title && docotorDetails.description))
     return {

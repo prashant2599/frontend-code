@@ -10,16 +10,17 @@ export function UserProvider({ children }) {
   const [userData, setUserData] = useState(null);
 
   const fetchUserDataById = async (userId) => {
-    try {
-      const response = await axios.get(
-        `https://dev.medflick.com/api/patient/id/${userId}`
-      );
-      const data = response.data.data.patient_data;
+    if (userId) {
+      try {
+        const response = await axios.get(
+          `https://dev.medflick.com/api/patient/id/${userId}`
+        );
+        const data = response.data.data.patient_data;
 
-      // Update the user data in the context
-      setUserData(data);
-    } catch (error) {
-      console.error("Error fetching user data:", error);
+        setUserData(data);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
     }
   };
 
