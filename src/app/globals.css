@@ -1,20 +1,24 @@
 @font-face {
   font-family: Helvetica Neu Bold;
   src: url(../app/fonts/Helvetica-Neu-Bold.ttf);
+  font-display: swap;
 }
 
 @font-face {
   font-family: Helvetica Neue Medium;
   src: url(../app/fonts/Helvetica-Neue-Medium.ttf);
+  font-display: swap;
 }
 
 @font-face {
   font-family: Helvetica Neue Light;
   src: url(../app/fonts/Helvetica-Neue-Light.ttf);
+  font-display: swap;
 }
 @font-face {
   font-family: Inter Regular;
   src: url(../app/fonts/Inter-Regular.ttf);
+  font-display: swap;
 }
 
 html {

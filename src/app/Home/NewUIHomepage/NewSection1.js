@@ -18,7 +18,7 @@ const NewSection1 = () => {
 
               <img
                 className="dr-img"
-                src="/images/medflick-home.png"
+                src="/images/medflick-home.webp"
                 alt="inspiring-better-health"
                 loading="lazy"
               />

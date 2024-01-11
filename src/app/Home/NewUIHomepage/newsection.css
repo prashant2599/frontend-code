@@ -19,11 +19,13 @@
 @font-face {
   font-family: Inter Regular;
   src: url(../../fonts/Inter-Regular.ttf);
+  font-display: swap;
 }
 
 @font-face {
   font-family: Inter Medium;
   src: url(../../fonts/Inter-Medium.ttf);
+  font-display: swap;
 }
 
 #hometop-section {

@@ -3,7 +3,6 @@ import DontPay from "@/app/Home/dontPay/DontPay";
 import Community from "@/app/Home/community/Community";
 import Doctors from "./Doctors";
 import Hospitralspe from "./Hospitralspe";
-import Image from "next/image";
 import CostEstimateForm from "./CostEstimateForm";
 import SpecialityBlog from "./SpecialityBlog";
 import SpecialityFilteration from "./SpecialityFilteration";
@@ -50,7 +49,7 @@ const page = async ({ params }) => {
             alt="Category"
           ></img>
           <img
-            src={`https://dev.medflick.com/speciality/${info && info.image}`}
+            src={`https://dev.medflick.com/speciality/${info && info.home_image}`}
             className="category-m"
             alt="Category"
           ></img>
