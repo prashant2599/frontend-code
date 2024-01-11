@@ -4,6 +4,7 @@ import { FaChevronDown } from "react-icons/fa";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useUser } from "@/app/UserContext";
+import HeaderSearch from "@/app/Home/Inc/HeaderSearch";
 
 const PatientHeader = () => {
   const router = useRouter();
@@ -203,6 +204,15 @@ const PatientHeader = () => {
               <div className={`menu-wrapper${isOffcanvas ? " offcanvas" : ""}`}>
                 <ul className="menu">
                   <li className="menu-block">
+                    <a
+                      onClick={() => {
+                        toggleOffcanvas();
+                        router.push("/");
+                      }}
+                    >
+                      {" "}
+                      <img src="/images/2023/01/logo.png" alt="Brand Logo" />
+                    </a>
                     <span className="close-menu" onClick={toggleOffcanvas}>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -213,15 +223,18 @@ const PatientHeader = () => {
                           fill="#fff"
                           fill-rule="evenodd"
                           d="M17.778.808l1.414 1.414L11.414 10l7.778 7.778-1.414 1.414L10 11.414l-7.778 7.778-1.414-1.414L8.586 10 .808 2.222 2.222.808 10 8.586 17.778.808z"
-                        />
+                        ></path>
                       </svg>
                     </span>
+                  </li>
+                  <li>
+                    <HeaderSearch />
                   </li>
 
                   <li className="menu-item has-collapsible">
                     <a href="#"> Home</a>
                   </li>
-                  <li className="menu-item has-collapsible">
+                  {/* <li className="menu-item has-collapsible">
                     <a href="#" onClick={handleCollapsibleClick}>
                       <span></span> Search
                     </a>
@@ -233,19 +246,70 @@ const PatientHeader = () => {
                         <a href="#">Hospitals </a>
                       </li>
                     </ul>
-                  </li>
+                  </li> */}
                   <li className="menu-item has-collapsible">
-                    <a href="#"> Request Quote</a>
+                    <Link href="/patient-quote"> Request Quote</Link>
                   </li>
-                  <li className="menu-item has-collapsible">
+                  {/* <li className="menu-item has-collapsible">
                     <a href="#"> Message </a>
                   </li>
                   <li className="menu-item has-collapsible">
                     <a href="#">Videos</a>
-                  </li>
+                  </li> */}
                   <li className="menu-item has-collapsible">
-                    <a href="#">Visa Assistance</a>
+                    <Link href="/get-visa-assistance">Visa Assistance</Link>
                   </li>
+                  <li className="menu-item">
+                    <a
+                      onClick={() => {
+                        toggleOffcanvas();
+                        router.push("/patient-account");
+                      }}
+                      className="login-link"
+                    >
+                      View Profile
+                    </a>
+                  </li>
+                  <div className="menu-footer">
+                    <a
+                      className="qsk-question"
+                      href="#"
+                      style={{ color: "#ff6800 !important" }}
+                    >
+                      Ask FREE Question{" "}
+                      <img src="/images/whiteArrow.png" alt="" />
+                    </a>
+
+                    <div className="menu-footer-link">
+                      <Link
+                        href="/blogs"
+                        onClick={() => {
+                          toggleOffcanvas();
+                          router.push("/blogs");
+                        }}
+                      >
+                        Blogs
+                      </Link>
+                      <Link
+                        href="/about-us"
+                        onClick={() => {
+                          toggleOffcanvas();
+                          router.push("/about-us");
+                        }}
+                      >
+                        About Us
+                      </Link>
+                      <a
+                        href="/contact-us"
+                        onClick={() => {
+                          toggleOffcanvas();
+                          router.push("/contact-us");
+                        }}
+                      >
+                        Help
+                      </a>
+                    </div>
+                  </div>
                 </ul>
               </div>
             </nav>

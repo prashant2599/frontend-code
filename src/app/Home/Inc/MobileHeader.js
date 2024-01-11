@@ -389,9 +389,9 @@ const MobileHeader = ({ speciality }) => {
                     Sign Up
                   </a>
                 </li>
-                <div class="menu-footer">
+                <div className="menu-footer">
                   <a
-                    class="qsk-question"
+                    className="qsk-question"
                     href="#"
                     style={{ color: "#ff6800 !important" }}
                   >
@@ -399,7 +399,7 @@ const MobileHeader = ({ speciality }) => {
                     <img src="/images/whiteArrow.png" alt="" />
                   </a>
 
-                  <div class="menu-footer-link">
+                  <div className="menu-footer-link">
                     <MobileSideBarShare />
                     <Link
                       href="/about-us"
