@@ -84,13 +84,16 @@ const Dashboard = () => {
                   <Link href="/patient-quote">
                     <img src="/images/2023/01/2.png" alt="icon-img" />
                     <h3>Request Quote</h3>
+
+                    <p>Receive cost estimate at earliest</p>
                   </Link>
-                  <p>Receive cost estimate at earliest</p>
                 </li>
                 <li>
-                  <img src="/images/2023/01/3.png" alt="icon-img" />
-                  <h3>Need Help?</h3>
-                  <p>We are here to help you</p>
+                  <Link href="/contact-us">
+                    <img src="/images/2023/01/3.png" alt="icon-img" />
+                    <h3>Need Help?</h3>
+                    <p>We are here to help you</p>
+                  </Link>
                 </li>
               </ul>
             </div>
