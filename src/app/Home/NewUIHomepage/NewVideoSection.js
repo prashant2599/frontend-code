@@ -1,32 +1,43 @@
-
+"use client";
+import React, { useRef, useState, createRef } from "react";
 
 const NewVideoSection = () => {
-  // const data = await getAllSpeciality();
-  // const video = data.data.doctor_videos;
-  // const [video, setVideo] = useState([]);
+  const videoSources = [
+    "https://medflick-frontend.s3.ap-south-1.amazonaws.com/Pain.mp4",
+    "https://medflick-frontend.s3.ap-south-1.amazonaws.com/DrSanjay.mp4",
+    // Add more video sources as needed
+  ];
+  const [playingIndex, setPlayingIndex] = useState(null);
+  const videoRefs = useRef(
+    Array(videoSources.length)
+      .fill(null)
+      .map(() => React.createRef())
+  );
 
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     try {
-  //       const result = await getAllSpeciality();
-  //       setVideo(result.data.doctor_videos);
-  //     } catch (err) {
-  //       console.log(err.message); // Set the error message in state
-  //     }
-  //   }
+  const handleTogglePlay = (index) => {
+    setPlayingIndex((prevIndex) => {
+      if (prevIndex !== null && prevIndex !== index) {
+        // Pause the previously playing video
+        videoRefs.current[prevIndex].current.pause();
+      }
 
-  //   fetchData();
-  // }, []);
-  // const video1 = video?.slice(0, 2) ?? [];
+      if (prevIndex === index) {
+        // Toggle pause/play for the clicked video
+        const video = videoRefs.current[index].current;
+        if (video.paused) {
+          video.play();
+        } else {
+          video.pause();
+        }
 
-  // const [playingVideos, setPlayingVideos] = useState({});
-
-  // const handleIconClick = (videoId) => {
-  //   setPlayingVideos((prevPlayingVideos) => ({
-  //     ...prevPlayingVideos,
-  //     [videoId]: !prevPlayingVideos[videoId], // toggle the play state
-  //   }));
-  // };
+        return prevIndex;
+      } else {
+        // Play the clicked video
+        videoRefs.current[index].current.play();
+        return index;
+      }
+    });
+  };
 
   return (
     <>
@@ -51,68 +62,34 @@ const NewVideoSection = () => {
             </div>
 
             <div className="home-expert-video-right">
-            
-                <div className="expert-video-item">
+              {videoSources.map((source, index) => (
+                <div className="expert-video-item" key={index}>
                   <div className="item-home-expert">
-                    {/* <img src="/new-images/2023/01/09/1.jpg" /> */}
                     <video
-                      autoPlay
+                      ref={videoRefs.current[index]}
                       loop
                       muted
                       playsInline
-                   
-                      // poster="https://wgrowth.partners/wwpl/ibshospital_site/images/slider1.jpg"
                     >
-                      <source src="https://medflick-frontend.s3.ap-south-1.amazonaws.com/Pain.mp4" type="video/mp4" />
+                      <source src={source} type="video/mp4" />
                     </video>
-                    <div
-                      className="video-iconbox"
-                    
-                    >
-                      <a>
-                        <img src="/images/new-images/2023/01/09/icon.png" />
-                      </a>
-                    </div>
+                    {playingIndex !== index && (
+                      <div
+                        className="video-iconbox"
+                        onClick={() => handleTogglePlay(index)}
+                        style={{ cursor: "pointer" }}
+                      >
+                        <a>
+                          <img
+                            src="/images/new-images/2023/01/09/icon.png"
+                            alt="Video Icon"
+                          />
+                        </a>
+                      </div>
+                    )}
                   </div>
-                  {/* <div className="home-expert-text">
-                    <h3>Lorem Ipsum dolor sit</h3>
-                    <p>
-                      Excepteur sint occaecat cupidatat non proident, sunt in
-                      culpa qui officia deseru...
-                    </p>
-                  </div> */}
                 </div>
-                <div className="expert-video-item">
-                  <div className="item-home-expert">
-                    {/* <img src="/new-images/2023/01/09/1.jpg" /> */}
-                    <video
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                   
-                      // poster="https://wgrowth.partners/wwpl/ibshospital_site/images/slider1.jpg"
-                    >
-                      <source src="https://medflick-frontend.s3.ap-south-1.amazonaws.com/DrSanjay.mp4" type="video/mp4" />
-                    </video>
-                    <div
-                      className="video-iconbox"
-                    
-                    >
-                      <a>
-                        <img src="/images/new-images/2023/01/09/icon.png" />
-                      </a>
-                    </div>
-                  </div>
-                  {/* <div className="home-expert-text">
-                    <h3>Lorem Ipsum dolor sit</h3>
-                    <p>
-                      Excepteur sint occaecat cupidatat non proident, sunt in
-                      culpa qui officia deseru...
-                    </p>
-                  </div> */}
-                </div>
-         
+              ))}
 
               {/* <div className="video-modal">
                   <div className="video-content">
