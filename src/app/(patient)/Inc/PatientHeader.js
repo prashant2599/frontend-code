@@ -100,26 +100,29 @@ const PatientHeader = () => {
                   <li>
                     <Link href="/patient-dashboard"> Home </Link>
                   </li>
-                  <li className="has-dropdown dropdown">
+                  {/* <li className="has-dropdown dropdown">
                     <a href="#" className="dropbtn">
                       Search
                       <i>
                         <FaChevronDown />
                       </i>
                     </a>
-                  </li>
+                  </li> */}
 
                   <li>
                     <Link href="/patient-quote">Request Quote</Link>
                   </li>
-                  <li>
+                  {/* <li>
                     <a href="#"> Message </a>
                   </li>
                   <li>
                     <a href="#"> Videos </a>
+                  </li> */}
+                  <li>
+                    <Link href="/get-visa-assistance"> Visa Assistance </Link>
                   </li>
                   <li>
-                    <a href="#"> Visa Assistance </a>
+                    <Link href="/patient-account"> View Profile </Link>
                   </li>
                 </ul>
               </div>

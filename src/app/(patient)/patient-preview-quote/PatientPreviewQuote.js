@@ -298,7 +298,9 @@ const PatientPreviewQuote = () => {
         localStorage.removeItem("patientName");
         localStorage.removeItem("phone");
 
-        router.push("/patient-dashboard");
+        setTimeout(() => {
+          router.push("/patient-dashboard");
+        }, 2000);
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -432,12 +434,16 @@ const PatientPreviewQuote = () => {
                         <i className="fa fa-star"></i> 5 (523)
                       </div> */}
                         <div className="doc-experience">
-                          <div className="years-exper">
-                            {doctor.experience_year}+ Years
-                          </div>
-                          <div className="successful-plus">
-                            {doctor.surgery_treatment}+ Successful Surgeries
-                          </div>
+                          {doctor.experience_year && (
+                            <div className="years-exper">
+                              {doctor.experience_year}+ Years Experience
+                            </div>
+                          )}
+                          {doctor.surgery_treatment && (
+                            <div className="successful-plus">
+                              {doctor.surgery_treatment}+ Successful Surgeries
+                            </div>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -458,15 +464,19 @@ const PatientPreviewQuote = () => {
                     {pcode} {phone}
                   </span>
                 </div>
-                <div className="preview-details">
-                  <h5>UHID</h5> <span>{uhid}</span>
-                </div>
+                {uhid && (
+                  <div className="preview-details">
+                    <h5>UHID</h5> <span>{uhid}</span>
+                  </div>
+                )}
                 <div className="preview-details">
                   <h5>Gender</h5> <span>{gender}</span>
                 </div>
-                <div className="preview-details">
-                  <h5>Passport Number</h5> <span>{passport}</span>
-                </div>
+                {passport && (
+                  <div className="preview-details">
+                    <h5>Passport Number</h5> <span>{passport}</span>
+                  </div>
+                )}
                 <div className="preview-details">
                   <h5>Medical Reports</h5>
                 </div>
