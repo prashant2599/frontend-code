@@ -342,7 +342,7 @@ const PatientPreviewQuote = () => {
                 <img src="/images/selectedImg.png" /> Upload Medical Report
               </div>
               <div className="barbox-bar">
-                <img src="images/2023/02/3.png" /> Get Quotes
+                <img src="images/2023/02/3.png" /> Preview Quotes
               </div>
             </div>
           </div>

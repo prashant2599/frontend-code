@@ -129,7 +129,7 @@ const RequestQuote = () => {
                 <img src="images/2023/02/2.png" /> Upload Medical Report
               </div>
               <div className="barbox-bar">
-                <img src="images/2023/02/2.png" /> Get Quotes
+                <img src="images/2023/02/2.png" /> Preview Quotes
               </div>
             </div>
           </div>
