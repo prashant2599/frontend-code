@@ -24,7 +24,7 @@ const CategoryHospitals = async ({ specialityId }) => {
 
             <div className="symptoms-nav">
               {hospitals.map((e) => (
-                <Link href={`/blogs/${e.slug}`} key={e.id}>
+                <Link href={`/hospital/${e.slug}/${e.country}`} key={e.id}>
                   {e.name}
                 </Link>
               ))}

@@ -69,7 +69,7 @@ const QuoteDetails = ({ info }) => {
         <div className="appointments-details-section">
           <div className="cancel-appointment-box">
             <div className="appointment-date-box">{formattedDate}</div>
-            <CancelAppointment />
+            <CancelAppointment id={info.id} />
           </div>
           <div className="appointments-details-text">
             <h3>
