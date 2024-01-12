@@ -1655,7 +1655,7 @@ td {
     gap: 20px;
   }
   .request-quote {
-    padding: 20px;
+    padding: 20px !important;
   }
   .request-quote h1 {
     font-size: 25px;
@@ -2006,7 +2006,7 @@ td {
     width: 100%;
   }
  .specialists-boxitem {
-    width: 100%;
+    width: 100% !important;
   }
   .health-tabs {
     gap: 5px;
@@ -2759,3 +2759,4 @@ td {
   width: 48%;
 }
 }
+

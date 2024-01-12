@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState, useEffect } from "react";
 import { useDoctorData } from "@/app/contex/DoctorDataContext";
 import { HospitalData } from "@/app/contex/HospitalDataContext";

@@ -6,6 +6,8 @@ import CategoryWiseBlogDetais from "./CategoryWiseBlogDetais";
 import { notFound } from "next/navigation";
 import NewHeader from "@/app/Home/NewUIHomepage/inc/NewHeader";
 import NewFooter from "@/app/Home/NewUIHomepage/inc/NewFooter";
+import CategoryDoctors from "./CategoryDoctors";
+import CategoryHospitals from "./CategoryHospitals";
 
 const page = async ({ params }) => {
   try {
@@ -286,6 +288,8 @@ const page = async ({ params }) => {
         </section>
 
         <CategoryWiseBlogDetais />
+        <CategoryDoctors specialityId={blogDetails.speciality_id} />
+        <CategoryHospitals specialityId={blogDetails.speciality_id} />
         <section id="newslette-section">
           <div className="midbox-inner  wiki-mk">
             <div className="newslette-box">

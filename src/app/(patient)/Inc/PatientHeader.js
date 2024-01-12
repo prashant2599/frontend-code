@@ -92,7 +92,7 @@ const PatientHeader = () => {
         <div className="headerTertiary">
           <Link href="/patient-dashboard" target="_self" className="logo-d">
             {" "}
-            <img src="images/2023/01/logo.png" alt="Brand Logo" />
+            <img src="/images/2023/01/logo.png" alt="Brand Logo" />
           </Link>
           <div className="topnav-right page-header">
             <nav>

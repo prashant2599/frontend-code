@@ -4,7 +4,7 @@ import getALLCountry from "../lib/getAllCountry";
 const DoctorPagination = async ({ slug, doctor, pageNumber, totalDoctor }) => {
   const treanding = await getALLCountry();
   const doctorCountry = treanding.country_name;
-  
+
   const parts = slug.split("/");
   const specialitySlug = parts[0];
   const countrySlug = parts[1];
@@ -49,7 +49,6 @@ const DoctorPagination = async ({ slug, doctor, pageNumber, totalDoctor }) => {
               // Default URL if no conditions are met
               url = `/doctors/${specialitySlug}/page/${page}`;
             }
-
             return (
               <li key={page}>
                 <Link href={url} className={page == pageNumber ? "active" : ""}>

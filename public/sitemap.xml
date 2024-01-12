@@ -277,7 +277,13 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://medflick.com/treatment/parkinsons-treatment/india,oman</loc>
+    <loc>https://medflick.com/treatment/parkinsons-treatment/india</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+    <url>
+    <loc>https://medflick.com/treatment/parkinsons-treatment/oman</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -661,7 +667,13 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://medflick.com/treatment/dystonia-treatment/india,oman</loc>
+    <loc>https://medflick.com/treatment/dystonia-treatment/india</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+   <url>
+    <loc>https://medflick.com/treatment/dystonia-treatment/oman</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -1111,7 +1123,13 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://medflick.com/treatment/brain-tumour-surgery/india,oman</loc>
+    <loc>https://medflick.com/treatment/brain-tumour-surgery/oman</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+   <url>
+    <loc>https://medflick.com/treatment/brain-tumour-surgery/india</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -1189,7 +1207,13 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://medflick.com/treatment/spine-surgery/india,oman</loc>
+    <loc>https://medflick.com/treatment/spine-surgery/india</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+   <url>
+    <loc>https://medflick.com/treatment/spine-surgery/oman</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -1465,7 +1489,13 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://medflick.com/treatment/interstim-therapy-bladder-bowel-control/india,oman</loc>
+    <loc>https://medflick.com/treatment/interstim-therapy-bladder-bowel-control/oman</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+   <url>
+    <loc>https://medflick.com/treatment/interstim-therapy-bladder-bowel-control/india</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -1651,7 +1681,13 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://medflick.com/speciality/neurosurgery/india,oman,afghanistan,aland-islands,albania,algeria,andorra</loc>
+    <loc>https://medflick.com/speciality/neurosurgery/oman</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+    <url>
+    <loc>https://medflick.com/speciality/neurosurgery/india</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -2053,7 +2089,13 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://medflick.com/treatment/spinal-cord-injury-treatment/india,oman</loc>
+    <loc>https://medflick.com/treatment/spinal-cord-injury-treatment/india</loc>
+    <lastmod>2023-11-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+    <url>
+    <loc>https://medflick.com/treatment/spinal-cord-injury-treatment/oman</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
