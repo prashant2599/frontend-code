@@ -1,4 +1,3 @@
-
 import getALLBlogs from "../lib/getALLBlogs";
 import getAllSpeciality from "../lib/getAllSpeciality";
 import NewBlogPage from "./NewBlogPage";
@@ -9,10 +8,17 @@ const page = async () => {
   const data = await getALLBlogs();
   const blog = data.data.blogs;
 
+  const pageNumber = data.data.page;
+  const totalCount = data.data.count;
+
   return (
     <>
       <NewHeader />
-      <NewBlogPage blog={blog} />
+      <NewBlogPage
+        blog={blog}
+        pageNumber={pageNumber}
+        totalCount={totalCount}
+      />
       <NewFooter />
     </>
   );

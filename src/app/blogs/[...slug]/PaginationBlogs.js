@@ -15,10 +15,15 @@ function formatText(text) {
   }
 }
 
-const PaginationBlogs = async ({ blogs, number, category }) => {
+const PaginationBlogs = async ({
+  blogs,
+  number,
+  category,
+  totalBlogs,
+  pageNumber,
+}) => {
   const data = await getAllSpeciality();
   const speciality = data.data.Speciality;
- 
 
   // Treading Blogs
 
@@ -38,12 +43,8 @@ const PaginationBlogs = async ({ blogs, number, category }) => {
   const recent = await getALLBlogList();
   const Rblog = recent.bloglist.data;
 
-  const recentTen = Rblog?.slice(0, 10) ?? [];
-
-  const uniqueLocations = [...new Set(Rblog.map((e) => e.speciality_id))];
-
   const itemsPerPage = 10; // You can adjust this based on your preference
-  const totalBlogs = Rblog.length;
+  // const totalBlogs = Rblog.length;
   const totalPages = Math.ceil(totalBlogs / itemsPerPage);
 
   // Generate an array of page numbers
@@ -129,7 +130,7 @@ const PaginationBlogs = async ({ blogs, number, category }) => {
             <div className="blog-right-medflick">
               <h4>Recent Posts</h4>
               <ul>
-                {recentTen.map((e) => (
+                {Rblog.map((e) => (
                   <li key={e.id}>
                     <Link href={`/blog/${e.slug}`}>{e.name}</Link>
                   </li>
@@ -148,18 +149,11 @@ const PaginationBlogs = async ({ blogs, number, category }) => {
 
               <h4>Category</h4>
               <ul>
-                {uniqueLocations.map((blog) => {
-                  const matchingSpecialities = speciality.filter(
-                    (speciality) => String(speciality.id) === String(blog)
-                  );
-
-                  // console.log("Matching Specialities:", uniqueLocations);
-                  return matchingSpecialities.map((e) => (
-                    <li key={e.id}>
-                      <Link href={`/blogs/${e.slug}`}>{e.name} Blogs</Link>
-                    </li>
-                  ));
-                })}
+                {speciality.map((e) => (
+                  <li key={e.id}>
+                    <Link href={`/blogs/${e.slug}`}>{e.name} Blogs</Link>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>

@@ -6,7 +6,7 @@ import getALLTreadingBlogs from "../lib/getAllTreadingBlogs";
 import getALLBlogList from "../lib/getAllBlogList";
 import TreadingBlogs from "./TreadingBlogs";
 
-const NewBlogPage = async ({ blog }) => {
+const NewBlogPage = async ({ blog, pageNumber, totalCount }) => {
   const data = await getAllSpeciality();
   const speciality = data.data.Speciality;
 
@@ -21,9 +21,6 @@ const NewBlogPage = async ({ blog }) => {
   const recent = await getALLBlogList();
   const Rblog = recent.bloglist.data;
 
-  const recentTen = Rblog?.slice(0, 10) ?? [];
-
-  const uniqueLocations = [...new Set(Rblog.map((e) => e.speciality_id))];
   return (
     <>
       <section id="blog-list-medflick">
@@ -63,13 +60,13 @@ const NewBlogPage = async ({ blog }) => {
                 ))}
               </ul>
 
-              <NumberPage blogs={Rblog} />
+              <NumberPage pageNumber={pageNumber} totalCount={totalCount} />
             </div>
 
             <div className="blog-right-medflick">
               <h4>Recent Posts</h4>
               <ul>
-                {recentTen.map((e) => (
+                {Rblog.map((e) => (
                   <li key={e.id}>
                     <Link href={`/blog/${e.slug}`}>{e.name}</Link>
                   </li>
@@ -86,7 +83,12 @@ const NewBlogPage = async ({ blog }) => {
 
               <h4>Category</h4>
               <ul>
-                {uniqueLocations.map((blog) => {
+                {speciality.map((e) => (
+                  <li key={e.id}>
+                    <Link href={`/blogs/${e.slug}`}>{e.name} Blogs</Link>
+                  </li>
+                ))}
+                {/* {uniqueLocations.map((blog) => {
                   const matchingSpecialities = speciality.filter(
                     (speciality) => String(speciality.id) === String(blog)
                   );
@@ -97,7 +99,7 @@ const NewBlogPage = async ({ blog }) => {
                       <Link href={`/blogs/${e.slug}`}>{e.name} Blogs</Link>
                     </li>
                   ));
-                })}
+                })} */}
               </ul>
             </div>
           </div>

@@ -28,6 +28,8 @@ const page = async ({ params }) => {
     );
     const datas = await res.json();
     const blogs = datas.data.blogs;
+    const pageNumber = datas.data.page
+    const totalBlogs = datas.data.count
 
     const parts = combinedSlug.split("/");
 
@@ -38,7 +40,7 @@ const page = async ({ params }) => {
     return (
       <>
         <NewHeader />
-        <PaginationBlogs blogs={blogs} number={number} category={category} />
+        <PaginationBlogs blogs={blogs} number={number} category={category} pageNumber={pageNumber} totalBlogs={totalBlogs} />
         <NewFooter />
       </>
     );

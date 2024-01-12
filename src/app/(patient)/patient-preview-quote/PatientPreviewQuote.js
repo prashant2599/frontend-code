@@ -4,6 +4,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import Success from "@/app/Home/successPopup/Success";
 import ErrorPopup from "@/app/Home/successPopup/ErrorPopup";
+import Link from "next/link";
 
 function formatText(text) {
   if (typeof text === "string") {
@@ -323,9 +324,9 @@ const PatientPreviewQuote = () => {
       <section id="request-quote-section">
         <div className="midbox-inner wiki-mk">
           <div className="top-back">
-            <a href="#">
+            <Link href="/patient-quote">
               <img src="images/2023/01/back-icon.png" /> Back
-            </a>
+            </Link>
 
             <div className="barbox">
               <div className="barbox-bar">

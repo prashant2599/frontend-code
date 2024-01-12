@@ -4,13 +4,11 @@ import Link from "next/link";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
-import DashboardSearch from "./DashboardSearch";
-import { useUser } from "@/app/UserContext";
+
 import DashBoardAssistance from "../DashBoardAssistance";
+import DashboardTop from "./DashboardTop";
 
 const Dashboard = () => {
-  const { userData } = useUser();
-
   const router = useRouter();
 
   const [patientId, setPatientId] = useState("");
@@ -50,47 +48,36 @@ const Dashboard = () => {
 
   const queryLatest = query?.slice(0, 4) ?? [];
 
-  const displayText =
-    userData && userData.name
-      ? `Hi ${
-          userData.name.split(" ")[0].charAt(0).toUpperCase() +
-          userData.name.split(" ")[0].slice(1)
-        }`
-      : null;
-
-  console.log(userData);
   return (
     <>
       <section id="hometop-patient-section">
         <div className="midbox-inner wiki-mk">
-          <div className="home-topbox">
-            <div className="topbox-left">
-              <h1>{displayText}</h1>
-              <h2>Welcome to Medflick!</h2>
-            </div>
-            <DashboardSearch />
-          </div>
-
+          <DashboardTop />
           <div className="home-searchbox">
             <div className="searchbox-left">
               {/* <h2>Lorem ipsum dolor</h2> */}
               <ul>
                 <li>
-                  <img src="/images/2023/01/1.png" alt="icon-img" />
-                  <h3>View Quote</h3>
-                  <p>Know the best price for you</p>
+                  <Link href="/patient-quote-list">
+                    <img src="/images/2023/01/1.png" alt="icon-img" />
+                    <h3>View Quote</h3>
+                    <p>Know the best price for you</p>
+                  </Link>
                 </li>
                 <li>
                   <Link href="/patient-quote">
                     <img src="/images/2023/01/2.png" alt="icon-img" />
                     <h3>Request Quote</h3>
+
+                    <p>Receive cost estimate at earliest</p>
                   </Link>
-                  <p>Receive cost estimate at earliest</p>
                 </li>
                 <li>
-                  <img src="/images/2023/01/3.png" alt="icon-img" />
-                  <h3>Need Help?</h3>
-                  <p>We are here to help you</p>
+                  <Link href="/contact-us">
+                    <img src="/images/2023/01/3.png" alt="icon-img" />
+                    <h3>Need Help?</h3>
+                    <p>We are here to help you</p>
+                  </Link>
                 </li>
               </ul>
             </div>
