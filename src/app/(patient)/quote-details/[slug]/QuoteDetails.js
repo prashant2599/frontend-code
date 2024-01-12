@@ -29,7 +29,7 @@ const QuoteDetails = ({ info }) => {
   useEffect(() => {
     // Check if patientId exists before making the API call
 
-    const apiUrl = `https://api.medflick.com/api/hospital_id/id/${hospitalId}`;
+    const apiUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/api/hospital_id/id/${hospitalId}`;
 
     axios
       .get(apiUrl)
@@ -42,10 +42,10 @@ const QuoteDetails = ({ info }) => {
   }, [hospitalId]);
 
   const createdAt = new Date(info.created_at);
-  const formattedDate = createdAt.toLocaleDateString('en-GB', {
-    day: 'numeric',
-    month: 'short',
-    year: 'numeric',
+  const formattedDate = createdAt.toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
   });
   return (
     <>
