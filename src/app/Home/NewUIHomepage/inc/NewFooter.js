@@ -3,12 +3,11 @@
 import { useState, useEffect } from "react";
 import getAllSpeciality from "@/app/lib/getAllSpeciality";
 import {
-  AiOutlineTwitter,
-  AiFillYoutube,
   AiOutlineInstagram,
   AiFillLinkedin,
   AiOutlinePlus,
 } from "react-icons/ai";
+import { FaXTwitter } from "react-icons/fa6";
 import Link from "next/link";
 
 const NewFooter = () => {
@@ -264,7 +263,7 @@ const NewFooter = () => {
                 </li>
                 <li>
                   <a href=" https://twitter.com/MedFlick" target="_black">
-                    <AiOutlineTwitter style={{ fontSize: "20px" }} />
+                    <FaXTwitter style={{ fontSize: "20px" }} />
                   </a>
                 </li>
                 {/* <li>

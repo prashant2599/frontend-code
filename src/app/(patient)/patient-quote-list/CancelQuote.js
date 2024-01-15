@@ -3,13 +3,11 @@ import { useState } from "react";
 import axios from "axios";
 import Success from "@/app/Home/successPopup/Success";
 import ErrorPopup from "@/app/Home/successPopup/ErrorPopup";
-import { useRouter } from "next/navigation";
 
-const CancelAppointment = ({ id }) => {
-  const router = useRouter();
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
+const CancelQuote = ({ id }) => {
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const [showErrorPopup, setShowErrorPopup] = useState(false);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   const togglePopup = () => {
     setIsPopupOpen((prev) => !prev);
@@ -29,13 +27,8 @@ const CancelAppointment = ({ id }) => {
       setIsPopupOpen(false);
       setShowSuccessPopup(true);
 
-      setTimeout(() => {
-        router.push("/patient-quote-list");
-      }, 1000);
+      window.location.reload();
 
-      console.log("Appointment canceled successfully");
-
-      // You can also return the response if needed
       return response.data;
     } catch (error) {
       setShowErrorPopup(true);
@@ -72,12 +65,12 @@ const CancelAppointment = ({ id }) => {
   return (
     <>
       <a
-        className="cancel-appointment"
-        data-popup-open="popup-3"
         onClick={togglePopup}
         style={{ cursor: "pointer" }}
+        className="cancel-appointment1"
+        data-popup-open="popup-3"
       >
-        Cancel Appointment
+        Cancel Quote
       </a>
       <div className="popup" data-popup="popup-3" style={popupStyle}>
         <div className="popup-inner15">
@@ -135,4 +128,4 @@ const CancelAppointment = ({ id }) => {
   );
 };
 
-export default CancelAppointment;
+export default CancelQuote;

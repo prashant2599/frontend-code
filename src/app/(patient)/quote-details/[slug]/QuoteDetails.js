@@ -99,7 +99,8 @@ const QuoteDetails = ({ info }) => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {info.uploadfiles}
+                Your Uploaded Quote
+                
               </a>
             </div>
           </div>

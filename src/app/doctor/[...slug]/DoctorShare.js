@@ -6,9 +6,9 @@ import {
   TwitterShareButton,
   WhatsappShareButton,
   FacebookIcon,
-  TwitterIcon,
   WhatsappIcon,
 } from "react-share";
+import CustomTwitter from "@/app/Home/CustomTwitterIcon/CustomTwitter";
 
 const DoctorShare = ({ slug }) => {
   const [sharedDoctorSlug, setSharedDoctorSlug] = useState("");
@@ -80,7 +80,7 @@ const DoctorShare = ({ slug }) => {
                   <TwitterShareButton
                     url={`${window.location.origin}/doctor/${sharedDoctorSlug}`}
                   >
-                    <TwitterIcon size={50} round />
+                    <CustomTwitter />
                   </TwitterShareButton>
                 </li>
                 <li>

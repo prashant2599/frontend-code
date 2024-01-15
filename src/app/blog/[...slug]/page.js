@@ -8,6 +8,7 @@ import NewHeader from "@/app/Home/NewUIHomepage/inc/NewHeader";
 import NewFooter from "@/app/Home/NewUIHomepage/inc/NewFooter";
 import CategoryDoctors from "./CategoryDoctors";
 import CategoryHospitals from "./CategoryHospitals";
+import BlogNewsletter from "./BlogNewsletter";
 
 const page = async ({ params }) => {
   try {
@@ -290,34 +291,8 @@ const page = async ({ params }) => {
         <CategoryWiseBlogDetais />
         <CategoryDoctors specialityId={blogDetails.speciality_id} />
         <CategoryHospitals specialityId={blogDetails.speciality_id} />
-        <section id="newslette-section">
-          <div className="midbox-inner  wiki-mk">
-            <div className="newslette-box">
-              <div className="newslette-left">
-                <h2>Stay Informed, Stay Healthy</h2>
-                <p>
-                  Subscribe to our Newsletter and make your informed health
-                  decisions. Get essential health insights and updates delivered
-                  straight to your inbox. Join now for a healthier you.
-                </p>
-              </div>
-              <div className="newslette-right">
-                <div className="latest-news">
-                  <input
-                    className="latest-newsbox"
-                    type="text"
-                    placeholder="Email address"
-                    name="name"
-                    required=""
-                  />
-                  <button type="submit" name="en" className="news-button">
-                    Sign Up <img src="/images/2023/01/arrow-w.png" alt="" />
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+
+        <BlogNewsletter />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
