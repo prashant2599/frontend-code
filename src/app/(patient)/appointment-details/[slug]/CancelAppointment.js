@@ -22,7 +22,7 @@ const CancelAppointment = ({ id }) => {
   const handleCancelAppointment = async (id) => {
     try {
       const patientId = localStorage.getItem("userId");
-      const apiUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/api/cancel_quote/${patientId}/${id}`;
+      const apiUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/api/patient_appointment_cancel/${patientId}/${id}`;
 
       // Make the DELETE request
       const response = await axios.get(apiUrl);
@@ -30,10 +30,8 @@ const CancelAppointment = ({ id }) => {
       setShowSuccessPopup(true);
 
       setTimeout(() => {
-        router.push("/patient-quote-list");
+        router.push("/patient-appointment-list");
       }, 1000);
-
-      console.log("Appointment canceled successfully");
 
       // You can also return the response if needed
       return response.data;

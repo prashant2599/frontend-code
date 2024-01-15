@@ -720,7 +720,7 @@ button.active .city-icon-h {
   }
 
   #home-treatment-costs li h3 {
-    font-size: 18px;
+    font-size: 15px;
   }
 }
 
@@ -2044,6 +2044,10 @@ button.active .city-icon-h {
     font-size: 30px;
     line-height: 37px;
     width: 100%;
+  }
+
+  .blog-item h3 {
+    font-size: 19px;
   }
 
   .home-hospitals {

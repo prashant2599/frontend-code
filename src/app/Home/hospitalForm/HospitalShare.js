@@ -6,9 +6,10 @@ import {
     TwitterShareButton,
     WhatsappShareButton,
     FacebookIcon,
-    TwitterIcon,
+
     WhatsappIcon,
   } from "react-share";
+  import CustomTwitter from "../CustomTwitterIcon/CustomTwitter";
 
 const HospitalShare = ({country,slug}) => {
     const [sharedHospitalCountry, setSharedHospitalCountry] = useState("");
@@ -79,7 +80,7 @@ const HospitalShare = ({country,slug}) => {
                   <TwitterShareButton
                     url={`${window.location.origin}/hospital/${sharedHospitalSlug}/${sharedHospitalCountry}`}
                   >
-                    <TwitterIcon size={50} round />
+                    <CustomTwitter />
                   </TwitterShareButton>
                 </li>
                 <li>

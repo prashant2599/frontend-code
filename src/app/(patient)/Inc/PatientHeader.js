@@ -125,6 +125,12 @@ const PatientHeader = () => {
                   <li>
                     <Link href="/patient-account"> View Profile </Link>
                   </li>
+                  <li>
+                    <Link href="/patient-appointment-list">
+                      {" "}
+                      View Appointments{" "}
+                    </Link>
+                  </li>
                 </ul>
               </div>
             </nav>
@@ -190,7 +196,7 @@ const PatientHeader = () => {
           <div className="header-inner wiki-mk">
             <Link href="/patient-dashboard" target="_self" className="logo-m">
               {" "}
-              <img src="images/2023/01/logo.png" alt="Brand Logo" />
+              <img src="/images/2023/01/logo.png" alt="Brand Logo" />
             </Link>
 
             <nav className="navbar">

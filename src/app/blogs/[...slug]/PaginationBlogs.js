@@ -73,6 +73,7 @@ const PaginationBlogs = async ({
                   <img
                     src={`${process.env.NEXT_PUBLIC_BASE_URL}/blog/${e.icon}`}
                     alt={e.name}
+                    className="popular-blog-img"
                   />
                 ) : null}
                 <Link href={`/blog/${e.slug}`}>

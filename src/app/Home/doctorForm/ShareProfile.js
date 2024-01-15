@@ -6,9 +6,9 @@ import {
   TwitterShareButton,
   WhatsappShareButton,
   FacebookIcon,
-  TwitterIcon,
   WhatsappIcon,
 } from "react-share";
+import CustomTwitter from "../CustomTwitterIcon/CustomTwitter";
 
 const ShareProfile = ({ slug }) => {
   const [sharedDoctorSlug, setSharedDoctorSlug] = useState("");
@@ -42,6 +42,9 @@ const ShareProfile = ({ slug }) => {
     inputRef.current.setSelectionRange(0, 0);
     setCopyMessage("Link copied!");
   };
+
+ 
+
   return (
     <>
       <span
@@ -76,11 +79,11 @@ const ShareProfile = ({ slug }) => {
                     <FacebookIcon size={50} round />
                   </FacebookShareButton>
                 </li>
-                <li>
+                <li style={{ width: "auto" }}>
                   <TwitterShareButton
                     url={`${window.location.origin}/doctor/${sharedDoctorSlug}`}
                   >
-                    <TwitterIcon size={50} round />
+                    <CustomTwitter />
                   </TwitterShareButton>
                 </li>
                 <li>
@@ -90,6 +93,7 @@ const ShareProfile = ({ slug }) => {
                     <WhatsappIcon size={50} round />
                   </WhatsappShareButton>
                 </li>
+             
               </ul>
 
               <div className="share-link">

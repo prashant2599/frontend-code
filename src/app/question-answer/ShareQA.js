@@ -6,10 +6,10 @@ import {
   TwitterShareButton,
   WhatsappShareButton,
   FacebookIcon,
-  TwitterIcon,
   WhatsappIcon,
 } from "react-share";
 import { useState, useRef } from "react";
+import CustomTwitter from "../Home/CustomTwitterIcon/CustomTwitter";
 
 const ShareQA = ({ desc, id }) => {
   const [isPopupOpenShare, setIsPopupOpenShare] = useState(false);
@@ -91,7 +91,7 @@ const ShareQA = ({ desc, id }) => {
                         .replace(/-+$/, "")
                     )}`}
                   >
-                    <TwitterIcon size={50} round />
+                    <CustomTwitter />
                   </TwitterShareButton>
                 </li>
                 <li>

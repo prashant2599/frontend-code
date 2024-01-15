@@ -1,10 +1,10 @@
 "use client";
 import { useState } from "react";
 import axios from "axios";
-import Success from "../successPopup/Success";
-import ErrorPopup from "../successPopup/ErrorPopup";
+import Success from "@/app/Home/successPopup/Success";
+import ErrorPopup from "@/app/Home/successPopup/ErrorPopup";
 
-const NewStayInTouch = () => {
+const BlogNewsletter = () => {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
@@ -55,44 +55,45 @@ const NewStayInTouch = () => {
   };
 
   const desc = "Thank you for joining us on the journey to wellness!";
+
   return (
     <>
-      <section id="home-latest-updates">
-        <div className="midbox-inner wiki-mk">
-          <div className="home-latest-updates">
-            <div className="home-latest-updatesleft">
-              <h2>MedBlog: Your Source for Health Knowledge</h2>
+      <section id="newslette-section">
+        <div className="midbox-inner  wiki-mk">
+          <div className="newslette-box">
+            <div className="newslette-left">
+              <h2>Stay Informed, Stay Healthy</h2>
+              <p>
+                Subscribe to our Newsletter and make your informed health
+                decisions. Get essential health insights and updates delivered
+                straight to your inbox. Join now for a healthier you.
+              </p>
             </div>
-
-            <div className="home-latest-updatesright">
-              <h3>Sign up to get Latest updates</h3>
-              {/* <p>Get updates, beauty news, and special offers</p> */}
-
-              <div className="footer-latest-news">
+            <div className="newslette-right">
+              <div className="latest-news">
                 <input
-                  className="footer-news"
+                  className="latest-newsbox"
                   type="text"
-                  placeholder="Enter Your Email address"
+                  placeholder="Email address"
                   name="name"
                   value={email}
                   onChange={handleInputChange}
-                  required
                 />
-
                 <button
                   type="submit"
-                  className="footer-news-button"
+                  className="news-button"
                   disabled={loading}
                   onClick={handleFormSubmit}
                 >
                   {loading ? "Signing..." : "Sign Up"}
+                  <img src="/images/2023/01/arrow-w.png" alt="" />
                 </button>
+                {error && (
+                  <p className="error-message" style={{ textAlign: "left" }}>
+                    {error}
+                  </p>
+                )}
               </div>
-              {error && (
-                <p className="error-message" style={{ textAlign: "left" }}>
-                  {error}
-                </p>
-              )}
             </div>
           </div>
         </div>
@@ -114,4 +115,4 @@ const NewStayInTouch = () => {
   );
 };
 
-export default NewStayInTouch;
+export default BlogNewsletter;
