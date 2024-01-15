@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useEffect, useState, useCallback } from "react";
 import axios from "axios";
+import CancelAppointmentList from "./CancelAppointmentList";
 
 const AppoinmentList = () => {
   const [quoteList, setQuoteList] = useState([]);
@@ -169,12 +170,8 @@ const AppoinmentList = () => {
                       >
                         View Details
                       </Link>
-                      <a
-                        className="cancel-appointment1"
-                        data-popup-open="popup-3"
-                      >
-                        Cancel Appointment
-                      </a>
+                 
+                      <CancelAppointmentList id={e.id} />
                     </div>
                   </div>
                 </div>

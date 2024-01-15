@@ -7,6 +7,7 @@ import DoctorListPopForm from "../Home/doctorForm/DoctorListPopForm";
 import DoctorsSearch from "./[...slug]/DoctorsSearch";
 import AllDoctorPagination from "./AllDoctorPagination";
 import AllDoctorsFilteration from "./AllDoctorsFilteration";
+import AppointmentForm from "../Home/doctorForm/AppointmentForm";
 
 const AllDoctors = async () => {
   const data = await getAllDoctors();
@@ -81,7 +82,7 @@ const AllDoctors = async () => {
                         </div>
                       </div>
                       <div className="doctor-item-button">
-                        <DoctorListPopForm
+                        <AppointmentForm
                           first={e.prefix}
                           middle={e.first_name}
                           last={e.last_name}

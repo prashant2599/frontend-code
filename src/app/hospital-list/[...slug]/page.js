@@ -4,13 +4,12 @@ import HospitalFilters from "@/app/hospitals/HospitalFilters";
 import React from "react";
 import HospitalForm from "@/app/Home/hospitalForm/HospitalForm";
 import Image from "next/image";
-import { AiTwotoneStar } from "react-icons/ai";
 import { notFound } from "next/navigation";
-import HospitalListPopUpForm from "@/app/Home/hospitalForm/HospitalListPopUpForm";
 import HospitalSearch from "@/app/hospitals/[...slug]/HospitalSearch";
 import NewHeader from "@/app/Home/NewUIHomepage/inc/NewHeader";
 import NewFooter from "@/app/Home/NewUIHomepage/inc/NewFooter";
 import getALLCountry from "@/app/lib/getAllCountry";
+import AppointmentForm from "@/app/Home/hospitalForm/AppointmentForm";
 
 function formatText(text) {
   if (typeof text === "string") {
@@ -192,7 +191,7 @@ const page = async ({ params }) => {
                         </div>
 
                         <div className="doctor-item-button">
-                          <HospitalListPopUpForm
+                          <AppointmentForm
                             name={hospital.name}
                             hospitalId={hospital.id}
                             specialityId={hospital.speciality_id}

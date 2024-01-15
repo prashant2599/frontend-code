@@ -4,10 +4,10 @@ import PatientQuery from "./PatientQuery";
 
 const page = () => {
   return (
-    <div>
+    <>
       <PatientHeader />
       <PatientQuery />
-    </div>
+    </>
   );
 };
 

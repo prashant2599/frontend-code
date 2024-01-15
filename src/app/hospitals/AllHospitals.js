@@ -2,11 +2,10 @@ import getAllHospitals from "../lib/getAllHospitals";
 import HospitalShare from "../Home/hospitalForm/HospitalShare";
 import HospitalForm from "../Home/hospitalForm/HospitalForm";
 import Link from "next/link";
-import { AiTwotoneStar } from "react-icons/ai";
-import HospitalListPopUpForm from "../Home/hospitalForm/HospitalListPopUpForm";
 import HospitalSearch from "./[...slug]/HospitalSearch";
 import AllHospitalPagination from "./AllHospitalPagination";
 import AllHospitalsFilteration from "./AllHospitalsFilteration";
+import AppointmentForm from "../Home/hospitalForm/AppointmentForm";
 
 const AllHospitals = async () => {
   const data = await getAllHospitals();
@@ -115,7 +114,9 @@ const AllHospitals = async () => {
                       </div>
                     </div>
                     <div className="doctor-item-button">
-                      <HospitalListPopUpForm
+                    
+
+                      <AppointmentForm
                         name={hospital.name}
                         hospitalId={hospital.id}
                         specialityId={hospital.speciality_id}

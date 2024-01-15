@@ -2081,7 +2081,7 @@ button.active .city-icon-h {
   }
 
   .question h5 {
-    font-size: 1.25rem;
+    font-size: 16px;
     font-style: normal;
     font-weight: 600;
     letter-spacing: 0px;
@@ -2090,8 +2090,8 @@ button.active .city-icon-h {
   }
 
   .arrow {
-    width: 25px;
-    height: 25px;
+    width: 16px;
+    height: 16px;
     right: 5px;
   }
 

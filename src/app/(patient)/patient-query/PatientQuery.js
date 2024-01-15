@@ -3,6 +3,8 @@
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import React, { useState, useEffect } from "react";
+import DashboardTop from "../patient-dashboard/DashboardTop";
+import Link from "next/link";
 
 const PatientQuery = () => {
   const router = useRouter();
@@ -45,67 +47,43 @@ const PatientQuery = () => {
 
   return (
     <>
-      {" "}
-      <section id="hometop-section">
+      <section id="hometop-patient-section">
         <div className="midbox-inner wiki-mk">
-          <div className="home-topbox">
-            <div className="topbox-left">
-              <h1>Hi {userName}</h1>
-              <h2>lorem ipsum dolor sit amet quies</h2>
-            </div>
+          <DashboardTop />
 
-            <div className="topbox-right">
-              <div className="find-box">
-                <div className="search-box">
-                  <input
-                    type="text"
-                    placeholder="Search for doctor, hospital or treatments"
-                    name="name"
-                    required=""
-                  />
+          <section id="section-queries">
+            <div className="midbox-inner  wiki-mk">
+              <div className="active-queries">
+                <div className="history-box">
+                  <h2>Active Queries</h2>
+                  <Link href="/patient-query" className="view-history">
+                    {" "}
+                    View History
+                  </Link>
                 </div>
-                <div className="city-box">
-                  <input
-                    type="text"
-                    placeholder="City"
-                    name="name"
-                    required=""
-                  />
-                </div>
-                <button type="submit" name="en" className="find-button">
-                  Search
-                </button>
+                <ul>
+                  {query.map((e) => (
+                    <li key={e.id}>
+                      <h4>{e.short_description}</h4>
+                      <p>{e.long_description}</p>
+                      <div className="queries-button">
+                        <div className="hospital-doctor">
+                          <img src="/images/2023/01/icon1.png" alt="icon" />{" "}
+                          <a href="#/">Hospital Name</a> /{" "}
+                          <a href="#/">Doctor Name</a>
+                        </div>
+                        <div className="queries-pdf">
+                          <img src="/images/2023/01/icon2.png" alt="icon" />{" "}
+                          <a href="#/">report.pdf</a> ,{" "}
+                          <a href="#/">report.pdf</a>
+                        </div>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
-          </div>
-
-          <div className="home-searchbox">
-            <div className="active-queries">
-              <div className="history-box">
-                <h2>Active Queries</h2>
-              </div>
-              <ul>
-                {query.map((e) => (
-                  <li key={e.id}>
-                    <h4>{e.short_description}</h4>
-                    <p>{e.long_description}</p>
-                    <div className="queries-button">
-                      <div className="hospital-doctor">
-                        <img src="/images/2023/01/icon1.png" alt="icon" />{" "}
-                        <a href="#/">Hospital Name</a> /{" "}
-                        <a href="#/">Doctor Name</a>
-                      </div>
-                      <div className="queries-pdf">
-                        <img src="/images/2023/01/icon2.png" alt="icon" />{" "}
-                        <a href="#/">report.pdf</a> ,{" "}
-                        <a href="#/">report.pdf</a>
-                      </div>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          </section>
         </div>
       </section>
     </>

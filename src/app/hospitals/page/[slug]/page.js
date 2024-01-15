@@ -1,11 +1,11 @@
 import HospitalSearch from "../../[...slug]/HospitalSearch";
 import Link from "next/link";
-import { AiTwotoneStar } from "react-icons/ai";
-import HospitalListPopUpForm from "@/app/Home/hospitalForm/HospitalListPopUpForm";
 import AllHospitalPagination from "../../AllHospitalPagination";
 import NewHeader from "@/app/Home/NewUIHomepage/inc/NewHeader";
 import NewFooter from "@/app/Home/NewUIHomepage/inc/NewFooter";
 import AllHospitalsFilteration from "../../AllHospitalsFilteration";
+import AppointmentForm from "@/app/Home/hospitalForm/AppointmentForm";
+import HospitalShare from "@/app/Home/hospitalForm/HospitalShare";
 
 const page = async ({ params }) => {
   const combinedSlug = params.slug;
@@ -119,9 +119,10 @@ const page = async ({ params }) => {
                       </div>
                     </div>
                     <div className="doctor-item-button">
-                      <HospitalListPopUpForm
+                      <AppointmentForm
                         name={hospital.name}
                         hospitalId={hospital.id}
+                        specialityId={hospital.speciality_id}
                       />
 
                       <Link
@@ -132,10 +133,10 @@ const page = async ({ params }) => {
                         <img src="/images/2023/05/profile.png" alt="icon" />
                       </Link>
                       {/* share  */}
-                      {/* <HospitalShare
+                      <HospitalShare
                         slug={hospital.slug}
                         country={hospital.country}
-                      /> */}
+                      />
 
                       <div className="hospital-location-box">
                         {hospital.city.charAt(0).toUpperCase() +
