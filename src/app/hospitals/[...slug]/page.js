@@ -1,7 +1,6 @@
 import HospitalForm from "@/app/Home/hospitalForm/HospitalForm";
 import HospitalShare from "@/app/Home/hospitalForm/HospitalShare";
 import Link from "next/link";
-import { AiTwotoneStar } from "react-icons/ai";
 import HospitalFilters from "../HospitalFilters";
 import Image from "next/image";
 import React from "react";
