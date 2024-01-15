@@ -4,12 +4,12 @@ import DoctorForm from "@/app/Home/doctorForm/DoctorForm";
 import Image from "next/image";
 import SpecialitySelect from "@/app/doctorFilter/SpecialitySelect";
 import { notFound } from "next/navigation";
-import DoctorListPopForm from "@/app/Home/doctorForm/DoctorListPopForm";
 import DoctorsSearch from "@/app/doctors/[...slug]/DoctorsSearch";
 import TreatmentDoctorPagination from "./TreatmentDoctorPagination";
 import NewHeader from "@/app/Home/NewUIHomepage/inc/NewHeader";
 import NewFooter from "@/app/Home/NewUIHomepage/inc/NewFooter";
 import getALLCountry from "@/app/lib/getAllCountry";
+import AppointmentForm from "@/app/Home/doctorForm/AppointmentForm";
 
 function formatText(text) {
   if (typeof text === "string") {
@@ -145,7 +145,8 @@ const page = async ({ params }) => {
                           </div>
                         </div>
                         <div className="doctor-item-button">
-                          <DoctorListPopForm
+                        
+                          <AppointmentForm
                             first={e.prefix}
                             middle={e.first_name}
                             last={e.last_name}

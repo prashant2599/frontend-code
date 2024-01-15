@@ -6,11 +6,11 @@ import HospitalFilters from "../HospitalFilters";
 import Image from "next/image";
 import React from "react";
 import { notFound } from "next/navigation";
-import HospitalListPopUpForm from "@/app/Home/hospitalForm/HospitalListPopUpForm";
 import HospitalSearch from "./HospitalSearch";
 import NewHeader from "@/app/Home/NewUIHomepage/inc/NewHeader";
 import NewFooter from "@/app/Home/NewUIHomepage/inc/NewFooter";
 import getALLCountry from "@/app/lib/getAllCountry";
+import AppointmentForm from "@/app/Home/hospitalForm/AppointmentForm";
 
 function formatText(text) {
   if (typeof text === "string") {
@@ -244,7 +244,8 @@ const page = async ({ params }) => {
                           </div>
                         </div>
                         <div className="doctor-item-button">
-                          <HospitalListPopUpForm
+                  
+                          <AppointmentForm
                             name={hospital.name}
                             hospitalId={hospital.id}
                             specialityId={hospital.speciality_id}

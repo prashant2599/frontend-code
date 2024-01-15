@@ -90,10 +90,10 @@ const Dashboard = () => {
           <div className="active-queries">
             <div className="history-box">
               <h2>Active Queries</h2>
-              <Link href="/patient-query" className="view-history">
+              {/* <Link href="/patient-query" className="view-history">
                 {" "}
                 View History
-              </Link>
+              </Link> */}
             </div>
             <ul>
               {queryLatest.map((e) => (

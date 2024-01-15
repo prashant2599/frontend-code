@@ -123,13 +123,10 @@ const PatientHeader = () => {
                     <Link href="/get-visa-assistance"> Visa Assistance </Link>
                   </li>
                   <li>
-                    <Link href="/patient-account"> View Profile </Link>
+                    <Link href="/patient-account"> Profile </Link>
                   </li>
                   <li>
-                    <Link href="/patient-appointment-list">
-                      {" "}
-                      View Appointments{" "}
-                    </Link>
+                    <Link href="/patient-appointment-list"> Appointments </Link>
                   </li>
                 </ul>
               </div>
@@ -265,6 +262,9 @@ const PatientHeader = () => {
                   <li className="menu-item has-collapsible">
                     <Link href="/get-visa-assistance">Visa Assistance</Link>
                   </li>
+                  <li className="menu-item has-collapsible">
+                    <Link href="/patient-appointment-list">Appointments</Link>
+                  </li>
                   <li className="menu-item">
                     <a
                       onClick={() => {
@@ -273,7 +273,7 @@ const PatientHeader = () => {
                       }}
                       className="login-link"
                     >
-                      View Profile
+                      Profile
                     </a>
                   </li>
                   <div className="menu-footer">

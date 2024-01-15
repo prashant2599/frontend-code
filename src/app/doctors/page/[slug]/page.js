@@ -2,12 +2,12 @@ import NewFooter from "@/app/Home/NewUIHomepage/inc/NewFooter";
 import NewHeader from "@/app/Home/NewUIHomepage/inc/NewHeader";
 import DoctorsSearch from "../../[...slug]/DoctorsSearch";
 import Link from "next/link";
-import DoctorListPopForm from "@/app/Home/doctorForm/DoctorListPopForm";
 import Image from "next/image";
 import ShareProfile from "@/app/Home/doctorForm/ShareProfile";
 import DoctorForm from "@/app/Home/doctorForm/DoctorForm";
 import AllDoctorsFilteration from "../../AllDoctorsFilteration";
 import AllDoctorPagination from "../../AllDoctorPagination";
+import AppointmentForm from "@/app/Home/doctorForm/AppointmentForm";
 
 const page = async ({ params }) => {
   const combinedSlug = params.slug;
@@ -96,7 +96,7 @@ const page = async ({ params }) => {
                         </div>
                       </div>
                       <div className="doctor-item-button">
-                        <DoctorListPopForm
+                        <AppointmentForm
                           first={e.prefix}
                           middle={e.first_name}
                           last={e.last_name}

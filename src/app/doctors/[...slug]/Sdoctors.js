@@ -2,10 +2,9 @@ import Link from "next/link";
 import SpecialitySelect from "@/app/doctorFilter/SpecialitySelect";
 import DoctorForm from "@/app/Home/doctorForm/DoctorForm";
 import ShareProfile from "@/app/Home/doctorForm/ShareProfile";
-import Image from "next/image";
-import DoctorListPopForm from "@/app/Home/doctorForm/DoctorListPopForm";
 import DoctorPagination from "../DoctorPagination";
 import DoctorsSearch from "./DoctorsSearch";
+import AppointmentForm from "@/app/Home/doctorForm/AppointmentForm";
 
 function formatText(text) {
   if (typeof text === "string") {
@@ -156,7 +155,7 @@ const Sdoctors = ({
                         </div>
                       </div>
                       <div className="doctor-item-button">
-                        <DoctorListPopForm
+                        <AppointmentForm
                           first={e.prefix}
                           middle={e.first_name}
                           last={e.last_name}

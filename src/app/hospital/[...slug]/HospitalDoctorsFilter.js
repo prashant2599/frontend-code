@@ -6,6 +6,7 @@ import Image from "next/image";
 import { AiTwotoneStar } from "react-icons/ai";
 import DoctorHospitalProfile from "@/app/Home/doctorForm/DoctorHospitalProfile";
 import { useRouter } from "next/navigation";
+import AppointmentForm from "@/app/Home/doctorForm/AppointmentForm";
 
 const HospitalDoctorsFilter = ({ doctor }) => {
   const router = useRouter();
@@ -275,13 +276,20 @@ const HospitalDoctorsFilter = ({ doctor }) => {
                 }}
               />
             </div>
-            <DoctorHospitalProfile
-              slug={e.slug}
-              first={e.prefix}
-              middle={e.first_name}
-              last={e.last_name}
-              specialityId={e.speciality_id}
-            />
+
+            <div className="doctor-item-button">
+              <AppointmentForm
+                slug={e.slug}
+                first={e.prefix}
+                middle={e.first_name}
+                last={e.last_name}
+                specialityId={e.speciality_id}
+              />
+              <Link href={`/doctor/${e.slug}`} className="view-profile">
+                View Profile{" "}
+                <img src="/images/2023/05/profile.png" alt="icons" />
+              </Link>
+            </div>
           </div>
         ))}
 

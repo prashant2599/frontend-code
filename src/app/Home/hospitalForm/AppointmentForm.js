@@ -355,7 +355,7 @@ const AppointmentForm = ({ hospitalId, HospitalName, specialityId }) => {
         onClick={togglePopup}
         style={{ cursor: "pointer" }}
       >
-        Enquire Now <img src="/images/2023/05/book.png" alt="icon" />
+        Book Appointment <img src="/images/2023/05/book.png" alt="icon" />
       </span>
       {isPopupOpen && (
         <div className="popup" data-popup="popup-1" style={popupStyle}>
