@@ -1,6 +1,7 @@
 import Link from "next/link";
 import NewHeader from "../Home/NewUIHomepage/inc/NewHeader";
 import NewFooter from "../Home/NewUIHomepage/inc/NewFooter";
+import Marquee from "../Home/marquee/Marquee";
 
 async function getSpeciality() {
   const res = await fetch(
@@ -59,20 +60,7 @@ const page = async () => {
       </section>
 
       <section className="treatment-marquee" id="category-marquee">
-        <div className="marquee-wrapper">
-          <div className="marquee" style={{ animationDuration: "11s" }}>
-            <div className="Marquee-tag"> 95% Success Rate </div>
-            <div className="Marquee-tag"> 11000+ Top Doctors </div>
-            <div className="Marquee-tag"> 150+ Top Hospital </div>
-            <div className="Marquee-tag"> 250+ Surgeries </div>
-            <div className="Marquee-tag"> 35+ Countries </div>
-            <div className="Marquee-tag"> 95% Success Rate </div>
-            <div className="Marquee-tag"> 11000+ Top Doctors </div>
-            <div className="Marquee-tag"> 150+ Top Hospital </div>
-            <div className="Marquee-tag"> 250+ Surgeries </div>
-            <div className="Marquee-tag"> 35+ Countries </div>
-          </div>
-        </div>
+        <Marquee />
       </section>
       <NewFooter />
     </>

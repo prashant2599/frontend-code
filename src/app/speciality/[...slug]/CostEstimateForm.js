@@ -332,7 +332,7 @@ const CostEstimateForm = ({ specialityId }) => {
                   <div className="owl-slider">
                     <div id="cost-estimate" className="owl-carousel">
                       <div className="item">
-                        <img src="/images/wellness.png" />
+                        <img src="/images/wellness.webp" />
                         <div className="cost-estimate-box">
                           <div className="cost-estimate-items">
                             <p>Navigate Towards Wellness</p>

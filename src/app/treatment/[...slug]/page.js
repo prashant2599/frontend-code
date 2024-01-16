@@ -1,5 +1,4 @@
 import NavForm1 from "@/app/Home/treatmentForm/NavForm1";
-import NavForm2 from "@/app/Home/treatmentForm/NavForm2";
 import TreatmentForm1 from "@/app/Home/treatmentForm/TreatmentForm1";
 import Link from "next/link";
 import NavDoctors from "./NavDoctors";
@@ -14,6 +13,7 @@ import { notFound } from "next/navigation";
 import NewHeader from "@/app/Home/NewUIHomepage/inc/NewHeader";
 import NewFooter from "@/app/Home/NewUIHomepage/inc/NewFooter";
 import TreatmentFreeQuotePopup from "./TreatmentFreeQuotePopup";
+import Marquee from "@/app/Home/marquee/Marquee";
 
 function formatText(text) {
   if (typeof text === "string") {
@@ -117,22 +117,8 @@ const page = async ({ params }) => {
         {/* cost comprision */}
         <CostCityWise cost={cost} info={info.menu_name} />
         <section className="treatment-marquee" id="category-marquee">
-          <div className="marquee-wrapper">
-            <div className="marquee" style={{ animationDuration: "11s" }}>
-              <div className="Marquee-tag"> 95% Success Rate </div>
-              <div className="Marquee-tag"> 11000+ Doctors </div>
-              <div className="Marquee-tag"> 150+ Top Hospital </div>
-              <div className="Marquee-tag"> 250+ Surgeries </div>
-              <div className="Marquee-tag"> 35+ Countries </div>
-              <div className="Marquee-tag"> 95% Success Rate </div>
-              <div className="Marquee-tag"> 11000+ Doctors </div>
-              <div className="Marquee-tag"> 150+ Top Hospital </div>
-              <div className="Marquee-tag"> 250+ Surgeries </div>
-              <div className="Marquee-tag"> 35+ Countries </div>
-            </div>
-          </div>
+          <Marquee />
         </section>
-
         <section id="treatment-mid">
           <div className="midbox-inner  wiki-mk">
             <div className="treatment-findox">
@@ -393,7 +379,7 @@ const page = async ({ params }) => {
 
                 {/*  form 2 */}
 
-                <NavForm2
+                <NavForm1
                   treatmentId={info.id}
                   specialityId={info.speciality_id}
                 />
@@ -539,7 +525,7 @@ const page = async ({ params }) => {
 
               <div className="treatment-rightbox">
                 <div className="free-consultation">
-                  <img src="/images/2023/03/free-consultation.jpg" />
+                  <img src="/images/2023/03/free-consultation.webp" />
                   <h3>
                     Book a free Consultation with Highly Qualified Doctors
                   </h3>

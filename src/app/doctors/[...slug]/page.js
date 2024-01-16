@@ -1,7 +1,4 @@
-import { Inria_Serif } from "next/font/google";
 import Sdoctors from "./Sdoctors";
-import { Suspense } from "react";
-import { useRouter } from "next/navigation";
 import { notFound } from "next/navigation";
 import NewHeader from "@/app/Home/NewUIHomepage/inc/NewHeader";
 import NewFooter from "@/app/Home/NewUIHomepage/inc/NewFooter";

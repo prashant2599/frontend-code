@@ -7,6 +7,7 @@ import ChangePassword from "./ChangePassword";
 import { useRouter } from "next/navigation";
 import DashBoardAssistance from "../DashBoardAssistance";
 import DeleteAccount from "./DeleteAccount";
+import Link from "next/link";
 
 const AccountDetails = () => {
   const router = useRouter();
@@ -546,7 +547,9 @@ const AccountDetails = () => {
                     Appointment&apos; button. Select &apos;Cancel
                     Appointment&apos; to cancel that appointment.
                   </p>
-                  <a href="#/">Go to My Appointments</a>
+                  <Link href="/patient-appointment-list">
+                    Go to My Appointments
+                  </Link>
                 </div>
               </div>
 

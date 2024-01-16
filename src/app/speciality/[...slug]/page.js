@@ -14,6 +14,7 @@ import "../../Home/NewUIHomepage/newsection.css";
 import NewVideoSection from "@/app/Home/NewUIHomepage/NewVideoSection";
 import NewHeader from "@/app/Home/NewUIHomepage/inc/NewHeader";
 import NewFooter from "@/app/Home/NewUIHomepage/inc/NewFooter";
+import Marquee from "@/app/Home/marquee/Marquee";
 
 const page = async ({ params }) => {
   try {
@@ -49,7 +50,9 @@ const page = async ({ params }) => {
             alt="Category"
           ></img>
           <img
-            src={`https://dev.medflick.com/speciality/${info && info.home_image}`}
+            src={`https://dev.medflick.com/speciality/${
+              info && info.home_image
+            }`}
             className="category-m"
             alt="Category"
           ></img>
@@ -69,20 +72,7 @@ const page = async ({ params }) => {
           id="category-marquee"
           style={{ marginTop: "20px" }}
         >
-          <div className="marquee-wrapper">
-            <div className="marquee" style={{ animationDuration: "11s" }}>
-              <div className="Marquee-tag"> 95% Success Rate </div>
-              <div className="Marquee-tag"> 11000+ Top Doctors </div>
-              <div className="Marquee-tag"> 150+ Top Hospital </div>
-              <div className="Marquee-tag"> 250+ Surgeries </div>
-              <div className="Marquee-tag"> 35+ Countries </div>
-              <div className="Marquee-tag"> 95% Success Rate </div>
-              <div className="Marquee-tag"> 11000+ Top Doctors </div>
-              <div className="Marquee-tag"> 150+ Top Hospital </div>
-              <div className="Marquee-tag"> 250+ Surgeries </div>
-              <div className="Marquee-tag"> 35+ Countries </div>
-            </div>
-          </div>
+          <Marquee />
         </section>
 
         <section id="category-mid">

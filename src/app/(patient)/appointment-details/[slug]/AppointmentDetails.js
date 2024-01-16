@@ -127,7 +127,7 @@ const AppointmentDetails = ({ info }) => {
             </div> */}
           </div>
           <div className="patient-appointment-box" style={{ width: "40%" }}>
-            <h3>Patient Details</h3>
+            <h3>Appointments Details</h3>
             <div className="hospital-doctors-preview">
               {hospitalId && (
                 <div className="hospital-preview-box">

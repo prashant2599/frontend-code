@@ -8,34 +8,26 @@ const NewHospital = async () => {
   const featuredHospitals = hospital.filter(
     (hospital) => hospital.featured === "1"
   );
+
+  const generateHospitalTag = (hospital) => (
+    <div className="Marquee-tag" key={hospital.id}>
+      <Link href={`/hospital/${hospital.slug}/${hospital.country}`}>
+        <img
+          className="dr-img"
+          src={`https://dev.medflick.com/hospital/${hospital.icon}`}
+          alt={hospital.name}
+        />
+      </Link>
+    </div>
+  );
+
   return (
     <>
       <section id="hospital-section">
-        {/* <h3>Trusted by lorem ipsum dolor sit</h3> */}
         <div className="marquee-wrapper">
           <div className="marquee" style={{ animationDuration: "11s" }}>
-            {featuredHospitals.map((e) => (
-              <div className="Marquee-tag" key={e.id}>
-                <Link href={`/hospital/${e.slug}/${e.country}`}>
-                  <img
-                    className="dr-img"
-                    src={`https://dev.medflick.com/hospital/${e.icon}`}
-                    alt={e.name}
-                  />
-                </Link>
-              </div>
-            ))}
-            {featuredHospitals.map((e) => (
-              <div className="Marquee-tag" key={e.id}>
-                <Link href={`/hospital/${e.slug}/${e.country}`}>
-                  <img
-                    className="dr-img"
-                    src={`https://dev.medflick.com/hospital/${e.icon}`}
-                    alt={e.name}
-                  />
-                </Link>
-              </div>
-            ))}
+            {featuredHospitals.map((hospital) => generateHospitalTag(hospital))}
+            {featuredHospitals.map((hospital) => generateHospitalTag(hospital))}
           </div>
         </div>
       </section>
