@@ -34,12 +34,12 @@ const Hospitralspe = ({ hospital, category, categoryName, slugs }) => {
             {Hospitals.map((e) => (
               <div className="item" key={e.id}>
                 <div className="item-home-expert">
-                  <Link href={`/hospital/${e.slug}/${e.country}`}>
+                  <Link href={`/hospital/${e.slug}`}>
                     <img src={`https://dev.medflick.com/hospital/${e.image}`} />
                   </Link>
                 </div>
                 <div className="home-expert-text">
-                  <Link href={`/hospital/${e.slug}/${e.country}`}>
+                  <Link href={`/hospital/${e.slug}`}>
                     <h3>{e.name}</h3>
                   </Link>
                   <p>

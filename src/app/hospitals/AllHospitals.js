@@ -41,7 +41,7 @@ const AllHospitals = async () => {
                         <div className="tabs_container">
                           <div data-hash="one" key={hospital.id}>
                             <Link
-                              href={`/hospital/${hospital.slug}/${hospital.country}`}
+                              href={`/hospital/${hospital.slug}`}
                             >
                               <img
                                 src={`https://dev.medflick.com/hospital/${hospital.image}`}
@@ -55,7 +55,7 @@ const AllHospitals = async () => {
                     </div>
                     <div className="hospital-item-doc">
                       <Link
-                        href={`/hospital/${hospital.slug}/${hospital.country}`}
+                        href={`/hospital/${hospital.slug}`}
                       >
                         <h3>{hospital.name}</h3>
                       </Link>
@@ -123,7 +123,7 @@ const AllHospitals = async () => {
                       />
 
                       <Link
-                        href={`/hospital/${hospital.slug}/${hospital.country}`}
+                        href={`/hospital/${hospital.slug}`}
                         className="view-profile"
                       >
                         View Profile{" "}

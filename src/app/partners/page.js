@@ -38,7 +38,7 @@ const page = async () => {
           <h2>Why Partner wtih Medflick?</h2>
           <div className="partner-medflick">
             <div className="partner-medflick-item">
-              <img src="/images/p1.png" alt="" />
+              <img src="/images/p1.png" alt="medflick-icon" />
               <h3>
                 Make it easier for patients to connect with doctors & Hospitals
               </h3>
@@ -50,7 +50,7 @@ const page = async () => {
             </div>
 
             <div className="partner-medflick-item">
-              <img src="/images/p2.png" alt="" />
+              <img src="/images/p2.png" alt="medflick-icon" />
               <h3>Experienced medical counselors to assist the patients</h3>
               <p>
                 Lorem ipsum dolor sit amet, adipiscing elit, sed do eiusmod
@@ -60,7 +60,7 @@ const page = async () => {
             </div>
 
             <div className="partner-medflick-item">
-              <img src="/images/p3.png" alt="" />
+              <img src="/images/p3.png" alt="medflick-icon" />
               <h3>Reduce manual work for your practices</h3>
               <p>
                 Lorem ipsum dolor sit amet, adipiscing elit, sed do eiusmod
@@ -79,7 +79,7 @@ const page = async () => {
           <div className="partners-logo">
             {hospital.map((e) => (
               <div className="logo-img" key={e.id}>
-                <Link href={`/hospital/${e.slug}/${e.country}`}>
+                <Link href={`/hospital/${e.slug}`}>
                   <img
                     src={`https://dev.medflick.com/hospital/${e.icon}`}
                     alt={e.slug}

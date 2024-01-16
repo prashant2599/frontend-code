@@ -212,7 +212,7 @@ const NewSearchTreatment = () => {
                     </Link>
                   </div>
                   <div className="home-expert-text">
-                    <Link href={`/hospital/${e.slug}/${e.country}`}>
+                    <Link href={`/hospital/${e.slug}`}>
                       <h3>{e.name}</h3>
                     </Link>
                     <p>
