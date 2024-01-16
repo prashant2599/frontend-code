@@ -281,7 +281,7 @@ const NavForm1 = ({ treatmentId, specialityId }) => {
   return (
     <>
       <div className="treatment-mid-form">
-        <img src="/images/2023/03/treatment-form.jpg" />
+        <img src="/images/2023/03/treatment-form.webp" />
 
         <div className="assistance-form">
           <h3>Provide your details</h3>

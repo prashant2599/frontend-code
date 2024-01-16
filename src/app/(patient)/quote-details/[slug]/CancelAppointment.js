@@ -77,7 +77,7 @@ const CancelAppointment = ({ id }) => {
         onClick={togglePopup}
         style={{ cursor: "pointer" }}
       >
-        Cancel Appointment
+        Cancel Quote
       </a>
       <div className="popup" data-popup="popup-3" style={popupStyle}>
         <div className="popup-inner15">

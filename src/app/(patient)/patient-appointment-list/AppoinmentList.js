@@ -1,26 +1,13 @@
 "use client";
 import Link from "next/link";
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import CancelAppointmentList from "./CancelAppointmentList";
 
 const AppoinmentList = () => {
   const [quoteList, setQuoteList] = useState([]);
-  const [speciality, setSpeciality] = useState([]);
-  const [treatment, setTreatment] = useState([]);
+
   const [searchQuery, setSearchQuery] = useState("");
-  const [filteredQuoteList, setFilteredQuoteList] = useState([]);
-
-  //   useEffect(() => {
-  //     const fetchData = async () => {
-  //       // Fetch specialities
-  //       const specialityData = await getAllSpeciality();
-  //       setSpeciality(specialityData.data.Speciality);
-  //       setTreatment(specialityData.data.treatmentsforSitemap);
-  //     };
-
-  //     fetchData();
-  //   }, []);
 
   useEffect(() => {
     const storedUserId = localStorage.getItem("userId");
@@ -46,84 +33,6 @@ const AppoinmentList = () => {
     }
   }, [searchQuery]);
 
-//   const [detailsCache, setDetailsCache] = useState({});
-
-//   const getDoctorDetails = useCallback(
-//     async (doctorId) => {
-//       if (detailsCache[doctorId]) {
-//         return detailsCache[doctorId];
-//       }
-
-//       const doctorResponse = await fetch(
-//         `${process.env.NEXT_PUBLIC_BASE_URL}/api/doctor/id/${doctorId}`
-//       );
-//       const doctorDetails = await doctorResponse.json();
-
-//       const Fname  = doctorDetails.data.doctor_info?.prefix
-//       const Mname  = doctorDetails.data.doctor_info?.first_name
-//       const Lname  = doctorDetails.data.doctor_info?.last_name
-
-//       const name  = Fname + " " + Mname + " " + Lname
-
-//       const details = `${name}`;
-//       setDetailsCache((prevCache) => ({
-//         ...prevCache,
-//         [doctorId]: details,
-//       }));
-
-//       return details;
-//     },
-//     [detailsCache]
-//   );
-
-//   const getHospitalDetails = useCallback(
-//     async (hospitalId) => {
-//       if (detailsCache[hospitalId]) {
-//         return detailsCache[hospitalId];
-//       }
-
-//       const hospitalResponse = await fetch(
-//         `${process.env.NEXT_PUBLIC_BASE_URL}/api/hospital_id/id/${hospitalId}`
-//       );
-//       const hospitalDetails = await hospitalResponse.json();
-
-//       const details = `${hospitalDetails.data.hospital_info?.name}`;
-//       setDetailsCache((prevCache) => ({
-//         ...prevCache,
-//         [hospitalId]: details,
-//       }));
-
-//       return details;
-//     },
-//     [detailsCache]
-//   );
-
-//   useEffect(() => {
-//     const updateDetails = async () => {
-//       const updatedList = await Promise.all(
-//         quoteList.map(async (e) => {
-//           let details = "";
-
-//           if (e.doctor_id) {
-//             details = await getDoctorDetails(e.doctor_id);
-//           }
-
-//           if (e.hospital_id) {
-//             details = await getHospitalDetails(e.hospital_id);
-//           }
-
-//           return {
-//             ...e,
-//             details,
-//           };
-//         })
-//       );
-
-//       setQuoteList(updatedList);
-//     };
-
-//     updateDetails();
-//   }, [quoteList, getDoctorDetails, getHospitalDetails]);
   return (
     <>
       <div className="home-appointments-section">
@@ -155,8 +64,10 @@ const AppoinmentList = () => {
 
           <div className="appointment-new-list">
             {quoteList.map((e) => {
-               const appointmentDate = new Date(e.created_at);
-               const formattedDate = `${appointmentDate.getDate()}/${appointmentDate.getMonth() + 1}/${appointmentDate.getFullYear()}`;
+              const appointmentDate = new Date(e.created_at);
+              const formattedDate = `${appointmentDate.getDate()}/${
+                appointmentDate.getMonth() + 1
+              }/${appointmentDate.getFullYear()}`;
               return (
                 <div className="appointment-new-box" key={e.id}>
                   <div className="appointment-box1">
@@ -170,7 +81,7 @@ const AppoinmentList = () => {
                       >
                         View Details
                       </Link>
-                 
+
                       <CancelAppointmentList id={e.id} />
                     </div>
                   </div>

@@ -105,7 +105,7 @@ const QuoteDetails = ({ info }) => {
             </div>
           </div>
           <div className="patient-details-box">
-            <h3>Patient Details</h3>
+            <h3>Quote Details</h3>
             <div className="patient-details">
               <h4>Name</h4> <span>{info.name}</span>
             </div>
@@ -123,7 +123,7 @@ const QuoteDetails = ({ info }) => {
             </div>
           </div>
           <div className="patient-appointment-box">
-            <h3>Patient Details</h3>
+            <h3>Quote Details</h3>
             <div className="hospital-doctors-preview">
               <div className="hospital-preview-box">
                 <div className="hospital-preview-img">
