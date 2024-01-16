@@ -73,21 +73,21 @@ const HospitalShareProfile = ({ hospitalDetails }) => {
               <ul>
                 <li>
                   <FacebookShareButton
-                    url={`${window.location.origin}/hospital/${sharedHospitalSlug}/${sharedHospitalCountry}`}
+                    url={`${window.location.origin}/hospital/${sharedHospitalSlug}`}
                   >
                     <FacebookIcon size={50} round />
                   </FacebookShareButton>
                 </li>
                 <li>
                   <TwitterShareButton
-                    url={`${window.location.origin}/hospital/${sharedHospitalSlug}/${sharedHospitalCountry}`}
+                    url={`${window.location.origin}/hospital/${sharedHospitalSlug}`}
                   >
                     <CustomTwitter />
                   </TwitterShareButton>
                 </li>
                 <li>
                   <WhatsappShareButton
-                    url={`${window.location.origin}/hospital/${sharedHospitalSlug}/${sharedHospitalCountry}`}
+                    url={`${window.location.origin}/hospital/${sharedHospitalSlug}`}
                   >
                     <WhatsappIcon size={50} round />
                   </WhatsappShareButton>
@@ -100,7 +100,7 @@ const HospitalShareProfile = ({ hospitalDetails }) => {
                   placeholder="www.medflick.com/share/hospital"
                   name="name"
                   required=""
-                  value={`${window.location.origin}/hospital/${sharedHospitalSlug}/${sharedHospitalCountry}`}
+                  value={`${window.location.origin}/hospital/${sharedHospitalSlug}`}
                   ref={inputRef}
                 />
                 <button

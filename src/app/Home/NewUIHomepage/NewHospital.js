@@ -11,7 +11,7 @@ const NewHospital = async () => {
 
   const generateHospitalTag = (hospital) => (
     <div className="Marquee-tag" key={hospital.id}>
-      <Link href={`/hospital/${hospital.slug}/${hospital.country}`}>
+      <Link href={`/hospital/${hospital.slug}`}>
         <img
           className="dr-img"
           src={`https://dev.medflick.com/hospital/${hospital.icon}`}

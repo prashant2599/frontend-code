@@ -1,47 +1,46 @@
-"use client"
+"use client";
 
-import {useState,useRef} from "react";
+import { useState, useRef } from "react";
 import {
-    FacebookShareButton,
-    TwitterShareButton,
-    WhatsappShareButton,
-    FacebookIcon,
+  FacebookShareButton,
+  TwitterShareButton,
+  WhatsappShareButton,
+  FacebookIcon,
+  WhatsappIcon,
+} from "react-share";
+import CustomTwitter from "../CustomTwitterIcon/CustomTwitter";
 
-    WhatsappIcon,
-  } from "react-share";
-  import CustomTwitter from "../CustomTwitterIcon/CustomTwitter";
+const HospitalShare = ({ country, slug }) => {
+  const [sharedHospitalCountry, setSharedHospitalCountry] = useState("");
+  const [sharedHospitalSlug, setSharedHospitalSlug] = useState("");
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
-const HospitalShare = ({country,slug}) => {
-    const [sharedHospitalCountry, setSharedHospitalCountry] = useState("");
-    const [sharedHospitalSlug, setSharedHospitalSlug] = useState("");
-    const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const popupStyle = {
+    display: isPopupOpen ? "block" : "none",
+  };
+  const togglePopup = () => {
+    setIsPopupOpen(!isPopupOpen);
+  };
 
-    const popupStyle = {
-      display: isPopupOpen ? "block" : "none",
-    };
-    const togglePopup = () => {
-      setIsPopupOpen(!isPopupOpen);
-    };
-  
-    const shareHospitalProfile = (hospitalSlug, hospitalCountry) => {
-      setSharedHospitalSlug(hospitalSlug);
-      setSharedHospitalCountry(hospitalCountry);
-      togglePopup();
-    };
+  const shareHospitalProfile = (hospitalSlug, hospitalCountry) => {
+    setSharedHospitalSlug(hospitalSlug);
+    setSharedHospitalCountry(hospitalCountry);
+    togglePopup();
+  };
 
-    const inputRef = useRef(null);
+  const inputRef = useRef(null);
 
-    const copyToClipboard = () => {
-      // Select the text inside the input field
-      inputRef.current.select();
-      inputRef.current.setSelectionRange(0, 99999); // For mobile devices
-  
-      // Copy the selected text to the clipboard
-      document.execCommand("copy");
-  
-      // Deselect the text
-      inputRef.current.setSelectionRange(0, 0);
-    };
+  const copyToClipboard = () => {
+    // Select the text inside the input field
+    inputRef.current.select();
+    inputRef.current.setSelectionRange(0, 99999); // For mobile devices
+
+    // Copy the selected text to the clipboard
+    document.execCommand("copy");
+
+    // Deselect the text
+    inputRef.current.setSelectionRange(0, 0);
+  };
   return (
     <>
       <span
@@ -71,21 +70,21 @@ const HospitalShare = ({country,slug}) => {
               <ul>
                 <li>
                   <FacebookShareButton
-                    url={`${window.location.origin}/hospital/${sharedHospitalSlug}/${sharedHospitalCountry}`}
+                    url={`${window.location.origin}/hospital/${sharedHospitalSlug}`}
                   >
                     <FacebookIcon size={50} round />
                   </FacebookShareButton>
                 </li>
                 <li>
                   <TwitterShareButton
-                    url={`${window.location.origin}/hospital/${sharedHospitalSlug}/${sharedHospitalCountry}`}
+                    url={`${window.location.origin}/hospital/${sharedHospitalSlug}`}
                   >
                     <CustomTwitter />
                   </TwitterShareButton>
                 </li>
                 <li>
                   <WhatsappShareButton
-                    url={`${window.location.origin}/hospital/${sharedHospitalSlug}/${sharedHospitalCountry}`}
+                    url={`${window.location.origin}/hospital/${sharedHospitalSlug}`}
                   >
                     <WhatsappIcon size={50} round />
                   </WhatsappShareButton>
@@ -98,7 +97,7 @@ const HospitalShare = ({country,slug}) => {
                   placeholder="www.medflick.com/share/hospital"
                   name="name"
                   required=""
-                  value={`${window.location.origin}/hospital/${sharedHospitalSlug}/${sharedHospitalCountry}`}
+                  value={`${window.location.origin}/hospital/${sharedHospitalSlug}`}
                   ref={inputRef}
                 />
                 <button
