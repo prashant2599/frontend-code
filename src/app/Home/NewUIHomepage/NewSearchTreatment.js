@@ -204,7 +204,7 @@ const NewSearchTreatment = () => {
               Hospitals.map((e) => (
                 <div className="item" key={e.id}>
                   <div className="item-home-expert">
-                    <Link href={`/hospital/${e.slug}/${e.country}`}>
+                    <Link href={`/hospital/${e.slug}`}>
                       <img
                         src={`https://dev.medflick.com/hospital/${e.image}`}
                         alt={e.name}
