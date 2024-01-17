@@ -215,9 +215,13 @@ const SignUp = () => {
                   alt="medflick"
                 />
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore Lorem ipsum dolor sit
-                  amet, consectetur
+                  Dear Medflick Team, I am writing to express my gratitude and
+                  satisfaction with the excellent service I received from your
+                  medical tourism company. I am extremely satisfied with the
+                  service I received from Medflick and would highly recommend
+                  your company to anyone looking for a medical tourism service.
+                  Thank you once again for making my experience in India a
+                  memorable one.
                 </p>
 
                 <div className="signup-profile">
@@ -225,7 +229,7 @@ const SignUp = () => {
                     <img src="images/2023/01/icon-m.png" alt="medflick" />
                   </div>
                   <h3>
-                    Lorem ipsum dolor <span>india</span>
+                  Shamsul Alam 
                   </h3>
                 </div>
               </div>
