@@ -76,23 +76,14 @@ const AppointmentDetails = ({ info }) => {
           </div>
           <div className="appointments-details-text">
             <h3>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore
+              Appointment Request Received! Processing Your Appointment Request
+              for Personalized Care
             </h3>
             <p>
-              Quis autem vel eum iure reprehenderit qui in ea voluptate velit
-              esse quam nihil molestiae consequatu Nemo enim ipsam voluptatem
-              quia voluptas sit aspernatur aut odit aut fugit, sed quia
-              consequuntur ma Lorem ipsum dolor sit amet, consectetur adipiscing
-              elit, sed do eiusmod tempor incididunt ut labore Ut enim ad minim
-              veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-              ex ea commodo con Quis autem vel eum iure reprehenderit qui in ea
-              voluptate velit esse quam nihil molestiae consequatu Nemo enim
-              ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
-              sed quia consequuntur ma Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit, sed do eiusmod tempor incididunt ut labore Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo con
+              Greetings from Medflick! We have received your appointment
+              request. Our team will contact you shortly. We are processing your
+              request and look forward to serving you with dedicated medical
+              care and expertise. Your patience is greatly appreciated.
             </p>
             {info.fileupload && (
               <div className="appointment-uploaded_report">
@@ -187,7 +178,7 @@ const AppointmentDetails = ({ info }) => {
                       </h3>
                     </Link>
                     <div className="department-sub">{doctor.designation}</div>
-                
+
                     <div className="doc-experience">
                       {doctor.experience_year && (
                         <div className="years-exper">

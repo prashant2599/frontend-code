@@ -196,8 +196,7 @@ const SelectHospitalDoctors = () => {
                         <div className="hospital-item-doc">
                           <h3>{e.name}</h3>
                           <div className="department-sub">
-                            {e.location.charAt(0).toUpperCase() +
-                              e.location.slice(1)}
+                            {e.city.charAt(0).toUpperCase() + e.city.slice(1)}
                           </div>
                           <div className="ho-docimg">
                             {e.nabl && (

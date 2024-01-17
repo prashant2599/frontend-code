@@ -54,6 +54,9 @@ const page = async ({ params }) => {
                     {docotorDetails.prefix} {docotorDetails.first_name}{" "}
                     {docotorDetails.last_name}
                   </h1>
+                  <div className="department" style={{ color: "#ff6800" }}>
+                    {docotorDetails.dept}
+                  </div>
                   <div className="department">{docotorDetails.designation}</div>
                   <div className="location">
                     {" "}
