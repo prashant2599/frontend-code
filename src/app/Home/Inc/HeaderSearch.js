@@ -1,9 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import getALLSearchApi from "@/app/lib/getAllSearchApi";
 
 const HeaderSearch = ({ togglePopup }) => {
   const router = useRouter();
@@ -16,19 +16,17 @@ const HeaderSearch = ({ togglePopup }) => {
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
-    // Fetch the details data based on the activePackage ID
-    axios
-      .get(`https://dev.medflick.com/api/search`)
-      .then((response) => {
-        setSpeciality(response.data.searchData.speciality);
-        setTreatment(response.data.searchData.treatments);
-        setDoctors(response.data.searchData.doctors);
-        setHospitals(response.data.searchData.hospitals);
-        setBlogs(response.data.searchData.blog);
-      })
-      .catch((error) => {
-        console.error("Error fetching details data:", error);
-      });
+    const fetchData = async () => {
+      // Fetch specialities
+      const specialityData = await getALLSearchApi();
+      setDoctors(specialityData.searchData.doctors);
+      setHospitals(specialityData.searchData.hospitals);
+      setTreatment(specialityData.searchData.treatments);
+      setSpeciality(specialityData.searchData.speciality);
+      setBlogs(specialityData.searchData.blog);
+    };
+
+    fetchData();
   }, []);
 
   useEffect(() => {
@@ -182,13 +180,13 @@ const HeaderSearch = ({ togglePopup }) => {
                 {filteredHospitals.map((doctor) => (
                   <Link
                     key={doctor.id}
-                    href={`/hospital/${doctor.slug}/${doctor.country}`}
+                    href={`/hospital/${doctor.slug}`}
                     onClick={() => {
                       setSearchQuery("");
                       if (typeof togglePopup === "function") {
                         togglePopup();
                       }
-                      router.push(`/hospital/${doctor.slug}/${doctor.country}`); // Navigate to the link
+                      router.push(`/hospital/${doctor.slug}`); // Navigate to the link
                     }}
                   >
                     <div className="searchbox-main" key={doctor.id}>

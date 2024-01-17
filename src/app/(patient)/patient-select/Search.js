@@ -1,8 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import axios from "axios";
 import { useRouter } from "next/navigation";
+import getALLSearchApi from "@/app/lib/getAllSearchApi";
 
 const Search = () => {
   const router = useRouter();
@@ -11,16 +11,14 @@ const Search = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    // Fetch the details data based on the activePackage ID
-    axios
-      .get(`https://dev.medflick.com/api/search`)
-      .then((response) => {
-        setDoctors(response.data.searchData.doctors);
-        setHospitals(response.data.searchData.hospitals);
-      })
-      .catch((error) => {
-        console.error("Error fetching details data:", error);
-      });
+    const fetchData = async () => {
+      // Fetch specialities
+      const specialityData = await getALLSearchApi();
+      setDoctors(specialityData.searchData.doctors);
+      setHospitals(specialityData.searchData.hospitals);
+    };
+
+    fetchData();
   }, []);
 
   const filteredDoctors = doctors
@@ -84,13 +82,13 @@ const Search = () => {
             {filteredHospitals.map((doctor) => (
               <Link
                 key={doctor.id}
-                href={`/hospital/${doctor.slug}/${doctor.country}`}
+                href={`/hospital/${doctor.slug}`}
                 onClick={() => {
                   setSearchQuery("");
                   if (typeof togglePopup === "function") {
                     togglePopup();
                   }
-                  router.push(`/hospital/${doctor.slug}/${doctor.country}`); // Navigate to the link
+                  router.push(`/hospital/${doctor.slug}`);
                 }}
               >
                 <div className="searchbox-main" key={doctor.id}>
