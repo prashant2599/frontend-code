@@ -5,12 +5,14 @@ import QuoteDetails from "./QuoteDetails";
 
 const page = async ({ params }) => {
   const combinedSlug = params.slug;
+
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/appointment_details/${combinedSlug}`,
     { cache: "no-store" }
   );
   const data = await res.json();
   const info = data.appointment.appointment;
+
 
   return (
     <>
