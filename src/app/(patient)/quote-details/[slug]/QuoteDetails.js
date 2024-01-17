@@ -73,23 +73,18 @@ const QuoteDetails = ({ info }) => {
           </div>
           <div className="appointments-details-text">
             <h3>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore
+              Request Received! Processing Your Quote Request and Treatment Plan
             </h3>
             <p>
-              Quis autem vel eum iure reprehenderit qui in ea voluptate velit
-              esse quam nihil molestiae consequatu Nemo enim ipsam voluptatem
-              quia voluptas sit aspernatur aut odit aut fugit, sed quia
-              consequuntur ma Lorem ipsum dolor sit amet, consectetur adipiscing
-              elit, sed do eiusmod tempor incididunt ut labore Ut enim ad minim
-              veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-              ex ea commodo con Quis autem vel eum iure reprehenderit qui in ea
-              voluptate velit esse quam nihil molestiae consequatu Nemo enim
-              ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
-              sed quia consequuntur ma Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit, sed do eiusmod tempor incididunt ut labore Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo con
+              Greetings from Medflick! We have received your quote request. We
+              are in contact with hospitals to get your treatment plan, detailed
+              quote, and cost estimate as soon as possible. We will assist you
+              to access your doctor's profile and obtain their opinion. We will
+              get back to you within 24 hours with an approximate cost. Your
+              patience is greatly appreciated!
+            </p>
+            <p>
+            Please Contact us if you have any Questions about the Cost Estimate.
             </p>
             <div className="appointment-uploaded_report">
               <img src="/images/upload.png" alt="Uploaded Report" />

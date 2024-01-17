@@ -16,11 +16,15 @@
   font-display: swap;
 }
 
+
+
 @font-face {
   font-family: Inter Regular;
   src: url(../../fonts/Inter-Regular.ttf);
   font-display: swap;
 }
+
+
 
 @font-face {
   font-family: Inter Medium;
@@ -1485,7 +1489,6 @@ button.active .city-icon-h {
     width: 100%;
     margin-top: 20px;
     flex-direction: column;
-    
   }
 
   .home-expert-video-right .expert-video-item {

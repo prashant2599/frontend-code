@@ -15,6 +15,7 @@ import NewVideoSection from "./Home/NewUIHomepage/NewVideoSection";
 import NewVisaTravelSection from "./Home/NewUIHomepage/NewVisaTravelSection";
 import NewHeader from "./Home/NewUIHomepage/inc/NewHeader";
 import NewFooter from "./Home/NewUIHomepage/inc/NewFooter";
+import React, { Suspense } from "react";
 
 export default function Home() {
   return (
@@ -22,7 +23,9 @@ export default function Home() {
       <NewHeader />
       <NewSection1 />
       <NewHospital />
+
       <NewSearchTreatment />
+
       <NewProgcess />
       <NewCostSection />
       <NewVisaTravelSection />
@@ -35,7 +38,7 @@ export default function Home() {
       <NewBlogs />
       <NewFindHospitalDoctors />
       <NewStayInTouch />
-     <NewFooter />
+      <NewFooter />
     </main>
   );
 }
