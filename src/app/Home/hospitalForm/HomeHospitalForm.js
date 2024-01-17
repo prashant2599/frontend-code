@@ -352,7 +352,7 @@ const HomeHospitalForm = ({
   return (
     <>
       <div className="expert-button">
-        <Link className="view-profile" href={`/hospital/${slug}/${country}`}>
+        <Link className="view-profile" href={`/hospital/${slug}`}>
           View Profile
         </Link>
         <a

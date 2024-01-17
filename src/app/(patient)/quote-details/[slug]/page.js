@@ -12,7 +12,6 @@ const page = async ({ params }) => {
   const data = await res.json();
   const info = data.appointment.appointment;
 
-
   return (
     <>
       <PatientHeader />

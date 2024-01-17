@@ -70,7 +70,7 @@ const CancelAppointmentList = ({ id }) => {
         className="cancel-appointment1"
         data-popup-open="popup-3"
       >
-        Cancel Quote
+        Cancel Appointment
       </a>
       <div className="popup" data-popup="popup-3" style={popupStyle}>
         <div className="popup-inner15">

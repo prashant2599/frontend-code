@@ -186,7 +186,7 @@ const PatientPreviewQuote = () => {
       // Fetch the details data based on the activePackage ID
       axios
         .get(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/api/hospital/${storedHospital}/${storedHospitalCountry}`
+          `${process.env.NEXT_PUBLIC_BASE_URL}/api/hospital/${storedHospital}`
         )
         .then((response) => {
           setHospital(response.data.data.hospital_info);
@@ -481,8 +481,11 @@ const PatientPreviewQuote = () => {
                 <div className="preview-details">
                   <h5>Medical Reports</h5>
                 </div>
-
+               {patientFile ? (
                 <div className="uploadedfile-box">{patientFileName}</div>
+                ):(
+                  <div className="uploadedfile-box">{fileLink}</div>
+                )}
                 {/* <div className="uploadedfile-box">uploadedfile.jpg</div> */}
               </div>
             </div>

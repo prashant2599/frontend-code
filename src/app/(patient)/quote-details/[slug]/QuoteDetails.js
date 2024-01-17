@@ -93,15 +93,24 @@ const QuoteDetails = ({ info }) => {
             </p>
             <div className="appointment-uploaded_report">
               <img src="/images/upload.png" alt="Uploaded Report" />
-              <a
-                href={`https://dev.medflick.com/reports/${info.uploadfiles}`}
-                download
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Your Uploaded Quote
-                
-              </a>
+              {info.uploadfiles ? (
+                <a
+                  href={`https://dev.medflick.com/reports/${info.uploadfiles}`}
+                  download
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Your Uploaded Quote
+                </a>
+              ) : (
+                <a
+                  href={`${info.media_link}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Your Uploaded Link
+                </a>
+              )}
             </div>
           </div>
           <div className="patient-details-box">
