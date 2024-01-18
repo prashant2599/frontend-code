@@ -260,12 +260,16 @@ const HospitalDoctorsFilter = ({ doctor }) => {
               </div> */}
             </div>
             <div className="doc-experience">
-              <div className="years-exper">
-                {e.experience_year}+ Years of Experience{" "}
-              </div>
-              <div className="successful-plus">
-                {e.surgery_treatment}+ Successful Surgeries{" "}
-              </div>
+              {e.experience_year && (
+                <div className="years-exper">
+                  {e.experience_year}+ Years of Experience{" "}
+                </div>
+              )}
+              {e.surgery_treatment && (
+                <div className="successful-plus">
+                  {e.surgery_treatment}+ Successful Surgeries{" "}
+                </div>
+              )}
             </div>
             <div className="day-itembox">
               {/* <div className="day-exper">Mon - Sat </div>
