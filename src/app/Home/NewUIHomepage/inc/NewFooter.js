@@ -63,7 +63,7 @@ const NewFooter = () => {
         <div className="midbox-inner wiki-mk">
           <div className="footer-section">
             <div className="footer-about">
-              <img src="/images/2023/01/logo.png" alt="Brand Logo" />
+              <img src="/images/2023/01/logo.webp" alt="Brand Logo" />
 
               <p>
                 Beyond boundaries and around-the-clock healthcare extends

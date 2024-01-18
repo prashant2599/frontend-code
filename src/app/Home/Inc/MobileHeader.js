@@ -91,7 +91,7 @@ const MobileHeader = ({ speciality }) => {
         <div className="header-inner wiki-mk">
           <Link href="/" target="_self" className="logo-m">
             {" "}
-            <img src="/images/2023/01/logo.png" alt="Medflick" />
+            <img src="/images/2023/01/logo.webp" alt="Medflick" />
           </Link>
           {/* Mobile serach */}
           <MobileSearch />
@@ -126,7 +126,7 @@ const MobileHeader = ({ speciality }) => {
                     }}
                   >
                     {" "}
-                    <img src="/images/2023/01/logo.png" alt="Brand Logo" />
+                    <img src="/images/2023/01/logo.webp" alt="Brand Logo" />
                   </a>
                   <span className="close-menu" onClick={toggleOffcanvas}>
                     <svg
@@ -367,28 +367,44 @@ const MobileHeader = ({ speciality }) => {
                     Question & Answer
                   </a>
                 </li>
-                <li className="menu-item">
-                  <a
-                    onClick={() => {
-                      toggleOffcanvas();
-                      router.push("/login");
-                    }}
-                    className="login-link"
-                  >
-                    Login
-                  </a>
-                </li>
-                <li className="menu-item">
-                  <a
-                    onClick={() => {
-                      toggleOffcanvas();
-                      router.push("/sign-up");
-                    }}
-                    className="sign-up-link"
-                  >
-                    Sign Up
-                  </a>
-                </li>
+                {userName || userNames ? (
+                  <li className="menu-item">
+                    <a
+                      onClick={() => {
+                        toggleOffcanvas();
+                        router.push("/patient-dashboard");
+                      }}
+                      className="login-link"
+                    >
+                      Dashboard
+                    </a>
+                  </li>
+                ) : (
+                  <>
+                    <li className="menu-item">
+                      <a
+                        onClick={() => {
+                          toggleOffcanvas();
+                          router.push("/login");
+                        }}
+                        className="login-link"
+                      >
+                        Login
+                      </a>
+                    </li>
+                    <li className="menu-item">
+                      <a
+                        onClick={() => {
+                          toggleOffcanvas();
+                          router.push("/sign-up");
+                        }}
+                        className="sign-up-link"
+                      >
+                        Sign Up
+                      </a>
+                    </li>
+                  </>
+                )}
                 <div className="menu-footer">
                   <a
                     className="qsk-question"

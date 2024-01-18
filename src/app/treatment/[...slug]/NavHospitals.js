@@ -23,7 +23,7 @@ const responsive = {
   },
 };
 
-const NavHospitals = ({hospital}) => {
+const NavHospitals = ({ hospital }) => {
   return (
     <>
       <div className="owl-slider">
@@ -45,11 +45,9 @@ const NavHospitals = ({hospital}) => {
                   <div className="hospitals-treat">
                     <h3 style={{ textAlign: "left" }}>{e.name}</h3>
 
-                    <Link
-                      href={`/hospital/${e.slug}/${e.country}`}
-                      className="contact-now"
-                    >
-                      Contact Now <img src="/images/2023/01/arrow-c.png" alt="icons" />
+                    <Link href={`/hospital/${e.slug}`} className="contact-now">
+                      Contact Now{" "}
+                      <img src="/images/2023/01/arrow-c.png" alt="icons" />
                     </Link>
                   </div>
                 </div>

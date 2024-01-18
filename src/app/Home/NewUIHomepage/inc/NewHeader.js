@@ -16,7 +16,7 @@ const NewHeader = async () => {
         <div className="headerTertiary">
           <Link href="/" target="_self" className="logo-d">
             {" "}
-            <img src="/images/2023/01/logo.png" alt="Medflick" />
+            <img src="/images/2023/01/logo.webp" alt="Medflick" />
           </Link>
           <div className="topnav-right page-header">
             <nav>

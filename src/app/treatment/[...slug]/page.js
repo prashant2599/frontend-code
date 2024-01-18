@@ -48,6 +48,8 @@ const page = async ({ params }) => {
 
     const Treatment = formatText(specialitySlug);
 
+  
+
     return (
       <>
         <NewHeader />
@@ -135,7 +137,7 @@ const page = async ({ params }) => {
                   </li>
                   {info.head_brief && (
                     <li>
-                      <a href="#transplant-nav2">{info.head_brief}</a>
+                      <a href="#nav2">{info.head_brief}</a>
                     </li>
                   )}
                   {info.head_needed && (
@@ -257,7 +259,7 @@ const page = async ({ params }) => {
                   />
                 </div>
                 {info.head_brief && (
-                  <div className="treatmen-midnav" id="transplant-nav2">
+                  <div className="treatmen-midnav" id="nav2">
                     <h2>{info.head_brief}</h2>
                     <div
                       dangerouslySetInnerHTML={{

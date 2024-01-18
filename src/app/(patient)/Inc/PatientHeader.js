@@ -92,7 +92,7 @@ const PatientHeader = () => {
         <div className="headerTertiary">
           <Link href="/patient-dashboard" target="_self" className="logo-d">
             {" "}
-            <img src="/images/2023/01/logo.png" alt="Brand Logo" />
+            <img src="/images/2023/01/logo.webp" alt="Brand Logo" />
           </Link>
           <div className="topnav-right page-header">
             <nav>
@@ -193,7 +193,7 @@ const PatientHeader = () => {
           <div className="header-inner wiki-mk">
             <Link href="/patient-dashboard" target="_self" className="logo-m">
               {" "}
-              <img src="/images/2023/01/logo.png" alt="Brand Logo" />
+              <img src="/images/2023/01/logo.webp" alt="Brand Logo" />
             </Link>
 
             <nav className="navbar">
@@ -214,7 +214,7 @@ const PatientHeader = () => {
                       }}
                     >
                       {" "}
-                      <img src="/images/2023/01/logo.png" alt="Brand Logo" />
+                      <img src="/images/2023/01/logo.webp" alt="Brand Logo" />
                     </a>
                     <span className="close-menu" onClick={toggleOffcanvas}>
                       <svg
