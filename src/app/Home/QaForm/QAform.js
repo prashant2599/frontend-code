@@ -422,7 +422,7 @@ const QAform = () => {
                     />
                     <label
                       className="file__input--label"
-                      for="customFile"
+                      htmlFor="customFile"
                       data-text-btn=" "
                     >
                       {" "}
