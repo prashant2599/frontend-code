@@ -1,9 +1,7 @@
 import getAllDoctors from "../lib/getALLDoctors";
 import ShareProfile from "../Home/doctorForm/ShareProfile";
 import Link from "next/link";
-import { AiTwotoneStar } from "react-icons/ai";
 import DoctorForm from "../Home/doctorForm/DoctorForm";
-import DoctorListPopForm from "../Home/doctorForm/DoctorListPopForm";
 import DoctorsSearch from "./[...slug]/DoctorsSearch";
 import AllDoctorPagination from "./AllDoctorPagination";
 import AllDoctorsFilteration from "./AllDoctorsFilteration";
