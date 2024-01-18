@@ -1,7 +1,12 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const HospitalHeader = ({ hospitalDetails }) => {
+  const [activeLink, setActiveLink] = useState("");
+
+  const handleLinkClick = (link) => {
+    setActiveLink(link);
+  };
   useEffect(() => {
     const handleScroll = () => {
       const profileLink = document.getElementById("profile-link");
@@ -30,28 +35,53 @@ const HospitalHeader = ({ hospitalDetails }) => {
         <div className="midbox-inner  wiki-mk ">
           <ul>
             <li>
-              <a href="#reviews" target="_self" className="active">
+              <a
+                href="#reviews"
+                target="_self"
+                className={activeLink === "reviews" ? "active" : ""}
+                onClick={() => handleLinkClick("reviews")}
+              >
                 Reviews
               </a>
             </li>
             <li>
-              <a href="#overview" target="_self">
+              <a
+                href="#overview"
+                target="_self"
+                className={activeLink === "overview" ? "active" : ""}
+                onClick={() => handleLinkClick("overview")}
+              >
                 Overview
               </a>
             </li>
-           
+
             <li>
-              <a href="#gallery" target="_self">
+              <a
+                href="#gallery"
+                target="_self"
+                className={activeLink === "gallery" ? "active" : ""}
+                onClick={() => handleLinkClick("gallery")}
+              >
                 Gallery
               </a>
             </li>
             <li>
-              <a href="#doctor" target="_self">
+              <a
+                href="#doctor"
+                target="_self"
+                className={activeLink === "doctor" ? "active" : ""}
+                onClick={() => handleLinkClick("doctor")}
+              >
                 Doctors
               </a>
             </li>
             <li>
-              <a href="#amenitie" target="_self">
+              <a
+                href="#amenitie"
+                target="_self"
+                className={activeLink === "amenitie" ? "active" : ""}
+                onClick={() => handleLinkClick("amenitie")}
+              >
                 Amenities
               </a>
             </li>

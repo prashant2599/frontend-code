@@ -1,7 +1,12 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const DoctorHeader = ({ docotorDetails, treament }) => {
+  const [activeLink, setActiveLink] = useState("");
+
+  const handleLinkClick = (link) => {
+    setActiveLink(link);
+  };
   useEffect(() => {
     const handleScroll = () => {
       const profileLink = document.getElementById("profile-link");
@@ -31,23 +36,43 @@ const DoctorHeader = ({ docotorDetails, treament }) => {
         <div className="midbox-inner  wiki-mk ">
           <ul>
             <li>
-              <a href="#reviews" target="_self" className="active">
+              <a
+                href="#reviews"
+                target="_self"
+                className={activeLink === "reviews" ? "active" : ""}
+                onClick={() => handleLinkClick("reviews")}
+              >
                 Reviews
               </a>
             </li>
             <li>
-              <a href="#about" target="_self">
+              <a
+                href="#about"
+                target="_self"
+                className={activeLink === "about" ? "active" : ""}
+                onClick={() => handleLinkClick("about")}
+              >
                 About
               </a>
             </li>
             <li>
-              <a href="#specializations" target="_self">
+              <a
+                href="#specializations"
+                target="_self"
+                className={activeLink === "specializations" ? "active" : ""}
+                onClick={() => handleLinkClick("specializations")}
+              >
                 Specializations
               </a>
             </li>
             {treament.length > 0 && (
               <li>
-                <a href="#services" target="_self">
+                <a
+                  href="#services"
+                  target="_self"
+                  className={activeLink === "services" ? "active" : ""}
+                  onClick={() => handleLinkClick("services")}
+                >
                   Services
                 </a>
               </li>

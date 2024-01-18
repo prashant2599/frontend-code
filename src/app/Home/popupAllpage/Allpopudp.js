@@ -304,14 +304,14 @@ const Allpopudp = () => {
   return (
     <>
       <button className="open-button" onClick={togglePopup}>
-        <img className="footer-but-d" src="/images/dF.png" alt="query-img" />
+        <img className="footer-but-d" src="/images/dF.webp" alt="query-img" />
         <img className="footer-but-m" src="/images/mFree.png" />
       </button>
       <div className="form-popup" id="myForm" style={popupStyle}>
         <div className="form-container">
           <div style={{ display: "block", textAlign: "center" }}>
             <button type="button" className="btn cancel" onClick={togglePopup}>
-              <img src="/images/dF.png" alt="query-img" />
+              <img src="/images/dF.webp" alt="query-img" />
             </button>
           </div>
           <div className="homeform-left">
