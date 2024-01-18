@@ -3,8 +3,6 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Select from "react-select";
 import Image from "next/image";
-import { AiTwotoneStar } from "react-icons/ai";
-import DoctorHospitalProfile from "@/app/Home/doctorForm/DoctorHospitalProfile";
 import { useRouter } from "next/navigation";
 import AppointmentForm from "@/app/Home/doctorForm/AppointmentForm";
 

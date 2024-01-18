@@ -43,13 +43,6 @@ const page = async ({ params }) => {
     const blog = datas.treateDetailsbyCountry.blogs;
     const speciality = datas.treateDetailsbyCountry.speciality;
 
-    const parts = combinedSlug.split("/");
-    const specialitySlug = parts[0];
-
-    const Treatment = formatText(specialitySlug);
-
-  
-
     return (
       <>
         <NewHeader />
