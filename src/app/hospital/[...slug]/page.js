@@ -1,4 +1,3 @@
-
 import HospitalDoctorsFilter from "./HospitalDoctorsFilter";
 import AppointmentForm from "@/app/Home/hospitalForm/AppointmentForm";
 import HospitalShareProfile from "./HospitalShareProfile";
@@ -53,8 +52,8 @@ const page = async ({ params }) => {
                 <div className="hospitalprofile-head">
                   <h1>{hospitalDetails.name}</h1>
                   <div className="location">
-                    {hospitalDetails.location.charAt(0).toUpperCase() +
-                      hospitalDetails.location.slice(1)}
+                    {hospitalDetails.city.charAt(0).toUpperCase() +
+                      hospitalDetails.city.slice(1)}
                   </div>
                   <div className="ho-docimg">
                     {hospitalDetails.nabl && (
