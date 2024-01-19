@@ -17156,6 +17156,14 @@ textarea {
   line-height: 1.2;
 }
 
+.marquee-new img {
+  width: auto;
+  height: 60px;
+}
+.marquee-new .Marquee-tag {
+  padding-right: 3.4rem;
+}
+
 @media screen and (max-width: 880px) {
   #hometop-section-quote h1 {
     font-size: 30px;
@@ -17163,6 +17171,7 @@ textarea {
   #hometop-section-quote h2 {
     font-size: 18px;
 }
+
 }
 
 
@@ -17223,3 +17232,4 @@ textarea {
   list-style: none;
   text-align: left !important;
 }
+
