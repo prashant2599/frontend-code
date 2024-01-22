@@ -53,6 +53,7 @@ const page = async ({ params }) => {
 
     const FormatedTreatment = formatText(countrySlug);
     const FormatedCity = formatText(citySlug);
+    const FormatedHospital = formatText(specialitySlug);
     return (
       <>
         <NewHeader />
@@ -74,8 +75,8 @@ const page = async ({ params }) => {
               </h1>
             ) : (
               <h1>
-                Best {FormatedTreatment} Doctors{" "}
-                <span>({totalDoctor} Results)</span>
+                List of {FormatedHospital} Doctors{" "}
+                <span>({doctor.length} Results)</span>
               </h1>
             )}
 
@@ -145,7 +146,6 @@ const page = async ({ params }) => {
                           </div>
                         </div>
                         <div className="doctor-item-button">
-                        
                           <AppointmentForm
                             first={e.prefix}
                             middle={e.first_name}
@@ -251,6 +251,7 @@ export async function generateMetadata({ params }) {
   );
   const FormatedTreatment = formatText(countrySlug);
   const FormatedCity = formatText(citySlug);
+  const FormatedHospital = formatText(specialitySlug);
 
   if (isPositionInDoctorCountry === true) {
     return {
@@ -281,18 +282,13 @@ export async function generateMetadata({ params }) {
     };
   } else {
     return {
-      title:
-        "Best " +
-        FormatedTreatment +
-        " " +
-        "doctors | Medflick Doctor List -" +
-        currentYear,
+      title: "List of Best Doctors " + FormatedHospital + " " + currentYear,
       description:
         "Find Updated List of " +
-        FormatedTreatment +
+        FormatedHospital +
         " " +
         "Specialist doctors. Find Top " +
-        FormatedTreatment +
+        FormatedHospital +
         " " +
         "Specialist  and reviews | Book hassle-free appointment",
       alternates: {

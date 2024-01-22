@@ -277,7 +277,6 @@ const QAform = () => {
     }
   };
 
-
   const handleQueryBlur = () => {
     if (!query1) {
       setFormErrors((prevErrors) => ({
@@ -364,7 +363,6 @@ const QAform = () => {
                   value={phone1}
                   onChange={handlePhoneNumberChange}
                   onBlur={handlePhoneBlur}
-                
                   style={formErrors.phone ? Formstyles.errorInput : {}}
                 />
                 {renderError(formErrors.phone)}

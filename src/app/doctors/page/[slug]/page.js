@@ -40,18 +40,13 @@ const page = async ({ params }) => {
             <div className="doctor-midbox-left">
               {doctors.length > 0 ? (
                 doctors.map((e) => {
-                  //   const matchedHospital = hospitalIcon?.find(
-                  //     (hospital) => String(hospital.id) === e.hospital_id
-                  //   );
                   return (
                     <div className="doctor-item-list" key={e.id}>
                       <div className="doctor-item-img">
                         <Link href={`/doctor/${e.slug}`}>
-                          <Image
+                          <img
                             src={`https://dev.medflick.com/doctor/${e.image}`}
                             alt={e.slug}
-                            width="181"
-                            height="221"
                             className="doctor-speciality-img"
                           />
                         </Link>
@@ -117,12 +112,10 @@ const page = async ({ params }) => {
                         <div className="doc-Hospital">
                           {e.location.charAt(0).toUpperCase() +
                             e.location.slice(1)}
-                          {/* {matchedHospital && (
-                            <img
-                              src={`https://dev.medflick.com/hospital/${matchedHospital.icon}`}
-                              alt="icon"
-                            />
-                          )} */}
+                          <img
+                            src={`https://dev.medflick.com/hospital/${e.hospitalicon}`}
+                            alt="icon"
+                          />
                         </div>
                       </div>
                     </div>

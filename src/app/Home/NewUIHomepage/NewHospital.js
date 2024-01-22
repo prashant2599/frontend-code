@@ -3,7 +3,6 @@ import getAllHospitals from "@/app/lib/getAllHospitals";
 import Link from "next/link";
 import Marquee from "react-fast-marquee";
 
-
 const NewHospital = async () => {
   const data = await getAllHospitals();
   const hospital = data.data.hospital;
@@ -28,15 +27,17 @@ const NewHospital = async () => {
       <section id="hospital-section">
         <div className="marquee-wrapper">
           <div className="marquee-new">
-          <Marquee pauseOnHover={true} speed={100}>
-            {featuredHospitals.map((hospital) => generateHospitalTag(hospital))}
-            {featuredHospitals.map((hospital) => generateHospitalTag(hospital))}
+            <Marquee pauseOnHover={true} speed={100}>
+              {featuredHospitals.map((hospital) =>
+                generateHospitalTag(hospital)
+              )}
+              {featuredHospitals.map((hospital) =>
+                generateHospitalTag(hospital)
+              )}
             </Marquee>
-           
           </div>
         </div>
       </section>
-
     </>
   );
 };

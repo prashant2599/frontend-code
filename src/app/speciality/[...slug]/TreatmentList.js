@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 
 const TreatmentList = ({ speciality, slugs }) => {
   const parts = slugs.split("/");
@@ -33,8 +32,8 @@ const TreatmentList = ({ speciality, slugs }) => {
                   <div className="packages-details">
                     {e.short_description && (
                       <>
-                        {e.short_description.slice(0, 140)}
-                        {e.short_description.length > 140 && "...."}
+                        {e.short_description.slice(0, 120)}
+                        {e.short_description.length > 120 && "...."}
                       </>
                     )}
                   </div>

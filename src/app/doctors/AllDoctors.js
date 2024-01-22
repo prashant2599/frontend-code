@@ -12,6 +12,7 @@ const AllDoctors = async () => {
   const doctor = data.data.doctors;
   const pageNumber = data.data.page;
   const count = data.data.count;
+
   return (
     <>
       <section id="find-doctors">
@@ -30,9 +31,11 @@ const AllDoctors = async () => {
             <div className="doctor-midbox-left">
               {doctor &&
                 doctor.map((e) => {
-                  //   const matchedHospital = hospitalIcon?.find(
-                  //     (hospital) => String(hospital.id) === e.hospital_id
-                  //   );
+                  // const matchedHospital = hospitalIcon?.find(
+                  //   (hospital) => String(hospital.id) === String(e.hospital_id)
+                  // );
+
+                 
                   return (
                     <div className="doctor-item-list" key={e.id}>
                       <div className="doctor-item-img">
@@ -101,13 +104,13 @@ const AllDoctors = async () => {
                         <ShareProfile slug={e.slug} />
 
                         <div className="doc-Hospital">
-                          {e.location}
-                          {/* {matchedHospital && (
-                        <img
-                          src={`${process.env.BASE_URL}/hospital/${matchedHospital.icon}`}
-                          alt="icon"
-                        />
-                      )} */}
+                          {e.location.charAt(0).toUpperCase() +
+                            e.location.slice(1)}
+                           <img
+                              src={`https://dev.medflick.com/hospital/${e.hospitalicon}`}
+                              alt="icon"
+                            />
+                        
                         </div>
                       </div>
                     </div>

@@ -8,8 +8,6 @@ const NewHeader = async () => {
   const data = await getAllSpeciality();
   const speciality = data.data.Speciality;
 
-
-
   return (
     <>
       <header className="header" id="header-id">
@@ -51,12 +49,12 @@ const NewHeader = async () => {
                   </li>
 
                   <li className="has-dropdown dropdown">
-                    <a href="#" className="dropbtn">
+                    <Link href="/hospitals" className="dropbtn">
                       Hospitals
                       <i>
                         <FaChevronDown />
                       </i>
-                    </a>
+                    </Link>
                     <div className="dropdown-content">
                       <ul>
                         {speciality.map((e) => (
@@ -76,12 +74,12 @@ const NewHeader = async () => {
                   </li>
 
                   <li className="has-dropdown dropdown">
-                    <a href="#" className="dropbtn">
+                    <Link href="/doctors" className="dropbtn">
                       Doctors
                       <i>
                         <FaChevronDown />
                       </i>
-                    </a>
+                    </Link>
                     <div className="dropdown-content">
                       <ul>
                         {speciality.map((e) => (

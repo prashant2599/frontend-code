@@ -4,6 +4,7 @@ import PaginationBlogs from "./PaginationBlogs";
 import { notFound } from "next/navigation";
 import NewHeader from "@/app/Home/NewUIHomepage/inc/NewHeader";
 import NewFooter from "@/app/Home/NewUIHomepage/inc/NewFooter";
+import Head from "next/head";
 
 function formatText(text) {
   if (typeof text === "string") {
@@ -28,8 +29,8 @@ const page = async ({ params }) => {
     );
     const datas = await res.json();
     const blogs = datas.data.blogs;
-    const pageNumber = datas.data.page
-    const totalBlogs = datas.data.count
+    const pageNumber = datas.data.page;
+    const totalBlogs = datas.data.count;
 
     const parts = combinedSlug.split("/");
 
@@ -37,10 +38,18 @@ const page = async ({ params }) => {
 
     const category = parts[0];
 
+    console.log(combinedSlug);
+
     return (
       <>
         <NewHeader />
-        <PaginationBlogs blogs={blogs} number={number} category={category} pageNumber={pageNumber} totalBlogs={totalBlogs} />
+        <PaginationBlogs
+          blogs={blogs}
+          number={number}
+          category={category}
+          pageNumber={pageNumber}
+          totalBlogs={totalBlogs}
+        />
         <NewFooter />
       </>
     );
@@ -55,6 +64,10 @@ export default page;
 
 export async function generateMetadata({ params }) {
   const combinedSlug = params.slug.join("/");
+
+  const parts = combinedSlug.split("/");
+
+  const number = parts[1];
   return {
     alternates: {
       canonical: `https://medflick.com/blogs/${combinedSlug}`,
