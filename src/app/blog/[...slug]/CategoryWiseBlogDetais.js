@@ -1,9 +1,8 @@
 import Link from "next/link";
-import getAllSpeciality from "@/app/lib/getAllSpeciality";
 
-const CategoryWiseBlogDetais = async () => {
-  const dataa = await getAllSpeciality();
-  const speciality = dataa.data.Speciality;
+
+const CategoryWiseBlogDetais =  ({speciality}) => {
+
 
 
   return (

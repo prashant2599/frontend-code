@@ -4,6 +4,7 @@ import NewBlogPage from "./NewBlogPage";
 import NewHeader from "../Home/NewUIHomepage/inc/NewHeader";
 import NewFooter from "../Home/NewUIHomepage/inc/NewFooter";
 
+
 const page = async () => {
   const data = await getALLBlogs();
   const blog = data.data.blogs;
@@ -13,6 +14,7 @@ const page = async () => {
 
   return (
     <>
+    
       <NewHeader />
       <NewBlogPage
         blog={blog}

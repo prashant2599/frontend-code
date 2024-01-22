@@ -395,11 +395,9 @@ const FreeQuote = () => {
                 <ReCaptchaComponent onCaptchaChange={handleCaptchaChange} />
                 {renderError(formErrors.captcha)}
                 <p>
-                  I agree to the{" "}
-                  <Link href="/terms-and-conditions">
-                    Terms of use Privacy policy
-                  </Link>{" "}
-                  and receive marketing letters that may be of interest.
+                  I agree to the <Link href="/terms-and-conditions">Terms</Link>{" "}
+                  and <Link href="/privacy-policy">Privacy policy</Link> and
+                  receive marketing letters that may be of interest.
                 </p>
                 <button
                   type="submit"

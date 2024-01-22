@@ -9,6 +9,7 @@ import NewFooter from "@/app/Home/NewUIHomepage/inc/NewFooter";
 import CategoryDoctors from "./CategoryDoctors";
 import CategoryHospitals from "./CategoryHospitals";
 import BlogNewsletter from "./BlogNewsletter";
+import getAllSpeciality from "@/app/lib/getAllSpeciality";
 
 const page = async ({ params }) => {
   try {
@@ -87,6 +88,14 @@ const page = async ({ params }) => {
         },
       ],
     };
+
+    const dataa = await getAllSpeciality();
+    const speciality = dataa.data.Speciality;
+
+    const matchingSpeciality = speciality.find(
+      (speciality) =>
+        String(speciality.id) === String(blogDetails.speciality_id)
+    );
 
     return (
       <>
@@ -190,30 +199,37 @@ const page = async ({ params }) => {
                   </ul>
                 </div>
 
-                <div className="talk-doctor">
-                  Talk to a Doctor
-                  <Link className="free-quote" href="/doctors">
-                    View Doctors Listing
-                    <img src="/images/2023/01/arrow-c.png" alt="arrow-icon" />
-                  </Link>
-                </div>
+                {blogDetails.speciality_id && (
+                  <div className="talk-doctor">
+                    Talk to a Doctor
+                    <Link
+                      className="free-quote"
+                      href={`/doctors/${matchingSpeciality.slug}`}
+                    >
+                      View Doctors Listing
+                      <img src="/images/2023/01/arrow-c.png" alt="arrow-icon" />
+                    </Link>
+                  </div>
+                )}
 
-                <div className="articles-box">
-                  Related Articles
-                  <ul>
-                    {relatedArticles.map((e) => (
-                      <li key={e.id}>
-                        {/* <Image
+                {relatedArticles && relatedArticles.length > 0 ? (
+                  <div className="articles-box">
+                    Related Articles
+                    <ul>
+                      {relatedArticles.map((e) => (
+                        <li key={e.id}>
+                          {/* <Image
                         src={`https://dev.medflick.com/blog/${e.icon}`}
                         alt="blog-related"
                         width="90"
                         height="77"
                       /> */}
-                        <Link href={`/blog/${e.slug}`}>{e.name}</Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                          <Link href={`/blog/${e.slug}`}>{e.name}</Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : null}
               </div>
 
               <div className="blog-midbox">
@@ -288,7 +304,7 @@ const page = async ({ params }) => {
           </div>
         </section>
 
-        <CategoryWiseBlogDetais />
+        <CategoryWiseBlogDetais speciality={speciality} />
         <CategoryDoctors specialityId={blogDetails.speciality_id} />
         <CategoryHospitals specialityId={blogDetails.speciality_id} />
 
