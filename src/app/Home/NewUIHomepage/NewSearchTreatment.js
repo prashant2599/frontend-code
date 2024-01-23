@@ -24,6 +24,8 @@ const NewSearchTreatment = () => {
   const { setDoctorsData } = useDoctorData();
   const { setHospitalsData } = HospitalData();
 
+  console.log(doctorsData);
+
   useEffect(() => {
     const fetchData = async () => {
       // Fetch countries
@@ -44,8 +46,13 @@ const NewSearchTreatment = () => {
         `https://dev.medflick.com/api/doctors/${selectedSpeciality}/${selectedCountry}`
       );
       const data = await res.json();
-      // Set the fetched data in the state
-      setDoctorsData(data.doctors_list);
+      const doctor = data.doctors_list.doctors_list;
+      const featuredDoctors = doctor?.filter(
+        (doctor) => doctor.featured === "1"
+      );
+
+      // Set the filtered data in the state
+      setDoctorsData(featuredDoctors);
     };
 
     // Fetch data when selectedCountry or selectedSpeciality changes
@@ -137,8 +144,8 @@ const NewSearchTreatment = () => {
           </div>
 
           <div className="home-doctors">
-            {Doctors.length > 0 ? (
-              Doctors.map((e) => (
+            {doctorsData.length > 0 ? (
+              doctorsData.map((e) => (
                 <div className="item" key={e.id}>
                   <div className="item-home-expert">
                     <Link href={`/doctor/${e.slug}`}>
