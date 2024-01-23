@@ -52,7 +52,7 @@ const NewSearchTreatment = () => {
       );
 
       // Set the filtered data in the state
-      setDoctorsData(featuredDoctors);
+      setDoctorsData(data.doctors_list);
     };
 
     // Fetch data when selectedCountry or selectedSpeciality changes
@@ -65,7 +65,7 @@ const NewSearchTreatment = () => {
         `https://dev.medflick.com/api/hospitals/${selectedSpeciality}/${selectedCountry}`
       );
       const data = await res.json();
-      // Set the fetched data in the state
+
       setHospitalsData(data.hospital_list.hospital_list);
     };
 
@@ -144,8 +144,8 @@ const NewSearchTreatment = () => {
           </div>
 
           <div className="home-doctors">
-            {doctorsData.length > 0 ? (
-              doctorsData.map((e) => (
+            {Doctors.length > 0 ? (
+              Doctors.map((e) => (
                 <div className="item" key={e.id}>
                   <div className="item-home-expert">
                     <Link href={`/doctor/${e.slug}`}>
