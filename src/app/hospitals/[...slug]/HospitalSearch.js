@@ -1,6 +1,7 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import getALLSearchApi from "@/app/lib/getAllSearchApi";
 
 function formatText(text) {
   if (typeof text === "string") {
@@ -14,13 +15,25 @@ function formatText(text) {
   }
 }
 
-const HospitalSearch = ({ hospital, slug }) => {
+const HospitalSearch = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredQa, setFilteredQa] = useState([]);
-  const parts = slug && slug.split("/");
-  const Category = parts && parts[0];
+  // const parts = slug && slug.split("/");
+  // const Category = parts && parts[0];
 
-  const fotmattedCategory = Category && formatText(Category);
+  // const fotmattedCategory = Category && formatText(Category);
+
+  const [hospitals, setHospitals] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      // Fetch specialities
+      const specialityData = await getALLSearchApi();
+      setHospitals(specialityData.searchData.hospitals);
+    };
+
+    fetchData();
+  }, []);
 
   const handleSearch = (event) => {
     const term = event.target.value.toLowerCase();
@@ -28,7 +41,7 @@ const HospitalSearch = ({ hospital, slug }) => {
 
     // Check if the search term has at least three characters
     if (term.length >= 2) {
-      const filteredQuestions = hospital.filter((question) =>
+      const filteredQuestions = hospitals.filter((question) =>
         question.name.toLowerCase().includes(term)
       );
 

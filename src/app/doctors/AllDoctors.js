@@ -17,7 +17,7 @@ const AllDoctors = async () => {
     <>
       <section id="find-doctors">
         <div className="midbox-inner  wiki-mk">
-          <DoctorsSearch doctors={doctor} />
+          <DoctorsSearch  />
         </div>
       </section>
       <section id="find-doctors-list">
