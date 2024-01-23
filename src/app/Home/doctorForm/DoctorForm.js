@@ -246,8 +246,21 @@ const DoctorForm = ({ info }) => {
   }, []);
 
   const handlePhoneNumberChange = (e) => {
-    const formattedPhoneNumber = e.target.value.replace(/\D/g, ""); // Remove non-numeric characters
+    const formattedPhoneNumber = e.target.value.replace(/\D/g, "");
     setPhone(formattedPhoneNumber); // Update the phone number state
+
+    // Perform phone number validation on write
+    if (formattedPhoneNumber.length !== 10) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        phone: "Please enter a valid Phone number.",
+      }));
+    } else {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        phone: "",
+      }));
+    }
   };
 
   const phoneRegex = /^\d{10}$/;
@@ -266,6 +279,26 @@ const DoctorForm = ({ info }) => {
     }
   };
 
+  const handleChangeEmail = (e) => {
+    const inputValue = e.target.value;
+
+    // Perform email validation on write
+    if (!inputValue || !emailRegex.test(inputValue)) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        email: "Please enter a valid email address",
+      }));
+    } else {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        email: "",
+      }));
+    }
+
+    // Update the email state
+    setEmail(inputValue);
+  };
+
   const handleEmailBlur = () => {
     if (!email || !email.match(emailRegex)) {
       setFormErrors((prevErrors) => ({
@@ -280,6 +313,26 @@ const DoctorForm = ({ info }) => {
     }
   };
 
+  const handlequeryChange = (e) => {
+    const inputValue = e.target.value;
+
+    // Perform validation on write
+    if (!inputValue.trim()) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        query: "Please enter your query",
+      }));
+    } else {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        query: "",
+      }));
+    }
+
+    // Update the name state
+    setQuery(inputValue);
+  };
+
   const handleQueryBlur = () => {
     if (!query) {
       setFormErrors((prevErrors) => ({
@@ -292,6 +345,26 @@ const DoctorForm = ({ info }) => {
         query: "",
       }));
     }
+  };
+
+  const handlenameChange = (e) => {
+    const inputValue = e.target.value;
+
+    // Perform validation on write
+    if (!inputValue.trim()) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        name: "Please enter your name",
+      }));
+    } else {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        name: "",
+      }));
+    }
+
+    // Update the name state
+    setName(inputValue);
   };
 
   const handleNameBlur = () => {
@@ -346,7 +419,7 @@ const DoctorForm = ({ info }) => {
                   placeholder={userName ? userName : "Name"}
                   name="name"
                   value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  onChange={handlenameChange}
                   autoComplete="off"
                   onBlur={handleNameBlur}
                   style={formErrors.name ? Formstyles.errorInput : {}}
@@ -381,7 +454,7 @@ const DoctorForm = ({ info }) => {
                     placeholder="Email"
                     name="name"
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={handleChangeEmail}
                     onBlur={handleEmailBlur}
                     autoComplete="off"
                     style={formErrors.email ? Formstyles.errorInput : {}}
@@ -401,7 +474,7 @@ const DoctorForm = ({ info }) => {
                   placeholder="Your Query"
                   rows="2"
                   value={query}
-                  onChange={(e) => setQuery(e.target.value)}
+                  onChange={handlequeryChange}
                   autoComplete="off"
                   onBlur={handleQueryBlur}
                   style={formErrors.query ? Formstyles.errorInput : {}}

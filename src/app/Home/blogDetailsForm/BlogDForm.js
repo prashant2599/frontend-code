@@ -140,7 +140,20 @@ const BlogDForm = () => {
 
   const handlePhoneNumberChange = (e) => {
     const formattedPhoneNumber = e.target.value.replace(/\D/g, "");
-    setPhone1(formattedPhoneNumber);
+    setPhone1(formattedPhoneNumber); // Update the phone number state
+
+    // Perform phone number validation on write
+    if (formattedPhoneNumber.length !== 10) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        phone: "Please enter a valid Phone number.",
+      }));
+    } else {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        phone: "",
+      }));
+    }
   };
 
   const handleFormSubmit1 = (event) => {
@@ -275,12 +288,102 @@ const BlogDForm = () => {
     }
   };
 
+  const handleChangeEmail = (e) => {
+    const inputValue = e.target.value;
+
+    // Perform email validation on write
+    if (!inputValue || !emailRegex.test(inputValue)) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        email: "Please enter a valid email address",
+      }));
+    } else {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        email: "",
+      }));
+    }
+
+    // Update the email state
+    setEmail1(inputValue);
+  };
+
   const handleEmailBlur = () => {
     if (!email1 || !email1.match(emailRegex)) {
       setFormErrors((prevErrors) => ({
         ...prevErrors,
         email: "Please enter a valid email address",
       }));
+    }
+  };
+
+  const handlequeryChange = (e) => {
+    const inputValue = e.target.value;
+
+    // Perform validation on write
+    if (!inputValue.trim()) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        query: "Please enter your query",
+      }));
+    } else {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        query: "",
+      }));
+    }
+
+    // Update the name state
+    setQuery1(inputValue);
+  };
+
+  const handleQueryBlur = () => {
+    if (!query1) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        query: "Please enter your query",
+      }));
+    } else {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        query: "",
+      }));
+    }
+  };
+
+  const handlenameChange = (e) => {
+    const inputValue = e.target.value;
+
+    // Perform validation on write
+    if (!inputValue.trim()) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        name: "Please enter your name",
+      }));
+    } else {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        name: "",
+      }));
+    }
+
+    // Update the name state
+    setName1(inputValue);
+  };
+
+  const handleNameBlur = () => {
+    if (!userName) {
+      if (!name1) {
+        setFormErrors((prevErrors) => ({
+          ...prevErrors,
+          name: "Please enter your name",
+        }));
+      } else {
+        setFormErrors((prevErrors) => ({
+          ...prevErrors,
+          name: "",
+        }));
+      }
     }
   };
 
@@ -319,8 +422,9 @@ const BlogDForm = () => {
                   placeholder={userName ? userName : "Name"}
                   name="name"
                   value={name1}
-                  onChange={(e) => setName1(e.target.value)}
+                  onChange={handlenameChange}
                   autoComplete="off"
+                  onBlur={handleNameBlur}
                   style={formErrors.name ? Formstyles.errorInput : {}}
                 />
                 {renderError(formErrors.name)}
@@ -353,7 +457,7 @@ const BlogDForm = () => {
                     placeholder="Email"
                     name="name"
                     value={email1}
-                    onChange={(e) => setEmail1(e.target.value)}
+                    onChange={handleChangeEmail}
                     onBlur={handleEmailBlur}
                     style={formErrors.email ? Formstyles.errorInput : {}}
                     autoComplete="off"
@@ -373,7 +477,8 @@ const BlogDForm = () => {
                   placeholder="Your Query"
                   rows="2"
                   value={query1}
-                  onChange={(e) => setQuery1(e.target.value)}
+                  onBlur={handleQueryBlur}
+                  onChange={handlequeryChange}
                   autoComplete="off"
                   style={formErrors.query ? Formstyles.errorInput : {}}
                 ></textarea>
