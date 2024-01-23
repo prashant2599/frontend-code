@@ -3,11 +3,13 @@ import { useState, useEffect } from "react";
 import getAllSpeciality from "../lib/getAllSpeciality";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import getAllHospitals from "../lib/getAllHospitals";
 
 const AllDoctorsFilteration = () => {
   const router = useRouter();
   const [speciality, setSpeciality] = useState([]);
   const [doctorCountry, setDoctorCountry] = useState([]);
+  const [hospitalList, setHospitalList] = useState([]);
   const [selectedSpecialtyId, setSelectedSpecialtyId] = useState("none");
   const [selectedCountry, setSelectedCountry] = useState(null);
 
@@ -36,6 +38,19 @@ const AllDoctorsFilteration = () => {
       });
   }, []);
 
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const result = await getAllHospitals();
+        setHospitalList(result.data.hospital);
+      } catch (err) {
+        console.log(err.message);
+      }
+    }
+
+    fetchData();
+  }, []);
+
   const handleSpecialtyChange = (e) => {
     const selectedId = e.target.value;
     setSelectedSpecialtyId(selectedId);
@@ -51,9 +66,10 @@ const AllDoctorsFilteration = () => {
   const handleSelectCountry = (e) => {
     const select = e.target.value;
     setSelectedCountry(select);
+    router.push(`/doctor-list/${select}`);
   };
   useEffect(() => {
-    setSelectedCountry("Select Country");
+    setSelectedCountry("Select Hospital");
   }, []);
 
   const handleClearSelection = () => {
@@ -83,10 +99,10 @@ const AllDoctorsFilteration = () => {
             onChange={handleSelectCountry}
             value={selectedCountry}
           >
-            <option disabled>Select Country</option>
-            {doctorCountry.map((e) => (
-              <option value={e.country} key={e.id}>
-                {e.country.charAt(0).toUpperCase() + e.country.slice(1)}
+            <option disabled>Select Hospital</option>
+            {hospitalList.map((e) => (
+              <option value={e.slug} key={e.id}>
+                {e.name}
               </option>
             ))}
           </select>

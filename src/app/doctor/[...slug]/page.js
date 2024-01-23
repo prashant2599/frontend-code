@@ -59,6 +59,7 @@ const page = async ({ params }) => {
                   </div>
                   <div className="department">{docotorDetails.designation}</div>
                   <div className="location">
+                    {hospitals[0].name},
                     {" "}
                     {docotorDetails.location.charAt(0).toUpperCase() +
                       docotorDetails.location.slice(1)}

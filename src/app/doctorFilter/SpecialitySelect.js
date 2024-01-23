@@ -46,7 +46,7 @@ const SpecialitySelect = ({ doctor, treatment, slug }) => {
         const result = await getAllHospitals();
         setHospitalList(result.data.hospital);
       } catch (err) {
-        console.log(err.message); // Set the error message in state
+        console.log(err.message); 
       }
     }
 
