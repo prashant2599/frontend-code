@@ -17235,4 +17235,5 @@ textarea {
 
 .treatment-midbox table {
   width: 100% !important;
+  text-align: left !important;
 }
