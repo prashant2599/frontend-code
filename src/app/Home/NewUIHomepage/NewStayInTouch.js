@@ -53,7 +53,7 @@ const NewStayInTouch = () => {
   const handleCloseErrorPopup = () => {
     setShowErrorPopup(false);
   };
-
+  const message = "Subscribed ";
   const desc = "Thank you for joining us on the journey to wellness!";
   return (
     <>
@@ -102,6 +102,7 @@ const NewStayInTouch = () => {
           onClose={handleCloseSuccessPopup}
           showSuccessPopup={showSuccessPopup}
           desc={desc}
+          message={message}
         />
       )}
       {showErrorPopup && (

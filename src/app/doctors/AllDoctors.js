@@ -35,7 +35,6 @@ const AllDoctors = async () => {
                   //   (hospital) => String(hospital.id) === String(e.hospital_id)
                   // );
 
-                 
                   return (
                     <div className="doctor-item-list" key={e.id}>
                       <div className="doctor-item-img">
@@ -106,11 +105,10 @@ const AllDoctors = async () => {
                         <div className="doc-Hospital">
                           {e.location.charAt(0).toUpperCase() +
                             e.location.slice(1)}
-                           <img
-                              src={`https://dev.medflick.com/hospital/${e.hospitalicon}`}
-                              alt="icon"
-                            />
-                        
+                          <img
+                            src={`https://dev.medflick.com/hospital/${e.hospitalicon}`}
+                            alt="icon"
+                          />
                         </div>
                       </div>
                     </div>

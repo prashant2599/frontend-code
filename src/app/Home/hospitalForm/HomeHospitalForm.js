@@ -122,7 +122,20 @@ const HomeHospitalForm = ({
 
   const handlePhoneNumberChange = (e) => {
     const formattedPhoneNumber = e.target.value.replace(/\D/g, "");
-    setPhone2(formattedPhoneNumber);
+    setPhone2(formattedPhoneNumber); // Update the phone number state
+
+    // Perform phone number validation on write
+    if (formattedPhoneNumber.length !== 10) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        phone: "Please enter a valid Phone number.",
+      }));
+    } else {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        phone: "",
+      }));
+    }
   };
 
   const [isLoading2, setIsLoading2] = useState(false);
@@ -284,6 +297,26 @@ const HomeHospitalForm = ({
     }
   };
 
+  const handleChangeEmail = (e) => {
+    const inputValue = e.target.value;
+
+    // Perform email validation on write
+    if (!inputValue || !emailRegex.test(inputValue)) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        email: "Please enter a valid email address",
+      }));
+    } else {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        email: "",
+      }));
+    }
+
+    // Update the email state
+    setEmail2(inputValue);
+  };
+
   const handleEmailBlur = () => {
     if (!email2 || !email2.match(emailRegex)) {
       setFormErrors((prevErrors) => ({
@@ -298,6 +331,26 @@ const HomeHospitalForm = ({
     }
   };
 
+  const handlequeryChange = (e) => {
+    const inputValue = e.target.value;
+
+    // Perform validation on write
+    if (!inputValue.trim()) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        query: "Please enter your query",
+      }));
+    } else {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        query: "",
+      }));
+    }
+
+    // Update the name state
+    setQuery2(inputValue);
+  };
+
   const handleQueryBlur = () => {
     if (!query2) {
       setFormErrors((prevErrors) => ({
@@ -310,6 +363,26 @@ const HomeHospitalForm = ({
         query: "",
       }));
     }
+  };
+
+  const handlenameChange = (e) => {
+    const inputValue = e.target.value;
+
+    // Perform validation on write
+    if (!inputValue.trim()) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        name: "Please enter your name",
+      }));
+    } else {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        name: "",
+      }));
+    }
+
+    // Update the name state
+    setName2(inputValue);
   };
 
   const handleNameBlur = () => {
@@ -395,7 +468,7 @@ const HomeHospitalForm = ({
                       placeholder={userName ? userName : "Name"}
                       name="name"
                       value={name2}
-                      onChange={(e) => setName2(e.target.value)}
+                      onChange={handlenameChange}
                       autoComplete="off"
                       onBlur={handleNameBlur}
                       style={formErrors.name ? Formstyles2.errorInput : {}}
@@ -430,7 +503,7 @@ const HomeHospitalForm = ({
                         placeholder="Email"
                         name="name"
                         value={email2}
-                        onChange={(e) => setEmail2(e.target.value)}
+                        onChange={handleChangeEmail}
                         onBlur={handleEmailBlur}
                         autoComplete="off"
                         style={formErrors.email ? Formstyles2.errorInput : {}}
@@ -450,7 +523,7 @@ const HomeHospitalForm = ({
                       placeholder="Your Query"
                       rows="2"
                       value={query2}
-                      onChange={(e) => setQuery2(e.target.value)}
+                      onChange={handlequeryChange}
                       autoComplete="off"
                       onBlur={handleQueryBlur}
                       style={formErrors.query ? Formstyles2.errorInput : {}}
