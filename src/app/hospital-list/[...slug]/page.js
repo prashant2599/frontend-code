@@ -57,7 +57,7 @@ const page = async ({ params }) => {
         <NewHeader />
         <section id="find-doctors">
           <div className="midbox-inner  wiki-mk">
-            <HospitalSearch hospital={hospital} slug={combinedSlug} />
+            <HospitalSearch />
           </div>
         </section>
         <section id="find-hospital-list">
@@ -94,9 +94,7 @@ const page = async ({ params }) => {
                           <div className="tabs_wrapper">
                             <div className="tabs_container">
                               <div data-hash="one" key={hospital.id}>
-                                <Link
-                                  href={`/hospital/${hospital.slug}`}
-                                >
+                                <Link href={`/hospital/${hospital.slug}`}>
                                   <Image
                                     src={`https://dev.medflick.com/hospital/${hospital.image}`}
                                     alt={hospital.name}
@@ -132,9 +130,7 @@ const page = async ({ params }) => {
                           </div>
                         </div>
                         <div className="hospital-item-doc">
-                          <Link
-                            href={`/hospital/${hospital.slug}`}
-                          >
+                          <Link href={`/hospital/${hospital.slug}`}>
                             <h3>{hospital.name}</h3>
                           </Link>
 

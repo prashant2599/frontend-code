@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import getALLCountry from "@/app/lib/getAllCountry";
+import getALLSearchApi from "@/app/lib/getAllSearchApi";
 
 function formatText(text) {
   if (typeof text === "string") {
@@ -15,16 +15,16 @@ function formatText(text) {
   }
 }
 
-const DoctorsSearch = ({ doctors, slug, pageNumber, treatment }) => {
+const DoctorsSearch = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredQa, setFilteredQa] = useState([]);
-  const parts = slug && slug.split("/");
-  const Category = parts && parts[0];
-  const countrySlug = parts && parts[1];
-  const citySlug = parts && parts[2];
-  const treatmentSlug = parts && parts[1];
-  const countrySlugTreatment = parts && parts[3];
-  const position5 = parts && parts[5];
+  // const parts = slug && slug.split("/");
+  // const Category = parts && parts[0];
+  // const countrySlug = parts && parts[1];
+  // const citySlug = parts && parts[2];
+  // const treatmentSlug = parts && parts[1];
+  // const countrySlugTreatment = parts && parts[3];
+  // const position5 = parts && parts[5];
 
   // const [doctorCountry, setDoctorCountry] = useState([]);
   // useEffect(() => {
@@ -45,6 +45,18 @@ const DoctorsSearch = ({ doctors, slug, pageNumber, treatment }) => {
   // const formattedcity = citySlug && formatText(citySlug);
   // const formattedTreatmentCountry =
   //   countrySlugTreatment && formatText(countrySlugTreatment);
+
+  const [doctors, setDoctors] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      // Fetch specialities
+      const specialityData = await getALLSearchApi();
+      setDoctors(specialityData.searchData.doctors);
+    };
+
+    fetchData();
+  }, []);
 
   const handleSearch = (event) => {
     const term = event.target.value.toLowerCase();
@@ -90,6 +102,15 @@ const DoctorsSearch = ({ doctors, slug, pageNumber, treatment }) => {
   // const positionTreatmentCountry = doctorCountry.some(
   //   (e) => e.country === citySlug
   // );
+
+  // const filteredDoctors = doctors
+  //   ? doctors.filter(
+  //       (item) =>
+  //         item.prefix.toLowerCase().includes(searchQuery.toLowerCase()) ||
+  //         item.first_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+  //         item.last_name.toLowerCase().includes(searchQuery.toLowerCase())
+  //     )
+  //   : [];
 
   return (
     <>

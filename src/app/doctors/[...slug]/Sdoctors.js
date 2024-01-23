@@ -64,7 +64,7 @@ const Sdoctors = ({
     <>
       <section id="find-doctors">
         <div className="midbox-inner  wiki-mk">
-          <DoctorsSearch doctors={doctor} slug={slugs} treatment={treatment} />
+          <DoctorsSearch />
         </div>
       </section>
 
