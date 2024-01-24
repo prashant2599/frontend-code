@@ -24,8 +24,6 @@ const NewSearchTreatment = () => {
   const { setDoctorsData } = useDoctorData();
   const { setHospitalsData } = HospitalData();
 
-  console.log(doctorsData);
-
   useEffect(() => {
     const fetchData = async () => {
       // Fetch countries
@@ -59,12 +57,60 @@ const NewSearchTreatment = () => {
     fetchDoctorsData();
   }, [selectedCountry, selectedSpeciality, setDoctorsData]);
 
+  // useEffect(() => {
+  //   const fetchDoctorsData = async () => {
+  //     try {
+  //       // Create an array to store all the promises for fetching data
+  //       const promises = [];
+
+  //       // Iterate through the pages and push each fetch promise into the array
+  //       for (let i = 1; i <= 9; i++) {
+  //         const url = `https://dev.medflick.com/api/doctors/${selectedSpeciality}/${selectedCountry}/page/${i}`;
+  //         promises.push(fetch(url).then((res) => res.json()));
+  //       }
+
+  //       // Use Promise.all to wait for all promises to resolve
+  //       const results = await Promise.all(promises);
+
+  //       // Extract the doctors array from each result
+  //       const allDoctorsArrays = results.map(result => result.doctors_list.doctors_list);
+
+  //       // Flatten the array of arrays into a single array
+  //       const allDoctors = [].concat(...allDoctorsArrays);
+
+  //       // Filter out duplicate doctors based on ID
+  //       const uniqueDoctors = allDoctors.filter(
+  //         (doctor, index, array) => array.findIndex(d => d.id === doctor.id) === index
+  //       );
+
+  //       console.log("alldoctors",allDoctors);
+
+  //       // Filter the featured doctors
+  //       const featuredDoctors = allDoctors.filter(
+  //         (doctor) => doctor.featured === "1"
+  //       );
+
+  //       // Set the filtered data in the state
+  //       setDoctorsData(featuredDoctors);
+  //     } catch (error) {
+  //       console.error("Error fetching data:", error);
+  //     }
+  //   };
+
+  //   // Fetch data when selectedCountry or selectedSpeciality changes
+  //   fetchDoctorsData();
+  // }, [selectedCountry, selectedSpeciality, setDoctorsData]);
+
   useEffect(() => {
     const fetchDoctorsData = async () => {
       const res = await fetch(
         `https://dev.medflick.com/api/hospitals/${selectedSpeciality}/${selectedCountry}`
       );
       const data = await res.json();
+      // const doctor = data.hospital_list.hospital_list;
+      // const featuredDoctors = doctor?.filter(
+      //   (doctor) => doctor.featured === "1"
+      // );
 
       setHospitalsData(data.hospital_list.hospital_list);
     };

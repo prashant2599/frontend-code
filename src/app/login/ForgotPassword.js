@@ -1,9 +1,13 @@
 "use client";
 import { useState } from "react";
 import axios from "axios";
+import Success from "../Home/successPopup/Success";
+import ErrorPopup from "../Home/successPopup/ErrorPopup";
 
 const ForgotPassword = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
+  const [showErrorPopup, setShowErrorPopup] = useState(false);
   const [email, setEmail] = useState("");
   const popupStyle = {
     display: isPopupOpen ? "block" : "none",
@@ -61,18 +65,18 @@ const ForgotPassword = () => {
     axios
       .post(apiEndpoint, data)
       .then((response) => {
-        // Handle the API response here if needed
-        console.log(response);
-        alert(
-          "Your password reset link is on its way to your email address; please check your inbox."
-        );
+        setShowSuccessPopup(true);
+        // alert(
+        //   "Your password reset link is on its way to your email address; please check your inbox."
+        // );
         togglePopup();
       })
       .catch((error) => {
         if (error.response && error.response.status === 422) {
-          alert("Invalid Email Id");
+          setShowErrorPopup(true);
         } else {
           console.error("Error:", error);
+          setShowErrorPopup(true);
         }
       });
     //   .finally(() => {
@@ -80,6 +84,24 @@ const ForgotPassword = () => {
     //     setIsLoading(false);
     //   });
   };
+
+  const handleCloseSuccessPopup = () => {
+    setShowSuccessPopup(false);
+  };
+
+  const handleCloseErrorPopup = () => {
+    setShowErrorPopup(false);
+  };
+
+  const message = "Successful";
+  const desc =
+    "Your password reset link is on its way to your email address; please check your inbox.";
+
+  const errordesc =
+    "This email is not registered in our system. Please provide a valid email associated with your account for password reset.";
+
+  const errorMessage = "Invalid email address";
+
   return (
     <>
       <div className="account-box">
@@ -135,6 +157,22 @@ const ForgotPassword = () => {
             </div>
           </div>
         </div>
+      )}
+      {showSuccessPopup && (
+        <Success
+          onClose={handleCloseSuccessPopup}
+          showSuccessPopup={showSuccessPopup}
+          desc={desc}
+          message={message}
+        />
+      )}
+      {showErrorPopup && (
+        <ErrorPopup
+          onClose={handleCloseErrorPopup}
+          showErrorPopup={showErrorPopup}
+          errordesc={errordesc}
+          errorMessage={errorMessage}
+        />
       )}
     </>
   );

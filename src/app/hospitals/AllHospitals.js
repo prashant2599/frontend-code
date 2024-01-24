@@ -17,7 +17,7 @@ const AllHospitals = async () => {
     <>
       <section id="find-doctors">
         <div className="midbox-inner  wiki-mk">
-          <HospitalSearch  />
+          <HospitalSearch />
         </div>
       </section>
       <section id="find-hospital-list">
@@ -40,23 +40,26 @@ const AllHospitals = async () => {
                       <div className="tabs_wrapper">
                         <div className="tabs_container">
                           <div data-hash="one" key={hospital.id}>
-                            <Link
-                              href={`/hospital/${hospital.slug}`}
-                            >
+                            <Link href={`/hospital/${hospital.slug}`}>
                               <img
                                 src={`https://dev.medflick.com/hospital/${hospital.image}`}
                                 alt={hospital.name}
                                 width="100%"
                               />
                             </Link>
+                            {/* <ul className="tabs tab-h">
+                              <li className="active" id="tab1">
+                                <img
+                                  src={`https://dev.medflick.com/hospital/${hospital.gallery_icon}`}
+                                />{" "}
+                              </li>
+                            </ul> */}
                           </div>
                         </div>
                       </div>
                     </div>
                     <div className="hospital-item-doc">
-                      <Link
-                        href={`/hospital/${hospital.slug}`}
-                      >
+                      <Link href={`/hospital/${hospital.slug}`}>
                         <h3>{hospital.name}</h3>
                       </Link>
                       {/* <div className="department-sub">
@@ -114,8 +117,6 @@ const AllHospitals = async () => {
                       </div>
                     </div>
                     <div className="doctor-item-button">
-                    
-
                       <AppointmentForm
                         name={hospital.name}
                         hospitalId={hospital.id}

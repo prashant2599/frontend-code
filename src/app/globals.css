@@ -5678,7 +5678,7 @@ ul.tabs li.active {
   margin-bottom: 14px;
   font-family: Helvetica Neue Medium;
   text-transform: capitalize;
-  text-align: left;
+  text-align: left !important;
 }
 
 .blog-midbox h4 {
@@ -17236,4 +17236,8 @@ textarea {
 .treatment-midbox table {
   width: 100% !important;
   text-align: left !important;
+}
+
+#google_translate_element .goog-te-gadget-simple {
+background: none !important;
 }
