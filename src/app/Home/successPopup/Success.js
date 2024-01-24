@@ -1,3 +1,4 @@
+
 import React from "react";
 
 const Success = ({ onClose, showSuccessPopup, message, desc }) => {
@@ -27,7 +28,7 @@ const Success = ({ onClose, showSuccessPopup, message, desc }) => {
             </div>
 
             <div className="success-message">
-              <img src="/images/success.png" />
+              <img src="/images/success.png" alt="sucess-icon" />
               <h4>{message || defaultMessage}</h4>
               {desc ? <p>{desc}</p> : null}
             </div>

@@ -1,6 +1,11 @@
 import React from "react";
 
-const ErrorPopup = ({ onClose, showErrorPopup }) => {
+const ErrorPopup = ({ onClose, showErrorPopup, errordesc, errorMessage }) => {
+  const defaultMessage =
+    "We're sorry, but there was an error processing your submission. Please try again later";
+
+  const defaultP = "Oops! Something went wrong.";
+
   return (
     <>
       <div
@@ -24,12 +29,9 @@ const ErrorPopup = ({ onClose, showErrorPopup }) => {
             </div>
 
             <div className="success-message">
-              <img src="/images/error.png" />
-              <h4 style={{ color: "red" }}>Oops! Something went wrong.</h4>
-              <p>
-                We're sorry, but there was an error processing your submission.
-                Please try again later
-              </p>
+              <img src="/images/error.png" alt="error-icon" />
+              <h4 style={{ color: "red" }}>{errorMessage || defaultP}</h4>
+              <p>{errordesc || defaultMessage}</p>
             </div>
           </div>
         </div>

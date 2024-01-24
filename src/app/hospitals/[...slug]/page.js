@@ -129,7 +129,7 @@ const page = async ({ params }) => {
                                   />
                                 </Link>
                               </div>
-                              <ul class="tabs tab-h">
+                              <ul className="tabs tab-h">
                                 {galleryImages.map((e) => (
                                   <React.Fragment
                                     className="active"
@@ -153,12 +153,12 @@ const page = async ({ params }) => {
                                 ))}
 
                                 {/* {galleryImages.map((e) => (
-                                <li class="active" id="tab1" key={e.id}>
+                                <li className="active" id="tab1" key={e.id}>
                                   <img src={`${process.env.BASE_URL}/hospital/${hospital.image}`} />{" "}
                                 </li>
                               ))}
                                {galleryImages.map((e) => (
-                                <li class="active" id="tab1" key={e.id}>
+                                <li className="active" id="tab1" key={e.id}>
                                   <img src={`${process.env.BASE_URL}/hospital/${hospital.image}`} />{" "}
                                 </li>
                               ))} */}

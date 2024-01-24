@@ -51,7 +51,7 @@ const AllDoctors = async () => {
                             {e.prefix} {e.first_name} {e.last_name}
                           </h3>
                         </Link>
-                        <div className="department-sub">
+                        <div className="department-sub" style={{color:"#ff6800"}}>
                           {" "}
                           {e.designation.length > 55
                             ? `${e.designation.slice(0, 55)}...`
