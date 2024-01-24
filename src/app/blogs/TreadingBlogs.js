@@ -12,15 +12,15 @@ const TreadingBlogs = async () => {
       <ul>
         {Fblog.map((e) => (
           <li key={e.id}>
-            {e.icon ? (
-              <img
-                src={`${process.env.NEXT_PUBLIC_BASE_URL}/blog/${e.icon}`}
-                alt={e.name}
-                className="popular-blog-img"
-              />
-            ) : null}
-
             <Link href={`/blog/${e.slug}`}>
+              {e.icon ? (
+                <img
+                  src={`${process.env.NEXT_PUBLIC_BASE_URL}/blog/${e.icon}`}
+                  alt={e.name}
+                  className="popular-blog-img"
+                />
+              ) : null}
+
               <h3>{e.name}</h3>
             </Link>
           </li>

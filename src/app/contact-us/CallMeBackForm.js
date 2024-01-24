@@ -204,8 +204,6 @@ const CallMeBackForm = () => {
         email: userEmail ? userEmail : email2,
         messages: query2,
         patient_id: patientId,
-        doctor_id: doctorId,
-        speciality_id: specialityId,
         file: selectedFile,
       };
 

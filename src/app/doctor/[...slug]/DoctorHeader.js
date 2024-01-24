@@ -7,20 +7,20 @@ const DoctorHeader = ({ docotorDetails, treament }) => {
   const handleLinkClick = (link) => {
     setActiveLink(link);
   };
-  useEffect(() => {
-    const handleScroll = () => {
-      const profileLink = document.getElementById("profile-link");
+  const handleScroll = () => {
+    const profileLink = document.getElementById("profile-link");
 
-      // Check if profileLink exists before manipulating its classList
-      if (profileLink) {
-        if (window.scrollY >= 100) {
-          profileLink.classList.add("sticky-p");
-        } else {
-          profileLink.classList.remove("sticky-p");
-        }
+    // Check if profileLink exists before manipulating its classList
+    if (profileLink) {
+      if (window.scrollY >= 100) {
+        profileLink.classList.add("sticky-p");
+      } else {
+        profileLink.classList.remove("sticky-p");
       }
-    };
+    }
+  };
 
+  useEffect(() => {
     // Add scroll event listener when the component mounts
     window.addEventListener("scroll", handleScroll);
 

@@ -66,16 +66,7 @@ a:hover {
 
 /*===============header===============*/
 
-@media (min-width: 90rem) {
-  .navbar__buttons a {
-    font-size: 16px;
-    font-family: Helvetica Neue Medium;
-  }
-  .page-header ul a {
-    font-size: 16px !important;
-    font-family: Helvetica Neue Medium;
-  }
-}
+
 
 .navigation img {
   width: 25px;

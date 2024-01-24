@@ -7,9 +7,11 @@ import { ThreeDots } from "react-loader-spinner";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useRouter } from "next/navigation";
 import { useUser } from "../UserContext";
+import SurePopup from "../Home/successPopup/SurePopup";
 
 const SignUp = () => {
   const router = useRouter();
+  const [showSurePopup, setShowSurePopup] = useState(false);
   const [name, setName] = useState("");
   const [cpassword, setCpassword] = useState("");
   const [password, setPassword] = useState("");
@@ -88,7 +90,6 @@ const SignUp = () => {
       isValid = false;
     }
 
-  
     if (!isValid) {
       return;
     }
@@ -100,8 +101,6 @@ const SignUp = () => {
       }));
       return;
     }
-
-    
 
     // Create the data object to be sent in the API request
     const data = {
@@ -143,10 +142,11 @@ const SignUp = () => {
           error.response.data.error.email
         ) {
           // const errorMessage = error.response.data.error.email[0];
-          setEmailResister(
-            "Email already registered. Reset your password or contact support."
-          );
-          alert("Email already registered. Reset your password or contact support.");
+          // setEmailResister(
+          //   "Email address already registered. Reset your password or contact support."
+          // );
+          // alert("Email address already registered. Reset your password or contact support.");
+          setShowSurePopup(true);
         } else {
           console.error("Error:", error);
         }
@@ -155,6 +155,10 @@ const SignUp = () => {
         // Set loading back to false after the API call is complete
         setIsLoading(false);
       });
+  };
+
+  const handleCloseSurePopup = () => {
+    setShowSurePopup(false);
   };
 
   const Formstyles = {
@@ -244,8 +248,6 @@ const SignUp = () => {
   };
 
   const validatePassword = (inputPassword) => {
-    // Password must contain at least one uppercase letter,
-    // one lowercase letter, one number, and be at least six characters long.
     const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{6,}$/;
     return passwordRegex.test(inputPassword);
   };
@@ -303,6 +305,11 @@ const SignUp = () => {
 
   const renderError = (error) =>
     error && <div className="error-message">{error}</div>;
+
+  const sureDesc =
+    "Email Id already exist. Reset your password or contact support.";
+
+  const Page = "signup"
   return (
     <>
       <section id="login-section">
@@ -479,6 +486,14 @@ const SignUp = () => {
           </div>
         </div>
       </section>
+      {showSurePopup && (
+        <SurePopup
+          onClose={handleCloseSurePopup}
+          showSurePopup={showSurePopup}
+          sureDesc={sureDesc}
+          Page={Page}
+        />
+      )}
     </>
   );
 };

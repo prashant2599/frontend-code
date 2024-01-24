@@ -93,15 +93,21 @@ const page = () => {
               <div className="openings-box">
                 <div className="openings-box1">
                   <div className="openings-details">1</div>
-                  <div className="job-title">Finance & Strategy Associate</div>
-                  <div className="job-details">New York, NY, United States</div>
+                  <div className="job-title">
+                    International Patient Case Manager{" "}
+                  </div>
+                  <div className="job-details">Noida, India</div>
                   <div className="job-type">Full-Time</div>
                 </div>
                 <p>
-                  Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                  qui officia deserunt mollit anim id es Lorem ipsum dolor sit
-                  amet, consectetur adipiscing elit, sed do eiusmod tempor
-                  incididunt ut labore
+                  We are seeking a dedicated and compassionate International
+                  Patient Case Manager to join our Medflick team. The ideal
+                  candidate will be responsible for overseeing and coordinating
+                  patient care services, ensuring the highest level of quality
+                  and patient satisfaction. The Patient Care Manager will work
+                  closely with healthcare professionals, patients, and their
+                  families to facilitate a seamless and positive healthcare
+                  experience.
                 </p>
                 <a href="/" className="apply-now">
                   {" "}
@@ -109,7 +115,7 @@ const page = () => {
                 </a>
               </div>
 
-              <div className="openings-box">
+              {/* <div className="openings-box">
                 <div className="openings-box1">
                   <div className="openings-details">2</div>
                   <div className="job-title">Finance & Strategy Associate</div>
@@ -164,7 +170,7 @@ const page = () => {
                   {" "}
                   Apply Now
                 </a>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
