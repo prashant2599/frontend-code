@@ -8,15 +8,36 @@ import { useUser } from "../UserContext";
 import ForgotPassword from "./ForgotPassword";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import SurePopup from "../Home/successPopup/SurePopup";
 
 const Login = () => {
   const router = useRouter();
+  const [showSurePopup, setShowSurePopup] = useState(false);
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
   const { setUserName, setUserId } = useUser();
   const [errorMessage, setErrorMessage] = useState("");
 
   const [isLoading, setIsLoading] = useState(false);
+
+  const validateEmail = (inputEmail) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(inputEmail);
+  };
+
+  const handleEmailChange = (e) => {
+    const newEmail = e.target.value;
+    setEmail(newEmail);
+
+    const isValidEmail = validateEmail(newEmail);
+    setEmailError(isValidEmail ? "" : "Invalid email address");
+  };
+
+  const handleEmailBlur = () => {
+    const isValidEmail = validateEmail(email);
+    setEmailError(isValidEmail ? "" : "Invalid email address");
+  };
 
   const clearFormFields = () => {
     setPassword("");
@@ -45,8 +66,6 @@ const Login = () => {
       email: email,
     };
     const previousUrl = localStorage.getItem("previousUrl");
-
-    console.log(previousUrl);
 
     // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
     const apiEndpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/api/login`;
@@ -82,7 +101,8 @@ const Login = () => {
         if (error.response && error.response.status === 401) {
           // Show a custom error message for 401 (Unauthorized) error
           // alert("Email ID not found or incorrect password");
-          setErrorMessage("Email ID not found or incorrect password");
+          // setErrorMessage("Email ID not found or incorrect password");
+          setShowSurePopup(true);
         } else {
           console.error("Error:", error);
         }
@@ -92,6 +112,15 @@ const Login = () => {
         setIsLoading(false);
       });
   };
+
+  const handleCloseSurePopup = () => {
+    setShowSurePopup(false);
+  };
+
+  const sureDesc =
+    "Email Id is not registered or Incorrect. Sign-up for new account.";
+
+  // const sureMessage = "Email Address not found";
 
   return (
     <>
@@ -133,7 +162,7 @@ const Login = () => {
               <h1>
                 Welcome to <span style={{ color: "#ff6800" }}>Medflick</span>
               </h1>
-              {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+              {/* {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>} */}
               {/* <p>Lorem ipsum dolor sit amet quis alenquen</p> */}
               <form onSubmit={handleFormSubmit}>
                 <div className="inputbox">
@@ -142,10 +171,17 @@ const Login = () => {
                     type="email"
                     name="name"
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
+                    onChange={handleEmailChange}
+                    onBlur={handleEmailBlur}
                     autoComplete="off"
                   />
+                  {emailError && (
+                    <p
+                      style={{ margin: "0px", color: "red", fontSize: "16px" }}
+                    >
+                      {emailError}
+                    </p>
+                  )}
                 </div>
                 <div className="inputbox">
                   <label>Password</label>
@@ -214,6 +250,13 @@ const Login = () => {
           </div>
         </div>
       </section>
+      {showSurePopup && (
+        <SurePopup
+          onClose={handleCloseSurePopup}
+          showSurePopup={showSurePopup}
+          sureDesc={sureDesc}
+        />
+      )}
       <ToastContainer />
     </>
   );

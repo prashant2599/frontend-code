@@ -1,10 +1,7 @@
-import Link from "next/link";
-import Image from "next/image";
 import PaginationBlogs from "./PaginationBlogs";
 import { notFound } from "next/navigation";
 import NewHeader from "@/app/Home/NewUIHomepage/inc/NewHeader";
 import NewFooter from "@/app/Home/NewUIHomepage/inc/NewFooter";
-import Head from "next/head";
 
 function formatText(text) {
   if (typeof text === "string") {
@@ -13,8 +10,7 @@ function formatText(text) {
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
       .join(" ");
   } else {
-    // Handle the case where 'text' is not a string or is undefined
-    return "Invalid input"; // Or any other appropriate error handling
+    return "Invalid input";
   }
 }
 
@@ -37,8 +33,6 @@ const page = async ({ params }) => {
     const number = parts[1];
 
     const category = parts[0];
-
-    console.log(combinedSlug);
 
     return (
       <>

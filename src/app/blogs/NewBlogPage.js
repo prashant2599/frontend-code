@@ -42,13 +42,14 @@ const NewBlogPage = async ({ blog, pageNumber, totalCount }) => {
               <ul>
                 {blog.map((e) => (
                   <li key={e.id}>
-                    {e.icon ? (
-                      <img
-                        src={`${process.env.NEXT_PUBLIC_BASE_URL}/blog/${e.icon}`}
-                        alt={e.name}
-                      />
-                    ) : null}
                     <Link href={`/blog/${e.slug}`}>
+                      {e.icon ? (
+                        <img
+                          src={`${process.env.NEXT_PUBLIC_BASE_URL}/blog/${e.icon}`}
+                          alt={e.name}
+                        />
+                      ) : null}
+
                       <h3>{e.name}</h3>
                     </Link>
                     <div

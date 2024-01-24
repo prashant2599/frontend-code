@@ -17,7 +17,7 @@
   list-style: none;
   position: relative;
   text-align: left;
-  color: #FF6800;
+  color: #ff6800;
   font-size: 14px;
 }
 .mf-breadcrumb li a {
@@ -32,3 +32,18 @@
   font-size: 14px;
 }
 
+.blog-share {
+  display: flex;
+  gap: 8px;
+}
+
+.blog-share-text {
+  color: #777777;
+  font-weight: 400;
+}
+
+@media screen and (max-width: 880px) {
+  .blog-share-mobile {
+    display: none;
+  }
+}
