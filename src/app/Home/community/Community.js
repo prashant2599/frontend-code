@@ -1,13 +1,16 @@
-
-import Link from 'next/link'
+import Link from "next/link";
 
 const Community = () => {
   return (
     <>
-          <section id="community-section">
+      <section id="community-section">
         <div className="midbox-inner  wiki-mk">
           <div className="community-pro">
-            <img className="community-img" src="/images/2023/02/community.webp" alt="medflick-community" />
+            <img
+              className="community-img"
+              src="/images/2023/02/Community.webp"
+              alt="medflick-community"
+            />
             <div className="community-box">
               <h3>Find Your Community. Empower Your Knowledge.</h3>
               <p>
@@ -24,7 +27,7 @@ const Community = () => {
         </div>
       </section>
     </>
-  )
-}
+  );
+};
 
-export default Community
+export default Community;
