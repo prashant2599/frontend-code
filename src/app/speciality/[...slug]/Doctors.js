@@ -39,11 +39,23 @@ const Doctors = ({ doctor, category, categoryName, slugs }) => {
                   </Link>
                 </div>
                 <div className="home-expert-text">
-                  <Link href={`/doctor/${e.slug}`}>
-                    <h3>
-                      {e.prefix} {e.first_name} {e.last_name}
-                    </h3>
-                  </Link>
+                  <div style={{display:"flex"}}>
+                    <div>
+                      <Link href={`/doctor/${e.slug}`}>
+                        <h3>
+                          {e.prefix} {e.first_name} {e.last_name}
+                        </h3>
+                      </Link>
+                    </div>
+                    {/* <div className="home-page-hospital-logo">
+                      <Link href={`/hospital/${e.hospital_slug}`}>
+                        <img
+                          src={`https://dev.medflick.com/hospital/${e.hospitalicon}`}
+                          className="home-doctor-hospital-logo"
+                        />
+                      </Link>
+                    </div> */}
+                  </div>
                   <p>
                     {e.designation.length > 30
                       ? `${e.designation.slice(0, 30)}...`

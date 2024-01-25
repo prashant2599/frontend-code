@@ -7,7 +7,7 @@ const Community = () => {
           <section id="community-section">
         <div className="midbox-inner  wiki-mk">
           <div className="community-pro">
-            <img className="community-img" src="/images/2023/02/community.jpg" alt="changes" />
+            <img className="community-img" src="/images/2023/02/community.webp" alt="medflick-community" />
             <div className="community-box">
               <h3>Find Your Community. Empower Your Knowledge.</h3>
               <p>

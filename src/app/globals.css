@@ -1998,7 +1998,7 @@ textarea {
   border-radius: 36px;
   object-fit: revert;
   position: relative;
-  height: 560px;
+  height: auto;
   width: 100%;
 }
 
