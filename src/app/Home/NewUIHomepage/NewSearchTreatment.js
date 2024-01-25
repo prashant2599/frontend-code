@@ -19,7 +19,7 @@ const NewSearchTreatment = () => {
   const [countries, setCountries] = useState([]);
   const [specialities, setSpecialities] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState("india");
-  const [selectedSpeciality, setSelectedSpeciality] = useState("transplants");
+  const [selectedSpeciality, setSelectedSpeciality] = useState("neurosurgery");
   //   const [doctorsData, setDoctorsData] = useState([]);
   const { setDoctorsData } = useDoctorData();
   const { setHospitalsData } = HospitalData();
@@ -202,11 +202,22 @@ const NewSearchTreatment = () => {
                     </Link>
                   </div>
                   <div className="home-expert-text">
-                    <Link href={`/doctor/${e.slug}`}>
-                      <h3>
-                        {e.prefix} {e.first_name} {e.last_name}
-                      </h3>
-                    </Link>
+                    <div style={{display:"flex"}}>
+                      <div>
+                        <Link href={`/doctor/${e.slug}`}>
+                          <h3>
+                            {e.prefix} {e.first_name} {e.last_name}
+                          </h3>
+                        </Link>
+                      </div>
+                      <div className="home-page-hospital-logo">
+                        <img
+                          src={`https://dev.medflick.com/hospital/${e.hospitalicon}`}
+                         
+                          className="home-doctor-hospital-logo"
+                        />
+                      </div>
+                    </div>
                     <p>
                       {e.designation.length > 28
                         ? `${e.designation.slice(0, 28)}...`

@@ -2318,3 +2318,11 @@ button.active .city-icon-h {
 }
 
 
+.home-page-hospital-logo {
+  margin-left: auto;
+}
+
+.home-doctor-hospital-logo {
+  width: 60px;
+  height: auto;
+}

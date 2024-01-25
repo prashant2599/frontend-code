@@ -6,9 +6,9 @@ import HeaderSearch from "./HeaderSearch";
 import { useUser } from "@/app/UserContext";
 import { useRouter } from "next/navigation";
 import HeaderPopup from "../QaForm/HeaderPopup";
-import Script from "next/script";
-import { SelectPicker } from "rsuite";
-import { getCookie, hasCookie, setCookie } from "cookies-next";
+// import Script from "next/script";
+// import { SelectPicker } from "rsuite";
+// import { getCookie, hasCookie, setCookie } from "cookies-next";
 
 const LoginButton = () => {
   const router = useRouter();
