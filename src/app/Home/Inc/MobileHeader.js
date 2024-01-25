@@ -187,7 +187,7 @@ const MobileHeader = ({ speciality }) => {
                               router.push(`/speciality/${e.slug}`); // Navigate to the link
                             }}
                           >
-                            {e.menu_name}
+                            {e.name}
                           </Link>{" "}
                         </li>
                       ))}
