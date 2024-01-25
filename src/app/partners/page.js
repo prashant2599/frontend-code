@@ -14,18 +14,19 @@ const page = async () => {
         <div className="midbox-inner  wiki-mk">
           <div className="partner-with-box">
             <div className="partner-with-left">
-              <h1>Interested in becoming our partner?</h1>
+              <h1>Interested in partnering with us?</h1>
               <p>
-                If you represent a doctor, medical center, or healthcare
-                facilitator and are interested in becoming a valued partner with
-                our organization, we invite you to complete the form below.{" "}
+                We are India’s leading healthtech platform. If you are a doctor,
+                hospital, or healthcare facilitator and wish to recommend
+                patients in your area, then please fill the form at your
+                earliest convenience. Our team will contact you shortly.
               </p>
 
-              <p>
+              {/* <p>
                 As a potential partner, your expertise and local presence are
                 essential in helping us deliver high-quality care to a wider
                 range of patients.
-              </p>
+              </p> */}
             </div>
 
             <PartnersForm />
@@ -35,37 +36,50 @@ const page = async () => {
 
       <section id="partner-medflick">
         <div className="midbox-inner  wiki-mk">
-          <h2>Why Partner wtih Medflick?</h2>
+          <h2>Why Choose Medflick as Your Partner?
+            
+          </h2>
           <div className="partner-medflick">
             <div className="partner-medflick-item">
               <img src="/images/p1.png" alt="medflick-icon" />
               <h3>
-                Make it easier for patients to connect with doctors & Hospitals
+                Facilitates Patients to Establish Seamless Connections with
+                Doctors and Hospitals
               </h3>
               <p>
-                Lorem ipsum dolor sit amet, adipiscing elit, sed do eiusmod
-                tempor incididunt ut labore Ut enim ad minim veniam, quis
-                nostrud
+                Medflick provides a simplified platform to patients to get in
+                touch with the desired healthcare provider. It offers excellent
+                accessibility, easy & smooth interactions, improving overall
+                healthcare experience.
               </p>
             </div>
 
             <div className="partner-medflick-item">
               <img src="/images/p2.png" alt="medflick-icon" />
-              <h3>Experienced medical counselors to assist the patients</h3>
+              <h3>
+                Experienced Medical Counselors Provide Personalized Support to
+                Patients
+              </h3>
               <p>
-                Lorem ipsum dolor sit amet, adipiscing elit, sed do eiusmod
-                tempor incididunt ut labore Ut enim ad minim veniam, quis
-                nostrud
+                Our team of experienced and compassionate medical counselors is
+                offering personalized assistance to the patients by addressing
+                their issues with care. They are providing comprehensive
+                guidance and assistance to patients with a holistic approach,
+                fostering trust and confidence in patients.
               </p>
             </div>
 
             <div className="partner-medflick-item">
               <img src="/images/p3.png" alt="medflick-icon" />
-              <h3>Reduce manual work for your practices</h3>
+              <h3>
+                Minimises You Manual Workload to Further Streamline Your
+                Practice
+              </h3>
               <p>
-                Lorem ipsum dolor sit amet, adipiscing elit, sed do eiusmod
-                tempor incididunt ut labore Ut enim ad minim veniam, quis
-                nostrud
+                With the manual workload associated with providing easy access
+                to patients and accurately addressing their needs at earliest
+                seamlessly managed, healthcare providers can devote their
+                attention towards their practices maximally.
               </p>
             </div>
           </div>
@@ -95,12 +109,13 @@ const page = async () => {
         <div className="midbox-inner  wiki-mk">
           <div className="join-us-box">
             <h2>
-              Join us to make healthcare accessible for everyone, Worldwide
+              Join Us in Our Mission To Make Healthcare Accessible Globally
             </h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore Ut enim minim orem ipsum dolor
-              sit amet, consectetur adipiscing elit, sed do
+              Come along with us to break down barriers in healthcare access
+              worldwide. Through our collaborative efforts, we can expand
+              healthcare reach even across the borders, promoting equity and
+              well-being for all.
             </p>
 
             <a href="/" className="learn">

@@ -35,7 +35,7 @@ const Hospitralspe = ({ hospital, category, categoryName, slugs }) => {
               <div className="item" key={e.id}>
                 <div className="item-home-expert">
                   <Link href={`/hospital/${e.slug}`}>
-                    <img src={`https://dev.medflick.com/hospital/${e.image}`} />
+                    <img src={`https://dev.medflick.com/hospital/${e.home_image}`} />
                   </Link>
                 </div>
                 <div className="home-expert-text">
