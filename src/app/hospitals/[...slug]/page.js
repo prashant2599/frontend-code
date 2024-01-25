@@ -69,7 +69,7 @@ const page = async ({ params }) => {
         <NewHeader />
         <section id="find-doctors">
           <div className="midbox-inner  wiki-mk">
-            <HospitalSearch  />
+            <HospitalSearch />
           </div>
         </section>
         <section id="find-hospital-list">
@@ -118,14 +118,10 @@ const page = async ({ params }) => {
                           <div className="tabs_wrapper">
                             <div className="tabs_container">
                               <div data-hash="one" key={hospital.id}>
-                                <Link
-                                  href={`/hospital/${hospital.slug}`}
-                                >
-                                  <Image
+                                <Link href={`/hospital/${hospital.slug}`}>
+                                  <img
                                     src={`https://dev.medflick.com/hospital/${hospital.image}`}
                                     alt={hospital.name}
-                                    width="181"
-                                    height="187"
                                   />
                                 </Link>
                               </div>
@@ -184,9 +180,7 @@ const page = async ({ params }) => {
                           </div>
                         </div>
                         <div className="hospital-item-doc">
-                          <Link
-                            href={`/hospital/${hospital.slug}`}
-                          >
+                          <Link href={`/hospital/${hospital.slug}`}>
                             <h3>{hospital.name}</h3>
                           </Link>
                           {/* <div className="department-sub">
@@ -243,7 +237,6 @@ const page = async ({ params }) => {
                           </div>
                         </div>
                         <div className="doctor-item-button">
-                  
                           <AppointmentForm
                             name={hospital.name}
                             hospitalId={hospital.id}

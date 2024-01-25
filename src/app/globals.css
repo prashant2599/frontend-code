@@ -10751,6 +10751,7 @@ nav li:last-child {
   align-items: center;
   text-align: left;
   justify-content: left;
+  padding: 0px !important;
 }
 
 .popup-inner3 li img {
@@ -13860,8 +13861,8 @@ pre code {
   margin: 0px;
   padding: 0px;
   position: absolute;
-  overflow-y: scroll;
-  height: 250px;
+  overflow-y: auto;
+  max-height: 250px;
 }
 
 .searchbox-main {
@@ -14761,8 +14762,8 @@ pre code {
   margin: 0px;
   padding: 0px;
   position: absolute;
-  overflow-y: scroll;
-  height: 166px;
+  overflow-y: auto;
+  max-height: 166px;
   border: 1px solid #eaeaea;
 }
 
@@ -15968,7 +15969,6 @@ textarea {
   height: 46px;
   border: 1px solid #dbdbdb;
   border-radius: 8px;
-  font-family: Helvetica Neue Medium;
   padding-left: 15px;
   width: 100%;
   font-weight: 700;

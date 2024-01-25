@@ -2,7 +2,7 @@ import "./breadcrumb.css";
 import Link from "next/link";
 import React from "react";
 import { FaAngleRight } from "react-icons/fa6";
-import { TbShare2 } from "react-icons/tb";
+import ShareBlog from "./ShareBlog";
 
 const Breadcrumb = ({ heading, slug }) => {
   return (
@@ -32,11 +32,7 @@ const Breadcrumb = ({ heading, slug }) => {
                 <li>{heading}</li>
               </ul>
             </div>
-            <div style={{ marginLeft: "auto" }} className="blog-share-mobile">
-              <div  className="blog-share" >
-                <p className="blog-share-text">Share </p> <TbShare2 style={{fontSize:"25px", color:"#ff6800"}} />
-              </div>
-            </div>
+            <ShareBlog slug={slug} />
           </div>
         </div>
       </section>

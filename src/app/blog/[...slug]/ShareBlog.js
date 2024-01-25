@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import {
   FacebookShareButton,
   TwitterShareButton,
@@ -8,10 +8,11 @@ import {
   FacebookIcon,
   WhatsappIcon,
 } from "react-share";
+import { TbShare2 } from "react-icons/tb";
 import CustomTwitter from "@/app/Home/CustomTwitterIcon/CustomTwitter";
 
-const DoctorShare = ({ slug }) => {
-  const [sharedDoctorSlug, setSharedDoctorSlug] = useState("");
+const ShareBlog = ({ slug }) => {
+  const [sharedblogSlug, setSharedblogSlug] = useState("");
 
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
@@ -22,8 +23,8 @@ const DoctorShare = ({ slug }) => {
     setIsPopupOpen(!isPopupOpen);
   };
 
-  const shareDoctorProfile = (doctorSlug) => {
-    setSharedDoctorSlug(doctorSlug);
+  const shareblogProfile = (doctorSlug) => {
+    setSharedblogSlug(doctorSlug);
     togglePopup();
   };
 
@@ -44,13 +45,16 @@ const DoctorShare = ({ slug }) => {
   };
   return (
     <>
-      <span
-        className="save-profile"
-        onClick={() => shareDoctorProfile(slug)}
-        style={{ cursor: "pointer" }}
+      <div
+        style={{ marginLeft: "auto", cursor: "pointer" }}
+        className="blog-share-mobile"
+        onClick={() => shareblogProfile(slug)}
       >
-        Share Profile <img src="/images/2023/05/share-profile.png" alt="icon" />
-      </span>
+        <div className="blog-share">
+          <p className="blog-share-text">Share </p>{" "}
+          <TbShare2 style={{ fontSize: "24px", color: "#ff6800" }} />
+        </div>
+      </div>
       {isPopupOpen && (
         <div className="popup" data-popup="popup-3" style={popupStyle}>
           <div className="popup-inner3">
@@ -67,25 +71,25 @@ const DoctorShare = ({ slug }) => {
                 </button>
               </div>
               <h2>Share Link</h2>
-              <p>Share this Doctor with others via...</p>
+              <p>Share this Blog with others via.</p>
               <ul>
                 <li>
                   <FacebookShareButton
-                    url={`${window.location.origin}/doctor/${sharedDoctorSlug}`}
+                    url={`${window.location.origin}/blog/${sharedblogSlug}`}
                   >
                     <FacebookIcon size={50} round />
                   </FacebookShareButton>
                 </li>
-                <li>
+                <li style={{ width: "auto" }}>
                   <TwitterShareButton
-                    url={`${window.location.origin}/doctor/${sharedDoctorSlug}`}
+                    url={`${window.location.origin}/blog/${sharedblogSlug}`}
                   >
                     <CustomTwitter />
                   </TwitterShareButton>
                 </li>
                 <li>
                   <WhatsappShareButton
-                    url={`${window.location.origin}/doctor/${sharedDoctorSlug}`}
+                    url={`${window.location.origin}/blog/${sharedblogSlug}`}
                   >
                     <WhatsappIcon size={50} round />
                   </WhatsappShareButton>
@@ -95,10 +99,9 @@ const DoctorShare = ({ slug }) => {
               <div className="share-link">
                 <input
                   type="text"
-                  placeholder="www.medflick.com/share/hospital"
                   name="name"
                   required=""
-                  value={`${window.location.origin}/doctor/${sharedDoctorSlug}`}
+                  value={`${window.location.origin}/blog/${sharedblogSlug}`}
                   ref={inputRef}
                 />
                 <button
@@ -119,4 +122,4 @@ const DoctorShare = ({ slug }) => {
   );
 };
 
-export default DoctorShare;
+export default ShareBlog;

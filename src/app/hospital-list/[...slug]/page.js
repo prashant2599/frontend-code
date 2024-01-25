@@ -95,11 +95,10 @@ const page = async ({ params }) => {
                             <div className="tabs_container">
                               <div data-hash="one" key={hospital.id}>
                                 <Link href={`/hospital/${hospital.slug}`}>
-                                  <Image
+                                  <img
                                     src={`https://dev.medflick.com/hospital/${hospital.image}`}
                                     alt={hospital.name}
-                                    width="181"
-                                    height="187"
+                                 
                                   />
                                 </Link>
                               </div>

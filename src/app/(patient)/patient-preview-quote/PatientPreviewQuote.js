@@ -481,10 +481,13 @@ const PatientPreviewQuote = () => {
                 <div className="preview-details">
                   <h5>Medical Reports</h5>
                 </div>
-               {patientFile ? (
-                <div className="uploadedfile-box">{patientFileName}</div>
-                ):(
-                  <div className="uploadedfile-box">{fileLink}</div>
+                {patientFile ? (
+                  <div className="uploadedfile-box">{patientFileName}</div>
+                ) : (
+                  // <div className="uploadedfile-box">{fileLink}</div>
+                  <a href={`${fileLink}`} target="_blank">
+                    <div className="uploadedfile-box">Your Report Link</div>
+                  </a>
                 )}
                 {/* <div className="uploadedfile-box">uploadedfile.jpg</div> */}
               </div>
