@@ -34,12 +34,13 @@
 
 .blog-share {
   display: flex;
-  gap: 8px;
+  gap: 4px;
 }
 
 .blog-share-text {
   color: #777777;
   font-weight: 400;
+  margin-top: 1px;
 }
 
 @media screen and (max-width: 880px) {

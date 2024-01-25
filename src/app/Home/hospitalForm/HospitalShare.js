@@ -66,7 +66,7 @@ const HospitalShare = ({ country, slug }) => {
                 </button>
               </div>
               <h2>Share Link</h2>
-              <p>Share this hospital with others via...</p>
+              <p>Share this Hospital with others via.</p>
               <ul>
                 <li>
                   <FacebookShareButton
