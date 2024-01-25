@@ -202,7 +202,7 @@ const NewSearchTreatment = () => {
                     </Link>
                   </div>
                   <div className="home-expert-text">
-                    <div style={{display:"flex"}}>
+                    <div style={{ display: "flex" }}>
                       <div>
                         <Link href={`/doctor/${e.slug}`}>
                           <h3>
@@ -211,11 +211,12 @@ const NewSearchTreatment = () => {
                         </Link>
                       </div>
                       <div className="home-page-hospital-logo">
-                        <img
-                          src={`https://dev.medflick.com/hospital/${e.hospitalicon}`}
-                         
-                          className="home-doctor-hospital-logo"
-                        />
+                        <Link href={`/hospital/${e.hospital_slug}`}>
+                          <img
+                            src={`https://dev.medflick.com/hospital/${e.hospitalicon}`}
+                            className="home-doctor-hospital-logo"
+                          />
+                        </Link>
                       </div>
                     </div>
                     <p>
