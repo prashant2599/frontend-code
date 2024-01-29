@@ -631,7 +631,11 @@ button.active .city-icon-h {
 
   .home-expert-text {
     padding: 10px 10px 5px;
-    height: 80px;
+    height: 85px;
+  }
+
+  .home-hospitals .home-expert-text {
+    height: 74px;
   }
 
   .expert-button {
