@@ -8155,7 +8155,7 @@ ul.tabs li.active {
   }
 
   #help-you h2 {
-    font-size: 35px;
+    font-size: 32px;
     width: 100%;
   }
 
@@ -8688,7 +8688,8 @@ ul.tabs li.active {
 
   .doctors-list-find .ding {
     width: 40%;
-    flex: 0 0 40%;
+    flex: 0 0 48%;
+    font-size: 14px;
   }
 
   .doctor-midbox-left {
@@ -13663,7 +13664,7 @@ pre code {
   background-size: 100%;
   z-index: 1;
   right: 9px;
-  top: 20px;
+  top: 22px;
 }
 
 .ding {
@@ -14340,9 +14341,9 @@ pre code {
     font-size: 24px;
   }
   #blog-list-medflick li {
-    flex: 0 0 94%;
-    
+    flex: 0 0 94%;   
   }
+
   #blog-list-medflick li h3 {
     font-size: 17px;
     height: 91px;
@@ -17287,5 +17288,21 @@ background: none !important;
   .question-box{
     font-size: 16px;
     padding-top: 20px;
+  }
+  .hospital-item-img .tab-h{
+    display: none;
+  }
+  .searchbox-medf-hospital{
+    width: 100%;
+  }
+  .find-box-list .search-box input {
+    font-size: 14px;
+  }
+  .searchbox-medf-hospital .searchbox-main{
+    font-size: 14px;
+    
+  }
+  .consultation-box p {
+    font-size: 18px;
   }
 }
