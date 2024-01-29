@@ -8,7 +8,10 @@ const Doctors = ({ doctor, category, categoryName, slugs }) => {
   const countrySlug = parts[1];
   return (
     <>
-      <section id="hometop-find-treatments">
+      <section
+        id="hometop-find-treatments"
+        style={{ padding: "40px 0px 0px 0px " }}
+      >
         <div className="midbox-inner wiki-mk">
           <div className="new-beginnings">
             <div className="new-beginnings-left">
@@ -39,7 +42,7 @@ const Doctors = ({ doctor, category, categoryName, slugs }) => {
                   </Link>
                 </div>
                 <div className="home-expert-text">
-                  <div style={{display:"flex"}}>
+                  <div style={{ display: "flex" }}>
                     <div>
                       <Link href={`/doctor/${e.slug}`}>
                         <h3>

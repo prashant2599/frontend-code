@@ -8,7 +8,7 @@ const Hospitralspe = ({ hospital, category, categoryName, slugs }) => {
   const countrySlug = parts[1];
   return (
     <>
-      <section id="hometop-find-treatments">
+      <section id="hometop-find-treatments" style={{ padding: "40px 0px 0px 0px " }}>
         <div className="midbox-inner wiki-mk">
           <div className="new-beginnings">
             <div className="new-beginnings-left">
