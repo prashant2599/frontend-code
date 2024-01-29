@@ -220,8 +220,8 @@ const NewSearchTreatment = () => {
                       </div>
                     </div>
                     <p>
-                      {e.designation.length > 28
-                        ? `${e.designation.slice(0, 28)}...`
+                      {e.designation.length > 25
+                        ? `${e.designation.slice(0, 25)}..`
                         : e.designation}
                     </p>
                   </div>
@@ -281,7 +281,7 @@ const NewSearchTreatment = () => {
                       <h3>{e.name}</h3>
                     </Link>
                     <p>
-                      Hospitals in{" "}
+                      <span className="home-page-hospital-in"> Hospitals in </span>
                       {e.city.charAt(0).toUpperCase() + e.city.slice(1)},{" "}
                       {selectedCountry.charAt(0).toUpperCase() +
                         selectedCountry.slice(1)}

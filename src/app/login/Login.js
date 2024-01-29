@@ -122,6 +122,11 @@ const Login = () => {
 
   // const sureMessage = "Email Address not found";
 
+  const [showPassword, setShowPassword] = useState(false);
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <>
       <section id="login-section">
@@ -185,13 +190,25 @@ const Login = () => {
                 </div>
                 <div className="inputbox">
                   <label>Password</label>
-                  <input
-                    type="password"
-                    name="name"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                  />
+                  <div className="password-input-container">
+                    <input
+                      type={showPassword ? "text" : "password"}
+                      name="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      required
+                    />
+                    <img
+                      className="password-toggle-icon"
+                      src={
+                        showPassword
+                          ? "/images/ci_hide.svg"
+                          : "/images/ci_show.svg"
+                      }
+                      alt={showPassword ? "Hide Password" : "Show Password"}
+                      onClick={togglePasswordVisibility}
+                    />
+                  </div>
                 </div>
                 <button
                   type="submit"

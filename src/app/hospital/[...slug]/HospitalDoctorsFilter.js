@@ -185,7 +185,7 @@ const HospitalDoctorsFilter = ({ doctor }) => {
 
           <div className="ding">
             <Select
-              id="wiki"
+              id="wiki-;=location"
               value={selectedLocation}
               onChange={handleSelectCity}
               options={cityOptions}
@@ -196,7 +196,7 @@ const HospitalDoctorsFilter = ({ doctor }) => {
           </div>
           <div className="ding">
             <Select
-              id="wiki"
+              id="wiki-Department"
               value={selectedDep}
               onChange={handleSelectDep}
               options={depOptions}
@@ -207,7 +207,7 @@ const HospitalDoctorsFilter = ({ doctor }) => {
           </div>
           <div className="ding">
             <Select
-              id="wiki"
+              id="wiki-Experience"
               value={selectedeExp}
               onChange={handleSelectExp}
               options={ExpOptions}
@@ -218,7 +218,7 @@ const HospitalDoctorsFilter = ({ doctor }) => {
           </div>
           <div className="ding">
             <Select
-              id="wiki"
+              id="wiki-Rating"
               value={selectedOption}
               onChange={handleSelectChange}
               // options={options}
@@ -239,10 +239,11 @@ const HospitalDoctorsFilter = ({ doctor }) => {
             <div className="doctor-item-img">
               <Image
                 src={`https://dev.medflick.com/doctor/${e.image}`}
-                alt={e.name}
+                alt={e.slug}
                 width="129"
                 height="157"
                 className="doctor-speciality-img"
+                
               />
             </div>
             <div className="doctor-item-doc">
