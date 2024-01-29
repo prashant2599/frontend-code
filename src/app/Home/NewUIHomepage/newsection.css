@@ -231,6 +231,8 @@
   border-radius: 0px 0px 16px 16px;
   width: 100%;
   z-index: 2;
+  height: 100px;
+  overflow: hidden;
 }
 
 .home-expert-text h3 {
@@ -629,6 +631,7 @@ button.active .city-icon-h {
 
   .home-expert-text {
     padding: 10px 10px 5px;
+    height: 80px;
   }
 
   .expert-button {
@@ -1498,7 +1501,7 @@ button.active .city-icon-h {
   .home-expert-text h3 {
     font-size: 15px;
     padding-bottom: 5px;
-    height: 32px;
+    height: 34px;
     line-height: 1.2;
   }
 
