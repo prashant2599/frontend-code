@@ -172,8 +172,7 @@ const UploadReport = () => {
         },
       })
       .then((response) => {
-        // Handle the API response here if needed
-        console.log(response);
+      
         setShowSuccessPopup(true);
         // alert("Questions have been successfully submitted");
         clearFormFields();

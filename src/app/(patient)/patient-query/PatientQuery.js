@@ -33,7 +33,7 @@ const PatientQuery = () => {
 
   useEffect(() => {
     const apiUrl = `https://dev.medflick.com/api/dashboard/questionans/patientid/${patientId}`;
-    console.log(apiUrl);
+    
     axios
       .get(apiUrl)
       .then((response) => {

@@ -128,7 +128,7 @@ const PatientDetails = () => {
         uhid: uhid,
         passport: passport,
       };
-      console.log("FormData:", formData);
+      
       localStorage.setItem("patientFormData", JSON.stringify(formData));
 
       // Assuming you have a function called clearFormFields

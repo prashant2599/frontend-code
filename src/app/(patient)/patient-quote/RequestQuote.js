@@ -94,10 +94,7 @@ const RequestQuote = () => {
   // useEffect(() => {
   //   localStorage.setItem("treatment", selectedtreatmentId);
   //   localStorage.setItem("speciality", selectedspecialityId);
-  // }, [selectedtreatmentId, selectedspecialityId]);
-
-  console.log(selectedtreatmentId);
-  console.log(selectedTreatmentName);
+  // }, [selectedtreatmentId, selectedspecialityId
 
   const clearSelectedTreatment = () => {
     setSelectedtreatmentId(null);

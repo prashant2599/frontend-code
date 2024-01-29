@@ -87,7 +87,7 @@ const SelectHospitalDoctors = () => {
         )
         .then((response) => {
           setDoctors(response.data.doctors_list.doctors_list);
-          console.log(response.data.doctors_list.doctors_list);
+          
         })
         .catch((error) => {
           console.error("Error fetching details data:", error);
@@ -116,15 +116,15 @@ const SelectHospitalDoctors = () => {
     router.push("/patient-details");
   };
 
-  console.log(selectedHospitalIcon);
+  
 
   const filteredDoctors = doctors.filter(
     (doctor) => doctor.hospital_id === String(selectedHospitalId)
   );
 
-  console.log(filteredDoctors);
+  
 
-  console.log(selectedHospitalId);
+  
   return (
     <>
       <section id="request-quote-section">

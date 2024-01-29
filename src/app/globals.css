@@ -16389,7 +16389,7 @@ textarea {
 }
 .hospital-preview-img img {
   width: 100%;
-  height: 100%;
+  height: auto;
   border-radius: 10px;
   margin: 0px;
   padding: 0px;
@@ -16436,7 +16436,7 @@ textarea {
 }
 .doctor-preview-img img {
   width: 100%;
-  height: 100%;
+  height: auto;
   border-radius: 10px;
   margin: 0px;
   padding: 0px;
