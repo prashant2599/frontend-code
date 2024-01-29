@@ -403,7 +403,7 @@ a:hover {
 
 @media (min-width: 64rem) {
   .navbar__buttons a {
-    font-size: 14px;
+    font-size: 16px;
     font-family: Helvetica Neue Medium;
   }
 
@@ -411,12 +411,12 @@ a:hover {
 
 @media (min-width: 90rem) {
   .navbar__buttons a {
-    font-size: 16.2px;
+    font-size: 16px;
     font-family: Helvetica Neue Medium;
   }
 
   .page-header ul a {
-    font-size: 16.2px !important;
+    font-size: 16px !important;
     font-family: Helvetica Neue Medium;
   }
 }
@@ -10746,7 +10746,7 @@ nav li:last-child {
 }
 
 .popup-inner3 li {
-  width: 45px;
+  width: auto;
   height: 45px;
   align-items: center;
   text-align: left;
@@ -11118,7 +11118,7 @@ nav li:last-child {
   }
 
   .popup-inner3 li {
-    width: 35px;
+    width: auto;
     height: 35px;
   }
 
@@ -17237,4 +17237,23 @@ textarea {
 
 #google_translate_element .goog-te-gadget-simple {
 background: none !important;
+}
+
+.password-input-container {
+  position: relative;
+}
+
+.password-toggle-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  width: 20px; /* Adjust width as needed */
+  height: auto; /* To maintain aspect ratio */
+}
+
+/* Optional: Add some styles for the image hover effect */
+.password-toggle-icon:hover {
+  filter: brightness(85%);
 }
