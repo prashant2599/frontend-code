@@ -2058,7 +2058,7 @@ button.active .city-icon-h {
   }
 
   .blog-item h3 {
-    font-size: 19px;
+    font-size: 17px;
   }
 
   .home-hospitals {
@@ -2202,6 +2202,12 @@ button.active .city-icon-h {
     height: 60px;
     padding: 16px;
   }
+}
+
+@media screen and (max-width: 320px) {
+  .blog-item h3 {
+    font-size: 16px;
+}
 }
 
 .footer-navbox .but {

@@ -17257,3 +17257,24 @@ background: none !important;
 .password-toggle-icon:hover {
   filter: brightness(85%);
 }
+
+@media screen and (max-width:320px) {
+  .m-searchbox{
+    right: 130px;
+  }
+  .logo-m > img {
+    left:40px
+  }
+  .m-phone{
+    right: 90px;
+  }
+  .get-started-m{
+    right: 4px;
+  }
+}
+
+@media screen and (max-width:880px){
+  .marquee-new img {
+    height: 40px;
+  }
+}
