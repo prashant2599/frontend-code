@@ -14341,6 +14341,13 @@ pre code {
   }
   #blog-list-medflick li {
     flex: 0 0 94%;
+    
+  }
+  #blog-list-medflick li h3 {
+    font-size: 17px;
+    height: 91px;
+    max-height: 100px;
+    overflow: hidden;
   }
 
   .blog-box-medflick {
@@ -17276,5 +17283,9 @@ background: none !important;
 @media screen and (max-width:880px){
   .marquee-new img {
     height: 40px;
+  }
+  .question-box{
+    font-size: 16px;
+    padding-top: 20px;
   }
 }
