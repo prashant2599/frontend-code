@@ -36,35 +36,36 @@ const HeaderSearch = ({ togglePopup }) => {
   }, []);
 
   const filteredSpeciality = speciality
-    ? speciality.filter((item) =>
-        item.menu_name.toLowerCase().includes(searchQuery.toLowerCase())
-      )
-    : [];
+  ? speciality.filter((item) =>
+      item.menu_name?.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+  : [];
+
 
   const filteredTreatment = treatment
     ? treatment.filter((item) =>
-        item.name.toLowerCase().includes(searchQuery.toLowerCase())
+        item.name?.toLowerCase().includes(searchQuery.toLowerCase())
       )
     : [];
 
   const filteredDoctors = doctors
     ? doctors.filter(
         (item) =>
-          item.prefix.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          item.first_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          item.last_name.toLowerCase().includes(searchQuery.toLowerCase())
+          item.prefix?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          item.first_name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          item.last_name?.toLowerCase().includes(searchQuery.toLowerCase())
       )
     : [];
 
   const filteredHospitals = hospitals
     ? hospitals.filter((item) =>
-        item.name.toLowerCase().includes(searchQuery.toLowerCase())
+        item.name?.toLowerCase().includes(searchQuery.toLowerCase())
       )
     : [];
 
   const filteredBlogs = blogs
     ? blogs.filter((item) =>
-        item.name.toLowerCase().includes(searchQuery.toLowerCase())
+        item.name?.toLowerCase().includes(searchQuery.toLowerCase())
       )
     : [];
 
