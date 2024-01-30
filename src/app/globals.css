@@ -6715,7 +6715,7 @@ ul.tabs li.active {
 .search-suestions h1 {
   font-family: Helvetica Neue Medium;
   color: #000000;
-  font-size: 25px;
+  font-size: 24px;
   line-height: 30px;
   width: 100%;
   text-align: center;
@@ -9301,6 +9301,7 @@ ul.tabs li.active {
 
   .search-question {
     flex-direction: column;
+    margin-top: 10px;
   }
 
   .search-question-left {
@@ -16741,6 +16742,7 @@ textarea {
 }
 .menu-footer .qsk-question {
   margin: 9px 0;
+  width: max-content;
 }
 .menu-footer-link {
   display: flex;

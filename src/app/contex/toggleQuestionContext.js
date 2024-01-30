@@ -11,7 +11,9 @@ export const ToggleQuestionProvider = ({ children }) => {
   };
 
   return (
-    <ToggleQuestionContext.Provider value={{ isPopupOpen, togglePopup }}>
+    <ToggleQuestionContext.Provider
+      value={{ isPopupOpen, togglePopup, setIsPopupOpen }}
+    >
       {children}
     </ToggleQuestionContext.Provider>
   );

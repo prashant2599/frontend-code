@@ -673,7 +673,7 @@ button.active .city-icon-h {
   }
 
   #hometop-process-treatment a {
-    width: 90%;
+    width: max-content;
   }
 
   #home-treatment-costs h2 {
