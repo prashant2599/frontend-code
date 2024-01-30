@@ -33,12 +33,16 @@ const MobileHeader = ({ speciality }) => {
     // Function to handle scroll
     function handleScroll() {
       const header = document.getElementById("header-id");
-      const sticky = header.offsetTop;
 
-      if (window.pageYOffset > sticky) {
-        header.classList.add("sticky");
-      } else {
-        header.classList.remove("sticky");
+      // Check if the header element exists
+      if (header) {
+        const sticky = header.offsetTop;
+
+        if (window.pageYOffset > sticky) {
+          header.classList.add("sticky");
+        } else {
+          header.classList.remove("sticky");
+        }
       }
     }
 
