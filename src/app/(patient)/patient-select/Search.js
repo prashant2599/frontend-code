@@ -24,15 +24,15 @@ const Search = () => {
   const filteredDoctors = doctors
     ? doctors.filter(
         (item) =>
-          item.prefix.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          item.first_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          item.last_name.toLowerCase().includes(searchQuery.toLowerCase())
+          item.prefix?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          item.first_name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          item.last_name?.toLowerCase().includes(searchQuery.toLowerCase())
       )
     : [];
 
   const filteredHospitals = hospitals
     ? hospitals.filter((item) =>
-        item.name.toLowerCase().includes(searchQuery.toLowerCase())
+        item.name?.toLowerCase().includes(searchQuery.toLowerCase())
       )
     : [];
   return (

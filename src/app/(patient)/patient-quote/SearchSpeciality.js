@@ -26,13 +26,13 @@ const SearchSpeciality = () => {
 
   const filteredSpeciality = speciality
     ? speciality.filter((item) =>
-        item.menu_name.toLowerCase().includes(searchQuery.toLowerCase())
+        item.menu_name?.toLowerCase().includes(searchQuery.toLowerCase())
       )
     : [];
 
   const filteredTreatment = treatment
     ? treatment.filter((item) =>
-        item.name.toLowerCase().includes(searchQuery.toLowerCase())
+        item.name?.toLowerCase().includes(searchQuery.toLowerCase())
       )
     : [];
   return (
