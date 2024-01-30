@@ -43,13 +43,13 @@ const HospitalShare = ({ country, slug }) => {
   };
   return (
     <>
-      <span
+      <button
         className="share-profile"
         onClick={() => shareHospitalProfile(slug, country)}
         style={{ cursor: "pointer" }}
       >
         Share Profile <img src="/images/2023/05/share-profile.png" alt="icon" />
-      </span>
+      </button>
       {isPopupOpen && (
         <div className="popup" data-popup="popup-3" style={popupStyle}>
           <div className="popup-inner3">

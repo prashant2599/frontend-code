@@ -17,7 +17,7 @@ const TreadingBlogs = async () => {
                 <img
                   src={`${process.env.NEXT_PUBLIC_BASE_URL}/blog/${e.icon}`}
                   alt={e.name}
-                  className="popular-blog-img"
+                  // className="popular-blog-img"
                 />
               ) : null}
 

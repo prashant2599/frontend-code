@@ -422,13 +422,13 @@ const AppointmentForm = ({ hospitalId, HospitalName, specialityId }) => {
 
   return (
     <>
-      <span
+      <button
         className="book-appointment"
         onClick={togglePopup}
         style={{ cursor: "pointer" }}
       >
         Book Appointment <img src="/images/2023/05/book.png" alt="icon" />
-      </span>
+      </button>
       {isPopupOpen && (
         <div className="popup" data-popup="popup-1" style={popupStyle}>
           <div className="popup-inner2">

@@ -380,14 +380,14 @@ const PopForm = () => {
 
   return (
     <>
-      <span
+      <button
         className="ask-question"
         data-popup-open="popup-2"
         onClick={togglePopup}
         style={{ cursor: "pointer" }}
       >
         <img src="images/2023/07/ask.png" alt="" /> Ask Question
-      </span>
+      </button>
 
       {isPopupOpen &&
         (userEmail ? (
