@@ -21,7 +21,6 @@
   font-display: swap;
 }
 
-
 html {
   scroll-behavior: smooth;
 }
@@ -406,7 +405,6 @@ a:hover {
     font-size: 16px;
     font-family: Helvetica Neue Medium;
   }
-
 }
 
 @media (min-width: 90rem) {
@@ -10476,8 +10474,6 @@ nav li:last-child {
 }
 
 @media screen and (max-width: 880px) {
-
-
   .answer {
     font-size: 1rem;
     font-style: normal;
@@ -14079,7 +14075,6 @@ pre code {
     scroll-margin-top: 0px;
     overflow-x: scroll;
   }
-
 }
 
 #blog-list-medflick h1 span {
@@ -14328,13 +14323,13 @@ pre code {
     margin-top: 1.4rem;
   }
   #blog-list-medflick ul {
-    padding-top: 40px ;
+    padding-top: 40px;
   }
   #blog-list-medflick h2 {
     font-size: 24px;
   }
   #blog-list-medflick li {
-    flex: 0 0 94%;   
+    flex: 0 0 94%;
   }
 
   #blog-list-medflick li h3 {
@@ -16596,7 +16591,6 @@ textarea {
   }
 }
 
-
 .popup-innerPassword {
   max-width: 600px;
   width: 90%;
@@ -16738,7 +16732,7 @@ textarea {
 }
 .menu-footer .qsk-question {
   margin: 9px 0;
-  width: max-content;
+  width: 100%;
 }
 .menu-footer-link {
   display: flex;
@@ -17170,50 +17164,46 @@ textarea {
   }
   #hometop-section-quote h2 {
     font-size: 18px;
+  }
 }
-
-}
-
-
 
 .popup-inner15 {
   max-width: 600px;
-    width: 90%;
-    padding: 20px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    border-radius: 16px;
-    border-top: 8px solid #FF6800;
-    background: #fff;
+  width: 90%;
+  padding: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  border-radius: 16px;
+  border-top: 8px solid #ff6800;
+  background: #fff;
 }
 
 .popup-inner15 h2 {
   font-family: Helvetica Neue Medium;
-    color: #000000;
-    font-size: 25px;
-    line-height: 30px;
-    width: 100%;
-    text-align: center;
-    border-bottom: 1px solid #E7E7E7;
-    padding: 10px 0px;
-    margin: 0px;
+  color: #000000;
+  font-size: 25px;
+  line-height: 30px;
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid #e7e7e7;
+  padding: 10px 0px;
+  margin: 0px;
 }
 
 .popup-inner15 p {
   font-size: 16px;
-    color: #7C7C7C;
-    width: 80%;
-    margin: 0px auto;
-    padding: 10px 0;
-    text-align: center;
+  color: #7c7c7c;
+  width: 80%;
+  margin: 0px auto;
+  padding: 10px 0;
+  text-align: center;
 }
 
-
 .blog-midbox li::before {
-  content: '';
+  content: "";
   background: #ff6800;
   width: 6.5px;
   height: 6.5px;
@@ -17239,7 +17229,7 @@ textarea {
 }
 
 #google_translate_element .goog-te-gadget-simple {
-background: none !important;
+  background: none !important;
 }
 
 .password-input-container {
@@ -17261,41 +17251,40 @@ background: none !important;
   filter: brightness(85%);
 }
 
-@media screen and (max-width:320px) {
-  .m-searchbox{
+@media screen and (max-width: 320px) {
+  .m-searchbox {
     right: 130px;
   }
   .logo-m > img {
-    left:40px
+    left: 40px;
   }
-  .m-phone{
+  .m-phone {
     right: 90px;
   }
-  .get-started-m{
+  .get-started-m {
     right: 4px;
   }
 }
 
-@media screen and (max-width:880px){
+@media screen and (max-width: 880px) {
   .marquee-new img {
     height: 40px;
   }
-  .question-box{
+  .question-box {
     font-size: 16px;
     padding-top: 20px;
   }
-  .hospital-item-img .tab-h{
+  .hospital-item-img .tab-h {
     display: none;
   }
-  .searchbox-medf-hospital{
+  .searchbox-medf-hospital {
     width: 100%;
   }
   .find-box-list .search-box input {
     font-size: 14px;
   }
-  .searchbox-medf-hospital .searchbox-main{
+  .searchbox-medf-hospital .searchbox-main {
     font-size: 14px;
-
   }
   .consultation-box p {
     font-size: 18px;

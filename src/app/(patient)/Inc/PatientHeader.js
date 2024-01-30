@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useUser } from "@/app/UserContext";
 import HeaderSearch from "@/app/Home/Inc/HeaderSearch";
+import MobileAskFreeQuestion from "@/app/Home/Inc/MobileAskFreeQuestion";
 
 const PatientHeader = () => {
   const router = useRouter();
@@ -277,14 +278,15 @@ const PatientHeader = () => {
                     </a>
                   </li>
                   <div className="menu-footer">
-                    <a
+                    {/* <a
                       className="qsk-question"
                       href="#"
                       style={{ color: "#ff6800 !important" }}
                     >
                       Ask FREE Question{" "}
                       <img src="/images/whiteArrow.png" alt="" />
-                    </a>
+                    </a> */}
+                    <MobileAskFreeQuestion />
 
                     <div className="menu-footer-link">
                       <Link
