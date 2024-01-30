@@ -19,7 +19,7 @@ const DashBoardAssistance = () => {
             </li>
             <li>
               <h3>WhatsApp</h3>
-             
+
               {/* <img src="/images/whatsApp.png" /> */}
               <p> Connect with us on WhatsApp for quick support.</p>
               <a href="#/" className="get-help">

@@ -3856,7 +3856,6 @@ table strong {
 .doc-profile img {
   width: 50px;
   height: auto;
-  border-radius: 100%;
   margin-right: 10px;
 }
 
@@ -14085,12 +14084,6 @@ pre code {
     overflow-x: scroll;
   }
 
-  #blog-list-medflick h1 {
-    font-size: 30px;
-    width: 100%;
-    padding: 0px 0 30px;
-    margin-top: 1.4rem;
-  }
 }
 
 #blog-list-medflick h1 span {
@@ -14102,7 +14095,7 @@ pre code {
   color: #090909;
   font-weight: 400;
   width: 60%;
-  padding: 40px 0 80px;
+  padding: 30px 0 30px;
   margin: 0px auto;
   font-family: Helvetica Neue Medium;
   text-align: center;
@@ -14333,9 +14326,13 @@ pre code {
 
 @media screen and (max-width: 880px) {
   #blog-list-medflick h1 {
-    font-size: 30px;
+    font-size: 32px;
     width: 100%;
-    padding: 0px 0 40px;
+    padding: 0px 0 16px;
+    margin-top: 1.4rem;
+  }
+  #blog-list-medflick ul {
+    padding-top: 40px ;
   }
   #blog-list-medflick h2 {
     font-size: 24px;
@@ -17300,7 +17297,7 @@ background: none !important;
   }
   .searchbox-medf-hospital .searchbox-main{
     font-size: 14px;
-    
+
   }
   .consultation-box p {
     font-size: 18px;
