@@ -476,7 +476,10 @@ const PopForm = () => {
                     </span>
                   </button>
                 </div>
-                <h2>Ask Free Question</h2>
+                <h2>
+              
+                  Ask Free Question
+                </h2>
 
                 <form onSubmit={handleFormSubmit}>
                   <div
