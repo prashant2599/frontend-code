@@ -11,7 +11,7 @@ import ReCaptchaComponent from "../ReCapcha/ReCaptchaComponent";
 import { useToggleQuestion } from "@/app/contex/toggleQuestionContext";
 
 const QuestionPopup = () => {
-  const { togglePopup, isPopupOpen } = useToggleQuestion();
+  const { togglePopup, isPopupOpen, setIsPopupOpen } = useToggleQuestion();
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const [showErrorPopup, setShowErrorPopup] = useState(false);
   const [userName, setUserName] = useState("");
