@@ -2348,4 +2348,13 @@ button.active .city-icon-h {
   .home-page-hospital-in{
     display: none;
   }
+  #home-real-stories{
+    padding-top: 10px 0 10px;
+  }
+  #home-latest-resources {
+    padding-bottom: 50px;
+  }
+  #home-doc-hos{
+    padding-bottom: 0px;
+  }
 }

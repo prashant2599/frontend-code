@@ -94,7 +94,7 @@ const MobileHeader = ({ speciality }) => {
             </a>
           </div>
           <div className="get-started-m">
-            <Link href="/query">
+            <Link href="/request-a-free-quote">
               Get Started{" "}
               {/* <img src="/images/2023/01/arrow-w.png" alt="arrow-icon" /> */}
             </Link>
