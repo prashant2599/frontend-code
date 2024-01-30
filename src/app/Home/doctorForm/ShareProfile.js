@@ -47,13 +47,13 @@ const ShareProfile = ({ slug }) => {
 
   return (
     <>
-      <span
+      <button
         onClick={() => shareDoctorProfile(slug)}
         style={{ cursor: "pointer" }}
         className="share-profile"
       >
         Share Profile <img src="/images/2023/05/share-profile.png" alt="icon" />
-      </span>
+      </button>
       {isPopupOpen && (
         <div className="popup" data-popup="popup-3" style={popupStyle}>
           <div className="popup-inner3">

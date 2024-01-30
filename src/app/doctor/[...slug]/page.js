@@ -11,7 +11,6 @@ import NewFooter from "@/app/Home/NewUIHomepage/inc/NewFooter";
 import DoctorShare from "./DoctorShare";
 import DoctorHeader from "./DoctorHeader";
 
-
 const page = async ({ params }) => {
   try {
     const combinedSlug = String(params.slug);
@@ -39,7 +38,6 @@ const page = async ({ params }) => {
     const url = `doctor/${combinedSlug}`;
     return (
       <>
-     
         <NewHeader />
         <section id="doctorprofile-section">
           <div className="midbox-inner  wiki-mk">
@@ -280,7 +278,6 @@ const page = async ({ params }) => {
         )}
 
         <NewFooter />
-       
       </>
     );
   } catch (error) {

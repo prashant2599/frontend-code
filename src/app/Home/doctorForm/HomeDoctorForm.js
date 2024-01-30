@@ -210,13 +210,13 @@ const HomeDoctorForm = ({
       return;
     }
 
-    // if (!captchaValue2) {
-    //   setFormErrors((prevErrors) => ({
-    //     ...prevErrors,
-    //     captcha: "Please Fill the captcha",
-    //   }));
-    //   return;
-    // }
+    if (!captchaValue2) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        captcha: "Please Fill the captcha",
+      }));
+      return;
+    }
 
     if (isValid) {
       // Create the data object to be sent in the API request
@@ -433,13 +433,13 @@ const HomeDoctorForm = ({
         <Link className="view-profile" href={`/doctor/${slug}`}>
           View Profile
         </Link>
-        <a
+        <button
           className="book-appointment"
           onClick={togglePopup2}
           style={{ cursor: "pointer" }}
         >
           Book Appointment
-        </a>
+        </button>
       </div>
       {isPopupOpen2 && (
         <div className="popup" data-popup="popup-1" style={popupStyle2}>

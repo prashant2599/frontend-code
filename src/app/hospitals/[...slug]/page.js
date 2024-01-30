@@ -121,7 +121,7 @@ const page = async ({ params }) => {
                                 <Link href={`/hospital/${hospital.slug}`}>
                                   <img
                                     src={`https://dev.medflick.com/hospital/${hospital.image}`}
-                                    alt={hospital.name}
+                                    alt={hospital.slug}
                                   />
                                 </Link>
                               </div>
@@ -198,19 +198,19 @@ const page = async ({ params }) => {
                             {hospital.nabl && (
                               <img
                                 src={`https://dev.medflick.com/hospital/${hospital.nabl}`}
-                                alt={hospital.name}
+                                alt={hospital.slug}
                               />
                             )}
                             {hospital.nabh && (
                               <img
                                 src={`https://dev.medflick.com/hospital/${hospital.nabh}`}
-                                alt={hospital.name}
+                                alt={hospital.slug}
                               />
                             )}
                             {hospital.jci && (
                               <img
                                 src={`https://dev.medflick.com/hospital/${hospital.jci}`}
-                                alt={hospital.name}
+                                alt={hospital.slug}
                               />
                             )}
                           </div>
@@ -238,7 +238,7 @@ const page = async ({ params }) => {
                         </div>
                         <div className="doctor-item-button">
                           <AppointmentForm
-                            name={hospital.name}
+                            HospitalName={hospital.name}
                             hospitalId={hospital.id}
                             specialityId={hospital.speciality_id}
                           />

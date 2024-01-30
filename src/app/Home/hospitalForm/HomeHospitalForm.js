@@ -428,13 +428,13 @@ const HomeHospitalForm = ({
         <Link className="view-profile" href={`/hospital/${slug}`}>
           View Profile
         </Link>
-        <a
+        <button
           className="book-appointment"
           onClick={togglePopup2}
           style={{ cursor: "pointer" }}
         >
           Book Appointment
-        </a>
+        </button>
       </div>
       {isPopupOpen2 && (
         <div className="popup" data-popup="popup-1" style={popupStyle2}>

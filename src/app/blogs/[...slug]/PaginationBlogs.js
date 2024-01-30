@@ -1,8 +1,8 @@
 import Link from "next/link";
 import getAllSpeciality from "@/app/lib/getAllSpeciality";
 import getALLTreadingBlogs from "@/app/lib/getAllTreadingBlogs";
-import getALLFeaturedBlogs from "@/app/lib/getAllFeaturedBlogs";
 import getALLBlogList from "@/app/lib/getAllBlogList";
+import TreadingBlogs from "../TreadingBlogs";
 
 function formatText(text) {
   if (typeof text === "string") {
@@ -33,9 +33,7 @@ const PaginationBlogs = async ({
 
   // featured Blogs
 
-  const featured = await getALLFeaturedBlogs();
 
-  const Fblog = featured.data.featured;
 
   const formantCategory = formatText(category);
 
@@ -66,7 +64,7 @@ const PaginationBlogs = async ({
 
           <h2>Popular Post</h2>
 
-          <ul>
+          {/* <ul>
             {Fblog.map((e) => (
               <li key={e.id}>
                 <Link href={`/blog/${e.slug}`}>
@@ -82,7 +80,8 @@ const PaginationBlogs = async ({
                 </Link>
               </li>
             ))}
-          </ul>
+          </ul> */}
+          <TreadingBlogs />
         </div>
       </section>
 

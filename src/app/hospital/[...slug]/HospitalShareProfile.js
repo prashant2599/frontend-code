@@ -44,7 +44,7 @@ const HospitalShareProfile = ({ hospitalDetails }) => {
   };
   return (
     <>
-      <span
+      <button
         className="save-profile"
         onClick={() =>
           shareHospitalProfile(hospitalDetails.slug, hospitalDetails.country)
@@ -52,7 +52,7 @@ const HospitalShareProfile = ({ hospitalDetails }) => {
         style={{ cursor: "pointer" }}
       >
         Share Profile <img src="/images/2023/05/share-profile.png" alt="icon" />
-      </span>
+      </button>
       {isPopupOpen1 && (
         <div className="popup" data-popup="popup-3" style={popupStyle1}>
           <div className="popup-inner3">

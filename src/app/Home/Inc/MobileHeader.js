@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { useUser } from "@/app/UserContext";
 import HeaderSearch from "./HeaderSearch";
 import MobileSideBarShare from "./MobileSideBarShare";
+import HeaderPopup from "../QaForm/HeaderPopup";
 
 const MobileHeader = ({ speciality }) => {
   const router = useRouter();
@@ -398,14 +399,15 @@ const MobileHeader = ({ speciality }) => {
                   </>
                 )}
                 <div className="menu-footer">
-                  <a
+                  {/* <button
                     className="qsk-question"
                     href="#"
                     style={{ color: "#ff6800 !important" }}
                   >
                     Ask FREE Question{" "}
                     <img src="/images/whiteArrow.png" alt="" />
-                  </a>
+                  </button> */}
+                  <HeaderPopup />
 
                   <div className="menu-footer-link">
                     <MobileSideBarShare />

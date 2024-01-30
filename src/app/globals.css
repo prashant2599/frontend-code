@@ -11846,11 +11846,6 @@ button {
   border-radius: 0;
 }
 
-button:focus {
-  outline: dotted 1px;
-  outline: -webkit-focus-ring-color auto 5px;
-}
-
 button,
 input,
 optgroup,
@@ -14416,6 +14411,7 @@ pre code {
 .header .qsk-question {
   background: #fff;
   color: #ff6800 !important;
+  font-size: 16px;
 }
 
 #get-free-consultation {
