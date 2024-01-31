@@ -185,9 +185,9 @@ const page = async ({ params }) => {
                       </div>
                     </div> */}
                   </div>
-                  <a href="#/" className="read-mor-reviews">
+                  {/* <a href="#/" className="read-mor-reviews">
                     Read More Reviews
-                  </a>
+                  </a> */}
                 </div>
               </div>
             </div>

@@ -5,8 +5,6 @@ const TreatmentList = ({ speciality, slugs }) => {
   const specialitySlug = parts[0];
   const countrySlug = parts[1];
 
-  // console.log("position0", specialitySlug);
-  // console.log("position1", countrySlug);
   return (
     <>
       <ul>
