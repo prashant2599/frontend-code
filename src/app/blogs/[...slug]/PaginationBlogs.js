@@ -33,8 +33,6 @@ const PaginationBlogs = async ({
 
   // featured Blogs
 
-
-
   const formantCategory = formatText(category);
 
   // Blog List
@@ -58,11 +56,12 @@ const PaginationBlogs = async ({
             </h1>
           ) : (
             <h1>
-              {formantCategory} <span>Blogs</span>
+              {formantCategory === "Transplants"
+                ? "Organ Transplants"
+                : formantCategory}{" "}
+              <span>Blogs</span>
             </h1>
           )}
-
-          <h2>Popular Post</h2>
 
           {/* <ul>
             {Fblog.map((e) => (
@@ -81,7 +80,7 @@ const PaginationBlogs = async ({
               </li>
             ))}
           </ul> */}
-          <TreadingBlogs />
+          {category == "page" ? <TreadingBlogs /> : null}
         </div>
       </section>
 

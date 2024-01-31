@@ -11,6 +11,17 @@ import NewFooter from "@/app/Home/NewUIHomepage/inc/NewFooter";
 import DoctorShare from "./DoctorShare";
 import DoctorHeader from "./DoctorHeader";
 
+function formatText(text) {
+  if (typeof text === "string") {
+    return text
+      .split("-")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  } else {
+    return "Invalid input";
+  }
+}
+
 const page = async ({ params }) => {
   try {
     const combinedSlug = String(params.slug);
@@ -59,9 +70,7 @@ const page = async ({ params }) => {
                   </div>
                   <div className="department">{docotorDetails.designation}</div>
                   <div className="location">
-                    {hospitals[0].name},{" "}
-                    {docotorDetails.location.charAt(0).toUpperCase() +
-                      docotorDetails.location.slice(1)}
+                    {hospitals[0].name}, {formatText(docotorDetails.location)}
                   </div>
                 </div>
               </div>

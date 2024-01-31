@@ -9,6 +9,7 @@ const TreadingBlogs = async () => {
 
   return (
     <>
+     <h2>Popular Post</h2>
       <ul>
         {Fblog.map((e) => (
           <li key={e.id}>
