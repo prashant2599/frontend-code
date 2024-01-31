@@ -208,7 +208,7 @@ const CallMeBackForm = () => {
       };
 
       // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
-      const apiEndpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/api/doctor_query `;
+      const apiEndpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/api/contactus `;
 
       setIsLoading2(true);
 

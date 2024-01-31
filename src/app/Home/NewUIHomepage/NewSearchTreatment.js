@@ -52,7 +52,7 @@ const NewSearchTreatment = () => {
   useEffect(() => {
     const fetchDoctorsData = async () => {
       const res = await fetch(
-        `https://dev.medflick.com/api/doctors/${selectedSpeciality}/${selectedCountry}`
+        `https://dev.medflick.com/api/doctorsforhome/${selectedSpeciality}/${selectedCountry}`
       );
       const data = await res.json();
 
@@ -67,7 +67,7 @@ const NewSearchTreatment = () => {
   useEffect(() => {
     const fetchDoctorsData = async () => {
       const res = await fetch(
-        `https://dev.medflick.com/api/hospitals/${selectedSpeciality}/${selectedCountry}`
+        `https://dev.medflick.com/api/hospitalsforhome/${selectedSpeciality}/${selectedCountry}`
       );
       const data = await res.json();
 
