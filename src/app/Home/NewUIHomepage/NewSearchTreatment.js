@@ -255,7 +255,7 @@ const NewSearchTreatment = () => {
                         {" "}
                         Hospitals in{" "}
                       </span>
-                      {e.city.charAt(0).toUpperCase() + e.city.slice(1)},{" "}
+                      {formatText(e.city)},{" "}
                       {selectedCountry.charAt(0).toUpperCase() +
                         selectedCountry.slice(1)}
                     </p>

@@ -10,6 +10,7 @@ import NewHeader from "@/app/Home/NewUIHomepage/inc/NewHeader";
 import NewFooter from "@/app/Home/NewUIHomepage/inc/NewFooter";
 import getALLCountry from "@/app/lib/getAllCountry";
 import AppointmentForm from "@/app/Home/hospitalForm/AppointmentForm";
+import HospitalPagination from "./HospitalPagination";
 
 function formatText(text) {
   if (typeof text === "string") {
@@ -256,8 +257,7 @@ const page = async ({ params }) => {
                           />
 
                           <div className="hospital-location-box">
-                            {hospital.city.charAt(0).toUpperCase() +
-                              hospital.city.slice(1)}
+                            {formatText(hospital.city)}
                             <img src="/images/2023/05/loc.png" alt="icon" />
                           </div>
                         </div>
@@ -271,6 +271,13 @@ const page = async ({ params }) => {
                     </h1>
                   </div>
                 )}
+                <HospitalPagination
+                  slug={combinedSlug}
+                  hospital={hospital}
+                  treatment={treatment}
+                  pageNumber={pageNumber}
+                  totalHospital={totalHospital}
+                />
               </div>
 
               {/* Form */}

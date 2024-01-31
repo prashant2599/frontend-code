@@ -175,8 +175,7 @@ const Sdoctors = ({
                         <ShareProfile slug={e.slug} />
 
                         <div className="doc-Hospital">
-                          {e.location.charAt(0).toUpperCase() +
-                            e.location.slice(1)}
+                          {formatText(e.location)}
                           {matchedHospital && (
                             <img
                               src={`https://dev.medflick.com/hospital/${matchedHospital.icon}`}

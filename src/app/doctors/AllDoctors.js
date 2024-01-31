@@ -6,6 +6,16 @@ import DoctorsSearch from "./[...slug]/DoctorsSearch";
 import AllDoctorPagination from "./AllDoctorPagination";
 import AllDoctorsFilteration from "./AllDoctorsFilteration";
 import AppointmentForm from "../Home/doctorForm/AppointmentForm";
+function formatText(text) {
+  if (typeof text === "string") {
+    return text
+      .split("-")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  } else {
+    return "Invalid input";
+  }
+}
 
 const AllDoctors = async () => {
   const data = await getAllDoctors();
@@ -17,7 +27,7 @@ const AllDoctors = async () => {
     <>
       <section id="find-doctors">
         <div className="midbox-inner  wiki-mk">
-          <DoctorsSearch  />
+          <DoctorsSearch />
         </div>
       </section>
       <section id="find-doctors-list">
@@ -51,7 +61,10 @@ const AllDoctors = async () => {
                             {e.prefix} {e.first_name} {e.last_name}
                           </h3>
                         </Link>
-                        <div className="department-sub" style={{color:"#ff6800"}}>
+                        <div
+                          className="department-sub"
+                          style={{ color: "#ff6800" }}
+                        >
                           {" "}
                           {e.designation.length > 55
                             ? `${e.designation.slice(0, 55)}...`
@@ -103,8 +116,7 @@ const AllDoctors = async () => {
                         <ShareProfile slug={e.slug} />
 
                         <div className="doc-Hospital">
-                          {e.location.charAt(0).toUpperCase() +
-                            e.location.slice(1)}
+                          {formatText(e.location)}
                           <img
                             src={`https://dev.medflick.com/hospital/${e.hospitalicon}`}
                             alt="icon"
