@@ -77,10 +77,7 @@ const HospitalSearch = () => {
               <div className="searchbox-medf-hospital">
                 {filteredQa.length > 0 ? (
                   filteredQa.map((question) => (
-                    <Link
-                      href={`/hospital/${question.slug}/${question.country}`}
-                      key={question.id}
-                    >
+                    <Link href={`/hospital/${question.slug}`} key={question.id}>
                       <div
                         className="searchbox-main"
                         dangerouslySetInnerHTML={{

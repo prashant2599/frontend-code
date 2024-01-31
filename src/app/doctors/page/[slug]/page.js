@@ -8,6 +8,16 @@ import DoctorForm from "@/app/Home/doctorForm/DoctorForm";
 import AllDoctorsFilteration from "../../AllDoctorsFilteration";
 import AllDoctorPagination from "../../AllDoctorPagination";
 import AppointmentForm from "@/app/Home/doctorForm/AppointmentForm";
+function formatText(text) {
+  if (typeof text === "string") {
+    return text
+      .split("-")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  } else {
+    return "Invalid input";
+  }
+}
 
 const page = async ({ params }) => {
   const combinedSlug = params.slug;
@@ -25,7 +35,7 @@ const page = async ({ params }) => {
       <NewHeader />
       <section id="find-doctors">
         <div className="midbox-inner  wiki-mk">
-          <DoctorsSearch  />
+          <DoctorsSearch />
         </div>
       </section>
       <section id="find-doctors-list">
@@ -110,8 +120,7 @@ const page = async ({ params }) => {
                         <ShareProfile slug={e.slug} />
 
                         <div className="doc-Hospital">
-                          {e.location.charAt(0).toUpperCase() +
-                            e.location.slice(1)}
+                          {formatText(e.location)}
                           <img
                             src={`https://dev.medflick.com/hospital/${e.hospitalicon}`}
                             alt="icon"

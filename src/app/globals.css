@@ -17293,3 +17293,7 @@ textarea {
     font-size: 18px;
   }
 }
+
+#blog-mid table {
+  width: 100% !important;
+}

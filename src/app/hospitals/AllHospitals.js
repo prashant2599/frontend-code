@@ -7,6 +7,18 @@ import AllHospitalPagination from "./AllHospitalPagination";
 import AllHospitalsFilteration from "./AllHospitalsFilteration";
 import AppointmentForm from "../Home/hospitalForm/AppointmentForm";
 
+function formatText(text) {
+  if (typeof text === "string") {
+    return text
+      .split("-")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  } else {
+    // Handle the case where 'text' is not a string or is undefined
+    return "Invalid input"; // Or any other appropriate error handling
+  }
+}
+
 const AllHospitals = async () => {
   const data = await getAllHospitals();
   const hospital = data.data.hospital;
@@ -137,8 +149,7 @@ const AllHospitals = async () => {
                       />
 
                       <div className="hospital-location-box">
-                        {hospital.city.charAt(0).toUpperCase() +
-                          hospital.city.slice(1)}
+                        {formatText(hospital.city)}
                         <img src="/images/2023/05/loc.png" alt="icon" />
                       </div>
                     </div>

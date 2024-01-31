@@ -7,6 +7,18 @@ import AllHospitalsFilteration from "../../AllHospitalsFilteration";
 import AppointmentForm from "@/app/Home/hospitalForm/AppointmentForm";
 import HospitalShare from "@/app/Home/hospitalForm/HospitalShare";
 
+function formatText(text) {
+  if (typeof text === "string") {
+    return text
+      .split("-")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  } else {
+    // Handle the case where 'text' is not a string or is undefined
+    return "Invalid input"; // Or any other appropriate error handling
+  }
+}
+
 const page = async ({ params }) => {
   const combinedSlug = params.slug;
   const apiResponse = await fetch(
@@ -135,8 +147,7 @@ const page = async ({ params }) => {
                       />
 
                       <div className="hospital-location-box">
-                        {hospital.city.charAt(0).toUpperCase() +
-                          hospital.city.slice(1)}
+                        {formatText(hospital.city)}
                         <img src="/images/2023/05/loc.png" alt="icon" />
                       </div>
                     </div>
