@@ -137,12 +137,11 @@ const page = async ({ params }) => {
                                       .split(",")
                                       .map((imageName, index) => (
                                         <li className="active" key={index}>
-                                          <Image
+                                          <img
                                             key={index}
                                             src={`https://dev.medflick.com/hospital/${imageName.trim()}`} // Trim to remove any leading/trailing spaces
                                             alt={`Image ${index + 1}`}
-                                            width="150"
-                                            height="50"
+                                      
                                           />
                                         </li>
                                       ))}

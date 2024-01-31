@@ -29,8 +29,6 @@ const NewBlogPage = async ({ blog, pageNumber, totalCount }) => {
             Healthcare <span>Blogs</span>
           </h1>
 
-          <h2>Popular Post</h2>
-
           <TreadingBlogs />
         </div>
       </section>
