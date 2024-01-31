@@ -362,7 +362,7 @@ const SpecialitySelect = ({ doctor, treatment, slug }) => {
           </div>
         )}
 
-        <div className="ding">
+        {/* <div className="ding">
           <select
             id="wiki-select"
             onChange={handleSelectHospital}
@@ -375,7 +375,7 @@ const SpecialitySelect = ({ doctor, treatment, slug }) => {
               </option>
             ))}
           </select>
-        </div>
+        </div> */}
 
         <div className="refresh-box" onClick={handleClearSelection}>
           <span>
