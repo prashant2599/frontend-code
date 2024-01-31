@@ -63,31 +63,38 @@ const AppoinmentList = () => {
           </div>
 
           <div className="appointment-new-list">
-            {quoteList.map((e) => {
-              const appointmentDate = new Date(e.created_at);
-              const formattedDate = `${appointmentDate.getDate()}/${
-                appointmentDate.getMonth() + 1
-              }/${appointmentDate.getFullYear()}`;
-              return (
-                <div className="appointment-new-box" key={e.id}>
-                  <div className="appointment-box1">
-                    <div className="appointment-new">{e.patient_name}</div>
-                    <div className="appointment-title">{e.patient_email}</div>
-                    <div className="dr-details">{formattedDate}</div>
-                    <div className="action-button">
-                      <Link
-                        href={`/appointment-details/${e.id}`}
-                        className="view-details"
-                      >
-                        View Details
-                      </Link>
-
-                      <CancelAppointmentList id={e.id} />
+            {quoteList.length === 0 ? (
+              <div>
+                <p style={{textAlign:"center",paddingTop:"20px",paddingBottom:"20px",color:"#009200"}}>
+                No upcoming appointments at the moment. Stay healthy and well!
+                </p>
+              </div>
+            ) : (
+              quoteList.map((e) => {
+                const appointmentDate = new Date(e.created_at);
+                const formattedDate = `${appointmentDate.getDate()}/${
+                  appointmentDate.getMonth() + 1
+                }/${appointmentDate.getFullYear()}`;
+                return (
+                  <div className="appointment-new-box" key={e.id}>
+                    <div className="appointment-box1">
+                      <div className="appointment-new">{e.patient_name}</div>
+                      <div className="appointment-title">{e.patient_email}</div>
+                      <div className="dr-details">{formattedDate}</div>
+                      <div className="action-button">
+                        <Link
+                          href={`/appointment-details/${e.id}`}
+                          className="view-details"
+                        >
+                          View Details
+                        </Link>
+                        <CancelAppointmentList id={e.id} />
+                      </div>
                     </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })
+            )}
           </div>
         </div>
       </div>

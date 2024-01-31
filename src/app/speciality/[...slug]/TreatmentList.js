@@ -38,13 +38,13 @@ const TreatmentList = ({ speciality, slugs }) => {
                     )}
                   </div>
 
-                  <span>
+                  <div>
                     <img
                       src="/images/2023/01/pack-arrow.png"
                       className="arrow-link"
                       alt="arrow"
                     />
-                  </span>
+                  </div>
                 </div>
               </Link>
             </li>

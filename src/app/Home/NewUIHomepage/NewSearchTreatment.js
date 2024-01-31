@@ -8,6 +8,17 @@ import getAllSpeciality from "@/app/lib/getAllSpeciality";
 import HomeDoctorForm from "../doctorForm/HomeDoctorForm";
 import HomeHospitalForm from "../hospitalForm/HomeHospitalForm";
 
+function formatText(text) {
+  if (typeof text === "string") {
+    return text
+      .split("-")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  } else {
+    return "Invalid input";
+  }
+}
+
 const NewSearchTreatment = () => {
   const { doctorsData } = useDoctorData();
   const doctorsNew = doctorsData.doctors_list;
@@ -44,10 +55,6 @@ const NewSearchTreatment = () => {
         `https://dev.medflick.com/api/doctors/${selectedSpeciality}/${selectedCountry}`
       );
       const data = await res.json();
-      const doctor = data.doctors_list.doctors_list;
-      const featuredDoctors = doctor?.filter(
-        (doctor) => doctor.featured === "1"
-      );
 
       // Set the filtered data in the state
       setDoctorsData(data.doctors_list);
@@ -57,60 +64,12 @@ const NewSearchTreatment = () => {
     fetchDoctorsData();
   }, [selectedCountry, selectedSpeciality, setDoctorsData]);
 
-  // useEffect(() => {
-  //   const fetchDoctorsData = async () => {
-  //     try {
-  //       // Create an array to store all the promises for fetching data
-  //       const promises = [];
-
-  //       // Iterate through the pages and push each fetch promise into the array
-  //       for (let i = 1; i <= 9; i++) {
-  //         const url = `https://dev.medflick.com/api/doctors/${selectedSpeciality}/${selectedCountry}/page/${i}`;
-  //         promises.push(fetch(url).then((res) => res.json()));
-  //       }
-
-  //       // Use Promise.all to wait for all promises to resolve
-  //       const results = await Promise.all(promises);
-
-  //       // Extract the doctors array from each result
-  //       const allDoctorsArrays = results.map(result => result.doctors_list.doctors_list);
-
-  //       // Flatten the array of arrays into a single array
-  //       const allDoctors = [].concat(...allDoctorsArrays);
-
-  //       // Filter out duplicate doctors based on ID
-  //       const uniqueDoctors = allDoctors.filter(
-  //         (doctor, index, array) => array.findIndex(d => d.id === doctor.id) === index
-  //       );
-
-  //       console.log("alldoctors",allDoctors);
-
-  //       // Filter the featured doctors
-  //       const featuredDoctors = allDoctors.filter(
-  //         (doctor) => doctor.featured === "1"
-  //       );
-
-  //       // Set the filtered data in the state
-  //       setDoctorsData(featuredDoctors);
-  //     } catch (error) {
-  //       console.error("Error fetching data:", error);
-  //     }
-  //   };
-
-  //   // Fetch data when selectedCountry or selectedSpeciality changes
-  //   fetchDoctorsData();
-  // }, [selectedCountry, selectedSpeciality, setDoctorsData]);
-
   useEffect(() => {
     const fetchDoctorsData = async () => {
       const res = await fetch(
         `https://dev.medflick.com/api/hospitals/${selectedSpeciality}/${selectedCountry}`
       );
       const data = await res.json();
-      // const doctor = data.hospital_list.hospital_list;
-      // const featuredDoctors = doctor?.filter(
-      //   (doctor) => doctor.featured === "1"
-      // );
 
       setHospitalsData(data.hospital_list.hospital_list);
     };
@@ -126,6 +85,25 @@ const NewSearchTreatment = () => {
   const handleSpecialityChange = (e) => {
     setSelectedSpeciality(e.target.value);
   };
+
+  // useEffect(() => {
+  //   // Update countries based on selected speciality
+  //   const selectedSpecialityData = specialities.find(spec => spec.slug === selectedSpeciality);
+  //   const countryList = selectedSpecialityData ? selectedSpecialityData.country.split(',') : [];
+  //   setCountries(countryList.map(country => country.trim()));
+  // }, [specialities, selectedSpeciality]);
+
+  // const handleSpecialityChange = (event) => {
+  //   setSelectedSpeciality(event.target.value);
+  // };
+
+  // {countries.map((country, index) => (
+  //   <option key={index} value={country}>
+  //     {country}
+  //   </option>
+  // ))}
+
+  const formattedSpeciality = formatText(selectedSpeciality);
 
   return (
     <>
@@ -168,11 +146,7 @@ const NewSearchTreatment = () => {
           <div className="new-beginnings">
             <div className="new-beginnings-left">
               <h3>
-                Best{" "}
-                {selectedSpeciality &&
-                  selectedSpeciality.charAt(0).toUpperCase() +
-                    selectedSpeciality.slice(1)}{" "}
-                Doctors in{" "}
+                Best {formattedSpeciality} Doctors in{" "}
                 <span style={{ color: "#ff6800" }}>
                   {selectedCountry.charAt(0).toUpperCase() +
                     selectedCountry.slice(1)}
@@ -243,11 +217,7 @@ const NewSearchTreatment = () => {
           <div className="new-beginnings">
             <div className="new-beginnings-left">
               <h3>
-                Best{" "}
-                {selectedSpeciality &&
-                  selectedSpeciality.charAt(0).toUpperCase() +
-                    selectedSpeciality.slice(1)}{" "}
-                Hospitals in{" "}
+                Best {formattedSpeciality} Hospitals in{" "}
                 <span style={{ color: "#ff6800" }}>
                   {selectedCountry.charAt(0).toUpperCase() +
                     selectedCountry.slice(1)}
@@ -281,7 +251,10 @@ const NewSearchTreatment = () => {
                       <h3>{e.name}</h3>
                     </Link>
                     <p>
-                      <span className="home-page-hospital-in"> Hospitals in </span>
+                      <span className="home-page-hospital-in">
+                        {" "}
+                        Hospitals in{" "}
+                      </span>
                       {e.city.charAt(0).toUpperCase() + e.city.slice(1)},{" "}
                       {selectedCountry.charAt(0).toUpperCase() +
                         selectedCountry.slice(1)}
