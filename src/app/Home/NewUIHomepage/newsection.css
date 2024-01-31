@@ -202,7 +202,7 @@
 }
 
 .home-doctors .item {
-  flex: 1;
+  width: 25%;
   display: flex;
   flex-direction: column; /* Adjusted to column */
   margin: 0px;
