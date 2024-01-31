@@ -216,17 +216,15 @@ const page = async ({ params }) => {
                   <div className="articles-box">
                     Related Articles
                     <ul>
-                      {relatedArticles.map((e) => (
-                        <li key={e.id}>
-                          {/* <Image
-                        src={`https://dev.medflick.com/blog/${e.icon}`}
-                        alt="blog-related"
-                        width="90"
-                        height="77"
-                      /> */}
-                          <Link href={`/blog/${e.slug}`}>{e.name}</Link>
-                        </li>
-                      ))}
+                      {relatedArticles.map(
+                        (e) =>
+                          // Exclude the current blog from the related articles
+                          e.id !== blogDetails.id && (
+                            <li key={e.id}>
+                              <Link href={`/blog/${e.slug}`}>{e.name}</Link>
+                            </li>
+                          )
+                      )}
                     </ul>
                   </div>
                 ) : null}
