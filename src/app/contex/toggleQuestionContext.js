@@ -5,6 +5,11 @@ const ToggleQuestionContext = createContext();
 
 export const ToggleQuestionProvider = ({ children }) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [specialityId, setSpecialityId] = useState("");
+
+  const handleHospitalSpeciality = (selectedId) => {
+    setSpecialityId(selectedId);
+  };
 
   const togglePopup = () => {
     setIsPopupOpen(!isPopupOpen);
@@ -12,7 +17,7 @@ export const ToggleQuestionProvider = ({ children }) => {
 
   return (
     <ToggleQuestionContext.Provider
-      value={{ isPopupOpen, togglePopup, setIsPopupOpen }}
+      value={{ isPopupOpen, togglePopup, setIsPopupOpen,specialityId,handleHospitalSpeciality }}
     >
       {children}
     </ToggleQuestionContext.Provider>

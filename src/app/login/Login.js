@@ -158,7 +158,8 @@ const Login = () => {
                 </ul>
               </div>
             </div>
-            <div className="login-box-right">
+            
+            <div className="login-box-right" style={{ marginTop: "5rem" }}>
               {/* <img
                 src="images/2023/02/logo.png"
                 className="logo-login"

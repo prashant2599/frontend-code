@@ -2711,7 +2711,7 @@ textarea {
   height: 100%;
   display: block;
   position: relative;
-  text-align: justify;
+  text-align: left;
 }
 
 .treatment-rightbox {
@@ -4327,7 +4327,7 @@ table strong {
 
 .doctor-education ul {
   margin-left: 20px;
-  text-align: justify;
+  text-align: left;
   color: #7c7c7c;
 }
 
@@ -5654,7 +5654,7 @@ ul.tabs li.active {
   height: 100%;
   display: block;
   position: relative;
-  text-align: justify;
+  text-align: left;
 }
 
 .blog-midbox h3 {
@@ -5703,6 +5703,7 @@ ul.tabs li.active {
   color: #575757;
   margin: 14px 0px;
   font-weight: 400;
+  text-align: left !important;
 }
 
 .blog-midbox img {
@@ -9499,6 +9500,7 @@ ul.tabs li.active {
     flex-direction: column;
     width: 100%;
     margin-right: 0%;
+    margin-top: 2rem;
   }
 
   .login-img-d {
@@ -14635,15 +14637,12 @@ pre code {
   font-size: 16px;
   gap: 7px;
   display: flex;
+  outline: none;
+  border: 0;
+  background: none;
   font-family: Inter Regular;
 }
-.comments-iconbox {
-  color: #7c7c7c;
-  font-size: 16px;
-  gap: 7px;
-  display: flex;
-  font-family: Inter Regular;
-}
+
 .show-replies-box {
   color: #ff6800;
   font-size: 16px;
@@ -17303,7 +17302,84 @@ textarea {
   border-color: #ff6800 !important;
 }
 
-.css-t3ipsp-control{
+.css-t3ipsp-control {
   box-shadow: 0 0 0 1px #ff6800 !important;
   border-color: #ff6800 !important;
+}
+
+.job-apply-form {
+  background: #fff;
+  padding: 20px 0;
+  width: 100%;
+}
+.apply-job h2 {
+  font-size: 45px;
+  color: #090909;
+  font-weight: 400;
+  width: 100%;
+  margin: 0px auto;
+  font-family: Helvetica Neue Medium;
+  padding-bottom: 30px;
+}
+.job-apply-form .home-form {
+  width: 100%;
+  gap: 10px;
+  padding-bottom: 10px;
+  display: flex;
+}
+.job-apply-form .home-form {
+  width: 100%;
+  gap: 10px;
+  padding-bottom: 10px;
+  display: flex;
+}
+.job-apply-form .medical-report-all {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  width: 22%;
+  margin-top: 8px;
+  text-align: left;
+}
+.job-apply-form .medical-report-file {
+  background: #fff4ed;
+  font-family: Helvetica Neue Light;
+  color: #ff6800 !important;
+  border: 2px solid #ff6800;
+  font-size: 16px;
+  border-radius: 8px;
+  padding: 14px 11px;
+  position: relative;
+  width: 100%;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.job-apply-form .medical-report-all input[type="file"] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+.job-apply-form .home-button {
+  text-align: Center !important;
+  width: 200px;
+  margin: 50px auto;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0px;
+}
+@media screen and (max-width: 880px) {
+  .apply-job h2 {
+    font-size: 30px;
+    width: 100%;
+  }
+  .job-apply-form .home-form {
+    flex-direction: column;
+  }
+  .job-apply-form .medical-report-all {
+    width: 100%;
+  }
 }

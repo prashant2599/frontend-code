@@ -51,6 +51,8 @@ const page = async ({ params }) => {
       (countryObj) => countryObj.country === citySlug
     );
 
+    const isPositionTreatment = treatment.some((e) => e.slug === countrySlug);
+
     const FormatedTreatment = formatText(countrySlug);
     const FormatedCity = formatText(citySlug);
     const FormatedHospital = formatText(specialitySlug);
@@ -67,6 +69,11 @@ const page = async ({ params }) => {
             {isPositionInDoctorCountry ? (
               <h1>
                 Best {FormatedTreatment} Doctors in {FormatedCity}{" "}
+                <span>({totalDoctor} Results)</span>
+              </h1>
+            ) : isPositionTreatment ? (
+              <h1>
+                Best {FormatedTreatment} Doctors{" "}
                 <span>({totalDoctor} Results)</span>
               </h1>
             ) : (

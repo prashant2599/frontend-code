@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { ThreeDots } from "react-loader-spinner";
 import axios from "axios";
 import "intl-tel-input/build/css/intlTelInput.css";
@@ -430,7 +430,11 @@ const AppointmentForm = ({ doctorId, first, middle, last, specialityId }) => {
         Book Appointment <img src="/images/2023/05/book.png" alt="icon" />
       </button>
       {isPopupOpen && (
-        <div className="popup" data-popup="popup-1" style={popupStyle}>
+        <div
+          className="popup"
+          data-popup="popup-1"
+          style={{ display: isPopupOpen ? "block" : "none" }}
+        >
           <div className="popup-inner2">
             <div className="modal-content">
               <div className="modal-header">

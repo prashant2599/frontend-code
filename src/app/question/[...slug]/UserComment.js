@@ -1,10 +1,6 @@
 "use client";
-
-import { FaComments } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { ThreeDots } from "react-loader-spinner";
-import ReCAPTCHA from "react-google-recaptcha";
 import Success from "@/app/Home/successPopup/Success";
 import ErrorPopup from "@/app/Home/successPopup/ErrorPopup";
 import LoginPopUp from "@/app/Home/LoginPopUp/LoginPopUp";
@@ -116,9 +112,9 @@ const UserComment = ({
 
   return (
     <>
-      <a className="share-discussion" onClick={togglePopup}>
+      <button className="share-discussion" onClick={togglePopup}>
         Add a comment
-      </a>
+      </button>
       {isPopupOpen && (
         <div className="popup" data-popup="popup-2" style={popupStyle}>
           <div className="popup-inner1">

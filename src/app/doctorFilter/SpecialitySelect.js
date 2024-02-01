@@ -5,9 +5,11 @@ import { useRouter } from "next/navigation";
 import getAllSpeciality from "../lib/getAllSpeciality";
 import TreatmentBlog from "../treatment/[...slug]/TreatmentBlog";
 import getAllHospitals from "../lib/getAllHospitals";
+import { useToggleQuestion } from "../contex/toggleQuestionContext";
 
 const SpecialitySelect = ({ doctor, treatment, slug }) => {
   // split the slug to show speciality
+  const { specialityId, handleHospitalSpeciality } = useToggleQuestion();
   const slugs = slug;
   const parts = slugs.split("/");
   const specialitySlug = parts[0];
@@ -68,9 +70,15 @@ const SpecialitySelect = ({ doctor, treatment, slug }) => {
   const handleSpecialtyChange = (e) => {
     const selectedId = e.target.value;
     setSelectedSpecialtyId(selectedId);
+    // if (isPositionHospital === true) {
+    //   router.push(`/doctor-list/${specialitySlug}/${selectedId}`);
+    // } else {
+    //   router.push(`/doctors/${selectedId}`);
+    // }
+
+    router.push(`/doctors/${selectedId}`);
 
     // Redirect to another page with the selected ID
-    router.push(`/doctors/${selectedId}`);
   };
 
   const handleSelectLocation = (e) => {
@@ -259,6 +267,18 @@ const SpecialitySelect = ({ doctor, treatment, slug }) => {
     positionTreatmentCountry,
   ]);
 
+  // const [specialityId, setSpecialityId] = useState("");
+
+  // const handlehospitalSpeciality = (e) => {
+  //   const select = e.target.value;
+  //   setSpecialityId(select);
+  // };
+
+  const filteredSpecialities = speciality.filter((spec) =>
+    doctor.some((doc) => String(doc.speciality_id) === String(spec.id))
+  );
+
+  console.log(specialityId);
   return (
     <>
       <div className="doctors-list-find">
