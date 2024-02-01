@@ -35,9 +35,9 @@ const ShareQuestion = ({ desc, id }) => {
   };
   return (
     <>
-      <a onClick={togglePopupShare} className="share-discussion">
+      <button onClick={togglePopupShare} className="share-discussion">
         Share discussion
-      </a>
+      </button>
       {isPopupOpenShare && (
         <div className="popup" data-popup="popup-3" style={popupStyleShare}>
           <div className="popup-inner3">

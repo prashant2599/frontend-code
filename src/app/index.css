@@ -2751,3 +2751,18 @@ td {
 }
 }
 
+.back-to-job {
+  display: flex;
+  color: #000 !important;
+  align-items: center;
+  gap: 10px;
+  margin-left: 20%;
+  margin-bottom: 20px;
+}
+
+.back-to-job img {
+  display: inline-block;
+  width: auto;
+  height: 10px;
+}
+

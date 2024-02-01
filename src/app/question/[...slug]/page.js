@@ -2,13 +2,13 @@ import React from "react";
 import Link from "next/link";
 import { IoChevronBack } from "react-icons/io5";
 import { FaComments } from "react-icons/fa";
-import { FaHeart } from "react-icons/fa";
 import ShareQuestion from "./ShareQuestion";
 import UserComment from "./UserComment";
 import SearchQuestions from "./SearchQuestions";
 import NewHeader from "@/app/Home/NewUIHomepage/inc/NewHeader";
 import NewFooter from "@/app/Home/NewUIHomepage/inc/NewFooter";
 import ComentList from "./ComentList";
+import UserLikeComment from "./UserLikeComment";
 
 const page = async ({ params }) => {
   const combinedSlug = params.slug.join("/");
@@ -54,12 +54,7 @@ const page = async ({ params }) => {
                 />
 
                 <div className="questions-inner-comments">
-                  <a className="comments-iconbox" href="#">
-                    <i>
-                      <FaHeart style={{ fontSize: "20px" }} />
-                    </i>
-                    Helpful
-                  </a>
+               <UserLikeComment url={url} />
                   <a className="comments-iconbox" href="#">
                     <i>
                       <FaComments style={{ fontSize: "20px" }} />

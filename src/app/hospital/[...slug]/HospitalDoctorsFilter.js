@@ -68,7 +68,13 @@ const HospitalDoctorsFilter = ({ doctor }) => {
       .filter((exp) => label === getLabel(exp));
 
     matchingExpValues.forEach((expValue) => {
-      options.push({ value: expValue.toString(), label: label });
+      // Check if the option with the same label already exists in options
+      const existingOption = options.find((option) => option.label === label);
+
+      // Add the option only if it doesn't exist in options
+      if (!existingOption) {
+        options.push({ value: expValue.toString(), label: label });
+      }
     });
 
     return options;
@@ -83,7 +89,6 @@ const HospitalDoctorsFilter = ({ doctor }) => {
       return "30+ years experience";
     }
   }
-
   // Function to handle city selection
   const handleSelectDep = (selectedOption) => {
     setSelecteddep(selectedOption);

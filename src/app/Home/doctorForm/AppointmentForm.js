@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { ThreeDots } from "react-loader-spinner";
 import axios from "axios";
 import "intl-tel-input/build/css/intlTelInput.css";
@@ -46,6 +46,28 @@ const AppointmentForm = ({ doctorId, first, middle, last, specialityId }) => {
   const popupStyle = {
     display: isPopupOpen ? "block" : "none",
   };
+  const popupRef = useRef(null);
+
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      // Check if the clicked element is outside the popup
+      if (
+        popupRef.current &&
+        !popupRef.current.contains(event.target) &&
+        isPopupOpen
+      ) {
+        setIsPopupOpen(false);
+      }
+    };
+
+    window.addEventListener("mousedown", handleOutsideClick);
+
+    return () => {
+      window.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, [isPopupOpen]);
+
+  console.log(isPopupOpen);
 
   const [name, setName] = useState("");
   const [pcode, setPcode] = useState("+91");
@@ -430,7 +452,12 @@ const AppointmentForm = ({ doctorId, first, middle, last, specialityId }) => {
         Book Appointment <img src="/images/2023/05/book.png" alt="icon" />
       </button>
       {isPopupOpen && (
-        <div className="popup" data-popup="popup-1" style={popupStyle}>
+        <div
+          className="popup"
+          data-popup="popup-1"
+          style={popupStyle}
+          ref={popupRef}
+        >
           <div className="popup-inner2">
             <div className="modal-content">
               <div className="modal-header">

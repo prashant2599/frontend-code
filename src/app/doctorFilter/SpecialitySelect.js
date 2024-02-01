@@ -5,9 +5,11 @@ import { useRouter } from "next/navigation";
 import getAllSpeciality from "../lib/getAllSpeciality";
 import TreatmentBlog from "../treatment/[...slug]/TreatmentBlog";
 import getAllHospitals from "../lib/getAllHospitals";
+import { useToggleQuestion } from "../contex/toggleQuestionContext";
 
 const SpecialitySelect = ({ doctor, treatment, slug }) => {
   // split the slug to show speciality
+  const { specialityId, handleHospitalSpeciality } = useToggleQuestion();
   const slugs = slug;
   const parts = slugs.split("/");
   const specialitySlug = parts[0];
@@ -259,24 +261,54 @@ const SpecialitySelect = ({ doctor, treatment, slug }) => {
     positionTreatmentCountry,
   ]);
 
+  // const [specialityId, setSpecialityId] = useState("");
+
+  // const handlehospitalSpeciality = (e) => {
+  //   const select = e.target.value;
+  //   setSpecialityId(select);
+  // };
+
+  const filteredSpecialities = speciality.filter((spec) =>
+    doctor.some((doc) => String(doc.speciality_id) === String(spec.id))
+  );
+
+  console.log(specialityId);
   return (
     <>
       <div className="doctors-list-find">
-        <div className="ding">
-          <select
-            id="wiki-select"
-            onChange={handleSpecialtyChange}
-            value={selectedSpecialtyId}
-          >
-            <option disabled>Select Speciality</option>
-            {speciality &&
-              speciality.map((e) => (
-                <option value={e.slug} key={e.id}>
-                  {e.name}
-                </option>
-              ))}
-          </select>
-        </div>
+        {isPositionHospital ? (
+          <div className="ding">
+            <select
+              id="wiki-select"
+              onChange={handleHospitalSpeciality}
+              value={specialityId}
+            >
+              <option disabled>Select Speciality</option>
+              {filteredSpecialities &&
+                filteredSpecialities.map((e) => (
+                  <option value={e.id} key={e.id}>
+                    {e.name}
+                  </option>
+                ))}
+            </select>
+          </div>
+        ) : (
+          <div className="ding">
+            <select
+              id="wiki-select"
+              onChange={handleSpecialtyChange}
+              value={selectedSpecialtyId}
+            >
+              <option disabled>Select Speciality</option>
+              {speciality &&
+                speciality.map((e) => (
+                  <option value={e.slug} key={e.id}>
+                    {e.name}
+                  </option>
+                ))}
+            </select>
+          </div>
+        )}
 
         {isPositionInDoctorCountry && (
           <div className="ding">
