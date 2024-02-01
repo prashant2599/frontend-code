@@ -181,11 +181,12 @@ const Login = () => {
                     autoComplete="off"
                   />
                   {emailError && (
-                    <p
-                      style={{ margin: "0px", color: "red", fontSize: "16px" }}
+                    <div
+                      // style={{ margin: "0px", color: "red", fontSize: "14px" }}
+                      className="error-message"
                     >
                       {emailError}
-                    </p>
+                    </div>
                   )}
                 </div>
                 <div className="inputbox">

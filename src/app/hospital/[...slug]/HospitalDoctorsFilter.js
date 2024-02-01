@@ -14,37 +14,75 @@ const HospitalDoctorsFilter = ({ doctor }) => {
   const [filteredDoctors, setFilteredDoctors] = useState([]);
 
   useEffect(() => {
-    // Filter the doctor list based on the selected location and city
+    // Filter the doctor list based on the selected location, department, and experience range
     setFilteredDoctors(
-      doctor.filter(
-        (doctor) =>
-          (!selectedLocation || doctor.gender === selectedLocation.value) &&
-          (!selectedDep || doctor.dept === selectedDep.value) &&
-          (!selectedeExp || doctor.experience_year === selectedeExp.value)
-      )
+      doctor.filter((doctor) => {
+        const locationCondition =
+          !selectedLocation || doctor.gender === selectedLocation.value;
+        const departmentCondition =
+          !selectedDep || doctor.dept === selectedDep.value;
+
+        // Check if the selected experience falls into the appropriate range
+        let experienceCondition = true;
+        if (selectedeExp) {
+          const numExp = parseInt(selectedeExp.value);
+          if (numExp >= 1 && numExp <= 10) {
+            experienceCondition =
+              doctor.experience_year >= 1 && doctor.experience_year <= 10;
+          } else if (numExp >= 20 && numExp <= 30) {
+            experienceCondition =
+              doctor.experience_year >= 20 && doctor.experience_year <= 30;
+          } else {
+            experienceCondition = doctor.experience_year >= 30;
+          }
+        }
+
+        return locationCondition && departmentCondition && experienceCondition;
+      })
     );
   }, [selectedLocation, selectedDep, selectedeExp, doctor]);
 
   const cityOptions = Array.from(
-    new Set(filteredDoctors.map((doctor) => doctor.gender))
+    new Set(doctor.map((doctor) => doctor.gender))
   ).map((city) => ({ value: city, label: city }));
 
   const depOptions = Array.from(
-    new Set(filteredDoctors.map((doctor) => doctor.dept))
+    new Set(doctor.map((doctor) => doctor.dept))
   ).map((city) => ({ value: city, label: city }));
 
-  const ExpOptions = Array.from(
-    new Set(filteredDoctors.map((doctor) => doctor.experience_year))
-  )
-    .map((exp) => ({ value: exp, label: `${exp} years experience` }))
-    .sort((a, b) => {
-      // Convert the values to numbers before comparison
-      const numA = parseInt(a.value);
-      const numB = parseInt(b.value);
+  //  experience options
 
-      // Use numerical comparison
-      return numA - numB;
+  const doctorExperienceSet = new Set(
+    doctor.map((doctor) => doctor.experience_year)
+  );
+
+  const labelOrder = {
+    "1-10 years experience": 1,
+    "20-30 years experience": 2,
+    "30+ years experience": 3,
+  };
+
+  const ExpOptions = Object.keys(labelOrder).reduce((options, label) => {
+    const matchingExpValues = Array.from(doctorExperienceSet)
+      .map((exp) => parseInt(exp))
+      .filter((exp) => label === getLabel(exp));
+
+    matchingExpValues.forEach((expValue) => {
+      options.push({ value: expValue.toString(), label: label });
     });
+
+    return options;
+  }, []);
+
+  function getLabel(numExp) {
+    if (numExp >= 1 && numExp <= 10) {
+      return "1-10 years experience";
+    } else if (numExp >= 20 && numExp <= 30) {
+      return "20-30 years experience";
+    } else {
+      return "30+ years experience";
+    }
+  }
 
   // Function to handle city selection
   const handleSelectDep = (selectedOption) => {
@@ -185,7 +223,7 @@ const HospitalDoctorsFilter = ({ doctor }) => {
 
           <div className="ding">
             <Select
-              id="wiki-;=location"
+              id="wiki-location"
               value={selectedLocation}
               onChange={handleSelectCity}
               options={cityOptions}
@@ -216,7 +254,7 @@ const HospitalDoctorsFilter = ({ doctor }) => {
               maxMenuHeight={150}
             />
           </div>
-          <div className="ding">
+          {/* <div className="ding">
             <Select
               id="wiki-Rating"
               value={selectedOption}
@@ -226,7 +264,7 @@ const HospitalDoctorsFilter = ({ doctor }) => {
               placeholder="Rating"
               maxMenuHeight={150}
             />
-          </div>
+          </div> */}
 
           <div className="refresh-box">
             <span onClick={handleClearSelection}>
@@ -243,7 +281,6 @@ const HospitalDoctorsFilter = ({ doctor }) => {
                 width="129"
                 height="157"
                 className="doctor-speciality-img"
-                
               />
             </div>
             <div className="doctor-item-doc">

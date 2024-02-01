@@ -260,7 +260,7 @@ const SignUp = () => {
       setFormErrors((prevErrors) => ({
         ...prevErrors,
         Password:
-          "Password must contain at least one uppercase letter, one lowercase letter, one number, and be at least six characters long.",
+          "Password must contain at least one uppercase letter, one lowercase letter, one number, and be at least six characters long.  Example: Abc123",
       }));
     } else {
       setFormErrors((prevErrors) => ({
@@ -278,7 +278,7 @@ const SignUp = () => {
       setFormErrors((prevErrors) => ({
         ...prevErrors,
         Password:
-          "Password must contain at least one uppercase letter, one lowercase letter, one number, and be at least six characters long.",
+          "Password must contain at least one uppercase letter, one lowercase letter, one number, and be at least six characters long.  Example: Abc123",
       }));
     } else {
       setFormErrors((prevErrors) => ({
@@ -309,7 +309,7 @@ const SignUp = () => {
   const sureDesc =
     "Email Id already exist. Reset your password or contact support.";
 
-  const Page = "signup"
+  const Page = "signup";
   return (
     <>
       <section id="login-section">

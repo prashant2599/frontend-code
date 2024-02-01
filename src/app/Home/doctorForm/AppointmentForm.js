@@ -47,28 +47,6 @@ const AppointmentForm = ({ doctorId, first, middle, last, specialityId }) => {
     display: isPopupOpen ? "block" : "none",
   };
 
-  const popupRef = useRef(null);
-
-  const handleOutsideClick = (event) => {
-    if (popupRef.current && !popupRef.current.contains(event.target)) {
-      // Clicked outside the popup, close it by setting display to 'none'
-      setIsPopupOpen(false);
-    }
-  };
-
-  useEffect(() => {
-    // Add mousedown event listener to the entire document when the popup is open
-    if (isPopupOpen) {
-      const handleClickOutside = (event) => handleOutsideClick(event);
-      document.addEventListener("mousedown", handleClickOutside);
-
-      return () => {
-        // Remove the event listener when the component unmounts or popup closes
-        document.removeEventListener("mousedown", handleClickOutside);
-      };
-    }
-  }, [isPopupOpen]);
-
   const [name, setName] = useState("");
   const [pcode, setPcode] = useState("+91");
   const [phone, setPhone] = useState("");
@@ -452,12 +430,7 @@ const AppointmentForm = ({ doctorId, first, middle, last, specialityId }) => {
         Book Appointment <img src="/images/2023/05/book.png" alt="icon" />
       </button>
       {isPopupOpen && (
-        <div
-          className="popup"
-          data-popup="popup-1"
-          ref={popupRef}
-          style={{ display: isPopupOpen ? "block" : "none" }}
-        >
+        <div className="popup" data-popup="popup-1" style={popupStyle}>
           <div className="popup-inner2">
             <div className="modal-content">
               <div className="modal-header">
