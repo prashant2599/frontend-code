@@ -29,18 +29,18 @@ const SurePopup = ({ showSurePopup, onClose, sureDesc, Page }) => {
 
               <div
                 className="confirm-button"
-                style={{ margin: "10px 0 0 10px" }}
+                style={{ margin: "5px 0 0 0px" }}
               >
-                <a className="view-cancel" onClick={onClose}>
+                {/* <a className="view-cancel" onClick={onClose}>
                   {" "}
                   Cancel
-                </a>
+                </a> */}
                 {Page === "signup" ? (
-                  <Link className="cancel-appointment-yes" href="/contact-us">
+                  <Link className="view-cancel" href="/contact-us">
                     Contact-Us
                   </Link>
                 ) : (
-                  <Link className="cancel-appointment-yes" href="/sign-up">
+                  <Link className="view-cancel" href="/sign-up">
                     SignUp
                   </Link>
                 )}

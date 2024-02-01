@@ -95,7 +95,7 @@ const NewFooter = () => {
                   </li>
                   <li>
                     <Link href="/contact-us" target="_self">
-                      Contact
+                      Contact Us
                     </Link>
                   </li>
                   <li>

@@ -14463,6 +14463,7 @@ pre code {
 
 .error-message {
   color: red !important;
+  font-size: 14px;
 }
 
 .popup-inner6 {
@@ -17296,4 +17297,13 @@ textarea {
 
 #blog-mid table {
   width: 100% !important;
+}
+
+.css-t3ipsp-control:hover {
+  border-color: #ff6800 !important;
+}
+
+.css-t3ipsp-control{
+  box-shadow: 0 0 0 1px #ff6800 !important;
+  border-color: #ff6800 !important;
 }
