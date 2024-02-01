@@ -4327,7 +4327,7 @@ table strong {
 
 .doctor-education ul {
   margin-left: 20px;
-  text-align: justify;
+  text-align: left;
   color: #7c7c7c;
 }
 
@@ -9500,6 +9500,7 @@ ul.tabs li.active {
     flex-direction: column;
     width: 100%;
     margin-right: 0%;
+    margin-top: 2rem;
   }
 
   .login-img-d {
@@ -17343,8 +17344,8 @@ textarea {
 .job-apply-form .medical-report-file {
   background: #fff4ed;
   font-family: Helvetica Neue Light;
-  color: #FF6800 !important;
-  border: 2px solid #FF6800;
+  color: #ff6800 !important;
+  border: 2px solid #ff6800;
   font-size: 16px;
   border-radius: 8px;
   padding: 14px 11px;
@@ -17355,7 +17356,7 @@ textarea {
   align-items: center;
   justify-content: center;
 }
-.job-apply-form .medical-report-all input[type=file] {
+.job-apply-form .medical-report-all input[type="file"] {
   font-size: 100px;
   position: absolute;
   left: 0;
@@ -17370,15 +17371,15 @@ textarea {
   justify-content: center;
   padding: 10px 0px;
 }
-@media screen and (max-width: 880px){
-.apply-job h2 {
+@media screen and (max-width: 880px) {
+  .apply-job h2 {
     font-size: 30px;
     width: 100%;
-}
-.job-apply-form .home-form {
-  flex-direction: column;
-}
-.job-apply-form .medical-report-all {
-  width: 100%;
-}
+  }
+  .job-apply-form .home-form {
+    flex-direction: column;
+  }
+  .job-apply-form .medical-report-all {
+    width: 100%;
+  }
 }

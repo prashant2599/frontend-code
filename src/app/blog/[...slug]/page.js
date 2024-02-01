@@ -120,7 +120,9 @@ const page = async ({ params }) => {
             <div className="blog-datebox">
               <div className="by-box">
                 <img src="/images/2023/04/icon-two.png" alt="icon-blog" /> By -
-                Dr. Kanika Sharma
+                {blogDetails.keyword
+                  ? blogDetails.keyword
+                  : "Dr. Kanika Sharma"}
                 {/* <span> Updated on {formattedDate}</span> */}
               </div>
               <div className="by-box">

@@ -46,28 +46,6 @@ const AppointmentForm = ({ doctorId, first, middle, last, specialityId }) => {
   const popupStyle = {
     display: isPopupOpen ? "block" : "none",
   };
-  const popupRef = useRef(null);
-
-  useEffect(() => {
-    const handleOutsideClick = (event) => {
-      // Check if the clicked element is outside the popup
-      if (
-        popupRef.current &&
-        !popupRef.current.contains(event.target) &&
-        isPopupOpen
-      ) {
-        setIsPopupOpen(false);
-      }
-    };
-
-    window.addEventListener("mousedown", handleOutsideClick);
-
-    return () => {
-      window.removeEventListener("mousedown", handleOutsideClick);
-    };
-  }, [isPopupOpen]);
-
-  console.log(isPopupOpen);
 
   const [name, setName] = useState("");
   const [pcode, setPcode] = useState("+91");
@@ -455,8 +433,7 @@ const AppointmentForm = ({ doctorId, first, middle, last, specialityId }) => {
         <div
           className="popup"
           data-popup="popup-1"
-          style={popupStyle}
-          ref={popupRef}
+          style={{ display: isPopupOpen ? "block" : "none" }}
         >
           <div className="popup-inner2">
             <div className="modal-content">

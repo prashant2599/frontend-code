@@ -70,9 +70,15 @@ const SpecialitySelect = ({ doctor, treatment, slug }) => {
   const handleSpecialtyChange = (e) => {
     const selectedId = e.target.value;
     setSelectedSpecialtyId(selectedId);
+    // if (isPositionHospital === true) {
+    //   router.push(`/doctor-list/${specialitySlug}/${selectedId}`);
+    // } else {
+    //   router.push(`/doctors/${selectedId}`);
+    // }
+
+    router.push(`/doctors/${selectedId}`);
 
     // Redirect to another page with the selected ID
-    router.push(`/doctors/${selectedId}`);
   };
 
   const handleSelectLocation = (e) => {
@@ -276,39 +282,21 @@ const SpecialitySelect = ({ doctor, treatment, slug }) => {
   return (
     <>
       <div className="doctors-list-find">
-        {isPositionHospital ? (
-          <div className="ding">
-            <select
-              id="wiki-select"
-              onChange={handleHospitalSpeciality}
-              value={specialityId}
-            >
-              <option disabled>Select Speciality</option>
-              {filteredSpecialities &&
-                filteredSpecialities.map((e) => (
-                  <option value={e.id} key={e.id}>
-                    {e.name}
-                  </option>
-                ))}
-            </select>
-          </div>
-        ) : (
-          <div className="ding">
-            <select
-              id="wiki-select"
-              onChange={handleSpecialtyChange}
-              value={selectedSpecialtyId}
-            >
-              <option disabled>Select Speciality</option>
-              {speciality &&
-                speciality.map((e) => (
-                  <option value={e.slug} key={e.id}>
-                    {e.name}
-                  </option>
-                ))}
-            </select>
-          </div>
-        )}
+        <div className="ding">
+          <select
+            id="wiki-select"
+            onChange={handleSpecialtyChange}
+            value={selectedSpecialtyId}
+          >
+            <option disabled>Select Speciality</option>
+            {speciality &&
+              speciality.map((e) => (
+                <option value={e.slug} key={e.id}>
+                  {e.name}
+                </option>
+              ))}
+          </select>
+        </div>
 
         {isPositionInDoctorCountry && (
           <div className="ding">

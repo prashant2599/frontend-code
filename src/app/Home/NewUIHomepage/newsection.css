@@ -208,7 +208,6 @@
   margin: 0px;
   border-radius: 16px;
   box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.1);
-  
 }
 
 .item-home-expert {
@@ -441,13 +440,14 @@
 }
 
 .tab-treatment {
-  width: auto;
+  width: 400px;
   display: flex;
   gap: 10px;
   min-height: 90%;
-  margin-left: 42%;
-  margin-right: 25%;
   margin-top: 30px;
+  justify-content: center;
+  margin: 0px auto;
+  padding-top: 30px;
 }
 
 .tab-treatment button.active {
@@ -2207,7 +2207,7 @@ button.active .city-icon-h {
 @media screen and (max-width: 320px) {
   .blog-item h3 {
     font-size: 16px;
-}
+  }
 }
 
 .footer-navbox .but {
@@ -2337,7 +2337,7 @@ button.active .city-icon-h {
 
 .home-doctor-hospital-logo {
   width: 48px;
-  max-height: 60px; 
+  max-height: 60px;
   height: auto;
 }
 
@@ -2345,16 +2345,16 @@ button.active .city-icon-h {
   .home-doctor-hospital-logo {
     display: none;
   }
-  .home-page-hospital-in{
+  .home-page-hospital-in {
     display: none;
   }
-  #home-real-stories{
+  #home-real-stories {
     padding-top: 10px 0 10px;
   }
   #home-latest-resources {
     padding-bottom: 50px;
   }
-  #home-doc-hos{
+  #home-doc-hos {
     padding-bottom: 0px;
   }
 }
