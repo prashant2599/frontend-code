@@ -101,12 +101,9 @@ const page = async ({ params }) => {
                       <div className="doctor-item-list" key={e.id}>
                         <div className="doctor-item-img">
                           <Link href={`/doctor/${e.slug}`}>
-                            <Image
+                            <img
                               src={`https://dev.medflick.com/doctor/${e.image}`}
                               alt={e.slug}
-                              width="181"
-                              height="221"
-                              className="doctor-speciality-img"
                             />
                           </Link>
                         </div>
