@@ -277,66 +277,66 @@ const HospitalDoctorsFilter = ({ doctor }) => {
             </span>
           </div>
         </div>
-        {filteredDoctors.slice(0, doctorsToShow).map((e) => (
-          <div className="exparts-item-h" key={e.id}>
-            <div className="doctor-item-img">
-              <Image
-                src={`https://dev.medflick.com/doctor/${e.image}`}
-                alt={e.slug}
-                width="129"
-                height="157"
-                className="doctor-speciality-img"
-              />
-            </div>
-            <div className="doctor-item-doc">
-              <h3>
-                {e.prefix} {e.first_name} {e.last_name}
-              </h3>
-              <div className="department-sub">{e.designation}</div>
-              {/* <div className="rating-star">
-                <i>
-                  <AiTwotoneStar />
-                </i>{" "}
-                5 (523)
-              </div> */}
-            </div>
-            <div className="doc-experience">
-              {e.experience_year && (
-                <div className="years-exper">
-                  {e.experience_year}+ Years of Experience{" "}
-                </div>
-              )}
-              {e.surgery_treatment && (
-                <div className="successful-plus">
-                  {e.surgery_treatment}+ Successful Surgeries{" "}
-                </div>
-              )}
-            </div>
-            <div className="day-itembox">
-              {/* <div className="day-exper">Mon - Sat </div>
-                      <div className="time-exper">8:00 Am - 9:00 AM </div> */}
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: e.opd_time,
-                }}
-              />
-            </div>
-
-            <div className="doctor-item-button">
-              <AppointmentForm
-                slug={e.slug}
-                first={e.prefix}
-                middle={e.first_name}
-                last={e.last_name}
-                specialityId={e.speciality_id}
-              />
-              <Link href={`/doctor/${e.slug}`} className="view-profile">
-                View Profile{" "}
-                <img src="/images/2023/05/profile.png" alt="icons" />
-              </Link>
-            </div>
+        {filteredDoctors.length === 0 ? (
+          <div>
+            <p style={{ textAlign: "center", margin: "18px" }}>
+              No Doctor Found
+            </p>
           </div>
-        ))}
+        ) : (
+          filteredDoctors.slice(0, doctorsToShow).map((e) => (
+            <div className="exparts-item-h" key={e.id}>
+              <div className="doctor-item-img">
+                <Image
+                  src={`https://dev.medflick.com/doctor/${e.image}`}
+                  alt={e.slug}
+                  width="129"
+                  height="157"
+                  className="doctor-speciality-img"
+                />
+              </div>
+              <div className="doctor-item-doc">
+                <h3>
+                  {e.prefix} {e.first_name} {e.last_name}
+                </h3>
+                <div className="department-sub">{e.designation}</div>
+              </div>
+              <div className="doc-experience">
+                {e.experience_year && (
+                  <div className="years-exper">
+                    {e.experience_year}+ Years of Experience{" "}
+                  </div>
+                )}
+                {e.surgery_treatment && (
+                  <div className="successful-plus">
+                    {e.surgery_treatment}+ Successful Surgeries{" "}
+                  </div>
+                )}
+              </div>
+              <div className="day-itembox">
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: e.opd_time,
+                  }}
+                />
+              </div>
+
+              <div className="doctor-item-button">
+                <AppointmentForm
+                  slug={e.slug}
+                  first={e.prefix}
+                  middle={e.first_name}
+                  last={e.last_name}
+                  specialityId={e.speciality_id}
+                />
+                <Link href={`/doctor/${e.slug}`} className="view-profile">
+                  View Profile{" "}
+                  <img src="/images/2023/05/profile.png" alt="icons" />
+                </Link>
+              </div>
+            </div>
+          ))
+        )}
 
         {doctorsToShow < filteredDoctors.length && (
           <span
