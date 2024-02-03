@@ -5542,6 +5542,7 @@ ul.tabs li.active {
   border-radius: 8px;
   padding: 14px 62px 14px 10px;
   position: relative;
+  width: max-content;
 }
 
 .talk-doctor a img {

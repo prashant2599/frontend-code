@@ -1,7 +1,6 @@
 import Link from "next/link";
 
 const CategoryHospitals = ({ hospital }) => {
-
   return (
     <>
       {hospital && hospital.length > 0 ? (
