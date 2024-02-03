@@ -1,15 +1,14 @@
+"use client";
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import ShareProfile from "@/app/Home/doctorForm/ShareProfile";
-import DoctorForm from "@/app/Home/doctorForm/DoctorForm";
-import Image from "next/image";
-import SpecialitySelect from "@/app/doctorFilter/SpecialitySelect";
-import { notFound } from "next/navigation";
-import DoctorsSearch from "@/app/doctors/[...slug]/DoctorsSearch";
-import TreatmentDoctorPagination from "./TreatmentDoctorPagination";
-import NewHeader from "@/app/Home/NewUIHomepage/inc/NewHeader";
-import NewFooter from "@/app/Home/NewUIHomepage/inc/NewFooter";
-import getALLCountry from "@/app/lib/getAllCountry";
-import AppointmentForm from "@/app/Home/doctorForm/AppointmentForm";
+import { useSearchParams } from "next/navigation";
+import axios from "axios";
+import AppointmentForm from "../Home/doctorForm/AppointmentForm";
+import ShareProfile from "../Home/doctorForm/ShareProfile";
+import DoctorsSearch from "../doctors/[...slug]/DoctorsSearch";
+import DoctorForm from "../Home/doctorForm/DoctorForm";
+import SpecialitySelect from "../doctorFilter/SpecialitySelect";
+import FilterHospitalCategory from "./FilterHospitalCategory";
 
 function formatText(text) {
   if (typeof text === "string") {
@@ -22,51 +21,53 @@ function formatText(text) {
   }
 }
 
-const page = async ({ params }) => {
-  const combinedSlug = params.slug.join("/");
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/doctor-list/${combinedSlug}`,
-    { cache: "no-store" }
-  );
+const CategoryWiseDoctor = () => {
+  const searchParams = useSearchParams();
+  const [doctor, setDoctor] = useState([]);
+  const [hospital, setHospital] = useState("");
 
-  console.log(combinedSlug)
-  const datas = await res.json();
-  const doctor = datas.doctors_list.doctors_list;
+  const [info, setInfo] = useState([]);
+  const [hospitalIcon, setHospitalIcon] = useState([]);
+  const [speciality, setSpeciality] = useState([]);
 
-  const hospitalIcon = datas.doctors_list.hospital_image;
-  const treatment = datas.doctors_list.treatment;
-  const info = datas.doctors_list.specility_name;
-  const pageNumber = datas.doctors_list.page;
-  const totalDoctor = datas.doctors_list.count;
+  useEffect(() => {
+    const hospital = searchParams.get("hospital");
+    if (hospital) {
+      setHospital(hospital);
+    }
+    const speciality = searchParams.get("speciality");
+    if (speciality) {
+      setSpeciality(speciality);
+    }
+    const apiUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/api/doctor-list?hospital=${hospital}&speciality=${speciality}`;
 
-  const country = await getALLCountry();
-  const doctorCountry = country.country_name;
+    axios
+      .get(apiUrl)
+      .then((response) => {
+        setDoctor(response.data.doctors_list.doctors_list);
+        setInfo(response.data.doctors_list.specility_name);
+        setHospitalIcon(response.data.doctors_list.hospital_image);
+        setTreatment(response.data.doctors_list.treatment);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, [searchParams]);
 
-  const parts = combinedSlug.split("/");
-  const specialitySlug = parts[0];
-  const countrySlug = parts[1];
-  const citySlug = parts[2];
+  //   const FormatedHospital = formatText=({hospital})
+  const FormatedHospital = formatText(hospital);
 
-  const isPositionInDoctorCountry = doctorCountry.some(
-    (countryObj) => countryObj.country === citySlug
-  );
-
-  const isPositionTreatment = treatment.some((e) => e.slug === countrySlug);
-
-  const FormatedTreatment = formatText(countrySlug);
-  const FormatedCity = formatText(citySlug);
-  const FormatedHospital = formatText(specialitySlug);
   return (
     <>
-      <NewHeader />
       <section id="find-doctors">
         <div className="midbox-inner  wiki-mk">
           <DoctorsSearch />
         </div>
       </section>
+
       <section id="find-doctors-list">
         <div className="midbox-inner  wiki-mk">
-          {isPositionInDoctorCountry ? (
+          {/* {isPositionInDoctorCountry ? (
             <h1>
               Best {FormatedTreatment} Doctors in {FormatedCity}{" "}
               <span>({totalDoctor} Results)</span>
@@ -81,15 +82,15 @@ const page = async ({ params }) => {
               List of {FormatedHospital} Doctors{" "}
               <span>({doctor.length} Results)</span>
             </h1>
-          )}
+          )} */}
+          <h1>
+            List of {FormatedHospital} Doctors{" "}
+            <span>({doctor.length} Results)</span>
+          </h1>
 
           {/* filters nav section */}
 
-          <SpecialitySelect
-            doctor={doctor}
-            treatment={treatment}
-            slug={combinedSlug}
-          />
+          <FilterHospitalCategory hospital={hospital} speciality={speciality} />
 
           <div className="doctor-midbox">
             <div className="doctor-midbox-left">
@@ -122,13 +123,7 @@ const page = async ({ params }) => {
                             ? `${e.designation.slice(0, 55)}...`
                             : e.designation}
                         </div>
-                        {/* <div className="rating-star">
-                          5{" "}
-                          <i>
-                            <AiTwotoneStar />
-                          </i>{" "}
-                          (523){" "}
-                        </div> */}
+
                         <div className="department-sub-shotdesc">
                           {e.short_description &&
                           e.short_description.length > 100
@@ -166,7 +161,6 @@ const page = async ({ params }) => {
                         ) : (
                           <span>No profile available</span>
                         )}
-                        {/* share profile */}
 
                         <ShareProfile slug={e.slug} />
 
@@ -185,18 +179,20 @@ const page = async ({ params }) => {
                 })
               ) : (
                 <div>
-                  <p style={{ textAlign: "center", fontSize: "18px" }}>
-                    No Doctor Found
-                  </p>
+                  {setTimeout(() => {
+                    <p style={{ textAlign: "center", fontSize: "18px" }}>
+                      No Doctor Found
+                    </p>;
+                  }, 2000)}
                 </div>
               )}
-              <TreatmentDoctorPagination
+              {/* <TreatmentDoctorPagination
                 slug={combinedSlug}
                 doctor={doctor}
                 treatment={treatment}
                 pageNumber={pageNumber}
                 totalDoctor={totalDoctor}
-              />
+              /> */}
             </div>
             {/* form */}
 
@@ -204,88 +200,8 @@ const page = async ({ params }) => {
           </div>
         </div>
       </section>
-      <NewFooter />
     </>
   );
 };
 
-export default page;
-
-export async function generateMetadata({ params }) {
-  const monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-
-  const currentDate = new Date();
-  const currentMonthIndex = currentDate.getMonth();
-  const currentMonthName = monthNames[currentMonthIndex];
-  const currentYear = currentDate.getFullYear();
-  const combinedSlug = params.slug.join("/");
-  const parts = combinedSlug.split("/");
-  const specialitySlug = parts[0];
-  const countrySlug = parts[1];
-  const citySlug = parts[2];
-  const country = await getALLCountry();
-  const doctorCountry = country.country_name;
-  const isPositionInDoctorCountry = doctorCountry.some(
-    (countryObj) => countryObj.country === citySlug
-  );
-  const FormatedTreatment = formatText(countrySlug);
-  const FormatedCity = formatText(citySlug);
-  const FormatedHospital = formatText(specialitySlug);
-
-  if (isPositionInDoctorCountry === true) {
-    return {
-      title:
-        "Best " +
-        FormatedTreatment +
-        " " +
-        "doctors in " +
-        FormatedCity +
-        "- " +
-        "View review -" +
-        currentYear,
-      description:
-        "Find Updated List of " +
-        FormatedTreatment +
-        " " +
-        "Specialist doctors in " +
-        FormatedCity +
-        ". Find Top " +
-        FormatedTreatment +
-        " " +
-        "Specialist " +
-        FormatedCity +
-        " and reviews | Book hassle-free appointment",
-      alternates: {
-        canonical: `https://medflick.com/doctor-list/${combinedSlug}`,
-      },
-    };
-  } else {
-    return {
-      title: "List of Best Doctors " + FormatedHospital + " " + currentYear,
-      description:
-        "Find Updated List of " +
-        FormatedHospital +
-        " " +
-        "Specialist doctors. Find Top " +
-        FormatedHospital +
-        " " +
-        "Specialist  and reviews | Book hassle-free appointment",
-      alternates: {
-        canonical: `https://medflick.com/doctor-list/${combinedSlug}`,
-      },
-    };
-  }
-}
+export default CategoryWiseDoctor;

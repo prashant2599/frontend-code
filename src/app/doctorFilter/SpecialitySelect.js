@@ -3,13 +3,10 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import getAllSpeciality from "../lib/getAllSpeciality";
-import TreatmentBlog from "../treatment/[...slug]/TreatmentBlog";
-import getAllHospitals from "../lib/getAllHospitals";
-import { useToggleQuestion } from "../contex/toggleQuestionContext";
+import getAllHospitalsFilteration from "../lib/gerAllHospitalFilteration";
 
 const SpecialitySelect = ({ doctor, treatment, slug }) => {
   // split the slug to show speciality
-  const { specialityId, handleHospitalSpeciality } = useToggleQuestion();
   const slugs = slug;
   const parts = slugs.split("/");
   const specialitySlug = parts[0];
@@ -34,7 +31,7 @@ const SpecialitySelect = ({ doctor, treatment, slug }) => {
         const result = await getAllSpeciality();
         setSpeciality(result.data.Speciality);
       } catch (err) {
-        console.log(err.message); // Set the error message in state
+        console.log(err.message);
       }
     }
 
@@ -45,8 +42,8 @@ const SpecialitySelect = ({ doctor, treatment, slug }) => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const result = await getAllHospitals();
-        setHospitalList(result.data.hospital);
+        const result = await getAllHospitalsFilteration();
+        setHospitalList(result.data);
       } catch (err) {
         console.log(err.message);
       }
@@ -67,18 +64,34 @@ const SpecialitySelect = ({ doctor, treatment, slug }) => {
       });
   }, []);
 
+  const isPositionHospital = hospitalList.some(
+    (e) => e.slug === specialitySlug
+  );
+
+  const [hospitalSpeciality, setHospitalSpeciality] = useState([]);
+
+  useEffect(() => {
+    if (isPositionHospital === true) {
+      const apiUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/api/speciality-list?hospital=${specialitySlug}`;
+
+      axios
+        .get(apiUrl)
+        .then((response) => {
+          setHospitalSpeciality(response.data.data);
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        });
+    } else {
+      null;
+    }
+  }, [specialitySlug, isPositionHospital]);
+
   const handleSpecialtyChange = (e) => {
     const selectedId = e.target.value;
     setSelectedSpecialtyId(selectedId);
-    // if (isPositionHospital === true) {
-    //   router.push(`/doctor-list/${specialitySlug}/${selectedId}`);
-    // } else {
-    //   router.push(`/doctors/${selectedId}`);
-    // }
 
     router.push(`/doctors/${selectedId}`);
-
-    // Redirect to another page with the selected ID
   };
 
   const handleSelectLocation = (e) => {
@@ -148,8 +161,8 @@ const SpecialitySelect = ({ doctor, treatment, slug }) => {
   };
 
   const handleClearSelection = () => {
-    if (specialitySlug === "speciality") {
-      router.push(`/doctors/${countrySlug}`);
+    if (isPositionHospital === true) {
+      router.push(`/doctors`);
     } else {
       router.push(`/doctors/${specialitySlug}`);
     }
@@ -173,10 +186,6 @@ const SpecialitySelect = ({ doctor, treatment, slug }) => {
   const isPositionCity = doctor.some((e) => e.location === countrySlug);
   const isPositionTreatmentCity = doctor.some((e) => e.location === citySlug);
 
-  const isPositionHospital = hospitalList.some(
-    (e) => e.slug === specialitySlug
-  );
-
   // Determine position treatment
   const isPositionInTreatment = treatment.some((e) => e.slug === countrySlug);
 
@@ -198,6 +207,7 @@ const SpecialitySelect = ({ doctor, treatment, slug }) => {
   useEffect(() => {
     if (isPositionHospital === true) {
       setSelectedSpecialtyId("Select Speciality");
+      setHospitalspecialityId("Select Speciality");
     } else {
       setSelectedSpecialtyId(specialitySlug);
     }
@@ -267,36 +277,51 @@ const SpecialitySelect = ({ doctor, treatment, slug }) => {
     positionTreatmentCountry,
   ]);
 
-  // const [specialityId, setSpecialityId] = useState("");
+  const [hospitalspecialityId, setHospitalspecialityId] = useState("");
 
-  // const handlehospitalSpeciality = (e) => {
-  //   const select = e.target.value;
-  //   setSpecialityId(select);
-  // };
+  const handlehospitalSpeciality = (e) => {
+    const select = e.target.value;
+    setHospitalspecialityId(select);
 
-  const filteredSpecialities = speciality.filter((spec) =>
-    doctor.some((doc) => String(doc.speciality_id) === String(spec.id))
-  );
+    router.push(`/doctor-list?hospital=${specialitySlug}&speciality=${select}`);
+  };
 
-  console.log(specialityId);
   return (
     <>
       <div className="doctors-list-find">
-        <div className="ding">
-          <select
-            id="wiki-select"
-            onChange={handleSpecialtyChange}
-            value={selectedSpecialtyId}
-          >
-            <option disabled>Select Speciality</option>
-            {speciality &&
-              speciality.map((e) => (
-                <option value={e.slug} key={e.id}>
-                  {e.name}
-                </option>
-              ))}
-          </select>
-        </div>
+        {isPositionHospital ? (
+          <div className="ding">
+            <select
+              id="wiki-select"
+              onChange={handlehospitalSpeciality}
+              value={hospitalspecialityId}
+            >
+              <option disabled>Select Speciality</option>
+              {hospitalSpeciality &&
+                hospitalSpeciality.map((e) => (
+                  <option value={e.slug} key={e.id}>
+                    {e.name}
+                  </option>
+                ))}
+            </select>
+          </div>
+        ) : (
+          <div className="ding">
+            <select
+              id="wiki-select"
+              onChange={handleSpecialtyChange}
+              value={selectedSpecialtyId}
+            >
+              <option disabled>Select Speciality</option>
+              {speciality &&
+                speciality.map((e) => (
+                  <option value={e.slug} key={e.id}>
+                    {e.name}
+                  </option>
+                ))}
+            </select>
+          </div>
+        )}
 
         {isPositionInDoctorCountry && (
           <div className="ding">
@@ -382,20 +407,22 @@ const SpecialitySelect = ({ doctor, treatment, slug }) => {
           </div>
         )}
 
-        <div className="ding">
-          <select
-            id="wiki-select"
-            onChange={handleSelectHospital}
-            value={selectedHospital}
-          >
-            <option disabled>Hospitals</option>
-            {hospitalList.map((e) => (
-              <option value={e.slug} key={e.id}>
-                {e.name}
-              </option>
-            ))}
-          </select>
-        </div>
+        {isPositionHospital && (
+          <div className="ding">
+            <select
+              id="wiki-select"
+              onChange={handleSelectHospital}
+              value={selectedHospital}
+            >
+              <option disabled>Hospitals</option>
+              {hospitalList.map((e) => (
+                <option value={e.slug} key={e.id}>
+                  {e.name}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
 
         <div className="refresh-box" onClick={handleClearSelection}>
           <span>

@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import getAllSpeciality from "../lib/getAllSpeciality";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import getAllHospitals from "../lib/getAllHospitals";
+import getAllHospitalsFilteration from "../lib/gerAllHospitalFilteration";
 
 const AllDoctorsFilteration = () => {
   const router = useRouter();
@@ -41,8 +41,8 @@ const AllDoctorsFilteration = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const result = await getAllHospitals();
-        setHospitalList(result.data.hospital);
+        const result = await getAllHospitalsFilteration();
+        setHospitalList(result.data);
       } catch (err) {
         console.log(err.message);
       }
@@ -68,6 +68,7 @@ const AllDoctorsFilteration = () => {
     setSelectedCountry(select);
     router.push(`/doctor-list/${select}`);
   };
+
   useEffect(() => {
     setSelectedCountry("Select Hospital");
   }, []);

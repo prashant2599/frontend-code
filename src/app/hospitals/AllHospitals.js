@@ -22,6 +22,7 @@ function formatText(text) {
 const AllHospitals = async () => {
   const data = await getAllHospitals();
   const hospital = data.data.hospital;
+  const hospitalGallery = data.data.hospital_gallery;
   const pageNumber = data.data.page;
   const count = data.data.count;
 
@@ -42,9 +43,9 @@ const AllHospitals = async () => {
             <div className="hospital-midbox-left">
               {hospital.map((hospital) => {
                 // Filter gallery items that match the current hospital's id
-                // const galleryImages = images.filter(
-                //   (gallery) => gallery.hospital_id === String(hospital.id)
-                // );
+                const galleryImages = hospitalGallery.filter(
+                  (gallery) => String(gallery.hospital_id) === String(hospital.id)
+                );
 
                 return (
                   <div className="hospital-item-list" key={hospital.id}>
@@ -59,13 +60,15 @@ const AllHospitals = async () => {
                                 width="100%"
                               />
                             </Link>
-                            {/* <ul className="tabs tab-h">
-                              <li className="active" id="tab1">
+                            <ul className="tabs tab-h">
+                            {galleryImages.map((e)=>(
+                              <li className="active" id="tab1" key={e.id}>
                                 <img
-                                  src={`https://dev.medflick.com/hospital/${hospital.gallery_icon}`}
+                                  src={`https://dev.medflick.com/hospital/${e.icon}`}
                                 />{" "}
                               </li>
-                            </ul> */}
+                              ))}
+                            </ul>
                           </div>
                         </div>
                       </div>

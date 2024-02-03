@@ -8061,8 +8061,9 @@ ul.tabs li.active {
   }
 
   .category-slidertext h1 {
-    font-size: 35px;
+    font-size: 30px;
     padding-bottom: 8px;
+    line-height: 1.2;
   }
 
   .category-slidertext p {

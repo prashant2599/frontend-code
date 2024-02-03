@@ -2,7 +2,6 @@ import NewFooter from "@/app/Home/NewUIHomepage/inc/NewFooter";
 import NewHeader from "@/app/Home/NewUIHomepage/inc/NewHeader";
 import DoctorsSearch from "../../[...slug]/DoctorsSearch";
 import Link from "next/link";
-import Image from "next/image";
 import ShareProfile from "@/app/Home/doctorForm/ShareProfile";
 import DoctorForm from "@/app/Home/doctorForm/DoctorForm";
 import AllDoctorsFilteration from "../../AllDoctorsFilteration";
@@ -141,8 +140,7 @@ const page = async ({ params }) => {
               <AllDoctorPagination pageNumber={pageNumber} count={count} />
             </div>
             {/* form */}
-
-            {/* <DoctorForm info={info} /> */}
+            <DoctorForm />
           </div>
         </div>
       </section>
