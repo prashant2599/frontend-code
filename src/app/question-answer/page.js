@@ -73,7 +73,7 @@ const page = async () => {
                         <img src="/images/icon.jpg" alt="user-profile" />
                       </div>
                       <h3>
-                        {e.pname} <span>india</span>
+                        {e.pname} <span>India</span>
                       </h3>
                     </div>
                     <Link
@@ -87,11 +87,9 @@ const page = async () => {
                     >
                       <h2>Q. {e.short_description}</h2>
                     </Link>
-
                     <div
                       dangerouslySetInnerHTML={{ __html: e.long_description }}
                     />
-
                     <div className="comments-button">
                       {/* <a
                           className="ask-comments"

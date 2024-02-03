@@ -208,7 +208,7 @@ const CallMeBackForm = () => {
       };
 
       // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
-      const apiEndpoint = `https://api.medflick.com/api/contactus `;
+      const apiEndpoint = `https://dev.medflick.com/api/contactus `;
 
       setIsLoading2(true);
 

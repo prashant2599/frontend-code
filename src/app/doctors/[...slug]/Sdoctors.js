@@ -204,7 +204,7 @@ const Sdoctors = ({
             </div>
             {/* form */}
 
-            <DoctorForm info={info} />
+            <DoctorForm info={info.id} />
           </div>
         </div>
       </section>

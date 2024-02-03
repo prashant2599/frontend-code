@@ -8,7 +8,7 @@ const NewAboutSection = async () => {
           <div className="home-medflick-about">
             <div className="home-medflick-about-left">
               <img
-                src="/images/new-images/2023/01/about-us.jpg"
+                src="/images/medflick-healthcare.webp"
                 alt="medflick-about-us"
               />
             </div>

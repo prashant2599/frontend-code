@@ -165,12 +165,17 @@ const DoctorForm = ({ info }) => {
         email: userEmail ? userEmail : email,
         messages: query,
         patient_id: patientId,
-        speciality_id: info.id,
+        speciality_id: info,
         file: selectedFile,
       };
-
-      // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
-      const apiEndpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/api/doctor_query`;
+      let apiEndpoint;
+      if (info) {
+        apiEndpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/api/doctor_query`;
+      } else {
+        apiEndpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/api/contactus`;
+        // If info is not present, remove the speciality_id from the data object
+        delete data.speciality_id;
+      }
 
       setIsLoading(true);
 

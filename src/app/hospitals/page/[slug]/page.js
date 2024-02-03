@@ -6,6 +6,7 @@ import NewFooter from "@/app/Home/NewUIHomepage/inc/NewFooter";
 import AllHospitalsFilteration from "../../AllHospitalsFilteration";
 import AppointmentForm from "@/app/Home/hospitalForm/AppointmentForm";
 import HospitalShare from "@/app/Home/hospitalForm/HospitalShare";
+import HospitalForm from "@/app/Home/hospitalForm/HospitalForm";
 
 function formatText(text) {
   if (typeof text === "string") {
@@ -29,6 +30,7 @@ const page = async ({ params }) => {
   const hospital = apiData.data.hospital;
   const pageNumber = apiData.data.page;
   const count = apiData.data.count;
+  const hospitalGallery = apiData.data.hospital_gallery;
   return (
     <>
       <NewHeader />
@@ -47,9 +49,9 @@ const page = async ({ params }) => {
             <div className="hospital-midbox-left">
               {hospital.map((hospital) => {
                 // Filter gallery items that match the current hospital's id
-                // const galleryImages = images.filter(
-                //   (gallery) => gallery.hospital_id === String(hospital.id)
-                // );
+                const galleryImages = hospitalGallery.filter(
+                  (gallery) => gallery.hospital_id === String(hospital.id)
+                );
 
                 return (
                   <div className="hospital-item-list" key={hospital.id}>
@@ -64,6 +66,15 @@ const page = async ({ params }) => {
                                 width="100%"
                               />
                             </Link>
+                            <ul className="tabs tab-h">
+                              {galleryImages.map((e) => (
+                                <li className="active" id="tab1" key={e.id}>
+                                  <img
+                                    src={`https://dev.medflick.com/hospital/${e.icon}`}
+                                  />{" "}
+                                </li>
+                              ))}
+                            </ul>
                           </div>
                         </div>
                       </div>
@@ -158,7 +169,7 @@ const page = async ({ params }) => {
             </div>
 
             {/* Form */}
-            {/* <HospitalForm /> */}
+            <HospitalForm />
           </div>
         </div>
       </section>
