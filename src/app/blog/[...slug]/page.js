@@ -12,7 +12,7 @@ import BlogNewsletter from "./BlogNewsletter";
 import getAllSpeciality from "@/app/lib/getAllSpeciality";
 
 const page = async ({ params }) => {
-  try {
+ 
     const combinedSlug = params.slug.join("/");
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_BASE_URL}/api/blog/${combinedSlug}`,
@@ -24,6 +24,8 @@ const page = async ({ params }) => {
     const blogDetails = datas.data.blog_info;
     const relatedBlog = datas.data.related_blog;
     const relatedArticles = datas.data.related_article;
+    const doctor = datas.data.doctor
+    const hospital = datas.data.hospital
 
     const relatedBlog1 = relatedBlog?.slice(0, 3) ?? [];
 
@@ -305,8 +307,8 @@ const page = async ({ params }) => {
         </section>
 
         <CategoryWiseBlogDetais speciality={speciality} />
-        <CategoryDoctors specialityId={blogDetails.speciality_id} />
-        <CategoryHospitals specialityId={blogDetails.speciality_id} />
+        <CategoryDoctors doctor={doctor} />
+        <CategoryHospitals hospital={hospital} />
 
         <BlogNewsletter />
         <script
@@ -320,11 +322,7 @@ const page = async ({ params }) => {
         <NewFooter />
       </>
     );
-  } catch (error) {
-    if (error) {
-      notFound();
-    }
-  }
+ 
 };
 
 export default page;

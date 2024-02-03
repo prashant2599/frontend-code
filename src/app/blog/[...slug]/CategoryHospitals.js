@@ -1,17 +1,10 @@
 import Link from "next/link";
 
-const CategoryHospitals = async ({ specialityId }) => {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/hospital/speciality/id/${specialityId}`,
-    {
-      cache: "no-store",
-    }
-  );
-  const datas = await res.json();
-  const hospitals = datas.hospital_list.sp_hospital_list;
+const CategoryHospitals = ({ hospital }) => {
+
   return (
     <>
-      {hospitals && hospitals.length > 0 ? (
+      {hospital && hospital.length > 0 ? (
         <section id="related-blog">
           <div className="midbox-inner  wiki-mk">
             <div className="blog-content">
@@ -23,7 +16,7 @@ const CategoryHospitals = async ({ specialityId }) => {
             </div>
 
             <div className="symptoms-nav">
-              {hospitals.map((e) => (
+              {hospital.map((e) => (
                 <Link href={`/hospital/${e.slug}`} key={e.id}>
                   {e.name}
                 </Link>
