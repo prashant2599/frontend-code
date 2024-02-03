@@ -3,15 +3,18 @@ import { useState, useEffect } from "react";
 import { FaHeart } from "react-icons/fa";
 import axios from "axios";
 import LoginPopUp from "@/app/Home/LoginPopUp/LoginPopUp";
+import Success from "@/app/Home/successPopup/Success";
+import ErrorPopup from "@/app/Home/successPopup/ErrorPopup";
 
-const UserLikeComment = ({url}) => {
+const UserLikeComment = ({ url, questionId, totalLike }) => {
+  const [showLoginPopup, setShowLoginPopup] = useState(false);
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
+  const [showErrorPopup, setShowErrorPopup] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
   const [userId, setUserId] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
-  const [showLoginPopup, setShowLoginPopup] = useState(false);
 
   useEffect(() => {
-    // Check if the userId is in local storage to determine if the user is logged in
     if (localStorage.getItem("userId")) {
       setLoggedIn(true);
     }
@@ -26,36 +29,67 @@ const UserLikeComment = ({url}) => {
 
       // Send a POST request to your server
       axios
-        .post("/api/like", { postId: 1 })
+        .post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/heartpost`, {
+          heart: 1,
+          id: questionId,
+        })
         .then((response) => {
-          // Handle success, if needed
-          console.log("Like successful:", response.data);
+          setShowSuccessPopup(true);
         })
         .catch((error) => {
-          // Handle error, if needed
+          setShowErrorPopup(true);
           console.error("Error liking post:", error);
         });
     }
   };
 
+  const handleCloseSuccessPopup = () => {
+    setShowSuccessPopup(false);
+  };
+
+  const handleCloseErrorPopup = () => {
+    setShowErrorPopup(false);
+  };
+
   const handleCloseLoginPopup = () => {
     setShowLoginPopup(false);
   };
+  const message = "Liked";
+  const desc =
+    "Thank you! Your Like has been successfully submitted. Your input is highly valuable to us.";
   return (
     <>
       <button className="comments-iconbox" onClick={handleLikeClick}>
         <i>
           <FaHeart
-            style={{ fontSize: "20px", color: isLiked ? "#ff6800" : "" }}
+            style={{
+              fontSize: "20px",
+              color: totalLike !== null ? "#ff6800" : "",
+            }}
           />
         </i>
-        Helpful
+        {totalLike} Helpful
       </button>
       {showLoginPopup && (
         <LoginPopUp
           onClose={handleCloseLoginPopup}
           showLoginPopup={showLoginPopup}
           url={url}
+        />
+      )}
+      {showSuccessPopup && (
+        <Success
+          onClose={handleCloseSuccessPopup}
+          showSuccessPopup={showSuccessPopup}
+          message={message}
+          desc={desc}
+        />
+      )}
+
+      {showErrorPopup && (
+        <ErrorPopup
+          onClose={handleCloseErrorPopup}
+          showErrorPopup={showErrorPopup}
         />
       )}
     </>

@@ -1,6 +1,3 @@
-import React from "react";
-import Link from "next/link";
-import { IoChevronBack } from "react-icons/io5";
 import { FaComments } from "react-icons/fa";
 import ShareQuestion from "./ShareQuestion";
 import UserComment from "./UserComment";
@@ -54,7 +51,7 @@ const page = async ({ params }) => {
                 />
 
                 <div className="questions-inner-comments">
-               <UserLikeComment url={url} />
+                  <UserLikeComment url={url} questionId={info.id} totalLike={info.heart} />
                   <a className="comments-iconbox" href="#">
                     <i>
                       <FaComments style={{ fontSize: "20px" }} />
