@@ -51,7 +51,12 @@ const page = async ({ params }) => {
                 />
 
                 <div className="questions-inner-comments">
-                  <UserLikeComment url={url} questionId={info.id} totalLike={info.heart} />
+                  <UserLikeComment
+                    url={url}
+                    questionId={info.id}
+                    totalLike={info.heart}
+                    combinedSlug={combinedSlug}
+                  />
                   <a className="comments-iconbox" href="#">
                     <i>
                       <FaComments style={{ fontSize: "20px" }} />

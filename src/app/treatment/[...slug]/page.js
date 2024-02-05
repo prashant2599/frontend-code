@@ -594,7 +594,6 @@ const page = async ({ params }) => {
 
         <TreatmentBlog blog={blog} />
         <NewFooter />
-        
       </>
     );
   } catch (error) {

@@ -2798,7 +2798,7 @@ textarea {
 
 .treatment-midbox ul {
   margin-left: 20px;
-  text-align: justify;
+  text-align: left;
 }
 
 .treatment-midbox li {
@@ -17684,5 +17684,38 @@ textarea {
 
   .category-slidertext {
     color: #000;
+  }
+}
+
+.copy-popup {
+  display: none;
+  position: fixed;
+  top: 53%;
+  left: 56%;
+  transform: translate(-50%, -50%);
+  padding: 5px;
+  background-color: #fff;
+  border: 1px solid #ff6800;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 9999;
+  font-size: 12px;
+}
+
+.popup-animation-copy {
+  animation: fadeInOut 1.5s ease-out;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
   }
 }

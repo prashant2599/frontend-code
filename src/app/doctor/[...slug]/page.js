@@ -279,12 +279,12 @@ const page = async ({ params }) => {
             <DoctorTotalReview doctorId={docotorDetails.id} />
           </div>
         </section>
-        {speciality && speciality.length > 0 && (
+        {/* {speciality && speciality.length > 0 && (
           <RelatedDoctor
             category={speciality[0].slug}
             doctorId={docotorDetails.id}
           />
-        )}
+        )} */}
 
         <NewFooter />
       </>
