@@ -38,7 +38,7 @@ const Doctors = ({ doctor, category, categoryName, slugs }) => {
               <div className="item" key={e.id}>
                 <div className="item-home-expert">
                   <Link href={`/doctor/${e.slug}`}>
-                    <img src={`https://dev.medflick.com/doctor/${e.image}`} />
+                    <img src={`https://dev.medflick.com/doctor/${e.icon}`} />
                   </Link>
                 </div>
                 <div className="home-expert-text">
@@ -50,14 +50,14 @@ const Doctors = ({ doctor, category, categoryName, slugs }) => {
                         </h3>
                       </Link>
                     </div>
-                    {/* <div className="home-page-hospital-logo">
+                    <div className="home-page-hospital-logo">
                       <Link href={`/hospital/${e.hospital_slug}`}>
                         <img
                           src={`https://dev.medflick.com/hospital/${e.hospitalicon}`}
                           className="home-doctor-hospital-logo"
                         />
                       </Link>
-                    </div> */}
+                    </div>
                   </div>
                   <p>
                     {e.dept.length > 25 ? `${e.dept.slice(0, 25)}..` : e.dept}
