@@ -631,7 +631,7 @@ button.active .city-icon-h {
 
   .home-expert-text {
     padding: 10px 10px 5px;
-    height: 85px;
+    height: 73px;
   }
 
   .home-hospitals .home-expert-text {
@@ -1049,6 +1049,7 @@ button.active .city-icon-h {
 
   #home-travel-support p {
     width: 100%;
+    font-size: 14px;
   }
 
   #home-medflick-about {
@@ -2206,6 +2207,27 @@ button.active .city-icon-h {
 @media screen and (max-width: 320px) {
   .blog-item h3 {
     font-size: 16px;
+  }
+  #home-travel-support h2 {
+    font-size: 28px;
+  }
+  .home-medflick-about-right h2 {
+    font-size: 28px;
+  }
+  .home-expert-video-left h2{
+    font-size: 25px;
+  }
+  #hometop-process-treatment h2{
+    font-size: 27px;
+  }
+  #home-real-stories h2 {
+    font-size: 27px;
+  }
+  #home-latest-resources h2 {
+    font-size: 27px;
+  }
+  .home-latest-updatesleft h2 {
+    font-size: 27px;
   }
 }
 

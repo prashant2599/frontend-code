@@ -19,7 +19,7 @@ const AllDoctorsFilteration = () => {
         const result = await getAllSpeciality();
         setSpeciality(result.data.Speciality);
       } catch (err) {
-        console.log(err.message); // Set the error message in state
+        console.log(err.message);
       }
     }
 
@@ -27,7 +27,6 @@ const AllDoctorsFilteration = () => {
   }, []);
 
   useEffect(() => {
-    // Fetch the details data based on the activePackage ID
     axios
       .get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/doctorBYCountry`)
       .then((response) => {
@@ -76,6 +75,7 @@ const AllDoctorsFilteration = () => {
   const handleClearSelection = () => {
     router.push(`/doctors`);
   };
+
   return (
     <>
       <div className="doctors-list-find">
@@ -94,6 +94,7 @@ const AllDoctorsFilteration = () => {
               ))}
           </select>
         </div>
+
         <div className="ding">
           <select
             id="wiki-select"

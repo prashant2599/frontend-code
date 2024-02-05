@@ -14,7 +14,6 @@ const HospitalDoctorsFilter = ({ doctor }) => {
   const [filteredDoctors, setFilteredDoctors] = useState([]);
 
   useEffect(() => {
-    // Filter the doctor list based on the selected location, department, and experience range
     setFilteredDoctors(
       doctor.filter((doctor) => {
         const locationCondition =

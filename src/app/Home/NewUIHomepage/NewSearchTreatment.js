@@ -7,6 +7,7 @@ import getALLCountry from "@/app/lib/getAllCountry";
 import getAllSpeciality from "@/app/lib/getAllSpeciality";
 import HomeDoctorForm from "../doctorForm/HomeDoctorForm";
 import HomeHospitalForm from "../hospitalForm/HomeHospitalForm";
+import Select from "react-select";
 
 function formatText(text) {
   if (typeof text === "string") {
@@ -55,12 +56,9 @@ const NewSearchTreatment = () => {
         `https://dev.medflick.com/api/doctorsforhome/${selectedSpeciality}/${selectedCountry}`
       );
       const data = await res.json();
-
-      // Set the filtered data in the state
       setDoctorsData(data.doctors_list);
     };
 
-    // Fetch data when selectedCountry or selectedSpeciality changes
     fetchDoctorsData();
   }, [selectedCountry, selectedSpeciality, setDoctorsData]);
 
@@ -104,6 +102,10 @@ const NewSearchTreatment = () => {
   // ))}
 
   const formattedSpeciality = formatText(selectedSpeciality);
+
+  const cityOptions = Array.from(
+    new Set(countries.map((doctor) => doctor.country))
+  ).map((city) => ({ value: city, label: city }));
 
   return (
     <>
@@ -194,9 +196,7 @@ const NewSearchTreatment = () => {
                       </div>
                     </div>
                     <p>
-                      {e.designation.length > 25
-                        ? `${e.designation.slice(0, 25)}..`
-                        : e.designation}
+                      {e.dept.length > 25 ? `${e.dept.slice(0, 25)}..` : e.dept}
                     </p>
                   </div>
                   <HomeDoctorForm

@@ -8037,7 +8037,7 @@ ul.tabs li.active {
   }
 
   .blog-midbox p {
-    text-align: justify;
+    font-size: 14px;
   }
 
   .hospital-midbox-right {
@@ -8094,6 +8094,7 @@ ul.tabs li.active {
   #treatments-section p {
     width: 100%;
     font-size: 14px;
+    margin: 0px;
   }
 
   #treatments-section ul {
@@ -8224,7 +8225,7 @@ ul.tabs li.active {
   }
 
   .community-box h3 {
-    font-size: 25px;
+    font-size: 23px;
   }
 
   .community-pro p {
@@ -8494,6 +8495,7 @@ ul.tabs li.active {
     flex-direction: column;
   }
 
+
   .doctorprofile-left {
     width: 100%;
     margin-bottom: 14px;
@@ -8501,7 +8503,7 @@ ul.tabs li.active {
 
   .doctorprofile-img {
     width: 80px;
-    height: 80px;
+    height: 92px;
   }
 
   .doctorprofile-head h1 {
@@ -8904,8 +8906,8 @@ ul.tabs li.active {
   }
 
   #blog-mid {
-    padding: 20px 0 10px;
-    margin: 20px 0 10px;
+    padding: 10px 0 10px;
+    margin: 10px 0 10px;
   }
 
   .blog-findox {
@@ -14146,6 +14148,7 @@ pre code {
   margin: 10px 0px;
   padding-bottom: 20px;
   color: #7c7c7c;
+  text-align: left !important;
 }
 
 #blog-list-medflick h2::before {
@@ -17685,6 +17688,19 @@ textarea {
   .category-slidertext {
     color: #000;
   }
+  .blog-left-medflick li {
+    margin-bottom: 10px;
+  }
+  .blog-left-medflick li h3{
+    font-size: 21px;
+    padding: 8px 0px;
+  }
+  .footer-about p {
+    font-size: 14px;
+  }
+  .profile-data-section p {
+    font-size: 14px;
+  }
 }
 
 .copy-popup {
@@ -17719,3 +17735,59 @@ textarea {
     transform: translateY(-20px);
   }
 }
+
+@media screen and (max-width: 320px){
+.category-slidertext h1 {
+    font-size: 29px;
+}
+.treatment-headtext h1{
+  font-size: 30px;
+  line-height: 1.2;
+}
+.city-box{
+  padding: 5px 10px 0px 10px;
+}
+.city-box h3{
+  padding: 0px;
+  margin: 0px;
+}
+.consultation-box p{
+  font-size: 16px;
+}
+.community-box h3{
+  font-size: 18px;
+}
+.blog-left-medflick li h3{
+  font-size: 20px;
+}
+.blog-left-medflick li p{
+  font-size: 15px;
+  margin: 0px;
+}
+.blog-midbox h2{
+  font-size: 21px;
+}
+.category-slidertext {
+  font-size: 14px;
+}
+#category-mid h2 {
+  font-size: 32px;
+}
+#treatments-section .cost{
+  font-size: 18px;
+}
+#treatments-section .pack-name {
+  font-size: 18px;
+}
+#help-you h2 {
+  font-size: 26px;
+}
+.medflick-payleft-payleft h2 {
+  font-size: 25px;
+}
+.star-box1 {
+  gap: 0px;
+}
+}
+
+

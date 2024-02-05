@@ -54,6 +54,9 @@ const page = async ({ params }) => {
                   <div className="location">
                     {hospitalDetails.city.charAt(0).toUpperCase() +
                       hospitalDetails.city.slice(1)}
+                    ,{" "}
+                    {hospitalDetails.country.charAt(0).toUpperCase() +
+                      hospitalDetails.country.slice(1)}
                   </div>
                   <div className="ho-docimg">
                     {hospitalDetails.nabl && (
