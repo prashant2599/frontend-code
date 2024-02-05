@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { ThreeDots } from "react-loader-spinner";
 import Link from "next/link";
@@ -52,15 +52,10 @@ const Login = () => {
 
     let validationMessage = "";
 
-    // You can add more validation checks here, such as minimum password length, email format, etc.
-
     if (!isValid) {
-      // Display validation message if validation fails
       alert(validationMessage);
       return;
     }
-
-    // Create the data object to be sent in the API request
     const data = {
       password: password,
       email: email,
@@ -76,9 +71,6 @@ const Login = () => {
     axios
       .post(apiEndpoint, data)
       .then((response) => {
-        // Handle the API response here if needed
-        console.log(response);
-        // alert("Login susscefull");
         clearFormFields();
         setUserName(response.data.data.name);
         setUserId(response.data.data.id);
@@ -158,7 +150,7 @@ const Login = () => {
                 </ul>
               </div>
             </div>
-            
+
             <div className="login-box-right" style={{ marginTop: "5rem" }}>
               {/* <img
                 src="images/2023/02/logo.png"

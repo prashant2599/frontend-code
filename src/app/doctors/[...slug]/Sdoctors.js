@@ -189,9 +189,9 @@ const Sdoctors = ({
                 })
               ) : (
                 <div>
-                  <h1 style={{ textAlign: "center", margin: "20px" }}>
+                  <p style={{ textAlign: "center", fontSize:"18px" }}>
                     No Doctor Found
-                  </h1>
+                  </p>
                 </div>
               )}
               <DoctorPagination

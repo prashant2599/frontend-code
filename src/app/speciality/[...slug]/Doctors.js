@@ -60,9 +60,7 @@ const Doctors = ({ doctor, category, categoryName, slugs }) => {
                     </div> */}
                   </div>
                   <p>
-                    {e.designation.length > 25
-                      ? `${e.designation.slice(0, 25)}..`
-                      : e.designation}
+                    {e.dept.length > 25 ? `${e.dept.slice(0, 25)}..` : e.dept}
                   </p>
                 </div>
                 <HomeDoctorForm
