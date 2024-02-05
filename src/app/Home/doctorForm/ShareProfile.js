@@ -40,10 +40,19 @@ const ShareProfile = ({ slug }) => {
 
     // Deselect the text
     inputRef.current.setSelectionRange(0, 0);
-    setCopyMessage("Link copied!");
-  };
 
- 
+    // Show the popup
+    setCopyMessage("Link copied!");
+    const popup = document.getElementById("copyPopup");
+    popup.style.display = "block";
+    popup.classList.add("popup-animation");
+
+    // Hide the popup and remove the animation class after the animation is complete
+    setTimeout(() => {
+      popup.style.display = "none";
+      popup.classList.remove("popup-animation");
+    }, 1000); // Adjust the timeout based on your animation duration
+  };
 
   return (
     <>
@@ -93,7 +102,6 @@ const ShareProfile = ({ slug }) => {
                     <WhatsappIcon size={50} round />
                   </WhatsappShareButton>
                 </li>
-             
               </ul>
 
               <div className="share-link">
@@ -113,9 +121,11 @@ const ShareProfile = ({ slug }) => {
                 >
                   Copy Link
                 </button>
-                {/* {copyMessage && <p>{copyMessage}</p>} */}
               </div>
             </div>
+          </div>
+          <div id="copyPopup" className="copy-popup">
+            Link copied!
           </div>
         </div>
       )}
