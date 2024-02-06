@@ -17701,6 +17701,12 @@ textarea {
   .profile-data-section p {
     font-size: 14px;
   }
+  .hospitalprofile-head h1 {
+    font-size: 20px;
+  }
+  .hospitalprofile-head .location{
+    text-align: center;
+  }
 }
 
 .copy-popup {
@@ -17791,7 +17797,5 @@ textarea {
 .treatment-midbox h2 {
   font-size: 23px;
 }
-
 }
-
 
