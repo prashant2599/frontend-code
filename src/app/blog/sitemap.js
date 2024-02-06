@@ -1,4 +1,5 @@
 import getALLBlogList from "../lib/getAllBlogList";
+import getALLSearchApi from "../lib/getAllSearchApi";
 
 export default async function sitemap() {
   const baseUrl = "https://medflick.com";
@@ -7,10 +8,10 @@ export default async function sitemap() {
   // const res = await fetch(`https://dev.medflick.com/api/blog_list`, {
   //   cache: "no-store",
   // });
-  const blogdata = await getALLBlogList();
+  const blogdata = await getALLSearchApi();
 
   // const blogdata = await getALLBlogs();
-  const blogDet = blogdata.bloglist.data;
+  const blogDet = blogdata.searchData.blog
 
   const blogDetailsUrl =
     blogDet?.map((e) => {
