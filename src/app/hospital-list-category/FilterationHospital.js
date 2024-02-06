@@ -4,6 +4,7 @@ import getAllSpeciality from "../lib/getAllSpeciality";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useSearchParams } from "next/navigation";
+
 const FilterationHospital = ({country}) => {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -12,18 +13,6 @@ const FilterationHospital = ({country}) => {
   const [selectedSpecialtyId, setSelectedSpecialtyId] = useState("none");
   const [selectedCountry, setSelectedCountry] = useState(null);
 
-//   useEffect(() => {
-//     async function fetchData() {
-//       try {
-//         const result = await getAllSpeciality();
-//         setSpeciality(result.data.Speciality);
-//       } catch (err) {
-//         console.log(err.message); // Set the error message in state
-//       }
-//     }
-
-//     fetchData();
-//   }, []);
 
 
 
