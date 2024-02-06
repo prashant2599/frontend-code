@@ -84,6 +84,7 @@ const FreeConsultation = () => {
     query: "",
     captcha: "",
   });
+
   const [captchaValue, setCaptchaValue] = useState(null);
   const handleCaptchaChange = (value) => {
     setCaptchaValue(value);
