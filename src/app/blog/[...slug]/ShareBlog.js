@@ -41,7 +41,18 @@ const ShareBlog = ({ slug }) => {
 
     // Deselect the text
     inputRef.current.setSelectionRange(0, 0);
+
+    // Show the popup
     setCopyMessage("Link copied!");
+    const popup = document.getElementById("copyPopup");
+    popup.style.display = "block";
+    popup.classList.add("popup-animation");
+
+    // Hide the popup and remove the animation class after the animation is complete
+    setTimeout(() => {
+      popup.style.display = "none";
+      popup.classList.remove("popup-animation");
+    }, 1000); // Adjust the timeout based on your animation duration
   };
   return (
     <>
@@ -115,6 +126,9 @@ const ShareBlog = ({ slug }) => {
                 {/* {copyMessage && <p>{copyMessage}</p>} */}
               </div>
             </div>
+          </div>
+          <div id="copyPopup" className="copy-popup">
+            Link copied!
           </div>
         </div>
       )}
