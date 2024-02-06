@@ -1,4 +1,3 @@
-import getALLBlogList from "../lib/getAllBlogList";
 import getALLSearchApi from "../lib/getAllSearchApi";
 
 export default async function sitemap() {
@@ -11,7 +10,7 @@ export default async function sitemap() {
   const blogdata = await getALLSearchApi();
 
   // const blogdata = await getALLBlogs();
-  const blogDet = blogdata.searchData.blog
+  const blogDet = blogdata.searchData.blog;
 
   const blogDetailsUrl =
     blogDet?.map((e) => {

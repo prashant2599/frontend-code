@@ -11,6 +11,17 @@ import NewHeader from "@/app/Home/NewUIHomepage/inc/NewHeader";
 import NewFooter from "@/app/Home/NewUIHomepage/inc/NewFooter";
 import HospitalHeader from "./HospitalHeader";
 
+function formatText(text) {
+  if (typeof text === "string") {
+    return text
+      .split("-")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  } else {
+    return "Invalid input";
+  }
+}
+
 const page = async ({ params }) => {
   try {
     const combinedSlug = params.slug.join("/");
@@ -52,8 +63,7 @@ const page = async ({ params }) => {
                 <div className="hospitalprofile-head">
                   <h1>{hospitalDetails.name}</h1>
                   <div className="location">
-                    {hospitalDetails.city.charAt(0).toUpperCase() +
-                      hospitalDetails.city.slice(1)}
+                    {formatText(hospitalDetails.city)}
                     ,{" "}
                     {hospitalDetails.country.charAt(0).toUpperCase() +
                       hospitalDetails.country.slice(1)}

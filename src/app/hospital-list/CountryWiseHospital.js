@@ -10,6 +10,17 @@ import HospitalShare from "../Home/hospitalForm/HospitalShare";
 import AppointmentForm from "../Home/hospitalForm/AppointmentForm";
 import FilterationHospital from "../hospital-list-category/FilterationHospital";
 
+function formatText(text) {
+  if (typeof text === "string") {
+    return text
+      .split("-")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  } else {
+    return "Invalid input";
+  }
+}
+
 const CountryWiseHospital = () => {
   const searchParams = useSearchParams();
   const [country, setCountry] = useState("");
@@ -27,7 +38,6 @@ const CountryWiseHospital = () => {
       setCountry(country);
     }
     const apiUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/api/hospital-list-category?country=${country}`;
-   
 
     axios
       .get(apiUrl)
@@ -156,7 +166,7 @@ const CountryWiseHospital = () => {
                       />
 
                       <div className="hospital-location-box">
-                        {/* {formatText(hospital.city)} */}
+                        {formatText(hospital.city)}
                         <img src="/images/2023/05/loc.png" alt="icon" />
                       </div>
                     </div>
