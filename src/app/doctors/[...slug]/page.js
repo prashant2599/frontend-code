@@ -35,6 +35,7 @@ const page = async ({ params, res }) => {
     const info = apiData.doctors_list.specility_name;
     const pageNumber = apiData.doctors_list.page;
     const totalDoctor = apiData.doctors_list.count;
+    // const city = apiData.doctors_list?.city ? apiData.doctors_list.city : null;
 
     const country = await getALLCountry();
     const doctorCountry = country.country_name;
@@ -52,6 +53,7 @@ const page = async ({ params, res }) => {
           pageNumber={pageNumber}
           totalDoctor={totalDoctor}
           doctorCountry={doctorCountry}
+     
         />
         <NewFooter />
       </>

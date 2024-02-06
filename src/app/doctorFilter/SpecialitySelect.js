@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import getAllSpeciality from "../lib/getAllSpeciality";
 import getAllHospitalsFilteration from "../lib/gerAllHospitalFilteration";
 
-const SpecialitySelect = ({ doctor, treatment, slug }) => {
+const SpecialitySelect = ({ doctor, treatment, slug, specialityIdCity }) => {
   // split the slug to show speciality
   const slugs = slug;
   const parts = slugs.split("/");
@@ -67,6 +67,9 @@ const SpecialitySelect = ({ doctor, treatment, slug }) => {
   const isPositionHospital = hospitalList.some(
     (e) => e.slug === specialitySlug
   );
+  const isPositionInDoctorCountry = doctorCountry.some(
+    (countryObj) => countryObj.country === countrySlug
+  );
 
   const [hospitalSpeciality, setHospitalSpeciality] = useState([]);
 
@@ -86,6 +89,25 @@ const SpecialitySelect = ({ doctor, treatment, slug }) => {
       null;
     }
   }, [specialitySlug, isPositionHospital]);
+
+  const [cityFilter, setCityFilter] = useState([]);
+
+  useEffect(() => {
+    if (isPositionInDoctorCountry === true) {
+      const apiUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/api/onlycity?specility_id=${specialityIdCity}&country=${countrySlug}`;
+
+      axios
+        .get(apiUrl)
+        .then((response) => {
+          setCityFilter(response.data.data);
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        });
+    } else {
+      null;
+    }
+  }, [countrySlug, specialityIdCity, isPositionInDoctorCountry]);
 
   const handleSpecialtyChange = (e) => {
     const selectedId = e.target.value;
@@ -173,9 +195,7 @@ const SpecialitySelect = ({ doctor, treatment, slug }) => {
   // console.log("position3", countrySlugTreatment);
 
   // Determine position country
-  const isPositionInDoctorCountry = doctorCountry.some(
-    (countryObj) => countryObj.country === countrySlug
-  );
+
 
   const positionTreatmentCountry = doctorCountry.some(
     (e) => e.country === citySlug
@@ -183,11 +203,17 @@ const SpecialitySelect = ({ doctor, treatment, slug }) => {
 
   // Determine position treatment
 
+ 
   const isPositionCity = doctor.some((e) => e.location === countrySlug);
   const isPositionTreatmentCity = doctor.some((e) => e.location === citySlug);
 
   // Determine position treatment
   const isPositionInTreatment = treatment.some((e) => e.slug === countrySlug);
+   
+console.log("isPositionCity",isPositionCity)
+console.log("isPositionTreatmentCity",isPositionTreatmentCity)
+
+console.log("countrySlug",countrySlug)
 
   // console.log("countryBolean", isPositionInDoctorCountry);
   // console.log("cityBolean", isPositionCity);
@@ -226,7 +252,7 @@ const SpecialitySelect = ({ doctor, treatment, slug }) => {
     citySlug,
     isPositionInTreatment,
   ]);
-
+console.log("citySlug", citySlug)
   useEffect(() => {
     if (isPositionTreatmentCity === true && isPositionInTreatment === true) {
       setSelectedLocation(citySlug);
@@ -244,6 +270,7 @@ const SpecialitySelect = ({ doctor, treatment, slug }) => {
     positionTreatmentCountry,
     isPositionCity,
   ]);
+
 
   useEffect(() => {
     if (isPositionCity === true) {
@@ -331,9 +358,10 @@ const SpecialitySelect = ({ doctor, treatment, slug }) => {
               value={selectedLocation}
             >
               <option>Location</option>
-              {uniqueLocations.map((location) => (
-                <option value={location} key={location}>
-                  {location.charAt(0).toUpperCase() + location.slice(1)}
+              {cityFilter.map((location, index) => (
+                <option value={location.location} key={index}>
+                  {location.location.charAt(0).toUpperCase() +
+                    location.location.slice(1)}
                 </option>
               ))}
             </select>
@@ -364,7 +392,7 @@ const SpecialitySelect = ({ doctor, treatment, slug }) => {
               value={selectedLocation}
             >
               <option disabled>Location</option>
-              {uniqueLocations.map((location) => (
+              {cityFilter.map((location) => (
                 <option value={location} key={location}>
                   {location.charAt(0).toUpperCase() + location.slice(1)}
                 </option>

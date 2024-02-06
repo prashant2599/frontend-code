@@ -361,7 +361,7 @@
 
 #hometop-process-treatment a {
   background: #ff6800;
-  font-family: Helvetica Neue Medium;
+  /* font-family: Helvetica Neue Medium; */
   color: #fff;
   border: 2px solid #ff6800;
   margin: 10px auto;

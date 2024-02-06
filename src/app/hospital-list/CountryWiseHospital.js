@@ -1,31 +1,44 @@
-import getAllHospitals from "../lib/getAllHospitals";
-import HospitalShare from "../Home/hospitalForm/HospitalShare";
-import HospitalForm from "../Home/hospitalForm/HospitalForm";
+"use client";
+import HospitalSearch from "../hospitals/[...slug]/HospitalSearch";
 import Link from "next/link";
-import HospitalSearch from "./[...slug]/HospitalSearch";
-import AllHospitalPagination from "./AllHospitalPagination";
-import AllHospitalsFilteration from "./AllHospitalsFilteration";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { notFound } from "next/navigation";
+import HospitalForm from "../Home/hospitalForm/HospitalForm";
+import HospitalShare from "../Home/hospitalForm/HospitalShare";
 import AppointmentForm from "../Home/hospitalForm/AppointmentForm";
+import FilterationHospital from "../hospital-list-category/FilterationHospital";
 
-function formatText(text) {
-  if (typeof text === "string") {
-    return text
-      .split("-")
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(" ");
-  } else {
-    // Handle the case where 'text' is not a string or is undefined
-    return "Invalid input"; // Or any other appropriate error handling
-  }
-}
+const CountryWiseHospital = () => {
+  const searchParams = useSearchParams();
+  const [country, setCountry] = useState("");
+  const [hospitals, setHospitals] = useState([]);
+  const [hospitalGallery, setHospitalGallery] = useState([]);
 
-const AllHospitals = async () => {
-  const data = await getAllHospitals();
-  const hospital = data.data.hospital;
-  const hospitalGallery = data.data.hospital_gallery;
-  const pageNumber = data.data.page;
-  const count = data.data.count;
+  useEffect(() => {
+    const country = searchParams.get("country");
+    if (!country) {
+      notFound();
+      return;
+    }
 
+    if (country) {
+      setCountry(country);
+    }
+    const apiUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/api/hospital-list-category?country=${country}`;
+   
+
+    axios
+      .get(apiUrl)
+      .then((response) => {
+        setHospitals(response.data.data);
+        setHospitalGallery(response.data.hospital_gallery);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, [searchParams]);
   return (
     <>
       <section id="find-doctors">
@@ -36,13 +49,13 @@ const AllHospitals = async () => {
       <section id="find-hospital-list">
         <div className="midbox-inner  wiki-mk">
           <h1>
-            Medflick Assured Hospitals <span>({count} Results)</span>
+            Medflick Assured Hospitals <span>({hospitals.length} Results)</span>
           </h1>
-          <AllHospitalsFilteration />
+          {/* <AllHospitalsFilteration /> */}
+          <FilterationHospital country={country} />
           <div className="hospital-midbox">
             <div className="hospital-midbox-left">
-              {hospital.map((hospital) => {
-                // Filter gallery items that match the current hospital's id
+              {hospitals.map((hospital) => {
                 const galleryImages = hospitalGallery.filter(
                   (gallery) =>
                     String(gallery.hospital_id) === String(hospital.id)
@@ -78,16 +91,6 @@ const AllHospitals = async () => {
                       <Link href={`/hospital/${hospital.slug}`}>
                         <h3>{hospital.name}</h3>
                       </Link>
-                      {/* <div className="department-sub">
-                          Oncologist, Medical Oncologist
-                        </div> */}
-                      {/* <div className="rating-star">
-                        5{" "}
-                        <i>
-                          <AiTwotoneStar />
-                        </i>{" "}
-                        (523)
-                      </div> */}
 
                       <div className="ho-docimg">
                         {hospital.nabl && (
@@ -146,24 +149,22 @@ const AllHospitals = async () => {
                         View Profile{" "}
                         <img src="/images/2023/05/profile.png" alt="icon" />
                       </Link>
-                      {/* share  */}
+
                       <HospitalShare
                         slug={hospital.slug}
                         country={hospital.country}
                       />
 
                       <div className="hospital-location-box">
-                        {formatText(hospital.city)}
+                        {/* {formatText(hospital.city)} */}
                         <img src="/images/2023/05/loc.png" alt="icon" />
                       </div>
                     </div>
                   </div>
                 );
               })}
-              <AllHospitalPagination pageNumber={pageNumber} count={count} />
             </div>
 
-            {/* Form */}
             <HospitalForm />
           </div>
         </div>
@@ -172,4 +173,4 @@ const AllHospitals = async () => {
   );
 };
 
-export default AllHospitals;
+export default CountryWiseHospital;

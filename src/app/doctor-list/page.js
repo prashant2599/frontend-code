@@ -1,4 +1,3 @@
-
 import NewFooter from "../Home/NewUIHomepage/inc/NewFooter";
 import NewHeader from "../Home/NewUIHomepage/inc/NewHeader";
 import CategoryWiseDoctor from "./CategoryWiseDoctor";
@@ -6,7 +5,7 @@ import CategoryWiseDoctor from "./CategoryWiseDoctor";
 const page = () => {
   return (
     <>
-    <NewHeader />
+      <NewHeader />
       <CategoryWiseDoctor />
       <NewFooter />
     </>
