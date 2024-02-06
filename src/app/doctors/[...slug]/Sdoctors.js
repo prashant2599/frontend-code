@@ -96,6 +96,7 @@ const Sdoctors = ({
             doctor={doctor}
             treatment={treatment}
             slug={combinedSlug}
+            specialityIdCity={info.id}
           />
 
           <div className="doctor-midbox">
@@ -189,7 +190,7 @@ const Sdoctors = ({
                 })
               ) : (
                 <div>
-                  <p style={{ textAlign: "center", fontSize:"18px" }}>
+                  <p style={{ textAlign: "center", fontSize: "18px" }}>
                     No Doctor Found
                   </p>
                 </div>

@@ -10,7 +10,6 @@ const DoctorHeader = ({ docotorDetails, treament }) => {
   const handleScroll = () => {
     const profileLink = document.getElementById("profile-link");
 
-    // Check if profileLink exists before manipulating its classList
     if (profileLink) {
       if (window.scrollY >= 100) {
         profileLink.classList.add("sticky-p");
@@ -21,10 +20,7 @@ const DoctorHeader = ({ docotorDetails, treament }) => {
   };
 
   useEffect(() => {
-    // Add scroll event listener when the component mounts
     window.addEventListener("scroll", handleScroll);
-
-    // Cleanup the event listener when the component is unmounted
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };

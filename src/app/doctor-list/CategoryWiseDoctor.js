@@ -9,6 +9,7 @@ import DoctorsSearch from "../doctors/[...slug]/DoctorsSearch";
 import DoctorForm from "../Home/doctorForm/DoctorForm";
 import SpecialitySelect from "../doctorFilter/SpecialitySelect";
 import FilterHospitalCategory from "./FilterHospitalCategory";
+import { notFound } from "next/navigation";
 
 function formatText(text) {
   if (typeof text === "string") {
@@ -32,6 +33,11 @@ const CategoryWiseDoctor = () => {
 
   useEffect(() => {
     const hospital = searchParams.get("hospital");
+    if (!hospital) {
+      notFound();
+      return;
+    }
+
     if (hospital) {
       setHospital(hospital);
     }
@@ -54,7 +60,6 @@ const CategoryWiseDoctor = () => {
       });
   }, [searchParams]);
 
-  //   const FormatedHospital = formatText=({hospital})
   const FormatedHospital = formatText(hospital);
 
   return (

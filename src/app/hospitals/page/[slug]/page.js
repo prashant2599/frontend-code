@@ -139,7 +139,7 @@ const page = async ({ params }) => {
                     </div>
                     <div className="doctor-item-button">
                       <AppointmentForm
-                        name={hospital.name}
+                        HospitalName={hospital.name}
                         hospitalId={hospital.id}
                         specialityId={hospital.speciality_id}
                       />

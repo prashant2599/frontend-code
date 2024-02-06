@@ -3,26 +3,44 @@ import { useState, useEffect } from "react";
 import getAllSpeciality from "../lib/getAllSpeciality";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-
-const AllHospitalsFilteration = () => {
+import { useSearchParams } from "next/navigation";
+const FilterationHospital = ({country}) => {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [speciality, setSpeciality] = useState([]);
   const [doctorCountry, setDoctorCountry] = useState([]);
   const [selectedSpecialtyId, setSelectedSpecialtyId] = useState("none");
   const [selectedCountry, setSelectedCountry] = useState(null);
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const result = await getAllSpeciality();
-        setSpeciality(result.data.Speciality);
-      } catch (err) {
-        console.log(err.message); // Set the error message in state
-      }
-    }
+//   useEffect(() => {
+//     async function fetchData() {
+//       try {
+//         const result = await getAllSpeciality();
+//         setSpeciality(result.data.Speciality);
+//       } catch (err) {
+//         console.log(err.message); // Set the error message in state
+//       }
+//     }
 
-    fetchData();
-  }, []);
+//     fetchData();
+//   }, []);
+
+
+
+useEffect(() => {
+    // Fetch the details data based on the activePackage ID
+    const country = searchParams.get("country");
+    const apiUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/api/hospital-list-category-country?country=${country}`
+    console.log(apiUrl)
+    axios
+      .get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/hospital-list-category-country?country=${country}`)
+      .then((response) => {
+        setSpeciality(response.data.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching details data:", error);
+      });
+  }, [searchParams]);
 
   useEffect(() => {
     // Fetch the details data based on the activePackage ID
@@ -39,9 +57,7 @@ const AllHospitalsFilteration = () => {
   const handleSpecialtyChange = (e) => {
     const selectedId = e.target.value;
     setSelectedSpecialtyId(selectedId);
-
-    // Redirect to another page with the selected ID
-    router.push(`/hospitals/${selectedId}`);
+    router.push(`/hospitals/${selectedId}/${country}`);
   };
 
   useEffect(() => {
@@ -51,11 +67,11 @@ const AllHospitalsFilteration = () => {
   const handleSelectCountry = (e) => {
     const select = e.target.value;
     setSelectedCountry(select);
-    router.push(`/hospital-list-category?country=${select}`)
+    router.push(`/hospital-list-category?country=${select}`);
   };
   useEffect(() => {
-    setSelectedCountry("Select Country");
-  }, []);
+    setSelectedCountry(country);
+  }, [country]);
 
   const handleClearSelection = () => {
     router.push(`/hospitals`);
@@ -63,7 +79,7 @@ const AllHospitalsFilteration = () => {
   return (
     <>
       <div className="doctors-list-find">
-        <div className="ding" >
+        <div className="ding">
           <select
             id="wiki-select"
             onChange={handleSpecialtyChange}
@@ -102,4 +118,4 @@ const AllHospitalsFilteration = () => {
   );
 };
 
-export default AllHospitalsFilteration;
+export default FilterationHospital;
