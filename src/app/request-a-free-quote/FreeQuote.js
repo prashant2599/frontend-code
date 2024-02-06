@@ -495,7 +495,7 @@ const FreeQuote = () => {
                     </div>
                   </div>
                 </div>
-                <ReCaptchaComponent onCaptchaChange={handleCaptchaChange} />
+                <ReCaptchaComponent onCaptchaChange={handleCaptchaChange}  />
                 {renderError(formErrors.captcha)}
                 <p>
                   I agree to the <Link href="/terms-and-conditions">Terms</Link>{" "}
