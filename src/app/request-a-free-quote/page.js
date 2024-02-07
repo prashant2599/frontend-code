@@ -13,3 +13,11 @@ const page = () => {
 };
 
 export default page;
+
+export async function generateMetadata() {
+  return {
+    alternates: {
+      canonical: `https://medflick.com/request-a-free-quote`,
+    },
+  };
+}

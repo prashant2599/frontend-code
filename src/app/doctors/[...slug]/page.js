@@ -59,18 +59,14 @@ const page = async ({ params, res }) => {
     );
   } catch (error) {
     console.error(error);
-
-    // Handle 404 error explicitly
     if (
       error.message.includes("Failed to fetch data: 404") ||
       error.message.includes("API error: 404")
     ) {
       notFound();
     } else {
-      // Handle other errors
       res.statusCode = 500;
-      // Set a 500 status code for other errors
-      return; // Return an empty props object
+      return;
     }
   }
 };

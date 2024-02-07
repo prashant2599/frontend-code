@@ -53,7 +53,7 @@ export async function generateMetadata() {
         "The Privacy Policy of Medflick. Here we explain, how we connect, use, disclose and safeguard your personal information when you use our website and services.",
     },
     alternates: {
-      canonical: `https://medflick.com/terms`,
+      canonical: `https://medflick.com/privacy-policy`,
     },
   };
 }

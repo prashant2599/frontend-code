@@ -7,6 +7,7 @@ import AllHospitalsFilteration from "../../AllHospitalsFilteration";
 import AppointmentForm from "@/app/Home/hospitalForm/AppointmentForm";
 import HospitalShare from "@/app/Home/hospitalForm/HospitalShare";
 import HospitalForm from "@/app/Home/hospitalForm/HospitalForm";
+import React from "react";
 
 function formatText(text) {
   if (typeof text === "string") {
@@ -68,11 +69,21 @@ const page = async ({ params }) => {
                             </Link>
                             <ul className="tabs tab-h">
                               {galleryImages.map((e) => (
-                                <li className="active" id="tab1" key={e.id}>
-                                  <img
-                                    src={`https://dev.medflick.com/hospital/${e.icon}`}
-                                  />{" "}
-                                </li>
+                                <React.Fragment
+                                  className="active"
+                                  id="tab1"
+                                  key={e.id}
+                                >
+                                  {e.icon.split(",").map((imageName, index) => (
+                                    <li className="active" key={index}>
+                                      <img
+                                        key={index}
+                                        src={`https://dev.medflick.com/hospital/${imageName.trim()}`} // Trim to remove any leading/trailing spaces
+                                        alt={`Image ${index + 1}`}
+                                      />
+                                    </li>
+                                  ))}
+                                </React.Fragment>
                               ))}
                             </ul>
                           </div>

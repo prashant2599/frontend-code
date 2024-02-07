@@ -29,7 +29,7 @@ const Doctors = ({ doctor, category, categoryName, slugs }) => {
             <div className="new-beginnings-right">
               <Link className="view-all" href={`/doctors/${category}`}>
                 View All{" "}
-                <img src="/images/new-images/2023/01/treatments-arrow.png" />
+                <img src="/images/new-images/2023/01/treatments-arrow.png" alt="arrow" />
               </Link>
             </div>
           </div>
@@ -55,6 +55,7 @@ const Doctors = ({ doctor, category, categoryName, slugs }) => {
                         <img
                           src={`https://dev.medflick.com/hospital/${e.hospitalicon}`}
                           className="home-doctor-hospital-logo"
+                          alt={e.hospital_slug}
                         />
                       </Link>
                     </div>

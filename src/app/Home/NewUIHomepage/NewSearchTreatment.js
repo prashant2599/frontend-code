@@ -95,28 +95,7 @@ const NewSearchTreatment = () => {
     setSelectedSpeciality(e.target.value);
   };
 
-  // useEffect(() => {
-  //   // Update countries based on selected speciality
-  //   const selectedSpecialityData = specialities.find(spec => spec.slug === selectedSpeciality);
-  //   const countryList = selectedSpecialityData ? selectedSpecialityData.country.split(',') : [];
-  //   setCountries(countryList.map(country => country.trim()));
-  // }, [specialities, selectedSpeciality]);
-
-  // const handleSpecialityChange = (event) => {
-  //   setSelectedSpeciality(event.target.value);
-  // };
-
-  // {countries.map((country, index) => (
-  //   <option key={index} value={country}>
-  //     {country}
-  //   </option>
-  // ))}
-
   const formattedSpeciality = formatText(selectedSpeciality);
-
-  const cityOptions = Array.from(
-    new Set(countries.map((doctor) => doctor.country))
-  ).map((city) => ({ value: city, label: city }));
 
   return (
     <>
@@ -171,7 +150,7 @@ const NewSearchTreatment = () => {
                 className="view-all"
                 href={`/doctors/${selectedSpeciality}/${selectedCountry}`}
               >
-                View All <img src="/images/treatments-arrow.png" />
+                View All <img src="/images/treatments-arrow.png" alt="arrow" />
               </Link>
             </div>
           </div>
@@ -202,6 +181,7 @@ const NewSearchTreatment = () => {
                           <img
                             src={`https://dev.medflick.com/hospital/${e.hospitalicon}`}
                             className="home-doctor-hospital-logo"
+                            alt={e.hospital_slug}
                           />
                         </Link>
                       </div>
