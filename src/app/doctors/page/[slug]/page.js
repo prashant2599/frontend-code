@@ -28,7 +28,7 @@ const page = async ({ params }) => {
   const doctors = apiData.data.doctors;
   const pageNumber = apiData.data.page;
   const count = apiData.data.count;
-  const pageCount = data.data.countpagination
+  const pageCount = apiData.data.countpagination;
 
   return (
     <>
@@ -138,7 +138,11 @@ const page = async ({ params }) => {
                 </div>
               )}
               {/* <DoctorPagePagination pageNumber={pageNumber} count={count} /> */}
-              <AllDoctorPagination pageNumber={pageNumber} count={count} pageCount={pageCount}  />
+              <AllDoctorPagination
+                pageNumber={pageNumber}
+                count={count}
+                pageCount={pageCount}
+              />
             </div>
             {/* form */}
             <DoctorForm />
