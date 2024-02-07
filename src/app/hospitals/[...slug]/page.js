@@ -147,17 +147,6 @@ const page = async ({ params }) => {
                                       ))}
                                   </React.Fragment>
                                 ))}
-
-                                {/* {galleryImages.map((e) => (
-                                <li className="active" id="tab1" key={e.id}>
-                                  <img src={`${process.env.BASE_URL}/hospital/${hospital.image}`} />{" "}
-                                </li>
-                              ))}
-                               {galleryImages.map((e) => (
-                                <li className="active" id="tab1" key={e.id}>
-                                  <img src={`${process.env.BASE_URL}/hospital/${hospital.image}`} />{" "}
-                                </li>
-                              ))} */}
                               </ul>
 
                               {/* <div className="activeImage" data-hash="two">

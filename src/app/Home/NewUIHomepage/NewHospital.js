@@ -1,12 +1,11 @@
 import "./newsection.css";
-import getAllHospitals from "@/app/lib/getAllHospitals";
 import Link from "next/link";
 import Marquee from "react-fast-marquee";
 import getAllHospitalsFilteration from "@/app/lib/gerAllHospitalFilteration";
 
 const NewHospital = async () => {
   const data = await getAllHospitalsFilteration();
-  const hospital = data.data
+  const hospital = data.data;
   const featuredHospitals = hospital.filter(
     (hospital) => hospital.featured === "1"
   );
