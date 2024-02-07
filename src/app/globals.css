@@ -17707,6 +17707,9 @@ textarea {
   .hospitalprofile-head .location{
     text-align: center;
   }
+  .searchbox-main {
+    font-size: 14px;
+  }
 }
 
 .copy-popup {

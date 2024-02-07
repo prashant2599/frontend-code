@@ -53,7 +53,6 @@ const page = async ({ params, res }) => {
           pageNumber={pageNumber}
           totalDoctor={totalDoctor}
           doctorCountry={doctorCountry}
-     
         />
         <NewFooter />
       </>
@@ -69,8 +68,9 @@ const page = async ({ params, res }) => {
       notFound();
     } else {
       // Handle other errors
-      res.statusCode = 500; // Set a 500 status code for other errors
-      return { props: {} }; // Return an empty props object
+      res.statusCode = 500;
+      // Set a 500 status code for other errors
+      return; // Return an empty props object
     }
   }
 };
@@ -104,10 +104,24 @@ export async function generateMetadata({ params }) {
     { cache: "no-store" }
   );
   const datas = await res.json();
+
+  const partss = combinedSlug.split("/");
+
+  const isPagePresent = partss.some((part) => part.includes("page"));
+
+  if (isPagePresent) {
+    console.log("Page is present in the combinedSlug");
+  } else {
+    console.log("Page is not present in the combinedSlug");
+  }
+
   const info = datas.doctors_list.specility_name;
   const treatmentApi = datas.doctors_list.treatment;
   const doctor = datas.doctors_list.doctors_list;
+  const pageNumber = datas.doctors_list.page;
 
+  const PageMeta = isPagePresent ? ` | page ${pageNumber}` : "";
+  console.log(PageMeta);
   const country = await getALLCountry();
   const doctorCountry = country.country_name;
 
@@ -256,7 +270,6 @@ export async function generateMetadata({ params }) {
         " " +
         "Surgeons View Review - " +
         currentYear,
-
       description:
         "Find Updated List Of " +
         updatedSpeciality +
