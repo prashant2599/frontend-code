@@ -32,15 +32,14 @@ const NewHeader = async () => {
                         {speciality.map((e) => (
                           <li key={e.id}>
                             <Link
-                              href="/speciality/[slug]/[country]"
-                              as={`/speciality/${e.slug}`}
+                              href={`/speciality/${e.slug}`}
+                              prefetch={true}
                             >
                               <img
                                 src={`https://dev.medflick.com/speciality/${e.icon}`}
                                 alt={e.name}
                               />
                               {e.name}
-                              {/* <span>Lorem ipsum dolor sit amet</span> */}
                             </Link>
                           </li>
                         ))}
