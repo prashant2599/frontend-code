@@ -3,6 +3,7 @@ import getAllSpeciality from "@/app/lib/getAllSpeciality";
 import getALLTreadingBlogs from "@/app/lib/getAllTreadingBlogs";
 import getALLBlogList from "@/app/lib/getAllBlogList";
 import TreadingBlogs from "../TreadingBlogs";
+import NumberPage from "../NumberPage";
 
 function formatText(text) {
   if (typeof text === "string") {
@@ -39,12 +40,7 @@ const PaginationBlogs = async ({
   const recent = await getALLBlogList();
   const Rblog = recent.bloglist.data;
 
-  const itemsPerPage = 10; // You can adjust this based on your preference
-  // const totalBlogs = Rblog.length;
-  const totalPages = Math.ceil(totalBlogs / itemsPerPage);
 
-  // Generate an array of page numbers
-  const pages = Array.from({ length: totalPages }, (_, index) => index + 1);
 
   return (
     <div>
@@ -110,22 +106,8 @@ const PaginationBlogs = async ({
                 ))}
               </ul>
 
-              {number !== undefined && (
-                <div className="list-item-no">
-                  <ul>
-                    {pages.map((page) => (
-                      <li key={page}>
-                        <Link
-                          href={page == 1 ? `/blogs` : `/blogs/page/${page}`}
-                          className={number == page ? "active" : ""}
-                        >
-                          {page}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
+        
+              <NumberPage totalCount={totalBlogs} pageNumber={pageNumber} />
             </div>
 
             <div className="blog-right-medflick">
