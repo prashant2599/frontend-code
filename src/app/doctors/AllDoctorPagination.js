@@ -1,8 +1,8 @@
 import Link from "next/link";
 
-const AllDoctorPagination = ({ pageNumber, count }) => {
+const AllDoctorPagination = ({ pageNumber, count, pageCount }) => {
   const itemsPerPage = 10; // You can adjust this based on your preference
-  const totalPages = Math.ceil(count / itemsPerPage);
+  const totalPages = Math.ceil(pageCount / itemsPerPage);
 
   // Set the number of pages to display around the current page
   const displayPages = 5; // You can adjust this based on your preference

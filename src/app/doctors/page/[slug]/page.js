@@ -28,6 +28,7 @@ const page = async ({ params }) => {
   const doctors = apiData.data.doctors;
   const pageNumber = apiData.data.page;
   const count = apiData.data.count;
+  const pageCount = data.data.countpagination
 
   return (
     <>
@@ -137,7 +138,7 @@ const page = async ({ params }) => {
                 </div>
               )}
               {/* <DoctorPagePagination pageNumber={pageNumber} count={count} /> */}
-              <AllDoctorPagination pageNumber={pageNumber} count={count} />
+              <AllDoctorPagination pageNumber={pageNumber} count={count} pageCount={pageCount}  />
             </div>
             {/* form */}
             <DoctorForm />
@@ -150,3 +151,43 @@ const page = async ({ params }) => {
 };
 
 export default page;
+
+export async function generateMetadata({ params }) {
+  const combinedSlug = params.slug;
+  const apiResponse = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/doctors/page/${combinedSlug}`,
+    { cache: "no-store" }
+  );
+  const apiData = await apiResponse.json();
+  const doctors = apiData.data.doctors;
+  const pageNumber = apiData.data.page;
+  const count = apiData.data.count;
+  const currentDate = new Date();
+  const currentYear = currentDate.getFullYear();
+  return {
+    title:
+      "Find The Top Doctors List In India, Updated 2023 | Treatments Specialist " +
+      currentYear +
+      " | page " +
+      pageNumber,
+    description:
+      "On Medflick, get the top doctors in India, updated in 2023 & make an appointment online instantly! View consultation cost & address of specialist in India." +
+      " | page " +
+      pageNumber,
+    openGraph: {
+      title:
+        "Find The Top Doctors List In India, Updated 2023 | Treatments Specialist " +
+        currentYear +
+        " | page " +
+        pageNumber,
+      description:
+        "On Medflick, get the top doctors in India, updated in 2023 & make an appointment online instantly! View consultation cost & address of specialist in India." +
+        " | page " +
+        pageNumber,
+      images: "https://medflick.com/images/2023/02/logo.png",
+    },
+    alternates: {
+      canonical: `https://medflick.com/doctors`,
+    },
+  };
+}

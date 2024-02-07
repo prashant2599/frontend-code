@@ -29,7 +29,7 @@ const NewBlogs = async () => {
                     {e.icon ? (
                       <img
                         src={`https://dev.medflick.com/blog/${e.icon}`}
-                        alt={e.name}
+                        alt={e.slug}
                       />
                     ) : null}
 

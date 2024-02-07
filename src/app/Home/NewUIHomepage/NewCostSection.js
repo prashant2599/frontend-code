@@ -150,7 +150,7 @@ const NewCostSection = () => {
                       >
                         <img
                           src={`https://dev.medflick.com/speciality/${filteredItem.icon}`}
-                          alt={filteredItem.name}
+                          alt={filteredItem.slug}
                         />
                         <h3>{filteredItem.name}</h3>
                       </Link>
