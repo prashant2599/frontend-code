@@ -196,24 +196,20 @@ const SpecialitySelect = ({ doctor, treatment, slug, specialityIdCity }) => {
 
   // Determine position country
 
-
   const positionTreatmentCountry = doctorCountry.some(
     (e) => e.country === citySlug
   );
 
   // Determine position treatment
 
- 
   const isPositionCity = doctor.some((e) => e.location === countrySlug);
   const isPositionTreatmentCity = doctor.some((e) => e.location === citySlug);
 
   // Determine position treatment
   const isPositionInTreatment = treatment.some((e) => e.slug === countrySlug);
-   
 
-
-  // console.log("countryBolean", isPositionInDoctorCountry);
-  // console.log("cityBolean", isPositionCity);
+  console.log("isPositionTreatmentCity", isPositionTreatmentCity);
+  console.log("cityBolean", isPositionCity);
   // console.log("cityTreatmentBolean", isPositionTreatmentCity);
   // console.log("TreatmentBolean", isPositionInTreatment);
   // console.log("HospitalBolean", isPositionHospital);
@@ -267,7 +263,6 @@ const SpecialitySelect = ({ doctor, treatment, slug, specialityIdCity }) => {
     positionTreatmentCountry,
     isPositionCity,
   ]);
-
 
   useEffect(() => {
     if (isPositionCity === true) {

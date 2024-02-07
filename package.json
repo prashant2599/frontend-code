@@ -24,6 +24,7 @@
     "react-loader-spinner": "^5.4.5",
     "react-loading-skeleton": "^3.3.1",
     "react-multi-carousel": "^2.8.4",
+    "react-phone-input-2": "^2.15.1",
     "react-select": "^5.7.5",
     "react-share": "^4.4.1",
     "react-toastify": "^9.1.3"

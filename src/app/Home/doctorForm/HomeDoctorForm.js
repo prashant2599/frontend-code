@@ -9,6 +9,8 @@ import Success from "../successPopup/Success";
 import ErrorPopup from "../successPopup/ErrorPopup";
 import { useUser } from "@/app/UserContext";
 import ReCaptchaComponent from "../ReCapcha/ReCaptchaComponent";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 
 const HomeDoctorForm = ({
   slug,
@@ -94,6 +96,7 @@ const HomeDoctorForm = ({
   };
 
   const inputRef = useRef(null);
+  const [isInputFocused, setIsInputFocused] = useState(false);
 
   useEffect(() => {
     if (isPopupOpen2) {
@@ -107,8 +110,11 @@ const HomeDoctorForm = ({
       const iti = intlTelInput(inputElement, {
         initialCountry: "in",
         separateDialCode: true,
-        // utilsScript:
-        //   "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+      });
+
+      // Open country code selection dropdown when input field is focused
+      inputElement.addEventListener("focus", () => {
+        iti.openDropdown();
       });
 
       inputElement.addEventListener("countrychange", () => {
@@ -483,7 +489,6 @@ const HomeDoctorForm = ({
 
                 <div className="treatment-form">
                   <div className="inputbox">
-                    {/* <label>Phone</label> */}
                     <input
                       ref={inputRef}
                       type="tel"
