@@ -9,8 +9,6 @@ import Success from "../successPopup/Success";
 import ErrorPopup from "../successPopup/ErrorPopup";
 import { useUser } from "@/app/UserContext";
 import ReCaptchaComponent from "../ReCapcha/ReCaptchaComponent";
-import PhoneInput from "react-phone-input-2";
-import "react-phone-input-2/lib/style.css";
 
 const HomeDoctorForm = ({
   slug,

@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import HospitalSearch from "../hospitals/[...slug]/HospitalSearch";
 import Link from "next/link";
 import axios from "axios";
@@ -9,6 +10,7 @@ import HospitalForm from "../Home/hospitalForm/HospitalForm";
 import HospitalShare from "../Home/hospitalForm/HospitalShare";
 import AppointmentForm from "../Home/hospitalForm/AppointmentForm";
 import FilterationHospital from "../hospital-list-category/FilterationHospital";
+import Image from "next/image";
 
 function formatText(text) {
   if (typeof text === "string") {
@@ -86,11 +88,23 @@ const CountryWiseHospital = () => {
                             </Link>
                             <ul className="tabs tab-h">
                               {galleryImages.map((e) => (
-                                <li className="active" id="tab1" key={e.id}>
-                                  <img
-                                    src={`https://dev.medflick.com/hospital/${e.icon}`}
-                                  />{" "}
-                                </li>
+                                <React.Fragment
+                                  className="active"
+                                  id="tab1"
+                                  key={e.id}
+                                >
+                                  {e.icon.split(",").map((imageName, index) => (
+                                    <li className="active" key={index}>
+                                      <Image
+                                        key={index}
+                                        src={`https://dev.medflick.com/hospital/${imageName.trim()}`}
+                                        alt={`Image ${index + 1}`}
+                                        width="150"
+                                        height="50"
+                                      />
+                                    </li>
+                                  ))}
+                                </React.Fragment>
                               ))}
                             </ul>
                           </div>
