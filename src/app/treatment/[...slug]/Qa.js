@@ -23,10 +23,7 @@ const Qa = ({ qa }) => {
                   key={e.id}
                 >
                   <div className="professionals-box">
-                    <img
-                      src="/images/new-images/2023/01/icon-m.png"
-                      alt="medflick-questions"
-                    />
+                    <img src="/images/icon-m.webp" alt="medflick-questions" />
                     <div className="question-box">{e.short_description}</div>
                     <div
                       className="question-ans"

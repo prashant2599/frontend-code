@@ -30,22 +30,22 @@ const NewAboutSection = async () => {
 
               <ul>
                 <li>
-                  <img src="/images/12/1.png" alt="" />
+                  <img src="/images/12/1.webp" alt="Clinical-Excellence" />
                   <h3>Clinical Excellence</h3>
                 </li>
 
                 <li>
-                  <img src="/images/12/2.png" alt="" />
+                  <img src="/images/12/2.webp" alt="Personalized-Care" />
                   <h3>Personalized Care</h3>
                 </li>
 
                 <li>
-                  <img src="/images/12/3.png" alt="" />
+                  <img src="/images/12/3.webp" alt="Quality-Standard" />
                   <h3>Quality Standard</h3>
                 </li>
 
                 <li>
-                  <img src="/images/12/4.png" alt="" />
+                  <img src="/images/12/4.webp" alt="Patient-Experience" />
                   <h3>Best Patient Experience</h3>
                 </li>
               </ul>
