@@ -25,7 +25,7 @@ const NewQuestionAns = async () => {
               >
                 <div className="professionals-box">
                   <img
-                    src="/images/new-images/2023/01/icon-m.png"
+                    src="/images/icon-m.webp"
                     alt="medflick-questions"
                   />
                   <Link

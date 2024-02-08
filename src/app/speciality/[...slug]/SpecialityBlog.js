@@ -44,7 +44,7 @@ const SpecialityBlog = ({ blog, category }) => {
                       <div className="category-blog">
                         <span>
                           <img
-                            src="/images/new-images/2023/01/11/do.png"
+                            src="/images/dot.webp"
                             alt="category icon"
                           />
                         </span>
@@ -53,7 +53,7 @@ const SpecialityBlog = ({ blog, category }) => {
                       <div className="time-blog">
                         <span>
                           <img
-                            src="/images/new-images/2023/01/11/do.png"
+                            src="/images/dot.webp"
                             alt="time icon"
                           />
                         </span>{" "}

@@ -31,9 +31,9 @@ const NewHospital = async () => {
               {featuredHospitals.map((hospital) =>
                 generateHospitalTag(hospital)
               )}
-              {featuredHospitals.map((hospital) =>
+              {/* {featuredHospitals.map((hospital) =>
                 generateHospitalTag(hospital)
-              )}
+              )} */}
             </Marquee>
           </div>
         </div>

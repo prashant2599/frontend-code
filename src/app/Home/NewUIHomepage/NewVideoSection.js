@@ -81,7 +81,7 @@ const NewVideoSection = () => {
                       >
                         <a>
                           <img
-                            src="/images/new-images/2023/01/09/icon.png"
+                            src="/images/icon.webp"
                             alt="Video Icon"
                           />
                         </a>
