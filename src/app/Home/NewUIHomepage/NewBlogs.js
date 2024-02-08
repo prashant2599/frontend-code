@@ -44,24 +44,17 @@ const NewBlogs = async () => {
                         : "",
                     }}
                   />
-
                   <div className="blog-text">
                     <div className="category-blog">
                       <span>
-                        <img
-                          src="/images/dot.webp"
-                          alt="category icon"
-                        />
+                        <img src="/images/dot.webp" alt="category icon" />
                       </span>
                       {formattedDate}{" "}
                       {/* Display the formatted creation date here */}
                     </div>
                     <div className="time-blog">
                       <span>
-                        <img
-                          src="/images/dot.webp"
-                          alt="time icon"
-                        />
+                        <img src="/images/dot.webp" alt="time icon" />
                       </span>{" "}
                       2 Min Read
                     </div>

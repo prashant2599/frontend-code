@@ -9,11 +9,9 @@ import { useUser } from "@/app/UserContext";
 import HeaderSearch from "./HeaderSearch";
 import MobileSideBarShare from "./MobileSideBarShare";
 
-
 import MobileAskFreeQuestion from "./MobileAskFreeQuestion";
 
 const MobileHeader = ({ speciality }) => {
- 
   const router = useRouter();
   const [isOffcanvas, setIsOffcanvas] = useState(false);
 
@@ -341,7 +339,8 @@ const MobileHeader = ({ speciality }) => {
                 )} */}
 
                 <li className="menu-item has-collapsible">
-                  <a
+                  <Link
+                    href="/blogs"
                     onClick={() => {
                       toggleOffcanvas();
                       router.push("/blogs");
@@ -349,11 +348,12 @@ const MobileHeader = ({ speciality }) => {
                     className="submenu-link"
                   >
                     Blogs
-                  </a>
+                  </Link>
                 </li>
 
                 <li className="menu-item ">
-                  <a
+                  <Link
+                    href="/question-answer"
                     onClick={() => {
                       toggleOffcanvas();
                       router.push("/question-answer");
@@ -361,11 +361,12 @@ const MobileHeader = ({ speciality }) => {
                     className="submenu-link"
                   >
                     Question & Answer
-                  </a>
+                  </Link>
                 </li>
                 {userName || userNames ? (
                   <li className="menu-item">
-                    <a
+                    <Link
+                      href="patient-dashboard"
                       onClick={() => {
                         toggleOffcanvas();
                         router.push("/patient-dashboard");
@@ -373,12 +374,13 @@ const MobileHeader = ({ speciality }) => {
                       className="login-link"
                     >
                       Dashboard
-                    </a>
+                    </Link>
                   </li>
                 ) : (
                   <>
                     <li className="menu-item">
-                      <a
+                      <Link
+                        href="/login"
                         onClick={() => {
                           toggleOffcanvas();
                           router.push("/login");
@@ -386,10 +388,11 @@ const MobileHeader = ({ speciality }) => {
                         className="login-link"
                       >
                         Login
-                      </a>
+                      </Link>
                     </li>
                     <li className="menu-item">
-                      <a
+                      <Link
+                        href="/sign-up"
                         onClick={() => {
                           toggleOffcanvas();
                           router.push("/sign-up");
@@ -397,12 +400,12 @@ const MobileHeader = ({ speciality }) => {
                         className="sign-up-link"
                       >
                         Sign Up
-                      </a>
+                      </Link>
                     </li>
                   </>
                 )}
                 <div className="menu-footer">
-              <MobileAskFreeQuestion />
+                  <MobileAskFreeQuestion />
 
                   <div className="menu-footer-link">
                     <MobileSideBarShare />
@@ -431,7 +434,6 @@ const MobileHeader = ({ speciality }) => {
           </nav>
         </div>
       </div>
-   
     </>
   );
 };
