@@ -205,10 +205,8 @@ const SpecialitySelect = ({ doctor, treatment, slug, specialityIdCity }) => {
   const isPositionCity = doctor.some((e) => e.location === countrySlug);
   const isPositionTreatmentCity = doctor.some((e) => e.location === citySlug);
 
-
   // Determine position treatment
   const isPositionInTreatment = treatment.some((e) => e.slug === countrySlug);
-
 
   // console.log("cityTreatmentBolean", isPositionTreatmentCity);
   // console.log("TreatmentBolean", isPositionInTreatment);
@@ -245,8 +243,6 @@ const SpecialitySelect = ({ doctor, treatment, slug, specialityIdCity }) => {
     citySlug,
     isPositionInTreatment,
   ]);
-
-
 
   useEffect(() => {
     if (isPositionTreatmentCity === true && isPositionInTreatment === true) {

@@ -5,8 +5,6 @@ import "./index.css";
 import { UserProvider } from "./UserContext";
 import { Inter } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";
-import { DoctorDataProvider } from "./contex/DoctorDataContext";
-import { HospitalDataProvider } from "./contex/HospitalDataContext";
 import { ToggleQuestionProvider } from "./contex/toggleQuestionContext";
 import QuestionPopup from "./Home/QaForm/QuestionPopup";
 
@@ -41,9 +39,7 @@ export default function RootLayout({ children }) {
               <Allpopudp />
               <QuestionPopup />
               <GoogleAnalytics />
-              <DoctorDataProvider>
-                <HospitalDataProvider>{children}</HospitalDataProvider>
-              </DoctorDataProvider>
+              {children}
             </ToggleQuestionProvider>
           </UserProvider>
         </body>
