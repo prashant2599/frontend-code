@@ -10,6 +10,7 @@ import { notFound } from "next/navigation";
 import NewHeader from "@/app/Home/NewUIHomepage/inc/NewHeader";
 import NewFooter from "@/app/Home/NewUIHomepage/inc/NewFooter";
 import HospitalHeader from "./HospitalHeader";
+import Link from "next/link";
 
 function formatText(text) {
   if (typeof text === "string") {
@@ -63,8 +64,7 @@ const page = async ({ params }) => {
                 <div className="hospitalprofile-head">
                   <h1>{hospitalDetails.name}</h1>
                   <div className="location">
-                    {formatText(hospitalDetails.city)}
-                    ,{" "}
+                    {formatText(hospitalDetails.city)},{" "}
                     {hospitalDetails.country.charAt(0).toUpperCase() +
                       hospitalDetails.country.slice(1)}
                   </div>
@@ -230,13 +230,18 @@ const page = async ({ params }) => {
                 {speciality &&
                   speciality.map((e) => (
                     <div className="specialists-boxitem" key={e.id}>
-                      <div className="boxitem">
-                        <img
-                          src={`https://dev.medflick.com/speciality/${e.icon}`}
-                          alt="speciality-icons"
-                        />
-                        <h4>{e.name}</h4>
-                      </div>
+                      <Link
+                        href={`/speciality/${e.slug}`}
+                        style={{ color: "#000" }}
+                      >
+                        <div className="boxitem">
+                          <img
+                            src={`https://dev.medflick.com/speciality/${e.icon}`}
+                            alt="speciality-icons"
+                          />
+                          <h4>{e.name}</h4>
+                        </div>
+                      </Link>
                     </div>
                   ))}
               </div>

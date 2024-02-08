@@ -9,8 +9,6 @@ import Success from "../successPopup/Success";
 import ErrorPopup from "../successPopup/ErrorPopup";
 import { useUser } from "@/app/UserContext";
 import ReCaptchaComponent from "../ReCapcha/ReCaptchaComponent";
-import PhoneInput from "react-phone-input-2";
-import "react-phone-input-2/lib/style.css";
 
 const HomeDoctorForm = ({
   slug,
@@ -573,8 +571,10 @@ const HomeDoctorForm = ({
                     </div>
                   </div>
                 </div>
-                <ReCaptchaComponent onCaptchaChange={handleCaptchaChange2} />
-                {renderError(formErrors.captcha)}
+                <div className="treatment-form">
+                  <ReCaptchaComponent onCaptchaChange={handleCaptchaChange2} />
+                  {renderError(formErrors.captcha)}
+                </div>
                 <button
                   type="submit"
                   name="en"

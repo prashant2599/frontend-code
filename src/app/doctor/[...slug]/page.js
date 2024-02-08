@@ -10,6 +10,7 @@ import NewHeader from "@/app/Home/NewUIHomepage/inc/NewHeader";
 import NewFooter from "@/app/Home/NewUIHomepage/inc/NewFooter";
 import DoctorShare from "./DoctorShare";
 import DoctorHeader from "./DoctorHeader";
+import Link from "next/link";
 
 function formatText(text) {
   if (typeof text === "string") {
@@ -269,9 +270,9 @@ const page = async ({ params }) => {
                 <h2>Services</h2>
                 <div className="medical-box">
                   {treament.map((e) => (
-                    <a href="#" target="_self" key={e.id}>
+                    <Link href={`/treatment/${e.slug}`} key={e.id}>
                       {e.name}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </div>
