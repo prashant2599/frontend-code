@@ -1,13 +1,10 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { useDoctorData } from "@/app/contex/DoctorDataContext";
-import { HospitalData } from "@/app/contex/HospitalDataContext";
 import Link from "next/link";
 import getALLCountry from "@/app/lib/getAllCountry";
 import getAllSpeciality from "@/app/lib/getAllSpeciality";
 import HomeDoctorForm from "../doctorForm/HomeDoctorForm";
 import HomeHospitalForm from "../hospitalForm/HomeHospitalForm";
-import axios from "axios";
 
 function formatText(text) {
   if (typeof text === "string") {
@@ -21,20 +18,17 @@ function formatText(text) {
 }
 
 const NewSearchTreatment = () => {
-  const { doctorsData } = useDoctorData();
+  const [doctorsData, setDoctorsData] = useState([]);
+  const [hospitalsData, setHospitalsData] = useState([]);
   const doctorsNew = doctorsData.doctors_list;
-  const { hospitalsData } = HospitalData();
   const Doctors = doctorsNew?.slice(0, 4) ?? [];
   const Hospitals = hospitalsData?.slice(0, 4) ?? [];
-
   //  filteration
   const [countries, setCountries] = useState([]);
   const [specialities, setSpecialities] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState("india");
   const [selectedSpeciality, setSelectedSpeciality] = useState("neurosurgery");
-  //   const [doctorsData, setDoctorsData] = useState([]);
-  const { setDoctorsData } = useDoctorData();
-  const { setHospitalsData } = HospitalData();
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -135,137 +129,144 @@ const NewSearchTreatment = () => {
               </select>
             </div>
           </div>
-          <div className="new-beginnings">
-            <div className="new-beginnings-left">
-              <h3>
-                Best {formattedSpeciality} Doctors in{" "}
-                <span style={{ color: "#ff6800" }}>
-                  {selectedCountry.charAt(0).toUpperCase() +
-                    selectedCountry.slice(1)}
-                </span>
-              </h3>
-            </div>
-            <div className="new-beginnings-right">
-              <Link
-                className="view-all"
-                href={`/doctors/${selectedSpeciality}/${selectedCountry}`}
-              >
-                View All <img src="/images/treatments-arrow.png" alt="arrow" />
-              </Link>
-            </div>
-          </div>
-
-          <div className="home-doctors">
-            {Doctors.length > 0 ? (
-              Doctors.map((e) => (
-                <div className="item" key={e.id}>
-                  <div className="item-home-expert">
-                    <Link href={`/doctor/${e.slug}`}>
-                      <img
-                        src={`https://dev.medflick.com/doctor/${e.icon}`}
-                        alt={e.slug}
-                      />
-                    </Link>
-                  </div>
-                  <div className="home-expert-text">
-                    <div style={{ display: "flex" }}>
-                      <div>
-                        <Link href={`/doctor/${e.slug}`}>
-                          <h3>
-                            {e.prefix} {e.first_name} {e.last_name}
-                          </h3>
-                        </Link>
-                      </div>
-                      <div className="home-page-hospital-logo">
-                        <Link href={`/hospital/${e.hospital_slug}`}>
-                          <img
-                            src={`https://dev.medflick.com/hospital/${e.hospitalicon}`}
-                            className="home-doctor-hospital-logo"
-                            alt={e.hospital_slug}
-                          />
-                        </Link>
-                      </div>
-                    </div>
-                    <p>
-                      {e.dept.length > 25 ? `${e.dept.slice(0, 25)}..` : e.dept}
-                    </p>
-                  </div>
-                  <HomeDoctorForm
-                    slug={e.slug}
-                    first={e.prefix}
-                    middle={e.first_name}
-                    last={e.last_name}
-                    doctorId={e.id}
-                    specialityId={e.speciality_id}
-                  />
-                </div>
-              ))
-            ) : (
-              <p>Oops, no doctors found.</p>
-            )}
-          </div>
-
-          <div className="new-beginnings">
-            <div className="new-beginnings-left">
-              <h3>
-                Best {formattedSpeciality} Hospitals in{" "}
-                <span style={{ color: "#ff6800" }}>
-                  {selectedCountry.charAt(0).toUpperCase() +
-                    selectedCountry.slice(1)}
-                </span>
-              </h3>
-            </div>
-            <div className="new-beginnings-right">
-              <Link
-                className="view-all"
-                href={`/hospitals/${selectedSpeciality}/${selectedCountry}`}
-              >
-                View All <img src="/images/treatments-arrow.png" />
-              </Link>
-            </div>
-          </div>
-
-          <div className="home-hospitals">
-            {Hospitals.length > 0 ? (
-              Hospitals.map((e) => (
-                <div className="item" key={e.id}>
-                  <div className="item-home-expert">
-                    <Link href={`/hospital/${e.slug}`}>
-                      <img
-                        src={`https://dev.medflick.com/hospital/${e.home_image}`}
-                        alt={e.name}
-                      />
-                    </Link>
-                  </div>
-                  <div className="home-expert-text">
-                    <Link href={`/hospital/${e.slug}`}>
-                      <h3>{e.name}</h3>
-                    </Link>
-                    <p>
-                      <span className="home-page-hospital-in">
-                        {" "}
-                        Hospitals in{" "}
-                      </span>
-                      {formatText(e.city)},{" "}
-                      {selectedCountry.charAt(0).toUpperCase() +
-                        selectedCountry.slice(1)}
-                    </p>
-                  </div>
-                  <HomeHospitalForm
-                    slug={e.slug}
-                    country={e.country}
-                    name={e.name}
-                    hospitalId={e.id}
-                    specialityId={e.speciality_id}
-                  />
-                </div>
-              ))
-            ) : (
-              <p>Oops, no hospitals found.</p>
-            )}
-          </div>
         </div>
       </section>
+
+      {/* doctor */}
+      <div className="midbox-inner wiki-mk">
+        <div className="new-beginnings">
+          <div className="new-beginnings-left">
+            <h3>
+              Best {formattedSpeciality} Doctors in{" "}
+              <span style={{ color: "#ff6800" }}>
+                {selectedCountry.charAt(0).toUpperCase() +
+                  selectedCountry.slice(1)}
+              </span>
+            </h3>
+          </div>
+          <div className="new-beginnings-right">
+            <Link
+              className="view-all"
+              href={`/doctors/${selectedSpeciality}/${selectedCountry}`}
+            >
+              View All <img src="/images/treatments-arrow.png" alt="arrow" />
+            </Link>
+          </div>
+        </div>
+
+        <div className="home-doctors">
+          {Doctors.length > 0 ? (
+            Doctors.map((e) => (
+              <div className="item" key={e.id}>
+                <div className="item-home-expert">
+                  <Link href={`/doctor/${e.slug}`}>
+                    <img
+                      src={`https://dev.medflick.com/doctor/${e.icon}`}
+                      alt={e.slug}
+                    />
+                  </Link>
+                </div>
+                <div className="home-expert-text">
+                  <div style={{ display: "flex" }}>
+                    <div>
+                      <Link href={`/doctor/${e.slug}`}>
+                        <h3>
+                          {e.prefix} {e.first_name} {e.last_name}
+                        </h3>
+                      </Link>
+                    </div>
+                    <div className="home-page-hospital-logo">
+                      <Link href={`/hospital/${e.hospital_slug}`}>
+                        <img
+                          src={`https://dev.medflick.com/hospital/${e.hospitalicon}`}
+                          className="home-doctor-hospital-logo"
+                          alt={e.hospital_slug}
+                        />
+                      </Link>
+                    </div>
+                  </div>
+                  <p>
+                    {e.dept.length > 25 ? `${e.dept.slice(0, 25)}..` : e.dept}
+                  </p>
+                </div>
+                <HomeDoctorForm
+                  slug={e.slug}
+                  first={e.prefix}
+                  middle={e.first_name}
+                  last={e.last_name}
+                  doctorId={e.id}
+                  specialityId={e.speciality_id}
+                />
+              </div>
+            ))
+          ) : (
+            <p>Oops, no doctors found.</p>
+          )}
+        </div>
+      </div>
+
+      {/* hospital */}
+      <div className="midbox-inner wiki-mk">
+        <div className="new-beginnings">
+          <div className="new-beginnings-left">
+            <h3>
+              Best {formattedSpeciality} Hospitals in{" "}
+              <span style={{ color: "#ff6800" }}>
+                {selectedCountry.charAt(0).toUpperCase() +
+                  selectedCountry.slice(1)}
+              </span>
+            </h3>
+          </div>
+          <div className="new-beginnings-right">
+            <Link
+              className="view-all"
+              href={`/hospitals/${selectedSpeciality}/${selectedCountry}`}
+            >
+              View All <img src="/images/treatments-arrow.png" alt="arrow" />
+            </Link>
+          </div>
+        </div>
+
+        <div className="home-hospitals">
+          {Hospitals.length > 0 ? (
+            Hospitals.map((e) => (
+              <div className="item" key={e.id}>
+                <div className="item-home-expert">
+                  <Link href={`/hospital/${e.slug}`}>
+                    <img
+                      src={`https://dev.medflick.com/hospital/${e.home_image}`}
+                      alt={e.name}
+                    />
+                  </Link>
+                </div>
+                <div className="home-expert-text">
+                  <Link href={`/hospital/${e.slug}`}>
+                    <h3>{e.name}</h3>
+                  </Link>
+                  <p>
+                    <span className="home-page-hospital-in">
+                      {" "}
+                      Hospitals in{" "}
+                    </span>
+                    {formatText(e.city)},{" "}
+                    {selectedCountry.charAt(0).toUpperCase() +
+                      selectedCountry.slice(1)}
+                  </p>
+                </div>
+                <HomeHospitalForm
+                  slug={e.slug}
+                  country={e.country}
+                  name={e.name}
+                  hospitalId={e.id}
+                  specialityId={e.speciality_id}
+                />
+              </div>
+            ))
+          ) : (
+            <p>Oops, no hospitals found.</p>
+          )}
+        </div>
+      </div>
     </>
   );
 };

@@ -208,8 +208,6 @@ const SpecialitySelect = ({ doctor, treatment, slug, specialityIdCity }) => {
   // Determine position treatment
   const isPositionInTreatment = treatment.some((e) => e.slug === countrySlug);
 
-  console.log("isPositionTreatmentCity", isPositionTreatmentCity);
-  console.log("cityBolean", isPositionCity);
   // console.log("cityTreatmentBolean", isPositionTreatmentCity);
   // console.log("TreatmentBolean", isPositionInTreatment);
   // console.log("HospitalBolean", isPositionHospital);
@@ -384,7 +382,7 @@ const SpecialitySelect = ({ doctor, treatment, slug, specialityIdCity }) => {
               value={selectedLocation}
             >
               <option disabled>Location</option>
-              {cityFilter.map((location) => (
+              {uniqueLocations.map((location) => (
                 <option value={location} key={location}>
                   {location.charAt(0).toUpperCase() + location.slice(1)}
                 </option>
