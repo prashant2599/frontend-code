@@ -197,11 +197,11 @@ a:hover {
 }
 
 .header .top-menu-wrapper ul li a {
-  color: white;
+  color: #ffffff;
 }
 
 .header .navbar__buttons a {
-  color: white;
+  color: #ffffff;
 }
 
 .header-inner {
@@ -7028,7 +7028,7 @@ ul.tabs li.active {
   font-size: 20px;
   margin: 20px 0px 20px;
   color: #1e1e1e;
- font-weight: 600;
+  font-weight: 600;
 }
 
 .comments-box p {
@@ -14871,6 +14871,7 @@ pre code {
   width: 100%;
   margin: 0px auto;
   top: 0px;
+  color: #ffffff;
 }
 
 .headerTertiary {

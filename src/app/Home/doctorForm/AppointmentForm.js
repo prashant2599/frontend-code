@@ -17,6 +17,7 @@ const AppointmentForm = ({ doctorId, first, middle, last, specialityId }) => {
   const [userEmail, setUserEmail] = useState("");
   const [userPhone, setUserPhone] = useState("");
 
+
   // Check if 'userName' exists in localStorage on component mount
   useEffect(() => {
     const storedUserName = localStorage.getItem("userName");
@@ -147,6 +148,7 @@ const AppointmentForm = ({ doctorId, first, middle, last, specialityId }) => {
       }));
     }
   };
+
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -476,7 +478,6 @@ const AppointmentForm = ({ doctorId, first, middle, last, specialityId }) => {
 
                 <div className="treatment-form">
                   <div className="inputbox">
-                    {/* <label>Phone</label> */}
                     <input
                       ref={inputRef}
                       type="tel"

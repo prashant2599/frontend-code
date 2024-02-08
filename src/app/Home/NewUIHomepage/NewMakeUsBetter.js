@@ -18,7 +18,7 @@ const NewMakeUsBetter = () => {
                 information and direct access to hospital prices without hidden
                 fees, ensuring transparency in healthcare costs.
               </h3>
-              <a style={{ color: "#ff6800" }}>Comprehensive Transparency</a>
+              <p style={{ color: "#ff6800" }}>Comprehensive Transparency</p>
             </li>
             <li>
               <div className="better-icon">
@@ -29,7 +29,7 @@ const NewMakeUsBetter = () => {
                 providing real reviews from patients who have firsthand
                 experience with partner hospitals and doctors.
               </h3>
-              <a style={{ color: "#ff6800" }}>Authentic Patient Experiences</a>
+              <p style={{ color: "#ff6800" }}>Authentic Patient Experiences</p>
             </li>
 
             <li>
@@ -42,9 +42,9 @@ const NewMakeUsBetter = () => {
                 for their excellence in healthcare, world-class facilities, and
                 advanced technology.
               </h3>
-              <a style={{ color: "#ff6800" }}>
+              <p style={{ color: "#ff6800" }}>
                 Extensive Network and Expertise
-              </a>
+              </p>
             </li>
 
             <li>
@@ -56,7 +56,7 @@ const NewMakeUsBetter = () => {
                 availability, providing guidance and support whether users are
                 at home or halfway across the world.
               </h3>
-              <a style={{ color: "#ff6800" }}>24/7 Global Support</a>
+              <p style={{ color: "#ff6800" }}>24/7 Global Support</p>
             </li>
           </ul>
         </div>

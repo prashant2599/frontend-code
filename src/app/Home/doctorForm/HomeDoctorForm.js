@@ -573,8 +573,10 @@ const HomeDoctorForm = ({
                     </div>
                   </div>
                 </div>
-                <ReCaptchaComponent onCaptchaChange={handleCaptchaChange2} />
-                {renderError(formErrors.captcha)}
+                <div className="treatment-form">
+                  <ReCaptchaComponent onCaptchaChange={handleCaptchaChange2} />
+                  {renderError(formErrors.captcha)}
+                </div>
                 <button
                   type="submit"
                   name="en"

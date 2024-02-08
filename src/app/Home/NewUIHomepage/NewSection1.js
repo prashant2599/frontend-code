@@ -15,12 +15,14 @@ const NewSection1 = () => {
                 Your Path to Informed Health Decisions. Trusted Health
                 Information When you Need it Most.
               </h2>
-              <img
-                className="dr-img"
-                src="/images/medflick-home.webp"
-                alt="inspiring-better-health"
-                loading="lazy"
-              />
+              <div>
+                <img
+                  className="dr-img"
+                  src="/images/medflick-home.webp"
+                  alt="inspiring-better-health"
+                  loading="lazy"
+                />
+              </div>
             </div>
           </div>
         </div>
