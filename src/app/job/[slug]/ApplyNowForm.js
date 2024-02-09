@@ -116,6 +116,7 @@ const ApplyNowForm = () => {
       name: "",
       phone: "",
       email: "",
+      file: "",
     });
 
     const patientId = localStorage.getItem("userId");
@@ -146,6 +147,13 @@ const ApplyNowForm = () => {
       setFormErrors((prevErrors) => ({
         ...prevErrors,
         email: "Please enter a valid email address",
+      }));
+      isValid = false;
+    }
+    if (!selectedFile) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        file: "Please Upload Your Document",
       }));
       isValid = false;
     }
@@ -388,6 +396,7 @@ const ApplyNowForm = () => {
                     <img src="/images/2023/07/upload-icon1.png" /> Upload Resume
                   </button>
                   <input type="file" name="file" onChange={handleFileChange} />
+                  {renderError(formErrors.file)}
                 </div>
                 {fileValidationMessage && (
                   <p style={{ color: "red" }}>{fileValidationMessage}</p>
