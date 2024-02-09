@@ -38,8 +38,8 @@ const NewBlogs = async () => {
                   <div
                     dangerouslySetInnerHTML={{
                       __html: e.short_description
-                        ? e.short_description.length > 20
-                          ? e.short_description.slice(0, 115).concat("...")
+                        ? e.short_description.length > 10
+                          ? e.short_description.slice(0, 110).concat("...")
                           : e.short_description
                         : "",
                     }}
