@@ -2,8 +2,14 @@ import NewFooter from "../Home/NewUIHomepage/inc/NewFooter";
 import NewHeader from "../Home/NewUIHomepage/inc/NewHeader";
 import DontPay from "../Home/dontPay/DontPay";
 import Apply from "./Apply";
+import Link from "next/link";
 
-const page = () => {
+const page = async () => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/jobList`, {
+    cache: "no-store",
+  });
+  const datas = await res.json();
+  const jobList = datas.data;
   return (
     <>
       <NewHeader />
@@ -92,32 +98,51 @@ const page = () => {
                 <div className="job-headtitle">Type </div>
               </div>
 
-              <div className="openings-list">
-                <div className="openings-box">
-                  <div className="openings-box1">
-                    <div className="openings-details">1</div>
-                    <div className="job-title">
-                      International Patient Case Manager{" "}
+              {jobList.map((e) => (
+                <div className="openings-list" key={e.id}>
+                  <div className="openings-box">
+                    <div className="openings-box1">
+                      <div className="openings-details">1</div>
+                      <div className="job-title">{e.name}</div>
+                      <div className="job-details">
+                        {e.city}, {e.country}
+                      </div>
+                      <div className="job-type">Full-Time</div>
                     </div>
-                    <div className="job-details">Noida, India</div>
-                    <div className="job-type">Full-Time</div>
+                    <p>{e.short_description}</p>
+                    <Link href={`/job/${e.slug}`} className="apply-now">
+                      {" "}
+                      Apply Now
+                    </Link>
                   </div>
-                  <p>
-                    We are seeking a dedicated and compassionate International
-                    Patient Case Manager to join our Medflick team. The ideal
-                    candidate will be responsible for overseeing and
-                    coordinating patient care services, ensuring the highest
-                    level of quality and patient satisfaction. The Patient Care
-                    Manager will work closely with healthcare professionals,
-                    patients, and their families to facilitate a seamless and
-                    positive healthcare experience.
-                  </p>
-                  <a href="/" className="apply-now">
-                    {" "}
-                    Apply Now
-                  </a>
                 </div>
-              </div>
+              ))}
+              {/* <div className="openings-list" key={e.id}>
+                  <div className="openings-box">
+                    <div className="openings-box1">
+                      <div className="openings-details">1</div>
+                      <div className="job-title">
+                        International Patient Case Manager{" "}
+                      </div>
+                      <div className="job-details">Noida, India</div>
+                      <div className="job-type">Full-Time</div>
+                    </div>
+                    <p>
+                      We are seeking a dedicated and compassionate International
+                      Patient Case Manager to join our Medflick team. The ideal
+                      candidate will be responsible for overseeing and
+                      coordinating patient care services, ensuring the highest
+                      level of quality and patient satisfaction. The Patient
+                      Care Manager will work closely with healthcare
+                      professionals, patients, and their families to facilitate
+                      a seamless and positive healthcare experience.
+                    </p>
+                    <a href="/" className="apply-now">
+                      {" "}
+                      Apply Now
+                    </a>
+                  </div>
+                </div> */}
             </div>
           </div>
         </section>

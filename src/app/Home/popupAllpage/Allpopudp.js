@@ -398,7 +398,11 @@ const Allpopudp = () => {
     <>
       <button className="open-button" onClick={togglePopup}>
         <img className="footer-but-d" src="/images/dF.webp" alt="query-img" />
-        <img className="footer-but-m" src="/images/mFree.png" />
+        <img
+          className="footer-but-m"
+          src="/images/mFree.png"
+          alt="free-Personalised"
+        />
       </button>
       <div className="form-popup" id="myForm" style={popupStyle}>
         <div className="form-container">
@@ -505,7 +509,6 @@ const Allpopudp = () => {
 
               <ReCaptchaComponent onCaptchaChange={handleCaptchaChange} />
               {renderError(formErrors.captcha)}
-
               <button
                 type="submit"
                 name="en"

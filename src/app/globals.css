@@ -16063,11 +16063,12 @@ footer {
 }
 
 .hospital-item-doc h3 {
-  font-family: Helvetica Neue Medium;
-  font-size: 18px;
+  font-family: Inter Regular;
+  font-size: 17px;
   line-height: 20px;
   width: 100%;
   color: #000000;
+  font-weight: 600;
 }
 
 .hospital-item-doc .department-sub {

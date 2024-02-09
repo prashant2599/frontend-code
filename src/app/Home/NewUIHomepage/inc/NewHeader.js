@@ -33,7 +33,6 @@ const NewHeader = async () => {
                           <li key={e.id}>
                             <Link
                               href={`/speciality/${e.slug}`}
-                              prefetch={true}
                             >
                               <img
                                 src={`https://dev.medflick.com/speciality/${e.icon}`}
