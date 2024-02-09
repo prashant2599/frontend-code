@@ -974,13 +974,7 @@ a:hover {
   padding: 0px;
 }
 
-.hospital-item-doc h3 {
-  font-family: Helvetica Neue Medium;
-  font-size: 18px;
-  line-height: 20px;
-  width: 100%;
-  color: #000000;
-}
+
 
 .hospital-item-doc .rating-star {
   color: #ffaf15;
