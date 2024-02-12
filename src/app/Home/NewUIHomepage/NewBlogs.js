@@ -6,7 +6,6 @@ const NewBlogs = async () => {
   const blogs = data.data.blogs;
   const blog1 = blogs?.slice(0, 3) ?? [];
 
-  // Create options for formatting the date
   const options = { year: "numeric", month: "long", day: "numeric" };
 
   return (

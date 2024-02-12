@@ -29,7 +29,6 @@ const NewSearchTreatment = () => {
   const [selectedCountry, setSelectedCountry] = useState("india");
   const [selectedSpeciality, setSelectedSpeciality] = useState("neurosurgery");
 
-
   useEffect(() => {
     const fetchData = async () => {
       // Fetch countries

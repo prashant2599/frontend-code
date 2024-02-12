@@ -17765,6 +17765,12 @@ textarea {
   .searchbox-main {
     font-size: 14px;
   }
+  .treatment-midbox table {
+    width: 100%;
+    overflow-x: auto;
+    display: block;
+    white-space: nowrap;
+  }
 }
 
 .copy-popup {
@@ -17854,5 +17860,11 @@ textarea {
   }
   .treatment-midbox h2 {
     font-size: 23px;
+  }
+  .treatment-midbox table {
+    width: 100%;
+    overflow-x: auto;
+    display: block;
+    white-space: nowrap;
   }
 }
