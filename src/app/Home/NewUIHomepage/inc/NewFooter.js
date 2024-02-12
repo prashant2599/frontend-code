@@ -131,13 +131,15 @@ const NewFooter = () => {
                 <ul className="footerbox">
                   {selectedSpecialities &&
                     selectedSpecialities.map((e) => (
-                      <Link href={`/speciality/${e.slug}`} key={e.id}>
-                        <li>{e.name}</li>
-                      </Link>
+                      <li key={e.id}>
+                        <Link href={`/speciality/${e.slug}`}>{e.name}</Link>
+                      </li>
                     ))}
-                  <Link href="/specialities">
-                    <li>View All</li>
-                  </Link>
+
+                  <li>
+                    {" "}
+                    <Link href="/specialities">View All </Link>
+                  </li>
                 </ul>
               </div>
               <div className="footer-navbox">

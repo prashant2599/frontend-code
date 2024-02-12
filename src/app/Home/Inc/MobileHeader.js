@@ -418,7 +418,7 @@ const MobileHeader = ({ speciality }) => {
                     >
                       About Us
                     </Link>
-                    <a
+                    <Link
                       href="/contact-us"
                       onClick={() => {
                         toggleOffcanvas();
@@ -426,7 +426,7 @@ const MobileHeader = ({ speciality }) => {
                       }}
                     >
                       Help
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </ul>
