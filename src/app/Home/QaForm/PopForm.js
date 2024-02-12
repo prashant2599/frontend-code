@@ -165,14 +165,13 @@ const PopForm = () => {
         isValid = false;
       }
     }
-    if (!userPhone) {
-      if (!phone || !phone.match(phoneRegex)) {
-        setFormErrors((prevErrors) => ({
-          ...prevErrors,
-          phone: "Please enter a valid Phone number",
-        }));
-        isValid = false;
-      }
+
+    if (!phone || !phone.match(phoneRegex)) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        phone: "Please enter a valid Phone number",
+      }));
+      isValid = false;
     }
 
     if (!userEmail) {
@@ -476,10 +475,7 @@ const PopForm = () => {
                     </span>
                   </button>
                 </div>
-                <h2>
-              
-                  Ask Free Question
-                </h2>
+                <h2>Ask Free Question</h2>
 
                 <form onSubmit={handleFormSubmit}>
                   <div

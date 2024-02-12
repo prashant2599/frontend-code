@@ -108,11 +108,8 @@ const HomeDoctorForm = ({
       const iti = intlTelInput(inputElement, {
         initialCountry: "in",
         separateDialCode: true,
-      });
-
-      // Open country code selection dropdown when input field is focused
-      inputElement.addEventListener("focus", () => {
-        iti.openDropdown();
+        // utilsScript:
+        //   "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
       });
 
       inputElement.addEventListener("countrychange", () => {
@@ -159,8 +156,6 @@ const HomeDoctorForm = ({
   };
 
   const handleFormSubmit2 = (event) => {
-    event.preventDefault();
-
     setFormErrors({
       name: "",
       phone: "",
@@ -261,6 +256,22 @@ const HomeDoctorForm = ({
           setIsLoading2(false);
         });
     }
+  };
+
+  function debounce(func, delay) {
+    let timeoutId;
+    return function () {
+      const context = this;
+      const args = arguments;
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => func.apply(context, args), delay);
+    };
+  }
+
+  const debouncedSubmit = debounce(handleFormSubmit2, 200);
+  const handleDebouncedSubmit = (event) => {
+    event.preventDefault();
+    debouncedSubmit();
   };
 
   const clearFormFields2 = () => {
@@ -467,7 +478,7 @@ const HomeDoctorForm = ({
                 </span>{" "}
                 now!
               </h2>
-              <form onSubmit={handleFormSubmit2}>
+              <form onSubmit={handleDebouncedSubmit}>
                 <div className="treatment-form">
                   <div className="inputbox">
                     {/* <label>Name</label> */}

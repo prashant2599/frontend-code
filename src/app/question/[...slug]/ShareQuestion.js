@@ -145,7 +145,7 @@ const ShareQuestion = ({ desc, id }) => {
             </div>
           </div>
           <div id="copyPopup" className="copy-popup">
-            Link copied!
+          Copied to Clipboard
           </div>
         </div>
       )}
