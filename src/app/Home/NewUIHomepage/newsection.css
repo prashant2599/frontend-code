@@ -1896,6 +1896,13 @@ button.active .city-icon-h {
   justify-content: center;
   width: max-content;
 }
+#home-latest-resources .new-blogs:hover {
+  background: #ffffff;
+  color: #ff6800;
+}
+#home-latest-resources .new-blogs:hover img {
+  border: 2px solid #ff6800;
+}
 
 #home-latest-resources .new-blogs img {
   width: 38px;
@@ -2214,10 +2221,10 @@ button.active .city-icon-h {
   .home-medflick-about-right h2 {
     font-size: 28px;
   }
-  .home-expert-video-left h2{
+  .home-expert-video-left h2 {
     font-size: 25px;
   }
-  #hometop-process-treatment h2{
+  #hometop-process-treatment h2 {
     font-size: 27px;
   }
   #home-real-stories h2 {
@@ -2229,7 +2236,7 @@ button.active .city-icon-h {
   .home-latest-updatesleft h2 {
     font-size: 27px;
   }
-  .home-expert-text h3  {
+  .home-expert-text h3 {
     height: 36px;
   }
 }
@@ -2383,4 +2390,25 @@ button.active .city-icon-h {
   }
 }
 
-
+.expert-button .book-appointment:hover {
+  background: #ffffff;
+  color: #ff6800 !important;
+}
+.expert-button .view-profile:hover {
+  background: #ffffff;
+  color: #ff6800 !important;
+}
+#hometop-process-treatment a:hover {
+  background: #ffffff;
+  color: #ff6800;
+}
+#hometop-process-treatment a:hover img {
+  border: 2px solid #ff6800;
+}
+#home-health-queries a:hover {
+  background: #ffffff;
+  color: #ff6800;
+}
+#home-health-queries a:hover img {
+  border: 2px solid #ff6800;
+}

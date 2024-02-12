@@ -43,16 +43,6 @@ const NewSearchTreatment = () => {
     fetchData();
   }, []);
 
-  // useEffect(() => {
-  //   axios
-  //     .get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/hospital-list-category-country?country=${selectedCountry}`)
-  //     .then((response) => {
-  //       setSpecialities(response.data.data);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error fetching details data:", error);
-  //     });
-  // }, [selectedCountry]);
 
   useEffect(() => {
     const fetchDoctorsData = async () => {
@@ -66,6 +56,7 @@ const NewSearchTreatment = () => {
     fetchDoctorsData();
   }, [selectedCountry, selectedSpeciality, setDoctorsData]);
 
+  
   useEffect(() => {
     const fetchDoctorsData = async () => {
       const res = await fetch(

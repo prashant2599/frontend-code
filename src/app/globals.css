@@ -3849,8 +3849,9 @@ table strong {
 }
 
 .doc-profile {
-  font-size: 20px;
-  font-family: Helvetica Neue Medium;
+  font-size: 18px;
+  /* font-family: Helvetica Neue Medium; */
+  font-weight: 600;
 }
 
 .doc-profile img {
