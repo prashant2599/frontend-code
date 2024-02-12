@@ -157,14 +157,13 @@ const QuestionPopup = () => {
         isValid = false;
       }
     }
-    if (!userPhone) {
-      if (!phone || !phone.match(phoneRegex)) {
-        setFormErrors((prevErrors) => ({
-          ...prevErrors,
-          phone: "Please enter a valid Phone number",
-        }));
-        isValid = false;
-      }
+
+    if (!phone || !phone.match(phoneRegex)) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        phone: "Please enter a valid Phone number",
+      }));
+      isValid = false;
     }
 
     if (!userEmail) {
