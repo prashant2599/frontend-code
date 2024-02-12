@@ -24,10 +24,7 @@ const NewQuestionAns = async () => {
                 key={e.id}
               >
                 <div className="professionals-box">
-                  <img
-                    src="/images/icon-m.webp"
-                    alt="medflick-questions"
-                  />
+                  <img src="/images/icon-m.webp" alt="medflick-questions" />
                   <Link
                     href={`/question/${e.id}/${encodeURIComponent(
                       e.short_description

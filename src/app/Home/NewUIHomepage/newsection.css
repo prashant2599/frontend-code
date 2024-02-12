@@ -1765,7 +1765,6 @@ button.active .city-icon-h {
 
 .answer p {
   margin: 0;
-  text-align: justify;
   color: #15354e;
   font-size: 16px;
   font-family: Inter Regular;
@@ -2229,6 +2228,9 @@ button.active .city-icon-h {
   }
   .home-latest-updatesleft h2 {
     font-size: 27px;
+  }
+  .home-expert-text h3  {
+    height: 36px;
   }
 }
 

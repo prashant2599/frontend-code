@@ -4545,15 +4545,16 @@ table strong {
 }
 
 .hos-profile {
-  font-family: Helvetica Neue Medium;
+  /* font-family: Helvetica Neue Medium; */
   margin-right: 10px;
   display: flex;
   align-items: center;
   gap: 10px;
+  font-weight: 600;
 }
 
 .hos-profile span {
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .hosprofile-img {
@@ -4962,11 +4963,12 @@ table strong {
 }
 
 .doctor-item-doc h3 {
-  font-family: Helvetica Neue Medium;
-  font-size: 25px;
+  /* font-family: Helvetica Neue Medium; */
+  font-size: 22px;
   line-height: 30px;
   width: 100%;
   color: #000000;
+  font-weight: 600;
 }
 
 .doctor-item-doc .department-sub {
@@ -10516,12 +10518,13 @@ nav li:last-child {
 }
 
 .popup h2 {
-  font-family: Helvetica Neue Medium !important;
+  /* font-family: Helvetica Neue Medium !important; */
   color: #000000 !important;
-  font-size: 22px !important;
+  font-size: 21px !important;
   line-height: 25px !important;
   width: 100% !important;
   margin: 0px 0 15px !important;
+  font-weight: 600;
 }
 
 .popup .home-button {
