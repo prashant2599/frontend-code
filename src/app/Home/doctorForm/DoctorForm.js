@@ -496,7 +496,6 @@ const DoctorForm = ({ info }) => {
                       className="file__input--file"
                       id="customFile"
                       type="file"
-                      multiple="multiple"
                       name="files[]"
                       onChange={handleFileChange}
                     />

@@ -13894,6 +13894,7 @@ pre code {
   padding: 10px 10px 10px 24px;
   position: relative;
   cursor: pointer;
+  font-family: 'Inter Regular';
 }
 
 .searchbox-main:hover {
