@@ -34,7 +34,7 @@ const MobileSideBarShare = () => {
   };
   return (
     <>
-      <a onClick={togglePopupShare}>Share </a>
+      <span onClick={togglePopupShare}>Share </span>
       {isPopupOpenShare && (
         <div className="popup" data-popup="popup-3" style={popupStyleShare}>
           <div className="popup-inner3">
