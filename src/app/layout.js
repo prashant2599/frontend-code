@@ -7,7 +7,6 @@ import { Inter } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";
 import { ToggleQuestionProvider } from "./contex/toggleQuestionContext";
 import QuestionPopup from "./Home/QaForm/QuestionPopup";
-import Scroll from "./Home/scroll/Scroll";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -34,8 +33,7 @@ export default function RootLayout({ children }) {
     <>
       <html lang="en">
         <body>
-          <NextTopLoader color="#ffffff" showSpinner={false} />
-          <Scroll />
+          <NextTopLoader color="#ffffff" showSpinner={false} height={4} />
           <UserProvider>
             <ToggleQuestionProvider>
               <Allpopudp />
