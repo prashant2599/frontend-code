@@ -3831,7 +3831,7 @@ table strong {
 
 .sticky-p {
   position: fixed !important;
-  top: 80px;
+  top: 74px;
   z-index: 666;
   width: 100%;
   background: #fff2ea !important;
@@ -14657,7 +14657,7 @@ pre code {
 
 .questions-inner-left h3 {
   font-size: 18px;
-  font-family: Helvetica Neue Light;
+  /* font-family: Helvetica Neue Light; */
   color: #000;
   margin: 10px 0px;
   padding: 0px;
