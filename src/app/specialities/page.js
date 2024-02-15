@@ -5,7 +5,8 @@ import Marquee from "../Home/marquee/Marquee";
 
 async function getSpeciality() {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/speciality/list`
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/speciality/list`,
+    { cache: "no-store" }
   );
 
   if (!res.ok) {

@@ -3,10 +3,14 @@ import NewHeader from "../Home/NewUIHomepage/inc/NewHeader";
 import getAllHospitals from "../lib/getAllHospitals";
 import PartnersForm from "./PartnersForm";
 import Link from "next/link";
+import getAllHospitalsFilteration from "../lib/gerAllHospitalFilteration";
 
 const page = async () => {
-  const data = await getAllHospitals();
-  const hospital = data.data.hospital;
+  const data = await getAllHospitalsFilteration();
+  const hospital = data.data;
+  const featuredHospitals = hospital.filter(
+    (hospital) => hospital.featured === "1"
+  );
   return (
     <>
       <NewHeader />
@@ -36,9 +40,7 @@ const page = async () => {
 
       <section id="partner-medflick">
         <div className="midbox-inner  wiki-mk">
-          <h2>Why Choose Medflick as Your Partner?
-            
-          </h2>
+          <h2>Why Choose Medflick as Your Partner?</h2>
           <div className="partner-medflick">
             <div className="partner-medflick-item">
               <img src="/images/p1.png" alt="medflick-icon" />
@@ -91,7 +93,7 @@ const page = async () => {
           <h2>Our Partners</h2>
 
           <div className="partners-logo">
-            {hospital.map((e) => (
+            {featuredHospitals.map((e) => (
               <div className="logo-img" key={e.id}>
                 <Link href={`/hospital/${e.slug}`}>
                   <img
