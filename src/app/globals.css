@@ -3831,7 +3831,7 @@ table strong {
 
 .sticky-p {
   position: fixed !important;
-  top: 80px;
+  top: 74px;
   z-index: 666;
   width: 100%;
   background: #fff2ea !important;
