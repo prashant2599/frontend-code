@@ -10716,6 +10716,7 @@ nav li:last-child {
 .popup-inner2 h2 {
   text-align: center !important;
   margin: 0px 0 20px;
+  font-family: Inter Regular!important;
 }
 
 .popup-inner2 .medical-report {
