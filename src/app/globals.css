@@ -2,7 +2,7 @@
   font-family: Helvetica Neu Bold;
   src: url(../app/fonts/Helvetica-Neu-Bold.ttf);
   font-display: swap;
-} 
+}
 
 @font-face {
   font-family: Helvetica Neue Medium;
@@ -11710,35 +11710,6 @@ textarea {
 
 /* index.css */
 
-:root {
-  --blue: #ff6800;
-  --indigo: #6610f2;
-  --purple: #6f42c1;
-  --pink: #e83e8c;
-  --red: #dc3545;
-  --orange: #fd7e14;
-  --yellow: #ffc107;
-  --green: #28a745;
-  --teal: #20c997;
-  --cyan: #17a2b8;
-  --white: #fff;
-  --gray: #6c757d;
-  --gray-dark: #343a40;
-  --primary: #ff6800;
-  --secondary: #6c757d;
-  --success: #28a745;
-  --info: #17a2b8;
-  --warning: #ffc107;
-  --danger: #dc3545;
-  --light: #f8f9fa;
-  --dark: #343a40;
-  --breakpoint-xs: 0;
-  --breakpoint-sm: 576px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 992px;
-  --breakpoint-xl: 1200px;
-}
-
 *,
 ::after,
 ::before {
@@ -11824,15 +11795,6 @@ a:not([href]):not([class]),
 a:not([href]):not([class]):hover {
   color: inherit;
   text-decoration: none;
-}
-
-code,
-kbd,
-pre,
-samp {
-  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
-    "Courier New", monospace;
-  font-size: 1em;
 }
 
 pre {
@@ -11983,30 +11945,6 @@ template {
   font-weight: 300;
 }
 
-.display-1 {
-  font-size: 6rem;
-  font-weight: 300;
-  line-height: 1.2;
-}
-
-.display-2 {
-  font-size: 5.5rem;
-  font-weight: 300;
-  line-height: 1.2;
-}
-
-.display-3 {
-  font-size: 4.5rem;
-  font-weight: 300;
-  line-height: 1.2;
-}
-
-.display-4 {
-  font-size: 3.5rem;
-  font-weight: 300;
-  line-height: 1.2;
-}
-
 hr {
   box-sizing: content-box;
   height: 0;
@@ -12015,18 +11953,6 @@ hr {
   margin-bottom: 1rem;
   border: 0;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.small,
-small {
-  font-size: 80%;
-  font-weight: 400;
-}
-
-.mark,
-mark {
-  padding: 0.2em;
-  background-color: #fcf8e3;
 }
 
 .list-inline,
@@ -12131,19 +12057,6 @@ pre code {
   max-height: 340px;
   overflow-y: scroll;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .table {
   width: 100%;
