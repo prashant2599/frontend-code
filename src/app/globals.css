@@ -10001,6 +10001,7 @@ ul.tabs li.active {
   right: 0px;
   border-radius: 10px 10px 10px 10px;
   z-index: 999;
+  margin-top: -1.2px;
 }
 
 .dropdown-content ul {
