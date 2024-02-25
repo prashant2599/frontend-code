@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useToggleQuestion } from "../contex/toggleQuestionContext";
 
 const QuestionSearch = ({ qa }) => {
+  const { togglePopup } = useToggleQuestion();
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredQa, setFilteredQa] = useState([]);
 
@@ -39,7 +41,7 @@ const QuestionSearch = ({ qa }) => {
         <div className="search-medflick">
           <div className="search-box-medflick">
             <span>Search Terms:</span>
-            <div className="search-terms">
+            <div className="search-terms" style={{zIndex:"666"}}>
               <input
                 type="text"
                 placeholder="Search"
@@ -72,13 +74,16 @@ const QuestionSearch = ({ qa }) => {
                   ) : (
                     <>
                       <div>
-                        <p style={{ textAlign: "center" }}>
-                          No results found. Would you like to ask a question?
+                        <p style={{ textAlign: "center", padding: "10px" }}>
+                          No results found. Would you like to ask a question?{" "}
+                          <button
+                            onClick={togglePopup}
+                            style={{ cursor: "pointer" }}
+                          >
+                            Ask a Free Question
+                          </button>
                         </p>
                       </div>
-                      {/* <div className="search-question-right">
-                        <PopForm  />
-                      </div> */}
                     </>
                   )}
                 </div>
