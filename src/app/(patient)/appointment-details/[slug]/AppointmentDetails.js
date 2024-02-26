@@ -3,13 +3,21 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Link from "next/link";
 import CancelAppointment from "./CancelAppointment";
+import { useRouter } from "next/navigation";
 
 const AppointmentDetails = ({ info }) => {
+  const router = useRouter();
   const doctorId = info.doctor_id;
   const hospitalId = info.hospital_id;
 
   const [doctor, setDoctor] = useState("");
   const [hospital, setHospital] = useState("");
+
+  useEffect(() => {
+    if (!localStorage.getItem("userId")) {
+      router.push("/");
+    }
+  });
 
   useEffect(() => {
     if (doctorId) {
