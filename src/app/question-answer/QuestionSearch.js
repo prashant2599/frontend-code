@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useToggleQuestion } from "../contex/toggleQuestionContext";
 
 const QuestionSearch = ({ qa }) => {
-  const { togglePopup } = useToggleQuestion();
+  const { togglePopup, isPopupOpen } = useToggleQuestion();
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredQa, setFilteredQa] = useState([]);
 
@@ -14,7 +14,7 @@ const QuestionSearch = ({ qa }) => {
     setSearchTerm(term);
 
     // Check if the search term has at least three characters
-    if (term.length >= 3) {
+    if (term.length >= 2) {
       const filteredQuestions = qa.filter((question) =>
         question.short_description.toLowerCase().includes(term)
       );
@@ -33,6 +33,11 @@ const QuestionSearch = ({ qa }) => {
       (match) => `<span style="color: #ff6800;">${match}</span>`
     );
   };
+
+  const popupStyle = {
+    display: isPopupOpen ? "none" : "block",
+  };
+
   return (
     <>
       <div className="search-suestions">
@@ -41,16 +46,17 @@ const QuestionSearch = ({ qa }) => {
         <div className="search-medflick">
           <div className="search-box-medflick">
             <span>Search Terms:</span>
-            <div className="search-terms" style={{zIndex:"666"}}>
+            <div className="search-terms">
               <input
                 type="text"
                 placeholder="Search"
                 name="name"
                 value={searchTerm}
                 onChange={handleSearch}
+                autoFocus="off"
               />
-              {searchTerm.length >= 3 && (
-                <div className="searchbox-medf">
+              {searchTerm.length >= 2 && (
+                <div className="searchbox-medf" style={popupStyle}>
                   {filteredQa.length > 0 ? (
                     filteredQa.map((question) => (
                       <Link

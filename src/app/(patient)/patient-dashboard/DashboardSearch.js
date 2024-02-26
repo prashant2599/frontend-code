@@ -192,36 +192,36 @@ const DashboardSearch = () => {
                     </div>
                   </Link>
                 ))}
-
-                {/* {filteredBlogs.length > 0 ? <h3>Blogs</h3> : null}
-
-                {filteredBlogs.map((doctor) => (
-                  <Link
-                    key={doctor.id}
-                    href={`/blog/${doctor.slug}`}
-                    onClick={() => {
-                      setSearchQuery("");
-                      if (typeof togglePopup === "function") {
-                        togglePopup();
-                      }
-                      router.push(`/blog/${doctor.slug}`); // Navigate to the link
-                    }}
-                  >
-                    <div className="searchbox-main" key={doctor.id}>
-                      {doctor.name
-                        .split(new RegExp(`(${searchQuery})`, "gi"))
-                        .map((part, index) =>
-                          part.toLowerCase() === searchQuery.toLowerCase() ? (
-                            <span key={index} style={{ color: "#ff6800" }}>
-                              {part}
-                            </span>
-                          ) : (
-                            <span key={index}>{part}</span>
-                          )
-                        )}
+                {filteredSpeciality.length === 0 &&
+                  filteredTreatment.length === 0 &&
+                  filteredDoctors.length === 0 &&
+                  filteredHospitals.length === 0 && (
+                    <div>
+                      <p
+                        style={{
+                          textAlign: "center",
+                          color: "#000",
+                          padding: "10px",
+                        }}
+                      >
+                        Can't find what are you looking for?{" "}
+                        <Link
+                          href="/contact-us"
+                          style={{ color: "#ff6800" }}
+                          onClick={() => {
+                            setSearchQuery("");
+                            if (typeof togglePopup === "function") {
+                              togglePopup();
+                            }
+                            router.push("/contact-us");
+                          }}
+                        >
+                          Click here
+                        </Link>{" "}
+                        for quick assistance
+                      </p>
                     </div>
-                  </Link>
-                ))} */}
+                  )}
               </div>
             )}
           </div>

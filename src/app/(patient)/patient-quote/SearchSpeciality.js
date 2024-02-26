@@ -105,6 +105,34 @@ const SearchSpeciality = () => {
                 </div>
               </Link>
             ))}
+            {filteredSpeciality.length === 0 &&
+              filteredTreatment.length === 0 && (
+                <div>
+                  <p
+                    style={{
+                      textAlign: "center",
+                      color: "#000",
+                      padding: "10px",
+                    }}
+                  >
+                    Can't find what are you looking for?{" "}
+                    <Link
+                      href="/contact-us"
+                      style={{ color: "#ff6800" }}
+                      onClick={() => {
+                        setSearchQuery("");
+                        if (typeof togglePopup === "function") {
+                          togglePopup();
+                        }
+                        router.push("/contact-us");
+                      }}
+                    >
+                      Click here
+                    </Link>{" "}
+                    for quick assistance
+                  </p>
+                </div>
+              )}
           </div>
         )}
       </div>
