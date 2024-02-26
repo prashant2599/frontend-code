@@ -106,6 +106,35 @@ const Search = () => {
                 </div>
               </Link>
             ))}
+            {filteredHospitals.length === 0 && filteredDoctors.length === 0 && (
+              <div>
+                <p
+                  style={{
+                    textAlign: "center",
+                    color: "#000",
+                    padding: "10px",
+                    fontSize: "16px",
+                    fontFamily: "Inter Regular",
+                  }}
+                >
+                  Can't find what are you looking for?{" "}
+                  <Link
+                    href="/contact-us"
+                    style={{ color: "#ff6800" }}
+                    onClick={() => {
+                      setSearchQuery("");
+                      if (typeof togglePopup === "function") {
+                        togglePopup();
+                      }
+                      router.push("/contact-us");
+                    }}
+                  >
+                    Click here
+                  </Link>{" "}
+                  for quick assistance
+                </p>
+              </div>
+            )}
           </div>
         )}
       </div>

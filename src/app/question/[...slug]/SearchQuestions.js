@@ -3,8 +3,10 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import getAllSpeciality from "@/app/lib/getAllSpeciality";
+import { useToggleQuestion } from "@/app/contex/toggleQuestionContext";
 
 const SearchQuestions = () => {
+  const { togglePopup, isPopupOpen } = useToggleQuestion();
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredQa, setFilteredQa] = useState([]);
   const [qa, setQa] = useState([]);
@@ -28,7 +30,7 @@ const SearchQuestions = () => {
     setSearchTerm(term);
 
     // Check if the search term has at least three characters
-    if (term.length >= 3) {
+    if (term.length >= 2) {
       const filteredQuestions = qa.filter((question) =>
         question.short_description.toLowerCase().includes(term)
       );
@@ -47,6 +49,10 @@ const SearchQuestions = () => {
       (match) => `<span style="color: #ff6800;">${match}</span>`
     );
   };
+
+  const popupStyle = {
+    display: isPopupOpen ? "none" : "block",
+  };
   return (
     <>
       <div className="search-suestions">
@@ -62,8 +68,8 @@ const SearchQuestions = () => {
                 value={searchTerm}
                 onChange={handleSearch}
               />
-              {searchTerm.length >= 3 && (
-                <div className="searchbox-medf">
+              {searchTerm.length >= 2 && (
+                <div className="searchbox-medf" style={popupStyle}>
                   {filteredQa.length > 0 ? (
                     filteredQa.map((question) => (
                       <Link
@@ -72,7 +78,7 @@ const SearchQuestions = () => {
                             .toLowerCase()
                             .replace(/[^\w\s]/g, "-")
                             .replace(/\s+/g, "-")
-                            .replace(/-+$/, "") // Remove trailing hyphen(s)
+                            .replace(/-+$/, "")
                         )}`}
                         key={question.id}
                       >
@@ -87,13 +93,16 @@ const SearchQuestions = () => {
                   ) : (
                     <>
                       <div>
-                        <p style={{ textAlign: "center" }}>
-                          No results found. Would you like to ask a question?
+                        <p style={{ textAlign: "center", padding: "10px" }}>
+                          No results found. Would you like to ask a question?{" "}
+                          <button
+                            onClick={togglePopup}
+                            style={{ cursor: "pointer" }}
+                          >
+                            Ask a Free Question
+                          </button>
                         </p>
                       </div>
-                      {/* <div className="search-question-right">
-                        <PopForm  />
-                      </div> */}
                     </>
                   )}
                 </div>

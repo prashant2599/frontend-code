@@ -237,16 +237,28 @@ const HeaderSearch = ({ togglePopup }) => {
               </div>
             ) : (
               <div>
-                <p style={{ textAlign: "center", color: "#000",padding:"10px" }}>
+                <p
+                  style={{
+                    textAlign: "center",
+                    color: "#000",
+                    padding: "10px",
+                  }}
+                >
                   Can't find what are you looking for?{" "}
-                  <Link href="/request-a-free-quote" style={{color:"#ff6800"}}  onClick={() => {
+                  <Link
+                    href="/contact-us"
+                    style={{ color: "#ff6800" }}
+                    onClick={() => {
                       setSearchQuery("");
                       if (typeof togglePopup === "function") {
                         togglePopup();
                       }
-                      router.push("/request-a-free-quote"); // Navigate to the link
-                    }} >Click here</Link> for quick
-                  assistance
+                      router.push("/contact-us"); // Navigate to the link
+                    }}
+                  >
+                    Click here
+                  </Link>{" "}
+                  for quick assistance
                 </p>
               </div>
             )}
