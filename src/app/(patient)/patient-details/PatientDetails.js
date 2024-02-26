@@ -18,6 +18,12 @@ const PatientDetails = () => {
 
   const [isLoading, setIsLoading] = useState(false);
 
+  useEffect(() => {
+    if (!localStorage.getItem("userId")) {
+      router.push("/");
+    }
+  });
+
   const [formErrors, setFormErrors] = useState({
     name: "",
     phone: "",
@@ -128,7 +134,7 @@ const PatientDetails = () => {
         uhid: uhid,
         passport: passport,
       };
-      
+
       localStorage.setItem("patientFormData", JSON.stringify(formData));
 
       // Assuming you have a function called clearFormFields

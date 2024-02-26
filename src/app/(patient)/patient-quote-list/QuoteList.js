@@ -4,13 +4,21 @@ import axios from "axios";
 import getAllSpeciality from "@/app/lib/getAllSpeciality";
 import Link from "next/link";
 import CancelQuote from "./CancelQuote";
+import { useRouter } from "next/navigation";
 
 const QuoteList = () => {
+  const router = useRouter();
   const [quoteList, setQuoteList] = useState([]);
   const [speciality, setSpeciality] = useState([]);
   const [treatment, setTreatment] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredQuoteList, setFilteredQuoteList] = useState([]);
+
+  useEffect(() => {
+    if (!localStorage.getItem("userId")) {
+      router.push("/");
+    }
+  });
 
   useEffect(() => {
     const fetchData = async () => {

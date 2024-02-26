@@ -3,11 +3,18 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import CancelAppointmentList from "./CancelAppointmentList";
+import { useRouter } from "next/navigation";
 
 const AppoinmentList = () => {
   const [quoteList, setQuoteList] = useState([]);
-
+  const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
+
+  useEffect(() => {
+    if (!localStorage.getItem("userId")) {
+      router.push("/");
+    }
+  });
 
   useEffect(() => {
     const storedUserId = localStorage.getItem("userId");
@@ -65,8 +72,15 @@ const AppoinmentList = () => {
           <div className="appointment-new-list">
             {quoteList.length === 0 ? (
               <div>
-                <p style={{textAlign:"center",paddingTop:"20px",paddingBottom:"20px",color:"#009200"}}>
-                No upcoming appointments at the moment. Stay healthy and well!
+                <p
+                  style={{
+                    textAlign: "center",
+                    paddingTop: "20px",
+                    paddingBottom: "20px",
+                    color: "#009200",
+                  }}
+                >
+                  No upcoming appointments at the moment. Stay healthy and well!
                 </p>
               </div>
             ) : (

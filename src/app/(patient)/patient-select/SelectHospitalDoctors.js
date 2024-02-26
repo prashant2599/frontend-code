@@ -12,6 +12,12 @@ const SelectHospitalDoctors = () => {
   const [treatment, seTeatment] = useState("");
 
   useEffect(() => {
+    if (!localStorage.getItem("userId")) {
+      router.push("/");
+    }
+  });
+
+  useEffect(() => {
     const storedSpeciality = localStorage.getItem("selectedspecialityName");
     const storedTreatment = localStorage.getItem("selectedTreatmentName");
 
@@ -87,7 +93,6 @@ const SelectHospitalDoctors = () => {
         )
         .then((response) => {
           setDoctors(response.data.doctors_list.doctors_list);
-          
         })
         .catch((error) => {
           console.error("Error fetching details data:", error);
@@ -116,15 +121,10 @@ const SelectHospitalDoctors = () => {
     router.push("/patient-details");
   };
 
-  
-
   const filteredDoctors = doctors.filter(
     (doctor) => doctor.hospital_id === String(selectedHospitalId)
   );
 
-  
-
-  
   return (
     <>
       <section id="request-quote-section">
