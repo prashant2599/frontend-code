@@ -36,11 +36,10 @@ const HeaderSearch = ({ togglePopup }) => {
   }, []);
 
   const filteredSpeciality = speciality
-  ? speciality.filter((item) =>
-      item.menu_name?.toLowerCase().includes(searchQuery.toLowerCase())
-    )
-  : [];
-
+    ? speciality.filter((item) =>
+        item.menu_name?.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    : [];
 
   const filteredTreatment = treatment
     ? treatment.filter((item) =>
@@ -80,7 +79,7 @@ const HeaderSearch = ({ togglePopup }) => {
           onChange={(e) => setSearchQuery(e.target.value)}
           autoComplete="off"
         />
-        {searchQuery.length >= 2 && (
+        {searchQuery.length >= 1 && (
           <div className="searchbox-medf">
             {filteredSpeciality.length > 0 ||
             filteredTreatment.length > 0 ||
@@ -238,7 +237,17 @@ const HeaderSearch = ({ togglePopup }) => {
               </div>
             ) : (
               <div>
-                <p style={{ textAlign: "center" }}>No data found</p>
+                <p style={{ textAlign: "center", color: "#000",padding:"10px" }}>
+                  Can't find what are you looking for?{" "}
+                  <Link href="/request-a-free-quote" style={{color:"#ff6800"}}  onClick={() => {
+                      setSearchQuery("");
+                      if (typeof togglePopup === "function") {
+                        togglePopup();
+                      }
+                      router.push("/request-a-free-quote"); // Navigate to the link
+                    }} >Click here</Link> for quick
+                  assistance
+                </p>
               </div>
             )}
           </div>
