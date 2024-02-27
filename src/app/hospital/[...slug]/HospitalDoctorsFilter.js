@@ -159,35 +159,40 @@ const HospitalDoctorsFilter = ({ doctor }) => {
             />
             {searchQuery.length >= 2 && (
               <div className="searchbox-medf" style={{ textAlign: "start" }}>
-                {searchDoctors.map((doctor) => (
-                  <Link
-                    key={doctor.id}
-                    href={`/doctor/${doctor.slug}`}
-                    onClick={() => {
-                      setSearchQuery("");
-                      if (typeof togglePopup === "function") {
-                        togglePopup();
-                      }
-                      router.push(`/doctor/${doctor.slug}`); // Navigate to the link
-                    }}
-                  >
-                    <div className="searchbox-main" key={doctor.id}>
-                      {`${doctor.prefix} ${doctor.first_name} ${doctor.last_name}`
-                        .split(new RegExp(`(${searchQuery})`, "gi"))
-                        .map((part, index) =>
-                          part.toLowerCase() === searchQuery.toLowerCase() ? (
-                            <span key={index} style={{ color: "#ff6800" }}>
-                              {part}
-                            </span>
-                          ) : (
-                            <span key={index}>{part}</span>
-                          )
-                        )}
-                    </div>
-                  </Link>
-                ))}
+                {searchDoctors.length > 0 ? (
+                  searchDoctors.map((doctor) => (
+                    <Link
+                      key={doctor.id}
+                      href={`/doctor/${doctor.slug}`}
+                      onClick={() => {
+                        setSearchQuery("");
+                        if (typeof togglePopup === "function") {
+                          togglePopup();
+                        }
+                        router.push(`/doctor/${doctor.slug}`); // Navigate to the link
+                      }}
+                    >
+                      <div className="searchbox-main" key={doctor.id}>
+                        {`${doctor.prefix} ${doctor.first_name} ${doctor.last_name}`
+                          .split(new RegExp(`(${searchQuery})`, "gi"))
+                          .map((part, index) =>
+                            part.toLowerCase() === searchQuery.toLowerCase() ? (
+                              <span key={index} style={{ color: "#ff6800" }}>
+                                {part}
+                              </span>
+                            ) : (
+                              <span key={index}>{part}</span>
+                            )
+                          )}
+                      </div>
+                    </Link>
+                  ))
+                ) : (
+                  <div style={{textAlign:"center",padding:"5px"}}>No doctors found</div>
+                )}
               </div>
             )}
+
             {/* {searchDoctors.length > 0 ? (
               <ul
                 className="search-results"
@@ -278,7 +283,7 @@ const HospitalDoctorsFilter = ({ doctor }) => {
         </div>
         {filteredDoctors.length === 0 ? (
           <div>
-            <p style={{ textAlign: "center", margin: "18px" }}>
+            <p style={{ textAlign: "center", margin: "18px", color: "#000" }}>
               No Doctor Found
             </p>
           </div>
