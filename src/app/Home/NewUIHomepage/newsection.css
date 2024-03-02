@@ -2412,3 +2412,8 @@ button.active .city-icon-h {
 #home-health-queries a:hover img {
   border: 2px solid #ff6800;
 }
+
+.centeredDiv {
+ margin: 0 auto;
+}
+
