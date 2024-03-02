@@ -171,7 +171,19 @@ const DoctorsSearch = () => {
                 ) : (
                   <>
                     <div>
-                      <p style={{ textAlign: "center" }}>No results found.</p>
+                      <p
+                        style={{
+                          textAlign: "center",
+                          color: "#000",
+                          padding: "10px",
+                        }}
+                      >
+                        Can't find what are you looking for?{" "}
+                        <Link href="/contact-us" style={{ color: "#ff6800" }}>
+                          Click here
+                        </Link>{" "}
+                        for quick assistance
+                      </p>
                     </div>
                   </>
                 )}
