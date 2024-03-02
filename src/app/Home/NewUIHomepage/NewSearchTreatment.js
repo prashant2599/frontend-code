@@ -5,6 +5,7 @@ import getALLCountry from "@/app/lib/getAllCountry";
 import getAllSpeciality from "@/app/lib/getAllSpeciality";
 import HomeDoctorForm from "../doctorForm/HomeDoctorForm";
 import HomeHospitalForm from "../hospitalForm/HomeHospitalForm";
+import { Dna } from "react-loader-spinner";
 
 function formatText(text) {
   if (typeof text === "string") {
@@ -43,28 +44,41 @@ const NewSearchTreatment = () => {
     fetchData();
   }, []);
 
-
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     const fetchDoctorsData = async () => {
-      const res = await fetch(
-        `https://dev.medflick.com/api/doctorsforhome/${selectedSpeciality}/${selectedCountry}`
-      );
-      const data = await res.json();
-      setDoctorsData(data.doctors_list);
+      try {
+        const res = await fetch(
+          `https://dev.medflick.com/api/doctorsforhome/${selectedSpeciality}/${selectedCountry}`
+        );
+        const data = await res.json();
+        setDoctorsData(data.doctors_list);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setIsLoading(false);
+      }
     };
 
     fetchDoctorsData();
-  }, [selectedCountry, selectedSpeciality, setDoctorsData]);
+  }, [selectedCountry, selectedSpeciality]);
 
-  
+  const [isLoadingHospital, setIsLoadingHospital] = useState(true);
+
   useEffect(() => {
     const fetchDoctorsData = async () => {
-      const res = await fetch(
-        `https://dev.medflick.com/api/hospitalsforhome/${selectedSpeciality}/${selectedCountry}`
-      );
-      const data = await res.json();
+      try {
+        const res = await fetch(
+          `https://dev.medflick.com/api/hospitalsforhome/${selectedSpeciality}/${selectedCountry}`
+        );
+        const data = await res.json();
 
-      setHospitalsData(data.hospital_list.hospital_list);
+        setHospitalsData(data.hospital_list.hospital_list);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setIsLoadingHospital(false);
+      }
     };
 
     // Fetch data when selectedCountry or selectedSpeciality changes
@@ -145,7 +159,18 @@ const NewSearchTreatment = () => {
         </div>
 
         <div className="home-doctors">
-          {Doctors.length > 0 ? (
+          {isLoading ? (
+            <div className="centeredDiv">
+              <Dna
+                visible={true}
+                height="100"
+                width="100"
+                ariaLabel="dna-loading"
+                wrapperStyle={{}}
+                wrapperClass="dna-wrapper"
+              />
+            </div>
+          ) : Doctors.length > 0 ? (
             Doctors.map((e) => (
               <div className="item" key={e.id}>
                 <div className="item-home-expert">
@@ -190,7 +215,7 @@ const NewSearchTreatment = () => {
               </div>
             ))
           ) : (
-            <p>Oops, no doctors found.</p>
+            <div>No doctors found</div>
           )}
         </div>
       </div>
@@ -218,7 +243,18 @@ const NewSearchTreatment = () => {
         </div>
 
         <div className="home-hospitals">
-          {Hospitals.length > 0 ? (
+          {isLoadingHospital ? (
+            <div className="centeredDiv">
+              <Dna
+                visible={true}
+                height="100"
+                width="100"
+                ariaLabel="dna-loading"
+                wrapperStyle={{}}
+                wrapperClass="dna-wrapper"
+              />
+            </div>
+          ) : Hospitals.length > 0 ? (
             Hospitals.map((e) => (
               <div className="item" key={e.id}>
                 <div className="item-home-expert">
