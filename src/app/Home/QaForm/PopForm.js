@@ -3,7 +3,6 @@
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { ThreeDots } from "react-loader-spinner";
-import "react-toastify/dist/ReactToastify.css";
 import "intl-tel-input/build/css/intlTelInput.css";
 import intlTelInput from "intl-tel-input";
 import Success from "../successPopup/Success";
