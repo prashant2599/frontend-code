@@ -6,8 +6,6 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useUser } from "../UserContext";
 import ForgotPassword from "./ForgotPassword";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import SurePopup from "../Home/successPopup/SurePopup";
 
 const Login = () => {
@@ -80,9 +78,7 @@ const Login = () => {
         localStorage.setItem("userEmail", response.data.data.email);
         localStorage.setItem("userPhone", response.data.data.phone);
         localStorage.setItem("lastLogin", response.data.data.last_login);
-        toast.success("You are successfully logged in", {
-          position: toast.POSITION.TOP_RIGHT,
-        });
+
         const redirectUrl = previousUrl
           ? `/${previousUrl}`
           : "/patient-dashboard";
@@ -268,7 +264,6 @@ const Login = () => {
           sureDesc={sureDesc}
         />
       )}
-      <ToastContainer />
     </>
   );
 };
