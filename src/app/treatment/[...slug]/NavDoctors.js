@@ -46,7 +46,12 @@ const NavDoctors = ({ doctor }) => {
                     <h3>
                       {e.prefix} {e.first_name} {e.last_name}
                     </h3>
-                    <div className="doctors-sub">{e.designation}</div>
+                    <div className="doctors-sub">
+                      {e.designation.length > 30
+                        ? e.designation.slice(0, 30) + "..."
+                        : e.designation}
+                    </div>
+
                     <Link href={`/doctor/${e.slug}`} className="contact-now">
                       Contact Now{" "}
                       <img src="/images/2023/01/arrow-c.png" alt="arrow-icon" />

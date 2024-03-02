@@ -1426,7 +1426,7 @@ button.active .city-icon-h {
 
 #home-health-queries a {
   background: #ff6800;
-  font-family: Helvetica Neue Medium;
+  font-family: "Inter Medium";
   color: #fff;
   border: 2px solid #ff6800;
   margin: 20px auto;
@@ -1884,7 +1884,7 @@ button.active .city-icon-h {
 
 #home-latest-resources .new-blogs {
   background: #ff6800;
-  font-family: Helvetica Neue Medium;
+  font-family: 'Inter Medium';
   color: #fff;
   border: 2px solid #ff6800;
   margin: 40px auto;
