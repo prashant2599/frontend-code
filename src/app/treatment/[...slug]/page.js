@@ -483,7 +483,7 @@ const page = async ({ params }) => {
                   <p>
                     Fostering expertise backed by commitment, resilience and
                     years of experience, we connect you to a wide network of
-                    India&pos;s best doctors
+                    India's best doctors
                   </p>
 
                   <NavDoctors doctor={doctor} />

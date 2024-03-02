@@ -104,21 +104,15 @@ const page = async ({ params }) => {
                               </div>
                               <ul className="tabs tab-h">
                                 {galleryImages.map((e) => (
-                                  <React.Fragment
-                                    className="active"
-                                    id="tab1"
-                                    key={e.id}
-                                  >
+                                  <React.Fragment key={e.id}>
                                     {e.icon
                                       .split(",")
+                                      .slice(0, 2)
                                       .map((imageName, index) => (
                                         <li className="active" key={index}>
-                                          <Image
-                                            key={index}
-                                            src={`https://dev.medflick.com/hospital/${imageName.trim()}`} // Trim to remove any leading/trailing spaces
+                                          <img
+                                            src={`https://dev.medflick.com/hospital/${imageName.trim()}`}
                                             alt={`Image ${index + 1}`}
-                                            width="150"
-                                            height="50"
                                           />
                                         </li>
                                       ))}

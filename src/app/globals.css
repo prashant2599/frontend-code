@@ -403,20 +403,20 @@ a:hover {
 
 @media (min-width: 64rem) {
   .navbar__buttons a {
-    font-size: 16px;
-    font-family: Helvetica Neue Medium;
+    font-size: 15.5px;
+    font-family: 'Inter Medium';
   }
 }
 
 @media (min-width: 90rem) {
   .navbar__buttons a {
-    font-size: 16px;
-    font-family: Helvetica Neue Medium;
+    font-size: 15.5px;
+    font-family: 'Inter Medium';
   }
 
   .page-header ul a {
-    font-size: 16px !important;
-    font-family: Helvetica Neue Medium;
+    font-size: 15.5px !important;
+    font-family: 'Inter Medium';
   }
 }
 
@@ -2631,10 +2631,10 @@ textarea {
 .city-box h3 {
   font-size: 24px;
   color: #fff;
-  font-family: Helvetica Neue Medium;
   margin-bottom: 10px;
   padding-bottom: 10px;
   border-bottom: 1px solid #fff;
+  font-weight: 600;
 }
 
 .city-box ul {
@@ -2977,10 +2977,11 @@ table strong {
 
 .consultation-button {
   font-size: 18px;
-  font-family: Helvetica Neue Medium;
+  /* font-family: Helvetica Neue Medium; */
   color: #ff6800;
   display: flex;
   align-items: center;
+  font-weight: 600;
 }
 
 .consultation-button img {
@@ -3305,12 +3306,12 @@ table strong {
   text-align: center;
   font-size: 16px;
   padding: 10px;
-  font-family: Helvetica Neue Medium;
+  /* font-family: Helvetica Neue Medium; */
 }
 
 .free-consultation a {
   background: #ff6800;
-  font-family: Helvetica Neue Medium;
+  font-family: 'Inter Medium';
   color: #ffffff !important;
   font-size: 18px;
   border-radius: 0 0 16px 16px;
@@ -3419,6 +3420,8 @@ table strong {
   color: #fff;
   font-size: 18px;
   letter-spacing: 0px;
+  font-family: Inter Regular;
+  font-weight: 600;
 }
 
 .doctors-treat .doctors-sub {
@@ -3489,6 +3492,8 @@ table strong {
   color: #fff;
   font-size: 18px;
   letter-spacing: 0px;
+  font-family: Inter Regular !important;
+  font-weight: 600;
 }
 
 .hospitals-treat .hospitals-sub {
@@ -16298,6 +16303,15 @@ textarea {
 .treatment-midbox table {
   width: 100% !important;
   text-align: left !important;
+}
+
+.treatment-midbox table span {
+  font-family: Inter Regular !important;
+  color: #575757 !important;
+}
+.treatment-midbox table strong {
+  color: #575757 !important;
+  font-weight: 600 !important;
 }
 
 #google_translate_element .goog-te-gadget-simple {
