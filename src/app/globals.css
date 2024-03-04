@@ -22,6 +22,13 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: Inter Medium;
+  src: url(../app/fonts/Inter-Medium.ttf);
+  font-display: swap;
+}
+
+
 html {
   scroll-behavior: smooth;
 }
@@ -10291,6 +10298,7 @@ ul.tabs li.active {
 
   .page-header ul a {
     font-size: 1.6rem;
+    font-family: 'Inter Medium';
   }
 
   /*.page-header .search-form input {
@@ -10335,6 +10343,7 @@ nav li:last-child {
 
 .page-header ul a {
   font-size: 16px;
+  
 }
 
 .page-header .has-dropdown i {
