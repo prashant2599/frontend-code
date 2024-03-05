@@ -36,9 +36,26 @@ const HeaderSearch = ({ togglePopup }) => {
   }, []);
 
   const filteredSpeciality = speciality
-    ? speciality.filter((item) =>
-        item.menu_name?.toLowerCase().includes(searchQuery.toLowerCase())
-      )
+    ? speciality.filter((item) => {
+        const nameMatch = item.name
+          ?.toLowerCase()
+          .includes(searchQuery.toLowerCase());
+        const searchTerms = item.search_term ? item.search_term.split(",") : [];
+        const searchMatch = searchTerms.some((term) => {
+          const termWithoutSpaces = term.trim();
+          const wordsAfterComma = termWithoutSpaces
+            .split(" ")
+            .slice(1)
+            .join(" ");
+          return (
+            termWithoutSpaces
+              .toLowerCase()
+              .includes(searchQuery.toLowerCase()) ||
+            wordsAfterComma.toLowerCase().includes(searchQuery.toLowerCase())
+          );
+        });
+        return nameMatch || searchMatch;
+      })
     : [];
 
   const filteredTreatment = treatment
