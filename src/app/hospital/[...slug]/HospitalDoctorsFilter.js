@@ -88,7 +88,7 @@ const HospitalDoctorsFilter = ({ doctor }) => {
       return "30+ years experience";
     }
   }
-  // Function to handle city selection
+
   const handleSelectDep = (selectedOption) => {
     setSelecteddep(selectedOption);
   };
@@ -188,46 +188,12 @@ const HospitalDoctorsFilter = ({ doctor }) => {
                     </Link>
                   ))
                 ) : (
-                  <div style={{textAlign:"center",padding:"5px"}}>No doctors found</div>
+                  <div style={{ textAlign: "center", padding: "5px" }}>
+                    No doctors found
+                  </div>
                 )}
               </div>
             )}
-
-            {/* {searchDoctors.length > 0 ? (
-              <ul
-                className="search-results"
-                style={{
-                  maxHeight: "200px",
-                  overflowY: "auto",
-                  padding: "0",
-                  listStyle: "none",
-                  marginTop: "5px",
-                  marginLeft: "0px",
-                  borderRadius: "4px",
-                  position: "absolute",
-                  background: "#f1f1f1",
-                  width: "270px",
-                  zIndex: "1",
-                }}
-              >
-                {searchQuery &&
-                  searchDoctors.map((doctor) => (
-                    <Link href={`/doctor/${doctor.slug}`} key={doctor.id}>
-                      <li>
-                        <h6
-                          style={{ color: "black", padding: "5px" }}
-                        >{`${doctor.prefix} ${doctor.first_name} ${doctor.last_name}`}</h6>
-                      </li>
-                    </Link>
-                  ))}
-              </ul>
-            ) : (
-              showNotFoundMessage && (
-                <>
-                  <h6> OOPS! No doctors found </h6>
-                </>
-              )
-            )} */}
           </div>
 
           <div className="ding">
@@ -236,7 +202,7 @@ const HospitalDoctorsFilter = ({ doctor }) => {
               value={selectedLocation}
               onChange={handleSelectCity}
               options={cityOptions}
-              isSearchable={true} // Enables search
+              isSearchable={true}
               placeholder="Gender"
               maxMenuHeight={150}
             />
