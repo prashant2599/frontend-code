@@ -314,8 +314,9 @@ export async function generateMetadata({ params }) {
 
   if (!hospitalDetails.description)
     return {
+      title: hospitalDetails.name + ", " + hospitalDetails.country,
       description:
-        "Book an appointment at" +
+        "Book an appointment at " +
         hospitalDetails.name +
         " " +
         hospitalDetails.city +
