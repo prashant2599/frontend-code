@@ -3,8 +3,8 @@ import React, { useRef, useState, createRef } from "react";
 
 const NewVideoSection = () => {
   const videoSources = [
-    "https://medflick-frontend.s3.ap-south-1.amazonaws.com/Pain.mp4",
-    "https://medflick-frontend.s3.ap-south-1.amazonaws.com/DrSanjay.mp4",
+    "https://images.medflick.com/Pain.mp4",
+    "https://images.medflick.com/DrSanjay.mp4",
     // Add more video sources as needed
   ];
   const [playingIndex, setPlayingIndex] = useState(null);
