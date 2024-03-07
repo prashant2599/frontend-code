@@ -161,7 +161,7 @@ const CategoryWiseDoctor = () => {
                             className="view-profile"
                           >
                             View Profile{" "}
-                            <img src="/images/2023/05/profile.png" alt="icon" />
+                            <img  src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/05/profile.png`} alt="icon" />
                           </Link>
                         ) : (
                           <span>No profile available</span>

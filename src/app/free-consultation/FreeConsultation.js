@@ -8,6 +8,8 @@ import intlTelInput from "intl-tel-input";
 import Success from "../Home/successPopup/Success";
 import ErrorPopup from "../Home/successPopup/ErrorPopup";
 import ReCaptchaComponent from "../Home/ReCapcha/ReCaptchaComponent";
+import CustomUploadIcon from "../Home/CustomTwitterIcon/CustomUploadIcon";
+import CustomFormArrowIcon from "../Home/CustomTwitterIcon/CustomFormArrowIcon";
 
 const FreeConsultation = () => {
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
@@ -393,8 +395,8 @@ const FreeConsultation = () => {
                               data-text-btn=" "
                             >
                               {" "}
-                              <img src="/images/upload-icon1.png" /> Choose
-                              files or drag &amp; drop{" "}
+                              <CustomUploadIcon /> Choose files or drag &amp;
+                              drop{" "}
                             </label>
                           </div>
                           {fileValidationMessage && (
@@ -429,32 +431,38 @@ const FreeConsultation = () => {
                       ) : (
                         "Submit Now"
                       )}
-                      <img src="/images/2023/01/arrow-c.png" alt="arrow-Icon" />
+                      <CustomFormArrowIcon />
                     </button>
                   </form>
                 </div>
               </div>
 
               <div className="homeform-right">
-                <img src="images/2023/01/home-q.jpg" alt="" />
+                <img
+                  src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/01/home-q.jpg`}
+                  alt="doctor-icon"
+                />
 
                 <div className="home-drbox">
                   <h4>We value your Privacy</h4>
                   <ul>
                     <li>
                       <img
-                        src="/images/2023/compliance helpline.png"
+                        src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/compliance helpline.png`}
                         alt="icon1"
                       />
                       <h5>Confidentiality</h5>
                     </li>
                     <li>
-                      <img src="/images/2023/confidentiality.png" alt="icon2" />
+                      <img
+                        src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/confidentiality.png`}
+                        alt="icon2"
+                      />
                       <h5>Transparent Policies</h5>
                     </li>
                     <li>
                       <img
-                        src="/images/2023/transparent policie.png"
+                        src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/transparent policie.png`}
                         alt="icon3"
                       />
                       <h5>Compliance Helpline</h5>

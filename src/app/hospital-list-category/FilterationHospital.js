@@ -5,7 +5,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useSearchParams } from "next/navigation";
 
-const FilterationHospital = ({country}) => {
+const FilterationHospital = ({ country }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [speciality, setSpeciality] = useState([]);
@@ -13,16 +13,15 @@ const FilterationHospital = ({country}) => {
   const [selectedSpecialtyId, setSelectedSpecialtyId] = useState("none");
   const [selectedCountry, setSelectedCountry] = useState(null);
 
-
-
-
-useEffect(() => {
+  useEffect(() => {
     // Fetch the details data based on the activePackage ID
     const country = searchParams.get("country");
-    const apiUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/api/hospital-list-category-country?country=${country}`
-    console.log(apiUrl)
+    const apiUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/api/hospital-list-category-country?country=${country}`;
+    console.log(apiUrl);
     axios
-      .get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/hospital-list-category-country?country=${country}`)
+      .get(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/hospital-list-category-country?country=${country}`
+      )
       .then((response) => {
         setSpeciality(response.data.data);
       })
@@ -99,7 +98,10 @@ useEffect(() => {
         </div>
         <div className="refresh-box" onClick={handleClearSelection}>
           <span>
-            <img src="/images/2023/05/loading.png" alt="icon" />
+            <img
+              src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/05/loading.png`}
+              alt="icon"
+            />
           </span>
         </div>
       </div>

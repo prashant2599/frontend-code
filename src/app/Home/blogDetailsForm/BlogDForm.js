@@ -7,6 +7,8 @@ import axios from "axios";
 import Success from "../successPopup/Success";
 import ErrorPopup from "../successPopup/ErrorPopup";
 import ReCaptchaComponent from "../ReCapcha/ReCaptchaComponent";
+import CustomUploadIcon from "../CustomTwitterIcon/CustomUploadIcon";
+import CustomFormArrowIcon from "../CustomTwitterIcon/CustomFormArrowIcon";
 
 const BlogDForm = () => {
   // Assistance form post
@@ -503,8 +505,7 @@ const BlogDForm = () => {
                       data-text-btn=" "
                     >
                       {" "}
-                      <img src="/images/upload-icon1.png" /> Choose files or
-                      drag &amp; drop{" "}
+                      <CustomUploadIcon /> Choose files or drag &amp; drop{" "}
                     </label>
                   </div>
                   {fileValidationMessage && (
@@ -538,7 +539,7 @@ const BlogDForm = () => {
               ) : (
                 "Submit Now"
               )}
-              <img src="/images/2023/01/arrow-c.png" alt="arrow-Icon" />
+              <CustomFormArrowIcon />
             </button>
           </form>
         </div>

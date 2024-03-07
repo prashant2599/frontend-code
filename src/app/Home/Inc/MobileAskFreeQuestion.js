@@ -11,7 +11,11 @@ const MobileAskFreeQuestion = () => {
         onClick={togglePopup}
         style={{ color: "#ff6800 !important" }}
       >
-        Ask Free Question <img src="/images/whiteArrow.png" alt="icon" />
+        Ask Free Question{" "}
+        <img
+          src={`${process.env.NEXT_PUBLICK_IMAGE_URL}/whiteArrow.png`}
+          alt="icon"
+        />
       </button>
       <QuestionPopup />
     </>

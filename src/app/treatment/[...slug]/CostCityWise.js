@@ -54,9 +54,9 @@ const CostCityWise = ({ cost, info }) => {
                         <h3>{e.name}</h3>
                         <ul>
                           <li>
-                            <h4>{e.lowest_cost}</h4>  
+                            <h4>{e.lowest_cost}</h4>
                             <img
-                              src="/images/2023/03/line-icon.png"
+                              src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/03/line-icon.png`}
                               alt="icons"
                             />
                             <h5>Lowest Cost (Approx)</h5>
@@ -64,7 +64,7 @@ const CostCityWise = ({ cost, info }) => {
                           <li>
                             <h4>{e.average_cost}</h4>
                             <img
-                              src="/images/2023/03/line-icon1.png"
+                              src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/03/line-icon1.png`}
                               alt="icons"
                             />
                             <h5>Average Cost (Approx)</h5>
@@ -72,7 +72,7 @@ const CostCityWise = ({ cost, info }) => {
                           <li>
                             <h4>{e.highest_cost}</h4>
                             <img
-                              src="/images/2023/03/line-icon2.png"
+                              src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/03/line-icon2.png`}
                               alt="icons"
                             />
                             <h5>Highest Cost (Approx)</h5>

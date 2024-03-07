@@ -8,6 +8,8 @@ import intlTelInput from "intl-tel-input";
 import Success from "../successPopup/Success";
 import ErrorPopup from "../successPopup/ErrorPopup";
 import ReCaptchaComponent from "../ReCapcha/ReCaptchaComponent";
+import CustomUploadIcon from "../CustomTwitterIcon/CustomUploadIcon";
+import CustomFormArrowIcon from "../CustomTwitterIcon/CustomFormArrowIcon";
 
 const AppointmentForm = ({ hospitalId, HospitalName, specialityId }) => {
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
@@ -427,7 +429,11 @@ const AppointmentForm = ({ hospitalId, HospitalName, specialityId }) => {
         onClick={togglePopup}
         style={{ cursor: "pointer" }}
       >
-        Book Appointment <img src="/images/2023/05/book.png" alt="icon" />
+        Book Appointment{" "}
+        <img
+          src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/05/book.png`}
+          alt="icon"
+        />
       </button>
       {isPopupOpen && (
         <div className="popup" data-popup="popup-1" style={popupStyle}>
@@ -539,8 +545,7 @@ const AppointmentForm = ({ hospitalId, HospitalName, specialityId }) => {
                           data-text-btn=" "
                         >
                           {" "}
-                          <img src="/images/upload-icon1.png" /> Choose files or
-                          drag &amp; drop{" "}
+                          <CustomUploadIcon /> Choose files or drag &amp; drop{" "}
                         </label>
                       </div>
                       {fileValidationMessage && (
@@ -573,7 +578,7 @@ const AppointmentForm = ({ hospitalId, HospitalName, specialityId }) => {
                   ) : (
                     "Submit Now"
                   )}
-                  <img src="/images/2023/01/arrow-c.png" alt="arrow-Icon" />
+                  <CustomFormArrowIcon />
                 </button>
               </form>
             </div>

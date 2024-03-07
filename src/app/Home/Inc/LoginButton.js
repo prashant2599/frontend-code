@@ -135,14 +135,17 @@ const LoginButton = () => {
           <div className="action">
             <div className="profile" onClick={toggleMenu}>
               <img
-                src="/images/userIcon.png"
+                src={`${process.env.NEXT_PUBLICK_IMAGE_URL}/userIcon.png`}
                 style={{ width: "46px", marginTop: "10px", cursor: "pointer" }}
               />
             </div>
             <div className={`menu ${isActive ? "active" : ""}`}>
               <ul>
                 <li>
-                  <img src="/images/dashboard.png" />
+                  <img
+                    src={`${process.env.NEXT_PUBLICK_IMAGE_URL}/dashboard.png`}
+                    alt="dashboad-icon"
+                  />
                   <Link
                     href="/patient-dashboard"
                     onClick={() => {
@@ -154,7 +157,10 @@ const LoginButton = () => {
                   </Link>
                 </li>
                 <li>
-                  <img src="/images/profile.png" />
+                  <img
+                    src={`${process.env.NEXT_PUBLICK_IMAGE_URL}/profile.png`}
+                    alt="profile-icon"
+                  />
                   <Link
                     href="/patient-account"
                     onClick={() => {
@@ -166,7 +172,11 @@ const LoginButton = () => {
                   </Link>
                 </li>
                 <li>
-                  <img src="/images/logout.png" />
+                  <img
+                    src={`${process.env.NEXT_PUBLICK_IMAGE_URL}/logout.png`}
+                    alt="logout-icon"
+                  />
+
                   <a href="#" onClick={handleLogout}>
                     Logout
                   </a>

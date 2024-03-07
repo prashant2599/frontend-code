@@ -268,7 +268,10 @@ const page = async ({ params }) => {
                         href="/free-consultation"
                       >
                         Book a Free Consultation{" "}
-                        <img src="/images/2023/01/learn-more.png" />
+                        <img
+                          src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/01/learn-more.png`}
+                          alt="learn-more-img"
+                        />
                       </Link>
                     </div>
                   </div>
@@ -334,7 +337,10 @@ const page = async ({ params }) => {
                         href="/free-consultation"
                       >
                         Book a Free Consultation{" "}
-                        <img src="/images/2023/01/learn-more.png" />
+                        <img
+                          src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/01/learn-more.png`}
+                          alt="learn-more-img"
+                        />
                       </Link>
                     </div>
                   </div>
@@ -396,7 +402,10 @@ const page = async ({ params }) => {
                         href="/free-consultation"
                       >
                         Book a Free Consultation{" "}
-                        <img src="/images/2023/01/learn-more.png" />
+                        <img
+                          src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/01/learn-more.png`}
+                          alt="learn-more-img"
+                        />
                       </Link>
                     </div>
                   </div>
@@ -521,19 +530,28 @@ const page = async ({ params }) => {
 
               <div className="treatment-rightbox">
                 <div className="free-consultation">
-                  <img src="/images/2023/03/free-consultation.webp" />
+                  <img
+                    src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/03/free-consultation.webp`}
+                    alt="free-consultation-img"
+                  />
                   <h3>
                     Book a free Consultation with Highly Qualified Doctors
                   </h3>
                   <Link href="/contact-us">
                     {" "}
                     Contact us{" "}
-                    <img src="/images/2023/01/arrow-c.png" alt="arrow" />
+                    <img
+                      src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/01/arrow-c.png`}
+                      alt="arrow"
+                    />
                   </Link>
                 </div>
 
                 <div className="navbox">
-                  <img src="/images/2023/03/02/1.png" />
+                  <img
+                    src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/03/02/1.png`}
+                    alt="navbox-img"
+                  />
                   <Link
                     href={`/hospital-list/${speciality[0].slug}/${info.slug}`}
                   >
@@ -543,7 +561,10 @@ const page = async ({ params }) => {
                 </div>
 
                 <div className="navbox">
-                  <img src="/images/2023/03/02/2.png" />
+                  <img
+                    src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/03/02/2.png`}
+                    alt="navbox-img"
+                  />
                   <Link
                     href={`/doctor-list/${speciality[0].slug}/${info.slug}`}
                   >
@@ -553,7 +574,10 @@ const page = async ({ params }) => {
                 </div>
 
                 <div className="navbox">
-                  <img src="/images/2023/03/02/3.png" />
+                  <img
+                    src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/03/02/3.png`}
+                    alt="navbox-img"
+                  />
                   <Link href="/question-answer">
                     <h4> Q&A </h4>
                   </Link>

@@ -46,14 +46,20 @@ const NewBlogs = async () => {
                   <div className="blog-text">
                     <div className="category-blog">
                       <span>
-                        <img src="/images/dot.webp" alt="category icon" />
+                        <img
+                          src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/dot.webp`}
+                          alt="category icon"
+                        />
                       </span>
                       {formattedDate}{" "}
                       {/* Display the formatted creation date here */}
                     </div>
                     <div className="time-blog">
                       <span>
-                        <img src="/images/dot.webp" alt="time icon" />
+                        <img
+                          src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/dot.webp`}
+                          alt="time icon"
+                        />
                       </span>{" "}
                       2 Min Read
                     </div>
@@ -67,7 +73,10 @@ const NewBlogs = async () => {
             <span className="new-blogs">
               {" "}
               View All{" "}
-              <img src="/images/new-images/2023/01/arrow-c.png" alt="" />
+              <img
+                src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/new-images/2023/01/arrow-c.png`}
+                alt=""
+              />
             </span>
           </Link>
         </div>

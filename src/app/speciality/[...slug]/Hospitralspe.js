@@ -8,7 +8,10 @@ const Hospitralspe = ({ hospital, category, categoryName, slugs }) => {
   const countrySlug = parts[1];
   return (
     <>
-      <section id="hometop-find-treatments" style={{ padding: "40px 0px 0px 0px " }}>
+      <section
+        id="hometop-find-treatments"
+        style={{ padding: "40px 0px 0px 0px " }}
+      >
         <div className="midbox-inner wiki-mk">
           <div className="new-beginnings">
             <div className="new-beginnings-left">
@@ -26,7 +29,10 @@ const Hospitralspe = ({ hospital, category, categoryName, slugs }) => {
             <div className="new-beginnings-right">
               <Link className="view-all" href={`/hospitals/${category}`}>
                 View All{" "}
-                <img src="/images/new-images/2023/01/treatments-arrow.png" />
+                <img
+                  src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/new-images/2023/01/treatments-arrow.png`}
+                  alt="specilaity-icon"
+                />
               </Link>
             </div>
           </div>
@@ -35,7 +41,9 @@ const Hospitralspe = ({ hospital, category, categoryName, slugs }) => {
               <div className="item" key={e.id}>
                 <div className="item-home-expert">
                   <Link href={`/hospital/${e.slug}`}>
-                    <img src={`https://dev.medflick.com/hospital/${e.home_image}`} />
+                    <img
+                      src={`https://dev.medflick.com/hospital/${e.home_image}`}
+                    />
                   </Link>
                 </div>
                 <div className="home-expert-text">

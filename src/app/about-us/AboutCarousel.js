@@ -37,7 +37,10 @@ const AboutCarousel = () => {
           >
             <div className="item" style={{ margin: "10px" }}>
               <div className="item-medflick">
-                <img src="/images/2023/06/iconn.png" alt="icon" />
+                <img
+                  src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/06/iconn.png`}
+                  alt="icon"
+                />
                 <h3>Direct hospital prices</h3>
                 <p>
                   At Medflick, we believe in transparency. We provide you with
@@ -50,7 +53,10 @@ const AboutCarousel = () => {
 
             <div className="item" style={{ margin: "10px" }}>
               <div className="item-medflick">
-                <img src="/images/about/1.png" alt="icon" />
+                <img
+                  src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/about/1.png`}
+                  alt="icon"
+                />
                 <h3>Trusted Hospitals</h3>
                 <p>
                   We have a network of World&apos;s top hospitals, known for
@@ -64,7 +70,10 @@ const AboutCarousel = () => {
 
             <div className="item" style={{ margin: "10px" }}>
               <div className="item-medflick">
-                <img src="/images/about/2.png" alt="icon" />
+                <img
+                  src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/about/2.png`}
+                  alt="icon"
+                />
                 <h3>Real Reviews</h3>
                 <p>
                   Your trust is important to us. That&apos;s why we offer real
@@ -78,7 +87,10 @@ const AboutCarousel = () => {
 
             <div className="item" style={{ margin: "10px" }}>
               <div className="item-medflick">
-                <img src="/images/about/3.png" alt="icon" />
+                <img
+                  src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/about/3.png`}
+                  alt="icon"
+                />
                 <h3>World&apos;s Top Doctors</h3>
                 <p>
                   Medflick connects you with World&apos;s top doctors and

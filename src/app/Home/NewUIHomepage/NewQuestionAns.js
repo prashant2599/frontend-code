@@ -24,7 +24,10 @@ const NewQuestionAns = async () => {
                 key={e.id}
               >
                 <div className="professionals-box">
-                  <img src="/images/icon-m.webp" alt="medflick-questions" />
+                  <img
+                    src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/icon-m.webp`}
+                    alt="medflick-questions"
+                  />
                   <Link
                     href={`/question/${e.id}/${encodeURIComponent(
                       e.short_description
@@ -53,7 +56,10 @@ const NewQuestionAns = async () => {
 
           <Link href="/question-answer">
             View All Questions
-            <img src="/images/new-images/2023/01/arrow-c.png" alt="" />
+            <img
+              src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/new-images/2023/01/arrow-c.png`}
+              alt="medflick-arrow"
+            />
           </Link>
         </div>
       </section>

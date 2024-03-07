@@ -8,6 +8,8 @@ import intlTelInput from "intl-tel-input";
 import Success from "../successPopup/Success";
 import ErrorPopup from "../successPopup/ErrorPopup";
 import ReCaptchaComponent from "../ReCapcha/ReCaptchaComponent";
+import CustomFormArrowIcon from "../CustomTwitterIcon/CustomFormArrowIcon";
+import CustomUploadIcon from "../CustomTwitterIcon/CustomUploadIcon";
 
 const HomeHospitalForm = ({
   country,
@@ -563,8 +565,7 @@ const HomeHospitalForm = ({
                           data-text-btn=" "
                         >
                           {" "}
-                          <img src="/images/upload-icon1.png" /> Choose files or
-                          drag &amp; drop{" "}
+                          <CustomUploadIcon /> Choose files or drag &amp; drop{" "}
                         </label>
                       </div>
                       {fileValidationMessage && (
@@ -597,7 +598,7 @@ const HomeHospitalForm = ({
                   ) : (
                     "Submit Now"
                   )}
-                  <img src="/images/2023/01/arrow-c.png" alt="arrow-Icon" />
+                  <CustomFormArrowIcon />
                 </button>
               </form>
             </div>

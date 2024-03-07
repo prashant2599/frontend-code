@@ -7,6 +7,8 @@ import "intl-tel-input/build/css/intlTelInput.css";
 import intlTelInput from "intl-tel-input";
 import Success from "../Home/successPopup/Success";
 import ErrorPopup from "../Home/successPopup/ErrorPopup";
+import CustomUploadIcon from "../Home/CustomTwitterIcon/CustomUploadIcon";
+import CustomFormArrowIcon from "../Home/CustomTwitterIcon/CustomFormArrowIcon";
 
 const CallMeBackForm = () => {
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
@@ -340,7 +342,11 @@ const CallMeBackForm = () => {
   return (
     <>
       <a className="learn" onClick={togglePopup2} style={{ cursor: "pointer" }}>
-        Call me Back <img src="/images/2023/01/arrow-w.png" alt="" />
+        Call me Back{" "}
+        <img
+          src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/01/arrow-w.png`}
+          alt="arrow-icon"
+        />
       </a>
       {isPopupOpen2 && (
         <div className="popup" data-popup="popup-1" style={popupStyle2}>
@@ -452,8 +458,7 @@ const CallMeBackForm = () => {
                           data-text-btn=" "
                         >
                           {" "}
-                          <img src="/images/upload-icon1.png" /> Choose files or
-                          drag &amp; drop{" "}
+                          <CustomUploadIcon /> Choose files or drag &amp; drop{" "}
                         </label>
                       </div>
                       {fileValidationMessage && (
@@ -489,7 +494,7 @@ const CallMeBackForm = () => {
                   ) : (
                     "Submit Now"
                   )}
-                  <img src="/images/2023/01/arrow-c.png" alt="arrow-Icon" />
+                  <CustomFormArrowIcon />
                 </button>
               </form>
             </div>

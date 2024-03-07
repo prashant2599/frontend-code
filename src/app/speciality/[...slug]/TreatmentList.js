@@ -38,7 +38,7 @@ const TreatmentList = ({ speciality, slugs }) => {
 
                   <div>
                     <img
-                      src="/images/2023/01/pack-arrow.png"
+                      src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/01/pack-arrow.png`}
                       className="arrow-link"
                       alt="arrow"
                     />

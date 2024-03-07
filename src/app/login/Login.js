@@ -121,24 +121,30 @@ const Login = () => {
         <div className="login-mid login-mk">
           <div className="login-box">
             <div className="login-box-left login-img-d">
-              <img src="/images/2023/07/1.jpg" alt="login-img" />
+              <img
+                src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/07/1.jpg`}
+                alt="login-img"
+              />
               <div className="home-drbox">
                 <h4>We value your Privacy</h4>
                 <ul>
                   <li>
                     <img
-                      src="/images/2023/compliance helpline.png"
+                      src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/compliance helpline.png`}
                       alt="icon1"
                     />
                     <h5>Compliance Helpline</h5>
                   </li>
                   <li>
-                    <img src="/images/2023/confidentiality.png" alt="icon2" />
+                    <img
+                      src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/confidentiality.png`}
+                      alt="icon2"
+                    />
                     <h5>Confidentiality</h5>
                   </li>
                   <li>
                     <img
-                      src="/images/2023/transparent policie.png"
+                      src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/transparent policie.png`}
                       alt="icon3"
                     />
                     <h5>Transparent Policies</h5>
@@ -192,8 +198,8 @@ const Login = () => {
                       className="password-toggle-icon"
                       src={
                         showPassword
-                          ? "/images/ci_hide.svg"
-                          : "/images/ci_show.svg"
+                          ? `${process.env.NEXT_PUBLIC_IMAGE_URL}/ci_hide.svg`
+                          : `${process.env.NEXT_PUBLIC_IMAGE_URL}/ci_show.svg`
                       }
                       alt={showPassword ? "Hide Password" : "Show Password"}
                       onClick={togglePasswordVisibility}
@@ -229,24 +235,30 @@ const Login = () => {
               </div>
             </div>
             <div className="login-box-left login-img">
-              <img src="images/2023/07/1.jpg" alt="" />
+              <img
+                src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/07/1.jpg`}
+                alt="login-icon"
+              />
               <div className="home-drbox">
                 <h4>We value your Privacy</h4>
                 <ul>
                   <li>
                     <img
-                      src="/images/2023/compliance helpline.png"
+                      src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/compliance helpline.png`}
                       alt="icon1"
                     />
                     <h5>Confidentiality</h5>
                   </li>
                   <li>
-                    <img src="/images/2023/confidentiality.png" alt="icon2" />
+                    <img
+                      src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/confidentiality.png`}
+                      alt="icon2"
+                    />
                     <h5>Transparent Policies</h5>
                   </li>
                   <li>
                     <img
-                      src="/images/2023/transparent policie.png"
+                      src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/transparent policie.png`}
                       alt="icon3"
                     />
                     <h5>Compliance Helpline</h5>

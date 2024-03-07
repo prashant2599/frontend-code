@@ -243,7 +243,10 @@ const HospitalDoctorsFilter = ({ doctor }) => {
 
           <div className="refresh-box">
             <span onClick={handleClearSelection}>
-              <img src="/images/2023/05/loading.png" alt="loading-Icon" />
+              <img
+                src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/05/loading.png`}
+                alt="loading-Icon"
+              />
             </span>
           </div>
         </div>
@@ -301,7 +304,10 @@ const HospitalDoctorsFilter = ({ doctor }) => {
                 />
                 <Link href={`/doctor/${e.slug}`} className="view-profile">
                   View Profile{" "}
-                  <img src="/images/2023/05/profile.png" alt="icons" />
+                  <img
+                    src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/05/profile.png`}
+                    alt="icons"
+                  />
                 </Link>
               </div>
             </div>
@@ -315,7 +321,10 @@ const HospitalDoctorsFilter = ({ doctor }) => {
             style={{ cursor: "pointer" }}
           >
             View More Doctors{" "}
-            <img src="/images/2023/05/more-d.png" alt="More Doctors" />
+            <img
+              src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/05/more-d.png`}
+              alt="More Doctors"
+            />
           </span>
         )}
       </div>

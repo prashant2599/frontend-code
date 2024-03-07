@@ -23,7 +23,10 @@ const Qa = ({ qa }) => {
                   key={e.id}
                 >
                   <div className="professionals-box">
-                    <img src="/images/icon-m.webp" alt="medflick-questions" />
+                    <img
+                      src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/icon-m.webp`}
+                      alt="medflick-questions"
+                    />
                     <div className="question-box">{e.short_description}</div>
                     <div
                       className="question-ans"
@@ -36,7 +39,10 @@ const Qa = ({ qa }) => {
 
             <Link href="/question-answer">
               View All Questions
-              <img src="/images/new-images/2023/01/arrow-c.png" alt="" />
+              <img
+                src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/new-images/2023/01/arrow-c.png`}
+                alt="question-answer-icon"
+              />
             </Link>
           </div>
         </section>

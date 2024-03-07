@@ -153,7 +153,11 @@ const NewSearchTreatment = () => {
               className="view-all"
               href={`/doctors/${selectedSpeciality}/${selectedCountry}`}
             >
-              View All <img src="/images/treatments-arrow.png" alt="arrow" />
+              View All{" "}
+              <img
+                src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/treatments-arrow.png`}
+                alt="arrow"
+              />
             </Link>
           </div>
         </div>
@@ -237,7 +241,11 @@ const NewSearchTreatment = () => {
               className="view-all"
               href={`/hospitals/${selectedSpeciality}/${selectedCountry}`}
             >
-              View All <img src="/images/treatments-arrow.png" alt="arrow" />
+              View All{" "}
+              <img
+                src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/treatments-arrow.png`}
+                alt="arrow"
+              />
             </Link>
           </div>
         </div>

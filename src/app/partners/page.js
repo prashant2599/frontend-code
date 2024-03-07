@@ -43,7 +43,10 @@ const page = async () => {
           <h2>Why Choose Medflick as Your Partner?</h2>
           <div className="partner-medflick">
             <div className="partner-medflick-item">
-              <img src="/images/p1.png" alt="medflick-icon" />
+              <img
+                src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/p1.png`}
+                alt="medflick-icon"
+              />
               <h3>
                 Facilitates Patients to Establish Seamless Connections with
                 Doctors and Hospitals
@@ -57,7 +60,10 @@ const page = async () => {
             </div>
 
             <div className="partner-medflick-item">
-              <img src="/images/p2.png" alt="medflick-icon" />
+              <img
+                src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/p2.png`}
+                alt="medflick-icon"
+              />
               <h3>
                 Experienced Medical Counselors Provide Personalized Support to
                 Patients
@@ -72,7 +78,10 @@ const page = async () => {
             </div>
 
             <div className="partner-medflick-item">
-              <img src="/images/p3.png" alt="medflick-icon" />
+              <img
+                src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/p3.png`}
+                alt="medflick-icon"
+              />
               <h3>
                 Minimises You Manual Workload to Further Streamline Your
                 Practice
@@ -121,7 +130,11 @@ const page = async () => {
             </p>
 
             <a href="/" className="learn">
-              Become our Partner <img src="images/2023/01/arrow-w.png" alt="" />
+              Become our Partner{" "}
+              <img
+                src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/01/arrow-w.png`}
+                alt="patners-icon"
+              />
             </a>
           </div>
         </div>

@@ -9,6 +9,7 @@ import { ThreeDots } from "react-loader-spinner";
 import ReCaptchaComponent from "../Home/ReCapcha/ReCaptchaComponent";
 
 import axios from "axios";
+import CustomFormArrowIcon from "../Home/CustomTwitterIcon/CustomFormArrowIcon";
 const PartnersForm = () => {
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const [showErrorPopup, setShowErrorPopup] = useState(false);
@@ -471,7 +472,7 @@ const PartnersForm = () => {
               ) : (
                 "Submit Now"
               )}
-              <img src="/images/2023/01/arrow-c.png" alt="arrow-Icon" />
+              <CustomFormArrowIcon />
             </button>
           </form>
         </div>

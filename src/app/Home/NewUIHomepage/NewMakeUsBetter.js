@@ -11,7 +11,10 @@ const NewMakeUsBetter = () => {
           <ul>
             <li>
               <div className="better-icon">
-                <img src="/images/12/01/1.webp" alt="Medflick-stands" />
+                <img
+                  src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/12/01/1.webp`}
+                  alt="Medflick-stands"
+                />
               </div>
               <h3>
                 Medflick stands out by offering your accurate medical
@@ -22,7 +25,10 @@ const NewMakeUsBetter = () => {
             </li>
             <li>
               <div className="better-icon">
-                <img src="/images/12/01/2.webp" alt="Medflick-prioritizes" />
+                <img
+                  src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/12/01/2.webp`}
+                  alt="Medflick-prioritizes"
+                />
               </div>
               <h3>
                 Unlike its competitors, Medflick prioritizes user confidence by
@@ -34,7 +40,10 @@ const NewMakeUsBetter = () => {
 
             <li>
               <div className="better-icon">
-                <img src="/images/12/01/3.webp" alt="Medflick-collaborates" />
+                <img
+                  src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/12/01/3.webp`}
+                  alt="Medflick-collaborates"
+                />
               </div>
               <h3>
                 Medflick collaborates with a trusted network of over 4,000
@@ -49,7 +58,10 @@ const NewMakeUsBetter = () => {
 
             <li>
               <div className="better-icon">
-                <img src="/images/12/01/4.webp" alt="Medflick-distinguishes" />
+                <img
+                  src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/12/01/4.webp`}
+                  alt="Medflick-distinguishes"
+                />
               </div>
               <h3>
                 Medflick distinguishes itself by offering round-the-clock
@@ -123,7 +135,10 @@ const NewMakeUsBetter = () => {
           <ul>
             <li>
               <div className="better-icon">
-                <img src="/images/plain.webp" alt="medflick-icons" />
+                <img
+                  src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/plain.webp`}
+                  alt="medflick-icons"
+                />
               </div>
               <h3>Pre-treatment Travel Support</h3>
               <p>
@@ -135,7 +150,10 @@ const NewMakeUsBetter = () => {
             </li>
             <li>
               <div className="better-icon">
-                <img src="/images/life.webp" alt="medflick-icons" />
+                <img
+                  src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/life.webp`}
+                  alt="medflick-icons"
+                />
               </div>
               <h3>Follow-Up Care and Accommodations</h3>
               <p>
@@ -147,7 +165,10 @@ const NewMakeUsBetter = () => {
             </li>
             <li>
               <div className="better-icon">
-                <img src="/images/profileIcon.webp" alt="medflick-icons" />
+                <img
+                  src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/profileIcon.webp`}
+                  alt="medflick-icons"
+                />
               </div>
               <h3>High-Quality Profile</h3>
               <p>

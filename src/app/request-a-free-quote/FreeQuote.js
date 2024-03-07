@@ -9,6 +9,8 @@ import Success from "../Home/successPopup/Success";
 import ErrorPopup from "../Home/successPopup/ErrorPopup";
 import Link from "next/link";
 import ReCaptchaComponent from "../Home/ReCapcha/ReCaptchaComponent";
+import CustomUploadIcon from "../Home/CustomTwitterIcon/CustomUploadIcon";
+import CustomFormArrowIcon from "../Home/CustomTwitterIcon/CustomFormArrowIcon";
 
 const FreeQuote = () => {
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
@@ -386,7 +388,7 @@ const FreeQuote = () => {
       <section id="query-form-page">
         <div className="midbox-inner  wiki-mk">
           <img
-            src="/images/2023/02/logo.png"
+            src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/02/logo.png`}
             className="logo-med"
             alt="Brand Logo"
           />
@@ -484,8 +486,7 @@ const FreeQuote = () => {
                           data-text-btn=" "
                         >
                           {" "}
-                          <img src="/images/upload-icon1.png" /> Choose files or
-                          drag &amp; drop{" "}
+                          <CustomUploadIcon /> Choose files or drag &amp; drop{" "}
                         </label>
                       </div>
                       {fileValidationMessage && (
@@ -495,7 +496,7 @@ const FreeQuote = () => {
                     </div>
                   </div>
                 </div>
-                <ReCaptchaComponent onCaptchaChange={handleCaptchaChange}  />
+                <ReCaptchaComponent onCaptchaChange={handleCaptchaChange} />
                 {renderError(formErrors.captcha)}
                 <p>
                   I agree to the <Link href="/terms-and-conditions">Terms</Link>{" "}
@@ -523,7 +524,7 @@ const FreeQuote = () => {
                   ) : (
                     "Submit Now"
                   )}
-                  <img src="/images/2023/01/arrow-c.png" alt="arrow-Icon" />
+                  <CustomFormArrowIcon />
                 </button>
               </form>
             </div>

@@ -47,7 +47,10 @@ const NavHospitals = ({ hospital }) => {
 
                     <Link href={`/hospital/${e.slug}`} className="contact-now">
                       Contact Now{" "}
-                      <img src="/images/2023/01/arrow-c.png" alt="icons" />
+                      <img
+                        src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/01/arrow-c.png`}
+                        alt="icons"
+                      />
                     </Link>
                   </div>
                 </div>

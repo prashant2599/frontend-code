@@ -29,7 +29,7 @@ const page = async ({ params }) => {
     { cache: "no-store" }
   );
 
-  console.log(combinedSlug)
+  console.log(combinedSlug);
   const datas = await res.json();
   const doctor = datas.doctors_list.doctors_list;
 
@@ -161,7 +161,10 @@ const page = async ({ params }) => {
                             className="view-profile"
                           >
                             View Profile{" "}
-                            <img src="/images/2023/05/profile.png" alt="icon" />
+                            <img
+                              src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/05/profile.png`}
+                              alt="icon"
+                            />
                           </Link>
                         ) : (
                           <span>No profile available</span>

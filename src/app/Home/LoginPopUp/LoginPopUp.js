@@ -38,7 +38,7 @@ const LoginPopUp = ({ showLoginPopup, onClose, url }) => {
             </div>
 
             <div className="success-message">
-              <img src="/images/Login.png" />
+              <img src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/Login.png`} />
               <h4>Please Login</h4>
               <p>We Are Taking You To Login</p>
             </div>

@@ -15,8 +15,16 @@ const page = async () => {
       <NewHeader />
       {/* <Apply /> */}
       <section id="career-slider">
-        <img src="/images/careerD.webp" className="category-d" alt="career" />
-        <img src="/images/careerM.webp" className="category-m" alt="career" />
+        <img
+          src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/careerD.webp`}
+          className="category-d"
+          alt="career"
+        />
+        <img
+          src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/careerM.webp`}
+          className="category-m"
+          alt="career"
+        />
         <div className="midbox-inner  wiki-mk">
           <div className="career-slidertext">
             <h1>Join Us</h1>
@@ -31,7 +39,11 @@ const page = async () => {
 
             <a href="#jobs">
               {" "}
-              View All Jobs <img src="images/2023/01/arrow-c.png" alt="arrow" />
+              View All Jobs{" "}
+              <img
+                src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/01/arrow-c.png`}
+                alt="arrow"
+              />
             </a>
           </div>
         </div>
@@ -58,29 +70,44 @@ const page = async () => {
             </h2>
             <ul>
               <li>
-                <img src="/images/c1.png" alt="Professional" />
+                <img
+                  src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/c1.png`}
+                  alt="Professional"
+                />
                 {/* <h3>100% Professional Growth</h3> */}
                 <p>100% Professional Growth</p>
               </li>
               <li>
-                <img src="/images/c2.png" alt="Development" />
+                <img
+                  src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/c2.png`}
+                  alt="Development"
+                />
                 {/* <h3>Learning and Development Opportunities</h3> */}
                 <p>Learning and Development Opportunities</p>
               </li>
               <li>
-                <img src="/images/c3.png" alt="Recognition" />
+                <img
+                  src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/c3.png`}
+                  alt="Recognition"
+                />
                 {/* <h3>Recognition Opportunities</h3> */}
                 <p>Recognition Opportunities</p>
               </li>
               <li>
-                <img src="/images/c4.png" alt="Balance" />
+                <img
+                  src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/c4.png`}
+                  alt="Balance"
+                />
                 {/* <h3>Work-Life Balance</h3> */}
                 <p>Work-Life Balance</p>
               </li>
             </ul>
           </div>
 
-          <img src="/images/employee.jpg" alt="employee" />
+          <img
+            src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/employee.jpg`}
+            alt="employee"
+          />
         </div>
       </section>
 

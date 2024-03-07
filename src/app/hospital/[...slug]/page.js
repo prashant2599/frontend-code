@@ -106,7 +106,10 @@ const page = async ({ params }) => {
                 </div>
                 <div className="experience-total">
                   <div className="experience-text">
-                    <img src="/images/2023/05/doctors.png" alt="doctor-icon" />{" "}
+                    <img
+                      src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/05/doctors.png`}
+                      alt="doctor-icon"
+                    />{" "}
                     Doctors
                   </div>
                   <div className="experience-years">{hospitalDetails.doc}</div>
@@ -114,7 +117,7 @@ const page = async ({ params }) => {
                 <div className="experience-total">
                   <div className="experience-text">
                     <img
-                      src="/images/2023/05/established.png"
+                      src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/05/established.png`}
                       alt="doctor-icon"
                     />{" "}
                     Established

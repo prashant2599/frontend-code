@@ -14,7 +14,10 @@ const NewVisaTravelSection = () => {
 
           <Link href="/get-visa-assistance">
             Get Visa Assistance{" "}
-            <img src="/images/new-images/2023/01/pack-arrow.png" alt="" />
+            <img
+              src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/new-images/2023/01/pack-arrow.png`}
+              alt="visa-assistance-arrow"
+            />
           </Link>
         </div>
       </section>

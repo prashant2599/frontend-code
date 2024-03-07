@@ -41,7 +41,10 @@ const page = async ({ params }) => {
 
             <div className="questions-inner-box">
               <div className="questions-inner-left">
-                <img src="/images/icon.jpg" alt="user-profile" />
+                <img
+                  src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/icon.jpg`}
+                  alt="user-profile"
+                />
                 <h3>{info.pname} </h3>
               </div>
               <div className="questions-inner-right">

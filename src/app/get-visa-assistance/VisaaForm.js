@@ -454,7 +454,7 @@ const VisaaForm = () => {
           <div className="medflick-visa">
             <div className="medflick-visa-left">
               <img
-                src="/images/visaLogo.png"
+                src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/visaLogo.png`}
                 className="medflick-logo"
                 alt="Brand Logo"
               />

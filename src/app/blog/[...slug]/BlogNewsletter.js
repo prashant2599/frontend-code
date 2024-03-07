@@ -86,7 +86,7 @@ const BlogNewsletter = () => {
                   onClick={handleFormSubmit}
                 >
                   {loading ? "Signing..." : "Sign Up"}
-                  <img src="/images/2023/01/arrow-w.png" alt="" />
+                  <img src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/01/arrow-w.png`} alt="" />
                 </button>
                 {error && (
                   <p className="error-message" style={{ textAlign: "left" }}>

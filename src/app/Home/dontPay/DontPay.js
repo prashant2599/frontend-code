@@ -423,11 +423,17 @@ const DontPay = () => {
                 style={{ cursor: "pointer" }}
               >
                 Request a free consultation{" "}
-                <img src="/images/2023/01/arrow-w.png" alt="arrow-icon" />
+                <img
+                  src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/01/arrow-w.png`}
+                  alt="arrow-icon"
+                />
               </a>
               <Link href="/contact-us" className="contacts">
                 Contact Us{" "}
-                <img src="/images/2023/01/arrow-c.png" alt="contact-us" />
+                <img
+                  src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/01/arrow-c.png`}
+                  alt="contact-us"
+                />
               </Link>
             </div>
           </div>

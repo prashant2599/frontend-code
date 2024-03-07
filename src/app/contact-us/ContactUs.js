@@ -48,7 +48,10 @@ const ContactUs = () => {
                 onClick={() => handleItemClick(0)}
               >
                 care@medflick.com{" "}
-                <img src="/images/2023/01/arrow-c.png" alt="medflick-chat" />
+                <img
+                  src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/01/arrow-c.png`}
+                  alt="medflick-chat"
+                />
               </a>
             </div>
 
@@ -63,7 +66,10 @@ const ContactUs = () => {
                 onClick={() => handleItemClick(1)}
               >
                 care@medflick.com{" "}
-                <img src="/images/2023/01/arrow-c.png" alt="medflick-email" />
+                <img
+                  src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/01/arrow-c.png`}
+                  alt="medflick-email"
+                />
               </a>
             </div>
 
@@ -80,7 +86,10 @@ const ContactUs = () => {
                 onClick={() => handleItemClick(2)}
               >
                 View on Google Maps{" "}
-                <img src="/images/2023/01/arrow-c.png" alt="medflick-map" />
+                <img
+                  src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/01/arrow-c.png`}
+                  alt="medflick-map"
+                />
               </a>
             </div>
 
@@ -95,7 +104,10 @@ const ContactUs = () => {
                 onClick={() => handleItemClick(3)}
               >
                 (+91) 9111922232{" "}
-                <img src="/images/2023/01/arrow-c.png" alt="medflick-number" />
+                <img
+                  src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/01/arrow-c.png`}
+                  alt="medflick-number"
+                />
               </a>
             </div>
           </div>

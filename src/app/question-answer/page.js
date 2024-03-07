@@ -70,7 +70,10 @@ const page = async () => {
                   <div className="comments-box" key={e.id}>
                     <div className="comments-profile">
                       <div className="comments-profileimg">
-                        <img src="/images/icon.jpg" alt="user-profile" />
+                        <img
+                          src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/icon.jpg`}
+                          alt="user-profile"
+                        />
                       </div>
                       <h3>
                         {e.pname} <span>India</span>

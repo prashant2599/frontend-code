@@ -8,6 +8,8 @@ import intlTelInput from "intl-tel-input";
 import Success from "../../Home/successPopup/Success";
 import ErrorPopup from "../../Home/successPopup/ErrorPopup";
 import ReCaptchaComponent from "@/app/Home/ReCapcha/ReCaptchaComponent";
+import CustomUploadIcon from "@/app/Home/CustomTwitterIcon/CustomUploadIcon";
+import CustomFormArrowIcon from "@/app/Home/CustomTwitterIcon/CustomFormArrowIcon";
 
 const CostEstimateForm = ({ specialityId }) => {
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
@@ -410,7 +412,11 @@ const CostEstimateForm = ({ specialityId }) => {
   return (
     <>
       <a onClick={togglePopup} style={{ cursor: "pointer" }}>
-        Get Cost Estimate <img src="/images/2023/01/arrow-c.png" alt="icon" />
+        Get Cost Estimate{" "}
+        <img
+          src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/01/arrow-c.png`}
+          alt="icon"
+        />
       </a>
 
       {isPopupOpen && (
@@ -434,7 +440,10 @@ const CostEstimateForm = ({ specialityId }) => {
                   <div className="owl-slider">
                     <div id="cost-estimate" className="owl-carousel">
                       <div className="item">
-                        <img src="/images/wellness.webp" />
+                        <img
+                          src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/wellness.webp`}
+                          alt="welness-img"
+                        />
                         <div className="cost-estimate-box">
                           <div className="cost-estimate-items">
                             <p>Navigate Towards Wellness</p>
@@ -544,8 +553,8 @@ const CostEstimateForm = ({ specialityId }) => {
                                 data-text-btn=" "
                               >
                                 {" "}
-                                <img src="/images/upload-icon1.png" /> Choose
-                                files or drag &amp; drop{" "}
+                                <CustomUploadIcon /> Choose files or drag &amp;
+                                drop{" "}
                               </label>
                             </div>
                             {fileValidationMessage && (
@@ -582,10 +591,7 @@ const CostEstimateForm = ({ specialityId }) => {
                         ) : (
                           "Submit Now"
                         )}
-                        <img
-                          src="/images/2023/01/arrow-c.png"
-                          alt="arrow-Icon"
-                        />
+                        <CustomFormArrowIcon />
                       </button>
                     </form>
                   </div>

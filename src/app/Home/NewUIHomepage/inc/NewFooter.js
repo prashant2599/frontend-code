@@ -63,8 +63,10 @@ const NewFooter = () => {
         <div className="midbox-inner wiki-mk">
           <div className="footer-section">
             <div className="footer-about">
-              <img src="/images/2023/01/logo.webp" alt="Brand Logo" />
-
+              <img
+                src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/01/logo.webp`}
+                alt="Brand Logo"
+              />
               <p>
                 Beyond boundaries and around-the-clock healthcare extends
                 without limits, and so does our commitment. Medflick's 24/7
