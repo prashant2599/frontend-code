@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 
 const TreatmentBlog = ({ blog }) => {
@@ -47,7 +46,7 @@ const TreatmentBlog = ({ blog }) => {
                       <div className="category-blog">
                         <span>
                           <img
-                            src="/images/dot.webp"
+                            src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/dot.webp`}
                             alt="category icon"
                           />
                         </span>
@@ -57,7 +56,7 @@ const TreatmentBlog = ({ blog }) => {
                       <div className="time-blog">
                         <span>
                           <img
-                            src="/images/dot.webp"
+                            src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/dot.webp`}
                             alt="time icon"
                           />
                         </span>{" "}
@@ -72,7 +71,10 @@ const TreatmentBlog = ({ blog }) => {
             <Link href="/blogs">
               <span className="new-blogs">
                 View All{" "}
-                <img src="/images/new-images/2023/01/arrow-c.png" alt="" />
+                <img
+                  src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/new-images/2023/01/arrow-c.png`}
+                  alt=""
+                />
               </span>
             </Link>
           </div>

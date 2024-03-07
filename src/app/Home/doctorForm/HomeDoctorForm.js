@@ -9,6 +9,8 @@ import Success from "../successPopup/Success";
 import ErrorPopup from "../successPopup/ErrorPopup";
 import { useUser } from "@/app/UserContext";
 import ReCaptchaComponent from "../ReCapcha/ReCaptchaComponent";
+import CustomUploadIcon from "../CustomTwitterIcon/CustomUploadIcon";
+import CustomFormArrowIcon from "../CustomTwitterIcon/CustomFormArrowIcon";
 
 const HomeDoctorForm = ({
   slug,
@@ -571,8 +573,7 @@ const HomeDoctorForm = ({
                           data-text-btn=" "
                         >
                           {" "}
-                          <img src="/images/upload-icon1.png" /> Choose files or
-                          drag &amp; drop{" "}
+                          <CustomUploadIcon /> Choose files or drag &amp; drop{" "}
                         </label>
                       </div>
                       {fileValidationMessage && (
@@ -607,7 +608,7 @@ const HomeDoctorForm = ({
                   ) : (
                     "Submit Now"
                   )}
-                  <img src="/images/2023/01/arrow-c.png" alt="arrow-Icon" />
+                  <CustomFormArrowIcon />
                 </button>
               </form>
             </div>

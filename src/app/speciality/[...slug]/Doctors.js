@@ -29,7 +29,10 @@ const Doctors = ({ doctor, category, categoryName, slugs }) => {
             <div className="new-beginnings-right">
               <Link className="view-all" href={`/doctors/${category}`}>
                 View All{" "}
-                <img src="/images/new-images/2023/01/treatments-arrow.png" alt="arrow" />
+                <img
+                  src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/new-images/2023/01/treatments-arrow.png`}
+                  alt="arrow"
+                />
               </Link>
             </div>
           </div>

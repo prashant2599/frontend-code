@@ -8,7 +8,7 @@ const Community = () => {
           <div className="community-pro">
             <img
               className="community-img"
-              src="/images/2023/02/Community.webp"
+              src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/02/Community.webp`}
               alt="medflick-community"
             />
             <div className="community-box">
@@ -20,7 +20,11 @@ const Community = () => {
                 informed health decisions.
               </p>
               <Link className="more-img" href="/question-answer">
-                Explore <img src="/images/2023/02/Vector 85.png" alt="icon" />
+                Explore{" "}
+                <img
+                  src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/02/Vector 85.png`}
+                  alt="icon"
+                />
               </Link>
             </div>
           </div>

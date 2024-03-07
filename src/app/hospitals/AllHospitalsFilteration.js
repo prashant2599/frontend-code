@@ -51,7 +51,7 @@ const AllHospitalsFilteration = () => {
   const handleSelectCountry = (e) => {
     const select = e.target.value;
     setSelectedCountry(select);
-    router.push(`/hospital-list-category?country=${select}`)
+    router.push(`/hospital-list-category?country=${select}`);
   };
   useEffect(() => {
     setSelectedCountry("Select Country");
@@ -63,7 +63,7 @@ const AllHospitalsFilteration = () => {
   return (
     <>
       <div className="doctors-list-find">
-        <div className="ding" >
+        <div className="ding">
           <select
             id="wiki-select"
             onChange={handleSpecialtyChange}
@@ -94,7 +94,10 @@ const AllHospitalsFilteration = () => {
         </div>
         <div className="refresh-box" onClick={handleClearSelection}>
           <span>
-            <img src="/images/2023/05/loading.png" alt="icon" />
+            <img
+              src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/05/loading.png`}
+              alt="icon"
+            />
           </span>
         </div>
       </div>

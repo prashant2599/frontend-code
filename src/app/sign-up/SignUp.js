@@ -317,7 +317,7 @@ const SignUp = () => {
           <div className="login-box">
             <div className="sign-up-left login-img-d">
               <img
-                src="images/2023/02/logo.png"
+                src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/02/logo.png`}
                 className="sign-up-login"
                 alt="Brand Logo"
               />
@@ -331,7 +331,7 @@ const SignUp = () => {
 
               <div className="signup-testimonials">
                 <img
-                  src="images/2023/07/do.png"
+                  src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/07/do.png`}
                   className="img-do"
                   alt="medflick"
                 />
@@ -347,7 +347,10 @@ const SignUp = () => {
 
                 <div className="signup-profile">
                   <div className="signupprofile-img">
-                    <img src="images/2023/01/icon-m.png" alt="medflick" />
+                    <img
+                      src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/01/icon-m.png`}
+                      alt="medflick"
+                    />
                   </div>
                   <h3>Shamsul Alam</h3>
                 </div>
@@ -450,7 +453,7 @@ const SignUp = () => {
 
             <div className="sign-up-left sign-up-leftbox">
               <img
-                src="images/2023/02/logo.png"
+                src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/02/logo.png`}
                 className="sign-up-login"
                 alt="Brand Logo"
               />
@@ -463,7 +466,7 @@ const SignUp = () => {
 
               <div className="signup-testimonials">
                 <img
-                  src="images/2023/07/do.png"
+                  src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/07/do.png`}
                   className="img-do"
                   alt="medflick"
                 />
@@ -475,7 +478,10 @@ const SignUp = () => {
 
                 <div className="signup-profile">
                   <div className="signupprofile-img">
-                    <img src="images/2023/01/icon-m.png" alt="medflick" />
+                    <img
+                      src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/01/icon-m.png`}
+                      alt="medflick"
+                    />
                   </div>
                   <h3>
                     Lorem ipsum dolor <span>india</span>

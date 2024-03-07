@@ -8,6 +8,8 @@ import axios from "axios";
 import Success from "../successPopup/Success";
 import ErrorPopup from "../successPopup/ErrorPopup";
 import ReCaptchaComponent from "../ReCapcha/ReCaptchaComponent";
+import CustomFormArrowIcon from "../CustomTwitterIcon/CustomFormArrowIcon";
+import CustomUploadIcon from "../CustomTwitterIcon/CustomUploadIcon";
 
 const HospitalForm = ({ info }) => {
   // form submitting and validation of form
@@ -506,8 +508,7 @@ const HospitalForm = ({ info }) => {
                       data-text-btn=" "
                     >
                       {" "}
-                      <img src="/images/upload-icon1.png" /> Choose files or
-                      drag &amp; drop{" "}
+                      <CustomUploadIcon /> Choose files or drag &amp; drop{" "}
                     </label>
                   </div>
                   {fileValidationMessage && (
@@ -540,7 +541,7 @@ const HospitalForm = ({ info }) => {
               ) : (
                 "Submit Now"
               )}
-              <img src="/images/2023/01/arrow-c.png" alt="arrow-Icon" />
+              <CustomFormArrowIcon />
             </button>
           </form>
         </div>

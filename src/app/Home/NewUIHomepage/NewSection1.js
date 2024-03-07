@@ -18,7 +18,7 @@ const NewSection1 = () => {
               <div>
                 <img
                   className="dr-img"
-                  src="/images/medflick-home.webp"
+                  src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/medflick-home.webp`}
                   alt="inspiring-better-health"
                   loading="lazy"
                 />

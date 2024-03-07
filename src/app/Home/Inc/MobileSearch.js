@@ -17,7 +17,10 @@ const MobileSearch = () => {
     <>
       <div className="m-searchbox" onClick={togglePopup}>
         <a href="#" data-popup-open="popup-7">
-          <img src="/images/search-icon.png" alt="search-icon" />
+          <img
+            src={`${process.env.NEXT_PUBLICK_IMAGE_URL}/search-icon.png`}
+            alt="search-icon"
+          />
         </a>
       </div>
       <div className="popup" data-popup="popup-7" style={popupStyle}>

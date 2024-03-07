@@ -6,6 +6,7 @@ import axios from "axios";
 import Success from "@/app/Home/successPopup/Success";
 import ErrorPopup from "@/app/Home/successPopup/ErrorPopup";
 import { ThreeDots } from "react-loader-spinner";
+import CustomFormArrowIcon from "@/app/Home/CustomTwitterIcon/CustomFormArrowIcon";
 
 const ApplyNowForm = () => {
   const inputRef = useRef(null);
@@ -393,7 +394,10 @@ const ApplyNowForm = () => {
               <div className="home-form">
                 <div className="medical-report-all">
                   <button className="medical-report-file">
-                    <img src="/images/2023/07/upload-icon1.png" /> Upload Resume
+                    <img
+                      src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/07/upload-icon1.png`}
+                    />{" "}
+                    Upload Resume
                   </button>
                   <input type="file" name="file" onChange={handleFileChange} />
                   {renderError(formErrors.file)}
@@ -432,7 +436,7 @@ const ApplyNowForm = () => {
                 ) : (
                   "Submit"
                 )}
-                <img src="/images/2023/01/arrow-c.png" alt="arrow-Icon" />
+                <CustomFormArrowIcon />
               </button>
             </form>
           </div>

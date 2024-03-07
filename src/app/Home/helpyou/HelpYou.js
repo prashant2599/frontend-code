@@ -12,25 +12,25 @@ const HelpYou = () => {
       id: 1,
       title: "Empowering Your Health-Care Choices",
       text: "Your health is priceless, and we understand that making informed decisions can be tough. That's where Medflick comes in – your trusted partner on the journey to good health. We provide reliable healthcare information, connect you with India’s best doctors, top rated hospitals and provide you the best treatment options.",
-      image: "/images/2023/02/01/Empowering.webp",
+      image: `${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/02/01/Empowering.webp`,
     },
     {
       id: 2,
       title: "Finding Answers Together",
       text: "Know you're never alone. Our expert team is here to guide you at every step in making informed health decisions. Whether it's diagnosis, treatment options, or symptoms, latest updates in medical advancements, we're dedicated to providing informed answers. Your inquiries are our priority, offering clarity and comfort for your health concerns.",
-      image: "/images/2023/02/01/Finding.webp",
+      image: `${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/02/01/Finding.webp`,
     },
     {
       id: 3,
       title: "Compassionate Support",
       text: "Searching for medical information can bring about anxiety and fear. Your concerns matter: we're here to offer peace through knowledge. More than a portal, we're your healthcare companions, committed to supporting you.",
-      image: "/images/2023/02/01/Compassionate.webp",
+      image: `${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/02/01/Compassionate.webp`,
     },
     {
       id: 4,
       title: "Medflick Assurity",
       text: "We accompany you throughout your health journey, right from diagnosis to connect you with the best doctors, access to the top rated hospitals and providing complete assistance in your treatments at an optimal cost.",
-      image: "/images/2023/02/01/medflick-assurity.webp",
+      image: `${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/02/01/medflick-assurity.webp`,
     },
   ];
   return (
@@ -38,7 +38,7 @@ const HelpYou = () => {
       <section id="help-you">
         <div className="midbox-inner  wiki-mk">
           <img
-            src="/images/2023/02/logo.png"
+            src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/02/logo.png`}
             className="logo-med"
             alt="Brand Logo"
           />

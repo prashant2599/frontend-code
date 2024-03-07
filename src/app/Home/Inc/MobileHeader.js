@@ -85,14 +85,20 @@ const MobileHeader = ({ speciality }) => {
         <div className="header-inner wiki-mk">
           <Link href="/" target="_self" className="logo-m">
             {" "}
-            <img src="/images/2023/01/logo.webp" alt="Medflick" />
+            <img
+              src={`${process.env.NEXT_PUBLICK_IMAGE_URL}/2023/01/logo.webp`}
+              alt="Medflick"
+            />
           </Link>
           {/* Mobile serach */}
           <MobileSearch />
           {/* End */}
           <div className="m-phone">
             <a href="tel:+91-9111922232">
-              <img src="/images/2023/phone-icon.png" alt="phone-icon" />
+              <img
+                src={`${process.env.NEXT_PUBLICK_IMAGE_URL}/2023/phone-icon.png`}
+                alt="phone-icon"
+              />
             </a>
           </div>
           <div className="get-started-m">
@@ -120,7 +126,10 @@ const MobileHeader = ({ speciality }) => {
                     }}
                   >
                     {" "}
-                    <img src="/images/2023/01/logo.webp" alt="Brand Logo" />
+                    <img
+                      src={`${process.env.NEXT_PUBLICK_IMAGE_URL}/2023/01/logo.webp`}
+                      alt="Brand Logo"
+                    />
                   </a>
                   <span className="close-menu" onClick={toggleOffcanvas}>
                     <svg

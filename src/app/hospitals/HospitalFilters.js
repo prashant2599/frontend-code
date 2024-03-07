@@ -321,7 +321,10 @@ const HospitalFilters = ({ hospital, slug, treatment }) => {
 
         <div className="refresh-box" onClick={handleClearSelection}>
           <span>
-            <img src="/images/2023/05/loading.png" alt="icon" />
+            <img
+              src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/05/loading.png`}
+              alt="icon"
+            />
           </span>
         </div>
       </div>

@@ -158,7 +158,10 @@ const page = async ({ params }) => {
                         className="view-profile"
                       >
                         View Profile{" "}
-                        <img src="/images/2023/05/profile.png" alt="icon" />
+                        <img
+                          src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/05/profile.png`}
+                          alt="icon"
+                        />
                       </Link>
                       {/* share  */}
                       <HospitalShare
@@ -168,7 +171,10 @@ const page = async ({ params }) => {
 
                       <div className="hospital-location-box">
                         {formatText(hospital.city)}
-                        <img src="/images/2023/05/loc.png" alt="icon" />
+                        <img
+                          src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/05/loc.png`}
+                          alt="icon"
+                        />
                       </div>
                     </div>
                   </div>

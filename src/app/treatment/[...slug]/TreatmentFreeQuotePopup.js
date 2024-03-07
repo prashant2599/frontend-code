@@ -8,6 +8,8 @@ import "intl-tel-input/build/css/intlTelInput.css";
 import intlTelInput from "intl-tel-input";
 import Success from "@/app/Home/successPopup/Success";
 import ErrorPopup from "@/app/Home/successPopup/ErrorPopup";
+import CustomUploadIcon from "@/app/Home/CustomTwitterIcon/CustomUploadIcon";
+import CustomFormArrowIcon from "@/app/Home/CustomTwitterIcon/CustomFormArrowIcon";
 
 const TreatmentFreeQuotePopup = ({ treatmentId, specialityId }) => {
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
@@ -310,7 +312,8 @@ const TreatmentFreeQuotePopup = ({ treatmentId, specialityId }) => {
         onClick={togglePopup}
         style={{ cursor: "pointer" }}
       >
-        Get a free quote <img src="/images/2023/01/arrow-c.png" />
+        Get a free quote{" "}
+        <img src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/01/arrow-c.png`} />
       </a>
       {isPopupOpen && (
         <div className="popup" data-popup="popup-1" style={popupStyle}>
@@ -414,8 +417,7 @@ const TreatmentFreeQuotePopup = ({ treatmentId, specialityId }) => {
                           data-text-btn=" "
                         >
                           {" "}
-                          <img src="/images/upload-icon1.png" /> Choose files or
-                          drag &amp; drop{" "}
+                          <CustomUploadIcon /> Choose files or drag &amp; drop{" "}
                         </label>
                       </div>
                       {fileValidationMessage && (
@@ -451,7 +453,7 @@ const TreatmentFreeQuotePopup = ({ treatmentId, specialityId }) => {
                   ) : (
                     "Submit Now"
                   )}
-                  <img src="/images/2023/01/arrow-c.png" alt="arrow-Icon" />
+                  <CustomFormArrowIcon />
                 </button>
               </form>
             </div>

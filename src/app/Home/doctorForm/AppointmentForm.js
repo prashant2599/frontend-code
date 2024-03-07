@@ -8,6 +8,8 @@ import intlTelInput from "intl-tel-input";
 import Success from "../successPopup/Success";
 import ErrorPopup from "../successPopup/ErrorPopup";
 import ReCaptchaComponent from "../ReCapcha/ReCaptchaComponent";
+import CustomUploadIcon from "../CustomTwitterIcon/CustomUploadIcon";
+import CustomFormArrowIcon from "../CustomTwitterIcon/CustomFormArrowIcon";
 
 const AppointmentForm = ({ doctorId, first, middle, last, specialityId }) => {
   // form popup post method
@@ -16,7 +18,6 @@ const AppointmentForm = ({ doctorId, first, middle, last, specialityId }) => {
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [userPhone, setUserPhone] = useState("");
-
 
   // Check if 'userName' exists in localStorage on component mount
   useEffect(() => {
@@ -148,7 +149,6 @@ const AppointmentForm = ({ doctorId, first, middle, last, specialityId }) => {
       }));
     }
   };
-
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -429,7 +429,11 @@ const AppointmentForm = ({ doctorId, first, middle, last, specialityId }) => {
         onClick={togglePopup}
         style={{ cursor: "pointer" }}
       >
-        Book Appointment <img src="/images/2023/05/book.png" alt="icon" />
+        Book Appointment{" "}
+        <img
+          src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/05/book.png`}
+          alt="icon"
+        />
       </button>
       {isPopupOpen && (
         <div
@@ -546,8 +550,7 @@ const AppointmentForm = ({ doctorId, first, middle, last, specialityId }) => {
                           data-text-btn=" "
                         >
                           {" "}
-                          <img src="/images/upload-icon1.png" /> Choose files or
-                          drag &amp; drop{" "}
+                          <CustomUploadIcon /> Choose files or drag &amp; drop{" "}
                         </label>
                       </div>
                       {fileValidationMessage && (
@@ -584,7 +587,7 @@ const AppointmentForm = ({ doctorId, first, middle, last, specialityId }) => {
                   ) : (
                     "Submit Now"
                   )}
-                  <img src="/images/2023/01/arrow-c.png" alt="arrow-Icon" />
+                  <CustomFormArrowIcon />
                 </button>
               </form>
             </div>

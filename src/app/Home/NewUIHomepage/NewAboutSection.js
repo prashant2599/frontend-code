@@ -8,14 +8,14 @@ const NewAboutSection = async () => {
           <div className="home-medflick-about">
             <div className="home-medflick-about-left">
               <img
-                src="/images/medflick-healthcare.webp"
+                src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/medflick-healthcare.webp`}
                 alt="medflick-about-us"
               />
             </div>
             <div className="home-medflick-about-right">
               <h2>
-                Elevating Global Healthcare, Breaking Barriers, And <span>Enhancing
-                Medical Expertise</span> Access.
+                Elevating Global Healthcare, Breaking Barriers, And{" "}
+                <span>Enhancing Medical Expertise</span> Access.
               </h2>
               <p>
                 Medflick offers a seamless connection to World&apos;s top
@@ -30,22 +30,34 @@ const NewAboutSection = async () => {
 
               <ul>
                 <li>
-                  <img src="/images/12/1.webp" alt="Clinical-Excellence" />
+                  <img
+                    src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/12/1.webp`}
+                    alt="Clinical-Excellence"
+                  />
                   <h3>Clinical Excellence</h3>
                 </li>
 
                 <li>
-                  <img src="/images/12/2.webp" alt="Personalized-Care" />
+                  <img
+                    src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/12/2.webp`}
+                    alt="Personalized-Care"
+                  />
                   <h3>Personalized Care</h3>
                 </li>
 
                 <li>
-                  <img src="/images/12/3.webp" alt="Quality-Standard" />
+                  <img
+                    src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/12/3.webp`}
+                    alt="Quality-Standard"
+                  />
                   <h3>Quality Standard</h3>
                 </li>
 
                 <li>
-                  <img src="/images/12/4.webp" alt="Patient-Experience" />
+                  <img
+                    src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/12/4.webp`}
+                    alt="Patient-Experience"
+                  />
                   <h3>Best Patient Experience</h3>
                 </li>
               </ul>

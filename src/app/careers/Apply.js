@@ -6,7 +6,11 @@ const Apply = () => {
       <section className="job-description" id="medflick-disclaimer">
         <div className="midbox-inner  wiki-mk">
           <a href="career.html" className="back-to-job">
-            <img src="/images/back.png" alt="back-arrow" /> Back to job openings
+            <img
+              src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/back.png`}
+              alt="back-arrow"
+            />{" "}
+            Back to job openings
           </a>
 
           <h1>Business Systems Manager</h1>
@@ -296,14 +300,21 @@ const Apply = () => {
             <div className="home-form">
               <div className="medical-report-all">
                 <button className="medical-report-file">
-                  <img src="images/2023/07/upload-icon1.png" /> Upload Resume
+                  <img
+                    src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/07/upload-icon1.png`}
+                    alt="upload"
+                  />{" "}
+                  Upload Resume
                 </button>
                 <input type="file" name="file" />
               </div>
               <div className="medical-report-all">
                 <button className="medical-report-file">
-                  <img src="images/2023/07/upload-icon1.png" /> Upload Cover
-                  Letter
+                  <img
+                    src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/07/upload-icon1.png`}
+                    alt="upload"
+                  />{" "}
+                  Upload Cover Letter
                 </button>
                 <input type="file" name="file" />
               </div>

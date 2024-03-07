@@ -92,7 +92,10 @@ const page = async ({ params }) => {
 
                 <div className="experience-total">
                   <div className="experience-text">
-                    <img src="/images/2023/05/experience.png" alt="icon" />{" "}
+                    <img
+                      src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/05/experience.png`}
+                      alt="icon"
+                    />{" "}
                     Total experience
                   </div>
                   <div className="experience-years">
@@ -215,7 +218,10 @@ const page = async ({ params }) => {
             <div className="doctor-education">
               <div className="education-box">
                 <h2>
-                  <img src="/images/2023/05/01/1.png" alt="icon" />
+                  <img
+                    src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/05/01/1.png`}
+                    alt="icon"
+                  />
                   Education
                 </h2>
                 <div
@@ -227,7 +233,10 @@ const page = async ({ params }) => {
 
               <div className="education-box">
                 <h2>
-                  <img src="/images/2023/05/01/2.png" alt="icon" />
+                  <img
+                    src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/05/01/2.png`}
+                    alt="icon"
+                  />
                   Titles and Positions
                 </h2>
                 <ul>
@@ -237,7 +246,11 @@ const page = async ({ params }) => {
 
               <div className="education-box">
                 <h2>
-                  <img src="/images/2023/05/01/3.png" alt="icon" />
+                  <img
+                    s
+                    src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/05/01/3.png`}
+                    alt="icon"
+                  />
                   Hospital Affiliations
                 </h2>
                 <ul>

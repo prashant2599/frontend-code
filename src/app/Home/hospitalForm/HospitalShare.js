@@ -61,7 +61,11 @@ const HospitalShare = ({ country, slug }) => {
         onClick={() => shareHospitalProfile(slug, country)}
         style={{ cursor: "pointer" }}
       >
-        Share Profile <img src="/images/2023/05/share-profile.png" alt="icon" />
+        Share Profile{" "}
+        <img
+          src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/05/share-profile.png`}
+          alt="icon"
+        />
       </button>
       {isPopupOpen && (
         <div className="popup" data-popup="popup-3" style={popupStyle}>

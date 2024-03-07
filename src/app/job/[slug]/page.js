@@ -17,7 +17,11 @@ const page = async ({ params }) => {
       <section className="job-description" id="medflick-disclaimer">
         <div className="midbox-inner  wiki-mk">
           <Link href="/careers" className="back-to-job">
-            <img src="/images/back.png" alt="back-arrow" /> Back to job openings
+            <img
+              src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/back.png`}
+              alt="back-arrow"
+            />{" "}
+            Back to job openings
           </Link>
 
           <h1>{jobInfo.name}</h1>

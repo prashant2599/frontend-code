@@ -14,7 +14,10 @@ const NewHeader = async () => {
         <div className="headerTertiary">
           <Link href="/" target="_self" className="logo-d">
             {" "}
-            <img src="/images/2023/01/logo.webp" alt="Medflick" />
+            <img
+              src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/01/logo.webp`}
+              alt="Medflick"
+            />
           </Link>
           <div className="topnav-right page-header">
             <nav>
@@ -31,9 +34,7 @@ const NewHeader = async () => {
                       <ul>
                         {speciality.map((e) => (
                           <li key={e.id}>
-                            <Link
-                              href={`/speciality/${e.slug}`}
-                            >
+                            <Link href={`/speciality/${e.slug}`}>
                               <img
                                 src={`https://dev.medflick.com/speciality/${e.icon}`}
                                 alt={e.name}

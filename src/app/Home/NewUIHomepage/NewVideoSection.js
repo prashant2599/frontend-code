@@ -79,7 +79,10 @@ const NewVideoSection = () => {
                         onClick={() => handleTogglePlay(index)}
                         style={{ cursor: "pointer" }}
                       >
-                        <img src="/images/icon.webp" alt="Video Icon" />
+                        <img
+                          src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/icon.webp`}
+                          alt="Video Icon"
+                        />
                       </div>
                     )}
                   </div>
