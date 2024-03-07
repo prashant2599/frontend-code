@@ -135,7 +135,7 @@ const LoginButton = () => {
           <div className="action">
             <div className="profile" onClick={toggleMenu}>
               <img
-                src={`${process.env.NEXT_PUBLICK_IMAGE_URL}/userIcon.png`}
+                src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/userIcon.png`}
                 style={{ width: "46px", marginTop: "10px", cursor: "pointer" }}
               />
             </div>
@@ -143,7 +143,7 @@ const LoginButton = () => {
               <ul>
                 <li>
                   <img
-                    src={`${process.env.NEXT_PUBLICK_IMAGE_URL}/dashboard.png`}
+                    src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/dashboard.png`}
                     alt="dashboad-icon"
                   />
                   <Link
@@ -158,7 +158,7 @@ const LoginButton = () => {
                 </li>
                 <li>
                   <img
-                    src={`${process.env.NEXT_PUBLICK_IMAGE_URL}/profile.png`}
+                    src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/profile.png`}
                     alt="profile-icon"
                   />
                   <Link
@@ -173,7 +173,7 @@ const LoginButton = () => {
                 </li>
                 <li>
                   <img
-                    src={`${process.env.NEXT_PUBLICK_IMAGE_URL}/logout.png`}
+                    src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/logout.png`}
                     alt="logout-icon"
                   />
 

@@ -13,7 +13,7 @@ const MobileAskFreeQuestion = () => {
       >
         Ask Free Question{" "}
         <img
-          src={`${process.env.NEXT_PUBLICK_IMAGE_URL}/whiteArrow.png`}
+          src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/whiteArrow.png`}
           alt="icon"
         />
       </button>
