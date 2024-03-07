@@ -66,8 +66,6 @@ a:hover {
 
 /*===============header===============*/
 
-
-
 .navigation img {
   width: 25px;
 }
@@ -415,7 +413,6 @@ a:hover {
   margin: 0px;
   padding: 10px 0;
 }
-
 
 .medflick-payright .consultation {
   background: #ff6800;
@@ -974,8 +971,6 @@ a:hover {
   padding: 0px;
 }
 
-
-
 .hospital-item-doc .rating-star {
   color: #ffaf15;
   font-size: 18px;
@@ -1321,13 +1316,13 @@ textarea {
   justify-content: center;
 }
 .changes-button .save-changes {
-  background: #FF6800;
+  background: #ff6800;
   padding: 6px 19px;
   margin-top: 20px;
   display: flex;
   width: 150px;
   border-radius: 8px;
-  border: 1px solid #FF6800;
+  border: 1px solid #ff6800;
   font-size: 16px;
   color: #fff !important;
   align-items: center;
@@ -1990,7 +1985,7 @@ td {
   .conditionsbox {
     width: 100%;
   }
- .specialists-boxitem {
+  .specialists-boxitem {
     width: 100% !important;
   }
   .health-tabs {
@@ -2739,10 +2734,10 @@ td {
 #specialists .specialists-boxitem {
   width: 10%;
 }
-@media screen and (max-width: 880px){
-#specialists .specialists-boxitem {
-  width: 48%;
-}
+@media screen and (max-width: 880px) {
+  #specialists .specialists-boxitem {
+    width: 48%;
+  }
 }
 
 .back-to-job {
@@ -2759,4 +2754,3 @@ td {
   width: auto;
   height: 10px;
 }
-

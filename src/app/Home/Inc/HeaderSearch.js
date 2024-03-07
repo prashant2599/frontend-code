@@ -17,7 +17,6 @@ const HeaderSearch = ({ togglePopup }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      // Fetch specialities
       const specialityData = await getALLSearchApi();
       setDoctors(specialityData.searchData.doctors);
       setHospitals(specialityData.searchData.hospitals);
