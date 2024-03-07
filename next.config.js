@@ -4,7 +4,7 @@ const nextConfig = {
     domains: [
       "dev.medflick.com",
       "medflick-frontend.s3.ap-south-1.amazonaws.com",
-      "https:/images.medflick.com/images",
+      "https://images.medflick.com/images",
     ],
   },
   async redirects() {

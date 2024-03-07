@@ -86,7 +86,7 @@ const MobileHeader = ({ speciality }) => {
           <Link href="/" target="_self" className="logo-m">
             {" "}
             <img
-              src={`${process.env.NEXT_PUBLICK_IMAGE_URL}/2023/01/logo.webp`}
+              src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/01/logo.webp`}
               alt="Medflick"
             />
           </Link>
@@ -96,7 +96,7 @@ const MobileHeader = ({ speciality }) => {
           <div className="m-phone">
             <a href="tel:+91-9111922232">
               <img
-                src={`${process.env.NEXT_PUBLICK_IMAGE_URL}/2023/phone-icon.png`}
+                src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/phone-icon.png`}
                 alt="phone-icon"
               />
             </a>
@@ -127,7 +127,7 @@ const MobileHeader = ({ speciality }) => {
                   >
                     {" "}
                     <img
-                      src={`${process.env.NEXT_PUBLICK_IMAGE_URL}/2023/01/logo.webp`}
+                      src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/01/logo.webp`}
                       alt="Brand Logo"
                     />
                   </a>
