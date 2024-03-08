@@ -544,7 +544,8 @@ button.active .city-icon-h {
   color: #121c42;
   width: 100%;
   margin: 0px auto;
-  font-family: Helvetica Neue Medium;
+  font-family: "Inter Regular";
+  font-weight: 600;
 }
 
 @media screen and (max-width: 880px) {
@@ -783,7 +784,7 @@ button.active .city-icon-h {
 
 #home-travel-support a {
   background: #ffffff;
-  font-family: Helvetica Neue Medium;
+  font-family: "Inter Medium";
   color: #ff6800;
   border: 2px solid #ff6800;
   margin: 10px 0px 0px;
@@ -1884,7 +1885,7 @@ button.active .city-icon-h {
 
 #home-latest-resources .new-blogs {
   background: #ff6800;
-  font-family: 'Inter Medium';
+  font-family: "Inter Medium";
   color: #fff;
   border: 2px solid #ff6800;
   margin: 40px auto;
@@ -2414,6 +2415,5 @@ button.active .city-icon-h {
 }
 
 .centeredDiv {
- margin: 0 auto;
+  margin: 0 auto;
 }
-
