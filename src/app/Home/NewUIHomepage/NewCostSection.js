@@ -72,18 +72,18 @@ const NewCostSection = () => {
   const countryIcon = [
     {
       name: "India",
-      "city-icon": "/images/icons/india.webp",
-      "city-icon-h": "/images/icons/indiaOne.webp",
+      "city-icon": `${process.env.NEXT_PUBLIC_IMAGE_URL}/icons/india.webp`,
+      "city-icon-h": `${process.env.NEXT_PUBLIC_IMAGE_URL}/icons/indiaOne.webp`,
     },
     {
       name: "Oman",
-      "city-icon": "/images/icons/oman.webp",
-      "city-icon-h": "/images/icons/omanOne.webp",
+      "city-icon": `${process.env.NEXT_PUBLIC_IMAGE_URL}/icons/oman.webp`,
+      "city-icon-h": `${process.env.NEXT_PUBLIC_IMAGE_URL}/icons/omanOne.webp`,
     },
     {
       name: "Turkey",
-      "city-icon": "/images/icons/turkey.webp",
-      "city-icon-h": "/images/icons/turkeyOne.webp",
+      "city-icon": `${process.env.NEXT_PUBLIC_IMAGE_URL}/icons/turkey.webp`,
+      "city-icon-h": `${process.env.NEXT_PUBLIC_IMAGE_URL}/icons/turkeyOne.webp`,
     },
   ];
 
