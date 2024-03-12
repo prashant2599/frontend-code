@@ -1,12 +1,12 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { ThreeDots } from "react-loader-spinner";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useUser } from "../UserContext";
 import ForgotPassword from "./ForgotPassword";
 import SurePopup from "../Home/successPopup/SurePopup";
+import CustomSpinner from "../Home/CustomTwitterIcon/CustomSpinner";
 
 const Login = () => {
   const router = useRouter();
@@ -212,20 +212,7 @@ const Login = () => {
                   className="login-button"
                   disabled={isLoading}
                 >
-                  {isLoading ? (
-                    <ThreeDots
-                      height="27"
-                      width="80"
-                      radius="9"
-                      color="#ffffff"
-                      ariaLabel="three-dots-loading"
-                      wrapperStyle={{}}
-                      wrapperClassName=""
-                      visible={true}
-                    />
-                  ) : (
-                    "Login"
-                  )}
+                  {isLoading ? <CustomSpinner /> : "Login"}
                 </button>
               </form>
               <ForgotPassword />
