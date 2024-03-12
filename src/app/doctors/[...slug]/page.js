@@ -58,15 +58,8 @@ const page = async ({ params, res }) => {
       </>
     );
   } catch (error) {
-    console.error(error);
-    if (
-      error.message.includes("Failed to fetch data: 404") ||
-      error.message.includes("API error: 404")
-    ) {
+    if (error) {
       notFound();
-    } else {
-      res.statusCode = 500;
-      return;
     }
   }
 };
