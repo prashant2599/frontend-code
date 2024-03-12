@@ -2,14 +2,13 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
-import { ThreeDots } from "react-loader-spinner";
 import axios from "axios";
-import "intl-tel-input/build/css/intlTelInput.css";
 import intlTelInput from "intl-tel-input";
 import Success from "@/app/Home/successPopup/Success";
 import ErrorPopup from "@/app/Home/successPopup/ErrorPopup";
 import CustomUploadIcon from "@/app/Home/CustomTwitterIcon/CustomUploadIcon";
 import CustomFormArrowIcon from "@/app/Home/CustomTwitterIcon/CustomFormArrowIcon";
+import CustomSpinner from "@/app/Home/CustomTwitterIcon/CustomSpinner";
 
 const TreatmentFreeQuotePopup = ({ treatmentId, specialityId }) => {
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
@@ -439,20 +438,7 @@ const TreatmentFreeQuotePopup = ({ treatmentId, specialityId }) => {
                   disabled={isLoading}
                 >
                   {" "}
-                  {isLoading ? (
-                    <ThreeDots
-                      height="27"
-                      width="80"
-                      radius="9"
-                      color="#ffffff"
-                      ariaLabel="three-dots-loading"
-                      wrapperStyle={{}}
-                      wrapperClassName=""
-                      visible={true}
-                    />
-                  ) : (
-                    "Submit Now"
-                  )}
+                  {isLoading ? <CustomSpinner /> : "Submit Now"}
                   <CustomFormArrowIcon />
                 </button>
               </form>
