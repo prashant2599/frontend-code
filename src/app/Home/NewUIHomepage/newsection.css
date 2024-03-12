@@ -1642,7 +1642,7 @@ button.active .city-icon-h {
   color: #ffffff;
   text-align: left;
   padding-top: 10px;
-  font-family: Helvetica Neue Medium;
+  font-family: 'Inter Medium';
   z-index: 1;
   position: relative;
   display: block;
@@ -1651,7 +1651,7 @@ button.active .city-icon-h {
 
 #home-real-stories a {
   background: #ff6800;
-  font-family: Helvetica Neue Medium;
+  font-family: 'Inter Medium';
   color: #fff;
   border: 2px solid #ff6800;
   margin: 40px auto;
