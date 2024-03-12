@@ -323,6 +323,8 @@ export async function generateMetadata({ params }) {
   const hospitalIndex = datas.data.hospital[0];
   const hospitalName = hospitalIndex && hospitalIndex.name;
 
+  const location = formatText(docotorDetails?.location);
+
   if (!(docotorDetails.title && docotorDetails.description))
     return {
       title:
@@ -334,7 +336,7 @@ export async function generateMetadata({ params }) {
         " | Best " +
         docotorDetails.seo_keyword +
         " Doctor in " +
-        docotorDetails.location +
+        location +
         ", India | Medflick",
       description:
         "Book an Appointment with " +
@@ -346,7 +348,7 @@ export async function generateMetadata({ params }) {
         docotorDetails.seo_keyword +
         " " +
         "in " +
-        docotorDetails.location +
+        location +
         " " +
         "with " +
         docotorDetails.experience_year +
