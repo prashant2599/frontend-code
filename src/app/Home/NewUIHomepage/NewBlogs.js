@@ -30,6 +30,7 @@ const NewBlogs = async () => {
                       <img
                         src={`https://dev.medflick.com/blog/${e.icon}`}
                         alt={e.slug}
+                        loading="lazy"
                       />
                     ) : null}
 

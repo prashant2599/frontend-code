@@ -9,9 +9,6 @@ const SpecialityFilteration = ({ countryResponse, slug, slugs }) => {
   const specialitySlug = parts[0];
   const countrySlug = parts[1];
 
-  //   console.log("position0", specialitySlug);
-  //   console.log("position1", countrySlug);
-
   const countries = countryResponse.split(",");
 
   const [selectedCountry, setSelectedCountry] = useState(null);
@@ -42,6 +39,7 @@ const SpecialityFilteration = ({ countryResponse, slug, slugs }) => {
       "city-icon-h": `${process.env.NEXT_PUBLIC_IMAGE_URL}/icons/turkeyOne.webp`,
     },
   ];
+
   return (
     <>
       <div className="tab-treatment">
