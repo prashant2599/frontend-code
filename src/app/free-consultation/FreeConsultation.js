@@ -2,14 +2,13 @@
 
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import { ThreeDots } from "react-loader-spinner";
-import "intl-tel-input/build/css/intlTelInput.css";
 import intlTelInput from "intl-tel-input";
 import Success from "../Home/successPopup/Success";
 import ErrorPopup from "../Home/successPopup/ErrorPopup";
 import ReCaptchaComponent from "../Home/ReCapcha/ReCaptchaComponent";
 import CustomUploadIcon from "../Home/CustomTwitterIcon/CustomUploadIcon";
 import CustomFormArrowIcon from "../Home/CustomTwitterIcon/CustomFormArrowIcon";
+import CustomSpinner from "../Home/CustomTwitterIcon/CustomSpinner";
 
 const FreeConsultation = () => {
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
@@ -417,20 +416,7 @@ const FreeConsultation = () => {
                       disabled={isLoading}
                     >
                       {" "}
-                      {isLoading ? (
-                        <ThreeDots
-                          height="27"
-                          width="80"
-                          radius="9"
-                          color="#ffffff"
-                          ariaLabel="three-dots-loading"
-                          wrapperStyle={{}}
-                          wrapperClassName=""
-                          visible={true}
-                        />
-                      ) : (
-                        "Submit Now"
-                      )}
+                      {isLoading ? <CustomSpinner /> : "Submit Now"}
                       <CustomFormArrowIcon />
                     </button>
                   </form>

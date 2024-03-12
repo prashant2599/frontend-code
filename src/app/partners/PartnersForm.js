@@ -1,15 +1,13 @@
 "use client";
 import { useRef, useEffect, useState } from "react";
-import "intl-tel-input/build/css/intlTelInput.css";
 import intlTelInput from "intl-tel-input";
 import Success from "../Home/successPopup/Success";
 import ErrorPopup from "../Home/successPopup/ErrorPopup";
 import countryList from "./CountryList";
-import { ThreeDots } from "react-loader-spinner";
 import ReCaptchaComponent from "../Home/ReCapcha/ReCaptchaComponent";
-
 import axios from "axios";
 import CustomFormArrowIcon from "../Home/CustomTwitterIcon/CustomFormArrowIcon";
+import CustomSpinner from "../Home/CustomTwitterIcon/CustomSpinner";
 const PartnersForm = () => {
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const [showErrorPopup, setShowErrorPopup] = useState(false);
@@ -458,20 +456,7 @@ const PartnersForm = () => {
               disabled={isLoading}
             >
               {" "}
-              {isLoading ? (
-                <ThreeDots
-                  height="27"
-                  width="80"
-                  radius="9"
-                  color="#ffffff"
-                  ariaLabel="three-dots-loading"
-                  wrapperStyle={{}}
-                  wrapperClassName=""
-                  visible={true}
-                />
-              ) : (
-                "Submit Now"
-              )}
+              {isLoading ? <CustomSpinner /> : "Submit Now"}
               <CustomFormArrowIcon />
             </button>
           </form>

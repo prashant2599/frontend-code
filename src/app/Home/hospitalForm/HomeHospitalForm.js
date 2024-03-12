@@ -1,15 +1,14 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import { ThreeDots } from "react-loader-spinner";
 import axios from "axios";
-import "intl-tel-input/build/css/intlTelInput.css";
 import intlTelInput from "intl-tel-input";
 import Success from "../successPopup/Success";
 import ErrorPopup from "../successPopup/ErrorPopup";
 import ReCaptchaComponent from "../ReCapcha/ReCaptchaComponent";
 import CustomFormArrowIcon from "../CustomTwitterIcon/CustomFormArrowIcon";
 import CustomUploadIcon from "../CustomTwitterIcon/CustomUploadIcon";
+import CustomSpinner from "../CustomTwitterIcon/CustomSpinner";
 
 const HomeHospitalForm = ({
   country,
@@ -584,20 +583,7 @@ const HomeHospitalForm = ({
                   disabled={isLoading2}
                 >
                   {" "}
-                  {isLoading2 ? (
-                    <ThreeDots
-                      height="27"
-                      width="80"
-                      radius="9"
-                      color="#ffffff"
-                      ariaLabel="three-dots-loading"
-                      wrapperStyle={{}}
-                      wrapperClassName=""
-                      visible={true}
-                    />
-                  ) : (
-                    "Submit Now"
-                  )}
+                  {isLoading2 ? <CustomSpinner /> : "Submit Now"}
                   <CustomFormArrowIcon />
                 </button>
               </form>

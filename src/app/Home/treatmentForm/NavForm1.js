@@ -1,12 +1,12 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import { ThreeDots } from "react-loader-spinner";
 import axios from "axios";
-import "intl-tel-input/build/css/intlTelInput.css";
 import intlTelInput from "intl-tel-input";
 import Success from "../successPopup/Success";
 import ErrorPopup from "../successPopup/ErrorPopup";
 import ReCaptchaComponent from "../ReCapcha/ReCaptchaComponent";
+import CustomSpinner from "../CustomTwitterIcon/CustomSpinner";
+import CustomFormArrowIcon from "../CustomTwitterIcon/CustomFormArrowIcon";
 
 const NavForm1 = ({ treatmentId, specialityId }) => {
   // form 2 post request
@@ -449,21 +449,8 @@ const NavForm1 = ({ treatmentId, specialityId }) => {
                 disabled={isLoading1}
               >
                 {" "}
-                {isLoading1 ? (
-                  <ThreeDots
-                    height="27"
-                    width="80"
-                    radius="9"
-                    color="#ffffff"
-                    ariaLabel="three-dots-loading"
-                    wrapperStyle={{}}
-                    wrapperClassName=""
-                    visible={true}
-                  />
-                ) : (
-                  "Submit Now"
-                )}{" "}
-                <img src="/images/2023/01/arrow-c.png" alt="icon" />
+                {isLoading1 ? <CustomSpinner /> : "Submit Now"}{" "}
+                <CustomFormArrowIcon />
               </button>
             </div>
           </form>

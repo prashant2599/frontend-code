@@ -2,12 +2,10 @@
 
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import { ThreeDots } from "react-loader-spinner";
-import ReCAPTCHA from "react-google-recaptcha";
-import "intl-tel-input/build/css/intlTelInput.css";
 import intlTelInput from "intl-tel-input";
 import Success from "../Home/successPopup/Success";
 import ErrorPopup from "../Home/successPopup/ErrorPopup";
+import CustomSpinner from "../Home/CustomTwitterIcon/CustomSpinner";
 
 const VisaaForm = () => {
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
@@ -701,20 +699,7 @@ const VisaaForm = () => {
                     disabled={isLoading}
                   >
                     {" "}
-                    {isLoading ? (
-                      <ThreeDots
-                        height="27"
-                        width="80"
-                        radius="9"
-                        color="#ffffff"
-                        ariaLabel="three-dots-loading"
-                        wrapperStyle={{}}
-                        wrapperClassName=""
-                        visible={true}
-                      />
-                    ) : (
-                      "Submit Now"
-                    )}
+                    {isLoading ? <CustomSpinner /> : "Submit Now"}
                     {/* <img src="/images/2023/01/arrow-c.png" alt="arrow-Icon" /> */}
                   </button>
                 </div>
