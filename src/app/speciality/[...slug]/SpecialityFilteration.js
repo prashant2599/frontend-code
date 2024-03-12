@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect } from "react";
@@ -21,26 +20,26 @@ const SpecialityFilteration = ({ countryResponse, slug, slugs }) => {
     setSelectedCountry(selectedCountry);
     router.push(`/speciality/${slug}/${selectedCountry}`);
   };
-  
 
   useEffect(() => {
     setSelectedCountry(countrySlug);
   }, [countrySlug]);
+
   const countryIcon = [
     {
       name: "India",
-      "city-icon": "/images/icons/india.png",
-      "city-icon-h": "/images/icons/indiaOne.png",
+      "city-icon": "/images/icons/india.webp",
+      "city-icon-h": "/images/icons/indiaOne.webp",
     },
     {
       name: "Oman",
-      "city-icon": "/images/icons/oman.png",
-      "city-icon-h": "/images/icons/omanOne.png",
+      "city-icon": "/images/icons/oman.webp",
+      "city-icon-h": "/images/icons/omanOne.webp",
     },
     {
       name: "Turkey",
-      "city-icon": "/images/icons/turkey.png",
-      "city-icon-h": "/images/icons/turkeyOne.png",
+      "city-icon": "/images/icons/turkey.webp",
+      "city-icon-h": "/images/icons/turkeyOne.webp",
     },
   ];
   return (
@@ -50,36 +49,36 @@ const SpecialityFilteration = ({ countryResponse, slug, slugs }) => {
           const icon = countryIcon.find(
             (icon) => icon.name.toLowerCase() === country.toLowerCase()
           );
-  
+
           return (
             <button
-            className={`tablinks ${selectedCountry === country ? 'active' : ''}`}
-            onClick={() => handleSelectCountry(country)}
-            key={index}
-          >
-            {icon && (
-              <>
-                <img
-                  className="city-icon"
-                  src={icon["city-icon"]}
-                  alt={country}
-                />
-                <img
-                  className="city-icon-h"
-                  src={icon["city-icon-h"]}
-                  alt={country}
-                />
-              </>
-            )}
-            {country.charAt(0).toUpperCase() + country.slice(1)}
-          </button>
-          
+              className={`tablinks ${
+                selectedCountry === country ? "active" : ""
+              }`}
+              onClick={() => handleSelectCountry(country)}
+              key={index}
+            >
+              {icon && (
+                <>
+                  <img
+                    className="city-icon"
+                    src={icon["city-icon"]}
+                    alt={country}
+                  />
+                  <img
+                    className="city-icon-h"
+                    src={icon["city-icon-h"]}
+                    alt={country}
+                  />
+                </>
+              )}
+              {country.charAt(0).toUpperCase() + country.slice(1)}
+            </button>
           );
         })}
       </div>
     </>
   );
-  
 };
 
 export default SpecialityFilteration;

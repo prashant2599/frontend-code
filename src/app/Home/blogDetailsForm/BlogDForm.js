@@ -1,7 +1,5 @@
 "use client";
-import { ThreeDots } from "react-loader-spinner";
 import { useState, useEffect, useRef } from "react";
-import "intl-tel-input/build/css/intlTelInput.css";
 import intlTelInput from "intl-tel-input";
 import axios from "axios";
 import Success from "../successPopup/Success";
@@ -9,6 +7,7 @@ import ErrorPopup from "../successPopup/ErrorPopup";
 import ReCaptchaComponent from "../ReCapcha/ReCaptchaComponent";
 import CustomUploadIcon from "../CustomTwitterIcon/CustomUploadIcon";
 import CustomFormArrowIcon from "../CustomTwitterIcon/CustomFormArrowIcon";
+import CustomSpinner from "../CustomTwitterIcon/CustomSpinner";
 
 const BlogDForm = () => {
   // Assistance form post
@@ -525,20 +524,7 @@ const BlogDForm = () => {
               disabled={isLoading1}
             >
               {" "}
-              {isLoading1 ? (
-                <ThreeDots
-                  height="27"
-                  width="80"
-                  radius="9"
-                  color="#ffffff"
-                  ariaLabel="three-dots-loading"
-                  wrapperStyle={{}}
-                  wrapperClassName=""
-                  visible={true}
-                />
-              ) : (
-                "Submit Now"
-              )}
+              {isLoading1 ? <CustomSpinner /> : "Submit Now"}
               <CustomFormArrowIcon />
             </button>
           </form>

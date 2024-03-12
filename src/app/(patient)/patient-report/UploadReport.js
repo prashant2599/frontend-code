@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import axios from "axios";
-import { ThreeDots } from "react-loader-spinner";
 import { useRouter } from "next/navigation";
 import Success from "@/app/Home/successPopup/Success";
 import ErrorPopup from "@/app/Home/successPopup/ErrorPopup";

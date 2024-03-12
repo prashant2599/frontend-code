@@ -1,14 +1,13 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
-import { ThreeDots } from "react-loader-spinner";
 import ReCAPTCHA from "react-google-recaptcha";
 import axios from "axios";
-import "intl-tel-input/build/css/intlTelInput.css";
 import intlTelInput from "intl-tel-input";
 import Success from "../Home/successPopup/Success";
 import ErrorPopup from "../Home/successPopup/ErrorPopup";
 import CustomUploadIcon from "../Home/CustomTwitterIcon/CustomUploadIcon";
 import CustomFormArrowIcon from "../Home/CustomTwitterIcon/CustomFormArrowIcon";
+import CustomSpinner from "../Home/CustomTwitterIcon/CustomSpinner";
 
 const CallMeBackForm = () => {
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
@@ -480,20 +479,7 @@ const CallMeBackForm = () => {
                   disabled={isLoading2}
                 >
                   {" "}
-                  {isLoading2 ? (
-                    <ThreeDots
-                      height="27"
-                      width="80"
-                      radius="9"
-                      color="#ffffff"
-                      ariaLabel="three-dots-loading"
-                      wrapperStyle={{}}
-                      wrapperClassName=""
-                      visible={true}
-                    />
-                  ) : (
-                    "Submit Now"
-                  )}
+                  {isLoading2 ? <CustomSpinner /> : "Submit Now"}
                   <CustomFormArrowIcon />
                 </button>
               </form>

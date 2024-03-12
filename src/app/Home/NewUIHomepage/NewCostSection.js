@@ -72,18 +72,18 @@ const NewCostSection = () => {
   const countryIcon = [
     {
       name: "India",
-      "city-icon": "/images/icons/india.png",
-      "city-icon-h": "/images/icons/indiaOne.png",
+      "city-icon": "/images/icons/india.webp",
+      "city-icon-h": "/images/icons/indiaOne.webp",
     },
     {
       name: "Oman",
-      "city-icon": "/images/icons/oman.png",
-      "city-icon-h": "/images/icons/omanOne.png",
+      "city-icon": "/images/icons/oman.webp",
+      "city-icon-h": "/images/icons/omanOne.webp",
     },
     {
       name: "Turkey",
-      "city-icon": "/images/icons/turkey.png",
-      "city-icon-h": "/images/icons/turkeyOne.png",
+      "city-icon": "/images/icons/turkey.webp",
+      "city-icon-h": "/images/icons/turkeyOne.webp",
     },
   ];
 

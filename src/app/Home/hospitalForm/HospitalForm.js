@@ -1,8 +1,6 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { ThreeDots } from "react-loader-spinner";
-import "intl-tel-input/build/css/intlTelInput.css"; // Import CSS
 import intlTelInput from "intl-tel-input";
 import axios from "axios";
 import Success from "../successPopup/Success";
@@ -10,6 +8,7 @@ import ErrorPopup from "../successPopup/ErrorPopup";
 import ReCaptchaComponent from "../ReCapcha/ReCaptchaComponent";
 import CustomFormArrowIcon from "../CustomTwitterIcon/CustomFormArrowIcon";
 import CustomUploadIcon from "../CustomTwitterIcon/CustomUploadIcon";
+import CustomSpinner from "../CustomTwitterIcon/CustomSpinner";
 
 const HospitalForm = ({ info }) => {
   // form submitting and validation of form
@@ -527,20 +526,7 @@ const HospitalForm = ({ info }) => {
               disabled={isLoading}
             >
               {" "}
-              {isLoading ? (
-                <ThreeDots
-                  height="27"
-                  width="80"
-                  radius="9"
-                  color="#ffffff"
-                  ariaLabel="three-dots-loading"
-                  wrapperStyle={{}}
-                  wrapperClassName=""
-                  visible={true}
-                />
-              ) : (
-                "Submit Now"
-              )}
+              {isLoading ? <CustomSpinner /> : "Submit Now"}
               <CustomFormArrowIcon />
             </button>
           </form>

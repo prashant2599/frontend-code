@@ -1,13 +1,13 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
-import { ThreeDots } from "react-loader-spinner";
 import axios from "axios";
 import Link from "next/link";
 import Success from "../successPopup/Success";
 import ErrorPopup from "../successPopup/ErrorPopup";
-import "intl-tel-input/build/css/intlTelInput.css";
 import intlTelInput from "intl-tel-input";
 import ReCaptchaComponent from "../ReCapcha/ReCaptchaComponent";
+import CustomSpinner from "../CustomTwitterIcon/CustomSpinner";
+import CustomFormArrowIcon from "../CustomTwitterIcon/CustomFormArrowIcon";
 
 const DontPay = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -597,21 +597,8 @@ const DontPay = () => {
                       disabled={isLoading}
                     >
                       {" "}
-                      {isLoading ? (
-                        <ThreeDots
-                          height="27"
-                          width="80"
-                          radius="9"
-                          color="#ffffff"
-                          ariaLabel="three-dots-loading"
-                          wrapperStyle={{}}
-                          wrapperClassName=""
-                          visible={true}
-                        />
-                      ) : (
-                        "Submit Now"
-                      )}
-                      <img src="/images/2023/01/arrow-c.png" alt="arrow-Icon" />
+                      {isLoading ? <CustomSpinner /> : "Submit Now"}
+                      <CustomFormArrowIcon />
                     </button>
                   </form>
                 </div>

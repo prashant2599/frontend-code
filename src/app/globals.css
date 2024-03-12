@@ -16634,6 +16634,9 @@ textarea {
     display: block;
     white-space: nowrap;
   }
+  #home-health-queries a {
+    width: 100%;
+  }
 }
 
 .menu-footer-link button {

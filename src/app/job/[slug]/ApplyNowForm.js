@@ -1,12 +1,11 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import "intl-tel-input/build/css/intlTelInput.css";
 import intlTelInput from "intl-tel-input";
 import axios from "axios";
 import Success from "@/app/Home/successPopup/Success";
 import ErrorPopup from "@/app/Home/successPopup/ErrorPopup";
-import { ThreeDots } from "react-loader-spinner";
 import CustomFormArrowIcon from "@/app/Home/CustomTwitterIcon/CustomFormArrowIcon";
+import CustomSpinner from "@/app/Home/CustomTwitterIcon/CustomSpinner";
 
 const ApplyNowForm = () => {
   const inputRef = useRef(null);
@@ -422,20 +421,7 @@ const ApplyNowForm = () => {
                 disabled={isLoading}
               >
                 {" "}
-                {isLoading ? (
-                  <ThreeDots
-                    height="27"
-                    width="80"
-                    radius="9"
-                    color="#ffffff"
-                    ariaLabel="three-dots-loading"
-                    wrapperStyle={{}}
-                    wrapperClassName=""
-                    visible={true}
-                  />
-                ) : (
-                  "Submit"
-                )}
+                {isLoading ? <CustomSpinner /> : "Submit"}
                 <CustomFormArrowIcon />
               </button>
             </form>

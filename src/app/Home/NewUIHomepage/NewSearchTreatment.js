@@ -5,7 +5,7 @@ import getALLCountry from "@/app/lib/getAllCountry";
 import getAllSpeciality from "@/app/lib/getAllSpeciality";
 import HomeDoctorForm from "../doctorForm/HomeDoctorForm";
 import HomeHospitalForm from "../hospitalForm/HomeHospitalForm";
-import { Dna } from "react-loader-spinner";
+import CustomSpinner from "../CustomTwitterIcon/CustomSpinner";
 
 function formatText(text) {
   if (typeof text === "string") {
@@ -164,16 +164,7 @@ const NewSearchTreatment = () => {
 
         <div className="home-doctors">
           {isLoading ? (
-            <div className="centeredDiv">
-              <Dna
-                visible={true}
-                height="100"
-                width="100"
-                ariaLabel="dna-loading"
-                wrapperStyle={{}}
-                wrapperClass="dna-wrapper"
-              />
-            </div>
+            <CustomSpinner home="yes" />
           ) : Doctors.length > 0 ? (
             Doctors.map((e) => (
               <div className="item" key={e.id}>
@@ -252,16 +243,7 @@ const NewSearchTreatment = () => {
 
         <div className="home-hospitals">
           {isLoadingHospital ? (
-            <div className="centeredDiv">
-              <Dna
-                visible={true}
-                height="100"
-                width="100"
-                ariaLabel="dna-loading"
-                wrapperStyle={{}}
-                wrapperClass="dna-wrapper"
-              />
-            </div>
+            <CustomSpinner home="yes" />
           ) : Hospitals.length > 0 ? (
             Hospitals.map((e) => (
               <div className="item" key={e.id}>

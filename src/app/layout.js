@@ -7,6 +7,7 @@ import { Inter } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";
 import { ToggleQuestionProvider } from "./contex/toggleQuestionContext";
 import QuestionPopup from "./Home/QaForm/QuestionPopup";
+import "intl-tel-input/build/css/intlTelInput.css";
 
 const inter = Inter({ subsets: ["latin"] });
 

@@ -6,7 +6,6 @@ import HeaderSearch from "./HeaderSearch";
 import { useUser } from "@/app/UserContext";
 import { useRouter } from "next/navigation";
 import HeaderPopup from "../QaForm/HeaderPopup";
-import Script from "next/script";
 
 const LoginButton = () => {
   const router = useRouter();
@@ -39,81 +38,6 @@ const LoginButton = () => {
   const toggleMenu = () => {
     setIsActive(!isActive);
   };
-
-  // Step 5: Include the external script using useEffect
-
-  // useEffect(() => {
-  //   const script = document.createElement("script");
-  //   script.src = "https://cdn.gtranslate.net/widgets/latest/dropdown.js";
-  //   script.defer = true;
-  //   document.body.appendChild(script);
-
-  //   // Ensure that the script is loaded before attempting to change the language
-  //   script.onload = () => {
-  //     // Change the language using the global gtranslateSettings object
-  //     if (window.gtranslateSettings) {
-  //       window.gtranslateSettings.default_language = selectedLanguage;
-  //     }
-  //   };
-
-  //   return () => {
-  //     // Clean up: remove the script when the component unmounts
-  //     document.body.removeChild(script);
-  //   };
-  // }, []);
-
-  // const googleTranslateElementInit = () => {
-  //   new window.google.translate.TranslateElement(
-  //     {
-  //       pageLanguage: "en",
-  //       autoDisplay: false,
-  //     },
-  //     "google_translate_element"
-  //   );
-  // };
-
-  // useEffect(() => {
-  //   // Check if the selected language is stored in session storage
-  //   const selectedLanguage = sessionStorage.getItem("selectedLanguage");
-
-  //   // If a language is stored, set it as the page language
-  //   if (selectedLanguage) {
-  //     window.googleTranslateElementInit = () => {
-  //       googleTranslateElementInit();
-  //       // Set the selected language
-  //       window.google.translate.TranslateElement(
-  //         { pageLanguage: selectedLanguage },
-  //         "google_translate_element"
-  //       );
-  //     };
-  //   } else {
-  //     // Otherwise, initialize Google Translate with default settings
-  //     window.googleTranslateElementInit = googleTranslateElementInit;
-  //   }
-
-  //   // Add Google Translate script dynamically
-  //   var addScript = document.createElement("script");
-  //   addScript.setAttribute(
-  //     "src",
-  //     "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
-  //   );
-  //   document.body.appendChild(addScript);
-
-  //   // Function to handle language selection
-  //   const handleLanguageChange = (event) => {
-  //     const selectedLanguage = event.target.value;
-  //     // Store the selected language in session storage
-  //     sessionStorage.setItem("selectedLanguage", selectedLanguage);
-  //     // Reload the page to apply the language change
-  //     window.location.reload();
-  //   };
-
-  //   // Add event listener to language selector
-  //   const languageSelector = document.getElementById("language_selector");
-  //   if (languageSelector) {
-  //     languageSelector.addEventListener("change", handleLanguageChange);
-  //   }
-  // }, []);
 
   return (
     <>
@@ -189,26 +113,10 @@ const LoginButton = () => {
             Log In
           </Link>
         )}
-        {/* <div
-          // value={selectedLanguage}
-          // onChange={handleLanguageChange}
-          label="Select Language"
-          className="gtranslate_wrapper most-recent"
-        ></div> */}
-        {/* <div
-          label="Select Language"
-          className="gtranslate_wrapper most-recent"
-        ></div> */}
-        {/* <div id="google_translate_element"></div> */}
 
         <HeaderSearch />
-
-        {/* <Link className="qsk-question" href="/question-answer">
-          Ask FREE Question <img src="/images/whiteArrow.png" alt="icon" />
-        </Link> */}
         <HeaderPopup />
       </div>
-      {/* <Script src="https://cdn.gtranslate.net/widgets/latest/dropdown.js"></Script> */}
     </>
   );
 };

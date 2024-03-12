@@ -3,11 +3,11 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import axios from "axios";
-import { ThreeDots } from "react-loader-spinner";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useRouter } from "next/navigation";
 import { useUser } from "../UserContext";
 import SurePopup from "../Home/successPopup/SurePopup";
+import CustomSpinner from "../Home/CustomTwitterIcon/CustomSpinner";
 
 const SignUp = () => {
   const router = useRouter();
@@ -429,20 +429,7 @@ const SignUp = () => {
                   className="login-button"
                   disabled={isLoading}
                 >
-                  {isLoading ? (
-                    <ThreeDots
-                      height="27"
-                      width="80"
-                      radius="9"
-                      color="#ffffff"
-                      ariaLabel="three-dots-loading"
-                      wrapperStyle={{}}
-                      wrapperClassName=""
-                      visible={true}
-                    />
-                  ) : (
-                    " Create Account"
-                  )}
+                  {isLoading ? <CustomSpinner /> : " Create Account"}
                 </button>
               </form>
 
