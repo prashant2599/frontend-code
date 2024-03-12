@@ -10,6 +10,7 @@ const NewAboutSection = async () => {
               <img
                 src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/medflick-healthcare.webp`}
                 alt="medflick-about-us"
+                loading="lazy"
               />
             </div>
             <div className="home-medflick-about-right">
