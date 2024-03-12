@@ -34,10 +34,10 @@ const SpecialityBlog = ({ blog, category }) => {
                     <div
                       dangerouslySetInnerHTML={{
                         __html: e.short_description
-                          .split(" ")
-                          .slice(0, 15)
-                          .join(" ")
-                          .concat("..."),
+                          ? e.short_description.length > 110
+                            ? e.short_description.slice(0, 110).concat("...")
+                            : e.short_description
+                          : "",
                       }}
                     />
                     <div className="blog-text">

@@ -1,5 +1,6 @@
 import getALLBlogs from "@/app/lib/getALLBlogs";
 import Link from "next/link";
+import CustomFormArrowIcon from "../CustomTwitterIcon/CustomFormArrowIcon";
 
 const NewBlogs = async () => {
   const data = await getALLBlogs();
@@ -37,7 +38,7 @@ const NewBlogs = async () => {
                   <div
                     dangerouslySetInnerHTML={{
                       __html: e.short_description
-                        ? e.short_description.length > 10
+                        ? e.short_description.length > 110
                           ? e.short_description.slice(0, 110).concat("...")
                           : e.short_description
                         : "",
@@ -72,11 +73,7 @@ const NewBlogs = async () => {
           <Link href="/blogs">
             <span className="new-blogs">
               {" "}
-              View All{" "}
-              <img
-                src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/new-images/2023/01/arrow-c.png`}
-                alt=""
-              />
+              View All <CustomFormArrowIcon />
             </span>
           </Link>
         </div>

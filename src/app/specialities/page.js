@@ -21,6 +21,7 @@ const page = async () => {
   const data = await getSpeciality();
   const speciality = data.specialityList.speciality_list;
   const treatment = data.treatemen_list;
+
   return (
     <>
       <NewHeader />

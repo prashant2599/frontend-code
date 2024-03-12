@@ -1,5 +1,6 @@
 import getAllSpeciality from "@/app/lib/getAllSpeciality";
 import Link from "next/link";
+import CustomFormArrowIcon from "../CustomTwitterIcon/CustomFormArrowIcon";
 
 const NewQuestionAns = async () => {
   const data = await getAllSpeciality();
@@ -56,10 +57,7 @@ const NewQuestionAns = async () => {
 
           <Link href="/question-answer">
             View All Questions
-            <img
-              src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/new-images/2023/01/arrow-c.png`}
-              alt="medflick-arrow"
-            />
+            <CustomFormArrowIcon />
           </Link>
         </div>
       </section>
