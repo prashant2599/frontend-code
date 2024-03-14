@@ -92,7 +92,7 @@ const HospitalHeader = ({ hospitalDetails }) => {
               <div className="hos-profile">
                 <div className="hosprofile-img">
                   <img
-                    src={`https://dev.medflick.com/hospital/${hospitalDetails.icon}`}
+                    src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/hospital/${hospitalDetails.icon}`}
                     alt={hospitalDetails.name}
                   />
                 </div>{" "}

@@ -111,7 +111,7 @@ const Sdoctors = ({
                       <div className="doctor-item-img">
                         <Link href={`/doctor/${e.slug}`}>
                           <img
-                            src={`https://dev.medflick.com/doctor/${e.image}`}
+                            src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/doctor/${e.image}`}
                             alt={e.slug}
                           />
                         </Link>
@@ -182,7 +182,7 @@ const Sdoctors = ({
                           {formatText(e.location)}
                           {matchedHospital && (
                             <img
-                              src={`https://dev.medflick.com/hospital/${matchedHospital.icon}`}
+                              src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/hospital/${matchedHospital.icon}`}
                               alt="icon"
                             />
                           )}

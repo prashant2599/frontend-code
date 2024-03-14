@@ -51,7 +51,7 @@ const AllDoctors = async () => {
                       <div className="doctor-item-img">
                         <Link href={`/doctor/${e.slug}`}>
                           <img
-                            src={`https://dev.medflick.com/doctor/${e.image}`}
+                            src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/doctor/${e.image}`}
                             alt={e.slug}
                           />
                         </Link>
@@ -109,7 +109,7 @@ const AllDoctors = async () => {
                           className="view-profile"
                         >
                           View Profile{" "}
-                          <img src="/images/2023/05/profile.png" alt="icon" />
+                          <img   src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/2023/05/profile.png`} alt="icon" />
                         </Link>
 
                         {/* share profile */}
@@ -119,7 +119,7 @@ const AllDoctors = async () => {
                         <div className="doc-Hospital">
                           {formatText(e.location)}
                           <img
-                            src={`https://dev.medflick.com/hospital/${e.hospitalicon}`}
+                            src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/hospital/${e.hospitalicon}`}
                             alt="icon"
                           />
                         </div>

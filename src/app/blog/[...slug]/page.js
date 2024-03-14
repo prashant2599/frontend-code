@@ -105,7 +105,7 @@ const page = async ({ params }) => {
         <section id="blog-slider">
           {blogDetails.icon ? (
             <img
-              src={`https://dev.medflick.com/blog/${blogDetails.icon}`}
+              src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/blog/${blogDetails.icon}`}
               alt="Category"
               className="blog-d"
             />

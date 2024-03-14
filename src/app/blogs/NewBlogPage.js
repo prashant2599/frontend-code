@@ -43,7 +43,7 @@ const NewBlogPage = async ({ blog, pageNumber, totalCount }) => {
                     <Link href={`/blog/${e.slug}`}>
                       {e.icon ? (
                         <img
-                          src={`${process.env.NEXT_PUBLIC_BASE_URL}/blog/${e.icon}`}
+                          src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/blog/${e.icon}`}
                           alt={e.name}
                         />
                       ) : null}

@@ -57,7 +57,7 @@ const page = async ({ params }) => {
               <div className="hospitalprofile-left">
                 <div className="hospitalprofile-img">
                   <img
-                    src={`https://dev.medflick.com/hospital/${hospitalDetails.icon}`}
+                    src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/hospital/${hospitalDetails.icon}`}
                     alt={hospitalDetails.slug}
                   />
                 </div>
@@ -71,19 +71,19 @@ const page = async ({ params }) => {
                   <div className="ho-docimg">
                     {hospitalDetails.nabl && (
                       <img
-                        src={`https://dev.medflick.com/hospital/${hospitalDetails.nabl}`}
+                        src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/hospital/${hospitalDetails.nabl}`}
                         alt={hospitalDetails.name}
                       />
                     )}
                     {hospitalDetails.nabh && (
                       <img
-                        src={`https://dev.medflick.com/hospital/${hospitalDetails.nabh}`}
+                        src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/hospital/${hospitalDetails.nabh}`}
                         alt={hospitalDetails.name}
                       />
                     )}
                     {hospitalDetails.jci && (
                       <img
-                        src={`https://dev.medflick.com/hospital/${hospitalDetails.jci}`}
+                        src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/hospital/${hospitalDetails.jci}`}
                         alt={hospitalDetails.name}
                       />
                     )}
@@ -239,7 +239,7 @@ const page = async ({ params }) => {
                       >
                         <div className="boxitem">
                           <img
-                            src={`https://dev.medflick.com/speciality/${e.icon}`}
+                            src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/speciality/${e.icon}`}
                             alt="speciality-icons"
                           />
                           <h4>{e.name}</h4>

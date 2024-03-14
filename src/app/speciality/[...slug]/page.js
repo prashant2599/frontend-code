@@ -41,7 +41,7 @@ const page = async ({ params }) => {
         <NewHeader />
         <section id="category-slider">
           <img
-            src={`https://dev.medflick.com/speciality/${info?.image}`}
+            src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/speciality/${info?.image}`}
             alt={info.slug}
             loading="lazy"
           ></img>

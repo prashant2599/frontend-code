@@ -79,7 +79,7 @@ const DoctorHeader = ({ docotorDetails, treament }) => {
             <div className="dr-boxright">
               <div className="doc-profile">
                 <img
-                  src={`https://dev.medflick.com/doctor/${docotorDetails.image}`}
+                  src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/doctor/${docotorDetails.image}`}
                   alt={docotorDetails.slug}
                 />{" "}
                 {docotorDetails.prefix} {docotorDetails.first_name}{" "}

@@ -15,7 +15,7 @@ const NewHospital = async () => {
       <Link href={`/hospital/${hospital.slug}`}>
         <img
           className="dr-img"
-          src={`https://dev.medflick.com/hospital/${hospital.icon}`}
+          src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/hospital/${hospital.icon}`}
           alt={hospital.name}
         />
       </Link>
