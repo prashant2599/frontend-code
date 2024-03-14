@@ -102,7 +102,7 @@ const page = async ({ params }) => {
                         <div className="doctor-item-img">
                           <Link href={`/doctor/${e.slug}`}>
                             <img
-                              src={`https://dev.medflick.com/doctor/${e.image}`}
+                              src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/doctor/${e.image}`}
                               alt={e.slug}
                             />
                           </Link>

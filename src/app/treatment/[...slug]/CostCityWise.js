@@ -47,7 +47,7 @@ const CostCityWise = ({ cost, info }) => {
                   >
                     <div className="city-item">
                       <img
-                        src={`https://dev.medflick.com/treatments/${e.icon}`}
+                        src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/treatments/${e.icon}`}
                         alt={e.slug}
                       />
                       <div className="city-box">

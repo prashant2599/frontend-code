@@ -81,7 +81,7 @@ const CountryWiseHospital = () => {
                           <div data-hash="one" key={hospital.id}>
                             <Link href={`/hospital/${hospital.slug}`}>
                               <img
-                                src={`https://dev.medflick.com/hospital/${hospital.image}`}
+                                src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/hospital/${hospital.image}`}
                                 alt={hospital.name}
                                 width="100%"
                               />
@@ -119,19 +119,19 @@ const CountryWiseHospital = () => {
                       <div className="ho-docimg">
                         {hospital.nabl && (
                           <img
-                            src={`https://dev.medflick.com/hospital/${hospital.nabl}`}
+                            src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/hospital/${hospital.nabl}`}
                             alt={hospital.name}
                           />
                         )}
                         {hospital.nabh && (
                           <img
-                            src={`https://dev.medflick.com/hospital/${hospital.nabh}`}
+                            src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/hospital/${hospital.nabh}`}
                             alt={hospital.name}
                           />
                         )}
                         {hospital.jci && (
                           <img
-                            src={`https://dev.medflick.com/hospital/${hospital.jci}`}
+                            src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/hospital/${hospital.jci}`}
                             alt={hospital.name}
                           />
                         )}

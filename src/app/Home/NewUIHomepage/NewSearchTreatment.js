@@ -171,7 +171,7 @@ const NewSearchTreatment = () => {
                 <div className="item-home-expert">
                   <Link href={`/doctor/${e.slug}`}>
                     <img
-                      src={`https://dev.medflick.com/doctor/${e.icon}`}
+                      src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/doctor/${e.icon}`}
                       alt={e.slug}
                     />
                   </Link>
@@ -250,7 +250,7 @@ const NewSearchTreatment = () => {
                 <div className="item-home-expert">
                   <Link href={`/hospital/${e.slug}`}>
                     <img
-                      src={`https://dev.medflick.com/hospital/${e.home_image}`}
+                      src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/hospital/${e.home_image}`}
                       alt={e.name}
                     />
                   </Link>

@@ -12,7 +12,7 @@ const TreatmentList = ({ speciality, slugs }) => {
           speciality.map((e) => (
             <li key={e.id}>
               <img
-                src={`https://dev.medflick.com/treatments/${e.home_image}`}
+                src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/treatments/${e.home_image}`}
                 alt={e.name}
               />
               <Link

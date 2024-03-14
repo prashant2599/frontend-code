@@ -41,7 +41,7 @@ const Doctors = ({ doctor, category, categoryName, slugs }) => {
               <div className="item" key={e.id}>
                 <div className="item-home-expert">
                   <Link href={`/doctor/${e.slug}`}>
-                    <img src={`https://dev.medflick.com/doctor/${e.icon}`} />
+                    <img src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/doctor/${e.icon}`} />
                   </Link>
                 </div>
                 <div className="home-expert-text">
@@ -56,7 +56,7 @@ const Doctors = ({ doctor, category, categoryName, slugs }) => {
                     <div className="home-page-hospital-logo">
                       <Link href={`/hospital/${e.hospital_slug}`}>
                         <img
-                          src={`https://dev.medflick.com/hospital/${e.hospitalicon}`}
+                          src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/hospital/${e.hospitalicon}`}
                           className="home-doctor-hospital-logo"
                           alt={e.hospital_slug}
                         />

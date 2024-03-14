@@ -70,11 +70,11 @@ const page = async ({ params }) => {
         <section id="treatment-banner">
           <div className="treatment-bannerimg">
             <img
-              src={`https://dev.medflick.com/treatments/${info.image}`}
+              src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/treatments/${info.image}`}
               alt={info.slug}
             />
             <img
-              src={`https://dev.medflick.com/treatments/${info.image}`}
+              src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/treatments/${info.image}`}
               alt={info.slug}
             />
           </div>

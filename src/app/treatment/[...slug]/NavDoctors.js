@@ -39,7 +39,7 @@ const NavDoctors = ({ doctor }) => {
               <div className="item" style={{ marginRight: "20px" }} key={e.id}>
                 <div className="doctors-treatment">
                   <img
-                    src={`https://dev.medflick.com/doctor/${e.image}`}
+                    src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/doctor/${e.image}`}
                     alt={e.slug}
                   />
                   <div className="doctors-treat">

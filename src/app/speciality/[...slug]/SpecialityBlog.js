@@ -24,7 +24,7 @@ const SpecialityBlog = ({ blog, category }) => {
                   <div className="blog-item" key={e.id}>
                     {e.icon ? (
                       <img
-                        src={`https://dev.medflick.com/blog/${e.icon}`}
+                        src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/blog/${e.icon}`}
                         alt={e.name}
                       />
                     ) : null}
