@@ -36,7 +36,7 @@ const NewHeader = async () => {
                           <li key={e.id}>
                             <Link href={`/speciality/${e.slug}`}>
                               <img
-                                src={`https://dev.medflick.com/speciality/${e.icon}`}
+                                src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/speciality/${e.icon}`}
                                 alt={e.name}
                               />
                               {e.name}
@@ -60,7 +60,7 @@ const NewHeader = async () => {
                           <li key={e.id}>
                             <Link href={`/hospitals/${e.slug}`}>
                               <img
-                                src={`https://dev.medflick.com/speciality/${e.icon}`}
+                                src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/speciality/${e.icon}`}
                                 alt={`${e.name} hospitals`}
                               />
                               {e.name} Hospitals
@@ -85,7 +85,7 @@ const NewHeader = async () => {
                           <li key={e.id}>
                             <Link href={`/doctors/${e.slug}`}>
                               <img
-                                src={`https://dev.medflick.com/speciality/${e.icon}`}
+                                src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/speciality/${e.icon}`}
                                 alt={`${e.name} doctors`}
                               />
                               {e.name} Doctors

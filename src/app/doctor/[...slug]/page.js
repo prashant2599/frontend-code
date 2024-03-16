@@ -58,7 +58,7 @@ const page = async ({ params }) => {
                 <div className="doctorprofile-img">
                   <img
                     src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/doctor/${docotorDetails.image}`}
-                    alt="e.name"
+                    alt={docotorDetails.slug}
                   />
                 </div>
                 <div className="doctorprofile-head">

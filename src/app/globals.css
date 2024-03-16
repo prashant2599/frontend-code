@@ -28,7 +28,6 @@
   font-display: swap;
 }
 
-
 html {
   scroll-behavior: smooth;
 }
@@ -411,19 +410,19 @@ a:hover {
 @media (min-width: 64rem) {
   .navbar__buttons a {
     font-size: 15.5px;
-    font-family: 'Inter Medium';
+    font-family: "Inter Medium";
   }
 }
 
 @media (min-width: 90rem) {
   .navbar__buttons a {
     font-size: 15.5px;
-    font-family: 'Inter Medium';
+    font-family: "Inter Medium";
   }
 
   .page-header ul a {
     font-size: 15.5px !important;
-    font-family: 'Inter Medium';
+    font-family: "Inter Medium";
   }
 }
 
@@ -3318,7 +3317,7 @@ table strong {
 
 .free-consultation a {
   background: #ff6800;
-  font-family: 'Inter Medium';
+  font-family: "Inter Medium";
   color: #ffffff !important;
   font-size: 18px;
   border-radius: 0 0 16px 16px;
@@ -4511,7 +4510,7 @@ table strong {
 }
 
 .hospitalprofile-head h1 {
-  font-family: 'Inter Medium';
+  font-family: "Inter Medium";
   font-size: 25px;
 }
 
@@ -10298,7 +10297,7 @@ ul.tabs li.active {
 
   .page-header ul a {
     font-size: 1.6rem;
-    font-family: 'Inter Medium';
+    font-family: "Inter Medium";
   }
 
   /*.page-header .search-form input {
@@ -10343,7 +10342,6 @@ nav li:last-child {
 
 .page-header ul a {
   font-size: 16px;
-  
 }
 
 .page-header .has-dropdown i {
@@ -10730,7 +10728,7 @@ nav li:last-child {
 .popup-inner2 h2 {
   text-align: center !important;
   margin: 0px 0 20px;
-  font-family: Inter Regular!important;
+  font-family: Inter Regular !important;
 }
 
 .popup-inner2 .medical-report {
