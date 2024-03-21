@@ -20,7 +20,7 @@ const NewSection1 = () => {
                   className="dr-img"
                   src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/medflick-home.webp`}
                   alt="inspiring-better-health"
-                  loading="lazy"
+               
                 />
               </div>
             </div>
