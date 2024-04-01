@@ -94,7 +94,7 @@ const QuoteDetails = ({ info }) => {
               <img src="/images/upload.png" alt="Uploaded Report" />
               {info.uploadfiles ? (
                 <a
-                  href={`https://dev.medflick.com/reports/${info.uploadfiles}`}
+                  href={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/reports/${info.uploadfiles}`}
                   download
                   target="_blank"
                   rel="noopener noreferrer"
@@ -137,7 +137,7 @@ const QuoteDetails = ({ info }) => {
                 <div className="hospital-preview-box">
                   <div className="hospital-preview-img">
                     <img
-                      src={`https://dev.medflick.com/hospital/${hospital.image}`}
+                      src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/hospital/${hospital.image}`}
                       alt={hospital.slug}
                     />
                   </div>
@@ -155,19 +155,19 @@ const QuoteDetails = ({ info }) => {
                     <div className="ho-docimg">
                       {hospital.nabl && (
                         <img
-                          src={`https://dev.medflick.com/hospital/${hospital.nabl}`}
+                          src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/hospital/${hospital.nabl}`}
                           alt={hospital.name}
                         />
                       )}
                       {hospital.nabh && (
                         <img
-                          src={`https://dev.medflick.com/hospital/${hospital.nabh}`}
+                          src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/hospital/${hospital.nabh}`}
                           alt={hospital.name}
                         />
                       )}
                       {hospital.jci && (
                         <img
-                          src={`https://dev.medflick.com/hospital/${hospital.jci}`}
+                          src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/hospital/${hospital.jci}`}
                           alt={hospital.name}
                         />
                       )}
@@ -179,7 +179,7 @@ const QuoteDetails = ({ info }) => {
                 <div className="doctors-preview-box">
                   <div className="doctor-preview-img">
                     <img
-                      src={`https://dev.medflick.com/doctor/${doctor?.image}`}
+                      src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/doctor/${doctor?.image}`}
                       alt={doctor?.slug}
                     />
                   </div>

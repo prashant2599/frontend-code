@@ -151,7 +151,7 @@ const RequestQuote = () => {
                       key={e.id}
                     >
                       <img
-                        src={`https://dev.medflick.com/speciality/${e.icon}`}
+                        src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/speciality/${e.icon}`}
                         alt={e.name}
                         className="health-tabs-img"
                       />
@@ -189,7 +189,7 @@ const RequestQuote = () => {
                             style={{ cursor: "pointer" }}
                           >
                             <img
-                              src={`https://dev.medflick.com/speciality/${e.icon}`}
+                              src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/speciality/${e.icon}`}
                               alt={`${e.name} hospitals`}
                             />
                             <h4>{items.name} </h4>

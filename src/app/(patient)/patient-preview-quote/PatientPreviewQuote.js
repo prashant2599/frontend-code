@@ -358,13 +358,13 @@ const PatientPreviewQuote = () => {
                 <div className="medical-condition-preview">
                   <div className="condition-preview-box">
                     <img
-                      src={`https://dev.medflick.com/speciality/${specialityIcon}`}
+                      src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/speciality/${specialityIcon}`}
                     />{" "}
                     {formattedSpeciality}
                   </div>
                   <div className="condition-preview-box">
                     <img
-                      src={`https://dev.medflick.com/speciality/${specialityIcon}`}
+                      src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/speciality/${specialityIcon}`}
                     />{" "}
                     {formattedTreatment}
                   </div>
@@ -377,7 +377,7 @@ const PatientPreviewQuote = () => {
                     <div className="hospital-preview-box">
                       <div className="hospital-preview-img">
                         <img
-                          src={`https://dev.medflick.com/hospital/${hospital.image}`}
+                          src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/hospital/${hospital.image}`}
                           alt={hospital.slug}
                         />
                       </div>
@@ -396,19 +396,19 @@ const PatientPreviewQuote = () => {
                         <div className="ho-docimg">
                           {hospital.nabl && (
                             <img
-                              src={`https://dev.medflick.com/hospital/${hospital.nabl}`}
+                              src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/hospital/${hospital.nabl}`}
                               alt={hospital.name}
                             />
                           )}
                           {hospital.nabh && (
                             <img
-                              src={`https://dev.medflick.com/hospital/${hospital.nabh}`}
+                              src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/hospital/${hospital.nabh}`}
                               alt={hospital.name}
                             />
                           )}
                           {hospital.jci && (
                             <img
-                              src={`https://dev.medflick.com/hospital/${hospital.jci}`}
+                              src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/hospital/${hospital.jci}`}
                               alt={hospital.name}
                             />
                           )}
@@ -420,7 +420,7 @@ const PatientPreviewQuote = () => {
                     <div className="doctors-preview-box">
                       <div className="doctor-preview-img">
                         <img
-                          src={`https://dev.medflick.com/doctor/${doctor.image}`}
+                          src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/doctor/${doctor.image}`}
                           alt={doctor.slug}
                         />
                       </div>

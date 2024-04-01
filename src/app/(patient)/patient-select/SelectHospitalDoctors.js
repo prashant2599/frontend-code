@@ -189,7 +189,7 @@ const SelectHospitalDoctors = () => {
                       <div className="hospital-item">
                         <div className="hospital-item-img">
                           <img
-                            src={`https://dev.medflick.com/hospital/${e.image}`}
+                            src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/hospital/${e.image}`}
                             alt={e.name}
                           />
                         </div>
@@ -201,19 +201,19 @@ const SelectHospitalDoctors = () => {
                           <div className="ho-docimg">
                             {e.nabl && (
                               <img
-                                src={`https://dev.medflick.com/hospital/${e.nabl}`}
+                                src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/hospital/${e.nabl}`}
                                 alt={e.name}
                               />
                             )}
                             {e.nabh && (
                               <img
-                                src={`https://dev.medflick.com/hospital/${e.nabh}`}
+                                src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/hospital/${e.nabh}`}
                                 alt={e.name}
                               />
                             )}
                             {e.jci && (
                               <img
-                                src={`https://dev.medflick.com/hospital/${e.jci}`}
+                                src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/hospital/${e.jci}`}
                                 alt={e.name}
                               />
                             )}
@@ -243,7 +243,7 @@ const SelectHospitalDoctors = () => {
                         <div className="doctor-item-list" key={e.id}>
                           <div className="doctor-item-img">
                             <img
-                              src={`https://dev.medflick.com/doctor/${e.image}`}
+                              src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/doctor/${e.image}`}
                               alt={e.name}
                             />
                           </div>
@@ -287,7 +287,7 @@ const SelectHospitalDoctors = () => {
                               {e.location.charAt(0).toUpperCase() +
                                 e.location.slice(1)}
                               <img
-                                src={`https://dev.medflick.com/hospital/${selectedHospitalIcon}`}
+                                src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/hospital/${selectedHospitalIcon}`}
                                 alt={selectedHospital}
                               />
                             </div>
