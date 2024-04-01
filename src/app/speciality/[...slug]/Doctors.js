@@ -41,7 +41,9 @@ const Doctors = ({ doctor, category, categoryName, slugs }) => {
               <div className="item" key={e.id}>
                 <div className="item-home-expert">
                   <Link href={`/doctor/${e.slug}`}>
-                    <img src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/doctor/${e.icon}`} />
+                    <img
+                      src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/doctor/${e.icon}`}
+                    />
                   </Link>
                 </div>
                 <div className="home-expert-text">

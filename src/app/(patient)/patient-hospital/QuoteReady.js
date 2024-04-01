@@ -87,7 +87,7 @@ const QuoteReady = () => {
                         <div className="hospital-item">
                           <div className="hospital-item-img">
                             <img
-                              src={`https://dev.medflick.com/hospital/${e.image}`}
+                              src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/hospital/${e.image}`}
                               alt={e.slug}
                             />
                           </div>
@@ -103,19 +103,19 @@ const QuoteReady = () => {
                             <div className="ho-docimg">
                               {e.nabl && (
                                 <img
-                                  src={`https://dev.medflick.com/hospital/${e.nabl}`}
+                                  src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/hospital/${e.nabl}`}
                                   alt={e.name}
                                 />
                               )}
                               {e.nabh && (
                                 <img
-                                  src={`https://dev.medflick.com/hospital/${e.nabh}`}
+                                  src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/hospital/${e.nabh}`}
                                   alt={e.name}
                                 />
                               )}
                               {e.jci && (
                                 <img
-                                  src={`https://dev.medflick.com/hospital/${e.jci}`}
+                                  src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/hospital/${e.jci}`}
                                   alt={e.name}
                                 />
                               )}
@@ -152,7 +152,7 @@ const QuoteReady = () => {
                       <div className="hospital-item">
                         <div className="hospital-item-img">
                           <img
-                            src={`https://dev.medflick.com/hospital/${e.image}`}
+                            src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/hospital/${e.image}`}
                             alt={e.slug}
                           />
                         </div>
@@ -168,19 +168,19 @@ const QuoteReady = () => {
                           <div className="ho-docimg">
                             {e.nabl && (
                               <img
-                                src={`https://dev.medflick.com/hospital/${e.nabl}`}
+                                src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/hospital/${e.nabl}`}
                                 alt={e.name}
                               />
                             )}
                             {e.nabh && (
                               <img
-                                src={`https://dev.medflick.com/hospital/${e.nabh}`}
+                                src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/hospital/${e.nabh}`}
                                 alt={e.name}
                               />
                             )}
                             {e.jci && (
                               <img
-                                src={`https://dev.medflick.com/hospital/${e.jci}`}
+                                src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/hospital/${e.jci}`}
                                 alt={e.name}
                               />
                             )}
@@ -213,7 +213,7 @@ const QuoteReady = () => {
                     >
                       <iframe
                         title="PDF Viewer"
-                        src={`https://dev.medflick.com/hospital/${e.hospital_quote}`}
+                        src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/hospital/${e.hospital_quote}`}
                         width="627px"
                         height="100%"
                         id="packages1"
@@ -227,7 +227,7 @@ const QuoteReady = () => {
                           className="download-quote"
                           onClick={() =>
                             handleDownloadClick(
-                              `https://dev.medflick.com/hospital/${e.hospital_quote}`
+                              `${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/hospital/${e.hospital_quote}`
                             )
                           }
                         >

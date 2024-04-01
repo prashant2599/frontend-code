@@ -168,7 +168,7 @@ const page = async ({ params }) => {
                           ) : (
                             <span>No profile available</span>
                           )}
-                          {/* share profile */}
+                        
 
                           <ShareProfile slug={e.slug} />
 
@@ -176,7 +176,7 @@ const page = async ({ params }) => {
                             {formatText(e.location)}
                             {matchedHospital && (
                               <img
-                                src={`https://dev.medflick.com/hospital/${matchedHospital.icon}`}
+                                src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/hospital/${matchedHospital.icon}`}
                                 alt="icon"
                               />
                             )}
