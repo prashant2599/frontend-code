@@ -168,7 +168,7 @@ const page = async ({ params }) => {
                           ) : (
                             <span>No profile available</span>
                           )}
-                          {/* share profile */}
+                        
 
                           <ShareProfile slug={e.slug} />
 
