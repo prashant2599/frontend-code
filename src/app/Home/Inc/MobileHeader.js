@@ -91,7 +91,7 @@ const MobileHeader = ({ speciality }) => {
             />
           </Link>
           {/* Mobile serach */}
-          <MobileSearch />
+          {/* <MobileSearch /> */}
           {/* End */}
           <div className="m-phone">
             <a href="tel:+91-9111922232">
