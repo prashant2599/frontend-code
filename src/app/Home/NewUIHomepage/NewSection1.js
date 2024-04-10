@@ -1,9 +1,10 @@
+import MobileTopSearch from "./MobileTopSearch";
 import "./newsection.css";
-import Image from "next/image";
 
 const NewSection1 = () => {
   return (
     <>
+      <MobileTopSearch />
       <section id="hometop-section">
         <div className="midbox-inner wiki-mk">
           <div className="home-slider">
@@ -20,7 +21,6 @@ const NewSection1 = () => {
                   className="dr-img"
                   src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/medflick-home.webp`}
                   alt="inspiring-better-health"
-               
                 />
               </div>
             </div>
