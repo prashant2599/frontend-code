@@ -34,7 +34,7 @@ const NewHeader = async () => {
                       <ul>
                         {speciality.map((e) => (
                           <li key={e.id}>
-                            <Link href={`/speciality/${e.slug}`}>
+                            <Link href={`/speciality/${e.slug}/india`}>
                               <img
                                 src={`${process.env.NEXT_PUBLIC_BACKEND_IMAGE}/speciality/${e.icon}`}
                                 alt={e.name}
