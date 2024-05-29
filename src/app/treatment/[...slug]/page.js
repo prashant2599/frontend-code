@@ -641,11 +641,11 @@ export async function generateMetadata({ params }) {
 
   if (cityName)
     return {
-      title: info.title + "," + formatCityName,
-      description: info.description + "," + formatCityName,
+      title: info.title + " " + formatCityName,
+      description: info.description + " " + formatCityName,
       openGraph: {
-        title: info.title + "," + formatCityName,
-        description: info.description + "," + formatCityName,
+        title: info.title + " " + formatCityName,
+        description: info.description + " " + formatCityName,
         images: `https://dev.medflick.com/treatments/${info.image}`,
       },
       alternates: {
@@ -655,11 +655,11 @@ export async function generateMetadata({ params }) {
 
   if (countryName) {
     return {
-      title: info.title + "," + formatCountryName,
-      description: info.description + "," + formatCountryName,
+      title: info.title + " " + formatCountryName,
+      description: info.description + " " + formatCountryName,
       openGraph: {
-        title: info.title + "," + formatCountryName,
-        description: info.description + "," + formatCountryName,
+        title: info.title + " " + formatCountryName,
+        description: info.description + " " + formatCountryName,
         images: `https://dev.medflick.com/treatments/${info.image}`,
       },
       alternates: {
