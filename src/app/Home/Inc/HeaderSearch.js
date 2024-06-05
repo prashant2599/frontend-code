@@ -107,7 +107,7 @@ const HeaderSearch = ({ togglePopup }) => {
                 {filteredSpeciality.map((doctor) => (
                   <Link
                     key={doctor.id}
-                    href={`/speciality/${doctor.slug}`}
+                    href={`/speciality/${doctor.slug}/india`}
                     onClick={() => {
                       setSearchQuery("");
                       if (typeof togglePopup === "function") {
@@ -136,7 +136,7 @@ const HeaderSearch = ({ togglePopup }) => {
                 {filteredTreatment.map((doctor) => (
                   <Link
                     key={doctor.id}
-                    href={`/treatment/${doctor.slug}`}
+                    href={`/treatment/${doctor.slug}/india`}
                     onClick={() => {
                       setSearchQuery("");
                       if (typeof togglePopup === "function") {

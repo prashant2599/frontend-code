@@ -31,6 +31,7 @@ const page = async ({ params }) => {
 
   const part = combinedSlug.split("/");
   const cityName = part[2];
+  const countryName = part[1];
 
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/treatment/${combinedSlug}`,
@@ -47,6 +48,7 @@ const page = async ({ params }) => {
   const speciality = datas.treateDetailsbyCountry?.speciality;
 
   const formatCityName = formatText(cityName);
+  const formatCountryName = formatText(countryName);
 
   return (
     <>
@@ -60,7 +62,9 @@ const page = async ({ params }) => {
                   {info.name} in {formatCityName}
                 </h1>
               ) : (
-                <h1>{info.name}</h1>
+                <h1>
+                  {info.name} in {formatCountryName}{" "}
+                </h1>
               )}
               <p>Avg Price: {info.special_price}</p>
             </div>
@@ -641,11 +645,11 @@ export async function generateMetadata({ params }) {
 
   if (cityName)
     return {
-      title: info.title + " " + formatCityName + " " + " | Medflick",
-      description: info.description + " " + formatCityName,
+      title: info.title + " in " + formatCityName + " " + " | Medflick",
+      description: info.description,
       openGraph: {
-        title: info.title + " " + formatCityName + " " + " | Medflick",
-        description: info.description + " " + formatCityName,
+        title: info.title + " in " + formatCityName + " " + " | Medflick",
+        description: info.description,
         images: `https://dev.medflick.com/treatments/${info.image}`,
       },
       alternates: {
@@ -655,11 +659,11 @@ export async function generateMetadata({ params }) {
 
   if (countryName) {
     return {
-      title: info.title + " " + formatCountryName + " " + " | Medflick",
-      description: info.description + " " + formatCountryName,
+      title: info.title + " in " + formatCountryName + " " + " | Medflick",
+      description: info.description,
       openGraph: {
-        title: info.title + " " + formatCountryName + " " + " | Medflick",
-        description: info.description + " " + formatCountryName,
+        title: info.title + " in " + formatCountryName + " " + " | Medflick",
+        description: info.description,
         images: `https://dev.medflick.com/treatments/${info.image}`,
       },
       alternates: {
