@@ -43,13 +43,13 @@ const page = async () => {
               );
               return (
                 <div className="medical-treatments-box" key={e.id}>
-                  <Link href={`/speciality/${e.slug}`}>
+                  <Link href={`/speciality/${e.slug}/india`}>
                     <h2>{e.name}</h2>
                   </Link>
                   <ul>
                     {galleryImages &&
                       galleryImages.map((p) => (
-                        <Link href={`/treatment/${p.slug}`} key={p.id}>
+                        <Link href={`/treatment/${p.slug}/india`} key={p.id}>
                           <li>{p.name}</li>
                         </Link>
                       ))}

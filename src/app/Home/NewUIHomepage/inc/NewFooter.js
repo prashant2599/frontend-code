@@ -134,7 +134,9 @@ const NewFooter = () => {
                   {selectedSpecialities &&
                     selectedSpecialities.map((e) => (
                       <li key={e.id}>
-                        <Link href={`/speciality/${e.slug}`}>{e.name}</Link>
+                        <Link href={`/speciality/${e.slug}/india`}>
+                          {e.name}
+                        </Link>
                       </li>
                     ))}
 
