@@ -180,16 +180,6 @@ const NewFooter = () => {
                       Request a free quote
                     </Link>
                   </li>
-                  {/* <li>
-                  <a href="#" target="_self">
-                    Non Proident{" "}
-                  </a>
-                </li>
-                <li>
-                  <a href="#" target="_self">
-                    Anim ipsum
-                  </a>
-                </li> */}
                 </ul>
               </div>
               <div className="footer-navbox">
@@ -272,11 +262,7 @@ const NewFooter = () => {
                     <FaXTwitter style={{ fontSize: "20px" }} />
                   </a>
                 </li>
-                {/* <li>
-                  <a href="#" target="_black">
-                    <AiFillYoutube style={{ fontSize: "20px" }} />
-                  </a>
-                </li> */}
+
                 <li>
                   <a
                     href=" https://www.instagram.com/mymedflick/?hl=en"
@@ -291,6 +277,18 @@ const NewFooter = () => {
               © 2024 Medflick. All Rights Reserved |{" "}
               <Link href="/privacy-policy">Privacy Policy</Link> |{" "}
               <Link href="/terms-and-conditions">Terms &amp; Conditions</Link>
+            </div>
+          </div>
+
+          <div
+            className="copyright"
+            style={{ marginTop: "0px", border: "none" }}
+          >
+            <div className="wiki"></div>
+            <div className="wh">
+              WIKREATE WORLDWIDE PRIVATE LIMITED
+              <br />D 213, 1ST FLOOR , SECTOR 63, Noida ,UTTAR PRADESH
+              <br /> +919560470777
             </div>
           </div>
         </div>
