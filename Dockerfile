@@ -23,10 +23,13 @@ RUN adduser --system --uid 1001 nextjs
 COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
-USER nextjs
 
-# Install PM2 globally
+# Install PM2 globally with root user
+USER root
 RUN npm install -g pm2
+
+# Switch to the non-root user
+USER nextjs
 
 # Expose the port and set the environment variable
 EXPOSE 3000
