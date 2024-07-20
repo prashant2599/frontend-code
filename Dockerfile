@@ -30,7 +30,8 @@ COPY --from=builder /app/package.json ./package.json
 USER nextjs
 
 EXPOSE 3000
+RUN npm install -g pm2
 
 ENV PORT 3000
 
-CMD ["npm", "start"]
+CMD ["pm2-runtime", "start", "npm", "--", "start"]
