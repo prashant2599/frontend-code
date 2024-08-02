@@ -2,29 +2,56 @@ name: Deploy
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
-  Deploy:
-    name: Deploy to EC2
-    runs-on: amazon-linux
-    
+  build:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2 
-      - name: Build & Deploy
-        env:
-            PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-            HOSTNAME: ${{secrets.SSH_HOST}}
-            USER_NAME: ${{secrets.USER_NAME}}
-      
-        run: |
-          echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-          ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${SSH_HOST} '
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v2
 
-              # Now we have got the access of EC2 and we will start the deploy .
-              cd /home/ubuntu/test &&
-              git pull origin dev &&
-              sudo npm i &&
-              sudo npm run build
-              
-              '
+      - name: 📂 Set working directory
+        run: cd /home/ec2-user/frontend-code
+      - name: 🛠 Install dependencies
+        run: npm install
+        working-directory: /home/ec2-user/frontend-code
+      - name: 🛠 Build
+        run: npm run build
+        working-directory: /home/ec2-user/frontend-code
+      - name: 📂 rsync deployments
+        uses: burnett01/rsync-deployments@5.1
+        with:
+          switches: -avzr --delete
+          path: ./*
+          remote_path: /usr/share/nginx/html/
+          remote_host: 65.1.1.20    
+          remote_user: ec2-user
+          remote_key: "${{ secrets.SSH_PRIVATE_KEY }}"
+
+      - name: 📂 Set ownership on remote server
+        run: |
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key.pem
+          chmod 600 private_key.pem
+
+         
+          # Run the SSH command
+          ssh -i private_key.pem -o StrictHostKeyChecking=no ec2-user@65.1.1.20 \
+          "sudo chown -R ec2-user:nginx /usr/share/nginx/html/frontend-code/ && && sudo npm install  && chmod +x /usr/share/nginx/html/frontend-code/dev_run.sh"          
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          
+      - name: 🎉 Deploy to Remote Server
+        uses: appleboy/ssh-action@master
+        with:
+          host: 65.1.1.20
+          username: ec2-user
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /usr/share/nginx/html/frontend-code/
+            ./dev_run.sh
+
+
+          
