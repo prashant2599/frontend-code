@@ -1,3 +1,4 @@
 #!/bin/bash
 
-npm run dev
+sudo npm install 
+sudo npm run dev
