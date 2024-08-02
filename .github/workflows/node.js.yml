@@ -28,7 +28,7 @@ jobs:
             # Ensure the directory exists and has correct permissions
             sudo mkdir -p /usr/share/nginx/html/frontend-code
             sudo chown ec2-user:nginx /usr/share/nginx/html/frontend-code
-            sudo chmod 755 /usr/share/nginx/html/frontend-code
+            sudo chmod 777 /usr/share/nginx/html/frontend-code
 
             # Install Node.js if not present
             if ! command -v node &> /dev/null
@@ -64,7 +64,7 @@ jobs:
               npm install
             fi
             sudo chown -R nginx:nginx /usr/share/nginx/html/frontend-code/
-            sudo chmod -R 755 /usr/share/nginx/html/frontend-code/
+            sudo chmod -R 777 /usr/share/nginx/html/frontend-code/
             if [ -f "dev_run.sh" ]; then
               sudo chmod +x dev_run.sh
               ./dev_run.sh
