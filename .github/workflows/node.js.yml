@@ -16,7 +16,7 @@ jobs:
       - name: 📂 Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '18'
+          node-version: '14'
 
       - name: 🛠 Install dependencies
         run: npm install
@@ -25,9 +25,9 @@ jobs:
       - name: 📂 Prepare remote environment
         run: |
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key.pem
-          sudo chmod 600 private_key.pem
-          sudo ssh -i private_key.pem -o StrictHostKeyChecking=no ec2-user@65.1.1.20 \
-          "sudo mkdir -p /usr/share/nginx/html/frontend-code"
+          chmod 600 private_key.pem
+          ssh -i private_key.pem -o StrictHostKeyChecking=no ec2-user@65.1.1.20 \
+          "sudo mkdir -p /usr/share/nginx/html/frontend-code && sudo chown ec2-user:nginx /usr/share/nginx/html/frontend-code"
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
@@ -35,16 +35,16 @@ jobs:
         run: |
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key.pem
           chmod 600 private_key.pem
-          sudo scp -i private_key.pem -o StrictHostKeyChecking=no -r ./* ec2-user@65.1.1.20:/usr/share/nginx/html/frontend-code/
+          scp -i private_key.pem -o StrictHostKeyChecking=no -r ./* ec2-user@65.1.1.20:/tmp/frontend-code/
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: 🛠 Build and set ownership on remote server
+      - name: 🛠 Move and build on remote server
         run: |
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key.pem
-          sudo chmod 600 private_key.pem
-          sudo ssh -i private_key.pem -o StrictHostKeyChecking=no ec2-user@65.1.1.20 \
-          "cd /usr/share/nginx/html/frontend-code && sudo npm install && sudo npm run build && sudo chown -R ec2-user:nginx /usr/share/nginx/html/frontend-code/ && chmod +x /usr/share/nginx/html/frontend-code/dev_run.sh"
+          chmod 600 private_key.pem
+          ssh -i private_key.pem -o StrictHostKeyChecking=no ec2-user@65.1.1.20 \
+          "sudo mv /tmp/frontend-code/* /usr/share/nginx/html/frontend-code/ && cd /usr/share/nginx/html/frontend-code && sudo npm install && sudo npm run build && sudo chown -R ec2-user:nginx /usr/share/nginx/html/frontend-code/ && sudo chmod +x /usr/share/nginx/html/frontend-code/dev_run.sh"
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
