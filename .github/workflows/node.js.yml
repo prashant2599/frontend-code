@@ -35,11 +35,8 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd /usr/share/nginx/html/frontend-code
-            if [ ! -d ".git" ]; then
-              git clone https://github.com/prashant2599/frontend-code.git .
-            else
-              git pull origin main
-            fi
+            git pull origin main
+          
 
       - name: 🛠 Build and set ownership on remote server
         uses: appleboy/ssh-action@master
