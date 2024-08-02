@@ -16,7 +16,19 @@ jobs:
       - name: 📂 Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '20'
+          node-version: '18'
+
+      - name: 📂 Prepare remote environment
+        uses: appleboy/ssh-action@master
+        with:
+          host: 65.1.1.20
+          username: ec2-user
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            # Ensure the directory exists and has correct permissions
+            sudo mkdir -p /usr/share/nginx/html/frontend-code
+            sudo chown ec2-user:nginx /usr/share/nginx/html/frontend-code
+            sudo chmod 755 /usr/share/nginx/html/frontend-code
 
       - name: 📂 Clone or update repository on remote server
         uses: appleboy/ssh-action@master
