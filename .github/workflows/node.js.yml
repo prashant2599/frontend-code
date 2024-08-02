@@ -16,11 +16,7 @@ jobs:
       - name: 📂 Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
-
-      - name: 🛠 Install dependencies
-        run: npm install
-        working-directory: ./
+          node-version: '18'
 
       - name: 📂 Prepare remote environment
         run: |
@@ -31,23 +27,6 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: 📂 Copy files to remote server
-        run: |
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key.pem
-          chmod 600 private_key.pem
-          scp -i private_key.pem -o StrictHostKeyChecking=no -r ./* ec2-user@65.1.1.20:/usr/share/nginx/html/frontend-code/
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-
-      - name: 🛠 Build and set ownership on remote server
-        run: |
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key.pem
-          chmod 600 private_key.pem
-          ssh -i private_key.pem -o StrictHostKeyChecking=no ec2-user@65.1.1.20 \
-          "cd /usr/share/nginx/html/frontend-code && sudo npm install && sudo npm run build && sudo chown -R ec2-user:nginx /usr/share/nginx/html/frontend-code/ && sudo chmod +x /usr/share/nginx/html/frontend-code/dev_run.sh"
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-
       - name: 🎉 Deploy to Remote Server
         uses: appleboy/ssh-action@master
         with:
@@ -55,5 +34,10 @@ jobs:
           username: ec2-user
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /usr/share/nginx/html/frontend-code/
+            cd /usr/share/nginx/html/frontend-code
+            git pull origin main
+            npm install
+            npm run build
+            sudo chown -R ec2-user:nginx /usr/share/nginx/html/frontend-code/
+            sudo chmod +x /usr/share/nginx/html/frontend-code/dev_run.sh
             ./dev_run.sh
