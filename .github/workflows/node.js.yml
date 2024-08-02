@@ -27,7 +27,7 @@ jobs:
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key.pem
           chmod 600 private_key.pem
           ssh -i private_key.pem -o StrictHostKeyChecking=no ec2-user@65.1.1.20 \
-          "sudo mkdir -p /usr/share/nginx/html/frontend-code && sudo chown ec2-user:nginx /usr/share/nginx/html/frontend-code"
+          "sudo mkdir -p /usr/share/nginx/html/frontend-code /tmp/frontend-code && sudo chown ec2-user:nginx /usr/share/nginx/html/frontend-code"
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
