@@ -35,8 +35,13 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd /usr/share/nginx/html/frontend-code
-            git pull origin main
-          
+            pwd
+            ls -la
+            if [ ! -d ".git" ]; then
+              git clone https://github.com/prashant2599/frontend-code.git .
+            else
+              git pull origin main
+            fi
 
       - name: 🛠 Build and set ownership on remote server
         uses: appleboy/ssh-action@master
@@ -46,6 +51,8 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd /usr/share/nginx/html/frontend-code
+            pwd
+            ls -la
             npm install
             npm run build
             sudo chown -R ec2-user:nginx /usr/share/nginx/html/frontend-code/
