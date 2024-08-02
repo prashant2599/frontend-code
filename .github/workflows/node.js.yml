@@ -22,22 +22,29 @@ jobs:
         run: npm install
         working-directory: ./
 
-      # - name: 📂 Prepare remote environment
-      #   run: |
-      #     echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key.pem
-      #     chmod 600 private_key.pem
-      #     ssh -i private_key.pem -o StrictHostKeyChecking=no ec2-user@65.1.1.20 \
-      #     "mkdir -p /usr/share/nginx/html/frontend-code && cd /usr/share/nginx/html/frontend-code && npm install"
-      #   env:
-      #     SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: 📂 Prepare remote environment
+        run: |
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key.pem
+          chmod 600 private_key.pem
+          ssh -i private_key.pem -o StrictHostKeyChecking=no ec2-user@65.1.1.20 \
+          "mkdir -p /usr/share/nginx/html/frontend-code"
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: 🛠 Build and deploy on remote server
+      - name: 📂 Copy files to remote server
         run: |
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key.pem
           chmod 600 private_key.pem
           scp -i private_key.pem -o StrictHostKeyChecking=no -r ./* ec2-user@65.1.1.20:/usr/share/nginx/html/frontend-code/
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: 🛠 Build and set ownership on remote server
+        run: |
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key.pem
+          chmod 600 private_key.pem
           ssh -i private_key.pem -o StrictHostKeyChecking=no ec2-user@65.1.1.20 \
-          "cd /usr/share/nginx/html/frontend-code && npm run build && sudo chown -R ec2-user:nginx /usr/share/nginx/html/frontend-code/ && chmod +x /usr/share/nginx/html/frontend-code/dev_run.sh"
+          "cd /usr/share/nginx/html/frontend-code && npm install && npm run build && sudo chown -R ec2-user:nginx /usr/share/nginx/html/frontend-code/ && chmod +x /usr/share/nginx/html/frontend-code/dev_run.sh"
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
