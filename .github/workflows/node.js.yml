@@ -1,4 +1,4 @@
-name: Deploy
+name: Deploy Next.js Application
 
 on:
   push:
@@ -22,15 +22,17 @@ jobs:
         run: npm install
         working-directory: ./
 
-      - name: 🛠 Build
+      - name: 🛠 Build Next.js application
         run: npm run build
         working-directory: ./
 
-      - name: 📂 rsync deployments
+      - name: 📂 Rsync deployments
         run: |
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key.pem
           chmod 600 private_key.pem
-          rsync -avzr --delete -e "ssh -i private_key.pem -o StrictHostKeyChecking=no" ./build/ ec2-user@65.1.1.20:/usr/share/nginx/html/frontend-code/
+          rsync -avzr --delete -e "ssh -i private_key.pem -o StrictHostKeyChecking=no" .next/ ec2-user@65.1.1.20:/usr/share/nginx/html/frontend-code/.next/
+          rsync -avzr --delete -e "ssh -i private_key.pem -o StrictHostKeyChecking=no" public/ ec2-user@65.1.1.20:/usr/share/nginx/html/frontend-code/public/
+          rsync -avzr --delete -e "ssh -i private_key.pem -o StrictHostKeyChecking=no" package.json ec2-user@65.1.1.20:/usr/share/nginx/html/frontend-code/package.json
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
