@@ -16,39 +16,21 @@ jobs:
       - name: 📂 Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '18'
+          node-version: '20'
 
-      # - name: 📂 Prepare remote environment
-      #   run: |
-      #     echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key.pem
-      #     chmod 600 private_key.pem
-      #     ssh -i private_key.pem -o StrictHostKeyChecking=no ec2-user@65.1.1.20 \
-      #     "sudo mkdir -p /usr/share/nginx/html/frontend-code && sudo chown ec2-user:nginx /usr/share/nginx/html/frontend-code && sudo chmod 777 /usr/share/nginx/html/frontend-code"
-      #   env:
-      #     SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-
-      # - name: 📂 Copy files to remote server
-      #   run: |
-      #     echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key.pem
-      #     chmod 600 private_key.pem
-      #     scp -i private_key.pem -o StrictHostKeyChecking=no -r ./ ec2-user@65.1.1.20:/usr/share/nginx/html/frontend-code/
-      #   env:
-      #     SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-
-      - name: 🎉 Clone or update repository on remote server
+      - name: 📂 Clone or update repository on remote server
         uses: appleboy/ssh-action@master
         with:
           host: 65.1.1.20
           username: ec2-user
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /usr/share/nginx/html/frontend-code
+            cd /usr/share/nginx/html/frontend-code || exit
             if [ ! -d ".git" ]; then
               git clone https://github.com/prashant2599/frontend-code.git .
             else
               git pull origin main
             fi
-            pwd
             ls -la
 
       - name: 🛠 Build and set ownership on remote server
@@ -58,13 +40,13 @@ jobs:
           username: ec2-user
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /usr/share/nginx/html/frontend-code
+            cd /usr/share/nginx/html/frontend-code || exit
             if [ -f "package.json" ]; then
-              sudo npm install
+              npm install
             fi
             sudo chown -R nginx:nginx /usr/share/nginx/html/frontend-code/
-            sudo chmod -R 777 /usr/share/nginx/html/frontend-code/
+            sudo chmod -R 755 /usr/share/nginx/html/frontend-code/
             if [ -f "dev_run.sh" ]; then
-              sudo chmod +x /usr/share/nginx/html/frontend-code/dev_run.sh
+              sudo chmod +x dev_run.sh
               ./dev_run.sh
             fi
