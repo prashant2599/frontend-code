@@ -20,11 +20,11 @@ jobs:
 
     - name: Deploy to EC2
       run: |
-        ssh -o StrictHostKeyChecking=no ec2-user@13.234.136.215 << 'EOF'
+        ssh -o StrictHostKeyChecking=no ec2-user@13.126.124.132 << 'EOF'
           cd /usr/share/nginx/html/frontend-code
           git pull
           sudo chown -R nginx:nginx .
           sudo chmod -R 777 .
           npm install
-          npm run dev
+          npm run build
         EOF
