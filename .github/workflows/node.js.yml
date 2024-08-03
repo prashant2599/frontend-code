@@ -18,14 +18,14 @@ jobs:
         with:
           node-version: '20'
 
-      - name: 📂 Prepare remote environment
+      - name: 📂 Prepare and deploy to remote server
         uses: appleboy/ssh-action@master
         with:
           host: 3.111.217.63
           username: ec2-user
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            # Ensure the directory exists and has correct permissions
+            # Prepare remote environment
             sudo mkdir -p /usr/share/nginx/html/frontend-code
             sudo chown ec2-user:nginx /usr/share/nginx/html/frontend-code
             sudo chmod 777 /usr/share/nginx/html/frontend-code
@@ -33,38 +33,29 @@ jobs:
             # Install Node.js if not present
             if ! command -v node &> /dev/null
             then
-              curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+              curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
               sudo apt-get install -y nodejs
             fi
 
-      - name: 📂 Clone or update repository on remote server
-        uses: appleboy/ssh-action@master
-        with:
-          host: 3.111.217.63
-          username: ec2-user
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
+            # Clone or update repository
             cd /usr/share/nginx/html/frontend-code || exit
             if [ ! -d ".git" ]; then
               git clone https://github.com/prashant2599/frontend-code.git .
             else
               git pull origin main
             fi
-            ls -la
 
-      - name: 🛠 Build and set ownership on remote server
-        uses: appleboy/ssh-action@master
-        with:
-          host: 3.111.217.63
-          username: ec2-user
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            cd /usr/share/nginx/html/frontend-code || exit
+            # Install dependencies and build
             if [ -f "package.json" ]; then
               npm install
+              npm run build
             fi
+
+            # Set ownership and permissions
             sudo chown -R nginx:nginx /usr/share/nginx/html/frontend-code/
             sudo chmod -R 777 /usr/share/nginx/html/frontend-code/
+
+            # Run the script if it exists
             if [ -f "dev_run.sh" ]; then
               sudo chmod +x dev_run.sh
               ./dev_run.sh
