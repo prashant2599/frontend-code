@@ -16,7 +16,7 @@ jobs:
       - name: 📂 Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '18'
+          node-version: '20'
 
       - name: 📂 Prepare remote environment
         uses: appleboy/ssh-action@master
@@ -55,7 +55,7 @@ jobs:
       - name: 🛠 Build and set ownership on remote server
         uses: appleboy/ssh-action@master
         with:
-          host: 65.1.1.20
+          host: 3.111.217.63
           username: ec2-user
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
